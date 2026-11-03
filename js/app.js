@@ -657,6 +657,12 @@
 
     g.fields.speed = String(speed);
     g.fields.hours = String(hours);
+
+    // 自动用主药默认频次覆盖整组
+    if (r.default_freq) {
+      g.fields.freq = r.default_freq;
+      g.drugs.forEach(it => it.frequency = r.default_freq);
+    }
   }
 
   // 生成某组的警示文本

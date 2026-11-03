@@ -1237,11 +1237,11 @@
     const mouth = $('avatar-mouth');
     if (mouth) {
       if (score >= 80) {
-        mouth.setAttribute('d', 'M42 46 Q50 54 58 46'); // 微笑
+        mouth.setAttribute('d', 'M48 54 Q60 64 72 54'); // 微笑
       } else if (score >= 60) {
-        mouth.setAttribute('d', 'M44 48 L56 48'); // 平嘴
+        mouth.setAttribute('d', 'M52 56 L68 56'); // 平嘴
       } else {
-        mouth.setAttribute('d', 'M44 52 Q50 46 56 52'); // 难过
+        mouth.setAttribute('d', 'M50 60 Q60 52 70 60'); // 难过
       }
     }
 

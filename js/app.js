@@ -117,7 +117,11 @@
     $('diag-input').oninput = onDiagInput;
     $('diag-input').onkeydown = onDiagKey;
     document.querySelectorAll('.btn-type').forEach(b => {
-      b.onclick = () => openRx(b.getAttribute('data-type'));
+      b.addEventListener('click', () => {
+        const t = b.getAttribute('data-type');
+        console.log('btn-type clicked:', t);
+        try { openRx(t); } catch(e) { alert('打开处方错误: ' + e.message + '\n' + e.stack); }
+      });
     });
     $('btn-back-home').onclick = () => show('view-home');
     $('btn-print').onclick = () => window.print();

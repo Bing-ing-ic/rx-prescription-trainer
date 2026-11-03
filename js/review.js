@@ -20,6 +20,7 @@
   ];
 
   function classifyHit(h) {
+    if (!h || !h.group) return 'format';
     for (const d of DIMS) {
       if (!d.groups.includes(h.group)) continue;
       if (d.onlyRuleIds && !d.onlyRuleIds.includes(h.rule_id)) continue;
@@ -30,12 +31,13 @@
   }
 
   function score(hits) {
+    hits = Array.isArray(hits) ? hits.filter(Boolean) : [];
     const dimResult = {};
     DIMS.forEach(d => { dimResult[d.key] = { name: d.name, weight: d.weight, hits: [], deduction: 0, score: d.weight }; });
 
     hits.forEach(h => {
       const k = classifyHit(h);
-      dimResult[k].hits.push(h);
+      if (dimResult[k]) dimResult[k].hits.push(h);
     });
 
     let total = 0;

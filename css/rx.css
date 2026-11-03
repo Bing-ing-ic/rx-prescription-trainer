@@ -176,6 +176,7 @@ input, select, textarea { font-family: inherit; }
 .btn-type {
   flex: 1; padding: 20px; font-size: 16px; line-height: 1.6;
   border-radius: 10px; text-align: center;
+  position: relative; z-index: 10; cursor: pointer;
 }
 .btn-type small { color: #64748b; font-size: 12px; display: block; margin-top: 4px; }
 

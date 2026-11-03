@@ -117,11 +117,7 @@
     $('diag-input').oninput = onDiagInput;
     $('diag-input').onkeydown = onDiagKey;
     document.querySelectorAll('.btn-type').forEach(b => {
-      b.addEventListener('click', () => {
-        const t = b.getAttribute('data-type');
-        console.log('btn-type clicked:', t);
-        try { openRx(t); } catch(e) { alert('打开处方错误: ' + e.message + '\n' + e.stack); }
-      });
+      b.addEventListener('click', () => openRx(b.getAttribute('data-type')));
     });
     $('btn-back-home').onclick = () => show('view-home');
     $('btn-print').onclick = () => window.print();
@@ -433,7 +429,6 @@
 
   // ---------- 打开处方笺 ----------
   function openRx(type) {
-    alert('openRx called: ' + type);
     S.rxType = type;
     // 前记
     $('p-name').textContent = S.patient.name;

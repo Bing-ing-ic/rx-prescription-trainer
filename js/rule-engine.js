@@ -37,8 +37,9 @@
   function collectRoutes(ctx) {
     const oral = [], iv = [];
     [ctx.normal_rx, ctx.iv_rx].forEach(rx => {
-      if (!rx || !rx.items) return;
+      if (!rx || !rx.items || !Array.isArray(rx.items)) return;
       rx.items.forEach(it => {
+        if (!it || !it.drug) return;
         if (it.drug.dosage_form === 'solvent') return;
         if (['oral','sublingual','topical','im','sc'].includes(it.drug.dosage_form)) oral.push(it);
         if (it.drug.dosage_form === 'iv_drip') iv.push(it);
@@ -81,8 +82,9 @@
 
     // FMT-02 通用名
     ['normal_rx','iv_rx'].forEach(k => {
-      const rx = ctx[k]; if (!rx) return;
+      const rx = ctx[k]; if (!rx || !rx.items || !Array.isArray(rx.items)) return;
       rx.items.forEach(it => {
+        if (!it || !it.drug) return;
         if (!it.drug.generic_name) hits.push(hit(R['FMT-02'], 'error',
           `存在未填通用名的药品（仅商品名）。`, `必须使用药品通用名。`));
       });
@@ -90,8 +92,9 @@
 
     // FMT-03 模糊用法
     ['normal_rx','iv_rx'].forEach(k => {
-      const rx = ctx[k]; if (!rx) return;
+      const rx = ctx[k]; if (!rx || !rx.items || !Array.isArray(rx.items)) return;
       rx.items.forEach(it => {
+        if (!it || !it.drug) return;
         const txt = (it.frequency || '') + ' ' + (it.single_dose || '');
         if (/遵医嘱|自用|照说明|酌量/.test(txt)) {
           hits.push(hit(R['FMT-03'], 'error',
@@ -452,9 +455,9 @@
     }
 
     // YN-02: 医保限适应症药品超范围支付（简化版：关键治疗药与诊断大类不匹配）
-    const allRx = [ctx.normal_rx, ctx.iv_rx].filter(Boolean);
+    const allRx = [ctx.normal_rx, ctx.iv_rx].filter(r => r && r.items && Array.isArray(r.items));
     const allDrugs = [];
-    allRx.forEach(rx => rx.items.forEach(it => { if (it.drug) allDrugs.push(it.drug); }));
+    allRx.forEach(rx => rx.items.forEach(it => { if (it && it.drug) allDrugs.push(it.drug); }));
     // 降压药 vs 无高血压诊断
     const hasAntihypertensive = allDrugs.some(d => /氨氯地平|硝苯地平|美托洛尔|缬沙坦|厄贝沙坦|卡托普利|依那普利|氯沙坦/.test(d.generic_name||''));
     const hasHypertensionDx = /高血压|冠心病|心绞痛|TIA|短暂性脑缺血/.test(dxName);

@@ -1284,5 +1284,10 @@
     });
   }
 
+  // 暴露到全局供 inline onclick 调用
+  window.__openRx = openRx;
+  window.__newCase = newCase;
+  window.__checkDiag = checkDiagnosis;
+
   boot();
 })();

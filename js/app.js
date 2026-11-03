@@ -865,7 +865,7 @@
     total = Math.round(total * 100) / 100;
     // 医保：甲类 100% 报销，乙类 80%，丙类 0%（简化）
     // 自费患者不享受医保统筹
-    const isSelfPay = S.patient && S.patient.insurance && S.patient.insurance.includes('自费');
+    const isSelfPay = S.patient && S.patient.feeType === '自费';
     let miPay = 0;
     if (!isSelfPay) {
     S.normalItems.forEach(it => {

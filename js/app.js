@@ -598,6 +598,48 @@
     });
     renderNormalItems(); renderDrugList();
     const s = $('drug-search'); if (s) { s.value=''; s.focus(); }
+    // 事中提醒：加药后实时弹出
+    midProcessAlert(drug);
+  }
+
+  // 医保/安全事中提醒
+  function midProcessAlert(drug) {
+    const msgs = [];
+    const age = S.patient.age || 30;
+    // 1. 儿童喹诺酮禁忌
+    if (age < 18 && /左氧|环丙|莫西|诺氟|氧氟/.test(drug.generic_name||'')) {
+      msgs.push({level:'error', text:`👶 儿童用药禁忌：${drug.generic_name} 为喹诺酮类，18岁以下禁用（可致软骨损害）。`});
+    }
+    // 2. 儿童四环素禁忌
+    if (age < 8 && /四环素|多西环素/.test(drug.generic_name||'')) {
+      msgs.push({level:'error', text:`👶 儿童用药禁忌：${drug.generic_name} 为四环素类，8岁以下禁用。`});
+    }
+    // 3. 中药注射剂提醒
+    if (drug.is_tcm_injection) {
+      msgs.push({level:'warn', text:`💉 中药注射剂：须单独输注，严禁与其他药物混合配伍；滴速宜慢。`});
+    }
+    // 4. 氯化钾提醒
+    if (/氯化钾/.test(drug.generic_name||'')) {
+      msgs.push({level:'warn', text:`🧪 氯化钾：静滴浓度≤0.3%，速度≤20mmol/h，严禁静脉推注，见尿补钾。`});
+    }
+    // 5. 医保限适应症：降压药 vs 无高血压诊断
+    const dxName = S.disease.name || '';
+    if (/氨氯地平|硝苯地平|美托洛尔|缬沙坦|厄贝沙坦|卡托普利|依那普利|氯沙坦/.test(drug.generic_name||'') && !/高血压|冠心病|心绞痛|TIA|短暂性脑缺血/.test(dxName)) {
+      msgs.push({level:'warn', text:`💰 医保提醒：${drug.generic_name} 为降压药，诊断「${dxName}」不在医保支付范围内，医保基金不予支付。`});
+    }
+    // 6. 医保限适应症：降糖药 vs 无糖尿病诊断
+    if (/二甲双胍|格列美脲|格列齐特|胰岛素|阿卡波糖|西格列汀/.test(drug.generic_name||'') && !/糖尿病/.test(dxName)) {
+      msgs.push({level:'warn', text:`💰 医保提醒：${drug.generic_name} 为降糖药，诊断「${dxName}」不在医保支付范围内，医保基金不予支付。`});
+    }
+    // 弹提醒
+    if (msgs.length > 0) {
+      const txt = msgs.map(m => m.text).join('\n\n');
+      if (msgs.some(m => m.level==='error')) {
+        alert('🚨 事中安全拦截：\n\n' + txt);
+      } else {
+        alert('⚠️ 医保/用药提醒：\n\n' + txt);
+      }
+    }
   }
 
   function defaultQty(d) {
@@ -1067,6 +1109,8 @@
     autoFillGroup(g);
     renderIvGroups(); renderIvDrugList();
     const s = $('iv-drug-search'); if (s) { s.value=''; s.focus(); }
+    // 事中提醒
+    midProcessAlert(drug);
   }
 
   // ---------- 提交 ----------

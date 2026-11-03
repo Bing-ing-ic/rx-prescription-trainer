@@ -78,16 +78,17 @@
   ];
 
   function mapReviewToRadar(review) {
-    const d = review.dims;
+    const d = review.dims || {};
+    const safe = (k) => d[k] || { score: 0, weight: 1 };
     return {
-      format:  d.format.score / d.format.weight * 100,
-      match:   d.indication.score / d.indication.weight * 100,
-      dose:    d.dosage.score / d.dosage.weight * 100,
-      route:   d.iv_reason.score / d.iv_reason.weight * 100,
-      compat:  (d.compat_sv.score + d.compat_int.score) / (d.compat_sv.weight + d.compat_int.weight) * 100,
-      special: d.special_pop.score / d.special_pop.weight * 100,
-      ess:     d.insurance.score / d.insurance.weight * 100,
-      abx:     d.abx.score / d.abx.weight * 100
+      format:  safe('format').score / safe('format').weight * 100,
+      match:   safe('indication').score / safe('indication').weight * 100,
+      dose:    safe('dosage').score / safe('dosage').weight * 100,
+      route:   safe('iv_reason').score / safe('iv_reason').weight * 100,
+      compat:  (safe('compat_sv').score + safe('compat_int').score) / (safe('compat_sv').weight + safe('compat_int').weight) * 100,
+      special: safe('special_pop').score / safe('special_pop').weight * 100,
+      ess:     safe('insurance').score / safe('insurance').weight * 100,
+      abx:     safe('abx').score / safe('abx').weight * 100
     };
   }
 

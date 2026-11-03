@@ -11,6 +11,7 @@
   // ---------- 工具 ----------
   function byId(list, id) { return list.find(r => r.rule_id === id); }
   function hit(rule, severity, message, suggestion) {
+    rule = rule || { rule_id: 'UNKNOWN', group: 'FORMAT', title: '未知规则', basis: '' };
     return {
       rule_id: rule.rule_id,
       group: rule.group,
@@ -63,10 +64,10 @@
     const compat = ctx.compatData;
 
     // ---------- 工具：统计药品项总数（含溶媒） ----------
-    function totalItems(rx) { return rx && rx.items ? rx.items.length : 0; }
+    function totalItems(rx) { return rx && rx.items && Array.isArray(rx.items) ? rx.items.length : 0; }
     function therapeuticItems(rx) {
-      if (!rx || !rx.items) return [];
-      return rx.items.filter(it => it.drug.dosage_form !== 'solvent');
+      if (!rx || !rx.items || !Array.isArray(rx.items)) return [];
+      return rx.items.filter(it => it && it.drug && it.drug.dosage_form !== 'solvent');
     }
 
     // ====================== 1. 格式类 ======================

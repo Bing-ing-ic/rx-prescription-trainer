@@ -1200,6 +1200,11 @@
   }
 
   function renderReport(review, hits, ctx) {
+    ctx = ctx || {};
+    ctx.disease = ctx.disease || { name: '未知', icd10: '' };
+    ctx.patient = ctx.patient || { name: '未知', gender: '', age: 0 };
+    review = review || { total: 0, dims: {} };
+    hits = Array.isArray(hits) ? hits.filter(Boolean) : [];
     $('r-score').textContent = review.total;
     // 圆环动画
     const arc = $('score-arc');

@@ -422,6 +422,9 @@
     fb.innerHTML = `<span class="diag-err">❌ 「${v}」与症状/体征不符，请重新判断。（已错 ${S.diagWrongCount} 次）</span>` +
       (hint ? `<div style="margin-top:6px;color:#b7791f;font-size:13px">💡 ${hint}</div>` : '') +
       reveal;
+    // 清空输入框并聚焦，方便重新输入
+    $('diag-input').value = '';
+    $('diag-input').focus();
   }
 
   // ---------- 打开处方笺 ----------

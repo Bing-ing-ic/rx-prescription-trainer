@@ -1226,6 +1226,58 @@
         "急性期48小时内冷敷"
       ],
       "special_population_note": "RICE原则"
+    },
+    {
+      "code": "PANCREATITIS-K85",
+      "name": "急性胰腺炎（轻症）",
+      "icd10": "K85.900",
+      "iv_suitability": "needs_iv",
+      "negative_list_hit": false,
+      "difficulty": "高级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "暴饮暴食后左上腹剧痛6小时，向腰背部放射",
+          "持续性上腹痛伴恶心呕吐1天"
+        ],
+        "history": [
+          "有胆囊结石史，饮酒后发作",
+          "无呕血，无黑便"
+        ],
+        "vitals": {
+          "bp": "100-120/60-75",
+          "hr": "90-110",
+          "temp": "37.5-38.5",
+          "spo2": "96-98"
+        },
+        "exam": [
+          "左上腹压痛，Murphy征可疑阳性",
+          "上腹偏左压痛，轻度肌紧张"
+        ],
+        "volume_status": {
+          "skin_turgor": "稍差",
+          "mucosa": "稍干燥",
+          "urine": "尿量偏少",
+          "diarrhea_vomit_freq": "呕吐数次",
+          "oral_intake": "暂禁食"
+        }
+      },
+      "differential": [
+        "消化性溃疡穿孔",
+        "急性胆囊炎",
+        "胆石症"
+      ],
+      "first_line_oral": [],
+      "second_line_iv": [
+        "0.9%氯化钠注射液",
+        "注射用泮托拉唑钠",
+        "维生素C注射液"
+      ],
+      "contraindications": [
+        "急性期禁食水",
+        "禁用吗啡",
+        "早期禁用肠内营养"
+      ],
+      "special_population_note": "轻症胰腺炎内科保守治疗，重症需ICU"
     }
   ]
 }

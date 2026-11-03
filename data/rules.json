@@ -1,0 +1,45 @@
+{
+  "version": "2026.11",
+  "note": "处方点评规则库。group 取值：FORMAT/INDICATION/DOSAGE/DURATION/IV_REASON/COMPAT/SPECIAL_POP/ABX/INSURANCE/TCM。severity: pass/warn/error。weight_hint 用于评分维度归属，最终权重写死在 review.js。",
+  "rules": [
+    {"rule_id": "FMT-01", "group": "FORMAT", "title": "每张处方≤5种药品（溶媒计入总数）", "trigger": "items.length > 5", "logic": "统计处方内所有药品项（含溶媒）数量，>5 判 error", "severity": "error", "basis": "《处方管理办法》第十九条：每张处方不得超过5种药品。", "weight_hint": "format"},
+    {"rule_id": "FMT-02", "group": "FORMAT", "title": "必须使用药品通用名", "trigger": "items 仅填商品名未填通用名", "logic": "若 item.generic_name 为空而仅 brand_name，判 error", "severity": "error", "basis": "《处方管理办法》第十七条：医师开具处方应当使用经药品监督管理部门批准并公布的药品通用名称。", "weight_hint": "format"},
+    {"rule_id": "FMT-03", "group": "FORMAT", "title": "禁止出现\"遵医嘱/自用/照说明\"等模糊用法", "trigger": "items.freq 或 dosage 含 遵医嘱|自用|照说明|酌量", "logic": "正则匹配模糊用法字样，命中判 error", "severity": "error", "basis": "《处方管理办法》第六条：处方应当字迹清楚，不得随意涂改；用法用量应当明确。", "weight_hint": "format"},
+    {"rule_id": "FMT-04", "group": "FORMAT", "title": "使用法定公制计量单位", "trigger": "单位为 片/粒/支 之外的非法定单位（如 克/毫升 误用）", "logic": "剂量单位须为 mg/g/ml/U/IU 等法定单位", "severity": "warn", "basis": "《处方管理办法》第七条：药品剂量与数量用阿拉伯数字书写，剂量使用法定剂量单位。", "weight_hint": "format"},
+    {"rule_id": "FMT-05", "group": "FORMAT", "title": "处方前记字段完整性", "trigger": "患者姓名/性别/年龄/诊断/科别/日期 任一为空", "logic": "前记字段非空校验，缺失判 error", "severity": "error", "basis": "《处方管理办法》第五条：处方前记包括医疗机构、患者姓名、性别、年龄、门诊/住院号、科别、临床诊断、开具日期等。", "weight_hint": "format"},
+    {"rule_id": "FMT-06", "group": "FORMAT", "title": "处方编号格式", "trigger": "rx_type=outpatient_iv 但编号不以 IV- 开头", "logic": "输液处方编号须以 IV- 开头，格式 科室代码-YYYYMMDD-6位流水号", "severity": "warn", "basis": "本院《处方编号管理规定》：输液处方编号以 IV- 前缀区分。", "weight_hint": "format"},
+
+    {"rule_id": "IND-01", "group": "INDICATION", "title": "药品-诊断适应症匹配", "trigger": "药品 pharmacology_class 与诊断无任何推荐关系", "logic": "对照 diseases.first_line_oral / second_line_iv 数组；若所选药既不在一线也不在二线，判 error", "severity": "error", "basis": "《处方管理办法》第十四条：医师应当根据医疗、预防、保健需要，按照诊疗规范、药品说明书中的药品适应证、药理作用、用法、用量、禁忌、不良反应和注意事项等开具处方。", "weight_hint": "indication"},
+    {"rule_id": "IND-02", "group": "INDICATION", "title": "超说明书适应症提示", "trigger": "药品不在 disease 推荐列表但药理大类合理", "logic": "若药物属于相关治疗大类但未在一线/二线推荐，判 warn", "severity": "warn", "basis": "《医师法》第二十九条：超说明书用药应当循证并经伦理审批。", "weight_hint": "indication"},
+    {"rule_id": "IND-03", "group": "INDICATION", "title": "医保限定支付范围", "trigger": "medical_insurance_class=乙 但诊断不在医保限定支付目录", "logic": "乙类药品须核对医保限定支付，演示场景下对二线静脉药触发提示", "severity": "warn", "basis": "《国家基本医疗保险、工伤保险和生育保险药品目录（2025年）》乙类限定支付范围。", "weight_hint": "insurance"},
+
+    {"rule_id": "DOSE-01", "group": "DOSAGE", "title": "单次剂量在说明书范围内", "trigger": "item.single_dose 超出 dose_range_json.single_min~single_max", "logic": "按药品 dose_range_json 上下限校验，超出判 error；接近上限判 warn", "severity": "error", "basis": "药品说明书【用法用量】项。", "weight_hint": "dosage"},
+    {"rule_id": "DOSE-02", "group": "DOSAGE", "title": "肝肾功能不全剂量调整提示", "trigger": "patient.renal_insufficiency=true 且药品 liver_renal_note 提示减量", "logic": "若患者有肝肾功能不全且药品需调整剂量，判 warn", "severity": "warn", "basis": "《肾功能不全患者用药指南》。", "weight_hint": "dosage"},
+
+    {"rule_id": "DUR-01", "group": "DURATION", "title": "处方天数限制", "trigger": "普通处方>7日 / 急诊>3日 / 输液>1日", "logic": "普通处方≤7日，急诊处方≤3日，静脉输液门诊≤1日且无医务科审批；超量判 warn", "severity": "warn", "basis": "《处方管理办法》第十九条：处方一般不得超过7日用量；急诊处方一般不得超过3日用量。", "weight_hint": "dosage"},
+
+    {"rule_id": "DUP-01", "group": "COMPAT", "title": "处方内药理分类重复", "trigger": "同一张处方内出现2个相同 pharmacology_class 的药", "logic": "按 pharmacology_class 分组计数，>1 判 warn", "severity": "warn", "basis": "《医院处方点评管理规范》：重复用药属于不适宜处方。", "weight_hint": "compat"},
+    {"rule_id": "DUP-02", "group": "COMPAT", "title": "同次就诊口服+静脉同类交叉（无理由序贯）", "trigger": "visit 内同时存在 oral 与 iv_drip 同 pharmacology_class 的药，且 iv_reason 不含 sequential", "logic": "跨非输液/输液两张处方按 visit_id 合并检查：口服头孢+静滴头孢、口服PPI+静滴PPI 等同类重复无理由判 warn；有 sequential_therapy 理由则 pass", "severity": "warn", "basis": "《抗菌药物临床应用指导原则》：序贯治疗需有明确转换指征，避免无意义同类叠加。", "weight_hint": "compat"},
+
+    {"rule_id": "INT-01", "group": "COMPAT", "title": "喹诺酮类与含钙/铝抗酸剂相互作用", "trigger": "处方内同时存在 喹诺酮类 + 含钙/铝抗酸剂/铁剂/铋剂", "logic": "二价阳离子螯合喹诺酮显著降低吸收，须间隔2小时以上；同处方判 error", "severity": "error", "basis": "左氧氟沙星说明书【药物相互作用】：含镁/铝抗酸药、硫糖铝、金属阳离子可减少本品吸收。", "weight_hint": "compat"},
+    {"rule_id": "INT-02", "group": "COMPAT", "title": "ACEI/ARB 与保钾利尿剂联用", "trigger": "处方内同时存在 ACEI/ARB 与 螺内酯/氨苯蝶啶", "logic": "高钾血症风险，需监测血钾；演示场景判 warn", "severity": "warn", "basis": "《中国高血压防治指南2024》：ACEI/ARB 与保钾利尿剂联用须监测血钾。", "weight_hint": "compat"},
+
+    {"rule_id": "POP-01", "group": "SPECIAL_POP", "title": "儿童/青少年禁用喹诺酮", "trigger": "patient.age<18 且药品 pharmacology_class 含 喹诺酮", "logic": "18岁以下禁用喹诺酮类（软骨损伤），判 error", "severity": "error", "basis": "《抗菌药物临床应用指导原则》：18岁以下未成年患者避免使用喹诺酮类。", "weight_hint": "special_pop"},
+    {"rule_id": "POP-02", "group": "SPECIAL_POP", "title": "老年患者输液速度/入量", "trigger": "patient.age>=65 且 drip_speed_mlh>60 或 total_volume>1000", "logic": "老年患者心衰风险，慢速少量；判 warn", "severity": "warn", "basis": "《老年人静脉输液专家共识》：老年人输液速度宜≤60ml/h，单次入量≤500ml。", "weight_hint": "special_pop"},
+
+    {"rule_id": "ABX-01", "group": "ABX", "title": "特殊使用级抗菌药门诊拦截", "trigger": "药品 abx_level=special 且处方为门诊", "logic": "特殊使用级抗菌药不得在门诊直接使用，须住院+高级职称会诊；判 error", "severity": "error", "basis": "《抗菌药物临床应用分级管理目录（2024版）》：特殊使用级抗菌药不得在门诊使用，抢救生命垂危患者除外。", "weight_hint": "abx"},
+    {"rule_id": "ABX-02", "group": "ABX", "title": "限制使用级抗菌药需中级以上职称确认", "trigger": "药品 abx_level=restricted 且 prescriber_title≠主治及以上", "logic": "模拟弹窗要求学生点\"确认中级以上职称已审核\"；学生未确认则撤回该药，确认后 pass", "severity": "warn", "basis": "《抗菌药物临床应用分级管理》：限制使用级抗菌药物应由中级以上医师开具。", "weight_hint": "abx"},
+
+    {"rule_id": "TCM-01", "group": "TCM", "title": "中药饮片十八反十九畏（占位）", "trigger": "（本MVP未录入饮片，规则占位）", "logic": "若未来录入饮片，需校验乌头反半夏、甘草反甘遂等十八反十九畏；当前种子无饮片，恒 pass", "severity": "pass", "basis": "《中国药典》十八反十九畏歌诀。", "weight_hint": "compat"},
+
+    {"rule_id": "IV-01", "group": "IV_REASON", "title": "输液指征与疾病标签一致性", "trigger": "disease.iv_suitability=usually_no_iv 且处方为 outpatient_iv", "logic": "若 iv_reason 仅为 fever（发热）/other_without_note/患者要求 → error；若 iv_reason 为 severe_dehydration 或 no_oral_alternative 等有客观证据项 → 降为 warn 并要求补充证据", "severity": "error", "basis": "《关于做好医疗机构静脉输液安全管理工作的通知》：能口服不肌注，能肌注不输液。", "weight_hint": "iv_reason"},
+    {"rule_id": "IV-02", "group": "IV_REASON", "title": "口服/肌注替代可行性", "trigger": "disease.first_line_oral 非空，却无理由选择静脉", "logic": "同适应症有口服等效一线方案，学生选静脉但 iv_reason 不充分 → warn", "severity": "warn", "basis": "WHO 合理用药原则：优先口服给药。", "weight_hint": "iv_reason"},
+    {"rule_id": "IV-03", "group": "IV_REASON", "title": "输液专项字段完整性", "trigger": "outpatient_iv 处方中 iv_reason/solvent/final_concentration/drip_speed_mlh/infusion_hours 任一为空", "logic": "任一必填项缺失 → error", "severity": "error", "basis": "本院《静脉输液知情同意与记录规范》：专项字段必须完整填写。", "weight_hint": "iv_reason"},
+    {"rule_id": "IV-04", "group": "IV_REASON", "title": "输液量与速度个体化", "trigger": "patient.age>=65 或 <=3岁 或 心肾功能不全，且 drip_speed_mlh 超过药品 drip_speed_max_mlh", "logic": "特殊人群超说明书滴速上限 → error；普通成人超上限 → warn", "severity": "error", "basis": "《静脉治疗护理技术操作规范 WS/T 433》：老年/儿童/心肺肾功能不全者应减速。", "weight_hint": "iv_reason"},
+    {"rule_id": "IV-05", "group": "IV_REASON", "title": "门诊输液负面清单命中", "trigger": "disease.negative_list_hit=true 且处方含 iv_drip 给药", "logic": "普通感冒/轻症高血压复诊/功能性消化不良/术后复诊等门诊限输清单内疾病，开静脉药 → error", "severity": "error", "basis": "《医疗机构门诊静脉输液负面清单（2025版）》：普通感冒、轻症胃肠炎无脱水、单纯高血压复诊、轻微关节痛等原则上不输液。", "weight_hint": "iv_reason"},
+    {"rule_id": "IV-06", "group": "COMPAT", "title": "溶媒-药物配伍", "trigger": "所选 solvent_name 不在 drug.allowed_solvents_json 内", "logic": "查 compat.json 中 solvent_drug 记录：incompatible → error；caution → warn；未登记 → warn", "severity": "error", "basis": "药品说明书【用法用量】溶媒项；《静脉用药集中调配操作规程》。", "weight_hint": "compat"},
+    {"rule_id": "IV-07", "group": "COMPAT", "title": "中药注射剂单独输注", "trigger": "瓶内同时存在 is_tcm_injection=true 的药 + 其他非溶媒药", "logic": "中药注射剂同瓶混加任何其他治疗药物 → error", "severity": "error", "basis": "国家药监局关于中药注射剂安全性问题的通报：严禁混合配伍，单独输注。", "weight_hint": "compat"},
+    {"rule_id": "IV-08", "group": "SPECIAL_POP", "title": "皮试核查", "trigger": "药品 skin_test_required=true 且 skin_test_result 为空/positive", "logic": "需皮试药品未填皮试结果或阳性仍使用 → error", "severity": "error", "basis": "《青霉素皮肤试验专家共识》：青霉素类及部分头孢类用药前必须皮试。", "weight_hint": "special_pop"},
+    {"rule_id": "IV-09", "group": "DURATION", "title": "门诊输液处方量", "trigger": "outpatient_iv 处方疗程>1日 且无医务科审批标识", "logic": "门诊静脉输液原则上≤1日量，超过须医务科审批；超量 → warn", "severity": "warn", "basis": "《处方管理办法》+《门诊输液管理规定》：门诊输液一般当日单次使用。", "weight_hint": "iv_reason"}
+  ]
+}

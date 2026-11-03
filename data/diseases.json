@@ -1,0 +1,1231 @@
+{
+  "version": "2026.11",
+  "note": "医学生处方推演训练平台·疾病种子库。iv_suitability: usually_no_iv / conditional_iv / iv_preferred；negative_list_hit=true 表示命中门诊限输负面清单。",
+  "diseases": [
+    {
+      "code": "HTN-I10",
+      "name": "原发性高血压（无并发症）",
+      "icd10": "I10.x00",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": true,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "发现血压升高3年，今日门诊复诊测血压152/94mmHg",
+          "头晕头胀1周，自测血压158/96mmHg"
+        ],
+        "history": [
+          "规律服用降压药，无胸闷胸痛，无肢体麻木无力",
+          "偶有头昏，无视物旋转，无恶心呕吐"
+        ],
+        "vitals": {
+          "bp": "145-160/90-100",
+          "hr": "70-85",
+          "temp": "36.4-36.8",
+          "spo2": "98-99"
+        },
+        "exam": [
+          "双肺呼吸音清，心律齐，双下肢不肿",
+          "心肺查体未见异常"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "每日尿量1500ml左右，正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常进食水"
+        }
+      },
+      "differential": [
+        "继发性高血压（需查肾动脉/肾上腺）",
+        "高血压亚急症"
+      ],
+      "first_line_oral": [
+        "苯磺酸氨氯地平片",
+        "硝苯地平控释片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "孕妇禁用ACEI/ARB",
+        "双侧肾动脉狭窄禁用ACEI/ARB"
+      ],
+      "special_population_note": "老年患者首选CCB，注意体位性低血压"
+    },
+    {
+      "code": "CHD-I25",
+      "name": "冠状动脉粥样硬化性心脏病（稳定型心绞痛）",
+      "icd10": "I25.x00",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": false,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "反复活动后胸闷3月，加重1周",
+          "劳累后心前区闷痛2周，每次持续3-5分钟休息可缓解"
+        ],
+        "history": [
+          "有吸烟史10年，高血压病史5年",
+          "无夜间阵发性呼吸困难，无双下肢水肿"
+        ],
+        "vitals": {
+          "bp": "130-145/80-90",
+          "hr": "65-78",
+          "temp": "36.5-36.8",
+          "spo2": "97-98"
+        },
+        "exam": [
+          "心律齐，无杂音，双肺清",
+          "心电图示窦性心律，ST-T无动态改变"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "急性冠脉综合征（需查肌钙蛋白）",
+        "胃食管反流病",
+        "肋软骨炎"
+      ],
+      "first_line_oral": [
+        "阿司匹林肠溶片",
+        "阿托伐他汀钙片",
+        "苯磺酸氨氯地平片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "活动性出血禁用阿司匹林",
+        "严重他汀类肌病禁用他汀"
+      ],
+      "special_population_note": "老年患者注意出血风险"
+    },
+    {
+      "code": "TIA-G45",
+      "name": "短暂性脑缺血发作（TIA）",
+      "icd10": "G45.x00",
+      "iv_suitability": "conditional_iv",
+      "negative_list_hit": false,
+      "difficulty": "高级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "突发右侧肢体无力伴言语不清2小时，已自行缓解",
+          "发作性左侧肢体麻木1天，每次持续10余分钟"
+        ],
+        "history": [
+          "高血压病史10年，糖尿病史5年",
+          "无外伤，无头痛呕吐"
+        ],
+        "vitals": {
+          "bp": "150-170/90-100",
+          "hr": "70-80",
+          "temp": "36.5",
+          "spo2": "97"
+        },
+        "exam": [
+          "神清，颅神经(-)，四肢肌力5级，病理征未引出",
+          "NIHSS=0"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "脑梗死（需头颅DWI排除）",
+        "低血糖发作",
+        "癫痫局灶性发作"
+      ],
+      "first_line_oral": [
+        "阿司匹林肠溶片",
+        "阿托伐他汀钙片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "颅内出血禁用抗血小板",
+        "近期手术禁用抗血小板"
+      ],
+      "special_population_note": "建议收入卒中单元，门诊仅做二级预防处方"
+    },
+    {
+      "code": "URI-J00",
+      "name": "急性上呼吸道感染（普通感冒）",
+      "icd10": "J00.x00",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": true,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "鼻塞、流涕、咽痛2天，伴低热37.6℃",
+          "咽痛、干咳1天，无呼吸困难"
+        ],
+        "history": [
+          "无慢性病，无药物过敏史",
+          "未自行用药，精神食欲可"
+        ],
+        "vitals": {
+          "bp": "110-125/70-80",
+          "hr": "75-90",
+          "temp": "37.3-37.8",
+          "spo2": "98-99"
+        },
+        "exam": [
+          "咽部充血，扁桃体无化脓，双肺呼吸音清",
+          "心肺(-)"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "可"
+        }
+      },
+      "differential": [
+        "流行性感冒（需流感抗原）",
+        "急性扁桃体炎（细菌感染）",
+        "过敏性鼻炎"
+      ],
+      "first_line_oral": [
+        "布洛芬缓释胶囊"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "无明确细菌感染指征不得使用抗菌药",
+        "孕妇慎用NSAIDs"
+      ],
+      "special_population_note": "普通感冒以对症支持为主，严禁门诊静脉输液"
+    },
+    {
+      "code": "AB-BRONCH-J20",
+      "name": "急性支气管炎",
+      "icd10": "J20.x00",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": false,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "咳嗽、咳白痰5天，无发热",
+          "咳嗽伴少量黄痰3天"
+        ],
+        "history": [
+          "无慢性肺病，无吸烟史",
+          "无胸闷气促"
+        ],
+        "vitals": {
+          "bp": "115/75",
+          "hr": "80",
+          "temp": "36.8-37.2",
+          "spo2": "97-98"
+        },
+        "exam": [
+          "双肺呼吸音粗，可闻及散在干啰音，无湿啰音",
+          "胸片未见明显实变影"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "社区获得性肺炎（胸片鉴别）",
+        "咳嗽变异性哮喘",
+        "鼻后滴漏综合征"
+      ],
+      "first_line_oral": [],
+      "second_line_iv": [],
+      "contraindications": [
+        "无明确细菌感染不推荐抗菌药",
+        "18岁以下禁用喹诺酮类"
+      ],
+      "special_population_note": "多数为病毒性，对症为主"
+    },
+    {
+      "code": "COPD-J44",
+      "name": "慢性阻塞性肺疾病（轻度稳定期）",
+      "icd10": "J44.x00",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": false,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "反复咳嗽咳痰5年，近期无明显加重",
+          "登楼气促1年，稳定"
+        ],
+        "history": [
+          "吸烟史30年，已戒烟2年",
+          "未规律用药"
+        ],
+        "vitals": {
+          "bp": "130/80",
+          "hr": "85",
+          "temp": "36.6",
+          "spo2": "95-96"
+        },
+        "exam": [
+          "桶状胸，双肺呼吸音低，未闻及干湿啰音",
+          "肺功能 FEV1/FVC=62%"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "支气管哮喘",
+        "慢性心力衰竭"
+      ],
+      "first_line_oral": [],
+      "second_line_iv": [],
+      "contraindications": [
+        "β受体阻滞剂慎用"
+      ],
+      "special_population_note": "稳定期以吸入制剂为主，门诊不常规输液"
+    },
+    {
+      "code": "CAP-J18",
+      "name": "社区获得性肺炎（普通型）",
+      "icd10": "J18.x00",
+      "iv_suitability": "iv_preferred",
+      "negative_list_hit": false,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "发热、咳嗽、咳黄脓痰3天，体温最高38.9℃",
+          "咳嗽伴右侧胸痛2天，气促"
+        ],
+        "history": [
+          "无基础肺病，无药物过敏史",
+          "未自行用药"
+        ],
+        "vitals": {
+          "bp": "110-120/70",
+          "hr": "95-110",
+          "temp": "38.5-39.2",
+          "spo2": "93-95"
+        },
+        "exam": [
+          "右下肺可闻及湿啰音",
+          "胸片示右下肺斑片状渗出影"
+        ],
+        "volume_status": {
+          "skin_turgor": "略干",
+          "mucosa": "略干",
+          "urine": "偏少，约800ml/日",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "食欲下降"
+        }
+      },
+      "differential": [
+        "肺结核",
+        "肺癌合并阻塞性肺炎",
+        "肺栓塞"
+      ],
+      "first_line_oral": [
+        "头孢呋辛酯片"
+      ],
+      "second_line_iv": [
+        "注射用头孢呋辛钠"
+      ],
+      "contraindications": [
+        "青霉素过敏慎用头孢",
+        "饮酒后禁用头孢"
+      ],
+      "special_population_note": "CURB-65≥2建议住院；门诊可序贯口服"
+    },
+    {
+      "code": "DM-E11",
+      "name": "2型糖尿病（血糖控制不佳）",
+      "icd10": "E11.x00",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": false,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "多饮多尿3月，查空腹血糖9.8mmol/L",
+          "体检发现血糖升高1周"
+        ],
+        "history": [
+          "无慢性病，BMI=27",
+          "无糖尿病家族史"
+        ],
+        "vitals": {
+          "bp": "130/80",
+          "hr": "78",
+          "temp": "36.5",
+          "spo2": "98"
+        },
+        "exam": [
+          "心肺(-)，双下肢浅感觉正常",
+          "空腹血糖9.2mmol/L，HbA1c=8.1%"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "偏多",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "1型糖尿病",
+        "继发性糖尿病"
+      ],
+      "first_line_oral": [
+        "盐酸二甲双胍缓释片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "eGFR<30禁用二甲双胍",
+        "严重感染/酸中毒禁用二甲双胍"
+      ],
+      "special_population_note": "造影前后48小时停用二甲双胍"
+    },
+    {
+      "code": "HYPERTHY-E05",
+      "name": "甲状腺功能亢进症（轻中度）",
+      "icd10": "E05.000",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": false,
+      "difficulty": "高级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "心悸、怕热、多汗2月，体重下降3kg",
+          "手抖、易怒1月"
+        ],
+        "history": [
+          "无慢性病",
+          "无突眼"
+        ],
+        "vitals": {
+          "bp": "130/70",
+          "hr": "95-110",
+          "temp": "37.0",
+          "spo2": "98"
+        },
+        "exam": [
+          "甲状腺II度肿大，无震颤",
+          "甲功：FT3/FT4升高，TSH降低"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "偏多"
+        }
+      },
+      "differential": [
+        "桥本甲状腺炎甲亢期",
+        "破坏性甲状腺炎"
+      ],
+      "first_line_oral": [
+        "甲巯咪唑片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "妊娠早期首选丙硫氧嘧啶",
+        "粒细胞缺乏禁用甲巯咪唑"
+      ],
+      "special_population_note": "用药后每周复查血常规"
+    },
+    {
+      "code": "HYPOTHY-E03",
+      "name": "甲状腺功能减退症",
+      "icd10": "E03.900",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": false,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "乏力、怕冷、便秘3月",
+          "体检发现TSH升高1周"
+        ],
+        "history": [
+          "无慢性病",
+          "无甲状腺手术史"
+        ],
+        "vitals": {
+          "bp": "120/80",
+          "hr": "55-65",
+          "temp": "36.2",
+          "spo2": "98"
+        },
+        "exam": [
+          "甲状腺I度肿大",
+          "甲功：TSH 12.3mIU/L，FT4降低"
+        ],
+        "volume_status": {
+          "skin_turgor": "干燥",
+          "mucosa": "干燥",
+          "urine": "偏少",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "亚急性甲状腺炎甲减期"
+      ],
+      "first_line_oral": [
+        "左甲状腺素钠片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "心绞痛/快速心律失常慎用",
+        "需空腹服用"
+      ],
+      "special_population_note": "老年患者从小剂量起始"
+    },
+    {
+      "code": "GASTRITIS-K29",
+      "name": "急性胃炎",
+      "icd10": "K29.100",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": false,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "上腹隐痛、反酸1天，恶心未吐",
+          "饮酒后上腹不适6小时"
+        ],
+        "history": [
+          "无溃疡病史",
+          "今日午餐饮酒"
+        ],
+        "vitals": {
+          "bp": "115/75",
+          "hr": "80",
+          "temp": "36.7",
+          "spo2": "98"
+        },
+        "exam": [
+          "上腹部轻压痛，无反跳痛",
+          "肠鸣音正常"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "可进流质"
+        }
+      },
+      "differential": [
+        "消化性溃疡",
+        "急性胰腺炎",
+        "急性胆囊炎"
+      ],
+      "first_line_oral": [
+        "奥美拉唑肠溶胶囊"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "严重肝功能不全慎用PPI"
+      ],
+      "special_population_note": "门诊口服PPI即可，无需静脉输液"
+    },
+    {
+      "code": "FD-K30",
+      "name": "功能性消化不良",
+      "icd10": "K30.x00",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": true,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "上腹饱胀、嗳气1月",
+          "餐后早饱2周"
+        ],
+        "history": [
+          "无报警症状（无体重下降/黑便/呕血）",
+          "胃镜检查未见异常"
+        ],
+        "vitals": {
+          "bp": "118/76",
+          "hr": "76",
+          "temp": "36.6",
+          "spo2": "98"
+        },
+        "exam": [
+          "上腹轻压痛",
+          "胃镜(-)"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "消化性溃疡",
+        "胃食管反流病",
+        "胰腺/胆囊疾病"
+      ],
+      "first_line_oral": [
+        "奥美拉唑肠溶胶囊",
+        "多潘立酮片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "多潘立酮避免与酮康唑等CYP3A4抑制剂合用"
+      ],
+      "special_population_note": "门诊限输负面清单，严禁静脉输液"
+    },
+    {
+      "code": "AGE-A09",
+      "name": "急性胃肠炎伴轻度脱水",
+      "icd10": "A09.900",
+      "iv_suitability": "conditional_iv",
+      "negative_list_hit": false,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "腹泻水样便5次/日伴呕吐3次1天",
+          "进食冷饮后腹痛、腹泻"
+        ],
+        "history": [
+          "无慢性病",
+          "尿量较前减少"
+        ],
+        "vitals": {
+          "bp": "100/65",
+          "hr": "95-110",
+          "temp": "37.5-38.0",
+          "spo2": "97"
+        },
+        "exam": [
+          "皮肤弹性略差，口唇黏膜略干",
+          "肠鸣音活跃"
+        ],
+        "volume_status": {
+          "skin_turgor": "略差",
+          "mucosa": "干燥",
+          "urine": "约400ml/日，色深",
+          "diarrhea_vomit_freq": "腹泻5-8次/日，呕吐2-4次/日",
+          "oral_intake": "饮水即吐"
+        }
+      },
+      "differential": [
+        "细菌性痢疾",
+        "食物中毒",
+        "急性阑尾炎早期"
+      ],
+      "first_line_oral": [
+        "口服补液盐III",
+        "蒙脱石散",
+        "双歧杆菌三联活菌胶囊"
+      ],
+      "second_line_iv": [
+        "0.9%氯化钠注射液",
+        "氯化钾注射液",
+        "维生素C注射液"
+      ],
+      "contraindications": [
+        "无发热/脓血便不推荐抗菌药",
+        "儿童禁用止泻药"
+      ],
+      "special_population_note": "轻度脱水优先口服补液盐III；不能耐受口服才考虑静脉补液"
+    },
+    {
+      "code": "POSTAPP-Z48",
+      "name": "阑尾炎切除术后恢复期",
+      "icd10": "Z48.800",
+      "iv_suitability": "conditional_iv",
+      "negative_list_hit": false,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "阑尾切除术后第3天，切口换药",
+          "术后腹胀1天，已排气"
+        ],
+        "history": [
+          "术后体温正常",
+          "已进流质"
+        ],
+        "vitals": {
+          "bp": "120/75",
+          "hr": "80",
+          "temp": "36.8",
+          "spo2": "98"
+        },
+        "exam": [
+          "切口干燥无渗液",
+          "肠鸣音恢复"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "流质"
+        }
+      },
+      "differential": [
+        "切口感染",
+        "术后肠粘连"
+      ],
+      "first_line_oral": [],
+      "second_line_iv": [],
+      "contraindications": [
+        "术后无感染征象不推荐抗菌药"
+      ],
+      "special_population_note": "门诊以换药为主，无需静脉输液"
+    },
+    {
+      "code": "POSTHERNIA-Z48",
+      "name": "腹股沟疝修补术后",
+      "icd10": "Z48.802",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": true,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "腹股沟疝修补术后1周，门诊复诊",
+          "术后切口轻微疼痛"
+        ],
+        "history": [
+          "术后恢复顺利",
+          "已拆线"
+        ],
+        "vitals": {
+          "bp": "125/78",
+          "hr": "75",
+          "temp": "36.6",
+          "spo2": "99"
+        },
+        "exam": [
+          "切口愈合良好，无红肿",
+          "阴囊无水肿"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "切口感染",
+        "阴囊血肿"
+      ],
+      "first_line_oral": [
+        "布洛芬缓释胶囊"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "无"
+      ],
+      "special_population_note": "门诊限输负面清单，禁止静脉输液"
+    },
+    {
+      "code": "APP-K35",
+      "name": "急性阑尾炎",
+      "icd10": "K35.900",
+      "iv_suitability": "may_need_iv",
+      "negative_list_hit": false,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "转移性右下腹痛12小时",
+          "右下腹痛6小时伴恶心呕吐"
+        ],
+        "history": [
+          "起病始于上腹部，后转移至右下腹，伴低热",
+          "无腹泻，无尿频尿急"
+        ],
+        "vitals": {
+          "bp": "110-130/70-85",
+          "hr": "80-95",
+          "temp": "37.5-38.5",
+          "spo2": "97-99"
+        },
+        "exam": [
+          "右下腹麦氏点压痛反跳痛阳性，结肠充气试验阳性",
+          "腹软，右下腹固定压痛"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "恶心呕吐1-2次",
+          "oral_intake": "进食差"
+        }
+      },
+      "differential": [
+        "泌尿系结石",
+        "宫外孕",
+        "肠系膜淋巴结炎"
+      ],
+      "first_line_oral": [
+        "注射用头孢呋辛钠",
+        "甲硝唑片"
+      ],
+      "second_line_iv": [
+        "注射用头孢呋辛钠",
+        "甲硝唑注射液"
+      ],
+      "contraindications": [
+        "术前需禁食水"
+      ],
+      "special_population_note": "儿童/老人症状不典型，需警惕穿孔"
+    },
+    {
+      "code": "COLITIS-K52",
+      "name": "急性细菌性痢疾",
+      "icd10": "A03.900",
+      "iv_suitability": "may_need_iv",
+      "negative_list_hit": false,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "腹泻伴粘液脓血便2天，每日10余次",
+          "发热腹痛腹泻1天"
+        ],
+        "history": [
+          "有不洁饮食史，伴里急后重",
+          "无呕吐，无明显脱水貌"
+        ],
+        "vitals": {
+          "bp": "100-120/65-80",
+          "hr": "80-100",
+          "temp": "38.0-39.5",
+          "spo2": "97-98"
+        },
+        "exam": [
+          "左下腹压痛，肠鸣音活跃",
+          "腹软，左下腹轻压痛"
+        ],
+        "volume_status": {
+          "skin_turgor": "稍差",
+          "mucosa": "稍干燥",
+          "urine": "尿量偏少",
+          "diarrhea_vomit_freq": "腹泻每日8-15次",
+          "oral_intake": "进少量流食"
+        }
+      },
+      "differential": [
+        "急性胃肠炎",
+        "炎症性肠病"
+      ],
+      "first_line_oral": [
+        "盐酸左氧氟沙星片"
+      ],
+      "second_line_iv": [
+        "盐酸左氧氟沙星注射液"
+      ],
+      "contraindications": [
+        "18岁以下禁用喹诺酮"
+      ],
+      "special_population_note": "儿童可选三代头孢"
+    },
+    {
+      "code": "ASTHMA-J45",
+      "name": "支气管哮喘急性发作",
+      "icd10": "J45.900",
+      "iv_suitability": "may_need_iv",
+      "negative_list_hit": false,
+      "difficulty": "高级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "反复发作喘息气促2年，再发加重4小时",
+          "夜间突发呼吸困难1小时"
+        ],
+        "history": [
+          "有过敏性鼻炎史，接触冷空气后发作",
+          "无胸痛，无咳粉红色泡沫痰"
+        ],
+        "vitals": {
+          "bp": "120-140/75-90",
+          "hr": "90-120",
+          "temp": "36.5-37.0",
+          "spo2": "90-95"
+        },
+        "exam": [
+          "双肺满布哮鸣音，呼气相延长",
+          "双肺散在哮鸣音"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "心源性哮喘",
+        "COPD急性加重"
+      ],
+      "first_line_oral": [
+        "茶碱缓释片",
+        "孟鲁司特钠片"
+      ],
+      "second_line_iv": [
+        "注射用泮托拉唑钠",
+        "地塞米松磷酸钠注射液"
+      ],
+      "contraindications": [
+        "哮喘持续状态需住院"
+      ],
+      "special_population_note": "首选吸入支气管扩张剂"
+    },
+    {
+      "code": "MIGRAINE-G43",
+      "name": "偏头痛",
+      "icd10": "G43.900",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": true,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "反复发作单侧搏动性头痛4小时",
+          "头痛伴恶心畏光1天"
+        ],
+        "history": [
+          "有家族史，休息后可缓解",
+          "无高血压史，无视物模糊"
+        ],
+        "vitals": {
+          "bp": "110-130/70-85",
+          "hr": "70-80",
+          "temp": "36.5-37.0",
+          "spo2": "98-99"
+        },
+        "exam": [
+          "神经系统查体无阳性体征",
+          "颈软，克氏征阴性"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "紧张性头痛",
+        "颅内占位",
+        "蛛网膜下腔出血"
+      ],
+      "first_line_oral": [
+        "布洛芬缓释胶囊",
+        "对乙酰氨基酚片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "麦角类禁用于心血管病"
+      ],
+      "special_population_note": "急性期首选NSAIDs"
+    },
+    {
+      "code": "ANEMIA-D64",
+      "name": "缺铁性贫血",
+      "icd10": "D50.900",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": true,
+      "difficulty": "中级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "头晕乏力面色苍白1月",
+          "活动后心慌气短2周"
+        ],
+        "history": [
+          "月经量多史，素食史",
+          "无黑便，无呕血"
+        ],
+        "vitals": {
+          "bp": "95-115/60-75",
+          "hr": "90-110",
+          "temp": "36.4-36.8",
+          "spo2": "96-98"
+        },
+        "exam": [
+          "睑结膜苍白，甲床苍白",
+          "面色苍白，心率偏快"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "苍白",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "巨幼细胞性贫血",
+        "再生障碍性贫血",
+        "溶血性贫血"
+      ],
+      "first_line_oral": [
+        "多糖铁复合物"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "铁剂禁用于血色病"
+      ],
+      "special_population_note": "找病因是关键"
+    },
+    {
+      "code": "UTI-N39",
+      "name": "急性膀胱炎",
+      "icd10": "N30.000",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": true,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "尿频尿急尿痛1天",
+          "下腹痛伴血尿半天"
+        ],
+        "history": [
+          "新婚期，近期劳累",
+          "无发热，无腰痛"
+        ],
+        "vitals": {
+          "bp": "110-125/70-80",
+          "hr": "75-90",
+          "temp": "36.5-37.5",
+          "spo2": "98-99"
+        },
+        "exam": [
+          "耻骨上膀胱区轻压痛",
+          "肾区无叩痛"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "尿频尿急",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "多饮水"
+        }
+      },
+      "differential": [
+        "肾盂肾炎",
+        "泌尿系结石",
+        "阴道炎"
+      ],
+      "first_line_oral": [
+        "呋喃妥因肠溶片",
+        "盐酸左氧氟沙星片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "孕妇避免喹诺酮"
+      ],
+      "special_population_note": "女性常见，3日疗法"
+    },
+    {
+      "code": "GASTRITIS-BLEED-K92",
+      "name": "急性胃黏膜病变伴出血",
+      "icd10": "K92.200",
+      "iv_suitability": "may_need_iv",
+      "negative_list_hit": false,
+      "difficulty": "高级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "呕血黑便1天",
+          "头晕乏力伴黑便2天"
+        ],
+        "history": [
+          "近期服用布洛芬止痛，饮酒史",
+          "无肝病史"
+        ],
+        "vitals": {
+          "bp": "90-110/55-70",
+          "hr": "95-115",
+          "temp": "36.5-37.0",
+          "spo2": "96-98"
+        },
+        "exam": [
+          "贫血貌，腹软无压痛",
+          "肠鸣音活跃"
+        ],
+        "volume_status": {
+          "skin_turgor": "稍差",
+          "mucosa": "苍白",
+          "urine": "尿量偏少",
+          "diarrhea_vomit_freq": "黑便1-2次",
+          "oral_intake": "暂禁食"
+        }
+      },
+      "differential": [
+        "消化性溃疡",
+        "食管胃底静脉曲张破裂",
+        "胃癌"
+      ],
+      "first_line_oral": [
+        "奥美拉唑肠溶胶囊"
+      ],
+      "second_line_iv": [
+        "注射用泮托拉唑钠",
+        "维生素C注射液"
+      ],
+      "contraindications": [
+        "呕血期间禁食水"
+      ],
+      "special_population_note": "需PPI持续静滴"
+    },
+    {
+      "code": "URTICARIA-L50",
+      "name": "急性荨麻疹",
+      "icd10": "L50.900",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": true,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "全身风团瘙痒6小时",
+          "进食海鲜后皮疹2小时"
+        ],
+        "history": [
+          "有药物过敏史",
+          "无呼吸困难，无腹痛"
+        ],
+        "vitals": {
+          "bp": "110-125/70-80",
+          "hr": "75-90",
+          "temp": "36.5-37.0",
+          "spo2": "98-99"
+        },
+        "exam": [
+          "全身散在风团，压之褪色",
+          "皮肤划痕症阳性"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "药疹",
+        "湿疹",
+        "接触性皮炎"
+      ],
+      "first_line_oral": [
+        "氯雷他定片",
+        "西替利嗪片"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "警惕过敏性休克"
+      ],
+      "special_population_note": "出现喉头水肿立即抢救"
+    },
+    {
+      "code": "KETOSIS-E11",
+      "name": "2型糖尿病伴酮症",
+      "icd10": "E11.100",
+      "iv_suitability": "needs_iv",
+      "negative_list_hit": false,
+      "difficulty": "高级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "口干多饮多尿1周加重2天",
+          "恶心呕吐伴乏力1天"
+        ],
+        "history": [
+          "糖尿病史5年，自行停药",
+          "无腹痛，无意识障碍"
+        ],
+        "vitals": {
+          "bp": "100-120/60-75",
+          "hr": "90-110",
+          "temp": "36.5-37.5",
+          "spo2": "96-98"
+        },
+        "exam": [
+          "深大呼吸，呼气有烂苹果味",
+          "脱水貌"
+        ],
+        "volume_status": {
+          "skin_turgor": "差",
+          "mucosa": "干燥",
+          "urine": "多尿",
+          "diarrhea_vomit_freq": "恶心呕吐",
+          "oral_intake": "差"
+        }
+      },
+      "differential": [
+        "高渗高血糖状态",
+        "低血糖昏迷",
+        "乳酸酸中毒"
+      ],
+      "first_line_oral": [],
+      "second_line_iv": [
+        "0.9%氯化钠注射液",
+        "维生素C注射液",
+        "氯化钾注射液"
+      ],
+      "contraindications": [
+        "需胰岛素静滴",
+        "监测血糖血钾"
+      ],
+      "special_population_note": "急诊住院指征"
+    },
+    {
+      "code": "SPRAIN-S93",
+      "name": "踝关节扭伤",
+      "icd10": "S93.400",
+      "iv_suitability": "usually_no_iv",
+      "negative_list_hit": true,
+      "difficulty": "初级",
+      "symptom_pool": {
+        "chief_complaint": [
+          "下楼时扭伤右踝2小时",
+          "行走时左踝扭伤伴肿痛1天"
+        ],
+        "history": [
+          "无骨折史，无手术史",
+          "无麻木，无皮肤破损"
+        ],
+        "vitals": {
+          "bp": "110-130/70-85",
+          "hr": "70-85",
+          "temp": "36.5-37.0",
+          "spo2": "98-99"
+        },
+        "exam": [
+          "外踝肿胀压痛，活动受限",
+          "X线未见骨折"
+        ],
+        "volume_status": {
+          "skin_turgor": "正常",
+          "mucosa": "湿润",
+          "urine": "正常",
+          "diarrhea_vomit_freq": "无",
+          "oral_intake": "正常"
+        }
+      },
+      "differential": [
+        "外踝骨折",
+        "韧带完全断裂"
+      ],
+      "first_line_oral": [
+        "布洛芬缓释胶囊"
+      ],
+      "second_line_iv": [],
+      "contraindications": [
+        "急性期48小时内冷敷"
+      ],
+      "special_population_note": "RICE原则"
+    }
+  ]
+}

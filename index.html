@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>医学生处方推演训练平台 · MVP</title>
+<link rel="stylesheet" href="css/rx.css?v=20261102ax">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">⚕</span>
+    <span>××医科大学附属训练医院 · 处方推演训练平台</span>
+  </div>
+  <nav class="nav">
+    <button class="nav-btn" data-goto="home">首页</button>
+    <button class="nav-btn" data-goto="radar">能力画像</button>
+  </nav>
+</header>
+
+<main id="app">
+
+  <!-- ============ 视图1: 首页 / 病例 / 诊断 / 类型选择 ============ -->
+  <section class="view" id="view-home">
+    <div class="hero-modern">
+      <svg class="hero-ecg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path d="M0,50 L200,50 L220,50 L240,20 L260,80 L280,50 L400,50 L420,50 L440,10 L460,90 L480,50 L600,50 L620,50 L640,30 L660,70 L680,50 L800,50 L820,50 L840,15 L860,85 L880,50 L1000,50 L1020,50 L1040,25 L1060,75 L1080,50 L1200,50"
+              stroke="rgba(255,255,255,.25)" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="hero-icon">⚕️</div>
+      <h1>医学生处方推演训练平台</h1>
+      <p class="hero-sub">随机病例 · 双通道处方 · 规则引擎实时点评 · 云南医保事前提醒</p>
+      <button id="btn-new-case" class="hero-btn">🚀 开始新病例推演</button>
+    </div>
+
+    <div id="case-card" class="case-card hidden">
+      <div class="case-card-head">
+        <span class="tag tag-diff" id="case-diff">初级</span>
+        <span class="case-title">病例摘要（不显示病名）</span>
+      </div>
+      <div class="case-meta" id="case-meta"></div>
+      <div class="case-body" id="case-body"></div>
+      <div class="case-volume" id="case-volume"></div>
+
+      <div class="diag-box">
+        <label>你认为的临床诊断（可输入 ICD-10 病名关键词）：</label>
+        <div class="diag-row">
+          <input id="diag-input" type="text" placeholder="例如：社区获得性肺炎 / 上呼吸道感染">
+          <button id="btn-diag-check" class="btn">确认诊断</button>
+        </div>
+        <div id="diag-feedback" class="diag-feedback"></div>
+        <div id="diag-suggest" class="diag-suggest hidden"></div>
+      </div>
+
+      <div class="rx-type-row hidden" id="rx-type-row">
+        <p class="tip">诊断已确认 ✅。请选择处方类型：</p>
+        <div class="rx-type-btns">
+          <button class="btn btn-type" data-type="normal">📄 非输液处方<br><small>口服/外用/肌注</small></button>
+          <button class="btn btn-type" data-type="iv">💧 输液处方<br><small>静脉滴注</small></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 视图2/3: 处方笺（普通/急诊/儿科/麻精 用同一份笺，按 rx_type 改底色） ============ -->
+  <section class="view hidden" id="view-rx">
+    <div class="rx-toolbar no-print">
+      <button class="btn" id="btn-back-home">← 返回首页</button>
+      <span id="rx-toolbar-title" class="toolbar-title">处方笺</span>
+      <span class="spacer"></span>
+      <button class="btn" id="btn-print">🖨 打印 / 存PDF</button>
+      <button class="btn btn-primary" id="btn-submit">✅ 提交点评</button>
+    </div>
+
+    <div class="rx-paper" id="rx-paper">
+      <div class="rx-corner" id="rx-corner">门诊处方</div>
+      <div class="rx-head">
+        <div class="rx-hospital">××医科大学附属训练医院</div>
+        <div class="rx-title" id="rx-title">门诊处方笺</div>
+        <div class="rx-no">处方编号: <span id="rx-no"></span></div>
+      </div>
+
+      <div class="rx-pre">
+        <div class="pre-row">
+          <span>姓名: <b id="p-name">-</b></span>
+          <span>性别: <b id="p-gender">-</b></span>
+          <span>实足年龄: <b id="p-age">-</b></span>
+          <span>体重: <b id="p-weight">-</b> kg</span>
+        </div>
+        <div class="pre-row">
+          <span>身份证: <b id="p-id">5301**********0011</b></span>
+          <span>门诊号: <b id="p-mz">-</b></span>
+          <span>科别: <b id="p-dept">全科医学科</b></span>
+          <span>费别: <b id="f-fee">城镇职工医保</b></span>
+        </div>
+        <div class="pre-row">
+          <span>临床诊断: <b id="p-dx">-</b></span>
+          <span>开具日期: <b id="p-date">-</b></span>
+        </div>
+      </div>
+
+      <!-- 非输液通道 -->
+      <div class="rx-body" id="rx-body-normal">
+        <table class="rx-table">
+          <thead><tr><th>#</th><th>通用名</th><th>规格</th><th>数量</th><th>单次剂量</th><th>途径</th><th>频次</th><th>疗程</th><th></th></tr></thead>
+          <tbody id="normal-items"></tbody>
+        </table>
+        <div id="pre-reminder-normal" class="pre-reminder no-print"></div>
+        <div class="picker no-print">
+          <div class="picker-head">
+            <input id="drug-search" type="text" placeholder="🔍 搜通用名或首拼（如 tbfs / amxl）...">
+            <span id="drug-count" class="drug-count">已用 0/5 种</span>
+          </div>
+          <div id="drug-list" class="drug-list"></div>
+        </div>
+      </div>
+
+      <!-- 输液通道：多组输液（学生选择输液通道即视为有指征，无需下拉选理由） -->
+      <div class="rx-body hidden" id="rx-body-iv">
+        <div id="iv-groups"></div>
+        <div id="pre-reminder" class="pre-reminder no-print"></div>
+
+        <div class="picker no-print">
+          <div class="picker-head">
+            <input id="iv-drug-search" type="text" placeholder="🔍 搜静脉药通用名或首拼（如 qkl / lhs）...">
+            <span id="iv-drug-count" class="drug-count">已用 0/5 种</span>
+          </div>
+          <div id="iv-drug-list" class="drug-list"></div>
+        </div>
+      </div>
+
+      <div class="rx-foot">
+        <div class="foot-row">
+          <span>医师签名: ____________</span>
+          <span>审核药师: ____________</span>
+          <span class="iv-only hidden">调配药师: ____________</span>
+          <span class="iv-only hidden">核对药师: ____________</span>
+        </div>
+        <div class="foot-row">
+          <span>金额合计: ¥<b id="f-amount">0.00</b></span>
+          <span>医保支付: ¥<b id="f-ins">0.00</b></span>
+          <span>个人自费: ¥<b id="f-self">0.00</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 视图4: 点评报告 ============ -->
+  <section class="view hidden" id="view-report">
+    <div class="report-hero">
+      <button class="btn no-print" id="btn-report-home">← 返回首页</button>
+      <div class="score-ring-wrap">
+        <svg class="score-ring" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+          <circle id="score-arc" cx="60" cy="60" r="52" fill="none" stroke="#0f4c81" stroke-width="8"
+                  stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"
+                  transform="rotate(-90 60 60)"/>
+        </svg>
+        <div class="score-center">
+          <div class="score-num" id="r-score">--</div>
+          <div class="score-label">分</div>
+        </div>
+      </div>
+      <div class="report-summary">
+        <h2 id="r-grade">优秀</h2>
+        <p class="muted" id="r-meta"></p>
+      </div>
+    </div>
+
+    <div class="report-body">
+      <div class="dim-grid" id="dim-grid"></div>
+
+      <div class="hit-section">
+        <div class="hit-section-head">
+          <h3>📋 规则命中明细</h3>
+          <div class="hit-stats">
+            <span class="hit-badge hit-error">错误 <b id="cnt-err">0</b></span>
+            <span class="hit-badge hit-warn">警告 <b id="cnt-warn">0</b></span>
+            <span class="hit-badge hit-pass">通过 <b id="cnt-pass">0</b></span>
+          </div>
+        </div>
+        <div id="hit-list"></div>
+      </div>
+
+      <div class="hit-section">
+        <div class="hit-section-head"><h3>📚 与参考处方对比</h3></div>
+        <div id="diff-box"></div>
+      </div>
+
+      <div class="hit-section">
+        <div class="hit-section-head"><h3>💡 知识点卡片</h3></div>
+        <div id="tips-box"></div>
+      </div>
+
+      <div class="report-actions no-print">
+        <button class="btn btn-primary btn-lg" id="btn-retry">🔁 再来一次</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 视图5: 能力画像 ============ -->
+  <section class="view hidden" id="view-radar">
+    <div class="report-head">
+      <button class="btn" id="btn-radar-home">← 返回首页</button>
+      <h2>能力画像 · 八维雷达</h2>
+      <p class="muted">数据来自浏览器 localStorage，累计最近 20 次处方推演得分。</p>
+    </div>
+    <div class="radar-wrap">
+      <canvas id="radar-canvas" width="520" height="520"></canvas>
+      <div id="radar-legend" class="radar-legend"></div>
+    </div>
+    <div class="history-box">
+      <h3>历史得分</h3>
+      <div id="history-list"></div>
+      <button class="btn btn-danger" id="btn-clear-history">清空历史</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- 隐藏的特殊级抗菌药拦截弹窗 -->
+<div class="modal-mask hidden" id="modal-block">
+  <div class="modal">
+    <h3>🚫 门诊处方拦截</h3>
+    <p id="modal-block-text"></p>
+    <button class="btn btn-primary" onclick="document.getElementById('modal-block').classList.add('hidden')">我知道了</button>
+  </div>
+</div>
+
+<!-- 限制级抗菌药中级职称确认弹窗 -->
+<div class="modal-mask hidden" id="modal-restricted">
+  <div class="modal">
+    <h3>👨‍⚕️ 模拟：限制使用级抗菌药职称确认</h3>
+    <p id="modal-restricted-text"></p>
+    <div class="modal-actions">
+      <button class="btn" id="btn-restricted-cancel">取消（撤回该药）</button>
+      <button class="btn btn-primary" id="btn-restricted-ok">确认（中级以上职称已审核）</button>
+    </div>
+  </div>
+</div>
+
+<footer class="foot-note">
+  本系统为教学训练平台，所有患者均为合成假名；所有处方不得用于真实诊疗。
+</footer>
+
+<script src="js/rule-engine.js?v=20261102ax"></script>
+<script src="js/review.js?v=20261102ax"></script>
+<script src="js/app.js?v=20261102ax"></script>
+</body>
+</html>

@@ -496,11 +496,11 @@
     const pool = S.drugs.filter(d => ['oral','topical','im','sc'].includes(d.dosage_form));
     const items = pool.filter(d => matchDrug(d, kw));
     S.kbOralItems = items;
-    S.kbOralSel = -1;
+    S.kbOralSel = items.length ? 0 : -1;
     list.innerHTML = '';
     items.forEach((d, i) => {
       const div = document.createElement('div');
-      div.className = 'drug-item';
+      div.className = 'drug-item' + (i === S.kbOralSel ? ' kb-highlight' : '');
       div.dataset.kbIndex = i;
       div.innerHTML = `
         <div>
@@ -972,12 +972,12 @@
       // 溶媒永远可点（点了自动开新组）；静脉药必须先有溶媒
       return (!isSolvent && !hasSolvent);
     });
-    S.kbIvSel = -1;
+    S.kbIvSel = items.length ? (S.kbIvDisabled[0] ? -1 : 0) : -1;
     items.forEach((d, i) => {
       const isSolvent = d.dosage_form === 'solvent';
       const disabled = S.kbIvDisabled[i];
       const div = document.createElement('div');
-      div.className = 'drug-item' + (disabled?' disabled':'');
+      div.className = 'drug-item' + (disabled?' disabled':'') + (i === S.kbIvSel ? ' kb-highlight' : '');
       div.dataset.kbIndex = i;
       div.innerHTML = `<div><b>${d.generic_name}</b> <span class="meta">${d.spec} · ¥${(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
         <div class="mfr" style="font-size:11px;color:#94a3b8">🏭 ${d.manufacturer||'国产'}</div>

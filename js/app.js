@@ -1119,6 +1119,7 @@
 
   // ---------- 提交 ----------
   function submitRx() {
+    try {
     // 硬阻断：每组必须有溶媒+药（学生选了输液通道即视为有指征，不再强制填 iv_reason）
     if (S.rxType === 'iv') {
       const groupsOk = S.ivGroups.every(g => g.solvent && g.drugs.length > 0);
@@ -1192,6 +1193,10 @@
     // 写历史
     saveHistory(review);
     show('view-report');
+    } catch(e) {
+      console.error(e);
+      alert('❌ 处方提交出错：\n' + e.message + '\n\n' + e.stack);
+    }
   }
 
   function renderReport(review, hits, ctx) {

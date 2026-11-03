@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.css?v=20261102bb">
+<link rel="stylesheet" href="css/rx.css?v=20261102bc">
 </head>
 <body>
 
@@ -28,20 +28,31 @@
               stroke="rgba(255,255,255,.25)" stroke-width="2" fill="none"/>
       </svg>
       <div class="hero-icon">
-        <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
+        <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <radialGradient id="heartGrad" cx="50%" cy="40%" r="60%">
-              <stop offset="0%" stop-color="#ff6b6b"/>
-              <stop offset="100%" stop-color="#dc2626"/>
+            <radialGradient id="heartGrad" cx="35%" cy="30%" r="75%">
+              <stop offset="0%" stop-color="#ff8a8a"/>
+              <stop offset="45%" stop-color="#ef4444"/>
+              <stop offset="100%" stop-color="#991b1b"/>
             </radialGradient>
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            <radialGradient id="glassGrad" cx="50%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="rgba(255,255,255,.35)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,.05)"/>
+            </radialGradient>
+            <filter id="heartShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#7f1d1d" flood-opacity="0.5"/>
+              <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#fff" flood-opacity="0.6"/>
             </filter>
           </defs>
-          <path d="M36 62 C36 62 8 44 8 26 C8 15 17 8 26 8 C31 8 35 11 36 14 C37 11 41 8 46 8 C55 8 64 15 64 26 C64 44 36 62 36 62 Z"
-                fill="url(#heartGrad)" filter="url(#glow)" opacity="0.92"/>
-          <path d="M14 32 L26 32 L30 22 L36 44 L42 28 L46 32 L58 32"
+          <!-- 玻璃底座 -->
+          <circle cx="40" cy="40" r="36" fill="url(#glassGrad)" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+          <!-- 心形 -->
+          <path d="M40 66 C40 66 10 47 10 27 C10 16 19 9 28 9 C33 9 38 12 40 16 C42 12 47 9 52 9 C61 9 70 16 70 27 C70 47 40 66 40 66 Z"
+                fill="url(#heartGrad)" filter="url(#heartShadow)"/>
+          <!-- 高光 -->
+          <ellipse cx="28" cy="22" rx="8" ry="5" fill="rgba(255,255,255,.45)" transform="rotate(-20 28 22)"/>
+          <!-- 心电图 -->
+          <path d="M16 34 L28 34 L32 24 L38 46 L44 30 L48 34 L64 34"
                 stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.css?v=20261102bh">
+<link rel="stylesheet" href="css/rx.css?v=20261102bi">
 </head>
 <body>
 
@@ -23,6 +23,52 @@
   <!-- ============ 视图1: 首页 / 病例 / 诊断 / 类型选择 ============ -->
   <section class="view" id="view-home">
     <div class="hero-modern">
+      <!-- 医学元素水印 -->
+      <svg class="hero-watermark" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;opacity:.08;pointer-events:none;">
+        <!-- 听诊器 -->
+        <g transform="translate(120,80)" stroke="#fff" stroke-width="3" fill="none">
+          <path d="M0,0 L0,40 Q0,60 20,60 L30,60"/>
+          <circle cx="35" cy="65" r="8"/>
+          <path d="M60,0 L60,40 Q60,60 40,60"/>
+        </g>
+        <!-- 药片 -->
+        <g transform="translate(1000,100)">
+          <ellipse cx="0" cy="0" rx="35" ry="18" fill="#fff" transform="rotate(-20)"/>
+          <line x1="-30" y1="-5" x2="30" y2="5" stroke="#0f4c81" stroke-width="2" transform="rotate(-20)"/>
+        </g>
+        <!-- DNA双螺旋 -->
+        <g transform="translate(200,280)" stroke="#fff" stroke-width="2" fill="none">
+          <path d="M0,0 C30,20 30,40 0,60 C-30,80 -30,100 0,120"/>
+          <path d="M40,0 C10,20 10,40 40,60 C70,80 70,100 40,120"/>
+          <line x1="5" y1="15" x2="35" y2="15"/>
+          <line x1="5" y1="45" x2="35" y2="45"/>
+          <line x1="5" y1="75" x2="35" y2="75"/>
+          <line x1="5" y1="105" x2="35" y2="105"/>
+        </g>
+        <!-- 十字 -->
+        <g transform="translate(950,280)" fill="#fff">
+          <rect x="-8" y="-25" width="16" height="50"/>
+          <rect x="-25" y="-8" width="50" height="16"/>
+        </g>
+        <!-- 心电图波形 -->
+        <g transform="translate(550,60)" stroke="#fff" stroke-width="2" fill="none">
+          <path d="M0,20 L30,20 L40,5 L50,35 L60,20 L100,20"/>
+        </g>
+        <!-- 胶囊 -->
+        <g transform="translate(750,320)">
+          <rect x="-25" y="-12" width="50" height="24" rx="12" fill="#fff"/>
+          <line x1="0" y1="-12" x2="0" y2="12" stroke="#0f4c81" stroke-width="2"/>
+        </g>
+        <!-- 显微镜 -->
+        <g transform="translate(380,320)" stroke="#fff" stroke-width="2.5" fill="none">
+          <circle cx="0" cy="-30" r="15"/>
+          <path d="M-5,-15 L-15,10 L-15,25 L15,25 L15,10 L5,-15"/>
+        </g>
+        <!-- 心跳数字 -->
+        <g transform="translate(1100,250)" stroke="#fff" stroke-width="2" fill="none">
+          <path d="M0,10 L15,10 L20,0 L28,20 L35,10 L50,10"/>
+        </g>
+      </svg>
       <svg class="hero-ecg" viewBox="0 0 1200 100" preserveAspectRatio="none">
         <path d="M0,50 L200,50 L220,50 L240,20 L260,80 L280,50 L400,50 L420,50 L440,10 L460,90 L480,50 L600,50 L620,50 L640,30 L660,70 L680,50 L800,50 L820,50 L840,15 L860,85 L880,50 L1000,50 L1020,50 L1040,25 L1060,75 L1080,50 L1200,50"
               stroke="rgba(255,255,255,.25)" stroke-width="2" fill="none"/>

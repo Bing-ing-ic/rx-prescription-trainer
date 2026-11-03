@@ -131,16 +131,22 @@
 
     // ====================== 2. 适应症 ======================
     // IND-01 / IND-02：遍历治疗性药品，检查是否在 disease 推荐列表
+    // 对症支持类药物（止咳/化痰/抗过敏/解热镇痛/缓解鼻塞）不判超适应症
+    const symptomaticDrugs = /氨溴索|乙酰半胱氨酸|羧甲司坦|右美沙芬|复方甘草|可待因|氯雷他定|西替利嗪|苯海拉明|布洛芬|对乙酰氨基酚|双氯芬酸|塞来昔布|美洛昔康|酚咖|感冒灵|小柴胡|板蓝根|连花清瘟|肺力咳|急支|川贝|甲氧那明|茶碱|孟鲁司特|伪麻黄碱|氯苯那敏/;
     ['normal_rx','iv_rx'].forEach(k => {
       const rx = ctx[k]; if (!rx) return;
       therapeuticItems(rx).forEach(it => {
         const g = it.drug.generic_name;
+        // 对症药不判超适应症
+        if (symptomaticDrugs.test(g)) {
+          hits.push(pass(R['IND-01'], `「${g}」为对症支持用药，合规。`));
+          return;
+        }
         const inFirst = (disease.first_line_oral || []).includes(g);
         const inSecond = (disease.second_line_iv || []).includes(g);
         if (inFirst || inSecond) {
           hits.push(pass(R['IND-01'], `「${g}」与诊断「${disease.name}」适应症匹配。`));
         } else {
-          // 粗判：是否属于相关大类（演示：若药品属于 disease.contraindications 提及的大类，仍 error）
           hits.push(hit(R['IND-01'], 'error',
             `「${g}」不在「${disease.name}」的一线/二线推荐列表中，可能超适应症。`,
             `核对药品说明书适应症；或更换为推荐用药。`));

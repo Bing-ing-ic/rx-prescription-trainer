@@ -240,68 +240,7 @@
         <p class="muted" id="r-meta"></p>
       </div>
       <div class="patient-avatar" id="patient-avatar">
-        <svg viewBox="0 0 120 140" width="90" height="105">
-          <defs>
-            <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ffe0c2"/>
-              <stop offset="100%" stop-color="#ffd0a8"/>
-            </linearGradient>
-            <linearGradient id="uniformGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="100%" stop-color="#e8f0f8"/>
-            </linearGradient>
-            <linearGradient id="hairGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#6b4423"/>
-              <stop offset="100%" stop-color="#4a2f1a"/>
-            </linearGradient>
-            <linearGradient id="hatGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ffffff"/>
-              <stop offset="100%" stop-color="#f0f4f8"/>
-            </linearGradient>
-            <filter id="avatarShadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f4c81" flood-opacity="0.3"/>
-            </filter>
-          </defs>
-          <g filter="url(#avatarShadow)">
-            <!-- 护士帽 -->
-            <ellipse cx="60" cy="16" rx="24" ry="9" fill="url(#hatGrad)" stroke="#d0d8e0" stroke-width="0.5"/>
-            <rect x="54" y="7" width="12" height="7" fill="#e74c3c" rx="1"/>
-            <!-- 头发（马尾） -->
-            <path d="M36 26 Q32 52 38 65 L44 62 Q40 48 44 30 Z" fill="url(#hairGrad)"/>
-            <path d="M84 26 Q88 52 82 65 L76 62 Q80 48 76 30 Z" fill="url(#hairGrad)"/>
-            <ellipse cx="60" cy="24" rx="26" ry="20" fill="url(#hairGrad)"/>
-            <!-- 脸（放大） -->
-            <ellipse cx="60" cy="40" rx="24" ry="22" fill="url(#skinGrad)"/>
-            <!-- 眉毛（加粗） -->
-            <path d="M44 32 Q50 29 56 32" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M64 32 Q70 29 76 32" stroke="#3a2010" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <!-- 眼睛（放大） -->
-            <ellipse cx="50" cy="40" rx="4.5" ry="5" fill="#fff" stroke="#ddd" stroke-width="0.5"/>
-            <circle cx="50" cy="40.5" r="3" fill="#2a1808"/>
-            <circle cx="51.2" cy="39" r="1.2" fill="#fff"/>
-            <ellipse cx="70" cy="40" rx="4.5" ry="5" fill="#fff" stroke="#ddd" stroke-width="0.5"/>
-            <circle cx="70" cy="40.5" r="3" fill="#2a1808"/>
-            <circle cx="71.2" cy="39" r="1.2" fill="#fff"/>
-            <!-- 腮红 -->
-            <ellipse cx="43" cy="48" rx="5" ry="3" fill="#ff8888" opacity="0.5"/>
-            <ellipse cx="77" cy="48" rx="5" ry="3" fill="#ff8888" opacity="0.5"/>
-            <!-- 鼻子 -->
-            <path d="M60 44 L57 50 L63 50 Z" fill="#f0b890" opacity="0.7"/>
-            <!-- 嘴巴（大而明显） -->
-            <path id="avatar-mouth" d="M50 54 Q60 62 70 54" stroke="#a02020" stroke-width="2.5" fill="#e74c3c" stroke-linecap="round"/>
-            <!-- 脖子 -->
-            <rect x="55" y="60" width="10" height="7" fill="url(#skinGrad)"/>
-            <!-- 护士服（V领） -->
-            <path d="M28 135 Q28 82 50 66 L60 73 L70 66 Q92 82 92 135 Z" fill="url(#uniformGrad)" stroke="#c8d8e8" stroke-width="0.5"/>
-            <!-- V领红线 -->
-            <path d="M50 66 L60 76 L70 66" stroke="#e74c3c" stroke-width="2" fill="none"/>
-            <!-- 衣领 -->
-            <path d="M50 66 L55 74 L60 70 L65 74 L70 66" fill="#fff" stroke="#d0d8e0" stroke-width="0.5"/>
-            <!-- 胸牌口袋 -->
-            <rect x="68" y="90" width="16" height="12" fill="#fff" stroke="#c8d8e8" stroke-width="0.5" rx="1"/>
-            <circle cx="76" cy="96" r="2.5" fill="#e74c3c"/>
-          </g>
-        </svg>
+        <img src="img/nurse-avatar.png" alt="护士形象" style="width:90px;border-radius:12px;box-shadow:0 4px 16px rgba(56,189,248,.3);">
         <div class="vitals-panel">
           <div class="vital-row"><span>心率</span><b id="vital-hr">--</b></div>
           <div class="vital-row"><span>体温</span><b id="vital-temp">--</b></div>
@@ -388,6 +327,6 @@
 
 <script src="js/rule-engine.js?v=20261102ca"></script>
 <script src="js/review.js?v=20261102ca"></script>
-<script src="js/app.js?v=20261102cc"></script>
+<script src="js/app.js?v=20261102cd"></script>
 </body>
 </html>

@@ -7,17 +7,6 @@
 </head>
 <body>
 
-<div id="lock-screen" style="position:fixed;inset:0;background:linear-gradient(135deg,#0f4c81,#1a365d);display:flex;align-items:center;justify-content:center;z-index:9999;">
-  <div style="background:rgba(255,255,255,.1);backdrop-filter:blur(20px);padding:40px;border-radius:20px;border:1px solid rgba(255,255,255,.2);text-align:center;color:#fff;min-width:320px;">
-    <div style="font-size:48px;margin-bottom:10px;">🔒</div>
-    <h2 style="margin:0 0 8px;font-size:20px;">访问验证</h2>
-    <p style="opacity:.7;font-size:13px;margin-bottom:20px;">本平台仅限授权人员使用</p>
-    <input id="lock-pwd" type="password" placeholder="请输入访问密码" style="width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;font-size:16px;text-align:center;outline:none;box-sizing:border-box;">
-    <div id="lock-err" style="color:#ff6b6b;font-size:12px;margin-top:10px;display:none;">密码错误</div>
-    <button id="lock-btn" style="width:100%;margin-top:15px;padding:12px;border:none;border-radius:10px;background:#dc2626;color:#fff;font-size:15px;cursor:pointer;">进 入</button>
-  </div>
-</div>
-
 <header class="topbar">
   <div class="brand">
     <span class="logo">⚕</span>
@@ -282,40 +271,8 @@
   本系统为教学训练平台，所有患者均为合成假名；所有处方不得用于真实诊疗。
 </footer>
 
-<script>
-// 简单访问密码（前端校验，防君子不防小人）
-(function(){
-  var PWD = "rx2026";
-  var saved = sessionStorage.getItem("rx_lock_ok");
-  if (saved === "1") { document.getElementById("lock-screen").style.display = "none"; return; }
-  var pwd = document.getElementById("lock-pwd");
-  var btn = document.getElementById("lock-btn");
-  var err = document.getElementById("lock-err");
-  function tryUnlock(){
-    if (pwd.value === PWD) {
-      sessionStorage.setItem("rx_lock_ok","1");
-      document.getElementById("lock-screen").style.display = "none";
-    } else {
-      err.style.display = "block";
-      pwd.value = ""; pwd.focus();
-    }
-  }
-  btn.onclick = tryUnlock;
-  pwd.onkeydown = function(e){ if(e.key==="Enter") tryUnlock(); };
-  pwd.focus();
-  // 防右键
-  document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
-  // 防 F12 开发者工具
-  document.addEventListener("keydown", function(e){
-    if (e.key === "F12") { e.preventDefault(); }
-    if (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key.toUpperCase())) { e.preventDefault(); }
-    if (e.ctrlKey && e.key === "u") { e.preventDefault(); }
-  });
-})();
-</script>
-
-<script src="js/rule-engine.js?v=20261102bd"></script>
-<script src="js/review.js?v=20261102bd"></script>
-<script src="js/app.js?v=20261102bd"></script>
+<script src="js/rule-engine.js?v=20261102bf"></script>
+<script src="js/review.js?v=20261102bf"></script>
+<script src="js/app.js?v=20261102bf"></script>
 </body>
 </html>

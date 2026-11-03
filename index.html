@@ -129,8 +129,8 @@
       <div class="rx-type-row hidden" id="rx-type-row">
         <p class="tip">诊断已确认 ✅。请选择处方类型：</p>
         <div class="rx-type-btns">
-          <button class="btn btn-type" data-type="normal" id="btn-rx-normal">📄 非输液处方<br><small>口服/外用/肌注</small></button>
-          <button class="btn btn-type" data-type="iv" id="btn-rx-iv">💧 输液处方<br><small>静脉滴注</small></button>
+          <button class="btn btn-type" data-type="normal" id="btn-rx-normal" onclick="if(window.__openRx)window.__openRx('normal')">📄 非输液处方<br><small>口服/外用/肌注</small></button>
+          <button class="btn btn-type" data-type="iv" id="btn-rx-iv" onclick="if(window.__openRx)window.__openRx('iv')">💧 输液处方<br><small>静脉滴注</small></button>
         </div>
       </div>
     </div>

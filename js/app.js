@@ -429,6 +429,8 @@
 
   // ---------- 打开处方笺 ----------
   function openRx(type) {
+    try {
+    if (!S.disease || !S.patient) { alert('病例数据未就绪，请先点"开始新病例"'); return; }
     S.rxType = type;
     // 前记
     $('p-name').textContent = S.patient.name;
@@ -490,6 +492,11 @@
     }
     renderDrugList(); renderIvDrugList(); renderNormalItems(); renderIvGroups();
     show('view-rx');
+    } catch(e) {
+      document.body.insertAdjacentHTML('afterbegin',
+        '<div style="position:fixed;top:0;left:0;right:0;background:red;color:white;padding:12px;z-index:99999;font-size:14px;font-family:monospace;">' +
+        '❌ openRx错误: ' + e.message + '<br><br>' + (e.stack||'').slice(0,500) + '</div>');
+    }
   }
 
   // ---------- 药品列表渲染（非输液通道） ----------

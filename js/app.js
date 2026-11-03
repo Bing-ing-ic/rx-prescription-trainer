@@ -198,6 +198,8 @@
     S.ivGroups = [];
     S.ivFields = { iv_reason:'', iv_reason_note:'' };
     S.restrictedConfirmed = false;
+    S.overLimitWarned = false;
+    S.ivOverLimitWarned = false;
 
     // 生成合成患者：年龄/性别/费别完全随机，但根据疾病匹配合理年龄
     const elderlyDiseases = ['HTN-I10','CHD-I25','TIA-G45','COPD-J44','DM-E11','HYPOTHY-E03','POSTAPP-Z48','POSTHERNIA-Z48'];
@@ -558,9 +560,10 @@
   }
 
   function addNormalItem(drug) {
-    // 超过5种：提示但允许确认继续
-    if (S.normalItems.length >= 5) {
-      if (!confirm(`⚠️ 每张处方一般不超过5种药品（当前已 ${S.normalItems.length} 种）。\n\n《处方管理办法》规定每张处方≤5种，如确需多药联用请确认继续添加。`)) return;
+    // 超过5种：仅在第6个时提示一次，之后不阻断，只标记
+    if (S.normalItems.length >= 5 && !S.overLimitWarned) {
+      S.overLimitWarned = true;
+      alert(`⚠️ 超限提醒：每张处方一般不超过5种药品（当前已 ${S.normalItems.length} 种）。\n\n《处方管理办法》规定每张处方≤5种，后续可继续添加，系统将自动标记超限。`);
     }
     // special 级门诊拦截
     if (drug.abx_level === 'special') {
@@ -1075,8 +1078,9 @@
       return alert('请先在药品列表里选一个溶媒（NS/GS等）！');
     }
     const totalItems = S.ivGroups.reduce((n, gr) => n + (gr.solvent?1:0) + gr.drugs.length, 0);
-    if (totalItems >= 5) {
-      if (!confirm(`⚠️ 每张处方一般不超过5种药品（含溶媒，当前已 ${totalItems} 种）。\n\n《处方管理办法》规定每张处方≤5种，如确需多药联用请确认继续添加。`)) return;
+    if (totalItems >= 5 && !S.ivOverLimitWarned) {
+      S.ivOverLimitWarned = true;
+      alert(`⚠️ 超限提醒：每张处方一般不超过5种药品（含溶媒，当前已 ${totalItems} 种）。\n\n后续可继续添加，系统将自动标记超限。`);
     }
     if (drug.abx_level === 'special') {
       $('modal-block-text').textContent =

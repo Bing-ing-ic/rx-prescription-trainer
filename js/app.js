@@ -1233,15 +1233,13 @@
     $('vital-hr').textContent = hr + ' bpm';
     $('vital-temp').textContent = temp + ' ℃';
     $('vital-bp').textContent = sbp + '/' + dbp + ' mmHg';
-    // 表情：>=80开心，60-79一般，<60难受
-    const mouth = $('avatar-mouth');
-    if (mouth) {
-      if (score >= 80) {
-        mouth.setAttribute('d', 'M48 54 Q60 64 72 54'); // 微笑
-      } else if (score >= 60) {
-        mouth.setAttribute('d', 'M52 56 L68 56'); // 平嘴
+    // 表情：切换护士图片
+    const nurseImg = $('nurse-face');
+    if (nurseImg) {
+      if (score >= 75) {
+        nurseImg.src = 'img/nurse-happy.png';
       } else {
-        mouth.setAttribute('d', 'M50 60 Q60 52 70 60'); // 难过
+        nurseImg.src = 'img/nurse-sad.png';
       }
     }
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.css?v=20261102ca">
+<link rel="stylesheet" href="css/rx.css?v=20261102ce">
 </head>
 <body>
 
@@ -240,7 +240,9 @@
         <p class="muted" id="r-meta"></p>
       </div>
       <div class="patient-avatar" id="patient-avatar">
-        <img src="img/nurse-avatar.png" alt="护士形象" style="width:90px;border-radius:12px;box-shadow:0 4px 16px rgba(56,189,248,.3);">
+        <div class="nurse-img-wrap">
+          <img id="nurse-face" src="img/nurse-happy.png" alt="护士形象">
+        </div>
         <div class="vitals-panel">
           <div class="vital-row"><span>心率</span><b id="vital-hr">--</b></div>
           <div class="vital-row"><span>体温</span><b id="vital-temp">--</b></div>
@@ -325,8 +327,8 @@
   本系统为教学训练平台，所有患者均为合成假名；所有处方不得用于真实诊疗。
 </footer>
 
-<script src="js/rule-engine.js?v=20261102ca"></script>
-<script src="js/review.js?v=20261102ca"></script>
-<script src="js/app.js?v=20261102cd"></script>
+<script src="js/rule-engine.js?v=20261102ce"></script>
+<script src="js/review.js?v=20261102ce"></script>
+<script src="js/app.js?v=20261102ce"></script>
 </body>
 </html>

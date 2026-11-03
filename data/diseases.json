@@ -5,7 +5,7 @@
     {
       "code": "HTN-I10",
       "name": "原发性高血压（无并发症）",
-      "icd10": "I10.x00",
+      "icd10": "I10.900",
       "iv_suitability": "usually_no_iv",
       "negative_list_hit": true,
       "difficulty": "初级",
@@ -54,7 +54,7 @@
     {
       "code": "CHD-I25",
       "name": "冠状动脉粥样硬化性心脏病（稳定型心绞痛）",
-      "icd10": "I25.x00",
+      "icd10": "I25.100",
       "iv_suitability": "usually_no_iv",
       "negative_list_hit": false,
       "difficulty": "中级",
@@ -105,7 +105,7 @@
     {
       "code": "TIA-G45",
       "name": "短暂性脑缺血发作（TIA）",
-      "icd10": "G45.x00",
+      "icd10": "G45.900",
       "iv_suitability": "conditional_iv",
       "negative_list_hit": false,
       "difficulty": "高级",
@@ -155,7 +155,7 @@
     {
       "code": "URI-J00",
       "name": "急性上呼吸道感染（普通感冒）",
-      "icd10": "J00.x00",
+      "icd10": "J00.900",
       "iv_suitability": "usually_no_iv",
       "negative_list_hit": true,
       "difficulty": "初级",
@@ -204,7 +204,7 @@
     {
       "code": "AB-BRONCH-J20",
       "name": "急性支气管炎",
-      "icd10": "J20.x00",
+      "icd10": "J20.900",
       "iv_suitability": "usually_no_iv",
       "negative_list_hit": false,
       "difficulty": "初级",
@@ -251,7 +251,7 @@
     {
       "code": "COPD-J44",
       "name": "慢性阻塞性肺疾病（轻度稳定期）",
-      "icd10": "J44.x00",
+      "icd10": "J44.900",
       "iv_suitability": "usually_no_iv",
       "negative_list_hit": false,
       "difficulty": "中级",
@@ -296,7 +296,7 @@
     {
       "code": "CAP-J18",
       "name": "社区获得性肺炎（普通型）",
-      "icd10": "J18.x00",
+      "icd10": "J18.900",
       "iv_suitability": "iv_preferred",
       "negative_list_hit": false,
       "difficulty": "中级",
@@ -347,7 +347,7 @@
     {
       "code": "DM-E11",
       "name": "2型糖尿病（血糖控制不佳）",
-      "icd10": "E11.x00",
+      "icd10": "E11.900",
       "iv_suitability": "usually_no_iv",
       "negative_list_hit": false,
       "difficulty": "中级",
@@ -538,7 +538,7 @@
     {
       "code": "FD-K30",
       "name": "功能性消化不良",
-      "icd10": "K30.x00",
+      "icd10": "K30.900",
       "iv_suitability": "usually_no_iv",
       "negative_list_hit": true,
       "difficulty": "初级",

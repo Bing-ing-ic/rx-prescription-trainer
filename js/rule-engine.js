@@ -435,6 +435,43 @@
       }
     }
 
+    // ====================== 9. 云南省医保智能审方规则（第七批两库 2026.10） ======================
+    // YN-01: 诊断与患者性别不符
+    const femaleOnlyDx = ['妇科','月经','子宫','卵巢','输卵管','乳腺','妊娠','分娩','产后','盆腔炎','阴道炎','宫颈炎','更年期'];
+    const maleOnlyDx = ['前列腺','睾丸','附睾','精囊','阴茎','包皮','勃起','早泄','遗精'];
+    const dxName = (disease.name || '');
+    if (patient.gender === '男' && femaleOnlyDx.some(k => dxName.includes(k))) {
+      hits.push(hit(R['YN-01'], 'error',
+        `诊断「${disease.name}」为女性专属疾病，但患者性别为男。`,
+        `核对患者性别与诊断是否一致，如为鉴别诊断需说明理由。`));
+    }
+    if (patient.gender === '女' && maleOnlyDx.some(k => dxName.includes(k))) {
+      hits.push(hit(R['YN-01'], 'error',
+        `诊断「${disease.name}」为男性专属疾病，但患者性别为女。`,
+        `核对患者性别与诊断是否一致。`));
+    }
+
+    // YN-02: 医保限适应症药品超范围支付（简化版：关键治疗药与诊断大类不匹配）
+    const allRx = [ctx.normal_rx, ctx.iv_rx].filter(Boolean);
+    const allDrugs = [];
+    allRx.forEach(rx => rx.items.forEach(it => { if (it.drug) allDrugs.push(it.drug); }));
+    // 降压药 vs 无高血压诊断
+    const hasAntihypertensive = allDrugs.some(d => /氨氯地平|硝苯地平|美托洛尔|缬沙坦|厄贝沙坦|卡托普利|依那普利|氯沙坦/.test(d.generic_name||''));
+    const hasHypertensionDx = /高血压|冠心病|心绞痛|TIA|短暂性脑缺血/.test(dxName);
+    if (hasAntihypertensive && !hasHypertensionDx) {
+      hits.push(hit(R['YN-02'], 'error',
+        `开具了降压/心血管药物，但诊断「${disease.name}」不在高血压/冠心病适应症范围内，医保基金不予支付。`,
+        `核对诊断与用药适应症，如为合并症需补充对应诊断。`));
+    }
+    // 降糖药 vs 无糖尿病诊断
+    const hasAntidiabetic = allDrugs.some(d => /二甲双胍|格列美脲|格列齐特|胰岛素|阿卡波糖|西格列汀/.test(d.generic_name||''));
+    const hasDiabetesDx = /糖尿病/.test(dxName);
+    if (hasAntidiabetic && !hasDiabetesDx) {
+      hits.push(hit(R['YN-02'], 'error',
+        `开具了降糖药物，但诊断「${disease.name}」不在糖尿病适应症范围内，医保基金不予支付。`,
+        `核对诊断与用药适应症，如为糖尿病需补充对应诊断。`));
+    }
+
     return hits;
   }
 

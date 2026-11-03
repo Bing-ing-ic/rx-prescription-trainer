@@ -514,7 +514,7 @@
       div.dataset.kbIndex = i;
       div.innerHTML = `
         <div>
-          <b>${d.generic_name}</b> <span class="meta">${d.spec} · ¥${(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
+          <b>${d.generic_name}</b> <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
           <div class="mfr" style="font-size:11px;color:#94a3b8">🏭 ${d.manufacturer||'国产'}</div>
           ${abxChip(d.abx_level)}
           ${controlledChip(d)}
@@ -989,7 +989,7 @@
       const div = document.createElement('div');
       div.className = 'drug-item' + (disabled?' disabled':'') + (i === S.kbIvSel ? ' kb-highlight' : '');
       div.dataset.kbIndex = i;
-      div.innerHTML = `<div><b>${d.generic_name}</b> <span class="meta">${d.spec} · ¥${(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
+      div.innerHTML = `<div><b>${d.generic_name}</b> <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
         <div class="mfr" style="font-size:11px;color:#94a3b8">🏭 ${d.manufacturer||'国产'}</div>
         ${isSolvent ? '<span class="chip" style="background:#7f8c8d;color:#fff">溶媒</span>' : ''}
         ${abxChip(d.abx_level)}

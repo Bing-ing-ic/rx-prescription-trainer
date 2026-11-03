@@ -228,7 +228,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "国产制药企业"
     },
     {
@@ -263,7 +263,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "国产制药企业"
     },
     {
@@ -293,7 +293,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "国产制药企业"
     },
     {
@@ -323,7 +323,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "国产制药企业"
     },
     {
@@ -388,7 +388,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "西安安健药业"
     },
     {
@@ -586,7 +586,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "上海信谊药厂"
     },
     {
@@ -616,7 +616,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "国产制药企业"
     },
     {
@@ -642,7 +642,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "国产制药企业"
     },
     {
@@ -673,7 +673,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "国产制药企业"
     },
     {
@@ -705,7 +705,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "国产制药企业"
     },
     {
@@ -777,7 +777,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 8.0,
+      "price_yuan": 8,
       "manufacturer": "杭州中美华东"
     },
     {
@@ -814,7 +814,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 15.0,
+      "price_yuan": 15,
       "manufacturer": "扬子江药业"
     },
     {
@@ -849,7 +849,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 1.0,
+      "price_yuan": 1,
       "manufacturer": "郑州卓峰制药"
     },
     {
@@ -922,7 +922,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 1.0,
+      "price_yuan": 1,
       "manufacturer": "天津药业集团"
     },
     {
@@ -959,7 +959,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": true,
-      "price_yuan": 6.0,
+      "price_yuan": 6,
       "manufacturer": "广州白云山明兴"
     },
     {
@@ -996,7 +996,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 80.0,
+      "price_yuan": 80,
       "manufacturer": "日本礼来"
     },
     {
@@ -1021,7 +1021,7 @@
       "is_solvent": true,
       "is_tcm_injection": false,
       "volume_ml": 100,
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "四川科伦药业"
     },
     {
@@ -1046,7 +1046,7 @@
       "is_solvent": true,
       "is_tcm_injection": false,
       "volume_ml": 250,
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "四川科伦药业"
     },
     {
@@ -1096,7 +1096,7 @@
       "is_solvent": true,
       "is_tcm_injection": false,
       "volume_ml": 250,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "国产制药企业"
     },
     {
@@ -1184,7 +1184,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 4.0,
+      "price_yuan": 4,
       "manufacturer": "第一三共制药"
     },
     {
@@ -1246,7 +1246,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 8.0,
+      "price_yuan": 8,
       "manufacturer": "辉瑞制药"
     },
     {
@@ -1276,7 +1276,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "雅培制药"
     },
     {
@@ -1340,7 +1340,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "罗氏制药"
     },
     {
@@ -1374,7 +1374,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 35.0,
+      "price_yuan": 35,
       "manufacturer": "惠氏制药"
     },
     {
@@ -1408,7 +1408,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 25.0,
+      "price_yuan": 25,
       "manufacturer": "辉瑞制药"
     },
     {
@@ -1442,7 +1442,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "上海医药集团"
     },
     {
@@ -1474,7 +1474,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 4.0,
+      "price_yuan": 4,
       "manufacturer": "四川科伦药业"
     },
     {
@@ -1602,7 +1602,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "诺华制药"
     },
     {
@@ -1698,7 +1698,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "阿斯利康"
     },
     {
@@ -1763,7 +1763,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 12.0,
+      "price_yuan": 12,
       "manufacturer": "赛诺菲制药"
     },
     {
@@ -1823,7 +1823,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "天津武田药品"
     },
     {
@@ -1883,7 +1883,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 8.0,
+      "price_yuan": 8,
       "manufacturer": "荷兰苏威制药"
     },
     {
@@ -1913,7 +1913,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 1.0,
+      "price_yuan": 1,
       "manufacturer": "山西三晋药业"
     },
     {
@@ -1943,7 +1943,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "上海勃林格殷格翰"
     },
     {
@@ -2005,7 +2005,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 6.0,
+      "price_yuan": 6,
       "manufacturer": "默沙东制药"
     },
     {
@@ -2067,7 +2067,7 @@
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "拜耳医药"
     },
     {
@@ -2100,7 +2100,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 70.0,
+      "price_yuan": 70,
       "manufacturer": "赛诺菲制药"
     },
     {
@@ -2164,7 +2164,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 4.0,
+      "price_yuan": 4,
       "manufacturer": "阿斯利康"
     },
     {
@@ -2199,7 +2199,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": true,
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "四川升和药业"
     },
     {
@@ -2233,7 +2233,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": true,
-      "price_yuan": 25.0,
+      "price_yuan": 25,
       "manufacturer": "广西梧州制药"
     },
     {
@@ -2268,7 +2268,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": true,
-      "price_yuan": 15.0,
+      "price_yuan": 15,
       "manufacturer": "四川雅安三九"
     },
     {
@@ -2302,7 +2302,7 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "天津药业集团"
     },
     {
@@ -2335,7 +2335,7 @@
       "pinyin_code": "XDBPHSP",
       "spec": "20mg×30片/盒",
       "dosage_form": "oral",
-      "price_yuan": 15.0,
+      "price_yuan": 15,
       "manufacturer": "扬子江药业",
       "medical_insurance_class": "乙",
       "essential_medicine": true,
@@ -2353,7 +2353,7 @@
       "pinyin_code": "MTLEHSP",
       "spec": "47.5mg×7片/盒",
       "dosage_form": "oral",
-      "price_yuan": 22.0,
+      "price_yuan": 22,
       "manufacturer": "阿斯利康",
       "medical_insurance_class": "乙",
       "essential_medicine": true,
@@ -2371,7 +2371,7 @@
       "pinyin_code": "XSTALDP",
       "spec": "80mg/5mg×7片/盒",
       "dosage_form": "oral",
-      "price_yuan": 45.0,
+      "price_yuan": 45,
       "manufacturer": "诺华制药",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2389,7 +2389,7 @@
       "pinyin_code": "FBSTP",
       "spec": "40mg×10片/盒",
       "dosage_form": "oral",
-      "price_yuan": 35.0,
+      "price_yuan": 35,
       "manufacturer": "江苏恒瑞",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2407,7 +2407,7 @@
       "pinyin_code": "BXMLP",
       "spec": "50mg×10片/盒",
       "dosage_form": "oral",
-      "price_yuan": 18.0,
+      "price_yuan": 18,
       "manufacturer": "杭州民生药业",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2425,7 +2425,7 @@
       "pinyin_code": "BPT",
       "spec": "0.1g×100片/瓶",
       "dosage_form": "oral",
-      "price_yuan": 12.0,
+      "price_yuan": 12,
       "manufacturer": "广东康奇力",
       "medical_insurance_class": "甲",
       "essential_medicine": true,
@@ -2443,7 +2443,7 @@
       "pinyin_code": "LBLZAC",
       "spec": "10mg×14片/盒",
       "dosage_form": "oral",
-      "price_yuan": 28.0,
+      "price_yuan": 28,
       "manufacturer": "江苏豪森药业",
       "medical_insurance_class": "乙",
       "essential_medicine": true,
@@ -2461,7 +2461,7 @@
       "pinyin_code": "LTSMJJ",
       "spec": "0.5g×20片/盒",
       "dosage_form": "oral",
-      "price_yuan": 20.0,
+      "price_yuan": 20,
       "manufacturer": "杭州民生药业",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2479,7 +2479,7 @@
       "pinyin_code": "MSBLP",
       "spec": "5mg×24片/盒",
       "dosage_form": "oral",
-      "price_yuan": 16.0,
+      "price_yuan": 16,
       "manufacturer": "鲁南贝特制药",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2497,7 +2497,7 @@
       "pinyin_code": "GLQTHSP",
       "spec": "30mg×30片/盒",
       "dosage_form": "oral",
-      "price_yuan": 25.0,
+      "price_yuan": 25,
       "manufacturer": "施维雅制药",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2515,7 +2515,7 @@
       "pinyin_code": "LLTDP",
       "spec": "10mg×6片/盒",
       "dosage_form": "oral",
-      "price_yuan": 12.0,
+      "price_yuan": 12,
       "manufacturer": "拜耳医药",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2533,7 +2533,7 @@
       "pinyin_code": "XTLQ",
       "spec": "10mg×10片/盒",
       "dosage_form": "oral",
-      "price_yuan": 8.0,
+      "price_yuan": 8,
       "manufacturer": "UCB制药",
       "medical_insurance_class": "甲",
       "essential_medicine": true,
@@ -2551,7 +2551,7 @@
       "pinyin_code": "FFGCP",
       "spec": "100片/瓶",
       "dosage_form": "oral",
-      "price_yuan": 10.0,
+      "price_yuan": 10,
       "manufacturer": "云南白药集团",
       "medical_insurance_class": "甲",
       "essential_medicine": true,
@@ -2569,7 +2569,7 @@
       "pinyin_code": "FLKHJ",
       "spec": "100ml/瓶",
       "dosage_form": "oral",
-      "price_yuan": 18.0,
+      "price_yuan": 18,
       "manufacturer": "贵州健兴药业",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2587,7 +2587,7 @@
       "pinyin_code": "TBKWN",
       "spec": "100mg×6粒/盒",
       "dosage_form": "oral",
-      "price_yuan": 22.0,
+      "price_yuan": 22,
       "manufacturer": "广州白云山制药",
       "medical_insurance_class": "乙",
       "essential_medicine": true,
@@ -2605,7 +2605,7 @@
       "pinyin_code": "LMSADSC",
       "spec": "3g×1袋/盒",
       "dosage_form": "oral",
-      "price_yuan": 45.0,
+      "price_yuan": 45,
       "manufacturer": "东北制药",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2623,7 +2623,7 @@
       "pinyin_code": "ZSYTBTD",
       "spec": "1g/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 12.0,
+      "price_yuan": 12,
       "manufacturer": "葛兰素史克",
       "medical_insurance_class": "乙",
       "essential_medicine": true,
@@ -2641,7 +2641,7 @@
       "pinyin_code": "ZSYMLPN",
       "spec": "0.5g/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 85.0,
+      "price_yuan": 85,
       "manufacturer": "日本住友制药",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2659,7 +2659,7 @@
       "pinyin_code": "ZSYQMS",
       "spec": "0.25g/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 28.0,
+      "price_yuan": 28,
       "manufacturer": "辉瑞制药",
       "medical_insurance_class": "乙",
       "essential_medicine": true,
@@ -2677,7 +2677,7 @@
       "pinyin_code": "ZSYKLMS",
       "spec": "0.6g/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 15.0,
+      "price_yuan": 15,
       "manufacturer": "海口康力元",
       "medical_insurance_class": "乙",
       "essential_medicine": true,
@@ -2713,7 +2713,7 @@
       "pinyin_code": "GYZSY",
       "spec": "0.1g/2ml/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "上海浦津林州",
       "medical_insurance_class": "甲",
       "essential_medicine": false,
@@ -2731,7 +2731,7 @@
       "pinyin_code": "JYLANZ",
       "spec": "10mg/1ml/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "天津药业集团",
       "medical_insurance_class": "甲",
       "essential_medicine": true,
@@ -2785,7 +2785,7 @@
       "pinyin_code": "DBAZSY",
       "spec": "20mg/2ml/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "广州白云山明兴",
       "medical_insurance_class": "甲",
       "essential_medicine": true,
@@ -2803,7 +2803,7 @@
       "pinyin_code": "GLCZSY",
       "spec": "250ml/瓶",
       "dosage_form": "solvent",
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "四川科伦药业",
       "medical_insurance_class": "甲",
       "essential_medicine": true,
@@ -2821,7 +2821,7 @@
       "pinyin_code": "XBJZSY",
       "spec": "10ml/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 35.0,
+      "price_yuan": 35,
       "manufacturer": "天津红日药业",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2840,7 +2840,7 @@
       "pinyin_code": "TRQZSY",
       "spec": "10ml/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 28.0,
+      "price_yuan": 28,
       "manufacturer": "上海凯宝药业",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2859,7 +2859,7 @@
       "pinyin_code": "SMZSY",
       "spec": "20ml/支",
       "dosage_form": "iv_drip",
-      "price_yuan": 18.0,
+      "price_yuan": 18,
       "manufacturer": "四川雅安三九",
       "medical_insurance_class": "甲",
       "essential_medicine": false,
@@ -2878,7 +2878,7 @@
       "pinyin_code": "SLFSNHSP",
       "spec": "75mg×10片/盒",
       "dosage_form": "oral",
-      "price_yuan": 15.0,
+      "price_yuan": 15,
       "manufacturer": "北京诺华制药",
       "medical_insurance_class": "乙",
       "essential_medicine": true,
@@ -2896,7 +2896,7 @@
       "pinyin_code": "SLXBN",
       "spec": "0.2g×6粒/盒",
       "dosage_form": "oral",
-      "price_yuan": 32.0,
+      "price_yuan": 32,
       "manufacturer": "辉瑞制药",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -2956,7 +2956,7 @@
       "otc_class": "处方药",
       "abx_level": "none",
       "pharmacology_class": "电解质",
-      "price_yuan": 1.0,
+      "price_yuan": 1,
       "manufacturer": "天津药业",
       "dose_range_json": {
         "single_min_mg": 1000,
@@ -2988,7 +2988,7 @@
       "otc_class": "处方药",
       "abx_level": "none",
       "pharmacology_class": "中成药",
-      "price_yuan": 8.0,
+      "price_yuan": 8,
       "manufacturer": "北京同仁堂",
       "dose_range_json": {
         "single_min_mg": 20,
@@ -3058,7 +3058,7 @@
       "otc_class": "处方药",
       "abx_level": "none",
       "pharmacology_class": "中成药",
-      "price_yuan": 5.0,
+      "price_yuan": 5,
       "manufacturer": "上海和黄",
       "dose_range_json": {
         "single_min_mg": 20,
@@ -3126,7 +3126,7 @@
       "otc_class": "处方药",
       "abx_level": "none",
       "pharmacology_class": "溶媒",
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "四川科伦",
       "dose_range_json": {
         "single_min_mg": 500,
@@ -3156,7 +3156,7 @@
       "otc_class": "处方药",
       "abx_level": "none",
       "pharmacology_class": "溶媒",
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "四川科伦",
       "dose_range_json": {
         "single_min_mg": 500,
@@ -3278,7 +3278,7 @@
       "otc_class": "处方药",
       "abx_level": "none",
       "pharmacology_class": "他汀类",
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "辉瑞",
       "dose_range_json": {
         "single_min_mg": 10,
@@ -3367,7 +3367,7 @@
       "otc_class": "处方药",
       "abx_level": "none",
       "pharmacology_class": "PPI",
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "卫材",
       "dose_range_json": {
         "single_min_mg": 10,
@@ -3396,7 +3396,7 @@
       "otc_class": "OTC甲类",
       "abx_level": "none",
       "pharmacology_class": "抗酸药",
-      "price_yuan": 1.0,
+      "price_yuan": 1,
       "manufacturer": "拜耳",
       "dose_range_json": {
         "single_min_mg": 500,
@@ -3485,7 +3485,7 @@
       "otc_class": "OTC甲类",
       "abx_level": "none",
       "pharmacology_class": "电解质补充",
-      "price_yuan": 3.0,
+      "price_yuan": 3,
       "manufacturer": "西安康拜尔",
       "dose_range_json": {
         "single_min_mg": 5125,
@@ -3576,7 +3576,7 @@
       "otc_class": "OTC甲类",
       "abx_level": "none",
       "pharmacology_class": "抗组胺",
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "拜耳",
       "dose_range_json": {
         "single_min_mg": 10,
@@ -3605,7 +3605,7 @@
       "otc_class": "OTC甲类",
       "abx_level": "none",
       "pharmacology_class": "抗组胺",
-      "price_yuan": 1.0,
+      "price_yuan": 1,
       "manufacturer": "优时比",
       "dose_range_json": {
         "single_min_mg": 10,
@@ -3723,7 +3723,7 @@
       "otc_class": "OTC甲类",
       "abx_level": "none",
       "pharmacology_class": "中成药",
-      "price_yuan": 2.0,
+      "price_yuan": 2,
       "manufacturer": "太极集团",
       "dose_range_json": {
         "single_min_mg": 10,
@@ -3847,7 +3847,7 @@
       "otc_class": "处方药",
       "abx_level": "restricted",
       "pharmacology_class": "三代头孢",
-      "price_yuan": 6.0,
+      "price_yuan": 6,
       "manufacturer": "葛兰素史克",
       "dose_range_json": {
         "single_min_mg": 1000,
@@ -3913,7 +3913,7 @@
       "otc_class": "处方药",
       "abx_level": "non_restricted",
       "pharmacology_class": "青霉素+酶抑制剂",
-      "price_yuan": 8.0,
+      "price_yuan": 8,
       "manufacturer": "葛兰素史克",
       "dose_range_json": {
         "single_min_mg": 1200,
@@ -5337,7 +5337,7 @@
       "otc_class": "OTC甲类",
       "abx_level": "non_restricted",
       "pharmacology_class": "外用抗菌",
-      "price_yuan": "15",
+      "price_yuan": 15,
       "manufacturer": "中美史克",
       "dose_range_json": {
         "single_min_mg": 0,

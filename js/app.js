@@ -558,8 +558,10 @@
   }
 
   function addNormalItem(drug) {
-    // 硬阻断 ≤5
-    if (S.normalItems.length >= 5) return alert('每张处方≤5种药品！');
+    // 超过5种：提示但允许确认继续
+    if (S.normalItems.length >= 5) {
+      if (!confirm(`⚠️ 每张处方一般不超过5种药品（当前已 ${S.normalItems.length} 种）。\n\n《处方管理办法》规定每张处方≤5种，如确需多药联用请确认继续添加。`)) return;
+    }
     // special 级门诊拦截
     if (drug.abx_level === 'special') {
       $('modal-block-text').textContent =
@@ -828,12 +830,15 @@
   function updateCount() {
     const n = S.normalItems.length;
     const el = $('drug-count');
-    el.textContent = `已用 ${n}/5 种`;
-    el.classList.toggle('full', n>=5);
+    el.textContent = `已用 ${n} 种` + (n>5 ? '（超5种）' : '');
+    el.classList.toggle('full', n>5);
     // 输液：所有组的溶媒 + 药总数
     const ivn = S.ivGroups.reduce((sum, g) => sum + (g.solvent?1:0) + g.drugs.length, 0);
     const ivEl = $('iv-drug-count');
-    if (ivEl) { ivEl.textContent = `已用 ${ivn}/5 种（${S.ivGroups.length} 组）`; ivEl.classList.toggle('full', ivn>=5); }
+    if (ivEl) {
+      ivEl.textContent = `已用 ${ivn} 种（${S.ivGroups.length} 组）` + (ivn>5 ? '（超5种）' : '');
+      ivEl.classList.toggle('full', ivn>5);
+    }
     updateAmount();
   }
 
@@ -1028,7 +1033,9 @@
       return alert('请先在药品列表里选一个溶媒（NS/GS等）！');
     }
     const totalItems = S.ivGroups.reduce((n, gr) => n + (gr.solvent?1:0) + gr.drugs.length, 0);
-    if (totalItems >= 5) return alert('每张处方≤5种药品（含溶媒）！');
+    if (totalItems >= 5) {
+      if (!confirm(`⚠️ 每张处方一般不超过5种药品（含溶媒，当前已 ${totalItems} 种）。\n\n《处方管理办法》规定每张处方≤5种，如确需多药联用请确认继续添加。`)) return;
+    }
     if (drug.abx_level === 'special') {
       $('modal-block-text').textContent =
         `「${drug.generic_name}」为特殊使用级抗菌药（special）。\n\n依据：《抗菌药物临床应用分级管理目录（2024版）》——特殊使用级抗菌药不得在门诊使用。本处方应删除。`;

@@ -74,7 +74,7 @@
     kw = (kw || '').toLowerCase().trim();
     if (!kw) return true;
     if (d.generic_name.toLowerCase().indexOf(kw) >= 0) return true;
-    const py = DRUG_PINYIN[d.generic_name] || '';
+    const py = DRUG_PINYIN[d.generic_name] || d.pinyin || '';
     if (py.indexOf(kw) >= 0) return true;
     return false;
   }
@@ -280,7 +280,27 @@
     '阑尾炎切除术后': 'lwyqcssh',
     '阑尾切除术后': 'lwqcssh',
     '腹股沟疝修补术后': 'fggssxsh',
-    '腹股沟疝': 'fggs'
+    '腹股沟疝': 'fggs',
+    '急性阑尾炎': 'jx lwy',
+    '阑尾炎': 'lwy',
+    '细菌性痢疾': 'xljlj',
+    '痢疾': 'lj',
+    '支气管哮喘': 'zqxc',
+    '哮喘': 'xc',
+    '偏头痛': 'ptt',
+    '缺铁性贫血': 'qtxpx',
+    '贫血': 'px',
+    '急性膀胱炎': 'jxpgy',
+    '膀胱炎': 'pgy',
+    '胃黏膜病变': 'wnmbb',
+    '胃出血': 'wcx',
+    '荨麻疹': 'qmz',
+    '糖尿病伴酮症': 'tnbtbz',
+    '酮症': 'tz',
+    '踝关节扭伤': 'ghjns',
+    '扭伤': 'ns',
+    '急性胰腺炎': 'jxyxxy',
+    '胰腺炎': 'yxxy',
   };
   function matchDisease(name, kw) {
     if (!kw || !name) return false;

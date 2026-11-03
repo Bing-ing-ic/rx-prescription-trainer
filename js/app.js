@@ -433,6 +433,7 @@
 
   // ---------- 打开处方笺 ----------
   function openRx(type) {
+    alert('openRx called: ' + type);
     S.rxType = type;
     // 前记
     $('p-name').textContent = S.patient.name;

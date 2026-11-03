@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.css?v=20261102bp">
+<link rel="stylesheet" href="css/rx.css?v=20261102ca">
 </head>
 <body>
 
@@ -239,6 +239,32 @@
         <h2 id="r-grade">优秀</h2>
         <p class="muted" id="r-meta"></p>
       </div>
+      <div class="patient-avatar" id="patient-avatar">
+        <svg viewBox="0 0 100 120" width="80" height="96">
+          <!-- 头发 -->
+          <ellipse cx="50" cy="30" rx="28" ry="22" fill="#5c3d2e"/>
+          <!-- 脸 -->
+          <ellipse cx="50" cy="38" rx="20" ry="18" fill="#ffd9b3"/>
+          <!-- 眼睛 -->
+          <circle cx="43" cy="36" r="2.5" fill="#333"/>
+          <circle cx="57" cy="36" r="2.5" fill="#333"/>
+          <!-- 腮红 -->
+          <circle cx="40" cy="43" r="3" fill="#ffb3b3" opacity="0.6"/>
+          <circle cx="60" cy="43" r="3" fill="#ffb3b3" opacity="0.6"/>
+          <!-- 嘴巴（根据表情变化） -->
+          <path id="avatar-mouth" d="M44 46 Q50 52 56 46" stroke="#c0392b" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- 身体 -->
+          <path d="M25 120 Q25 70 50 65 Q75 70 75 120 Z" fill="#e8f4fd"/>
+          <!-- 白大褂 -->
+          <path d="M25 120 Q25 75 50 68 L50 120 Z" fill="#fff" opacity="0.9"/>
+          <path d="M75 120 Q75 75 50 68 L50 120 Z" fill="#fff" opacity="0.9"/>
+        </svg>
+        <div class="vitals-panel">
+          <div class="vital-row"><span>心率</span><b id="vital-hr">--</b></div>
+          <div class="vital-row"><span>体温</span><b id="vital-temp">--</b></div>
+          <div class="vital-row"><span>血压</span><b id="vital-bp">--</b></div>
+        </div>
+      </div>
     </div>
 
     <div class="report-body">
@@ -317,8 +343,8 @@
   本系统为教学训练平台，所有患者均为合成假名；所有处方不得用于真实诊疗。
 </footer>
 
-<script src="js/rule-engine.js?v=20261102bz2"></script>
-<script src="js/review.js?v=20261102bx"></script>
-<script src="js/app.js?v=20261102bx"></script>
+<script src="js/rule-engine.js?v=20261102ca"></script>
+<script src="js/review.js?v=20261102ca"></script>
+<script src="js/app.js?v=20261102ca"></script>
 </body>
 </html>

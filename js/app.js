@@ -1219,6 +1219,32 @@
     $('r-meta').textContent =
       `诊断：${ctx.disease.name}（${ctx.disease.icd10}） · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁`;
 
+    // 卡通患者生命体征（根据评分动态变化）
+    const errCount = hits.filter(h=>h.severity==='error').length;
+    const warnCount = hits.filter(h=>h.severity==='warn').length;
+    const score = review.total;
+    // 心率：基础75，错误越多越快
+    const hr = Math.round(75 + errCount * 4 + warnCount * 1.5);
+    // 体温：基础36.8，错误越多越高
+    const temp = (36.8 + errCount * 0.15 + warnCount * 0.05).toFixed(1);
+    // 血压：基础110/70，错误越多越高
+    const sbp = Math.round(110 + errCount * 3 + warnCount);
+    const dbp = Math.round(70 + errCount * 1.5);
+    $('vital-hr').textContent = hr + ' bpm';
+    $('vital-temp').textContent = temp + ' ℃';
+    $('vital-bp').textContent = sbp + '/' + dbp + ' mmHg';
+    // 表情：>=80开心，60-79一般，<60难受
+    const mouth = $('avatar-mouth');
+    if (mouth) {
+      if (score >= 80) {
+        mouth.setAttribute('d', 'M42 46 Q50 54 58 46'); // 微笑
+      } else if (score >= 60) {
+        mouth.setAttribute('d', 'M44 48 L56 48'); // 平嘴
+      } else {
+        mouth.setAttribute('d', 'M44 52 Q50 46 56 52'); // 难过
+      }
+    }
+
     // 维度卡片
     const grid = $('dim-grid');
     grid.innerHTML = '';

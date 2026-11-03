@@ -400,6 +400,17 @@ input, select, textarea { font-family: inherit; }
 
 .report-actions { text-align: center; margin: 28px 0; }
 
+/* 卡通患者形象 + 生命体征 */
+.patient-avatar {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.1); border-radius: 16px; padding: 12px 16px;
+  backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.15);
+}
+.vitals-panel { width: 100%; font-size: 11px; color: rgba(255,255,255,.9); }
+.vital-row { display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px dashed rgba(255,255,255,.1); }
+.vital-row:last-child { border-bottom: none; }
+.vital-row b { color: #7dd3fc; font-weight: 700; }
+
 /* ========== 雷达 ========== */
 .radar-wrap {
   display: flex; gap: 24px; align-items: center;

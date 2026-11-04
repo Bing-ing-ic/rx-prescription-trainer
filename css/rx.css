@@ -1052,7 +1052,8 @@ input, select, textarea { font-family: inherit; }
 /* 中医老中医 hero 形象 */
 .tcm-hero-nurse { right: 24px; }
 .tcm-hero-nurse img {
-  filter: drop-shadow(0 12px 20px rgba(139,90,43,.35)) drop-shadow(0 2px 5px rgba(60,30,10,.25));
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 12px 20px rgba(60,30,10,.35));
 }
 .hero-btn-ghost {
   background: rgba(255,255,255,.18) !important; color: #fff8e7 !important;
@@ -1154,7 +1155,8 @@ input, select, textarea { font-family: inherit; }
 .acup-map-btn:hover { background: rgba(255,255,255,.28); }
 .acup-hero-nurse { right: 24px; }
 .acup-hero-nurse img {
-  filter: drop-shadow(0 12px 20px rgba(47,122,79,.35)) drop-shadow(0 2px 5px rgba(0,30,15,.25));
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 12px 20px rgba(0,30,15,.35));
 }
 
 /* 经络穴位图浏览页 */
@@ -1250,7 +1252,8 @@ input, select, textarea { font-family: inherit; }
 }
 .anat-hero-nurse img {
   height: 100%; width: auto; object-fit: contain; object-position: bottom right;
-  filter: drop-shadow(0 10px 18px rgba(15,76,129,.35)) drop-shadow(0 2px 4px rgba(15,76,129,.2));
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 10px 18px rgba(15,76,129,.35));
 }
 
 /* ============ 解剖图谱视图 ============ */

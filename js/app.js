@@ -1070,23 +1070,26 @@
       });
     });
     total = Math.round(total * 100) / 100;
-    // 医保：甲类 100% 报销，乙类 80%，丙类 0%（简化）
+    // 玉溪市城乡居民医保门诊报销标准：
+    // 政策范围内费用 = 甲类100% + 乙类80%
+    // 基层医疗机构报销比例：50%
+    // 年度最高支付限额：300元
     // 自费患者不享受医保统筹
     const isSelfPay = S.patient && S.patient.feeType === '自费';
-    let miPay = 0;
+    let policyRange = 0;  // 政策范围内费用
     if (!isSelfPay) {
     S.normalItems.forEach(it => {
       const price = Number(it.drug.price_yuan) || 0;
       const qty = Number(it.quantity) || 1;
       const sub = price * qty;
-      if (it.drug.medical_insurance_class === '甲') miPay += sub;
-      else if (it.drug.medical_insurance_class === '乙') miPay += sub * 0.8;
+      if (it.drug.medical_insurance_class === '甲') policyRange += sub;
+      else if (it.drug.medical_insurance_class === '乙') policyRange += sub * 0.8;
     });
     S.ivGroups.forEach(g => {
       if (g.solvent) {
         const sub = Number(g.solvent.price_yuan) || 0;
-        if (g.solvent.medical_insurance_class === '甲') miPay += sub;
-        else if (g.solvent.medical_insurance_class === '乙') miPay += sub * 0.8;
+        if (g.solvent.medical_insurance_class === '甲') policyRange += sub;
+        else if (g.solvent.medical_insurance_class === '乙') policyRange += sub * 0.8;
       }
       g.drugs.forEach(it => {
         const price = Number(it.drug.price_yuan) || 0;
@@ -1094,12 +1097,15 @@
         const freqPerDay = ({'qd':1,'bid':2,'tid':3,'qid':4,'q8h':3,'q12h':2,'qn':1,'st':1,'prn':1})[it.frequency] || 1;
         const qty = parseQty(it);
         const sub = price * qty * freqPerDay * days;
-        if (it.drug.medical_insurance_class === '甲') miPay += sub;
-        else if (it.drug.medical_insurance_class === '乙') miPay += sub * 0.8;
+        if (it.drug.medical_insurance_class === '甲') policyRange += sub;
+        else if (it.drug.medical_insurance_class === '乙') policyRange += sub * 0.8;
       });
     });
     }
-    miPay = Math.round(miPay * 100) / 100;
+    policyRange = Math.round(policyRange * 100) / 100;
+    // 玉溪市城乡居民医保门诊报销：基层医疗机构报销50%
+    const REIMBURSE_RATE = 0.5;  // 基层医疗机构报销比例50%
+    const miPay = Math.round(policyRange * REIMBURSE_RATE * 100) / 100;
     const selfPay = Math.max(0, Math.round((total - miPay) * 100) / 100);
     $('f-amount').textContent = total.toFixed(2);
     $('f-ins').textContent = miPay.toFixed(2);

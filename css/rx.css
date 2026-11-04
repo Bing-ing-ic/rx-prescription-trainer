@@ -1223,6 +1223,17 @@ input, select, textarea { font-family: inherit; }
 .acc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; font-size: 14px; }
 .acc-meta { font-size: 12px; }
 
+/* 临床案例详情卡片（openCase 动态生成） */
+.case-card {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+  padding: 18px; box-shadow: 0 2px 10px rgba(15,76,129,.06);
+}
+.case-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.case-title { font-size: 17px; font-weight: 700; color: #1e293b; }
+.case-meta { font-size: 12px; margin-bottom: 10px; }
+.case-body { font-size: 14px; line-height: 1.9; color: #334155; margin-bottom: 14px; }
+.case-body p { margin: 6px 0; }
+
 /* 模块统计与错题 badge 的蓝色变体 */
 .module-stat-card.msc-anat .msc-num { color: #0f4c81; }
 .module-badge.mb-anat { background: #dbeafe; color: #0f4c81; }
@@ -1230,4 +1241,19 @@ input, select, textarea { font-family: inherit; }
 @media print {
   .anat-filter-row, .anat-home-btns, .anat-system-card, .anat-struct-item,
   .anat-quiz-option, .anat-match-item, .anat-case-card, #anat-btn-show-answer { display: none !important; }
+}
+
+/* 解剖学模块移动端适配 */
+@media (max-width: 700px) {
+  .anat-system-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .anat-system-card { padding: 14px 10px; }
+  .asc-icon { font-size: 28px; }
+  .anat-match-wrap { grid-template-columns: 1fr; gap: 8px; }
+  .anat-filter-row { flex-direction: column; }
+  .anat-filter-row input[type="text"], .anat-filter-row select { width: 100%; }
+  .anat-struct-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .anat-home-btns { flex-direction: column; align-items: stretch; }
+  .anat-home-btns .hero-btn { width: 100%; }
+  .aq-selfeval { flex-direction: column; align-items: stretch; }
+  .case-card { padding: 14px; }
 }

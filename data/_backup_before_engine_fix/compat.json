@@ -1,0 +1,39 @@
+{
+  "version": "2026.11",
+  "note": "两层配伍：solvent_drug 为溶媒-药物；drug_drug 为同一输液瓶内两药。compatibility: incompatible / caution / compatible。",
+  "solvent_drug": [
+    {"solvent": "0.9%氯化钠注射液 100ml", "drug": "注射用头孢呋辛钠", "compatibility": "compatible", "note": "说明书指定溶媒"},
+    {"solvent": "0.9%氯化钠注射液 250ml", "drug": "注射用头孢呋辛钠", "compatibility": "compatible", "note": "说明书指定溶媒"},
+    {"solvent": "5%葡萄糖注射液 250ml", "drug": "注射用头孢呋辛钠", "compatibility": "incompatible", "note": "头孢呋辛钠在5%GS中不稳定，效价下降，禁用"},
+    {"solvent": "葡萄糖氯化钠注射液 250ml", "drug": "注射用头孢呋辛钠", "compatibility": "incompatible", "note": "含糖溶媒不稳定"},
+
+    {"solvent": "0.9%氯化钠注射液 100ml", "drug": "注射用泮托拉唑钠", "compatibility": "compatible", "note": "说明书指定，配制后2小时内使用"},
+    {"solvent": "5%葡萄糖注射液 250ml", "drug": "注射用泮托拉唑钠", "compatibility": "incompatible", "note": "泮托拉唑pH需11以上，GS中降解"},
+    {"solvent": "0.9%氯化钠注射液 250ml", "drug": "注射用泮托拉唑钠", "compatibility": "caution", "note": "浓度偏低，非首选，建议100ml"},
+
+    {"solvent": "0.9%氯化钠注射液 100ml", "drug": "盐酸左氧氟沙星注射液", "compatibility": "compatible", "note": "原厂家配伍，单独输注"},
+
+    {"solvent": "0.9%氯化钠注射液 250ml", "drug": "氯化钾注射液", "compatibility": "compatible", "note": "常规配伍，浓度≤0.3%"},
+    {"solvent": "5%葡萄糖注射液 250ml", "drug": "氯化钾注射液", "compatibility": "compatible", "note": "常规配伍"},
+
+    {"solvent": "5%葡萄糖注射液 250ml", "drug": "维生素C注射液", "compatibility": "compatible", "note": "常规配伍"},
+    {"solvent": "0.9%氯化钠注射液 250ml", "drug": "维生素C注射液", "compatibility": "caution", "note": "NS偏碱，VC可能部分氧化，建议GS"},
+
+    {"solvent": "0.9%氯化钠注射液 100ml", "drug": "注射用盐酸万古霉素", "compatibility": "compatible", "note": "常规配伍，滴注≥60分钟"},
+
+    {"solvent": "5%葡萄糖注射液 250ml", "drug": "地塞米松磷酸钠注射液", "compatibility": "compatible", "note": "可"},
+    {"solvent": "0.9%氯化钠注射液 100ml", "drug": "地塞米松磷酸钠注射液", "compatibility": "compatible", "note": "可"}
+  ],
+  "drug_drug": [
+    {"drug_a": "注射用头孢呋辛钠", "drug_b": "维生素C注射液", "compatibility": "incompatible", "note": "VC还原性可使头孢降解，严禁同瓶"},
+    {"drug_a": "注射用头孢呋辛钠", "drug_b": "盐酸左氧氟沙星注射液", "compatibility": "incompatible", "note": "同瓶沉淀/效价降低，分开输注"},
+    {"drug_a": "注射用泮托拉唑钠", "drug_b": "维生素C注射液", "compatibility": "incompatible", "note": "pH不相容，浑浊"},
+    {"drug_a": "注射用泮托拉唑钠", "drug_b": "地塞米松磷酸钠注射液", "compatibility": "caution", "note": "建议分开"},
+    {"drug_a": "盐酸左氧氟沙星注射液", "drug_b": "氯化钾注射液", "compatibility": "caution", "note": "均可能延长QT，分开输注并监测"},
+    {"drug_a": "维生素C注射液", "drug_b": "氯化钾注射液", "compatibility": "compatible", "note": "补液常用组合"}
+  ],
+  "tcm_injection_rules": [
+    {"drug": "清开灵注射液", "compatibility": "incompatible_with_any_other", "note": "【国家药监局通报】中药注射剂严禁与其他药物混合配伍，必须单独输注；首次使用缓慢滴注并密切观察30分钟；新生儿、婴幼儿禁用。"},
+    {"drug": "清开灵注射液", "solvent_required": "10%葡萄糖注射液 250ml", "note": "说明书指定溶媒为10%GS，NS/5%GS均非首选"}
+  ]
+}

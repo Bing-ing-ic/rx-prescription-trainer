@@ -961,3 +961,136 @@ input, select, textarea { font-family: inherit; }
   .stat-card { padding: 14px 8px; }
   .stat-num { font-size: 24px; }
 }
+
+/* ============================================================
+ * 模块切换 Tab（西医 / 中医汉方 / 针灸推拿）
+ * ============================================================ */
+.module-tabs {
+  display: flex; gap: 8px; justify-content: center;
+  padding: 10px 16px 0; background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky; top: 57px; z-index: 9;
+}
+.module-tab {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #f1f5f9; border: 1px solid #e2e8f0; border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 22px; font-size: 14px; font-weight: 600; color: #64748b;
+  cursor: pointer; transition: all .18s var(--ease);
+  margin-bottom: -1px;
+}
+.module-tab .mt-icon { font-size: 18px; }
+.module-tab:hover { background: #e2e8f0; color: #334155; }
+.module-tab.active {
+  background: #0f4c81; color: #fff; border-color: #0f4c81;
+  box-shadow: 0 -2px 8px rgba(15,76,129,.15);
+}
+.module-tab[data-module="tcm"].active { background: #8b5a2b; border-color: #8b5a2b; }
+.module-tab[data-module="acup"].active { background: #2f7a4f; border-color: #2f7a4f; }
+@media (max-width: 600px) {
+  .module-tabs { padding: 8px 8px 0; }
+  .module-tab { padding: 8px 12px; font-size: 12px; }
+  .module-tab .mt-icon { font-size: 15px; }
+  .module-tab .mt-text { letter-spacing: 0; }
+}
+
+/* ============================================================
+ * 中医汉方模块样式（赭石/淡金点缀，主色仍为医疗蓝）
+ * ============================================================ */
+.tcm-hero { background: linear-gradient(135deg, #6b4423 0%, #8b5a2b 50%, #b8860b 100%) !important;
+  box-shadow: 0 8px 28px rgba(139,90,43,.25) !important; }
+.tcm-hero-icon { background: rgba(255,255,255,.15) !important;
+  border: 1px solid rgba(255,255,255,.3) !important; color: #fff8e7; }
+.tcm-tip {
+  margin: 16px auto; padding: 14px; text-align: center;
+  background: #fef9e7; border: 1px dashed #d4a017; color: #8b6914;
+  border-radius: 8px; font-size: 13px;
+}
+.tcm-diag-box { background: #fdf8f0; border: 1px solid #e8d5b0; border-radius: 8px; padding: 14px; margin-top: 14px; }
+.tcm-rx-paper { border-top: 4px double #8b5a2b; background: #fffdf7; }
+.tcm-corner { background: #8b5a2b !important; }
+.tcm-rx-head { border-bottom: 2px solid #8b5a2b; }
+.tcm-rx-title {
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+  font-size: 26px; color: #6b4423; letter-spacing: 8px; font-weight: 700;
+}
+.tcm-section { margin: 14px 0; }
+.tcm-section-label {
+  font-weight: 700; color: #6b4423; font-size: 14px;
+  margin-bottom: 8px; padding-left: 8px; border-left: 3px solid #b8860b;
+}
+.tcm-picker-row { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+.tcm-picker-row input[type="text"] { flex: 1; min-width: 220px; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; }
+.tcm-formula-list, .tcm-herb-list, .acup-point-list {
+  max-height: 220px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 6px; background: #fff;
+  margin-bottom: 10px;
+}
+.tcm-formula-item, .tcm-herb-item, .acup-point-item {
+  padding: 8px 12px; border-bottom: 1px solid #f1f5f9; cursor: pointer; font-size: 13px;
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+}
+.tcm-formula-item:hover, .tcm-herb-item:hover, .acup-point-item:hover { background: #fdf6e3; }
+.tcm-formula-item.selected, .tcm-herb-item.selected, .acup-point-item.selected { background: #fef3c7; }
+.tcm-formula-detail {
+  background: #fdf8f0; border: 1px solid #e8d5b0; border-radius: 6px; padding: 10px 14px; margin: 8px 0;
+  font-size: 13px; line-height: 1.8;
+}
+.tcm-formula-detail b { color: #6b4423; }
+.tcm-rx-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+.tcm-rx-table th, .tcm-rx-table td { border: 1px solid #d4b896; padding: 6px 8px; font-size: 13px; text-align: center; }
+.tcm-rx-table th { background: #f5e6d0; color: #6b4423; font-weight: 600; }
+.tcm-rx-table input { width: 60px; padding: 3px 6px; border: 1px solid #d1d5db; border-radius: 4px; text-align: center; }
+.tcm-rx-table select { padding: 3px 6px; border: 1px solid #d1d5db; border-radius: 4px; }
+.tcm-prep-row { display: flex; gap: 10px; align-items: center; margin: 12px 0; flex-wrap: wrap; font-size: 13px; }
+.tcm-report-hero { background: linear-gradient(135deg, #6b4423 0%, #8b5a2b 100%) !important; }
+.tcm-role-tag { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; margin-right: 4px; }
+.tcm-role-jun { background: #fee2e2; color: #991b1b; }
+.tcm-role-chen { background: #fef3c7; color: #92400e; }
+.tcm-role-zuo { background: #dbeafe; color: #1e40af; }
+.tcm-role-shi { background: #d1fae5; color: #065f46; }
+
+/* ============================================================
+ * 针灸推拿模块样式（淡绿点缀）
+ * ============================================================ */
+.acup-hero { background: linear-gradient(135deg, #1f5c3a 0%, #2f7a4f 50%, #4caf7d 100%) !important;
+  box-shadow: 0 8px 28px rgba(47,122,79,.25) !important; }
+.acup-hero-icon { background: rgba(255,255,255,.15) !important;
+  border: 1px solid rgba(255,255,255,.3) !important; color: #e8f5e9; }
+.acup-rx-paper { border-top: 4px double #2f7a4f; background: #fbfefb; }
+.acup-corner { background: #2f7a4f !important; }
+.acup-rx-head { border-bottom: 2px solid #2f7a4f; }
+.acup-rx-title {
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+  font-size: 26px; color: #1f5c3a; letter-spacing: 8px; font-weight: 700;
+}
+.acup-report-hero { background: linear-gradient(135deg, #1f5c3a 0%, #2f7a4f 100%) !important; }
+.acup-point-item .meridian-tag { font-size: 11px; color: #2f7a4f; background: #e8f5e9; padding: 1px 8px; border-radius: 10px; }
+
+/* ============================================================
+ * 模块统计（admin 与 stats 页）
+ * ============================================================ */
+.module-stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }
+.module-stat-card { flex: 1; min-width: 140px; padding: 14px; border-radius: 10px; border: 1px solid #e2e8f0; background: #fff; text-align: center; }
+.module-stat-card .msc-num { font-size: 26px; font-weight: 700; color: #0f4c81; }
+.module-stat-card.msc-tcm .msc-num { color: #8b5a2b; }
+.module-stat-card.msc-acup .msc-num { color: #2f7a4f; }
+.module-stat-card .msc-label { font-size: 12px; color: #64748b; margin-top: 4px; }
+
+.module-filter-row { display: flex; gap: 6px; margin: 10px 0; flex-wrap: wrap; }
+.module-filter-chip { padding: 4px 12px; border-radius: 14px; background: #f1f5f9; border: 1px solid #e2e8f0; font-size: 12px; cursor: pointer; color: #64748b; }
+.module-filter-chip.active { background: #0f4c81; color: #fff; border-color: #0f4c81; }
+.module-badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; margin-left: 6px; }
+.module-badge.mb-western { background: #dbeafe; color: #1e40af; }
+.module-badge.mb-tcm { background: #fef3c7; color: #8b5a2b; }
+.module-badge.mb-acup { background: #d1fae5; color: #065f46; }
+
+@media print {
+  .module-tabs, .tcm-picker-row, .tcm-herb-list, .acup-point-list, .rx-toolbar, .no-print { display: none !important; }
+}
+
+/* 报告页维度卡片补充（中医/针灸共用） */
+.dim-card .dim-bar { background:#e2e8f0; height:8px; border-radius:4px; overflow:hidden; margin-top:8px; }
+.dim-card .dim-fill { background:linear-gradient(90deg,#0f4c81,#2c7be5); height:100%; transition:width .4s; }
+.dim-card .dim-num { font-size:18px; font-weight:700; margin-top:6px; color:#0f4c81; }
+.dim-card.tcm-dim .dim-fill { background:linear-gradient(90deg,#8b5a2b,#b8860b); }
+.dim-card.acup-dim .dim-fill { background:linear-gradient(90deg,#2f7a4f,#4caf7d); }

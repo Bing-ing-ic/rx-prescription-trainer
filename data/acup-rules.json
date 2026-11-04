@@ -1,0 +1,306 @@
+{
+  "version": "2026.11.04-acup",
+  "note": "针灸选穴配穴规则引擎。severity: error/warn/pass。group: FORMAT/PRINCIPLE/PEIPEI/TD/SAFETY。",
+  "rules": [
+    {
+      "rule_id": "ACUP-FMT-01",
+      "group": "FORMAT",
+      "title": "处方必须包含主穴",
+      "trigger": "missing_main_points",
+      "logic": "检查所选穴位中是否包含该病证的主穴（reference_points中的核心穴位）",
+      "severity": "error",
+      "basis": "针灸处方以主穴为核心，配穴辅助，无主穴则处方无纲",
+      "weight_hint": "format"
+    },
+    {
+      "rule_id": "ACUP-FMT-02",
+      "group": "FORMAT",
+      "title": "处方穴位数量应合理",
+      "trigger": "point_count_out_of_range",
+      "logic": "单次处方穴位数量应在3-15穴之间；超过15穴提示取穴泛滥，少于3穴提示过于简略",
+      "severity": "warn",
+      "basis": "临床针灸处方每穴次一般取5-12穴为宜，过多则分散经气",
+      "weight_hint": "format"
+    },
+    {
+      "rule_id": "ACUP-FMT-03",
+      "group": "FORMAT",
+      "title": "处方必须注明刺灸方法",
+      "trigger": "missing_method",
+      "logic": "检查是否注明针刺补泻、灸法、拔罐、电针等具体方法",
+      "severity": "warn",
+      "basis": "穴同法异，疗效迥异；刺灸法是处方的必要组成",
+      "weight_hint": "format"
+    },
+    {
+      "rule_id": "ACUP-PRINCIPLE-01",
+      "group": "PRINCIPLE",
+      "title": "四总穴：面口合谷收",
+      "trigger": "face_condition_no_hegu",
+      "logic": "头面、口齿、咽喉病证（面瘫、牙痛、咽痛、三叉神经痛等）应配合谷穴",
+      "severity": "warn",
+      "basis": "《四总穴歌》：面口合谷收。合谷为大肠经原穴，善治头面诸疾",
+      "weight_hint": "principle"
+    },
+    {
+      "rule_id": "ACUP-PRINCIPLE-02",
+      "group": "PRINCIPLE",
+      "title": "四总穴：肚腹三里留",
+      "trigger": "abdomen_condition_no_zusanli",
+      "logic": "腹部、消化系统病证（胃痛、腹痛、泄泻、便秘等）应配足三里",
+      "severity": "warn",
+      "basis": "《四总穴歌》：肚腹三里留。足三里为胃经合穴、胃下合穴",
+      "weight_hint": "principle"
+    },
+    {
+      "rule_id": "ACUP-PRINCIPLE-03",
+      "group": "PRINCIPLE",
+      "title": "四总穴：腰背委中求",
+      "trigger": "back_condition_no_weizhong",
+      "logic": "腰背部病证（腰痛、背强、坐骨神经痛）应配委中",
+      "severity": "warn",
+      "basis": "《四总穴歌》：腰背委中求。委中为膀胱经合穴，治腰背痛要穴",
+      "weight_hint": "principle"
+    },
+    {
+      "rule_id": "ACUP-PRINCIPLE-04",
+      "group": "PRINCIPLE",
+      "title": "四总穴：头项寻列缺",
+      "trigger": "neck_condition_no_lieque",
+      "logic": "头项强痛、外感头痛、落枕等应配合谷以外的列缺",
+      "severity": "warn",
+      "basis": "《四总穴歌》：头项寻列缺。列缺为肺经络穴，通任脉，善治头项",
+      "weight_hint": "principle"
+    },
+    {
+      "rule_id": "ACUP-PRINCIPLE-05",
+      "group": "PRINCIPLE",
+      "title": "近部选穴原则",
+      "trigger": "no_local_points",
+      "logic": "检查是否在病证局部或邻近部位选取了穴位",
+      "severity": "pass",
+      "basis": "近部选穴是一切针灸处方的基础，穴位近取可疏通局部经气",
+      "weight_hint": "principle"
+    },
+    {
+      "rule_id": "ACUP-PRINCIPLE-06",
+      "group": "PRINCIPLE",
+      "title": "远部选穴原则",
+      "trigger": "no_distal_points",
+      "logic": "检查是否在远离病所的肘膝以下选取了穴位（如面口取合谷、胃脘取足三里）",
+      "severity": "pass",
+      "basis": "远部选穴体现经脉循行所过、主治所及，是远道调经的关键",
+      "weight_hint": "principle"
+    },
+    {
+      "rule_id": "ACUP-PRINCIPLE-07",
+      "group": "PRINCIPLE",
+      "title": "辨证选穴原则",
+      "trigger": "no_syndrome_points",
+      "logic": "根据证型选配穴位，如肝阳上亢加太冲、肝肾阴虚加太溪",
+      "severity": "pass",
+      "basis": "辨证论治是中医核心，同病异治、异病同治",
+      "weight_hint": "principle"
+    },
+    {
+      "rule_id": "ACUP-PEIPEI-01",
+      "group": "PEIPEI",
+      "title": "本经配穴法",
+      "trigger": "same_meridian_points",
+      "logic": "检查同一经脉上是否选取了两个以上穴位（如胃病取足三里、内庭同属胃经）",
+      "severity": "pass",
+      "basis": "本经配穴可增强本经经气的疏通作用",
+      "weight_hint": "peipei"
+    },
+    {
+      "rule_id": "ACUP-PEIPEI-02",
+      "group": "PEIPEI",
+      "title": "表里经配穴法",
+      "trigger": "coupled_meridian_points",
+      "logic": "某经有病时，可取其表里经配穴（如肺病取肺经太渊配大肠经合谷）",
+      "severity": "pass",
+      "basis": "阴阳表里两经经气相通，表里配穴可调节脏腑阴阳",
+      "weight_hint": "peipei"
+    },
+    {
+      "rule_id": "ACUP-PEIPEI-03",
+      "group": "PEIPEI",
+      "title": "上下配穴法",
+      "trigger": "upper_lower_points",
+      "logic": "检查是否同时选取了上部（如头面、上肢）与下部（下肢）穴位（如胃痛取内关配足三里）",
+      "severity": "pass",
+      "basis": "上下配穴调和气机升降，八脉交会穴即此法典型",
+      "weight_hint": "peipei"
+    },
+    {
+      "rule_id": "ACUP-PEIPEI-04",
+      "group": "PEIPEI",
+      "title": "前后配穴法（俞募配穴）",
+      "trigger": "shu_mu_pairs",
+      "logic": "脏腑病证应检查是否同时取了背俞穴（背部）与腹募穴（腹部），如胃痛取中脘配胃俞",
+      "severity": "pass",
+      "basis": "俞募配穴为前后配穴代表，前后呼应调节脏腑功能",
+      "weight_hint": "peipei"
+    },
+    {
+      "rule_id": "ACUP-PEIPEI-05",
+      "group": "PEIPEI",
+      "title": "左右配穴法",
+      "trigger": "left_right_points",
+      "logic": "单侧病证可刺健侧（缪刺），或双侧同取以调阴阳",
+      "severity": "pass",
+      "basis": "《内经》缪刺、巨刺；左右经络交通，可左右同取或交叉取穴",
+      "weight_hint": "peipei"
+    },
+    {
+      "rule_id": "ACUP-TD-01",
+      "group": "TD",
+      "title": "五输穴应用：井主心下满",
+      "trigger": "wushu_selection",
+      "logic": "根据《灵枢·顺气一日分为四时》：井主心下满、荥主身热、输主体重节痛、经主喘咳、合主逆气而泄",
+      "severity": "pass",
+      "basis": "五输穴从四肢末端向肘膝排列，主治各有侧重",
+      "weight_hint": "tedingxue"
+    },
+    {
+      "rule_id": "ACUP-TD-02",
+      "group": "TD",
+      "title": "原络配穴法",
+      "trigger": "yuan_luo_points",
+      "logic": "先病经脉的原穴配后病经脉的络穴（如肺经先病取太渊，配大肠经络穴偏历）",
+      "severity": "pass",
+      "basis": "原穴治脏腑本脏病，络穴治表里经病，为表里配穴典范",
+      "weight_hint": "tedingxue"
+    },
+    {
+      "rule_id": "ACUP-TD-03",
+      "group": "TD",
+      "title": "俞募配穴治脏腑病",
+      "trigger": "zangfu_no_shumu",
+      "logic": "脏腑病证应首选相应背俞穴与腹募穴（如心病取心俞、巨阙）",
+      "severity": "pass",
+      "basis": "背俞穴为脏腑经气输注于背部之处，腹募为脏腑经气结聚于腹部之处",
+      "weight_hint": "tedingxue"
+    },
+    {
+      "rule_id": "ACUP-TD-04",
+      "group": "TD",
+      "title": "八会穴应用",
+      "trigger": "bahui_points",
+      "logic": "气病取膻中、血病取膈俞、筋病取阳陵泉、脉病取太渊、骨病取大杼、髓病取悬钟、脏病取章门、腑病取中脘",
+      "severity": "pass",
+      "basis": "《难经·四十五难》八会穴主治相应脏腑组织病证",
+      "weight_hint": "tedingxue"
+    },
+    {
+      "rule_id": "ACUP-TD-05",
+      "group": "TD",
+      "title": "郄穴治急性痛症",
+      "trigger": "acute_pain_no_xi",
+      "logic": "急性发作、疼痛剧烈的病证应取本经郄穴（如急性胃痛取梁丘、急性心痛取郄门、痛经取地机）",
+      "severity": "warn",
+      "basis": "郄穴为经气深聚之处，善治急性发作、血证、痛证",
+      "weight_hint": "tedingxue"
+    },
+    {
+      "rule_id": "ACUP-TD-06",
+      "group": "TD",
+      "title": "下合穴治腑病",
+      "trigger": "fubing_no_xiahe",
+      "logic": "六腑病证应取下肢相应下合穴（胃取足三里、大肠取上巨虚、小肠取下巨虚、胆取阳陵泉、膀胱取委中、三焦取委阳）",
+      "severity": "warn",
+      "basis": "《灵枢·邪气脏腑病形》：合治内腑",
+      "weight_hint": "tedingxue"
+    },
+    {
+      "rule_id": "ACUP-TD-07",
+      "group": "TD",
+      "title": "八脉交会穴应用",
+      "trigger": "bamai_jiaohui",
+      "logic": "列缺通任脉、后溪通督脉、公孙通冲脉、足临泣通带脉、申脉通阳跷、照海通阴跷、外关通阳维、内关通阴维；公孙配内关治胃心胸，后溪配申脉治目内眦颈项耳肩",
+      "severity": "pass",
+      "basis": "八脉交会穴为十二经脉与奇经八脉相通的八个穴位，常上下配对使用",
+      "weight_hint": "tedingxue"
+    },
+    {
+      "rule_id": "ACUP-SAFE-01",
+      "group": "SAFETY",
+      "title": "孕妇禁忌穴位",
+      "trigger": "pregnant_forbidden_points",
+      "logic": "孕妇禁针合谷、三阴交、昆仑、至阴；腹部、腰骶部腧穴慎用强刺激",
+      "severity": "error",
+      "basis": "《针灸大成》等古籍载孕妇禁针合谷、三阴交、昆仑、至阴，以免动胎",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "ACUP-SAFE-02",
+      "group": "SAFETY",
+      "title": "风府、哑门严格掌握方向深度",
+      "trigger": "danger_nape_points",
+      "logic": "风府、哑门必须伏案正坐、头微前倾，向下颌方向缓慢刺入0.5-1寸，严禁向上深刺或提插捣刺",
+      "severity": "error",
+      "basis": "深部为延髓生命中枢，向上深刺可伤及延髓致呼吸心跳骤停",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "ACUP-SAFE-03",
+      "group": "SAFETY",
+      "title": "肩井深部为肺尖",
+      "trigger": "jianjing_deep",
+      "logic": "肩井穴直刺0.3-0.5寸，不可深刺，以免刺伤肺尖造成气胸；孕妇禁针",
+      "severity": "error",
+      "basis": "肩井深部为胸腔肺尖，深刺可致创伤性气胸",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "ACUP-SAFE-04",
+      "group": "SAFETY",
+      "title": "眼周穴位缓慢进针防出血",
+      "trigger": "eye_points_blood",
+      "logic": "睛明、承泣等眼周穴紧靠眶缘缓慢进针，不提插捻转，出针后按压1-2分钟以防眶内出血",
+      "severity": "warn",
+      "basis": "眼周血管丰富，提插易刺破血管致眼睑血肿",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "ACUP-SAFE-05",
+      "group": "SAFETY",
+      "title": "胸背部腧穴不可深刺",
+      "trigger": "chest_back_deep",
+      "logic": "背部第十胸椎以上、胸部锁骨以下、胁肋部腧穴应斜刺或平刺0.5-0.8寸，不可直刺深刺，以免伤及内脏",
+      "severity": "error",
+      "basis": "胸背部深刺可致气胸、肝脾刺伤等严重事故",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "ACUP-SAFE-06",
+      "group": "SAFETY",
+      "title": "神阙禁针宜灸",
+      "trigger": "shenque_needling",
+      "logic": "神阙穴（肚脐）禁针，多用艾炷隔盐灸或艾条灸",
+      "severity": "error",
+      "basis": "神阙皮肤薄、深部为小肠，针刺易感染或伤肠",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "ACUP-SAFE-07",
+      "group": "SAFETY",
+      "title": "过饥过饱过劳者慎针",
+      "trigger": "weak_patient_strong_stim",
+      "logic": "患者过度疲劳、饥饿、酒醉、精神高度紧张时，应卧位针刺，刺激量宜轻，防止晕针",
+      "severity": "warn",
+      "basis": "此类状态下针刺易发生晕针，表现为头晕、心慌、汗出、面色苍白",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "ACUP-SAFE-08",
+      "group": "SAFETY",
+      "title": "避开重要血管动脉",
+      "trigger": "major_vessel_points",
+      "logic": "针刺太渊、经渠、箕门、冲门、急脉、曲泽、委中等血管丰富处，应避开动脉搏动处，缓慢进针",
+      "severity": "warn",
+      "basis": "刺伤动脉可致血肿、出血不止",
+      "weight_hint": "safety"
+    }
+  ]
+}

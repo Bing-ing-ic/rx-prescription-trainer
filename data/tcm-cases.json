@@ -1,0 +1,1176 @@
+{
+  "version": "2026.11.04-tcm",
+  "note": "中医病例库。difficulty: 初级/中级/高级。syndrome_type: 八纲辨证/脏腑辨证/气血津液辨证/六经辨证/卫气营血辨证。reference_formula_code 对应 tcm-formulas.json。",
+  "cases": [
+    {
+      "code": "TCM-001",
+      "name": "感冒-风寒束表证",
+      "difficulty": "初级",
+      "syndrome_type": "八纲辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "受凉后恶寒重发热轻，无汗，头痛身痛2天"
+        ],
+        "history": [
+          "素体强健，无慢性病史",
+          "发病前淋雨受凉"
+        ],
+        "tongue": [
+          "舌淡红，苔薄白"
+        ],
+        "pulse": [
+          "浮紧"
+        ],
+        "exam": [
+          "咽部轻度充血，双肺呼吸音清，体温37.8℃"
+        ]
+      },
+      "differential": [
+        "风热感冒",
+        "风寒夹湿感冒",
+        "时行感冒"
+      ],
+      "syndrome_differentiation": "风寒束表证",
+      "treatment_principle": "辛温解表，宣肺散寒",
+      "reference_formula_code": "MHT",
+      "reference_herbs": [
+        "麻黄",
+        "桂枝",
+        "苦杏仁",
+        "炙甘草"
+      ],
+      "contraindications": [
+        "风热感冒禁用辛温发汗",
+        "自汗者禁用"
+      ],
+      "special_note": "服药后取微汗，不可大汗，汗出后避风"
+    },
+    {
+      "code": "TCM-002",
+      "name": "感冒-风热犯表证",
+      "difficulty": "初级",
+      "syndrome_type": "八纲辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "发热微恶风，咽痛，汗出不畅1天"
+        ],
+        "history": [
+          "近期气候变暖，办公室多人咽痛"
+        ],
+        "tongue": [
+          "舌尖红，苔薄黄"
+        ],
+        "pulse": [
+          "浮数"
+        ],
+        "exam": [
+          "体温38.5℃，咽部充血，扁桃体I度肿大，双肺呼吸音清"
+        ]
+      },
+      "differential": [
+        "风寒感冒",
+        "温病初起",
+        "风热夹湿"
+      ],
+      "syndrome_differentiation": "风热犯表证",
+      "treatment_principle": "辛凉解表，清热解毒",
+      "reference_formula_code": "YQS",
+      "reference_herbs": [
+        "金银花",
+        "连翘",
+        "薄荷",
+        "牛蒡子",
+        "荆芥",
+        "桔梗",
+        "淡竹叶",
+        "甘草"
+      ],
+      "contraindications": [
+        "风寒感冒禁用辛凉",
+        "体虚多汗者慎用"
+      ],
+      "special_note": "不宜久煎，香气大出即取服"
+    },
+    {
+      "code": "TCM-003",
+      "name": "感冒-暑湿伤表证",
+      "difficulty": "中级",
+      "syndrome_type": "气血津液辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "夏季发热，汗出热不解，头昏重胀痛，胸闷泛恶2天"
+        ],
+        "history": [
+          "高温户外作业后发病",
+          "伴纳呆，大便黏腻不爽"
+        ],
+        "tongue": [
+          "舌质红，苔黄腻"
+        ],
+        "pulse": [
+          "濡数"
+        ],
+        "exam": [
+          "体温38.2℃，面部垢腻，双肺呼吸音清，腹部轻压痛"
+        ]
+      },
+      "differential": [
+        "风热感冒",
+        "风寒感冒",
+        "湿温病"
+      ],
+      "syndrome_differentiation": "暑湿伤表证",
+      "treatment_principle": "清暑祛湿解表",
+      "reference_formula_code": "HXZQS",
+      "reference_herbs": [
+        "藿香",
+        "紫苏叶",
+        "白芷",
+        "厚朴",
+        "陈皮",
+        "茯苓",
+        "白术"
+      ],
+      "contraindications": [
+        "温热病慎用辛温",
+        "阴虚火旺者不宜"
+      ],
+      "special_note": "夏秋季节多见，芳香化湿药不宜久煎"
+    },
+    {
+      "code": "TCM-004",
+      "name": "咳嗽-风寒袭肺证",
+      "difficulty": "初级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "咳嗽声重，气急咽痒，咳痰稀薄色白3天"
+        ],
+        "history": [
+          "受凉后发病，伴鼻塞流清涕"
+        ],
+        "tongue": [
+          "舌苔薄白"
+        ],
+        "pulse": [
+          "浮紧"
+        ],
+        "exam": [
+          "体温正常，双肺呼吸音粗，可闻及少量干性啰音"
+        ]
+      },
+      "differential": [
+        "风热咳嗽",
+        "痰湿咳嗽",
+        "内伤咳嗽"
+      ],
+      "syndrome_differentiation": "风寒袭肺证",
+      "treatment_principle": "疏风散寒，宣肺止咳",
+      "reference_formula_code": "ZSS",
+      "reference_herbs": [
+        "紫菀",
+        "百部",
+        "白前",
+        "桔梗",
+        "荆芥",
+        "陈皮",
+        "甘草"
+      ],
+      "contraindications": [
+        "阴虚劳嗽禁用",
+        "肺热咳嗽不宜"
+      ],
+      "special_note": "表邪解后即转为调理，不可过汗"
+    },
+    {
+      "code": "TCM-005",
+      "name": "咳嗽-风热犯肺证",
+      "difficulty": "初级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "咳嗽频剧，气粗咽痛，咳痰不爽，痰黄黏稠2天"
+        ],
+        "history": [
+          "伴恶风身热，口渴"
+        ],
+        "tongue": [
+          "舌尖红，苔薄黄"
+        ],
+        "pulse": [
+          "浮数"
+        ],
+        "exam": [
+          "体温37.9℃，咽部充血，双肺呼吸音粗"
+        ]
+      },
+      "differential": [
+        "风寒咳嗽",
+        "痰热郁肺",
+        "燥邪伤肺"
+      ],
+      "syndrome_differentiation": "风热犯肺证",
+      "treatment_principle": "疏风清热，宣肺化痰",
+      "reference_formula_code": "SYY",
+      "reference_herbs": [
+        "桑叶",
+        "菊花",
+        "杏仁",
+        "连翘",
+        "薄荷",
+        "桔梗",
+        "芦根",
+        "甘草"
+      ],
+      "contraindications": [
+        "风寒咳嗽禁用"
+      ],
+      "special_note": "但咳身热不甚者适宜"
+    },
+    {
+      "code": "TCM-006",
+      "name": "咳嗽-痰湿蕴肺证",
+      "difficulty": "中级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "咳嗽反复，咳声重浊，痰多色白黏腻，晨起为甚1月余"
+        ],
+        "history": [
+          "平素多食肥甘，伴胸闷脘痞，食少体倦"
+        ],
+        "tongue": [
+          "舌苔白腻"
+        ],
+        "pulse": [
+          "濡滑"
+        ],
+        "exam": [
+          "形体偏胖，双肺可闻及湿啰音，腹部胀满"
+        ]
+      },
+      "differential": [
+        "痰热郁肺",
+        "肝火犯肺",
+        "肺阴亏虚"
+      ],
+      "syndrome_differentiation": "痰湿蕴肺证",
+      "treatment_principle": "燥湿化痰，理气止咳",
+      "reference_formula_code": "ECT",
+      "reference_herbs": [
+        "半夏",
+        "陈皮",
+        "茯苓",
+        "炙甘草",
+        "生姜",
+        "苏子",
+        "白芥子"
+      ],
+      "contraindications": [
+        "阴虚燥痰禁用",
+        "吐血者慎用"
+      ],
+      "special_note": "忌肥甘厚味，戒烟酒"
+    },
+    {
+      "code": "TCM-007",
+      "name": "胃痛-寒邪客胃证",
+      "difficulty": "初级",
+      "syndrome_type": "八纲辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "胃痛暴作，恶寒喜暖，得温痛减，遇寒加重半天"
+        ],
+        "history": [
+          "饮冷后发病，口淡不渴"
+        ],
+        "tongue": [
+          "舌淡苔薄白"
+        ],
+        "pulse": [
+          "弦紧"
+        ],
+        "exam": [
+          "上腹部轻度压痛，无反跳痛，肠鸣音活跃"
+        ]
+      },
+      "differential": [
+        "饮食停滞胃痛",
+        "肝气犯胃",
+        "胃热炽盛"
+      ],
+      "syndrome_differentiation": "寒邪客胃证",
+      "treatment_principle": "温胃散寒，行气止痛",
+      "reference_formula_code": "LFW",
+      "reference_herbs": [
+        "高良姜",
+        "香附"
+      ],
+      "contraindications": [
+        "热证胃痛禁用",
+        "阴虚者禁用"
+      ],
+      "special_note": "可配合局部热敷，忌食生冷"
+    },
+    {
+      "code": "TCM-008",
+      "name": "胃痛-饮食停滞证",
+      "difficulty": "初级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "胃脘疼痛，胀满拒按，嗳腐吞酸，吐不消化食物1天"
+        ],
+        "history": [
+          "发病前暴饮暴食，大便不爽"
+        ],
+        "tongue": [
+          "舌苔厚腻"
+        ],
+        "pulse": [
+          "滑"
+        ],
+        "exam": [
+          "上腹部胀满，压痛，呕吐后痛减，肠鸣音亢进"
+        ]
+      },
+      "differential": [
+        "寒邪客胃",
+        "肝气犯胃",
+        "胃中郁热"
+      ],
+      "syndrome_differentiation": "饮食停滞证",
+      "treatment_principle": "消食导滞，和胃止痛",
+      "reference_formula_code": "BHW",
+      "reference_herbs": [
+        "山楂",
+        "神曲",
+        "半夏",
+        "茯苓",
+        "陈皮",
+        "连翘",
+        "莱菔子"
+      ],
+      "contraindications": [
+        "脾胃虚弱无食积者不宜"
+      ],
+      "special_note": "暂禁食或流质饮食，忌油腻"
+    },
+    {
+      "code": "TCM-009",
+      "name": "胃痛-肝气犯胃证",
+      "difficulty": "中级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "胃脘胀闷，攻撑作痛，连及两胁，嗳气频繁反复3月"
+        ],
+        "history": [
+          "情绪波动后加重，善太息，大便不畅"
+        ],
+        "tongue": [
+          "舌苔薄白"
+        ],
+        "pulse": [
+          "弦"
+        ],
+        "exam": [
+          "上腹部轻压痛，无反跳痛，善叹息"
+        ]
+      },
+      "differential": [
+        "饮食停滞",
+        "寒邪客胃",
+        "肝胃郁热"
+      ],
+      "syndrome_differentiation": "肝气犯胃证",
+      "treatment_principle": "疏肝解郁，理气止痛",
+      "reference_formula_code": "CHSGST",
+      "reference_herbs": [
+        "柴胡",
+        "陈皮",
+        "川芎",
+        "香附",
+        "枳壳",
+        "白芍",
+        "甘草"
+      ],
+      "contraindications": [
+        "气虚者慎用",
+        "阴虚火旺者不宜久服"
+      ],
+      "special_note": "调畅情志，避免情绪激动"
+    },
+    {
+      "code": "TCM-010",
+      "name": "便秘-热积便秘证",
+      "difficulty": "中级",
+      "syndrome_type": "八纲辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "大便干结，腹胀腹痛，口干口臭3天未解"
+        ],
+        "history": [
+          "面红心烦，小便短赤"
+        ],
+        "tongue": [
+          "舌质红，苔黄燥"
+        ],
+        "pulse": [
+          "滑数"
+        ],
+        "exam": [
+          "腹部膨隆，左下腹可扪及粪块，压痛"
+        ]
+      },
+      "differential": [
+        "气虚便秘",
+        "血虚便秘",
+        "阳虚便秘"
+      ],
+      "syndrome_differentiation": "热积便秘证",
+      "treatment_principle": "泻热导滞，润肠通便",
+      "reference_formula_code": "MZRW",
+      "reference_herbs": [
+        "火麻仁",
+        "白芍",
+        "枳实",
+        "大黄",
+        "厚朴",
+        "杏仁"
+      ],
+      "contraindications": [
+        "孕妇禁用",
+        "血虚及肾虚便秘慎用"
+      ],
+      "special_note": "便通即止，不可久服"
+    },
+    {
+      "code": "TCM-011",
+      "name": "便秘-气虚便秘证",
+      "difficulty": "中级",
+      "syndrome_type": "气血津液辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "粪质不干，虽有便意但临厕努挣乏力，挣则汗出气短反复1月"
+        ],
+        "history": [
+          "便后乏力，面白神疲，肢倦懒言"
+        ],
+        "tongue": [
+          "舌淡苔白"
+        ],
+        "pulse": [
+          "弱"
+        ],
+        "exam": [
+          "形体瘦弱，腹软无压痛，声低懒言"
+        ]
+      },
+      "differential": [
+        "热积便秘",
+        "血虚便秘",
+        "阴虚便秘"
+      ],
+      "syndrome_differentiation": "气虚便秘证",
+      "treatment_principle": "补气健脾，润肠通便",
+      "reference_formula_code": "HST",
+      "reference_herbs": [
+        "黄芪",
+        "火麻仁",
+        "陈皮",
+        "白蜜"
+      ],
+      "contraindications": [
+        "阴虚火旺者慎用",
+        "实热便秘禁用"
+      ],
+      "special_note": "不可用峻下猛攻，宜缓补"
+    },
+    {
+      "code": "TCM-012",
+      "name": "便秘-血虚便秘证",
+      "difficulty": "中级",
+      "syndrome_type": "气血津液辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "大便干结，面色无华，头晕心悸反复2月"
+        ],
+        "history": [
+          "产后失血后发病，唇甲色淡"
+        ],
+        "tongue": [
+          "舌淡"
+        ],
+        "pulse": [
+          "细涩"
+        ],
+        "exam": [
+          "面色萎黄，睑结膜苍白，腹软"
+        ]
+      },
+      "differential": [
+        "气虚便秘",
+        "热积便秘",
+        "阴虚便秘"
+      ],
+      "syndrome_differentiation": "血虚便秘证",
+      "treatment_principle": "养血润燥，滋阴通便",
+      "reference_formula_code": "ZRT",
+      "reference_herbs": [
+        "当归",
+        "生地黄",
+        "火麻仁",
+        "桃仁",
+        "枳壳"
+      ],
+      "contraindications": [
+        "实热便秘不宜",
+        "孕妇慎用桃仁"
+      ],
+      "special_note": "配合饮食调养，多食黑芝麻、核桃"
+    },
+    {
+      "code": "TCM-013",
+      "name": "不寐-心火偏亢证",
+      "difficulty": "中级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "心烦不寐，口干舌燥，小便短赤反复1周"
+        ],
+        "history": [
+          "口舌生疮，伴心悸不安，舌尖红"
+        ],
+        "tongue": [
+          "舌尖红，少苔"
+        ],
+        "pulse": [
+          "细数"
+        ],
+        "exam": [
+          "口腔黏膜溃疡，舌尖红赤，焦虑面容"
+        ]
+      },
+      "differential": [
+        "心脾两虚",
+        "阴虚火旺",
+        "痰热内扰"
+      ],
+      "syndrome_differentiation": "心火偏亢，阴血不足证",
+      "treatment_principle": "镇心安神，清热养血",
+      "reference_formula_code": "ZSAST",
+      "reference_herbs": [
+        "朱砂",
+        "黄连",
+        "当归",
+        "生地黄",
+        "炙甘草"
+      ],
+      "contraindications": [
+        "朱砂含汞不可久服",
+        "肝肾功能不全者禁用",
+        "孕妇禁用"
+      ],
+      "special_note": "朱砂只入丸散，不入煎剂；不可与碘溴化物同用"
+    },
+    {
+      "code": "TCM-014",
+      "name": "不寐-心脾两虚证",
+      "difficulty": "中级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "多梦易醒，心悸健忘，神疲食少，头晕目眩反复2月"
+        ],
+        "history": [
+          "劳心思虑过度，伴四肢倦怠，面色少华"
+        ],
+        "tongue": [
+          "舌淡苔薄"
+        ],
+        "pulse": [
+          "细弱"
+        ],
+        "exam": [
+          "面色萎黄，精神倦怠，腹部轻压痛"
+        ]
+      },
+      "differential": [
+        "心火偏亢",
+        "阴虚火旺",
+        "心胆气虚"
+      ],
+      "syndrome_differentiation": "心脾两虚证",
+      "treatment_principle": "补益心脾，养血安神",
+      "reference_formula_code": "GPT",
+      "reference_herbs": [
+        "黄芪",
+        "人参",
+        "白术",
+        "茯神",
+        "酸枣仁",
+        "当归",
+        "龙眼肉",
+        "远志",
+        "木香",
+        "炙甘草"
+      ],
+      "contraindications": [
+        "阴虚火旺者禁用",
+        "痰湿壅盛者慎用"
+      ],
+      "special_note": "睡前勿思虑过度，配合心理疏导"
+    },
+    {
+      "code": "TCM-015",
+      "name": "头痛-风寒头痛证",
+      "difficulty": "初级",
+      "syndrome_type": "八纲辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "头痛连及项背，恶风畏寒，遇风尤剧1天"
+        ],
+        "history": [
+          "吹风受凉后发病，口不渴"
+        ],
+        "tongue": [
+          "苔薄白"
+        ],
+        "pulse": [
+          "浮紧"
+        ],
+        "exam": [
+          "体温正常，项背部肌肉紧张，神清"
+        ]
+      },
+      "differential": [
+        "风热头痛",
+        "肝阳头痛",
+        "血虚头痛"
+      ],
+      "syndrome_differentiation": "风寒头痛证",
+      "treatment_principle": "疏散风寒止痛",
+      "reference_formula_code": "CQCTS",
+      "reference_herbs": [
+        "川芎",
+        "荆芥",
+        "白芷",
+        "羌活",
+        "甘草",
+        "细辛",
+        "防风",
+        "薄荷"
+      ],
+      "contraindications": [
+        "气虚/血虚/肝阳头痛禁用",
+        "孕妇慎用"
+      ],
+      "special_note": "细辛用量不过钱（3g），服药后避风"
+    },
+    {
+      "code": "TCM-016",
+      "name": "头痛-肝阳上亢证",
+      "difficulty": "中级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "头胀痛而眩，心烦易怒，面赤口苦反复3月"
+        ],
+        "history": [
+          "既往高血压病史，情绪激动后加重，夜寐不宁"
+        ],
+        "tongue": [
+          "舌质红，苔薄黄"
+        ],
+        "pulse": [
+          "弦有力"
+        ],
+        "exam": [
+          "血压158/96mmHg，面部潮红，心率88次/分"
+        ]
+      },
+      "differential": [
+        "风寒头痛",
+        "痰浊头痛",
+        "瘀血头痛"
+      ],
+      "syndrome_differentiation": "肝阳上亢证",
+      "treatment_principle": "平肝潜阳，息风止痛",
+      "reference_formula_code": "TMGYT",
+      "reference_herbs": [
+        "天麻",
+        "钩藤",
+        "石决明",
+        "栀子",
+        "黄芩",
+        "川牛膝",
+        "杜仲",
+        "桑寄生"
+      ],
+      "contraindications": [
+        "气虚血瘀者慎用",
+        "孕妇慎用"
+      ],
+      "special_note": "监测血压，钩藤宜后下"
+    },
+    {
+      "code": "TCM-017",
+      "name": "眩晕-肝阳上亢证",
+      "difficulty": "中级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "眩晕耳鸣，头胀痛，易怒失眠，多梦反复2月"
+        ],
+        "history": [
+          "高血压病史，视物旋转，口苦"
+        ],
+        "tongue": [
+          "舌红苔黄"
+        ],
+        "pulse": [
+          "弦数"
+        ],
+        "exam": [
+          "血压165/98mmHg，眼球震颤(-)，共济运动稳准"
+        ]
+      },
+      "differential": [
+        "气血亏虚眩晕",
+        "痰浊中阻眩晕",
+        "肾精不足眩晕"
+      ],
+      "syndrome_differentiation": "肝阳上亢证",
+      "treatment_principle": "平肝潜阳，清火息风",
+      "reference_formula_code": "TMGYT",
+      "reference_herbs": [
+        "天麻",
+        "钩藤",
+        "石决明",
+        "栀子",
+        "黄芩",
+        "川牛膝",
+        "杜仲",
+        "益母草",
+        "夜交藤",
+        "茯神"
+      ],
+      "contraindications": [
+        "气血亏虚者不宜",
+        "孕妇慎用"
+      ],
+      "special_note": "钩藤后下，石决明先煎"
+    },
+    {
+      "code": "TCM-018",
+      "name": "眩晕-气血亏虚证",
+      "difficulty": "中级",
+      "syndrome_type": "气血津液辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "眩晕动则加剧，劳累即发，面色光白，神疲懒言反复1月"
+        ],
+        "history": [
+          "饮食劳倦后发病，发色不泽，心悸少寐"
+        ],
+        "tongue": [
+          "舌淡苔薄白"
+        ],
+        "pulse": [
+          "细弱"
+        ],
+        "exam": [
+          "面色苍白，睑结膜苍白，站立时头晕加重"
+        ]
+      },
+      "differential": [
+        "肝阳上亢眩晕",
+        "痰浊中阻",
+        "肾精不足"
+      ],
+      "syndrome_differentiation": "气血亏虚证",
+      "treatment_principle": "补益气血，调养心脾",
+      "reference_formula_code": "GPT",
+      "reference_herbs": [
+        "黄芪",
+        "人参",
+        "白术",
+        "当归",
+        "龙眼肉",
+        "茯神",
+        "酸枣仁",
+        "远志",
+        "木香"
+      ],
+      "contraindications": [
+        "阴虚火旺者禁用",
+        "痰湿壅盛者慎用"
+      ],
+      "special_note": "避免突然体位变化，起身宜缓"
+    },
+    {
+      "code": "TCM-019",
+      "name": "消渴-上消（肺热津伤证）",
+      "difficulty": "高级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "烦渴多饮，口干舌燥，尿频量多反复1月"
+        ],
+        "history": [
+          "多食易饥尚轻，舌边尖红"
+        ],
+        "tongue": [
+          "舌边尖红，苔薄黄"
+        ],
+        "pulse": [
+          "洪数"
+        ],
+        "exam": [
+          "体型偏瘦，口腔黏膜干燥，空腹血糖8.6mmol/L"
+        ]
+      },
+      "differential": [
+        "中消（胃热炽盛）",
+        "下消（肾阴亏虚）",
+        "瘿病"
+      ],
+      "syndrome_differentiation": "肺热津伤证（上消）",
+      "treatment_principle": "清热润肺，生津止渴",
+      "reference_formula_code": "XKF",
+      "reference_herbs": [
+        "天花粉",
+        "黄连",
+        "生地黄",
+        "藕汁",
+        "蜂蜜"
+      ],
+      "contraindications": [
+        "脾胃虚寒者慎用",
+        "须配合血糖监测"
+      ],
+      "special_note": "消渴为现代糖尿病，须中西医结合治疗，不可单恃中药"
+    },
+    {
+      "code": "TCM-020",
+      "name": "消渴-下消（肾阴亏虚证）",
+      "difficulty": "高级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "尿频量多，混浊如脂膏，腰膝酸软，乏力反复3月"
+        ],
+        "history": [
+          "口干唇燥，皮肤干燥，瘙痒"
+        ],
+        "tongue": [
+          "舌红少苔"
+        ],
+        "pulse": [
+          "沉细数"
+        ],
+        "exam": [
+          "体型消瘦，皮肤干燥，双下肢轻度水肿，空腹血糖9.8mmol/L，尿糖(++)"
+        ]
+      },
+      "differential": [
+        "上消（肺热津伤）",
+        "中消（胃热炽盛）",
+        "劳淋"
+      ],
+      "syndrome_differentiation": "肾阴亏虚证（下消）",
+      "treatment_principle": "滋阴补肾，润燥止渴",
+      "reference_formula_code": "LWDHW",
+      "reference_herbs": [
+        "熟地黄",
+        "山茱萸",
+        "山药",
+        "泽泻",
+        "牡丹皮",
+        "茯苓"
+      ],
+      "contraindications": [
+        "脾虚泄泻者慎用",
+        "痰湿内盛者禁用"
+      ],
+      "special_note": "糖尿病肾病期须监测肾功能，六味地黄丸为基础方"
+    },
+    {
+      "code": "TCM-021",
+      "name": "痹证-行痹",
+      "difficulty": "中级",
+      "syndrome_type": "八纲辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "肢体关节疼痛，游走不定，关节屈伸不利1周"
+        ],
+        "history": [
+          "伴恶风发热，以上肢关节为著"
+        ],
+        "tongue": [
+          "舌苔薄白"
+        ],
+        "pulse": [
+          "浮"
+        ],
+        "exam": [
+          "肩关节、肘关节轻压痛，无红肿，活动受限"
+        ]
+      },
+      "differential": [
+        "痛痹",
+        "着痹",
+        "风湿热痹"
+      ],
+      "syndrome_differentiation": "行痹（风邪偏盛）",
+      "treatment_principle": "祛风通络，散寒除湿",
+      "reference_formula_code": "FFS",
+      "reference_herbs": [
+        "防风",
+        "麻黄",
+        "桂枝",
+        "葛根",
+        "当归",
+        "茯苓",
+        "生姜",
+        "甘草"
+      ],
+      "contraindications": [
+        "气血亏虚者慎用",
+        "孕妇慎用"
+      ],
+      "special_note": "防风汤以祛风为主，佐以散寒除湿"
+    },
+    {
+      "code": "TCM-022",
+      "name": "痹证-痛痹",
+      "difficulty": "高级",
+      "syndrome_type": "八纲辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "肢体关节疼痛较剧，痛有定处，得热痛减，遇寒痛增2周"
+        ],
+        "history": [
+          "关节不可屈伸，局部皮色不红，触之不热"
+        ],
+        "tongue": [
+          "舌淡苔白"
+        ],
+        "pulse": [
+          "弦紧"
+        ],
+        "exam": [
+          "膝关节、踝关节疼痛，局部皮温低，无红肿，活动受限"
+        ]
+      },
+      "differential": [
+        "行痹",
+        "着痹",
+        "风湿热痹"
+      ],
+      "syndrome_differentiation": "痛痹（寒邪偏盛）",
+      "treatment_principle": "温经散寒，祛风除湿",
+      "reference_formula_code": "WUT",
+      "reference_herbs": [
+        "制川乌",
+        "麻黄",
+        "芍药",
+        "黄芪",
+        "甘草"
+      ],
+      "contraindications": [
+        "孕妇禁用",
+        "阴虚火旺者禁用",
+        "川乌须先煎30-60分钟",
+        "反半夏、瓜蒌、贝母、白蔹、白及"
+      ],
+      "special_note": "乌头有毒，必须久煎；服药后观察有无唇舌麻木、心慌等中毒反应"
+    },
+    {
+      "code": "TCM-023",
+      "name": "痹证-着痹",
+      "difficulty": "中级",
+      "syndrome_type": "气血津液辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "肢体关节重着酸痛，痛有定处，手足沉重，活动不便2周"
+        ],
+        "history": [
+          "肌肤麻木不仁，阴雨天气加重"
+        ],
+        "tongue": [
+          "舌苔白腻"
+        ],
+        "pulse": [
+          "濡缓"
+        ],
+        "exam": [
+          "双下肢关节肿胀，压痛，肌肤感觉迟钝"
+        ]
+      },
+      "differential": [
+        "行痹",
+        "痛痹",
+        "风湿热痹"
+      ],
+      "syndrome_differentiation": "着痹（湿邪偏盛）",
+      "treatment_principle": "除湿通络，祛风散寒",
+      "reference_formula_code": "YYRS",
+      "reference_herbs": [
+        "薏苡仁",
+        "川芎",
+        "当归",
+        "麻黄",
+        "桂枝",
+        "羌活",
+        "独活",
+        "防风",
+        "苍术",
+        "川乌",
+        "甘草"
+      ],
+      "contraindications": [
+        "孕妇禁用",
+        "阴虚者慎用"
+      ],
+      "special_note": "居处宜干燥，避免涉水冒雨"
+    },
+    {
+      "code": "TCM-024",
+      "name": "泄泻-寒湿内盛证",
+      "difficulty": "初级",
+      "syndrome_type": "八纲辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "泄泻清稀，甚则如水样，腹痛肠鸣，脘闷食少1天"
+        ],
+        "history": [
+          "伴恶寒发热，头痛肢体酸痛"
+        ],
+        "tongue": [
+          "舌苔白腻"
+        ],
+        "pulse": [
+          "濡缓"
+        ],
+        "exam": [
+          "腹部压痛，肠鸣音活跃，无脱水貌"
+        ]
+      },
+      "differential": [
+        "湿热泄泻",
+        "食滞肠胃",
+        "脾胃虚弱泄泻"
+      ],
+      "syndrome_differentiation": "寒湿内盛证",
+      "treatment_principle": "芳香化湿，解表散寒",
+      "reference_formula_code": "HXZQS",
+      "reference_herbs": [
+        "藿香",
+        "紫苏叶",
+        "白芷",
+        "厚朴",
+        "陈皮",
+        "茯苓",
+        "白术",
+        "半夏曲"
+      ],
+      "contraindications": [
+        "湿热霍乱禁用",
+        "阴虚火旺者慎用"
+      ],
+      "special_note": "注意补充水分，忌食生冷油腻"
+    },
+    {
+      "code": "TCM-025",
+      "name": "泄泻-湿热伤中证",
+      "difficulty": "中级",
+      "syndrome_type": "八纲辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "泄泻腹痛，泻下急迫，粪色黄褐臭秽，肛门灼热1天"
+        ],
+        "history": [
+          "伴烦热口渴，小便短黄"
+        ],
+        "tongue": [
+          "舌质红，苔黄腻"
+        ],
+        "pulse": [
+          "濡数"
+        ],
+        "exam": [
+          "体温38.0℃，腹部压痛，肠鸣音亢进，轻度脱水貌"
+        ]
+      },
+      "differential": [
+        "寒湿泄泻",
+        "食滞泄泻",
+        "脾虚泄泻"
+      ],
+      "syndrome_differentiation": "湿热伤中证",
+      "treatment_principle": "清热燥湿，分利止泻",
+      "reference_formula_code": "GGLJT",
+      "reference_herbs": [
+        "葛根",
+        "黄芩",
+        "黄连",
+        "甘草"
+      ],
+      "contraindications": [
+        "虚寒下利者禁用",
+        "脾胃虚寒者禁用"
+      ],
+      "special_note": "夏季多见，注意隔离消毒"
+    },
+    {
+      "code": "TCM-026",
+      "name": "泄泻-脾胃虚弱证",
+      "difficulty": "中级",
+      "syndrome_type": "脏腑辨证",
+      "symptom_pool": {
+        "chief_complaint": [
+          "大便时溏时泻，迁延反复，完谷不化，饮食减少反复半年"
+        ],
+        "history": [
+          "食后脘闷不舒，稍进油腻则大便次数增多，面色萎黄，神疲倦怠"
+        ],
+        "tongue": [
+          "舌质淡，苔白"
+        ],
+        "pulse": [
+          "细弱"
+        ],
+        "exam": [
+          "形体消瘦，面色萎黄，腹部轻压痛，无反跳痛"
+        ]
+      },
+      "differential": [
+        "寒湿泄泻",
+        "湿热泄泻",
+        "肾阳虚衰泄泻"
+      ],
+      "syndrome_differentiation": "脾胃虚弱证",
+      "treatment_principle": "健脾益气，化湿止泻",
+      "reference_formula_code": "SLSZS",
+      "reference_herbs": [
+        "人参",
+        "白术",
+        "茯苓",
+        "莲子肉",
+        "薏苡仁",
+        "白扁豆",
+        "砂仁",
+        "桔梗",
+        "山药",
+        "甘草"
+      ],
+      "contraindications": [
+        "湿热内蕴者禁用",
+        "感冒发热者暂停"
+      ],
+      "special_note": "慢性腹泻须排查炎症性肠病、肠肿瘤等"
+    }
+  ]
+}

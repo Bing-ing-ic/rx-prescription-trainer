@@ -179,7 +179,15 @@
     <div id="mistake-table"></div>
   </div>
 
-  <!-- ====== 4. 系统设置 ====== -->
+  <!-- ====== 4. 分模块训练统计 ====== -->
+  <div class="section-title">🧩 分模块训练统计</div>
+  <div class="cards" style="margin-bottom:16px;">
+    <div class="card"><div class="label">⚕ 西医处方</div><div class="num" id="mod-western">-</div><div class="sub">训练次数</div></div>
+    <div class="card"><div class="label">☯ 中医汉方</div><div class="num" style="color:#8b5a2b" id="mod-tcm">-</div><div class="sub">训练次数</div></div>
+    <div class="card"><div class="label">针 针灸推拿</div><div class="num" style="color:#2f7a4f" id="mod-acup">-</div><div class="sub">训练次数</div></div>
+  </div>
+
+  <!-- ====== 5. 系统设置 ====== -->
   <div class="section-title">⚙️ 系统设置</div>
   <div class="panel">
     <div class="setting-row">
@@ -287,6 +295,18 @@
   }else{
     document.getElementById('history-table').innerHTML = '<div class="empty">暂无练习记录 — 用户完成首次处方后这里会显示数据</div>';
   }
+
+  // ===== 分模块统计 =====
+  (function(){
+    const counts = { '西医':0, '中医汉方':0, '针灸推拿':0 };
+    history.forEach(h => {
+      const m = h.module || '西医';
+      if (counts[m] !== undefined) counts[m]++; else counts['西医']++;
+    });
+    document.getElementById('mod-western').textContent = counts['西医'];
+    document.getElementById('mod-tcm').textContent = counts['中医汉方'];
+    document.getElementById('mod-acup').textContent = counts['针灸推拿'];
+  })();
 
   // ===== 3. 错题本 =====
   if(mistakes.length){

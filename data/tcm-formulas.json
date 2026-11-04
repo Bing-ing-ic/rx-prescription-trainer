@@ -1,0 +1,950 @@
+{
+  "version": "2026.11.04-tcm",
+  "note": "经典方剂库。君臣佐使用 role 字段标注。pinyin 用于检索。price_yuan 为一剂饮片参考价（元）。",
+  "formulas": [
+    {
+      "code": "MHT",
+      "name": "麻黄汤",
+      "source": "《伤寒论》",
+      "category": "解表剂-辛温解表",
+      "composition": [
+        {"herb": "麻黄", "role": "君", "dose": "9g"},
+        {"herb": "桂枝", "role": "臣", "dose": "6g"},
+        {"herb": "苦杏仁", "role": "佐", "dose": "9g"},
+        {"herb": "炙甘草", "role": "使", "dose": "3g"}
+      ],
+      "functions": "发汗解表，宣肺平喘",
+      "indications": "外感风寒表实证。恶寒发热，无汗而喘，头痛身疼，骨节疼痛，舌苔薄白，脉浮紧。",
+      "contraindications": ["风热表证禁用", "虚证禁用", "出血倾向者慎用", "自汗盗汗者禁用"],
+      "modified": ["风寒表虚自汗去麻黄，加白芍、姜枣调和营卫", "喘重者加苏子、桑白皮", "苔腻夹湿加苍术、陈皮"],
+      "price_yuan": 3.5,
+      "pinyin": "mht"
+    },
+    {
+      "code": "GZT",
+      "name": "桂枝汤",
+      "source": "《伤寒论》",
+      "category": "解表剂-辛温解表",
+      "composition": [
+        {"herb": "桂枝", "role": "君", "dose": "9g"},
+        {"herb": "白芍", "role": "臣", "dose": "9g"},
+        {"herb": "生姜", "role": "佐", "dose": "9g"},
+        {"herb": "大枣", "role": "佐", "dose": "4枚"},
+        {"herb": "炙甘草", "role": "使", "dose": "6g"}
+      ],
+      "functions": "解肌发表，调和营卫",
+      "indications": "外感风寒表虚证。发热头痛，汗出恶风，鼻鸣干呕，苔白不渴，脉浮缓或浮弱。",
+      "contraindications": ["表实无汗者禁用", "温病发热口渴者禁用", "酒客湿热者慎用"],
+      "modified": ["项背强者加葛根", "兼喘者加厚朴、杏仁", "体虚者加黄芪"],
+      "price_yuan": 3.0,
+      "pinyin": "gzt"
+    },
+    {
+      "code": "YQS",
+      "name": "银翘散",
+      "source": "《温病条辨》",
+      "category": "解表剂-辛凉解表",
+      "composition": [
+        {"herb": "金银花", "role": "君", "dose": "9g"},
+        {"herb": "连翘", "role": "君", "dose": "9g"},
+        {"herb": "薄荷", "role": "臣", "dose": "6g"},
+        {"herb": "牛蒡子", "role": "臣", "dose": "9g"},
+        {"herb": "荆芥", "role": "佐", "dose": "6g"},
+        {"herb": "淡豆豉", "role": "佐", "dose": "6g"},
+        {"herb": "桔梗", "role": "佐", "dose": "6g"},
+        {"herb": "淡竹叶", "role": "佐", "dose": "4g"},
+        {"herb": "芦根", "role": "佐", "dose": "9g"},
+        {"herb": "甘草", "role": "使", "dose": "5g"}
+      ],
+      "functions": "辛凉透表，清热解毒",
+      "indications": "温病初起。发热微恶风寒，无汗或有汗不畅，头痛口渴，咳嗽咽痛，舌尖红，苔薄白或薄黄，脉浮数。",
+      "contraindications": ["风寒感冒禁用", "体虚多汗者慎用"],
+      "modified": ["渴甚加天花粉", "咽痛甚加马勃、玄参", "衄者去荆芥、豆豉加白茅根"],
+      "price_yuan": 5.5,
+      "pinyin": "yqs"
+    },
+    {
+      "code": "SYY",
+      "name": "桑菊饮",
+      "source": "《温病条辨》",
+      "category": "解表剂-辛凉解表",
+      "composition": [
+        {"herb": "桑叶", "role": "君", "dose": "9g"},
+        {"herb": "菊花", "role": "君", "dose": "9g"},
+        {"herb": "杏仁", "role": "臣", "dose": "6g"},
+        {"herb": "连翘", "role": "臣", "dose": "6g"},
+        {"herb": "薄荷", "role": "佐", "dose": "3g"},
+        {"herb": "桔梗", "role": "佐", "dose": "6g"},
+        {"herb": "芦根", "role": "佐", "dose": "9g"},
+        {"herb": "甘草", "role": "使", "dose": "3g"}
+      ],
+      "functions": "疏风清热，宣肺止咳",
+      "indications": "风温初起，表热轻证。但咳，身热不甚，口微渴，脉浮数。",
+      "contraindications": ["风寒咳嗽禁用", "肺热壅盛重者不宜"],
+      "modified": ["气粗似喘加石膏、知母", "舌绛暮热加玄参、犀角", "肺热甚加黄芩"],
+      "price_yuan": 4.0,
+      "pinyin": "syy"
+    },
+    {
+      "code": "HXZQS",
+      "name": "藿香正气散",
+      "source": "《太平惠民和剂局方》",
+      "category": "祛湿剂-解表化湿",
+      "composition": [
+        {"herb": "藿香", "role": "君", "dose": "9g"},
+        {"herb": "紫苏叶", "role": "臣", "dose": "6g"},
+        {"herb": "白芷", "role": "臣", "dose": "6g"},
+        {"herb": "白术", "role": "佐", "dose": "9g"},
+        {"herb": "茯苓", "role": "佐", "dose": "9g"},
+        {"herb": "陈皮", "role": "佐", "dose": "6g"},
+        {"herb": "厚朴", "role": "佐", "dose": "6g"},
+        {"herb": "半夏曲", "role": "佐", "dose": "6g"},
+        {"herb": "桔梗", "role": "佐", "dose": "6g"},
+        {"herb": "大腹皮", "role": "佐", "dose": "6g"},
+        {"herb": "甘草", "role": "使", "dose": "6g"},
+        {"herb": "生姜", "role": "佐", "dose": "3片"},
+        {"herb": "大枣", "role": "佐", "dose": "1枚"}
+      ],
+      "functions": "解表化湿，理气和中",
+      "indications": "外感风寒，内伤湿滞证。恶寒发热，头痛，胸膈满闷，脘腹疼痛，恶心呕吐，肠鸣泄泻，舌苔白腻，脉浮或濡缓。",
+      "contraindications": ["湿热霍乱禁用", "阴虚火旺者慎用"],
+      "modified": ["表邪偏重加香薷", "湿邪偏重加苍术", "食滞加莱菔子、山楂"],
+      "price_yuan": 6.0,
+      "pinyin": "hxzqs"
+    },
+    {
+      "code": "DCQT",
+      "name": "大承气汤",
+      "source": "《伤寒论》",
+      "category": "泻下剂-寒下",
+      "composition": [
+        {"herb": "大黄", "role": "君", "dose": "12g"},
+        {"herb": "厚朴", "role": "臣", "dose": "15g"},
+        {"herb": "枳实", "role": "臣", "dose": "12g"},
+        {"herb": "芒硝", "role": "佐", "dose": "9g"}
+      ],
+      "functions": "峻下热结",
+      "indications": "阳明腑实证。大便不通，频转矢气，脘腹痞满，腹痛拒按，按之则硬，潮热谵语，手足濈然汗出，舌苔黄燥起刺，脉沉实。",
+      "contraindications": ["孕妇禁用", "脾胃虚寒者禁用", "年老体弱者慎用", "血虚津亏便秘禁用"],
+      "modified": ["气虚加人参", "兼瘀血加桃仁、丹皮", "热重加金银花、蒲公英"],
+      "price_yuan": 4.5,
+      "pinyin": "dcqt"
+    },
+    {
+      "code": "MZRW",
+      "name": "麻子仁丸",
+      "source": "《伤寒论》",
+      "category": "泻下剂-润下",
+      "composition": [
+        {"herb": "火麻仁", "role": "君", "dose": "20g"},
+        {"herb": "芍药", "role": "臣", "dose": "9g"},
+        {"herb": "枳实", "role": "臣", "dose": "9g"},
+        {"herb": "大黄", "role": "佐", "dose": "9g"},
+        {"herb": "厚朴", "role": "佐", "dose": "9g"},
+        {"herb": "杏仁", "role": "佐", "dose": "9g"}
+      ],
+      "functions": "润肠泄热，行气通便",
+      "indications": "脾约证。肠胃燥热，脾津不足，大便干结，小便频数，苔黄腻，脉滑数。",
+      "contraindications": ["孕妇禁用", "血虚及肾虚便秘慎用", "纯虚便秘不宜"],
+      "modified": ["痔疮便秘加地榆、槐花", "燥热伤阴加生地黄、玄参"],
+      "price_yuan": 5.0,
+      "pinyin": "mzrw"
+    },
+    {
+      "code": "XCHT",
+      "name": "小柴胡汤",
+      "source": "《伤寒论》",
+      "category": "和解剂-和解少阳",
+      "composition": [
+        {"herb": "柴胡", "role": "君", "dose": "24g"},
+        {"herb": "黄芩", "role": "臣", "dose": "9g"},
+        {"herb": "半夏", "role": "佐", "dose": "9g"},
+        {"herb": "生姜", "role": "佐", "dose": "9g"},
+        {"herb": "人参", "role": "佐", "dose": "9g"},
+        {"herb": "大枣", "role": "佐", "dose": "4枚"},
+        {"herb": "炙甘草", "role": "使", "dose": "6g"}
+      ],
+      "functions": "和解少阳",
+      "indications": "少阳证。往来寒热，胸胁苦满，默默不欲饮食，心烦喜呕，口苦咽干，目眩，舌苔薄白，脉弦。",
+      "contraindications": ["少阳证忌汗吐下", "肝阳上亢者慎用", "真阴亏损者慎用"],
+      "modified": ["胸中烦而不呕去半夏、人参加瓜蒌", "口渴去半夏加天花粉", "腹痛去黄芩加白芍"],
+      "price_yuan": 6.5,
+      "pinyin": "xcht"
+    },
+    {
+      "code": "XYS",
+      "name": "逍遥散",
+      "source": "《太平惠民和剂局方》",
+      "category": "和解剂-调和肝脾",
+      "composition": [
+        {"herb": "柴胡", "role": "君", "dose": "9g"},
+        {"herb": "当归", "role": "臣", "dose": "9g"},
+        {"herb": "白芍", "role": "臣", "dose": "9g"},
+        {"herb": "白术", "role": "佐", "dose": "9g"},
+        {"herb": "茯苓", "role": "佐", "dose": "9g"},
+        {"herb": "薄荷", "role": "佐", "dose": "3g"},
+        {"herb": "煨生姜", "role": "佐", "dose": "3片"},
+        {"herb": "炙甘草", "role": "使", "dose": "6g"}
+      ],
+      "functions": "疏肝解郁，养血健脾",
+      "indications": "肝郁血虚脾弱证。两胁作痛，头痛目眩，口燥咽干，神疲食少，月经不调，乳房胀痛，脉弦而虚。",
+      "contraindications": ["肝郁化火者不宜", "湿热内蕴者慎用"],
+      "modified": ["肝郁化火加丹皮、栀子（丹栀逍遥散）", "月经量多加生地", "胸痛加香附、郁金"],
+      "price_yuan": 5.5,
+      "pinyin": "xys"
+    },
+    {
+      "code": "BXXXT",
+      "name": "半夏泻心汤",
+      "source": "《伤寒论》",
+      "category": "和解剂-调和肠胃",
+      "composition": [
+        {"herb": "半夏", "role": "君", "dose": "12g"},
+        {"herb": "黄芩", "role": "臣", "dose": "9g"},
+        {"herb": "干姜", "role": "臣", "dose": "9g"},
+        {"herb": "黄连", "role": "臣", "dose": "3g"},
+        {"herb": "人参", "role": "佐", "dose": "9g"},
+        {"herb": "大枣", "role": "佐", "dose": "4枚"},
+        {"herb": "炙甘草", "role": "使", "dose": "9g"}
+      ],
+      "functions": "寒热平调，消痞散结",
+      "indications": "寒热错杂之痞证。心下痞，但满不痛，呕吐肠鸣下利，舌苔薄黄而腻，脉弦数。",
+      "contraindications": ["食积痞满不宜", "脾胃阴虚者慎用"],
+      "modified": ["湿热蕴湿加薏苡仁", "食滞加焦三仙", "呕吐加生姜减干姜"],
+      "price_yuan": 5.0,
+      "pinyin": "bxxxt"
+    },
+    {
+      "code": "BHT",
+      "name": "白虎汤",
+      "source": "《伤寒论》",
+      "category": "清热剂-清气分热",
+      "composition": [
+        {"herb": "石膏", "role": "君", "dose": "50g"},
+        {"herb": "知母", "role": "臣", "dose": "18g"},
+        {"herb": "炙甘草", "role": "佐", "dose": "6g"},
+        {"herb": "粳米", "role": "佐", "dose": "9g"}
+      ],
+      "functions": "清热生津",
+      "indications": "气分热盛证。壮热面赤，烦渴引饮，汗出恶热，脉洪大有力。",
+      "contraindications": ["表证未解无汗发热禁用", "脉沉细者禁用", "真寒假热禁用", "脾胃虚寒者禁用"],
+      "modified": ["气血两燔加玄参、犀角", "胃热津伤加人参（白虎加人参汤）"],
+      "price_yuan": 3.5,
+      "pinyin": "bht"
+    },
+    {
+      "code": "HLJDT",
+      "name": "黄连解毒汤",
+      "source": "《外台秘要》引崔氏方",
+      "category": "清热剂-清热解毒",
+      "composition": [
+        {"herb": "黄连", "role": "君", "dose": "9g"},
+        {"herb": "黄芩", "role": "臣", "dose": "6g"},
+        {"herb": "黄柏", "role": "臣", "dose": "6g"},
+        {"herb": "栀子", "role": "佐", "dose": "9g"}
+      ],
+      "functions": "泻火解毒",
+      "indications": "三焦火毒证。大热烦躁，口燥咽干，错语不眠，吐衄发斑，痈肿疔毒，舌红苔黄，脉数有力。",
+      "contraindications": ["非火盛者禁用", "脾胃虚寒者禁用", "阴虚火旺者慎用"],
+      "modified": ["便秘加大黄", "吐衄加生地黄、牡丹皮", "痈肿加金银花、连翘"],
+      "price_yuan": 4.0,
+      "pinyin": "hljdt"
+    },
+    {
+      "code": "LDXGT",
+      "name": "龙胆泻肝汤",
+      "source": "《医方集解》",
+      "category": "清热剂-清脏腑热",
+      "composition": [
+        {"herb": "龙胆草", "role": "君", "dose": "6g"},
+        {"herb": "黄芩", "role": "臣", "dose": "9g"},
+        {"herb": "栀子", "role": "臣", "dose": "9g"},
+        {"herb": "泽泻", "role": "佐", "dose": "12g"},
+        {"herb": "木通", "role": "佐", "dose": "9g"},
+        {"herb": "车前子", "role": "佐", "dose": "9g"},
+        {"herb": "当归", "role": "佐", "dose": "3g"},
+        {"herb": "生地黄", "role": "佐", "dose": "9g"},
+        {"herb": "柴胡", "role": "佐", "dose": "6g"},
+        {"herb": "甘草", "role": "使", "dose": "6g"}
+      ],
+      "functions": "清泻肝胆实火，清利肝经湿热",
+      "indications": "肝胆实火上炎证。头痛目赤，胁痛口苦，耳聋耳肿；肝经湿热下注证。阴肿阴痒，筋痿阴汗，小便淋浊，妇女带下黄臭，舌红苔黄腻，脉弦数有力。",
+      "contraindications": ["脾胃虚寒者禁用", "阴虚阳亢者不宜久服", "孕妇慎用"],
+      "modified": ["外阴红肿加地肤子、白鲜皮", "胁痛加川楝子、延胡索"],
+      "price_yuan": 6.5,
+      "pinyin": "ldxgt"
+    },
+    {
+      "code": "QWS",
+      "name": "清胃散",
+      "source": "《脾胃论》",
+      "category": "清热剂-清脏腑热",
+      "composition": [
+        {"herb": "黄连", "role": "君", "dose": "6g"},
+        {"herb": "升麻", "role": "臣", "dose": "9g"},
+        {"herb": "生地黄", "role": "臣", "dose": "9g"},
+        {"herb": "牡丹皮", "role": "佐", "dose": "9g"},
+        {"herb": "当归", "role": "佐", "dose": "9g"}
+      ],
+      "functions": "清胃凉血",
+      "indications": "胃火牙痛。牙痛牵引头脑，面颊发热，齿喜冷恶热，牙宣出血，唇舌肿痛，口干舌燥，舌红苔黄，脉滑数。",
+      "contraindications": ["风寒牙痛禁用", "肾虚虚火牙痛不宜", "脾胃虚寒者禁用"],
+      "modified": ["便秘加大黄", "口渴加石膏、知母", "热甚加金银花、连翘"],
+      "price_yuan": 4.5,
+      "pinyin": "qws"
+    },
+    {
+      "code": "LZW",
+      "name": "理中丸",
+      "source": "《伤寒论》",
+      "category": "温里剂-温中祛寒",
+      "composition": [
+        {"herb": "人参", "role": "君", "dose": "9g"},
+        {"herb": "干姜", "role": "臣", "dose": "9g"},
+        {"herb": "白术", "role": "佐", "dose": "9g"},
+        {"herb": "炙甘草", "role": "使", "dose": "6g"}
+      ],
+      "functions": "温中祛寒，补气健脾",
+      "indications": "脾胃虚寒证。脘腹疼痛，喜温欲按，自利不渴，畏寒肢冷，呕吐，不欲饮食，舌淡苔白，脉沉细。",
+      "contraindications": ["湿热内蕴禁用", "阴虚火旺者禁用", "实热证禁用"],
+      "modified": ["寒甚加附子（附子理中丸）", "呕吐加丁香、吴茱萸", "下利加重白术"],
+      "price_yuan": 4.0,
+      "pinyin": "lzw"
+    },
+    {
+      "code": "SNT",
+      "name": "四逆汤",
+      "source": "《伤寒论》",
+      "category": "温里剂-回阳救逆",
+      "composition": [
+        {"herb": "附子", "role": "君", "dose": "15g"},
+        {"herb": "干姜", "role": "臣", "dose": "9g"},
+        {"herb": "炙甘草", "role": "佐使", "dose": "6g"}
+      ],
+      "functions": "回阳救逆",
+      "indications": "心肾阳衰寒厥证。四肢厥逆，恶寒蜷卧，神疲欲寐，面色苍白，腹痛下利，舌苔白滑，脉微欲绝。",
+      "contraindications": ["真热假寒禁用", "孕妇禁用", "阳虚寒盛方可使用", "附子须先煎30-60分钟"],
+      "modified": ["阳衰气脱加人参（四逆加人参汤）", "阴盛格阳加葱白"],
+      "price_yuan": 5.0,
+      "pinyin": "snt"
+    },
+    {
+      "code": "WZYT",
+      "name": "吴茱萸汤",
+      "source": "《伤寒论》",
+      "category": "温里剂-温中祛寒",
+      "composition": [
+        {"herb": "吴茱萸", "role": "君", "dose": "6g"},
+        {"herb": "人参", "role": "臣", "dose": "9g"},
+        {"herb": "生姜", "role": "佐", "dose": "18g"},
+        {"herb": "大枣", "role": "佐使", "dose": "4枚"}
+      ],
+      "functions": "温中补虚，降逆止呕",
+      "indications": "肝胃虚寒，浊阴上逆证。食后泛泛欲呕，呕吐酸水，干呕吐涎沫，头痛，胸满脘痛，舌淡苔白滑，脉沉弦迟。",
+      "contraindications": ["呕吐吞酸属胃火者禁用", "阴虚者禁用", "热呕者禁用"],
+      "modified": ["呕吐甚加半夏、砂仁", "头痛加川芎", "巅顶痛加藁本"],
+      "price_yuan": 4.0,
+      "pinyin": "wzyt"
+    },
+    {
+      "code": "SJZT",
+      "name": "四君子汤",
+      "source": "《太平惠民和剂局方》",
+      "category": "补益剂-补气",
+      "composition": [
+        {"herb": "人参", "role": "君", "dose": "9g"},
+        {"herb": "白术", "role": "臣", "dose": "9g"},
+        {"herb": "茯苓", "role": "佐", "dose": "9g"},
+        {"herb": "炙甘草", "role": "使", "dose": "6g"}
+      ],
+      "functions": "益气健脾",
+      "indications": "脾胃气虚证。面色萎白，语声低微，气短乏力，食少便溏，舌淡苔白，脉虚弱。",
+      "contraindications": ["实热证禁用", "阴虚火旺者慎用", "气滞胀满者慎用"],
+      "modified": ["呕吐加半夏、陈皮", "气滞加陈皮（异功散）", "痰湿加陈皮、半夏（六君子汤）"],
+      "price_yuan": 4.5,
+      "pinyin": "sjzt"
+    },
+    {
+      "code": "SWT",
+      "name": "四物汤",
+      "source": "《太平惠民和剂局方》",
+      "category": "补益剂-补血",
+      "composition": [
+        {"herb": "熟地黄", "role": "君", "dose": "12g"},
+        {"herb": "当归", "role": "臣", "dose": "9g"},
+        {"herb": "白芍", "role": "佐", "dose": "9g"},
+        {"herb": "川芎", "role": "佐使", "dose": "6g"}
+      ],
+      "functions": "补血和血",
+      "indications": "营血虚滞证。心悸失眠，头晕目眩，面色无华，妇人月经不调，量少色淡，脐腹作痛，舌淡，脉细弦或细涩。",
+      "contraindications": ["脾胃虚寒便溏者慎用", "阴虚发热者慎用", "感冒期间暂停"],
+      "modified": ["气虚加人参、黄芪", "血瘀加桃仁、红花（桃红四物汤）", "痛经加香附、延胡索"],
+      "price_yuan": 5.0,
+      "pinyin": "swt"
+    },
+    {
+      "code": "BZYQT",
+      "name": "补中益气汤",
+      "source": "《脾胃论》",
+      "category": "补益剂-补气",
+      "composition": [
+        {"herb": "黄芪", "role": "君", "dose": "18g"},
+        {"herb": "人参", "role": "臣", "dose": "6g"},
+        {"herb": "白术", "role": "臣", "dose": "9g"},
+        {"herb": "炙甘草", "role": "臣", "dose": "9g"},
+        {"herb": "当归", "role": "佐", "dose": "3g"},
+        {"herb": "陈皮", "role": "佐", "dose": "6g"},
+        {"herb": "升麻", "role": "佐", "dose": "6g"},
+        {"herb": "柴胡", "role": "佐", "dose": "6g"}
+      ],
+      "functions": "补中益气，升阳举陷",
+      "indications": "脾虚气陷证。饮食减少，体倦肢软，少气懒言，面色萎黄，大便稀溏，脱肛，子宫脱垂，久泻久痢，舌淡脉虚。",
+      "contraindications": ["阴虚火旺者禁用", "实证热证禁用", "感冒发热者暂停"],
+      "modified": ["腹中痛加白芍", "头痛加蔓荆子、川芎", "虚甚加重人参"],
+      "price_yuan": 6.0,
+      "pinyin": "bzyqt"
+    },
+    {
+      "code": "LWDHW",
+      "name": "六味地黄丸",
+      "source": "《小儿药证直诀》",
+      "category": "补益剂-补阴",
+      "composition": [
+        {"herb": "熟地黄", "role": "君", "dose": "24g"},
+        {"herb": "山茱萸", "role": "臣", "dose": "12g"},
+        {"herb": "山药", "role": "臣", "dose": "12g"},
+        {"herb": "泽泻", "role": "佐", "dose": "9g"},
+        {"herb": "牡丹皮", "role": "佐", "dose": "9g"},
+        {"herb": "茯苓", "role": "佐", "dose": "9g"}
+      ],
+      "functions": "滋补肝肾",
+      "indications": "肝肾阴虚证。腰膝酸软，头晕目眩，耳鸣耳聋，盗汗遗精，骨蒸潮热，手足心热，消渴，舌红少苔，脉沉细数。",
+      "contraindications": ["脾虚泄泻者慎用", "痰湿内盛者禁用", "感冒期间暂停"],
+      "modified": ["阴虚火旺加知母、黄柏（知柏地黄丸）", "目眩加枸杞子、菊花（杞菊地黄丸）", "肺肾阴虚加麦冬、五味子（麦味地黄丸）"],
+      "price_yuan": 5.5,
+      "pinyin": "lwdhw"
+    },
+    {
+      "code": "JKSQW",
+      "name": "金匮肾气丸",
+      "source": "《金匮要略》",
+      "category": "补益剂-补阳",
+      "composition": [
+        {"herb": "干地黄", "role": "君", "dose": "24g"},
+        {"herb": "山药", "role": "臣", "dose": "12g"},
+        {"herb": "山茱萸", "role": "臣", "dose": "12g"},
+        {"herb": "泽泻", "role": "佐", "dose": "9g"},
+        {"herb": "茯苓", "role": "佐", "dose": "9g"},
+        {"herb": "牡丹皮", "role": "佐", "dose": "9g"},
+        {"herb": "桂枝", "role": "佐", "dose": "3g"},
+        {"herb": "附子", "role": "佐", "dose": "3g"}
+      ],
+      "functions": "补肾助阳",
+      "indications": "肾阳不足证。腰痛脚软，身半以下常有冷感，少腹拘急，小便不利或反多，入夜尤甚，阳痿早泄，舌淡胖，脉虚弱。",
+      "contraindications": ["阴虚火旺者禁用", "孕妇禁用", "虚火上炎者禁用"],
+      "modified": ["阳痿加淫羊藿、巴戟天", "水肿加车前子、牛膝（济生肾气丸）"],
+      "price_yuan": 6.0,
+      "pinyin": "jksqw"
+    },
+    {
+      "code": "GPT",
+      "name": "归脾汤",
+      "source": "《济生方》",
+      "category": "补益剂-补血",
+      "composition": [
+        {"herb": "黄芪", "role": "君", "dose": "12g"},
+        {"herb": "人参", "role": "臣", "dose": "6g"},
+        {"herb": "白术", "role": "臣", "dose": "9g"},
+        {"herb": "茯神", "role": "佐", "dose": "9g"},
+        {"herb": "酸枣仁", "role": "佐", "dose": "12g"},
+        {"herb": "当归", "role": "佐", "dose": "9g"},
+        {"herb": "龙眼肉", "role": "佐", "dose": "9g"},
+        {"herb": "远志", "role": "佐", "dose": "6g"},
+        {"herb": "木香", "role": "佐", "dose": "6g"},
+        {"herb": "炙甘草", "role": "使", "dose": "3g"},
+        {"herb": "生姜", "role": "佐", "dose": "3片"},
+        {"herb": "大枣", "role": "佐", "dose": "2枚"}
+      ],
+      "functions": "益气补血，健脾养心",
+      "indications": "心脾气血两虚证。心悸怔忡，健忘失眠，盗汗虚热，体倦食少，面色萎黄，舌淡苔薄白，脉细弱。",
+      "contraindications": ["阴虚火旺者禁用", "痰湿壅盛者慎用", "感冒期间暂停"],
+      "modified": ["崩漏下血加地榆炭、艾叶炭", "失眠重加夜交藤、合欢皮"],
+      "price_yuan": 8.0,
+      "pinyin": "gpt"
+    },
+    {
+      "code": "SZRT",
+      "name": "酸枣仁汤",
+      "source": "《金匮要略》",
+      "category": "安神剂-滋养安神",
+      "composition": [
+        {"herb": "酸枣仁", "role": "君", "dose": "15g"},
+        {"herb": "茯苓", "role": "臣", "dose": "6g"},
+        {"herb": "知母", "role": "佐", "dose": "6g"},
+        {"herb": "川芎", "role": "佐", "dose": "6g"},
+        {"herb": "甘草", "role": "使", "dose": "3g"}
+      ],
+      "functions": "养血安神，清热除烦",
+      "indications": "肝血不足，虚热内扰证。虚烦失眠，心悸不安，头目眩晕，咽干口燥，舌红，脉弦细。",
+      "contraindications": ["痰热内扰失眠者不宜", "实热郁火者慎用"],
+      "modified": ["心火旺加黄连", "多梦加龙骨、牡蛎", "兼心脾两虚合归脾汤"],
+      "price_yuan": 4.5,
+      "pinyin": "szrt"
+    },
+    {
+      "code": "ZSAST",
+      "name": "朱砂安神丸",
+      "source": "《医学发明》",
+      "category": "安神剂-重镇安神",
+      "composition": [
+        {"herb": "朱砂", "role": "君", "dose": "3g"},
+        {"herb": "黄连", "role": "臣", "dose": "6g"},
+        {"herb": "当归", "role": "佐", "dose": "9g"},
+        {"herb": "生地黄", "role": "佐", "dose": "9g"},
+        {"herb": "炙甘草", "role": "使", "dose": "6g"}
+      ],
+      "functions": "镇心安神，清热养血",
+      "indications": "心火偏亢，阴血不足证。失眠多梦，惊悸怔忡，心烦神乱，舌红，脉细数。",
+      "contraindications": ["朱砂含汞，不可久服", "肝肾功能不全者禁用", "孕妇禁用", "不宜与碘溴化物同用"],
+      "modified": ["失眠重加酸枣仁、柏子仁", "心阴不足加天冬、麦冬"],
+      "price_yuan": 5.0,
+      "pinyin": "zsast"
+    },
+    {
+      "code": "CHSGST",
+      "name": "柴胡疏肝散",
+      "source": "《景岳全书》",
+      "category": "理气剂-疏肝理气",
+      "composition": [
+        {"herb": "柴胡", "role": "君", "dose": "6g"},
+        {"herb": "陈皮", "role": "臣", "dose": "6g"},
+        {"herb": "川芎", "role": "佐", "dose": "5g"},
+        {"herb": "香附", "role": "佐", "dose": "5g"},
+        {"herb": "枳壳", "role": "佐", "dose": "5g"},
+        {"herb": "白芍", "role": "佐", "dose": "5g"},
+        {"herb": "甘草", "role": "使", "dose": "3g"}
+      ],
+      "functions": "疏肝行气，活血止痛",
+      "indications": "肝气郁滞证。胁肋疼痛，寒热往来，嗳气太息，脘腹胀满，脉弦。",
+      "contraindications": ["气虚者慎用", "阴虚火旺者不宜久服"],
+      "modified": ["胁痛甚加郁金、延胡索", "嗳气加砂仁、沉香", "食滞加焦三仙"],
+      "price_yuan": 4.0,
+      "pinyin": "chsgst"
+    },
+    {
+      "code": "BXHPT",
+      "name": "半夏厚朴汤",
+      "source": "《金匮要略》",
+      "category": "理气剂-行气散结",
+      "composition": [
+        {"herb": "半夏", "role": "君", "dose": "12g"},
+        {"herb": "厚朴", "role": "臣", "dose": "9g"},
+        {"herb": "茯苓", "role": "佐", "dose": "12g"},
+        {"herb": "生姜", "role": "佐", "dose": "9g"},
+        {"herb": "苏叶", "role": "佐", "dose": "6g"}
+      ],
+      "functions": "行气散结，降逆化痰",
+      "indications": "梅核气。咽中如有物阻，咯吐不出，吞咽不下，胸膈满闷，或咳或呕，舌苔白润或白腻，脉弦缓或弦滑。",
+      "contraindications": ["阴虚火旺者禁用", "气郁化火者慎用"],
+      "modified": ["气郁加柴胡、郁金", "痰多加陈皮、瓜蒌", "胁痛加川楝子、延胡索"],
+      "price_yuan": 3.5,
+      "pinyin": "bxhpt"
+    },
+    {
+      "code": "XFZYT",
+      "name": "血府逐瘀汤",
+      "source": "《医林改错》",
+      "category": "理血剂-活血祛瘀",
+      "composition": [
+        {"herb": "桃仁", "role": "君", "dose": "12g"},
+        {"herb": "红花", "role": "臣", "dose": "9g"},
+        {"herb": "当归", "role": "臣", "dose": "9g"},
+        {"herb": "生地黄", "role": "佐", "dose": "9g"},
+        {"herb": "川芎", "role": "佐", "dose": "5g"},
+        {"herb": "赤芍", "role": "佐", "dose": "6g"},
+        {"herb": "牛膝", "role": "佐", "dose": "9g"},
+        {"herb": "桔梗", "role": "佐", "dose": "5g"},
+        {"herb": "柴胡", "role": "佐", "dose": "3g"},
+        {"herb": "枳壳", "role": "佐", "dose": "6g"},
+        {"herb": "甘草", "role": "使", "dose": "3g"}
+      ],
+      "functions": "活血化瘀，行气止痛",
+      "indications": "胸中血瘀证。胸痛头痛，日久不愈，痛如针刺而有定处，或呃逆日久不止，舌质暗红或有瘀斑，脉涩或弦紧。",
+      "contraindications": ["孕妇禁用", "月经过多者禁用", "出血倾向者禁用"],
+      "modified": ["瘀痛甚加郁金、延胡索", "气滞加香附、青皮"],
+      "price_yuan": 7.0,
+      "pinyin": "xfzyt"
+    },
+    {
+      "code": "BYHWT",
+      "name": "补阳还五汤",
+      "source": "《医林改错》",
+      "category": "理血剂-活血祛瘀",
+      "composition": [
+        {"herb": "黄芪", "role": "君", "dose": "30g"},
+        {"herb": "当归尾", "role": "臣", "dose": "6g"},
+        {"herb": "赤芍", "role": "佐", "dose": "5g"},
+        {"herb": "地龙", "role": "佐", "dose": "3g"},
+        {"herb": "川芎", "role": "佐", "dose": "3g"},
+        {"herb": "红花", "role": "佐", "dose": "3g"},
+        {"herb": "桃仁", "role": "佐", "dose": "3g"}
+      ],
+      "functions": "补气，活血，通络",
+      "indications": "中风之气虚血瘀证。半身不遂，口眼歪斜，语言謇涩，口角流涎，小便频数或遗尿不禁，舌黯淡苔白，脉缓无力。",
+      "contraindications": ["中风闭证禁用", "阴虚血热者禁用", "孕妇禁用"],
+      "modified": ["偏寒加附子", "痰多加半夏、天竺黄", "语謇加石菖蒲、远志"],
+      "price_yuan": 6.5,
+      "pinyin": "byhwt"
+    },
+    {
+      "code": "PWS",
+      "name": "平胃散",
+      "source": "《太平惠民和剂局方》",
+      "category": "祛湿剂-燥湿和胃",
+      "composition": [
+        {"herb": "苍术", "role": "君", "dose": "12g"},
+        {"herb": "厚朴", "role": "臣", "dose": "9g"},
+        {"herb": "陈皮", "role": "佐", "dose": "9g"},
+        {"herb": "甘草", "role": "使", "dose": "3g"},
+        {"herb": "生姜", "role": "佐", "dose": "2片"},
+        {"herb": "大枣", "role": "佐", "dose": "2枚"}
+      ],
+      "functions": "燥湿运脾，行气和胃",
+      "indications": "湿滞脾胃证。脘腹胀满，不思饮食，口淡无味，恶心呕吐，嗳气吞酸，肢体沉重，怠惰嗜卧，常多自利，舌苔白腻而厚，脉缓。",
+      "contraindications": ["阴虚气滞者禁用", "孕妇慎用"],
+      "modified": ["湿甚加藿香、佩兰", "食滞加焦三仙", "兼热加黄连、黄芩"],
+      "price_yuan": 3.0,
+      "pinyin": "pws"
+    },
+    {
+      "code": "WLS",
+      "name": "五苓散",
+      "source": "《伤寒论》",
+      "category": "祛湿剂-利水渗湿",
+      "composition": [
+        {"herb": "泽泻", "role": "君", "dose": "15g"},
+        {"herb": "猪苓", "role": "臣", "dose": "9g"},
+        {"herb": "茯苓", "role": "臣", "dose": "9g"},
+        {"herb": "白术", "role": "佐", "dose": "9g"},
+        {"herb": "桂枝", "role": "佐", "dose": "6g"}
+      ],
+      "functions": "利水渗湿，温阳化气",
+      "indications": "膀胱气化不利之蓄水证。小便不利，头痛微热，烦渴欲饮，水入则吐，舌苔白，脉浮。",
+      "contraindications": ["阴虚津亏者禁用", "汗下之人慎用"],
+      "modified": ["湿热去桂枝加薏苡仁", "水肿甚加车前子、大腹皮"],
+      "price_yuan": 3.5,
+      "pinyin": "wls"
+    },
+    {
+      "code": "ECT",
+      "name": "二陈汤",
+      "source": "《太平惠民和剂局方》",
+      "category": "祛痰剂-燥湿化痰",
+      "composition": [
+        {"herb": "半夏", "role": "君", "dose": "12g"},
+        {"herb": "陈皮", "role": "臣", "dose": "9g"},
+        {"herb": "茯苓", "role": "佐", "dose": "9g"},
+        {"herb": "炙甘草", "role": "使", "dose": "3g"},
+        {"herb": "生姜", "role": "佐", "dose": "7片"},
+        {"herb": "乌梅", "role": "佐", "dose": "1枚"}
+      ],
+      "functions": "燥湿化痰，理气和中",
+      "indications": "湿痰证。咳嗽痰多，色白易咯，恶心呕吐，胸膈痞闷，肢体困重，或头眩心悸，舌苔白滑或腻，脉滑。",
+      "contraindications": ["阴虚燥痰者禁用", "吐血者慎用", "热痰者不宜"],
+      "modified": ["热痰加黄芩、瓜蒌", "寒痰加干姜、细辛", "食痰加莱菔子、焦三仙"],
+      "price_yuan": 3.0,
+      "pinyin": "ect"
+    },
+    {
+      "code": "BHW",
+      "name": "保和丸",
+      "source": "《丹溪心法》",
+      "category": "消食剂-消食化滞",
+      "composition": [
+        {"herb": "山楂", "role": "君", "dose": "18g"},
+        {"herb": "神曲", "role": "臣", "dose": "9g"},
+        {"herb": "半夏", "role": "佐", "dose": "9g"},
+        {"herb": "茯苓", "role": "佐", "dose": "9g"},
+        {"herb": "陈皮", "role": "佐", "dose": "6g"},
+        {"herb": "连翘", "role": "佐", "dose": "6g"},
+        {"herb": "莱菔子", "role": "佐", "dose": "6g"}
+      ],
+      "functions": "消食和胃",
+      "indications": "食积证。脘腹痞满胀痛，嗳腐吞酸，恶食呕逆，或大便泄泻，舌苔厚腻，脉滑。",
+      "contraindications": ["脾胃虚弱无食积者不宜", "孕妇慎用"],
+      "modified": ["食滞较重加枳实、槟榔", "化热加黄连", "便秘加大黄"],
+      "price_yuan": 4.0,
+      "pinyin": "bhw"
+    },
+    {
+      "code": "ZSS",
+      "name": "止嗽散",
+      "source": "《医学心悟》",
+      "category": "解表剂-止咳化痰",
+      "composition": [
+        {"herb": "紫菀", "role": "君", "dose": "9g"},
+        {"herb": "百部", "role": "臣", "dose": "9g"},
+        {"herb": "白前", "role": "臣", "dose": "9g"},
+        {"herb": "桔梗", "role": "佐", "dose": "6g"},
+        {"herb": "荆芥", "role": "佐", "dose": "6g"},
+        {"herb": "陈皮", "role": "佐", "dose": "6g"},
+        {"herb": "甘草", "role": "使", "dose": "3g"}
+      ],
+      "functions": "宣利肺气，疏风止咳",
+      "indications": "风邪犯肺证。咳嗽咽痒，咯痰不爽，或微有恶风发热，舌苔薄白，脉浮缓。",
+      "contraindications": ["阴虚劳嗽者禁用", "肺热咳嗽者不宜"],
+      "modified": ["风热加桑叶、菊花", "湿热加黄芩、桑白皮", "咳嗽日久加杏仁、款冬花"],
+      "price_yuan": 4.0,
+      "pinyin": "zss"
+    },
+    {
+      "code": "LFW",
+      "name": "良附丸",
+      "source": "《良方集腋》",
+      "category": "理气剂-温中行气",
+      "composition": [
+        {"herb": "高良姜", "role": "君", "dose": "9g"},
+        {"herb": "香附", "role": "臣", "dose": "9g"}
+      ],
+      "functions": "行气疏肝，祛寒止痛",
+      "indications": "寒凝气滞证。胃脘疼痛，胸胁胀闷，畏寒喜暖，舌苔白，脉沉弦。",
+      "contraindications": ["热证胃痛禁用", "阴虚者禁用"],
+      "modified": ["痛甚加延胡索、川楝子", "寒甚加干姜、吴茱萸"],
+      "price_yuan": 2.5,
+      "pinyin": "lfw"
+    },
+    {
+      "code": "CQCTS",
+      "name": "川芎茶调散",
+      "source": "《太平惠民和剂局方》",
+      "category": "解表剂-辛温解表",
+      "composition": [
+        {"herb": "川芎", "role": "君", "dose": "12g"},
+        {"herb": "荆芥", "role": "臣", "dose": "12g"},
+        {"herb": "白芷", "role": "臣", "dose": "6g"},
+        {"herb": "羌活", "role": "佐", "dose": "6g"},
+        {"herb": "甘草", "role": "佐使", "dose": "6g"},
+        {"herb": "细辛", "role": "佐", "dose": "3g"},
+        {"herb": "防风", "role": "佐", "dose": "5g"},
+        {"herb": "薄荷", "role": "佐", "dose": "12g"}
+      ],
+      "functions": "疏风止痛",
+      "indications": "外感风邪头痛。偏正头痛或巅顶疼痛，恶寒发热，目眩鼻塞，舌苔薄白，脉浮。",
+      "contraindications": ["气虚/血虚/肝阳头痛禁用", "孕妇慎用"],
+      "modified": ["风热加菊花、僵蚕", "风寒重加麻黄、苏叶", "头痛久不愈加桃仁、红花"],
+      "price_yuan": 5.0,
+      "pinyin": "cqcts"
+    },
+    {
+      "code": "TMGYT",
+      "name": "天麻钩藤饮",
+      "source": "《杂病证治新义》",
+      "category": "平肝息风剂",
+      "composition": [
+        {"herb": "天麻", "role": "君", "dose": "9g"},
+        {"herb": "钩藤", "role": "臣", "dose": "12g"},
+        {"herb": "石决明", "role": "臣", "dose": "18g"},
+        {"herb": "栀子", "role": "佐", "dose": "9g"},
+        {"herb": "黄芩", "role": "佐", "dose": "9g"},
+        {"herb": "川牛膝", "role": "佐", "dose": "12g"},
+        {"herb": "杜仲", "role": "佐", "dose": "9g"},
+        {"herb": "桑寄生", "role": "佐", "dose": "9g"},
+        {"herb": "益母草", "role": "佐", "dose": "9g"},
+        {"herb": "夜交藤", "role": "佐", "dose": "9g"},
+        {"herb": "茯神", "role": "佐", "dose": "9g"}
+      ],
+      "functions": "平肝息风，清热活血，补益肝肾",
+      "indications": "肝阳偏亢，肝风上扰证。头痛，眩晕，失眠多梦，口苦面红，舌红苔黄，脉弦或数。",
+      "contraindications": ["气虚血瘀者慎用", "孕妇慎用"],
+      "modified": ["火热甚加龙胆草、夏枯草", "肝肾阴虚加生地、白芍"],
+      "price_yuan": 8.5,
+      "pinyin": "tmgyt"
+    },
+    {
+      "code": "XKF",
+      "name": "消渴方",
+      "source": "《丹溪心法》",
+      "category": "清热剂-润燥",
+      "composition": [
+        {"herb": "天花粉", "role": "君", "dose": "15g"},
+        {"herb": "黄连", "role": "臣", "dose": "6g"},
+        {"herb": "生地黄", "role": "臣", "dose": "15g"},
+        {"herb": "藕汁", "role": "佐", "dose": "30ml"},
+        {"herb": "乳汁", "role": "佐", "dose": "30ml"},
+        {"herb": "蜂蜜", "role": "佐", "dose": "15g"}
+      ],
+      "functions": "清热生津，滋阴润燥",
+      "indications": "上消。肺热津伤证。烦渴多饮，口干舌燥，尿频量多，舌边尖红，苔薄黄，脉洪数。",
+      "contraindications": ["脾胃虚寒者慎用", "血糖控制不佳者配合西药"],
+      "modified": ["口渴甚加葛根、麦冬", "热甚加石膏、知母"],
+      "price_yuan": 6.0,
+      "pinyin": "xkf"
+    },
+    {
+      "code": "YNJ",
+      "name": "玉女煎",
+      "source": "《景岳全书》",
+      "category": "清热剂-清脏腑热",
+      "composition": [
+        {"herb": "石膏", "role": "君", "dose": "15g"},
+        {"herb": "熟地黄", "role": "臣", "dose": "15g"},
+        {"herb": "麦冬", "role": "佐", "dose": "6g"},
+        {"herb": "知母", "role": "佐", "dose": "5g"},
+        {"herb": "牛膝", "role": "佐使", "dose": "5g"}
+      ],
+      "functions": "清胃热，滋肾阴",
+      "indications": "胃热阴虚证。烦热干渴，头痛，牙痛，齿松牙衄，亦治消渴，消谷善饥，舌红苔黄而干。",
+      "contraindications": ["脾胃虚寒者禁用", "大便溏泄者禁用"],
+      "modified": ["胃热甚加地骨皮", "阴虚甚加玄参、枸杞子"],
+      "price_yuan": 5.0,
+      "pinyin": "ynj"
+    },
+    {
+      "code": "FFS",
+      "name": "防风汤",
+      "source": "《宣明论方》",
+      "category": "祛风胜湿剂",
+      "composition": [
+        {"herb": "防风", "role": "君", "dose": "9g"},
+        {"herb": "麻黄", "role": "臣", "dose": "6g"},
+        {"herb": "桂枝", "role": "臣", "dose": "6g"},
+        {"herb": "葛根", "role": "佐", "dose": "9g"},
+        {"herb": "当归", "role": "佐", "dose": "9g"},
+        {"herb": "茯苓", "role": "佐", "dose": "9g"},
+        {"herb": "生姜", "role": "佐", "dose": "5片"},
+        {"herb": "大枣", "role": "佐", "dose": "3枚"},
+        {"herb": "甘草", "role": "使", "dose": "6g"}
+      ],
+      "functions": "祛风通络，散寒除湿",
+      "indications": "行痹。肢体关节疼痛，游走不定，关节屈伸不利，恶风发热，舌苔薄白，脉浮。",
+      "contraindications": ["气血亏虚者慎用", "孕妇慎用"],
+      "modified": ["上肢痛加羌活、姜黄", "下肢痛加牛膝、独活", "痛甚加乳香、没药"],
+      "price_yuan": 5.0,
+      "pinyin": "ffs"
+    },
+    {
+      "code": "WUT",
+      "name": "乌头汤",
+      "source": "《金匮要略》",
+      "category": "温里散寒剂",
+      "composition": [
+        {"herb": "制川乌", "role": "君", "dose": "6g"},
+        {"herb": "麻黄", "role": "臣", "dose": "9g"},
+        {"herb": "芍药", "role": "佐", "dose": "9g"},
+        {"herb": "黄芪", "role": "佐", "dose": "9g"},
+        {"herb": "甘草", "role": "使", "dose": "9g"}
+      ],
+      "functions": "温经散寒，祛风除湿",
+      "indications": "痛痹。肢体关节疼痛较剧，痛有定处，得热痛减，遇寒痛增，关节不可屈伸，局部皮色不红，舌淡苔白，脉弦紧。",
+      "contraindications": ["孕妇禁用", "阴虚火旺者禁用", "川乌须先煎30-60分钟减毒", "反半夏、瓜蒌、贝母、白蔹、白及"],
+      "modified": ["寒甚加附子", "痛甚加乳香、没药", "兼血瘀加桃仁、红花"],
+      "price_yuan": 6.0,
+      "pinyin": "wut"
+    },
+    {
+      "code": "YYRS",
+      "name": "薏苡仁汤",
+      "source": "《类证治裁》",
+      "category": "祛湿剂",
+      "composition": [
+        {"herb": "薏苡仁", "role": "君", "dose": "20g"},
+        {"herb": "川芎", "role": "臣", "dose": "9g"},
+        {"herb": "当归", "role": "臣", "dose": "9g"},
+        {"herb": "麻黄", "role": "佐", "dose": "6g"},
+        {"herb": "桂枝", "role": "佐", "dose": "6g"},
+        {"herb": "羌活", "role": "佐", "dose": "9g"},
+        {"herb": "独活", "role": "佐", "dose": "9g"},
+        {"herb": "防风", "role": "佐", "dose": "9g"},
+        {"herb": "川乌", "role": "佐", "dose": "3g"},
+        {"herb": "苍术", "role": "佐", "dose": "9g"},
+        {"herb": "甘草", "role": "使", "dose": "6g"},
+        {"herb": "生姜", "role": "佐", "dose": "3片"}
+      ],
+      "functions": "除湿通络，祛风散寒",
+      "indications": "着痹。肢体关节重着，酸痛，或有肿胀，痛有定处，手足沉重，活动不便，肌肤麻木不仁，舌苔白腻，脉濡缓。",
+      "contraindications": ["孕妇禁用", "阴虚者慎用", "川乌须先煎"],
+      "modified": ["关节肿胀加萆薢、木通", "肌肤麻木加海桐皮、豨莶草"],
+      "price_yuan": 7.0,
+      "pinyin": "yyrs"
+    },
+    {
+      "code": "SLSZS",
+      "name": "参苓白术散",
+      "source": "《太平惠民和剂局方》",
+      "category": "补益剂-补气",
+      "composition": [
+        {"herb": "人参", "role": "君", "dose": "10g"},
+        {"herb": "白术", "role": "臣", "dose": "10g"},
+        {"herb": "茯苓", "role": "臣", "dose": "10g"},
+        {"herb": "莲子肉", "role": "佐", "dose": "9g"},
+        {"herb": "薏苡仁", "role": "佐", "dose": "9g"},
+        {"herb": "白扁豆", "role": "佐", "dose": "9g"},
+        {"herb": "砂仁", "role": "佐", "dose": "6g"},
+        {"herb": "桔梗", "role": "佐", "dose": "6g"},
+        {"herb": "山药", "role": "佐", "dose": "10g"},
+        {"herb": "甘草", "role": "使", "dose": "6g"}
+      ],
+      "functions": "益气健脾，渗湿止泻",
+      "indications": "脾虚湿盛证。饮食不化，胸脘痞闷，肠鸣泄泻，四肢乏力，形体消瘦，面色萎黄，舌淡苔白腻，脉虚缓。",
+      "contraindications": ["湿热内蕴者禁用", "感冒发热者暂停"],
+      "modified": ["兼里寒加干姜、附子", "久泻不止加肉豆蔻、诃子"],
+      "price_yuan": 6.5,
+      "pinyin": "slszs"
+    },
+    {
+      "code": "GGLJT",
+      "name": "葛根芩连汤",
+      "source": "《伤寒论》",
+      "category": "解表剂-表里双解",
+      "composition": [
+        {"herb": "葛根", "role": "君", "dose": "15g"},
+        {"herb": "黄芩", "role": "臣", "dose": "9g"},
+        {"herb": "黄连", "role": "臣", "dose": "9g"},
+        {"herb": "甘草", "role": "使", "dose": "3g"}
+      ],
+      "functions": "解表清里",
+      "indications": "协热下利。身热下利，胸脘烦热，口干作渴，喘而汗出，舌红苔黄，脉数或促。",
+      "contraindications": ["虚寒下利者禁用", "脾胃虚寒者禁用"],
+      "modified": ["湿盛加苍术、藿香", "腹痛加白芍、木香", "呕吐加半夏、生姜"],
+      "price_yuan": 3.5,
+      "pinyin": "ggljt"
+    },
+    {
+      "code": "ZRT",
+      "name": "润肠丸",
+      "source": "《沈氏尊生书》",
+      "category": "泻下剂-润下",
+      "composition": [
+        {"herb": "当归", "role": "君", "dose": "12g"},
+        {"herb": "生地黄", "role": "臣", "dose": "12g"},
+        {"herb": "火麻仁", "role": "臣", "dose": "15g"},
+        {"herb": "桃仁", "role": "佐", "dose": "9g"},
+        {"herb": "枳壳", "role": "佐", "dose": "9g"}
+      ],
+      "functions": "养血润燥，通便",
+      "indications": "血虚便秘。大便干结，面色无华，头晕目眩，心悸气短，唇舌淡白，脉细涩。",
+      "contraindications": ["实热便秘不宜", "孕妇禁用桃仁"],
+      "modified": ["阴虚加玄参、麦冬", "气虚加黄芪、党参"],
+      "price_yuan": 5.0,
+      "pinyin": "zrt"
+    },
+    {
+      "code": "HST",
+      "name": "黄芪汤",
+      "source": "《金匮翼》",
+      "category": "补益剂-补气",
+      "composition": [
+        {"herb": "黄芪", "role": "君", "dose": "15g"},
+        {"herb": "火麻仁", "role": "臣", "dose": "12g"},
+        {"herb": "陈皮", "role": "佐", "dose": "9g"},
+        {"herb": "白蜜", "role": "佐使", "dose": "30g"}
+      ],
+      "functions": "补气健脾，润肠通便",
+      "indications": "气虚便秘。粪质并不干硬，虽有便意，但临厕努挣乏力，便难排出，挣则汗出气短，便后乏力，面白神疲，舌淡苔白，脉弱。",
+      "contraindications": ["阴虚火旺者慎用", "实热便秘禁用"],
+      "modified": ["气虚甚加党参、白术", "下陷加升麻、柴胡", "血虚加当归"],
+      "price_yuan": 4.0,
+      "pinyin": "hst"
+    }
+  ]
+}

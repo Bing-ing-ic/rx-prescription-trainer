@@ -1,0 +1,346 @@
+{
+  "version": "2026.11.04-tcm",
+  "note": "中医辨证论治规则引擎。group: FORMAT/INCOMPATIBILITY/SYNDROME/EFFICACY/USAGE/DOSAGE/SPECIAL_POP。severity: error/warn/pass。weight_hint 用于评分维度。",
+  "rules": [
+    {
+      "rule_id": "TCM-FMT-01",
+      "group": "FORMAT",
+      "title": "方剂君臣佐使配伍完整",
+      "trigger": "formula.missing_role",
+      "logic": "检查所选方剂组成是否包含君药、臣药、佐药、使药；缺失任一角色判 error",
+      "severity": "error",
+      "basis": "《素问·至真要大论》：主病之谓君，佐君之谓臣，应臣之谓使。方剂须君臣佐使结构完整。",
+      "weight_hint": "format"
+    },
+    {
+      "rule_id": "TCM-FMT-02",
+      "group": "FORMAT",
+      "title": "处方药味数量适中",
+      "trigger": "herb_count < 4 或 > 20",
+      "logic": "一般饮片处方药味5-15味；少于4味君臣佐使难以完备判 warn；超过20味判 warn（大方复治须说明）",
+      "severity": "warn",
+      "basis": "《伤寒论》经典方剂多为3-9味；临床处方药味宜精炼，药味过多反致药力分散。",
+      "weight_hint": "format"
+    },
+    {
+      "rule_id": "TCM-FMT-03",
+      "group": "FORMAT",
+      "title": "单味药剂量在药典范围内",
+      "trigger": "herb.dose 超出 tcm-herbs.dose_range",
+      "logic": "对照 tcm-herbs.json dose_range 上下限：超出上限判 error；达上限90%判 warn",
+      "severity": "error",
+      "basis": "《中国药典》2025版一部各药【用法用量】项。",
+      "weight_hint": "dosage"
+    },
+    {
+      "rule_id": "TCM-FMT-04",
+      "group": "FORMAT",
+      "title": "中医四诊信息完整",
+      "trigger": "cases.symptom_pool 中 chief_complaint/tongue/pulse 任一为空",
+      "logic": "中医处方须记录主诉、舌象、脉象，缺失任一项判 error",
+      "severity": "error",
+      "basis": "《中医诊断学》：望闻问切四诊合参，舌脉为辨证关键依据。",
+      "weight_hint": "format"
+    },
+    {
+      "rule_id": "TCM-FMT-05",
+      "group": "FORMAT",
+      "title": "中药名称规范统一",
+      "trigger": "herb.name 使用别名俗名（如元参/乌元参/瓜蒌皮应写天花粉/瓜蒌）",
+      "logic": "必须使用药典通用名，如处方写\"元参\"应规范为\"玄参\"；写\"忍冬花\"应规范为\"金银花\"",
+      "severity": "warn",
+      "basis": "《处方管理办法》第十七条：医师开具处方应当使用经药品监督管理部门批准并公布的药品通用名称。",
+      "weight_hint": "format"
+    },
+    {
+      "rule_id": "TCM-INCOMPAT-01",
+      "group": "INCOMPATIBILITY",
+      "title": "十八反配伍禁忌",
+      "trigger": "herb_pair_in_eighteen_incompatible",
+      "logic": "检查处方中是否存在十八反相反药对：甘草反甘遂/京大戟/海藻/芫花；川乌/草乌/附子反半夏/瓜蒌/贝母/白蔹/白及/天花粉；藜芦反人参/沙参/丹参/玄参/苦参/细辛/芍药。命中判 error",
+      "severity": "error",
+      "basis": "《本经逢原》：\"半夏畏生姜，即生姜可以制半夏；然乌头反半夏，必须严格禁忌。\"《儒门事亲》十八反歌：本草明言十八反，半蒌贝蔹芨攻乌，藻戟遂芫俱战草，诸参辛芍叛藜芦。",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "TCM-INCOMPAT-02",
+      "group": "INCOMPATIBILITY",
+      "title": "十九畏配伍禁忌",
+      "trigger": "herb_pair_in_nineteen_mutual",
+      "logic": "检查处方中是否存在十九畏相畏药对：硫黄畏朴硝、水银畏砒霜、狼毒畏密陀僧、巴豆畏牵牛、丁香畏郁金、牙硝畏三棱、川乌草乌畏犀角、官桂畏赤石脂、人参畏五灵脂。命中判 error",
+      "severity": "error",
+      "basis": "《医经小学》十九畏歌：硫黄原是火中精，朴硝一见便相争……人参最怕五灵脂，官桂善能调冷气，若逢石脂便相欺。",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "TCM-INCOMPAT-03",
+      "group": "INCOMPATIBILITY",
+      "title": "妊娠禁忌药",
+      "trigger": "patient.pregnant=true 且处方含妊娠禁忌药",
+      "logic": "孕妇禁用：巴豆、斑蝥、麝香、三棱、莪术、水蛭、虻虫、牵牛子、甘遂、大戟、芫花、藜芦、川乌、草乌、附子、桃仁、红花、大黄、芒硝等；孕妇慎用：牛膝、川芎、红花、姜黄、牡丹皮、枳实、附子、肉桂等。禁用判 error，慎用判 warn",
+      "severity": "error",
+      "basis": "《中国药典》2025版一部【妊娠禁忌药】项；《珍珠囊补遗药性赋》：\"孕妇服药，不可不慎。\"",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "TCM-INCOMPAT-04",
+      "group": "INCOMPATIBILITY",
+      "title": "证候禁忌（寒药用于寒证/热药用于热证）",
+      "trigger": "herb.nature 与 syndrome.nature 相反",
+      "logic": "如患者为寒证（畏寒肢冷、便溏苔白）却用大队寒凉药（石膏、黄连、栀子）；或热证（壮热口渴、舌红苔黄）却用干姜、附子、肉桂等温热药，判 error",
+      "severity": "error",
+      "basis": "《素问·六经藏象论》：\"热者寒之，寒者热之。\"《本草经集注》：\"疗寒以热药，疗热以寒药。\"",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "TCM-INCOMPAT-05",
+      "group": "INCOMPATIBILITY",
+      "title": "证候禁忌（虚证误泻/实证误补）",
+      "trigger": "syndrome.deficiency 却用峻下攻伐药，或 syndrome.excess 却用壅补滋腻药",
+      "logic": "如脾胃虚寒患者用大黄、芒硝峻下；或外感实证患者用熟地、阿胶滋腻留邪，判 error",
+      "severity": "error",
+      "basis": "《素问·太阴阳明论》：\"故犯贼风虚邪者，阳受之；食饮不节，起居不时者，阴受之。\"虚则补之，实则泻之，不可误施。",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "TCM-SYN-01",
+      "group": "SYNDROME",
+      "title": "辨证与治法一致",
+      "trigger": "syndrome.treatment_principle 与所选治法不符",
+      "logic": "如辨证为风寒束表（寒证表证），治法却写\"清热解毒\"（治法与证型不符），判 error；治法方向部分偏差判 warn",
+      "severity": "error",
+      "basis": "《医学心悟》：\"论病之情，则以寒热虚实表里阴阳八字统之；而论治病之方，则又以汗和下消吐清温补八法尽之。\"法随证立。",
+      "weight_hint": "indication"
+    },
+    {
+      "rule_id": "TCM-SYN-02",
+      "group": "SYNDROME",
+      "title": "治法与选方一致",
+      "trigger": "treatment_principle 与 formula.category 不匹配",
+      "logic": "如治法为\"辛温解表\"却选了\"清热剂\"白虎汤；治法为\"温补\"却选了\"泻下剂\"大承气汤，判 error",
+      "severity": "error",
+      "basis": "《素问·至真要大论》：\"方从法出，法随证立。\"选方必须对应治法。",
+      "weight_hint": "indication"
+    },
+    {
+      "rule_id": "TCM-SYN-03",
+      "group": "SYNDROME",
+      "title": "选方与病机一致",
+      "trigger": "formula 与 case.reference_formula_code 不一致",
+      "logic": "对照 tcm-cases.json reference_formula_code：若学生选方与参考方差距过大（如风寒感冒选银翘散）判 error；同类方剂不同方判 warn",
+      "severity": "error",
+      "basis": "《伤寒论》辨证论治体系：方证对应，有是证用是方。",
+      "weight_hint": "indication"
+    },
+    {
+      "rule_id": "TCM-SYN-04",
+      "group": "SYNDROME",
+      "title": "八纲辨证一致性",
+      "trigger": "syndrome_type=八纲辨证 但寒热虚实判定自相矛盾",
+      "logic": "如主诉写\"壮热口渴、舌红苔黄、脉洪数\"（热证实证），却辨证为\"虚寒证\"，判 error",
+      "severity": "error",
+      "basis": "《八纲辨证》：阴阳表里寒热虚实须以四诊资料为依据，不可主观臆断。",
+      "weight_hint": "indication"
+    },
+    {
+      "rule_id": "TCM-SYN-05",
+      "group": "SYNDROME",
+      "title": "脏腑辨证与归经一致",
+      "trigger": "syndrome 脏腑定位与所选药物归经不符",
+      "logic": "如辨证为肺热咳喘，却选用大量归脾、胃经药物（如苍术、砂仁），无一味入肺经，判 warn",
+      "severity": "warn",
+      "basis": "《本草纲目》归经理论：引经报使，如羌活入太阳、葛根入阳明、柴胡入少阳。",
+      "weight_hint": "indication"
+    },
+    {
+      "rule_id": "TCM-SYN-06",
+      "group": "SYNDROME",
+      "title": "同病异治/异病同治识别",
+      "trigger": "不同case选了同一reference_formula_code但辨证方向不同",
+      "logic": "如泄泻（脾虚）与胃痛（脾虚）均用参苓白术散属异病同治，判 pass；但若不同证型却用同一方且无化裁说明，判 warn",
+      "severity": "warn",
+      "basis": "《素问·异法方宜论》：\"同病异治，异病同治。\"须以病机为依据。",
+      "weight_hint": "indication"
+    },
+    {
+      "rule_id": "TCM-EFF-01",
+      "group": "EFFICACY",
+      "title": "君药功效对应主症",
+      "trigger": "formula 君药功效与 case 主证不对应",
+      "logic": "检查君药 functions 是否能覆盖 chief_complaint 主要症状；如主治风寒感冒却君药为金银花（辛凉），判 error",
+      "severity": "error",
+      "basis": "《素问·至真要大论》：\"主病之谓君。\"君药须针对主证主病。",
+      "weight_hint": "efficacy"
+    },
+    {
+      "rule_id": "TCM-EFF-02",
+      "group": "EFFICACY",
+      "title": "君臣剂量比例合理",
+      "trigger": "君药剂量 < 臣药/佐药剂量",
+      "logic": "一般君药剂量应大于臣佐药；若君药剂量反小于佐使药（如麻黄3g而甘草9g），判 warn",
+      "severity": "warn",
+      "basis": "《药典》组方原则：君药在方中占主导地位，剂量宜重；佐使药剂量宜轻。",
+      "weight_hint": "efficacy"
+    },
+    {
+      "rule_id": "TCM-EFF-03",
+      "group": "EFFICACY",
+      "title": "方药证候匹配度评分",
+      "trigger": "formula.indications 与 case.symptom_pool 匹配度",
+      "logic": "对照方剂主治与病例症状：核心症状匹配≥2项判 pass；匹配1项判 warn；完全不匹配判 error",
+      "severity": "warn",
+      "basis": "《伤寒论》方证相应：\"观其脉证，知犯何逆，随证治之。\"",
+      "weight_hint": "efficacy"
+    },
+    {
+      "rule_id": "TCM-EFF-04",
+      "group": "EFFICACY",
+      "title": "反佐/反治法运用提示",
+      "trigger": "真寒假热或真热假寒证却未用反佐法",
+      "logic": "如四逆汤证阴盛格阳，宜热药冷服或佐少量猪胆汁；若学生未识别真假寒热，判 warn",
+      "severity": "warn",
+      "basis": "《素问·至真要大论》：\"热因热用，寒因寒用，塞因塞用，通因通用。\"",
+      "weight_hint": "efficacy"
+    },
+    {
+      "rule_id": "TCM-USG-01",
+      "group": "USAGE",
+      "title": "先煎药未标注",
+      "trigger": "处方含矿物/贝壳/毒性药但未标注先煎",
+      "logic": "须先煎：石膏、石决明、牡蛎、龙骨、代赭石、磁石、龟板、鳖甲（矿物贝壳类）；附子、川乌、草乌（有毒药，先煎30-60分钟减毒）。未标注判 warn",
+      "severity": "warn",
+      "basis": "《中国药典》【用法用量】项：矿物、贝壳、有毒药物宜先煎。",
+      "weight_hint": "usage"
+    },
+    {
+      "rule_id": "TCM-USG-02",
+      "group": "USAGE",
+      "title": "后下药未标注",
+      "trigger": "处方含芳香挥发药但未标注后下",
+      "logic": "须后下：薄荷、砂仁、白豆蔻、钩藤、大黄（后下取气）、青蒿等。在煎药完成前5-10分钟放入，未标注判 warn",
+      "severity": "warn",
+      "basis": "《中药药剂学》：芳香类药物含挥发油，久煎有效成分散失，宜后下。",
+      "weight_hint": "usage"
+    },
+    {
+      "rule_id": "TCM-USG-03",
+      "group": "USAGE",
+      "title": "包煎药未标注",
+      "trigger": "处方含绒毛/粉末/黏液质药但未标注包煎",
+      "logic": "须包煎：车前子、葶苈子、青葙子（细小种子）；旋覆花（绒毛）；蒲黄、海金沙（粉末）；六一散等。未标注判 warn",
+      "severity": "warn",
+      "basis": "《中药药剂学》：绒毛类刺激咽喉，粉末类易混浊药液，须纱布包煎。",
+      "weight_hint": "usage"
+    },
+    {
+      "rule_id": "TCM-USG-04",
+      "group": "USAGE",
+      "title": "烊化药未标注",
+      "trigger": "处方含胶类药但未标注烊化",
+      "logic": "须烊化：阿胶、鹿角胶、龟板胶、饴糖等。单独蒸化后兑入药汁，未标注判 warn",
+      "severity": "warn",
+      "basis": "《中药药剂学》：胶类药入煎易粘锅粘他药，宜烊化兑服。",
+      "weight_hint": "usage"
+    },
+    {
+      "rule_id": "TCM-USG-05",
+      "group": "USAGE",
+      "title": "另煎兑服药未标注",
+      "trigger": "处方含贵重细料药但未标注另煎",
+      "logic": "须另煎：人参、西洋参、鹿茸、羚羊角、麝香等。另炖取汁兑服，未标注判 warn",
+      "severity": "warn",
+      "basis": "《中药药剂学》：贵重药另煎可避免有效成分被他药吸附浪费。",
+      "weight_hint": "usage"
+    },
+    {
+      "rule_id": "TCM-USG-06",
+      "group": "USAGE",
+      "title": "服药温度与剂型",
+      "trigger": "寒证用冷服/热证用热服等反常服法",
+      "logic": "一般温服；解表剂宜热服取微汗；热证可寒服，寒证可热服（反佐服法须说明）。反常服法无说明判 warn",
+      "severity": "warn",
+      "basis": "《儒门事亲》：\"凡服汤药，皆适寒温。\"《伤寒论》桂枝汤\"适寒温服\"。",
+      "weight_hint": "usage"
+    },
+    {
+      "rule_id": "TCM-USG-07",
+      "group": "USAGE",
+      "title": "中病即止（解表/泻下剂不可过剂）",
+      "trigger": "发汗解表或峻下剂疗程超过3日且无复诊评估",
+      "logic": "麻黄汤、大承气汤等峻剂\"中病即止\"，不可久服；汗出邪解或大便通后即停药。超过3日未调整判 warn",
+      "severity": "warn",
+      "basis": "《伤寒论》：\"一服汗出病差，停后服，不必尽剂。\"",
+      "weight_hint": "usage"
+    },
+    {
+      "rule_id": "TCM-DOSE-01",
+      "group": "DOSAGE",
+      "title": "有毒中药剂量严格控制",
+      "trigger": "附子>15g 或 川乌/草乌>3g 或 细辛>3g",
+      "logic": "附子常用3-15g须先煎；川乌草乌1.5-3g须先煎久煎；细辛\"用量不过钱\"（1-3g）。超量判 error",
+      "severity": "error",
+      "basis": "《中国药典》2025版：川乌1.5-3g，宜先煎、久煎；附子3-15g，先煎；细辛1-3g。陈修园：\"细辛不过钱，过钱命不全。\"",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "TCM-DOSE-02",
+      "group": "DOSAGE",
+      "title": "朱砂/雄黄等矿物药不可久服",
+      "trigger": "处方含朱砂/雄黄且疗程>7日",
+      "logic": "朱砂含硫化汞，雄黄含二硫化二砷，久服蓄积中毒。疗程≤7日，判 warn；超7日判 error",
+      "severity": "error",
+      "basis": "《中国药典》：朱砂有毒，不宜大量服用，也不宜少量久服；肝肾功能不全者禁用。",
+      "weight_hint": "safety"
+    },
+    {
+      "rule_id": "TCM-DOSE-03",
+      "group": "DOSAGE",
+      "title": "峻烈泻下药中病即止",
+      "trigger": "大黄/芒硝/甘遂/大戟/芫花疗程>3日",
+      "logic": "峻下逐水药易耗伤正气，大便通后即止；连用>3日判 warn",
+      "severity": "warn",
+      "basis": "《素问·六元正纪大论》：\"大毒治病，十去其六；常毒治病，十去其七；小毒治病，十去其八。\"",
+      "weight_hint": "dosage"
+    },
+    {
+      "rule_id": "TCM-POP-01",
+      "group": "SPECIAL_POP",
+      "title": "孕妇用药严格审查",
+      "trigger": "patient.pregnant=true",
+      "logic": "孕妇禁用巴豆、斑蝥、麝香、三棱、莪术、水蛭、虻虫、芫花、藜芦、川乌、草乌、附子、桃仁、红花、大黄、芒硝等；慎用牛膝、川芎、牡丹皮、枳实、半夏、赭石等。禁用判 error，慎用判 warn",
+      "severity": "error",
+      "basis": "《中国药典》【妊娠禁忌】；《女科要旨》：\"妇人妊娠，用药宜慎。\"",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "TCM-POP-02",
+      "group": "SPECIAL_POP",
+      "title": "老年体虚者忌峻汗峻下",
+      "trigger": "patient.age>=65 且处方含麻黄/大黄/附子等峻烈药",
+      "logic": "老年患者脏腑功能减退，峻汗峻下易伤正气；用麻黄汤/大承气汤等须减量或配扶正药，判 warn",
+      "severity": "warn",
+      "basis": "《养老奉亲书》：\"老人之食，大抵宜温热熟软，忌其黏硬生冷。\"用药亦宜平和。",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "TCM-POP-03",
+      "group": "SPECIAL_POP",
+      "title": "小儿用药剂量折算",
+      "trigger": "patient.age<=12 且药物剂量未折算",
+      "logic": "小儿用药量：新生儿用成人量1/6，婴儿1/3，幼儿1/2，学龄儿童2/3。成人量直接用于小儿判 warn",
+      "severity": "warn",
+      "basis": "《小儿药证直诀》：\"小儿易为虚实，脾虚不受寒温，服寒则生冷，服温则生热。\"剂量宜轻。",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "TCM-FMT-06",
+      "group": "FORMAT",
+      "title": "处方脚注完整",
+      "trigger": "需要特殊煎法的药物未标注脚注（先煎/后下/包煎/烊化/另煎/冲服）",
+      "logic": "对照 tcm-herbs.json 中须特殊处理的药物，处方未加脚注判 warn",
+      "severity": "warn",
+      "basis": "《中药处方格式书写规范》：对药物特殊煎法应在处方药味右上角标注脚注。",
+      "weight_hint": "format"
+    }
+  ]
+}

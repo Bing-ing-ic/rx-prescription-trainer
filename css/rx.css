@@ -1049,6 +1049,88 @@ input, select, textarea { font-family: inherit; }
 .tcm-role-zuo { background: #dbeafe; color: #1e40af; }
 .tcm-role-shi { background: #d1fae5; color: #065f46; }
 
+/* 中医老中医 hero 形象 */
+.tcm-hero-nurse { right: 24px; }
+.tcm-hero-nurse img {
+  filter: drop-shadow(0 12px 20px rgba(139,90,43,.35)) drop-shadow(0 2px 5px rgba(60,30,10,.25));
+}
+.hero-btn-ghost {
+  background: rgba(255,255,255,.18) !important; color: #fff8e7 !important;
+  border: 1px solid rgba(255,255,255,.45) !important;
+  margin-left: 8px;
+}
+.hero-btn-ghost:hover { background: rgba(255,255,255,.30) !important; }
+
+/* 中药库浏览 Modal */
+.tcm-herb-lib-box {
+  max-width: 880px; width: calc(100vw - 32px); max-height: 88vh;
+  display: flex; flex-direction: column; padding: 18px 22px;
+}
+.tcm-herb-lib-box .modal-head {
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 2px solid #e8d5b0; padding-bottom: 10px; margin-bottom: 12px;
+}
+.tcm-herb-lib-box .modal-head h3 { margin: 0; color: #6b4423; font-size: 18px; }
+.tcm-herb-lib-box .modal-close {
+  background: none; border: none; font-size: 26px; line-height: 1;
+  color: #94a3b8; cursor: pointer; padding: 0 6px;
+}
+.tcm-herb-lib-box .modal-close:hover { color: #6b4423; }
+.herb-lib-toolbar {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px;
+}
+.herb-lib-toolbar input[type="text"] {
+  flex: 1; min-width: 220px; padding: 8px 12px;
+  border: 1px solid #d4b896; border-radius: 6px; font-size: 14px;
+  background: #fffdf7;
+}
+.herb-lib-toolbar select {
+  padding: 8px 10px; border: 1px solid #d4b896; border-radius: 6px;
+  font-size: 13px; background: #fffdf7; color: #6b4423; max-width: 220px;
+}
+.herb-lib-body {
+  display: flex; gap: 14px; overflow: hidden; flex: 1; min-height: 0;
+}
+.herb-lib-grid {
+  flex: 1.2; overflow-y: auto; border: 1px solid #ead9b8; border-radius: 8px;
+  padding: 6px; background: #fffdf7; align-content: start;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 6px;
+  align-self: stretch;
+}
+.herb-lib-chip {
+  padding: 8px 6px; border-radius: 6px; text-align: center; cursor: pointer;
+  background: #fdf6e3; border: 1px solid #ead9b8; font-size: 13px; color: #6b4423;
+  transition: all .15s;
+}
+.herb-lib-chip:hover { background: #fef3c7; border-color: #b8860b; }
+.herb-lib-chip.active { background: #8b5a2b; color: #fff8e7; border-color: #6b4423; }
+.herb-lib-chip small { display: block; font-size: 10px; color: #9a7b4f; margin-top: 2px; }
+.herb-lib-chip.active small { color: #f5e6d0; }
+.herb-lib-detail {
+  flex: 1; overflow-y: auto; border: 1px solid #e8d5b0; border-radius: 8px;
+  padding: 14px; background: #fff; font-size: 13px; line-height: 1.7;
+}
+.herb-lib-detail .hd-title {
+  font-family: "STKaiti","KaiTi","楷体",serif; font-size: 22px; color: #6b4423;
+  margin: 0 0 4px;
+}
+.herb-lib-detail .hd-meta { color: #94a3b8; font-size: 12px; margin-bottom: 10px; }
+.herb-lib-detail .hd-row { margin: 6px 0; }
+.herb-lib-detail .hd-row b { color: #8b5a2b; }
+.herb-lib-detail .hd-warn {
+  background: #fef2f2; border-left: 3px solid #b91c1c; padding: 6px 10px;
+  border-radius: 4px; margin-top: 8px; color: #7f1d1d;
+}
+.herb-lib-empty {
+  grid-column: 1 / -1; text-align: center; color: #94a3b8; padding: 30px 0; font-size: 13px;
+}
+@media (max-width: 700px) {
+  .tcm-herb-lib-box { padding: 14px; }
+  .herb-lib-body { flex-direction: column; }
+  .herb-lib-detail { max-height: 40vh; }
+  .hero-btn-ghost { margin-left: 0; margin-top: 8px; }
+}
+
 /* ============================================================
  * 针灸推拿模块样式（淡绿点缀）
  * ============================================================ */
@@ -1065,6 +1147,49 @@ input, select, textarea { font-family: inherit; }
 }
 .acup-report-hero { background: linear-gradient(135deg, #1f5c3a 0%, #2f7a4f 100%) !important; }
 .acup-point-item .meridian-tag { font-size: 11px; color: #2f7a4f; background: #e8f5e9; padding: 1px 8px; border-radius: 10px; }
+
+/* 针灸首页按钮行 + 持针施治形象 */
+.acup-home-btns { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; position: relative; z-index: 1; }
+.acup-map-btn { background: rgba(255,255,255,.16); color: #fff; border: 1px solid rgba(255,255,255,.45); box-shadow: 0 4px 16px rgba(0,0,0,.12); }
+.acup-map-btn:hover { background: rgba(255,255,255,.28); }
+.acup-hero-nurse { right: 24px; }
+.acup-hero-nurse img {
+  filter: drop-shadow(0 12px 20px rgba(47,122,79,.35)) drop-shadow(0 2px 5px rgba(0,30,15,.25));
+}
+
+/* 经络穴位图浏览页 */
+.acup-map-wrap { background: #fff; border-radius: var(--radius-lg, 12px); padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.05); margin-bottom: 16px; }
+.acup-map-control { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px dashed #e2e8f0; }
+.acup-map-control label { font-size: 13px; color: #475569; display: flex; align-items: center; gap: 6px; }
+.acup-map-control select, .acup-map-control input[type="text"] {
+  padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px;
+}
+.acup-map-control input[type="text"] { flex: 1; min-width: 220px; }
+.acup-map-body { display: grid; grid-template-columns: 320px 1fr; gap: 18px; align-items: start; }
+.acup-map-figure { position: sticky; top: 12px; text-align: center; }
+.acup-map-figure img { width: 100%; max-width: 320px; border: 1px solid #e2e8f0; border-radius: 10px; background: #f8fafc; }
+.acup-map-fallback { padding: 60px 10px; color: #94a3b8; font-size: 13px; border: 1px dashed #cbd5e1; border-radius: 10px; background: #f8fafc; }
+.acup-map-caption { font-size: 12px; color: #64748b; margin-top: 8px; line-height: 1.5; }
+.acup-map-points { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; max-height: 640px; overflow-y: auto; }
+.acup-map-point-card {
+  border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; cursor: pointer;
+  background: #fbfefb; transition: all .15s; text-align: left;
+}
+.acup-map-point-card:hover { border-color: #2f7a4f; background: #ecfdf3; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(47,122,79,.12); }
+.acup-map-point-card .mc-name { font-weight: 700; color: #1f5c3a; font-size: 14px; }
+.acup-map-point-card .mc-code { font-size: 10px; color: #94a3b8; float: right; }
+.acup-map-point-card .mc-meridian { font-size: 11px; color: #2f7a4f; margin-top: 2px; }
+.acup-map-empty { grid-column: 1/-1; padding: 30px; text-align: center; color: #94a3b8; }
+.acup-point-modal { max-width: 600px; }
+.acup-point-modal h3 { color: #1f5c3a; }
+.ap-row { margin: 8px 0; font-size: 14px; line-height: 1.7; }
+.ap-row .ap-label { display: inline-block; min-width: 78px; color: #64748b; font-size: 12px; }
+.ap-chip { display: inline-block; background: #d1fae5; color: #065f46; border-radius: 10px; padding: 1px 9px; font-size: 12px; margin: 2px 3px 2px 0; }
+.ap-note { background: #fef3c7; border-left: 3px solid #f59e0b; padding: 8px 10px; border-radius: 4px; font-size: 13px; color: #92400e; margin-top: 10px; }
+@media (max-width: 760px) {
+  .acup-map-body { grid-template-columns: 1fr; }
+  .acup-map-figure { position: static; }
+}
 
 /* ============================================================
  * 模块统计（admin 与 stats 页）
@@ -1116,6 +1241,80 @@ input, select, textarea { font-family: inherit; }
 .anat-home-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
 .anat-home-btns .hero-btn { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.4); }
 .anat-home-btns .hero-btn:hover { background: rgba(255,255,255,.28); }
+
+/* 解剖首页骨骼 hero 图（蓝色调投影） */
+.anat-hero-nurse {
+  position: absolute; right: 28px; bottom: 0;
+  height: calc(100% - 14px); z-index: 0;
+  pointer-events: none; display: flex; align-items: flex-end;
+}
+.anat-hero-nurse img {
+  height: 100%; width: auto; object-fit: contain; object-position: bottom right;
+  filter: drop-shadow(0 10px 18px rgba(15,76,129,.35)) drop-shadow(0 2px 4px rgba(15,76,129,.2));
+}
+
+/* ============ 解剖图谱视图 ============ */
+.atlas-body-wrap {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+  padding: 14px; text-align: center; margin-bottom: 14px;
+  box-shadow: 0 2px 10px rgba(15,76,129,.06);
+}
+.atlas-body-img { max-width: 100%; max-height: 420px; object-fit: contain; border-radius: 8px; }
+.atlas-body-fallback {
+  padding: 40px 10px; color: #94a3b8; font-size: 13px;
+  border: 1px dashed #cbd5e1; border-radius: 8px; background: #f8fafc;
+}
+.atlas-body-wrap.img-missing .atlas-body-img { display: none; }
+.atlas-body-wrap.img-missing .atlas-body-fallback { display: block; }
+
+.atlas-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;
+}
+.atlas-tab {
+  padding: 7px 16px; border-radius: 20px; cursor: pointer;
+  background: #fff; border: 1px solid #cbd5e1; color: #334155;
+  font-size: 13px; font-weight: 600; transition: all .15s;
+}
+.atlas-tab:hover { border-color: #0f4c81; color: #0f4c81; }
+.atlas-tab.active {
+  background: linear-gradient(135deg, #0f4c81, #1565a8);
+  border-color: #0f4c81; color: #fff;
+  box-shadow: 0 3px 10px rgba(15,76,129,.25);
+}
+
+.atlas-struct-panel {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+  padding: 10px 14px; box-shadow: 0 2px 10px rgba(15,76,129,.06);
+}
+.atlas-subgroup-title {
+  font-size: 13px; font-weight: 700; color: #0f4c81;
+  margin: 12px 0 6px; padding-left: 8px; border-left: 3px solid #14b8a6;
+}
+.atlas-subgroup-title:first-child { margin-top: 4px; }
+.atlas-struct-chip {
+  display: inline-block; margin: 4px 6px 4px 0; padding: 6px 14px;
+  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 18px;
+  cursor: pointer; font-size: 13px; color: #1e293b; transition: all .15s;
+}
+.atlas-struct-chip:hover {
+  background: #eff6ff; border-color: #0f4c81; color: #0f4c81;
+  transform: translateY(-1px);
+}
+.atlas-struct-chip .latin { font-size: 11px; color: #94a3b8; font-style: italic; margin-left: 4px; }
+
+.atlas-detail-panel {
+  background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+  padding: 18px; box-shadow: 0 2px 10px rgba(15,76,129,.06);
+}
+.atlas-detail-back { margin-bottom: 12px; }
+.atlas-detail-title {
+  font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 4px;
+}
+.atlas-detail-latin { font-size: 13px; color: #64748b; font-style: italic; margin-bottom: 14px; }
+.atlas-detail-meta {
+  display: inline-block; font-size: 12px; color: #0f4c81;
+  background: #eff6ff; padding: 2px 10px; border-radius: 10px; margin-bottom: 14px;
+}
 
 .anat-system-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -1254,6 +1453,10 @@ input, select, textarea { font-family: inherit; }
   .anat-struct-item { flex-direction: column; align-items: flex-start; gap: 4px; }
   .anat-home-btns { flex-direction: column; align-items: stretch; }
   .anat-home-btns .hero-btn { width: 100%; }
+  .anat-hero-nurse { height: 52%; right: 4px; opacity: .8; }
+  .atlas-body-img { max-height: 260px; }
+  .atlas-tab { padding: 6px 12px; font-size: 12px; }
+  .atlas-struct-chip { font-size: 12px; padding: 5px 11px; }
   .aq-selfeval { flex-direction: column; align-items: stretch; }
   .case-card { padding: 14px; }
 }

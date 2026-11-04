@@ -28,8 +28,8 @@
   const ALL_VIEWS = [
     'view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs',
     'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
-    'view-acup-home','view-acup-case','view-acup-rx','view-acup-report',
-    'view-anat-home','view-anat-system','view-anat-detail','view-anat-quiz','view-anat-cases'
+    'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map',
+    'view-anat-home','view-anat-system','view-anat-detail','view-anat-quiz','view-anat-cases','view-anat-atlas'
   ];
   function showView(id) {
     ALL_VIEWS.forEach(v => { const el = $(v); if (el) el.classList.add('hidden'); });
@@ -37,6 +37,9 @@
     window.scrollTo(0, 0);
   }
   window.__showView = showView;
+
+  // 图谱当前选中状态
+  const atlas = { sys: null, struct: null };
 
   // ---------- 数据加载 ----------
   async function boot() {
@@ -159,6 +162,96 @@
         </div>` : ''}
       </div>`;
     showView('view-anat-detail');
+  }
+
+  // ---------- 解剖图谱 ----------
+  function openAtlas() {
+    if (S.systems.length === 0) { alert('解剖学系统数据加载中，请稍候。'); return; }
+    if (!atlas.sys || !S.systems.find(s => s.id === atlas.sys.id)) atlas.sys = S.systems[0];
+    renderAtlasTabs();
+    renderAtlasStructures();
+    $('anat-atlas-detail').classList.add('hidden');
+    $('anat-atlas-list').classList.remove('hidden');
+    showView('view-anat-atlas');
+  }
+
+  function renderAtlasTabs() {
+    const box = $('anat-atlas-tabs');
+    if (!box) return;
+    box.innerHTML = S.systems.map(s =>
+      `<button class="atlas-tab${atlas.sys && s.id === atlas.sys.id ? ' active' : ''}" data-sys="${s.id}">${s.icon || ''} ${s.name}</button>`
+    ).join('');
+    box.querySelectorAll('.atlas-tab').forEach(el => {
+      el.onclick = () => {
+        const sys = S.systems.find(x => x.id === el.getAttribute('data-sys'));
+        if (!sys) return;
+        atlas.sys = sys; atlas.struct = null;
+        renderAtlasTabs();
+        renderAtlasStructures();
+        $('anat-atlas-detail').classList.add('hidden');
+        $('anat-atlas-list').classList.remove('hidden');
+      };
+    });
+  }
+
+  function renderAtlasStructures() {
+    const box = $('anat-atlas-list');
+    if (!box || !atlas.sys) return;
+    const structs = atlas.sys.structures || [];
+    if (structs.length === 0) {
+      box.innerHTML = '<div class="muted" style="padding:16px;text-align:center;">该系统暂无结构数据</div>';
+      return;
+    }
+    // 按子分类分组
+    const groups = {};
+    structs.forEach(s => {
+      const key = s.subsystem || '其他';
+      (groups[key] = groups[key] || []).push(s);
+    });
+    box.innerHTML = Object.keys(groups).map(key => `
+      <div class="atlas-subgroup-title">${key}</div>
+      ${groups[key].map(s => `
+        <span class="atlas-struct-chip" data-id="${s.id}">${s.name}<span class="latin">${s.latin || ''}</span></span>
+      `).join('')}
+    `).join('');
+    box.querySelectorAll('.atlas-struct-chip').forEach(el => {
+      el.onclick = () => {
+        const st = structs.find(x => x.id === el.getAttribute('data-id'));
+        if (st) openAtlasDetail(st);
+      };
+    });
+  }
+
+  function openAtlasDetail(st) {
+    atlas.struct = st;
+    const tags = (st.exam_points || []).map(t => `<span class="anat-exam-tag">🎯 ${t}</span>`).join('');
+    $('anat-atlas-detail-body').innerHTML = `
+      <div class="atlas-detail-title">${st.name}</div>
+      <div class="atlas-detail-latin">${st.latin || ''}</div>
+      <div class="atlas-detail-meta">${atlas.sys ? atlas.sys.name : ''} · ${st.subsystem || ''}</div>
+      <div class="anat-detail-section">
+        <div class="ads-label">📍 位置</div>
+        <div class="ads-body">${st.location || '-'}</div>
+      </div>
+      <div class="anat-detail-section">
+        <div class="ads-label">🔗 毗邻关系</div>
+        <div class="ads-body">${st.relations || '-'}</div>
+      </div>
+      <div class="anat-detail-section">
+        <div class="ads-label">⚙️ 功能</div>
+        <div class="ads-body">${st.function || '-'}</div>
+      </div>
+      <div class="anat-detail-section">
+        <div class="ads-label">🏥 临床意义</div>
+        <div class="ads-body">${st.clinical || '-'}</div>
+      </div>
+      ${tags ? `<div class="anat-detail-section">
+        <div class="ads-label">🎯 考点标记</div>
+        <div class="ads-tags">${tags}</div>
+      </div>` : ''}
+    `;
+    $('anat-atlas-list').classList.add('hidden');
+    $('anat-atlas-detail').classList.remove('hidden');
   }
 
   // ---------- 测验引擎 ----------
@@ -460,6 +553,13 @@
     $('anat-btn-learn').onclick = () => {
       if (S.systems.length === 0) { alert('解剖学系统数据加载中，请稍候。'); return; }
       openSystem(S.systems[0]);
+    };
+    $('anat-btn-atlas').onclick = openAtlas;
+    $('anat-btn-atlas-home').onclick = () => showView('view-anat-home');
+    $('anat-btn-atlas-backlist').onclick = () => {
+      $('anat-atlas-detail').classList.add('hidden');
+      $('anat-atlas-list').classList.remove('hidden');
+      atlas.struct = null;
     };
     $('anat-btn-quiz').onclick = startQuiz;
     $('anat-btn-cases').onclick = () => showView('view-anat-cases');

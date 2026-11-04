@@ -62,7 +62,7 @@
   // ---------- 视图切换（覆盖西医 show） ----------
   const ALL_VIEWS = ['view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs',
     'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
-    'view-acup-home','view-acup-case','view-acup-rx','view-acup-report',
+    'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map',
     'view-anat-home','view-anat-system','view-anat-detail','view-anat-quiz','view-anat-cases'];
 
   function showView(id) {
@@ -398,6 +398,90 @@
     }
   }
 
+  // ---------- 中药库浏览 ----------
+  function pinyinMatch(query, pinyin) {
+    if (!query) return true;
+    const q = query.toLowerCase();
+    const p = (pinyin || '').toLowerCase();
+    if (!p) return false;
+    if (p.indexOf(q) >= 0) return true;
+    let i = 0;
+    for (let j = 0; j < p.length && i < q.length; j++) {
+      if (p[j] === q[i]) i++;
+    }
+    return i === q.length;
+  }
+
+  function openHerbLib() {
+    const modal = $('modal-herb-lib');
+    if (!modal) return;
+    const sel = $('herb-lib-category');
+    if (sel && sel.options.length <= 1) {
+      const cats = Array.from(new Set(S.herbs.map(h => h.category || '未分类'))).sort();
+      sel.innerHTML = '<option value="">全部分类</option>' +
+        cats.map(c => `<option value="${c}">${c}</option>`).join('');
+    }
+    $('herb-lib-count').textContent = `（共 ${S.herbs.length} 味）`;
+    $('herb-lib-search').value = '';
+    $('herb-lib-category').value = '';
+    renderHerbLibGrid();
+    $('herb-lib-detail').classList.add('hidden');
+    modal.classList.remove('hidden');
+    setTimeout(() => { const s = $('herb-lib-search'); if (s) s.focus(); }, 50);
+  }
+
+  function closeHerbLib() {
+    const modal = $('modal-herb-lib');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function renderHerbLibGrid() {
+    const kw = ($('herb-lib-search').value || '').trim().toLowerCase();
+    const cat = $('herb-lib-category').value;
+    const grid = $('herb-lib-grid');
+    const list = S.herbs.filter(h => {
+      if (cat && h.category !== cat) return false;
+      if (!kw) return true;
+      if (h.name.toLowerCase().indexOf(kw) >= 0) return true;
+      return pinyinMatch(kw, h.pinyin);
+    });
+    $('herb-lib-count').textContent = `（${list.length} / ${S.herbs.length} 味）`;
+    if (list.length === 0) {
+      grid.innerHTML = '<div class="herb-lib-empty">未找到匹配中药，换个关键词试试</div>';
+      return;
+    }
+    grid.innerHTML = list.map(h => `
+      <div class="herb-lib-chip" data-name="${h.name}">
+        ${h.name}
+        <small>${h.nature || ''}${h.taste || ''}</small>
+      </div>`).join('');
+    grid.querySelectorAll('.herb-lib-chip').forEach(el => {
+      el.onclick = () => {
+        grid.querySelectorAll('.herb-lib-chip').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        showHerbDetail(el.getAttribute('data-name'));
+      };
+    });
+  }
+
+  function showHerbDetail(name) {
+    const h = S.herbs.find(x => x.name === name);
+    if (!h) return;
+    const box = $('herb-lib-detail');
+    const arr = a => Array.isArray(a) ? (a.length ? a.join('、') : '—') : (a || '—');
+    box.innerHTML = `
+      <h4 class="hd-title">${h.name}</h4>
+      <div class="hd-meta">${h.category || ''} · 常用量 ${h.dose_range || '—'} · 参考价 ${h.price_yuan || '—'} 元/10g</div>
+      <div class="hd-row"><b>性味归经：</b>${h.nature || ''} ${h.taste || ''}，归 ${h.meridian || '—'}</div>
+      <div class="hd-row"><b>功效：</b>${h.functions || '—'}</div>
+      <div class="hd-row"><b>主治：</b>${arr(h.indications)}</div>
+      <div class="hd-row"><b>使用注意：</b>${arr(h.contraindications)}</div>
+      ${h.incompatibility && h.incompatibility !== '无' ? `<div class="hd-warn">⚠️ 配伍禁忌：${h.incompatibility}</div>` : ''}
+      ${h.note ? `<div class="hd-row" style="margin-top:8px;color:#94a3b8;font-size:12px;">📝 ${h.note}</div>` : ''}
+    `;
+    box.classList.remove('hidden');
+  }
+
   // ---------- 绑定事件 ----------
   function bindEvents() {
     bindTabs();
@@ -416,6 +500,17 @@
       const f = S.formulas.find(x => x.name === e.target.value);
       if (f) selectFormula(f);
     };
+    // 中药库浏览
+    $('tcm-btn-herb-lib').onclick = openHerbLib;
+    $('herb-lib-close').onclick = closeHerbLib;
+    $('modal-herb-lib').addEventListener('click', e => {
+      if (e.target === $('modal-herb-lib')) closeHerbLib();
+    });
+    $('herb-lib-search').oninput = renderHerbLibGrid;
+    $('herb-lib-category').onchange = renderHerbLibGrid;
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !$('modal-herb-lib').classList.contains('hidden')) closeHerbLib();
+    });
   }
 
   document.addEventListener('DOMContentLoaded', function () {

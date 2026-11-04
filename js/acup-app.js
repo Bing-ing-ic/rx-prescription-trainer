@@ -40,13 +40,14 @@
       if (S.cases.length === 0) { const t = $('acup-data-tip'); if (t) t.classList.remove('hidden'); }
       renderMeridianFilter();
       renderPointList('');
+      initMap();
     } catch (e) { console.warn('Acup data load failed:', e); }
   }
 
   function showView(id) {
     ['view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs',
      'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
-     'view-acup-home','view-acup-case','view-acup-rx','view-acup-report'].forEach(v => {
+     'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map'].forEach(v => {
       const el = $(v); if (el) el.classList.add('hidden');
     });
     const el = $(id); if (el) el.classList.remove('hidden');
@@ -263,6 +264,83 @@
       });
       localStorage.setItem('rx-mistakes', JSON.stringify(m.slice(0, 100)));
     }
+  }
+
+  /* ============ 经络穴位图浏览 ============ */
+  const MERIDIAN_ORDER = [
+    '手太阴肺经','手阳明大肠经','足阳明胃经','足太阴脾经',
+    '手少阴心经','手太阳小肠经','足太阳膀胱经','足少阴肾经',
+    '手厥阴心包经','手少阳三焦经','足少阳胆经','足厥阴肝经',
+    '任脉','督脉','经外奇穴'
+  ];
+
+  function initMap() {
+    const sel = $('acup-map-meridian');
+    if (!sel) return;
+    const present = Array.from(new Set(S.points.map(p => p.meridian).filter(Boolean)));
+    const ordered = MERIDIAN_ORDER.filter(m => present.indexOf(m) >= 0)
+      .concat(present.filter(m => MERIDIAN_ORDER.indexOf(m) < 0));
+    sel.innerHTML = '<option value="">全部经络</option>' +
+      ordered.map(m => `<option value="${m}">${m}（${S.points.filter(p=>p.meridian===m).length}穴）</option>`).join('');
+    renderMapPoints();
+    sel.onchange = () => renderMapPoints();
+    const s = $('acup-map-search');
+    if (s) s.oninput = () => renderMapPoints();
+    const back = $('acup-map-back');
+    if (back) back.onclick = () => showView('view-acup-home');
+    const btn = $('acup-btn-map');
+    if (btn) btn.onclick = () => { renderMapPoints(); showView('view-acup-map'); };
+    const close = $('ap-close');
+    if (close) close.onclick = () => $('modal-acup-point').classList.add('hidden');
+    const mask = $('modal-acup-point');
+    if (mask) mask.onclick = e => { if (e.target === mask) mask.classList.add('hidden'); };
+  }
+
+  function renderMapPoints() {
+    const box = $('acup-map-points');
+    if (!box) return;
+    const m = $('acup-map-meridian') ? $('acup-map-meridian').value : '';
+    const k = ($('acup-map-search') ? $('acup-map-search').value : '').toLowerCase();
+    const list = S.points.filter(p =>
+      (!m || p.meridian === m) &&
+      (!k || p.name.toLowerCase().indexOf(k) >= 0 || (p.pinyin || '').indexOf(k) >= 0)
+    );
+    // 按经络顺序、穴号排序
+    list.sort((a, b) => {
+      const ma = MERIDIAN_ORDER.indexOf(a.meridian), mb = MERIDIAN_ORDER.indexOf(b.meridian);
+      if (ma !== mb) return (ma < 0 ? 99 : ma) - (mb < 0 ? 99 : mb);
+      return (a.code || '').localeCompare(b.code || '');
+    });
+    if (list.length === 0) {
+      box.innerHTML = '<div class="acup-map-empty">无匹配穴位</div>';
+      return;
+    }
+    box.innerHTML = list.map(p => `
+      <div class="acup-map-point-card" data-code="${p.code}">
+        <span class="mc-code">${p.code || ''}</span>
+        <span class="mc-name">${p.name}</span>
+        <div class="mc-meridian">${p.meridian || ''} · ${p.category || ''}</div>
+      </div>`).join('');
+    box.querySelectorAll('.acup-map-point-card').forEach(el => {
+      el.onclick = () => {
+        const p = S.points.find(x => x.code === el.getAttribute('data-code'));
+        if (p) openPointDetail(p);
+      };
+    });
+  }
+
+  function openPointDetail(p) {
+    $('ap-name').innerHTML = `${p.name} <small style="font-weight:400;color:#64748b;font-size:13px;">${p.code||''} · ${p.meridian||''}</small>`;
+    const chips = (Array.isArray(p.indications) ? p.indications : (p.indications ? [p.indications] : []))
+      .map(i => `<span class="ap-chip">${i}</span>`).join('');
+    $('ap-body').innerHTML = `
+      <div class="ap-row"><span class="ap-label">【定位】</span>${p.location || '-'}</div>
+      <div class="ap-row"><span class="ap-label">【类属】</span>${p.category || '-'}　<span class="ap-label">【功用】</span>${p.functions || '-'}</div>
+      <div class="ap-row"><span class="ap-label">【主治】</span>${chips || '-'}</div>
+      <div class="ap-row"><span class="ap-label">【操作】</span>${p.needling_method || '-'}</div>
+      ${p.special_note ? `<div class="ap-note">⚠ ${p.special_note}</div>` : ''}
+    `;
+    $('modal-acup-point').classList.remove('hidden');
   }
 
   function bindEvents() {

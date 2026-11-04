@@ -456,17 +456,17 @@
     for (const [k, h] of Object.entries(HINT)) {
       if (dx.name.indexOf(k) >= 0) { hint = h; break; }
     }
-    // 分级提示：第1次方向提示；第2次给首拼；第3次直接给答案
+    // 分级提示：第1次只说错误；第2次给首拼提示；第3次直接给答案
     const correctPy = DISEASE_PINYIN[dx.name] ||
       Object.entries(DISEASE_PINYIN).find(([k]) => dx.name.indexOf(k) >= 0)?.[1] || '';
     let reveal = '';
     if (S.diagWrongCount >= 3) {
-      reveal = `<div style="margin-top:6px;color:#c0392b;font-size:13px">🔑 正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
+      reveal = `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:6px;color:#c0392b;font-size:13px">🔑 正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
     } else if (S.diagWrongCount >= 2 && correctPy) {
       reveal = `<div style="margin-top:6px;color:#b7791f;font-size:13px">🔤 首拼提示：<b>${correctPy}</b></div>`;
     }
-    fb.innerHTML = `<span class="diag-err">❌ 「${v}」与症状/体征不符，请重新判断。（已错 ${S.diagWrongCount} 次）</span>` +
-      (hint ? `<div style="margin-top:6px;color:#b7791f;font-size:13px">💡 ${hint}</div>` : '') +
+    fb.innerHTML = `<span class="diag-err">❌ 「${v}」诊断不正确，请重新判断。（已错 ${S.diagWrongCount} 次）</span>` +
+      (hint && S.diagWrongCount >= 2 ? `<div style="margin-top:6px;color:#b7791f;font-size:13px">💡 ${hint}</div>` : '') +
       reveal;
     // 清空输入框并聚焦，方便重新输入
     $('diag-input').value = '';

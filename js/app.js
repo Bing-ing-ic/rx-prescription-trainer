@@ -26,7 +26,7 @@
   // ---------- DOM ----------
   const $ = id => document.getElementById(id);
   function show(view) {
-    ['view-home','view-rx','view-report','view-radar','view-mistakes','view-stats'].forEach(v => $(v).classList.add('hidden'));
+    ['view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs'].forEach(v => $(v).classList.add('hidden'));
     $(view).classList.remove('hidden');
     window.scrollTo(0,0);
   }
@@ -109,6 +109,7 @@
       b.onclick = () => {
         const t = b.getAttribute('data-goto');
         if (t === 'home') show('view-home');
+        else if (t === 'drugs') { renderDrugLib(); show('view-drugs'); }
         else if (t === 'radar') { renderRadar(); show('view-radar'); }
         else if (t === 'mistakes') { renderMistakes(); show('view-mistakes'); }
         else if (t === 'stats') { renderStats(); show('view-stats'); }
@@ -1703,6 +1704,104 @@
       distBox.innerHTML = '<p class="muted">暂无数据</p>';
     }
   }
+
+  // ============ 药品库模块 ============
+  let DRUG_LIB_DATA = [];
+  let DRUG_LIB_FILTER = { kw: '', cat: '' };
+
+  async function loadDrugLib() {
+    if (DRUG_LIB_DATA.length > 0) return DRUG_LIB_DATA;
+    try {
+      const resp = await fetch('data/drugs.json');
+      DRUG_LIB_DATA = await resp.json();
+    } catch(e) {
+      DRUG_LIB_DATA = [];
+    }
+    return DRUG_LIB_DATA;
+  }
+
+  function getDrugCategories() {
+    const cats = new Set();
+    DRUG_LIB_DATA.forEach(d => {
+      if (d.pharmacology_class) cats.add(d.pharmacology_class);
+    });
+    return Array.from(cats).sort();
+  }
+
+  function matchDrugLib(item, kw) {
+    if (!kw) return true;
+    const k = kw.toLowerCase().trim();
+    return item.generic_name.toLowerCase().includes(k) ||
+           (item.pinyin || '').toLowerCase().includes(k) ||
+           (item.trade_name || '').toLowerCase().includes(k);
+  }
+
+  async function renderDrugLib() {
+    await loadDrugLib();
+    $('drug-total-count').textContent = DRUG_LIB_DATA.length;
+
+    // 渲染分类下拉
+    const catSel = $('drug-lib-cat');
+    const cats = getDrugCategories();
+    catSel.innerHTML = '<option value="">全部分类</option>' +
+      cats.map(c => `<option value="${c}">${c}</option>`).join('');
+
+    // 绑定搜索事件
+    $('drug-lib-search').oninput = e => {
+      DRUG_LIB_FILTER.kw = e.target.value;
+      renderDrugLibList();
+    };
+    catSel.onchange = e => {
+      DRUG_LIB_FILTER.cat = e.target.value;
+      renderDrugLibList();
+    };
+
+    renderDrugLibList();
+  }
+
+  function renderDrugLibList() {
+    const list = $('drug-lib-list');
+    const { kw, cat } = DRUG_LIB_FILTER;
+    let items = DRUG_LIB_DATA.filter(d => {
+      if (cat && d.pharmacology_class !== cat) return false;
+      return matchDrugLib(d, kw);
+    });
+
+    if (items.length === 0) {
+      list.innerHTML = '<p class="muted" style="grid-column:1/-1;text-align:center;padding:40px;">未找到匹配的药品</p>';
+      return;
+    }
+
+    list.innerHTML = items.map((d, i) => `
+      <div class="drug-card" style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;cursor:pointer;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'" onclick="showDrugDetail(${DRUG_LIB_DATA.indexOf(d)})">
+        <div style="font-weight:600;font-size:15px;color:#1e293b;margin-bottom:4px;">${d.generic_name}</div>
+        <div style="font-size:12px;color:#64748b;margin-bottom:8px;">${d.spec || ''} · ${d.pharmacology_class || ''}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          ${d.medical_insurance_class ? `<span style="font-size:11px;padding:2px 8px;border-radius:10px;background:#eff6ff;color:#1d4ed8;">${d.medical_insurance_class}</span>` : ''}
+          ${d.is_base_drug ? `<span style="font-size:11px;padding:2px 8px;border-radius:10px;background:#f0fdf4;color:#15803d;">基药</span>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function showDrugDetail(idx) {
+    const d = DRUG_LIB_DATA[idx];
+    if (!d) return;
+    $('drug-detail-name').textContent = d.generic_name;
+    $('drug-detail-body').innerHTML = `
+      <div style="margin:12px 0;line-height:1.8;font-size:14px;color:#334155;">
+        <p><b>规格：</b>${d.spec || '-'}</p>
+        <p><b>药理分类：</b>${d.pharmacology_class || '-'}</p>
+        <p><b>医保分类：</b>${d.medical_insurance_class || '-'}</p>
+        <p><b>适应症：</b>${d.indication || '-'}</p>
+        <p><b>用法用量：</b>${d.dosage || '-'}</p>
+        <p><b>常用频次：</b>${d.common_frequency || '-'}</p>
+        <p><b>价格：</b>¥${d.price || '-'} / ${d.pack_unit || ''}</p>
+      </div>
+    `;
+    $('modal-drug-detail').classList.remove('hidden');
+  }
+  window.showDrugDetail = showDrugDetail;
 
   boot();
 })();

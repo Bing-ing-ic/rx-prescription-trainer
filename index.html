@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.css?v=20261104l">
+<link rel="stylesheet" href="css/rx.css?v=20261104m">
 </head>
 <body>
 
@@ -14,6 +14,7 @@
   </div>
   <nav class="nav">
     <button class="nav-btn" data-goto="home">首页</button>
+    <button class="nav-btn" data-goto="drugs">药品库</button>
     <button class="nav-btn" data-goto="radar">能力画像</button>
     <button class="nav-btn" data-goto="mistakes">错题本</button>
     <button class="nav-btn" data-goto="stats">学习统计</button>
@@ -346,6 +347,33 @@
     </div>
   </section>
 
+  <!-- ============ 视图8: 药品库 ============ -->
+  <section class="view hidden" id="view-drugs">
+    <div class="report-head">
+      <button class="btn" data-goto="home">← 返回首页</button>
+      <h2>💊 药品库</h2>
+      <p class="muted">共 <span id="drug-total-count">0</span> 种药品，按药理分类浏览查阅</p>
+    </div>
+    <!-- 搜索栏 -->
+    <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;align-items:center;">
+      <input type="text" id="drug-lib-search" placeholder="搜索药名/首拼（如：氨氯地平 / alldp）" style="flex:1;min-width:250px;padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:14px;">
+      <select id="drug-lib-cat" style="padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:14px;">
+        <option value="">全部分类</option>
+      </select>
+    </div>
+    <!-- 药品列表 -->
+    <div id="drug-lib-list" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;">
+    </div>
+    <!-- 药品详情弹窗 -->
+    <div class="modal-mask hidden" id="modal-drug-detail">
+      <div class="modal" style="max-width:560px;">
+        <h3 id="drug-detail-name"></h3>
+        <div id="drug-detail-body"></div>
+        <button class="btn btn-primary" onclick="document.getElementById('modal-drug-detail').classList.add('hidden')">关闭</button>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <!-- 隐藏的特殊级抗菌药拦截弹窗 -->
@@ -375,6 +403,6 @@
 
 <script src="js/rule-engine.js?v=20261104f"></script>
 <script src="js/review.js?v=20261104e"></script>
-<script src="js/app.js?v=20261104l"></script>
+<script src="js/app.js?v=20261104m"></script>
 </body>
 </html>

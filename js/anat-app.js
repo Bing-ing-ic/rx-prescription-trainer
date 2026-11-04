@@ -235,15 +235,17 @@
       box.querySelectorAll('#anat-quiz-options .anat-quiz-option').forEach(btn => {
         btn.onclick = () => {
           const i = +btn.getAttribute('data-i');
-          const correct = (q.options || [])[i] === q.answer;
+          // 数据中 answer 为正确选项的索引（数字），按索引比较
+          const correct = (i === q.answer);
           box.querySelectorAll('.anat-quiz-option').forEach((b, bi) => {
             b.disabled = true;
-            if ((q.options || [])[bi] === q.answer) b.classList.add('correct');
+            if (bi === q.answer) b.classList.add('correct');
             else if (bi === i) b.classList.add('wrong');
           });
           const fb = $('aq-feedback');
           fb.classList.remove('hidden');
-          fb.innerHTML = (correct ? '✅ 回答正确。' : '❌ 正确答案：<b>' + q.answer + '</b>') +
+          const ansText = (q.options || [])[q.answer] || q.answer;
+          fb.innerHTML = (correct ? '✅ 回答正确。' : '❌ 正确答案：<b>' + ansText + '</b>') +
             `<br><span class="muted">${q.explanation || ''}</span>`;
           S.quiz.score += correct ? 10 : 0;
           S.quiz.answers.push({ q, score: correct ? 10 : 0, correct });
@@ -252,7 +254,10 @@
         };
       });
     } else if (q.type === 'match') {
-      const pairs = q.answer || []; // 数组：[leftIndex, rightIndex] 对应
+      // 数据中 answer 为索引数组 [rightIdxForLeft0, rightIdxForLeft1, ...]，转换为文本对
+      const leftList = q.pairs_left || [];
+      const rightList = q.pairs_right || [];
+      const pairs = (q.answer || []).map((ri, li) => [leftList[li], rightList[ri]]);
       let matched = 0;
       box.querySelectorAll('.anat-match-item').forEach(btn => {
         btn.onclick = () => {
@@ -292,7 +297,8 @@
     } else if (q.type === 'qa') {
       $('anat-btn-show-answer').onclick = () => {
         $('aq-answer').classList.remove('hidden');
-        const pts = (q.answer || []);
+        // 数据中答案要点字段为 answer_points
+        const pts = q.answer_points || q.answer || [];
         $('aq-answer').innerHTML = `
           <div class="aq-answer-box">
             <b>参考答案要点：</b>

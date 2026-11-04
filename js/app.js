@@ -589,6 +589,10 @@
       document.querySelectorAll('.iv-only').forEach(e=>e.classList.remove('hidden'));
       S.ivGroups = [];
       newIvGroup();
+      // 重置输液指征选择
+      const rs = $('iv-reason-select'); if (rs) rs.value = '';
+      const rn = $('iv-reason-note'); if (rn) rn.value = '';
+      S.ivFields = { iv_reason:'', iv_reason_note:'' };
     } else {
       if (isPediatric) {
         paper.classList.add('pediatric');
@@ -880,7 +884,7 @@
     box.innerHTML = '';
     const tbl = document.createElement('table');
     tbl.className = 'rx-table';
-    tbl.innerHTML = `<thead><tr><th>#</th><th>类型</th><th>通用名</th><th>规格</th><th>单次剂量</th><th>途径</th><th>频次</th><th>数量</th><th>滴速(ml/h)</th><th></th></tr></thead>`;
+    tbl.innerHTML = `<thead><tr><th>#</th><th>类型</th><th>通用名</th><th>规格</th><th>单次剂量</th><th>途径</th><th>频次</th><th>数量</th><th>皮试</th><th>滴速(ml/h)</th><th></th></tr></thead>`;
     const tbody = document.createElement('tbody');
     tbl.appendChild(tbody);
 
@@ -900,6 +904,7 @@
           <td>静滴</td>
           <td><input class="g-freq" type="text" value="${groupFreq}" style="width:60px"></td>
           <td class="g-qty">${calcQty(g.solvent, g.solvent.volume_ml+'ml')}</td>
+          <td style="color:#999">—</td>
           <td><input class="g-speed-cell" type="number" value="${g.fields.speed||60}" style="width:70px" min="10" max="200"></td>
           <td><button class="btn btn-danger btn-xs" data-act="del-solvent" title="删除溶媒=删除本组">删</button></td>`;
         tr0.querySelector('.g-dose').onchange = e => {
@@ -928,6 +933,16 @@
         seq++;
         const tr = document.createElement('tr');
         const qty = calcQty(it.drug, it.single_dose);
+        // 皮试列：仅需皮试药品显示选择（阴性/阳性/未做），否则显示 —
+        let skinCell;
+        if (it.drug.skin_test_required) {
+          const cur = it.skin_test_result || 'pending';
+          const opt = (v, label) => `<option value="${v}"${cur===v?' selected':''}>${label}</option>`;
+          skinCell = `<td><select class="g-skin" style="width:78px;font-size:12px">`
+            + opt('pending','未做') + opt('negative','阴性') + opt('positive','阳性') + `</select></td>`;
+        } else {
+          skinCell = `<td style="color:#999">—</td>`;
+        }
         tr.innerHTML = `<td>${seq}</td><td>💉药物·第${groupNo}组</td>
           <td>${it.drug.generic_name}${it.drug.is_tcm_injection?' <span class="chip chip-abx-special">中药注射剂</span>':''}</td>
           <td>${it.drug.spec}</td>
@@ -935,6 +950,7 @@
           <td>静滴</td>
           <td style="color:#999">↧</td>
           <td class="g-qty">${qty}</td>
+          ${skinCell}
           <td style="color:#999">↧</td>
           <td><button class="btn btn-danger btn-xs" data-act="del-drug">删</button></td>`;
         tr.querySelector('.g-dose').onchange = e => {
@@ -947,6 +963,8 @@
           it.single_dose = v;
           tr.querySelector('.g-qty').textContent = calcQty(it.drug, v);
         };
+        const skinSel = tr.querySelector('.g-skin');
+        if (skinSel) skinSel.onchange = e => { it.skin_test_result = e.target.value; };
         tr.querySelector('[data-act="del-drug"]').onclick = () => {
           g.drugs.splice(g.drugs.indexOf(it), 1);
           autoFillGroup(g);
@@ -1268,7 +1286,9 @@
       drug,
       single_dose: defaultSingleDose(drug),
       frequency: (drug.dose_range_json||{}).default_freq || 'qd',
-      duration_days: (drug.dose_range_json||{}).default_duration_days || 1
+      duration_days: (drug.dose_range_json||{}).default_duration_days || 1,
+      // 需皮试药品默认"未做(pending)"，由学生在表格皮试列选择阴性/阳性；非需皮试药为 not_required
+      skin_test_result: drug.skin_test_required ? 'pending' : 'not_required'
     });
     autoFillGroup(g);
     renderIvGroups(); renderIvDrugList();
@@ -1280,10 +1300,24 @@
   // ---------- 提交 ----------
   function submitRx() {
     try {
-    // 硬阻断：每组必须有溶媒+药（学生选了输液通道即视为有指征，不再强制填 iv_reason）
+    // 硬阻断：每组必须有溶媒+药
     if (S.rxType === 'iv') {
       const groupsOk = S.ivGroups.every(g => g.solvent && g.drugs.length > 0);
       if (!groupsOk) return alert('每组都必须选择溶媒并至少加入一个药！');
+      // 硬阻断：必须选择真实输液指征（不得再用 student_selected_iv 绕开 IV-01）
+      const reasonSel = $('iv-reason-select');
+      const ivReason = reasonSel ? reasonSel.value : '';
+      if (!ivReason) return alert('请先在上方选择本次「输液指征」（发热/脱水/不能口服/序贯/其他），这是 IV-01 合理性判定的依据。');
+      S.ivFields.iv_reason = ivReason;
+      S.ivFields.iv_reason_note = ($('iv-reason-note') ? $('iv-reason-note').value.trim() : '') || '';
+      // 需皮试药品必须已选择皮试结果（未做=未完成，拦截）
+      const pendingSkin = [];
+      S.ivGroups.forEach(g => g.drugs.forEach(it => {
+        if (it.drug.skin_test_required && (!it.skin_test_result || it.skin_test_result === 'pending')) {
+          pendingSkin.push(it.drug.generic_name);
+        }
+      }));
+      if (pendingSkin.length) return alert('以下需皮试药品尚未选择皮试结果，请在表格「皮试」列选择阴性/阳性：\n· ' + pendingSkin.join('\n· '));
     }
 
     // 保存次要诊断
@@ -1298,7 +1332,15 @@
       const flatItems = [];
       const groupDetails = S.ivGroups.map((g, gi) => {
         flatItems.push({ drug: g.solvent, quantity: 1, single_dose: g.solvent.volume_ml+'ml', frequency: 'st', duration_days: 1, route: 'iv_drip', group: gi+1 });
-        g.drugs.forEach(it => flatItems.push({ drug: it.drug, single_dose: it.single_dose, frequency: it.frequency, duration_days: it.duration_days, route: 'iv_drip', group: gi+1 }));
+        g.drugs.forEach(it => flatItems.push({
+          drug: it.drug,
+          single_dose: it.single_dose,
+          frequency: it.frequency,
+          duration_days: it.duration_days,
+          route: 'iv_drip',
+          group: gi+1,
+          skin_test_result: it.skin_test_result || (it.drug.skin_test_required ? 'pending' : 'not_required')
+        }));
         return {
           group_no: gi+1,
           solvent_name: g.solvent.generic_name + ' ' + g.solvent.spec,
@@ -1307,9 +1349,7 @@
           final_concentration: g.fields.conc,
           drip_speed_mlh: g.fields.speed,
           total_volume_ml: g.fields.totalvol,
-          infusion_hours: g.fields.hours,
-          skin_test_required: false,
-          skin_test_result: 'not_required'
+          infusion_hours: g.fields.hours
         };
       });
       const first = groupDetails[0];
@@ -1318,16 +1358,14 @@
         items: flatItems,
         groups: groupDetails,
         group_count: groupDetails.length,
-        iv_reason: 'student_selected_iv',
-        iv_reason_note: '学生主动选择输液通道',
+        iv_reason: S.ivFields.iv_reason,
+        iv_reason_note: S.ivFields.iv_reason_note,
         solvent_name: first ? first.solvent_name : '',
         solvent_spec: first ? first.solvent_name.split(' ').pop() : '',
         final_concentration: first ? first.final_concentration : '',
         drip_speed_mlh: first ? first.drip_speed_mlh : '',
         total_volume_ml: first ? first.total_volume_ml : '',
         infusion_hours: first ? first.infusion_hours : '',
-        skin_test_required: first ? first.skin_test_required : false,
-        skin_test_result: first ? first.skin_test_result : 'not_required',
         duration_days: flatItems.length ? (S.ivGroups[S.ivGroups.length-1].drugs[0]||{}).duration_days : 1
       };
     }
@@ -1349,7 +1387,7 @@
     };
     S.lastVisitCtx = ctx;
     const hits = window.RxRuleEngine.run(ctx);
-    const review = window.Reviewer.score(hits);
+    const review = window.Reviewer.score(hits, ctx);
     S.lastReview = review;
     renderReport(review, hits, ctx);
 

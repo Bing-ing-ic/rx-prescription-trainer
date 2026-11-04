@@ -353,14 +353,14 @@
       "weight_hint": "compat"
     },
     {
-      "rule_id": "FMT-01-EXT",
-      "group": "FORMAT",
-      "title": "超五种药品限制违规扣分强化",
-      "trigger": "处方药品数=6种 warn，≥7种 error",
-      "logic": "超过5种上限时分级扣分：6种扣2分（warn），7种及以上扣5分（error），需注明超量理由",
-      "severity": "warn",
-      "basis": "《处方管理办法》第十九条：每张处方不得超过5种药品。特殊情况需注明理由并经上级医师审核。",
-      "weight_hint": "format"
+      "rule_id": "DD-01",
+      "group": "COMPAT",
+      "title": "同瓶药物-药物配伍禁忌",
+      "trigger": "同一输液组（同一瓶内）加入 compat.json drug_drug 标记为 incompatible/caution 的两种药物",
+      "logic": "按输液组分组后，检查同瓶内任意两药是否命中 compat.json drug_drug 表：incompatible → error，caution → warn；不同组（不同瓶）不算同瓶混合",
+      "severity": "error",
+      "basis": "《静脉用药集中调配操作规程》：两种药液混合前必须确认理化相容；国家 adverse 配伍通报（如头孢+VC 同瓶降解）。",
+      "weight_hint": "compat"
     }
   ]
 }

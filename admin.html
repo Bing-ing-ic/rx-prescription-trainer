@@ -126,9 +126,9 @@
   <div class="section-title">📊 访问统计</div>
   <div class="cards">
     <div class="card">
-      <div class="label">🌐 全站总访问次数</div>
+      <div class="label">🌐 本机累计访问次数</div>
       <div class="num green" id="cnt-total">加载中…</div>
-      <div class="sub">来源：CountAPI（所有访客累计）</div>
+      <div class="sub">来源：本机浏览器本地统计（原 CountAPI 服务已停用）</div>
     </div>
     <div class="card">
       <div class="label">🗓 本机今日访问</div>
@@ -233,10 +233,14 @@
   }catch(e){}
 
   // ===== 1. 访问统计 =====
-  fetch('https://api.countapi.xyz/get/rx-trainer-2026/visits')
-    .then(r=>r.json())
-    .then(d=>{ document.getElementById('cnt-total').textContent = (d.value||0).toLocaleString()+' 次'; })
-    .catch(()=>{ document.getElementById('cnt-total').textContent = '获取失败'; });
+  // 原 CountAPI（api.countapi.xyz）已 DNS 失效，改为本机 localStorage 累计，避免未捕获 Promise 错误卡加载
+  try {
+    const localVisits = (Number(localStorage.getItem('rx-local-visits')) || 0) + 1;
+    localStorage.setItem('rx-local-visits', String(localVisits));
+    document.getElementById('cnt-total').textContent = localVisits.toLocaleString() + ' 次';
+  } catch (e) {
+    document.getElementById('cnt-total').textContent = '本机统计不可用';
+  }
 
   try{
     const today = new Date().toISOString().slice(0,10);

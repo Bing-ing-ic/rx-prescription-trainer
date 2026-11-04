@@ -30,8 +30,34 @@
     return 'format';
   }
 
-  function score(hits) {
+  // 判断 visit_ctx 中是否存在任何治疗性药品（排除溶媒）
+  function hasAnyTherapeuticDrug(ctx) {
+    if (!ctx) return false;
+    const rxHas = (rx) => rx && Array.isArray(rx.items) &&
+      rx.items.some(it => it && it.drug && it.drug.dosage_form !== 'solvent');
+    return rxHas(ctx.normal_rx) || rxHas(ctx.iv_rx);
+  }
+
+  function score(hits, ctx) {
     hits = Array.isArray(hits) ? hits.filter(Boolean) : [];
+
+    // ===== 空处方拦截（P0）：两张处方均无任何药品 → 直接判不合格，0分 =====
+    if (!hasAnyTherapeuticDrug(ctx)) {
+      const emptyHit = {
+        rule_id: 'FMT-EMPTY', group: 'FORMAT', title: '空处方（未开具任何药品）',
+        severity: 'error',
+        message: '处方未开具任何治疗药品（连对症/支持用药都没有），属严重不合格处方，不得提交。',
+        basis: '《处方管理办法》第十四条：医师应当根据诊断开具处方；无药品处方无临床意义。',
+        suggestion: '根据临床诊断，至少开具一种适宜药品（首选推荐用药），或明确告知患者无需用药并记录在案。'
+      };
+      const dimResult = {};
+      DIMS.forEach(d => { dimResult[d.key] = { name: d.name, weight: d.weight, hits: [emptyHit], deduction: d.weight, score: 0, verdict: 'error' }; });
+      return {
+        total: 0, dims: dimResult, totalHits: 1,
+        errorCount: 1, warnCount: 0, emptyPrescription: true
+      };
+    }
+
     const dimResult = {};
     DIMS.forEach(d => { dimResult[d.key] = { name: d.name, weight: d.weight, hits: [], deduction: 0, score: d.weight }; });
 

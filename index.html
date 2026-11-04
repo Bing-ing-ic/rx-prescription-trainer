@@ -2,17 +2,22 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.css?v=20261104r">
+<link rel="stylesheet" href="css/rx.css?v=20261104mobile">
 </head>
 <body>
 
 <header class="topbar">
   <div class="brand">
     <span class="logo">⚕</span>
-    <span>××医科大学附属训练医院 · 处方推演训练平台</span>
+    <span class="brand-text">××医科大学附属训练医院 · 处方推演训练平台</span>
   </div>
-  <nav class="nav">
+  <button class="hamburger" id="nav-toggle" aria-label="打开导航菜单" aria-expanded="false" aria-controls="main-nav">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav" id="main-nav">
     <button class="nav-btn" data-goto="home">首页</button>
     <button class="nav-btn" data-goto="drugs">药品库</button>
     <button class="nav-btn" data-goto="radar">能力画像</button>
@@ -211,8 +216,20 @@
         </div>
       </div>
 
-      <!-- 输液通道：多组输液（学生选择输液通道即视为有指征，无需下拉选理由） -->
+      <!-- 输液通道：多组输液（必须选择输液指征） -->
       <div class="rx-body hidden" id="rx-body-iv">
+        <div class="iv-reason-bar no-print" style="display:flex;align-items:center;gap:10px;margin:8px 0;padding:8px 10px;background:#fef3c7;border:1px solid #fcd34d;border-radius:6px;font-size:13px;">
+          <b style="color:#92400e;">输液指征：</b>
+          <select id="iv-reason-select" style="padding:4px 6px;border:1px solid #d1d5db;border-radius:4px;">
+            <option value="">— 请选择本次输液指征 —</option>
+            <option value="fever">发热为主（体温≥38.5℃）</option>
+            <option value="severe_dehydration">脱水/电解质紊乱（客观补液指征）</option>
+            <option value="no_oral_alternative">不能口服/吞咽困难/胃肠道吸收障碍</option>
+            <option value="sequential_therapy">序贯治疗（病情由重转轻，静脉转口服）</option>
+            <option value="other">其他（需在备注注明）</option>
+          </select>
+          <input id="iv-reason-note" type="text" placeholder="其他指征说明（选填）" style="flex:1;padding:4px 6px;border:1px solid #d1d5db;border-radius:4px;">
+        </div>
         <div id="iv-groups"></div>
         <div id="pre-reminder" class="pre-reminder no-print"></div>
 
@@ -391,6 +408,14 @@
 
 </main>
 
+<!-- 全局 Loading 指示（医疗专业感，简洁圆环） -->
+<div class="loading-overlay" id="loading-overlay" aria-live="polite">
+  <div class="loading-box">
+    <div class="spinner-medical"></div>
+    <div class="loading-text">加载中…</div>
+  </div>
+</div>
+
 <!-- 隐藏的特殊级抗菌药拦截弹窗 -->
 <div class="modal-mask hidden" id="modal-block">
   <div class="modal">
@@ -416,6 +441,60 @@
   本系统为教学训练平台，所有患者均为合成假名；所有处方不得用于真实诊疗。
 </footer>
 
+<script>
+/* ===== 移动端 UI 交互（不影响外部规则引擎/业务JS） ===== */
+(function(){
+  // 汉堡菜单切换
+  var toggle = document.getElementById('nav-toggle');
+  var nav = document.getElementById('main-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      toggle.classList.toggle('active', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? '关闭导航菜单' : '打开导航菜单');
+    });
+    // 点击某个导航项后自动收起
+    nav.querySelectorAll('.nav-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        nav.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded','false');
+      });
+    });
+    // 点击菜单外区域收起
+    document.addEventListener('click', function(e){
+      if (nav.classList.contains('open') &&
+          !nav.contains(e.target) && !toggle.contains(e.target)) {
+        nav.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  // 全局 Loading 反馈
+  var overlay = document.getElementById('loading-overlay');
+  var timer = null;
+  window.__showLoading = function(ms){
+    if (!overlay) return;
+    ms = ms || 350;
+    overlay.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(function(){ overlay.classList.remove('show'); }, ms);
+  };
+  window.__hideLoading = function(){
+    if (!overlay) return;
+    clearTimeout(timer);
+    overlay.classList.remove('show');
+  };
+  // 主要操作触发短暂 loading（事件代理，避免改动业务JS）
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('#btn-new-case, #btn-submit, #btn-diag-check, #btn-retry, [data-goto]');
+    if (t) window.__showLoading(280);
+  }, true);
+})();
+</script>
 <script src="js/rule-engine.js?v=20261104f"></script>
 <script>
 // 网站访问统计

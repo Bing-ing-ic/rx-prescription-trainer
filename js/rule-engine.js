@@ -88,6 +88,24 @@
     return weak.includes(reason);
   }
 
+  // 溶媒名归一化：把 "0.9%氯化钠注射液 100ml/袋" 拆成 { base(通用名), volMl(体积) }
+  // compat.json 溶媒名带体积规格，而药品库通用名不带，必须按通用名+体积匹配，避免字符串整体相等 miss
+  function splitSolvent(name) {
+    if (!name) return { base: '', volMl: null };
+    let s = String(name).trim();
+    s = s.replace(/[/／]\s*(袋|瓶|支)$/g, '').trim();
+    const m = s.match(/^(.*?)[\s,，]*(\d+(?:\.\d+)?)\s*(ml|mL|ML|毫升)\s*$/);
+    if (m) return { base: m[1].replace(/\s+/g, ''), volMl: parseFloat(m[2]) };
+    return { base: s.replace(/\s+/g, ''), volMl: null };
+  }
+  // 两条溶媒记录是否指同一溶媒（通用名相同；记录有明确体积时体积须一致，保留100ml/250ml区分）
+  function solventMatch(recSolvent, selectedSolvent) {
+    const a = splitSolvent(recSolvent), b = splitSolvent(selectedSolvent);
+    if (!a.base || !b.base || a.base !== b.base) return false;
+    if (a.volMl != null && b.volMl != null && a.volMl !== b.volMl) return false;
+    return true;
+  }
+
   // =====================================================================
   // 主入口
   // =====================================================================
@@ -110,13 +128,15 @@
     }
 
     // ====================== 1. 格式类 ======================
-    // FMT-01 ≤5种（降级为提示，实际分级扣分由FMT-01-EXT处理）
+    // FMT-01 每张处方≤5种药品（含溶媒）：>5种 直接 error（已与原 FMT-01-EXT 合并，删除矛盾分级）
     ['normal_rx','iv_rx'].forEach(k => {
       const rx = ctx[k];
       if (!rx) return;
       const n = totalItems(rx);
       if (n > 5) {
-        hits.push(pass(R['FMT-01'], `当前处方共 ${n} 种药品（含溶媒），超5种上限，详见FMT-01-EXT分级扣分。`));
+        hits.push(hit(R['FMT-01'], 'error',
+          `当前处方共 ${n} 种药品（含溶媒），超过每张处方≤5种的法定上限。`,
+          `删减至≤5种；确需超过须注明理由并经上级医师审核签字。`));
       }
     });
 
@@ -448,50 +468,83 @@
         }
       }
 
-      // IV-06 溶媒-药物配伍
+      // 把拍平的 items 按输液组 group 分桶（同组=同一输液瓶）
+      const ivGroupsMap = {};
       iv.items.forEach(it => {
-        if (it.drug.dosage_form === 'solvent') return;
-        const drugName = it.drug.generic_name;
-        const solventName = iv.solvent_name;
-        if (!solventName) return;
-        // 1) 先看药品自带 allowed_solvents
-        const allowed = it.drug.allowed_solvents_json || [];
-        const hitAllowed = allowed.find(s => solventName.indexOf(s.replace(/\s*\d+(ml|g)/,'').trim()) >= 0 || s.indexOf(solventName.replace(/\s*\d+(ml|g)/,'').trim()) >= 0);
-        if (allowed.length && !hitAllowed) {
-          hits.push(hit(R['IV-06'], 'error',
-            `「${drugName}」说明书允许溶媒为：${allowed.join('、')}；所选溶媒「${solventName}」不在内。`,
-            `更换为说明书指定溶媒。`));
-          return;
-        }
-        // 2) 再查 compat.json
-        const rec = (compat.solvent_drug || []).find(r =>
-          r.drug === drugName && (r.solvent === solventName || r.solvent.indexOf(solventName)>=0 || solventName.indexOf(r.solvent)>=0)
-        );
-        if (rec) {
-          if (rec.compatibility === 'incompatible') {
+        if (!it || !it.drug) return;
+        const g = it.group || 1;
+        (ivGroupsMap[g] = ivGroupsMap[g] || []).push(it);
+      });
+
+      // IV-06 溶媒-药物配伍（按输液组分别判定；溶媒按通用名+体积匹配，不再整串相等）
+      Object.keys(ivGroupsMap).forEach(gk => {
+        const gItems = ivGroupsMap[gk];
+        const solventItem = gItems.find(it => it.drug.dosage_form === 'solvent');
+        if (!solventItem) return;
+        const solventName = (solventItem.drug.generic_name || '') + ' ' + (solventItem.drug.spec || '');
+        gItems.forEach(it => {
+          if (it.drug.dosage_form === 'solvent') return;
+          const drugName = it.drug.generic_name;
+          // 1) 先看药品自带 allowed_solvents_json（按通用名匹配）
+          const allowed = it.drug.allowed_solvents_json || [];
+          const hitAllowed = allowed.some(s => solventMatch(s, solventName));
+          if (allowed.length && !hitAllowed) {
             hits.push(hit(R['IV-06'], 'error',
-              `溶媒-药物配伍禁忌：${solventName} + ${drugName}。${rec.note}`,
-              `更换溶媒或药物。`));
-          } else if (rec.compatibility === 'caution') {
-            hits.push(hit(R['IV-06'], 'warn',
-              `溶媒-药物配伍需谨慎：${solventName} + ${drugName}。${rec.note}`,
-              `建议更换为首选溶媒。`));
-          } else {
-            hits.push(pass(R['IV-06'], `${solventName} + ${drugName} 配伍合规。`));
+              `「${drugName}」说明书允许溶媒为：${allowed.join('、')}；所选溶媒「${solventName}」不在内。`,
+              `更换为说明书指定溶媒。`));
+            return;
           }
+          // 2) 再查 compat.json（按通用名+体积匹配）
+          const rec = (compat.solvent_drug || []).find(r => r.drug === drugName && solventMatch(r.solvent, solventName));
+          if (rec) {
+            if (rec.compatibility === 'incompatible') {
+              hits.push(hit(R['IV-06'], 'error',
+                `溶媒-药物配伍禁忌：${solventName} + ${drugName}。${rec.note}`,
+                `更换溶媒或药物。`));
+            } else if (rec.compatibility === 'caution') {
+              hits.push(hit(R['IV-06'], 'warn',
+                `溶媒-药物配伍需谨慎：${solventName} + ${drugName}。${rec.note}`,
+                `建议更换为首选溶媒。`));
+            }
+          }
+        });
+      });
+
+      // IV-07 中药注射剂单独输注（按输液组判定：跨组不视为同瓶混合）
+      Object.keys(ivGroupsMap).forEach(gk => {
+        const gItems = ivGroupsMap[gk].filter(it => it.drug && it.drug.dosage_form !== 'solvent');
+        const tcm = gItems.filter(it => it.drug.is_tcm_injection);
+        const others = gItems.filter(it => it.drug.dosage_form === 'iv_drip' && !it.drug.is_tcm_injection);
+        if (tcm.length && others.length) {
+          hits.push(hit(R['IV-07'], 'error',
+            `第${gk}组：中药注射剂「${tcm.map(d=>d.drug.generic_name).join('、')}」与其他药物「${others.map(d=>d.drug.generic_name).join('、')}」同瓶混合。`,
+            `中药注射剂必须单独成组、单独输注，严禁混合配伍。`));
         }
       });
 
-      // IV-07 中药注射剂单独输注
-      const tcmInPump = iv.items.filter(it => it.drug.is_tcm_injection);
-      const therapeuticInPump = iv.items.filter(it => it.drug.dosage_form === 'iv_drip' && !it.drug.is_tcm_injection);
-      if (tcmInPump.length && therapeuticInPump.length) {
-        hits.push(hit(R['IV-07'], 'error',
-          `中药注射剂「${tcmInPump.map(d=>d.drug.generic_name).join('、')}」与其他药物「${therapeuticInPump.map(d=>d.drug.generic_name).join('、')}」同瓶混合。`,
-          `中药注射剂必须单独输注，严禁混合配伍。`));
-      } else if (tcmInPump.length) {
-        hits.push(pass(R['IV-07'], `中药注射剂「${tcmInPump.map(d=>d.drug.generic_name).join('、')}」单独输注，合规。`));
-      }
+      // DD-01 同瓶药物-药物配伍（compat.json drug_drug，按输液组判定同瓶组合）
+      const DD = compat.drug_drug || [];
+      Object.keys(ivGroupsMap).forEach(gk => {
+        const gDrugs = ivGroupsMap[gk]
+          .filter(it => it.drug && it.drug.dosage_form === 'iv_drip' && !it.drug.is_tcm_injection)
+          .map(it => it.drug.generic_name);
+        for (let i = 0; i < gDrugs.length; i++) {
+          for (let j = i + 1; j < gDrugs.length; j++) {
+            const a = gDrugs[i], b = gDrugs[j];
+            const rec = DD.find(r => (r.drug_a === a && r.drug_b === b) || (r.drug_a === b && r.drug_b === a));
+            if (!rec) continue;
+            if (rec.compatibility === 'incompatible') {
+              hits.push(hit(R['DD-01'], 'error',
+                `同瓶药物配伍禁忌（第${gk}组）：${a} + ${b}。${rec.note}`,
+                `严禁同瓶混合，须分瓶分开输注。`));
+            } else if (rec.compatibility === 'caution') {
+              hits.push(hit(R['DD-01'], 'warn',
+                `同瓶药物配伍需谨慎（第${gk}组）：${a} + ${b}。${rec.note}`,
+                `建议分瓶输注并加强监测。`));
+            }
+          }
+        }
+      });
 
       // IV-08 皮试核查：需皮试药品未填皮试结果或皮试阳性仍使用 → error；阴性 → pass
       iv.items.forEach(it => {
@@ -566,22 +619,7 @@
     }
 
     // ====================== 10. 新增：特殊人群与相互作用增强 ======================
-
-    // FMT-01-EXT: 超五种药品分级扣分（6种warn，≥7种error）
-    ['normal_rx','iv_rx'].forEach(k => {
-      const rx = ctx[k];
-      if (!rx) return;
-      const n = totalItems(rx);
-      if (n === 6) {
-        hits.push(hit(R['FMT-01-EXT'], 'warn',
-          `当前处方共 ${n} 种药品，已超过5种上限，扣2分。`,
-          `原则上每张处方不超过5种；如确需超过，请注明理由并经上级医师审核。`));
-      } else if (n >= 7) {
-        hits.push(hit(R['FMT-01-EXT'], 'error',
-          `当前处方共 ${n} 种药品，严重超过5种上限，扣5分。`,
-          `删减至≤5种；确需超量须注明理由并经上级医师审核签字。`));
-      }
-    });
+    // （原 FMT-01-EXT 已合并入 FMT-01：>5种药品一律 error，不再重复分级扣分）
 
     // SPEC-01: 特殊人群剂量自动换算与调整
     const isElderly = patient.age >= 65;

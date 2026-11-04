@@ -121,6 +121,7 @@
     $('diag-input').oninput = onDiagInput;
     $('diag-input').onkeydown = onDiagKey;
     $('secondary-diag-input').oninput = onSecondaryDiagInput;
+    $('secondary-diag-input').onkeydown = onSecondaryDiagKey;
     document.querySelectorAll('.btn-type').forEach(b => {
       b.addEventListener('click', () => openRx(b.getAttribute('data-type')));
     });
@@ -394,24 +395,55 @@
     const input = $('secondary-diag-input');
     const box = $('secondary-diag-suggest');
     const val = input.value.trim();
-    if (!val || !S.diseases) { box.classList.add('hidden'); box.innerHTML=''; return; }
+    if (!val || !S.diseases) { box.classList.add('hidden'); box.innerHTML=''; S.secDiagMatches=[]; return; }
     // 取最后一个逗号后的内容作为关键词
     const parts = val.split(/[,，]/);
     const lastKw = parts[parts.length-1].trim();
-    if (!lastKw) { box.classList.add('hidden'); box.innerHTML=''; return; }
+    if (!lastKw) { box.classList.add('hidden'); box.innerHTML=''; S.secDiagMatches=[]; return; }
     const matched = S.diseases.filter(d => matchDisease(d.name, lastKw) || (d.icd10||'').toLowerCase().indexOf(lastKw.toLowerCase()) >= 0);
+    S.secDiagMatches = matched;
+    S.secDiagSel = matched.length ? 0 : -1;
     if (!matched.length) { box.classList.add('hidden'); box.innerHTML=''; return; }
     box.classList.remove('hidden');
     box.innerHTML = '匹配到：' +
       matched.slice(0,6).map((d,i) => `<span class="sug-item${i===0?' kb-highlight':''}" data-name="${d.name}">${d.name}</span>`).join(' ');
     box.querySelectorAll('.sug-item').forEach(el => {
       el.onclick = () => {
-        // 替换最后一个关键词
-        const before = parts.slice(0, -1).join('，');
-        input.value = before ? before + '，' + el.getAttribute('data-name') : el.getAttribute('data-name');
-        box.classList.add('hidden');
+        selectSecondaryDiag(el.getAttribute('data-name'), parts);
       };
     });
+  }
+
+  function selectSecondaryDiag(name, parts) {
+    const input = $('secondary-diag-input');
+    const box = $('secondary-diag-suggest');
+    const before = parts.slice(0, -1).join('，');
+    input.value = before ? before + '，' + name : name;
+    box.classList.add('hidden');
+    S.secDiagMatches = [];
+    input.focus();
+  }
+
+  function onSecondaryDiagKey(e) {
+    const matched = S.secDiagMatches || [];
+    if (!matched.length) return;
+    const box = $('secondary-diag-suggest');
+    const parts = $('secondary-diag-input').value.split(/[,，]/);
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      S.secDiagSel = ((S.secDiagSel||0) + (e.key==='ArrowDown'?1:-1) + matched.length) % matched.length;
+      box.querySelectorAll('.sug-item').forEach((el, i) => {
+        el.classList.toggle('kb-highlight', i === S.secDiagSel);
+      });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      const i = S.secDiagSel || 0;
+      const d = matched[i];
+      if (d) selectSecondaryDiag(d.name, parts);
+    } else if (e.key === 'Escape') {
+      box.classList.add('hidden');
+      S.secDiagMatches = [];
+    }
   }
 
   function onDiagKey(e) {

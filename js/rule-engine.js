@@ -482,6 +482,151 @@
         `核对诊断与用药适应症，如为糖尿病需补充对应诊断。`));
     }
 
+    // ====================== 10. 新增：特殊人群与相互作用增强 ======================
+
+    // FMT-01-EXT: 超五种药品分级扣分（6种warn，≥7种error）
+    ['normal_rx','iv_rx'].forEach(k => {
+      const rx = ctx[k];
+      if (!rx) return;
+      const n = totalItems(rx);
+      if (n === 6) {
+        hits.push(hit(R['FMT-01-EXT'], 'warn',
+          `当前处方共 ${n} 种药品，已超过5种上限，扣2分。`,
+          `原则上每张处方不超过5种；如确需超过，请注明理由并经上级医师审核。`));
+      } else if (n >= 7) {
+        hits.push(hit(R['FMT-01-EXT'], 'error',
+          `当前处方共 ${n} 种药品，严重超过5种上限，扣5分。`,
+          `删减至≤5种；确需超量须注明理由并经上级医师审核签字。`));
+      }
+    });
+
+    // SPEC-01: 特殊人群剂量自动换算与调整
+    const isElderly = patient.age >= 65;
+    const isChild = patient.age <= 14;
+    const hasRenalIssue = patient.renal_insufficiency;
+    const hasLiverIssue = patient.hepatic_insufficiency;
+
+    if (isElderly || isChild || hasRenalIssue || hasLiverIssue) {
+      const popDesc = isElderly ? '老年患者（≥65岁）' : isChild ? '儿童患者' :
+                      hasRenalIssue ? '肾功能不全患者' : '肝功能不全患者';
+      ['normal_rx','iv_rx'].forEach(k => {
+        const rx = ctx[k]; if (!rx) return;
+        therapeuticItems(rx).forEach(it => {
+          const dr = it.drug.dose_range_json || {};
+          // 检查老年患者是否用了成人常规剂量（简化判断：有single_dose且超过上限的70%）
+          if (isElderly && it.single_dose && dr.single_max_mg != null) {
+            const m = String(it.single_dose).match(/([\d.]+)\s*(mg|g)/i);
+            if (m) {
+              let v = parseFloat(m[1]);
+              if (m[2].toLowerCase() === 'g') v *= 1000;
+              if (v > dr.single_max_mg * 0.7) {
+                hits.push(hit(R['SPEC-01'], 'warn',
+                  `${popDesc}「${it.drug.generic_name}」单次剂量 ${v}mg，建议从常规剂量的半量开始滴定（约 ${Math.round(dr.single_max_mg*0.5)}mg）。`,
+                  `老年患者起始剂量宜减半，根据耐受情况逐步调整。`));
+              }
+            }
+          }
+          // 儿童未按体重换算提示
+          if (isChild && !patient.weight) {
+            hits.push(hit(R['SPEC-01'], 'warn',
+              `儿童患者「${it.drug.generic_name}」未填写体重，无法按 mg/kg 换算剂量。`,
+              `请填写患儿体重，按 mg/kg 精确计算单次剂量。`));
+          }
+          // 肝肾功能不全提示
+          if ((hasRenalIssue || hasLiverIssue) && it.drug.liver_renal_note) {
+            if (/减量|不全|慎用|禁用/.test(it.drug.liver_renal_note)) {
+              hits.push(hit(R['SPEC-01'], 'warn',
+                `${popDesc}「${it.drug.generic_name}」需调整剂量：${it.drug.liver_renal_note}`,
+                `根据 eGFR/Child-Pugh 分级调整剂量，必要时更换药物。`));
+            }
+          }
+        });
+      });
+    }
+
+    // SPEC-02: 禁忌症自动识别
+    // 收集所有药品的禁忌症关键词
+    const allWarnings = [];
+    allDrugs2.forEach(d => {
+      (d.special_warnings_json || []).forEach(w => allWarnings.push({drug: d.generic_name, warning: w}));
+    });
+    // 患者已知基础疾病/状态（简化：从disease.contraindications和patient推断）
+    const patientFlags = {
+      pregnancy: patient.pregnancy === true || /孕妇|妊娠/.test(patient.note||''),
+      glaucoma: /青光眼/.test(patient.note||''),
+      pepticUlcer: /消化性溃疡|胃溃疡|十二指肠溃疡/.test(patient.note||''),
+      renalArteryStenosis: /肾动脉狭窄/.test(patient.note||''),
+      hypotension: patient.bp_low === true,
+      asthma: /哮喘/.test((disease.name||'') + (patient.note||'')),
+    };
+    // 检查禁忌症匹配
+    allWarnings.forEach(({drug, warning}) => {
+      if (patientFlags.pregnancy && /孕妇|妊娠|哺乳/.test(warning)) {
+        hits.push(hit(R['SPEC-02'], 'error',
+          `患者为孕妇/哺乳期，「${drug}」禁忌症：${warning}`,
+          `妊娠期禁用药物，更换为妊娠安全级别更高的替代药。`));
+      }
+      if (patientFlags.glaucoma && /青光眼/.test(warning)) {
+        hits.push(hit(R['SPEC-02'], 'error',
+          `患者有青光眼，「${drug}」禁忌症：${warning}`,
+          `青光眼禁用抗胆碱能药物，更换替代药。`));
+      }
+      if (patientFlags.pepticUlcer && /消化性溃疡|胃溃疡/.test(warning)) {
+        hits.push(hit(R['SPEC-02'], 'warn',
+          `患者有消化性溃疡病史，「${drug}」注意：${warning}`,
+          `NSAIDs类药物可诱发消化道出血，建议联用PPI或更换为COX-2选择性抑制剂。`));
+      }
+      if (patientFlags.renalArteryStenosis && /肾动脉狭窄/.test(warning)) {
+        hits.push(hit(R['SPEC-02'], 'error',
+          `患者双侧肾动脉狭窄，「${drug}」禁忌症：${warning}`,
+          `ACEI/ARB类药物在双侧肾动脉狭窄时禁用，更换为CCB类。`));
+      }
+    });
+
+    // INTER-01: 药物相互作用深度审查（关键组合）
+    const drugNames = allDrugs2.map(d => d.generic_name);
+    const hasDrug = (name) => drugNames.some(n => n.includes(name));
+
+    // SSRI + MAOI（5-羟色胺综合征）
+    const hasSSRI = drugNames.some(n => /氟西汀|帕罗西汀|艾司西酞普兰|舍曲林|氟伏沙明/.test(n));
+    const hasMAOI = drugNames.some(n => /吗氯贝胺|苯乙肼|反苯环丙胺/.test(n));
+    if (hasSSRI && hasMAOI) {
+      hits.push(hit(R['INTER-01'], 'error',
+        `SSRI类抗抑郁药与MAOI类单胺氧化酶抑制剂合用，可致5-羟色胺综合征（高热、肌强直、意识障碍）。`,
+        `两类药物禁用合用；停药后需间隔14天方可换用。`));
+    }
+    // ACEI/ARB + 保钾利尿剂（高钾血症）
+    const hasACEI_ARB = drugNames.some(n => /卡托普利|依那普利|贝那普利|缬沙坦|厄贝沙坦|氯沙坦|替米沙坦/.test(n));
+    const hasKSpareDiuretic = drugNames.some(n => /螺内酯|氨苯蝶啶|阿米洛利/.test(n));
+    if (hasACEI_ARB && hasKSpareDiuretic) {
+      hits.push(hit(R['INTER-01'], 'error',
+        `ACEI/ARB与保钾利尿剂合用，可致严重高钾血症（心律失常风险）。`,
+        `合用时需监测血钾，或更换为噻嗪类利尿剂。`));
+    }
+    // 华法林 + NSAIDs（出血风险）
+    const hasWarfarin = hasDrug('华法林');
+    const hasNSAID = drugNames.some(n => /布洛芬|双氯芬酸|萘普生|塞来昔布|美洛昔康|阿司匹林/.test(n));
+    if (hasWarfarin && hasNSAID) {
+      hits.push(hit(R['INTER-01'], 'error',
+        `华法林与NSAIDs合用，显著增加消化道出血和颅内出血风险。`,
+        `如需镇痛建议改用对乙酰氨基酚，或联用PPI保护胃黏膜。`));
+    }
+    // 他汀 + 大环内酯类（横纹肌溶解）
+    const hasStatin = drugNames.some(n => /阿托伐他汀|瑞舒伐他汀|辛伐他汀|普伐他汀/.test(n));
+    const hasMacrolide = drugNames.some(n => /红霉素|克拉霉素|阿奇霉素/.test(n));
+    if (hasStatin && hasMacrolide) {
+      hits.push(hit(R['INTER-01'], 'warn',
+        `他汀类与大环内酯类抗生素合用，可增加横纹肌溶解风险（CYP3A4抑制）。`,
+        `建议暂停他汀，或更换为头孢类/喹诺酮类抗生素。`));
+    }
+    // 两种以上中枢抑制药合用（镇静叠加）
+    const CNSDepressants = drugNames.filter(n => /阿普唑仑|佐匹克隆|艾司唑仑|地西泮|氯硝西泮|曲马多|奥氮平|利培酮/.test(n));
+    if (CNSDepressants.length >= 2) {
+      hits.push(hit(R['INTER-01'], 'warn',
+        `同时使用多种中枢抑制药（${CNSDepressants.join('、')}），可致过度镇静、呼吸抑制。`,
+        `避免联用两种以上中枢抑制剂；确需合用时需监测呼吸和意识状态。`));
+    }
+
     return hits;
   }
 

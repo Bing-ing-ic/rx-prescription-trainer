@@ -321,6 +321,46 @@
       "severity": "error",
       "basis": "云南省医保局第七批智能监管两库规则（2026.10）：药品限适应症（784个药品，111条知识点）。依据2025版国家医保药品目录。",
       "weight_hint": "indication"
+    },
+    {
+      "rule_id": "SPEC-01",
+      "group": "SPECIAL_POP",
+      "title": "特殊人群剂量自动换算与调整",
+      "trigger": "患者年龄≥65岁 或 ≤14岁 或 肝肾功能不全，且药品有相应调整说明",
+      "logic": "老年患者（≥65岁）起始剂量减半；儿童按体重mg/kg换算；肝肾功能不全者按eGFR调整。未调整 → warn，严重超量 → error",
+      "severity": "warn",
+      "basis": "《中国老年人潜在不适当用药目录（2024版）》；《儿童药理学》剂量换算原则；药品说明书【特殊人群用药】项。",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "SPEC-02",
+      "group": "SPECIAL_POP",
+      "title": "禁忌症自动识别",
+      "trigger": "药品 special_warnings_json 中含禁忌症描述，且患者存在对应禁忌症",
+      "logic": "对照疾病 contraindications 与患者基础疾病：如孕妇用ACEI/ARB、青光眼用山莨菪碱、消化性溃疡用NSAIDs → error",
+      "severity": "error",
+      "basis": "药品说明书【禁忌】项；《处方管理办法》第十四条：医师应当按照药品说明书开具处方。",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "INTER-01",
+      "group": "COMPAT",
+      "title": "药物相互作用深度审查",
+      "trigger": "同次就诊处方内存在已知不良相互作用的药物组合",
+      "logic": "如SSRI+MAOI（5-羟色胺综合征）、ACEI+保钾利尿剂（高钾血症）、华法林+NSAIDs（出血风险）、他汀+红霉素（横纹肌溶解）→ error",
+      "severity": "error",
+      "basis": "《McGraw-Hill药物相互作用手册》；药品说明书【药物相互作用】项。",
+      "weight_hint": "compat"
+    },
+    {
+      "rule_id": "FMT-01-EXT",
+      "group": "FORMAT",
+      "title": "超五种药品限制违规扣分强化",
+      "trigger": "处方药品数=6种 warn，≥7种 error",
+      "logic": "超过5种上限时分级扣分：6种扣2分（warn），7种及以上扣5分（error），需注明超量理由",
+      "severity": "warn",
+      "basis": "《处方管理办法》第十九条：每张处方不得超过5种药品。特殊情况需注明理由并经上级医师审核。",
+      "weight_hint": "format"
     }
   ]
 }

@@ -26,7 +26,7 @@
   // ---------- DOM ----------
   const $ = id => document.getElementById(id);
   function show(view) {
-    ['view-home','view-rx','view-report','view-radar'].forEach(v => $(v).classList.add('hidden'));
+    ['view-home','view-rx','view-report','view-radar','view-mistakes','view-stats'].forEach(v => $(v).classList.add('hidden'));
     $(view).classList.remove('hidden');
     window.scrollTo(0,0);
   }
@@ -110,6 +110,8 @@
         const t = b.getAttribute('data-goto');
         if (t === 'home') show('view-home');
         else if (t === 'radar') { renderRadar(); show('view-radar'); }
+        else if (t === 'mistakes') { renderMistakes(); show('view-mistakes'); }
+        else if (t === 'stats') { renderStats(); show('view-stats'); }
       };
     });
     $('btn-new-case').onclick = newCase;
@@ -124,10 +126,27 @@
     $('btn-submit').onclick = submitRx;
     $('btn-report-home').onclick = () => show('view-home');
     $('btn-radar-home').onclick = () => show('view-home');
+    $('btn-mistakes-home').onclick = () => show('view-home');
+    $('btn-stats-home').onclick = () => show('view-home');
     $('btn-retry').onclick = () => { show('view-home'); newCase(); };
     $('btn-clear-history').onclick = () => {
       if (confirm('清空历史得分？')) { localStorage.removeItem('rx-profile-history'); renderRadar(); }
     };
+    $('btn-clear-mistakes').onclick = () => {
+      if (confirm('清空错题本？')) { localStorage.removeItem('rx-mistakes'); renderMistakes(); }
+    };
+    // 深色模式切换
+    $('btn-dark-toggle').onclick = () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('rx-dark-mode', isDark ? '1' : '0');
+      $('btn-dark-toggle').textContent = isDark ? '☀️' : '🌙';
+    };
+    // 恢复深色模式
+    if (localStorage.getItem('rx-dark-mode') === '1') {
+      document.body.classList.add('dark-mode');
+      $('btn-dark-toggle').textContent = '☀️';
+    }
 
     $('drug-search').oninput = renderDrugList;
     $('iv-drug-search').oninput = renderIvDrugList;
@@ -190,7 +209,15 @@
   function randPick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
 
   function newCase() {
-    S.disease = randPick(S.diseases);
+    // 难度筛选
+    const diffFilter = document.querySelector('input[name="diff-filter"]:checked');
+    const diff = diffFilter ? diffFilter.value : 'all';
+    let pool = S.diseases;
+    if (diff !== 'all') {
+      pool = S.diseases.filter(d => d.difficulty === diff);
+    }
+    if (pool.length === 0) pool = S.diseases; // 兜底
+    S.disease = randPick(pool);
     S.diagnosisInput = '';
     S.diagnosisOk = false;
     S.rxType = null;
@@ -1193,6 +1220,7 @@
 
     // 写历史
     saveHistory(review);
+    saveMistakes(review, ctx);
     show('view-report');
     } catch(e) {
       console.error(e);
@@ -1385,6 +1413,119 @@
   window.__openRx = openRx;
   window.__newCase = newCase;
   window.__checkDiag = checkDiagnosis;
+
+  // ====================== 新增功能：错题本 ======================
+  function saveMistakes(review, ctx) {
+    if (!review || !review.hits) return;
+    const errors = review.hits.filter(h => h.severity === 'error');
+    const warns = review.hits.filter(h => h.severity === 'warn');
+    if (errors.length === 0 && warns.length === 0) return;
+
+    const arr = JSON.parse(localStorage.getItem('rx-mistakes')||'[]');
+    const entry = {
+      t: Date.now(),
+      disease: ctx.disease ? ctx.disease.name : '未知',
+      disease_code: ctx.disease ? ctx.disease.code : '',
+      score: review.total,
+      errors: errors.map(e => ({rule_id: e.rule_id, title: e.title, message: e.message, suggestion: e.suggestion, basis: e.basis})),
+      warns: warns.map(w => ({rule_id: w.rule_id, title: w.title, message: w.message, suggestion: w.suggestion}))
+    };
+    arr.unshift(entry);
+    localStorage.setItem('rx-mistakes', JSON.stringify(arr.slice(0, 100))); // 最多存100条
+  }
+
+  function renderMistakes() {
+    const arr = JSON.parse(localStorage.getItem('rx-mistakes')||'[]');
+    const box = $('mistakes-list');
+    if (arr.length === 0) {
+      box.innerHTML = '<p class="muted center">暂无错题，继续保持！🎉</p>';
+      return;
+    }
+    box.innerHTML = arr.map((m, i) => `
+      <div class="mistake-card">
+        <div class="mistake-head">
+          <span class="tag tag-diff">${m.disease}</span>
+          <span class="muted">${new Date(m.t).toLocaleString()}</span>
+          <span class="score-badge ${m.score >= 80 ? 'good' : m.score >= 60 ? 'mid' : 'bad'}">${m.score}分</span>
+        </div>
+        ${m.errors.length ? `<div class="mistake-errors">
+          <h4>❌ 错误（${m.errors.length}）</h4>
+          ${m.errors.map(e => `<div class="mistake-item error">
+            <b>[${e.rule_id}]</b> ${e.title}<br>
+            <span class="muted">${e.message}</span><br>
+            <span class="sug">💡 ${e.suggestion || '掌握相关知识点'}</span>
+          </div>`).join('')}
+        </div>` : ''}
+        ${m.warns.length ? `<div class="mistake-warns">
+          <h4>⚠️ 警告（${m.warns.length}）</h4>
+          ${m.warns.map(w => `<div class="mistake-item warn">
+            <b>[${w.rule_id}]</b> ${w.title}<br>
+            <span class="muted">${w.message}</span>
+          </div>`).join('')}
+        </div>` : ''}
+      </div>
+    `).join('');
+  }
+
+  // ====================== 新增功能：学习统计 ======================
+  function renderStats() {
+    const history = JSON.parse(localStorage.getItem('rx-profile-history')||'[]');
+    const mistakes = JSON.parse(localStorage.getItem('rx-mistakes')||'[]');
+
+    // 基础统计
+    const total = history.length;
+    $('stat-total').textContent = total;
+    if (total > 0) {
+      const scores = history.map(h => h.total);
+      const avg = Math.round(scores.reduce((a,b)=>a+b,0) / total);
+      const best = Math.max(...scores);
+      const passCount = scores.filter(s => s >= 60).length;
+      $('stat-avg').textContent = avg;
+      $('stat-best').textContent = best;
+      $('stat-pass-rate').textContent = Math.round(passCount/total*100) + '%';
+    } else {
+      $('stat-avg').textContent = '--';
+      $('stat-best').textContent = '--';
+      $('stat-pass-rate').textContent = '--';
+    }
+
+    // 得分趋势（最近10次）
+    const trendBox = $('score-trend');
+    if (total > 0) {
+      const recent = history.slice(0, 10).reverse();
+      const maxScore = 100;
+      const barH = 120;
+      trendBox.innerHTML = `<div class="trend-chart">
+        ${recent.map((h, i) => `
+          <div class="trend-bar-wrap">
+            <div class="trend-bar" style="height:${(h.total/maxScore*barH)}px" title="${h.total}分"></div>
+            <div class="trend-label">${h.total}</div>
+          </div>
+        `).join('')}
+      </div>`;
+    } else {
+      trendBox.innerHTML = '<p class="muted">暂无数据</p>';
+    }
+
+    // 疾病类型分布
+    const distBox = $('disease-dist');
+    if (mistakes.length > 0) {
+      const dist = {};
+      mistakes.forEach(m => {
+        dist[m.disease] = (dist[m.disease] || 0) + 1;
+      });
+      const sorted = Object.entries(dist).sort((a,b) => b[1]-a[1]).slice(0, 10);
+      distBox.innerHTML = sorted.map(([name, count]) => `
+        <div class="dist-row">
+          <span class="dist-name">${name}</span>
+          <div class="dist-bar-wrap"><div class="dist-bar" style="width:${count/Math.max(...sorted.map(s=>s[1]))*100}%"></div></div>
+          <span class="dist-count">${count}次</span>
+        </div>
+      `).join('');
+    } else {
+      distBox.innerHTML = '<p class="muted">暂无错题数据</p>';
+    }
+  }
 
   boot();
 })();

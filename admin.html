@@ -2,29 +2,389 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>访问统计 - 管理员</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理控制台 · 处方推演训练平台</title>
 <style>
-body { font-family: -apple-system, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; background: #f5f5f5; }
-.card { background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
-h1 { color: #1a6fb5; margin-top: 0; }
-.stat { font-size: 48px; font-weight: 700; color: #16a34a; margin: 20px 0; }
-.info { color: #64748b; font-size: 14px; line-height: 1.6; }
+  :root{
+    --blue-deep:#0f4c81; --blue-mid:#1a6fb5; --blue-light:#2c7be5;
+    --ink:#1e293b; --muted:#64748b; --line:#e2e8f0; --bg:#eef4fb;
+    --green:#16a34a; --red:#dc2626; --amber:#d97706;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:
+      radial-gradient(1200px 500px at 90% -10%, rgba(44,123,229,.15), transparent 60%),
+      var(--bg);
+    color:var(--ink); min-height:100vh; padding-bottom:40px;
+  }
+  /* ===== 顶栏 ===== */
+  .topbar{
+    background:linear-gradient(135deg,#0a1628 0%,#0f4c81 55%,#1a6fb5 100%);
+    color:#fff; padding:14px 28px; display:flex; align-items:center; justify-content:space-between;
+    box-shadow:0 4px 16px rgba(15,76,129,.25); position:sticky; top:0; z-index:50;
+  }
+  .topbar .brand{display:flex; align-items:center; gap:10px; font-size:16px; font-weight:700; letter-spacing:1px;}
+  .topbar .brand .logo{
+    width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.4); display:flex;align-items:center;justify-content:center;font-size:18px;
+  }
+  .topbar .ops{display:flex; gap:10px;}
+  .topbar button{
+    background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35); color:#fff;
+    padding:7px 16px; border-radius:9px; cursor:pointer; font-size:13px; transition:background .2s;
+  }
+  .topbar button:hover{background:rgba(255,255,255,.28);}
+  .wrap{max-width:1080px; margin:24px auto; padding:0 20px;}
+  /* ===== 区块标题 ===== */
+  .section-title{
+    font-size:16px; font-weight:800; color:var(--blue-deep); margin:26px 0 14px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .section-title::before{content:""; width:4px; height:18px; border-radius:2px;
+    background:linear-gradient(180deg,var(--blue-light),var(--blue-deep));}
+  /* ===== 统计卡片 ===== */
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px;}
+  .card{
+    background:rgba(255,255,255,.8); backdrop-filter:blur(10px);
+    border:1px solid #fff; border-radius:16px; padding:20px;
+    box-shadow:0 6px 20px rgba(15,76,129,.08);
+  }
+  .card .label{font-size:13px; color:var(--muted); display:flex; align-items:center; gap:6px;}
+  .card .num{font-size:34px; font-weight:800; color:var(--blue-deep); margin:8px 0 2px; line-height:1.1;}
+  .card .num.green{color:var(--green);}
+  .card .num.amber{color:var(--amber);}
+  .card .sub{font-size:11px; color:#94a3b8;}
+  /* ===== 面板 ===== */
+  .panel{
+    background:rgba(255,255,255,.85); border:1px solid #fff; border-radius:16px;
+    box-shadow:0 6px 20px rgba(15,76,129,.08); padding:20px 22px; margin-bottom:16px;
+  }
+  table{width:100%; border-collapse:collapse; font-size:13px;}
+  th{text-align:left; color:var(--muted); font-weight:600; font-size:12px; padding:8px 10px;
+    border-bottom:2px solid var(--line);}
+  td{padding:9px 10px; border-bottom:1px solid #f1f5f9;}
+  tr:hover td{background:#f8fafc;}
+  .tag{display:inline-block; padding:2px 9px; border-radius:20px; font-size:11px; font-weight:600;}
+  .tag.good{background:#dcfce7; color:#15803d;}
+  .tag.mid{background:#fef3c7; color:#b45309;}
+  .tag.bad{background:#fee2e2; color:#b91c1c;}
+  /* 八维条形 */
+  .radar-bars{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px 24px;}
+  .radar-bars .rb{display:flex; align-items:center; gap:10px; font-size:13px;}
+  .radar-bars .rb .nm{width:70px; color:var(--muted); flex-shrink:0;}
+  .radar-bars .rb .track{flex:1; height:8px; background:#e2e8f0; border-radius:4px; overflow:hidden;}
+  .radar-bars .rb .fill{height:100%; background:linear-gradient(90deg,#38bdf8,var(--blue-deep)); border-radius:4px;}
+  .radar-bars .rb .v{width:36px; text-align:right; font-weight:700; color:var(--blue-deep);}
+  .empty{color:#94a3b8; text-align:center; padding:24px 0; font-size:13px;}
+  /* 设置区 */
+  .setting-row{display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:14px 0; border-bottom:1px solid #f1f5f9; flex-wrap:wrap;}
+  .setting-row:last-child{border-bottom:none;}
+  .setting-row .desc{font-size:13px;}
+  .setting-row .desc b{display:block; color:var(--ink); margin-bottom:2px;}
+  .setting-row .desc span{color:var(--muted); font-size:12px;}
+  .btn{
+    padding:8px 18px; border-radius:9px; border:1.5px solid var(--blue-mid);
+    background:#fff; color:var(--blue-mid); font-size:13px; font-weight:600; cursor:pointer; transition:all .15s;
+  }
+  .btn:hover{background:var(--blue-mid); color:#fff;}
+  .btn.danger{border-color:var(--red); color:var(--red);}
+  .btn.danger:hover{background:var(--red); color:#fff;}
+  .btn.primary{background:linear-gradient(135deg,var(--blue-deep),var(--blue-light)); color:#fff; border:none;}
+  .pwd-row{display:flex; gap:8px;}
+  .pwd-row input{
+    padding:8px 12px; border:1.5px solid var(--line); border-radius:9px; font-size:13px; width:130px; outline:none;
+  }
+  .pwd-row input:focus{border-color:var(--blue-mid);}
+  .toast{
+    position:fixed; top:70px; left:50%; transform:translateX(-50%);
+    background:#0f4c81; color:#fff; padding:10px 22px; border-radius:10px; font-size:13px;
+    box-shadow:0 8px 24px rgba(0,0,0,.2); opacity:0; pointer-events:none; transition:opacity .25s; z-index:99;
+  }
+  .toast.show{opacity:1;}
+  details.mistake-detail summary{cursor:pointer; font-size:12px; color:var(--blue-mid); outline:none;}
+  .rule-top{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
+  .rule-chip{background:#eff6ff; border:1px solid #bfdbfe; color:#1e40af; border-radius:20px;
+    padding:4px 12px; font-size:12px; font-weight:600;}
+  .rule-chip b{color:var(--red);}
 </style>
 </head>
 <body>
-<div class="card">
-<h1>📊 网站访问统计</h1>
-<div class="stat" id="visits">加载中...</div>
-<div class="info">
-<p>总访问次数（CountAPI统计）</p>
-<p style="font-size:12px;color:#94a3b8;">数据来源：api.countapi.xyz，仅管理员可见此页面</p>
+
+<header class="topbar">
+  <div class="brand"><span class="logo">⚕</span><span>管理控制台 · Admin Dashboard</span></div>
+  <div class="ops">
+    <button onclick="location.href='index.html'">← 返回首页</button>
+    <button onclick="logout()">退出登录</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ====== 1. 访问统计 ====== -->
+  <div class="section-title">📊 访问统计</div>
+  <div class="cards">
+    <div class="card">
+      <div class="label">🌐 全站总访问次数</div>
+      <div class="num green" id="cnt-total">加载中…</div>
+      <div class="sub">来源：CountAPI（所有访客累计）</div>
+    </div>
+    <div class="card">
+      <div class="label">🗓 本机今日访问</div>
+      <div class="num" id="cnt-today">-</div>
+      <div class="sub">本浏览器今日打开次数</div>
+    </div>
+    <div class="card">
+      <div class="label">💻 本机累计访问</div>
+      <div class="num" id="cnt-local">-</div>
+      <div class="sub">本浏览器累计打开次数</div>
+    </div>
+  </div>
+
+  <!-- ====== 2. 学习记录统计 ====== -->
+  <div class="section-title">🎓 学习记录统计</div>
+  <div class="cards" style="margin-bottom:16px;">
+    <div class="card"><div class="label">📝 累计练习次数</div><div class="num" id="st-count">-</div><div class="sub">最近保留 20 次</div></div>
+    <div class="card"><div class="label">📈 平均分</div><div class="num" id="st-avg">-</div><div class="sub">满分 100</div></div>
+    <div class="card"><div class="label">🏆 最高分</div><div class="num green" id="st-best">-</div><div class="sub">历史最佳</div></div>
+    <div class="card"><div class="label">✅ 及格率</div><div class="num amber" id="st-pass">-</div><div class="sub">≥60 分占比</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="section-title" style="margin-top:0;">八维能力均值</div>
+    <div class="radar-bars" id="radar-bars"><div class="empty">暂无练习数据</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="section-title" style="margin-top:0;">最近练习记录</div>
+    <div id="history-table"></div>
+  </div>
+
+  <!-- ====== 3. 错题本统计 ====== -->
+  <div class="section-title">📕 错题本统计</div>
+  <div class="cards" style="margin-bottom:16px;">
+    <div class="card"><div class="label">📒 错题条目</div><div class="num" id="mk-count">-</div><div class="sub">最多保留 100 条</div></div>
+    <div class="card"><div class="label">❌ 错误命中</div><div class="num" style="color:var(--red)" id="mk-errors">-</div><div class="sub">规则 error 级</div></div>
+    <div class="card"><div class="label">⚠️ 警告命中</div><div class="num amber" id="mk-warns">-</div><div class="sub">规则 warn 级</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="section-title" style="margin-top:0;">高频违规规则 TOP</div>
+    <div class="rule-top" id="rule-top"><div class="empty">暂无错题数据</div></div>
+  </div>
+
+  <div class="panel">
+    <div class="section-title" style="margin-top:0;">错题明细</div>
+    <div id="mistake-table"></div>
+  </div>
+
+  <!-- ====== 4. 系统设置 ====== -->
+  <div class="section-title">⚙️ 系统设置</div>
+  <div class="panel">
+    <div class="setting-row">
+      <div class="desc"><b>修改管理员密码</b><span>默认 admin123，建议登录后修改</span></div>
+      <div class="pwd-row">
+        <input type="password" id="pwd-new" placeholder="新密码">
+        <input type="password" id="pwd-confirm" placeholder="确认新密码">
+        <button class="btn primary" onclick="changePwd()">保存密码</button>
+      </div>
+    </div>
+    <div class="setting-row">
+      <div class="desc"><b>导出学习数据</b><span>下载本机全部 localStorage 数据为 JSON 备份</span></div>
+      <button class="btn" onclick="exportData()">⬇ 导出 JSON</button>
+    </div>
+    <div class="setting-row">
+      <div class="desc"><b>清空学习数据</b><span>删除本机练习历史与错题本（不可恢复）</span></div>
+      <button class="btn danger" onclick="clearData()">🗑 清空数据</button>
+    </div>
+    <div class="setting-row">
+      <div class="desc"><b>会话信息</b><span id="session-info">-</span></div>
+      <button class="btn" onclick="location.reload()">🔄 刷新数据</button>
+    </div>
+  </div>
+
 </div>
-</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-fetch('https://api.countapi.xyz/get/rx-trainer-2026/visits')
-  .then(r => r.json())
-  .then(d => { document.getElementById('visits').textContent = d.value + ' 次'; })
-  .catch(() => { document.getElementById('visits').textContent = '加载失败'; });
+(function(){
+  // ===== 登录校验门 =====
+  let authed = false;
+  try{ authed = sessionStorage.getItem('rx-admin-auth')==='1'; }catch(e){}
+  if(!authed){ location.replace('login.html'); return; }
+
+  const RADAR_NAMES = {format:'处方格式',match:'诊断用药',dose:'剂量适宜',route:'给药途径',
+                        compat:'配伍禁忌',special:'特殊人群',ess:'基本药物',abx:'抗菌药管理'};
+
+  function toast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 2200);
+  }
+  window.__toast = toast;
+
+  // ===== 会话信息 =====
+  try{
+    const ts = Number(sessionStorage.getItem('rx-admin-time'))||Date.now();
+    document.getElementById('session-info').textContent =
+      '本次登录时间：' + new Date(ts).toLocaleString() + ' · 设备：本机浏览器';
+  }catch(e){}
+
+  // ===== 1. 访问统计 =====
+  fetch('https://api.countapi.xyz/get/rx-trainer-2026/visits')
+    .then(r=>r.json())
+    .then(d=>{ document.getElementById('cnt-total').textContent = (d.value||0).toLocaleString()+' 次'; })
+    .catch(()=>{ document.getElementById('cnt-total').textContent = '获取失败'; });
+
+  try{
+    const today = new Date().toISOString().slice(0,10);
+    const daily = JSON.parse(localStorage.getItem('rx-daily-visits')||'{}');
+    document.getElementById('cnt-today').textContent = (daily[today]||0)+' 次';
+    document.getElementById('cnt-local').textContent =
+      (Number(localStorage.getItem('rx-local-visits'))||0).toLocaleString()+' 次';
+  }catch(e){}
+
+  // ===== 2. 学习记录 =====
+  let history = [], mistakes = [];
+  try{ history = JSON.parse(localStorage.getItem('rx-profile-history')||'[]'); }catch(e){}
+  try{ mistakes = JSON.parse(localStorage.getItem('rx-mistakes')||'[]'); }catch(e){}
+
+  if(history.length){
+    const scores = history.map(h=>h.total);
+    const sum = scores.reduce((a,b)=>a+b,0);
+    document.getElementById('st-count').textContent = history.length;
+    document.getElementById('st-avg').textContent = Math.round(sum/history.length)+' 分';
+    document.getElementById('st-best').textContent = Math.max(...scores)+' 分';
+    const pass = scores.filter(s=>s>=60).length;
+    document.getElementById('st-pass').textContent = Math.round(pass/history.length*100)+'%';
+
+    // 八维均值
+    const avg = {format:0,match:0,dose:0,route:0,compat:0,special:0,ess:0,abx:0};
+    history.forEach(h=>{ Object.keys(avg).forEach(k=>avg[k]+=(h.radar&&h.radar[k]||0)); });
+    Object.keys(avg).forEach(k=>avg[k]=Math.round(avg[k]/history.length));
+    document.getElementById('radar-bars').innerHTML = Object.keys(avg).map(k=>`
+      <div class="rb">
+        <span class="nm">${RADAR_NAMES[k]||k}</span>
+        <span class="track"><span class="fill" style="width:${avg[k]}%"></span></span>
+        <span class="v">${avg[k]}</span>
+      </div>`).join('');
+
+    // 最近练习表
+    document.getElementById('history-table').innerHTML = `
+      <table><thead><tr><th>#</th><th>时间</th><th>病例诊断</th><th>诊断编码</th><th>得分</th></tr></thead><tbody>
+      ${history.slice(0,20).map((h,i)=>{
+        const cls = h.total>=80?'good':h.total>=60?'mid':'bad';
+        return `<tr><td>${i+1}</td><td>${new Date(h.t).toLocaleString()}</td>
+          <td>${h.disease||'-'}</td><td>${h.disease_code||'-'}</td>
+          <td><span class="tag ${cls}">${h.total} 分</span></td></tr>`;
+      }).join('')}</tbody></table>`;
+  }else{
+    document.getElementById('history-table').innerHTML = '<div class="empty">暂无练习记录 — 用户完成首次处方后这里会显示数据</div>';
+  }
+
+  // ===== 3. 错题本 =====
+  if(mistakes.length){
+    let eCount=0, wCount=0;
+    const ruleMap = {};
+    mistakes.forEach(m=>{
+      (m.errors||[]).forEach(e=>{
+        eCount++;
+        const key = (e.rule_id||'?')+'|'+(e.title||'');
+        ruleMap[key] = (ruleMap[key]||0)+1;
+      });
+      (m.warns||[]).forEach(w=>{
+        wCount++;
+        const key = (w.rule_id||'?')+'|'+(w.title||'');
+        ruleMap[key] = (ruleMap[key]||0)+1;
+      });
+    });
+    document.getElementById('mk-count').textContent = mistakes.length+' 条';
+    document.getElementById('mk-errors').textContent = eCount+' 次';
+    document.getElementById('mk-warns').textContent = wCount+' 次';
+
+    const top = Object.entries(ruleMap).sort((a,b)=>b[1]-a[1]).slice(0,8);
+    document.getElementById('rule-top').innerHTML = top.map(([k,c])=>{
+      const [id,title] = k.split('|');
+      return `<span class="rule-chip">[${id}] ${title} <b>×${c}</b></span>`;
+    }).join('');
+
+    document.getElementById('mistake-table').innerHTML = `
+      <table><thead><tr><th>时间</th><th>病例</th><th>得分</th><th>错误</th><th>警告</th><th>详情</th></tr></thead><tbody>
+      ${mistakes.slice(0,50).map(m=>`
+        <tr>
+          <td>${new Date(m.t).toLocaleString()}</td>
+          <td>${m.disease||'-'}</td>
+          <td><span class="tag ${m.score>=80?'good':m.score>=60?'mid':'bad'}">${m.score}分</span></td>
+          <td style="color:var(--red);font-weight:700">${(m.errors||[]).length}</td>
+          <td style="color:var(--amber);font-weight:700">${(m.warns||[]).length}</td>
+          <td><details class="mistake-detail"><summary>展开</summary>
+            <div style="margin-top:8px;font-size:12px;color:var(--muted);">
+              ${(m.errors||[]).map(e=>`❌ [${e.rule_id}] ${e.title}：${e.message||''}<br>`).join('')}
+              ${(m.warns||[]).map(w=>`⚠️ [${w.rule_id}] ${w.title}：${w.message||''}<br>`).join('')}
+            </div></details>
+          </td>
+        </tr>`).join('')}
+      </tbody></table>`;
+  }else{
+    document.getElementById('rule-top').innerHTML = '<div class="empty">暂无错题数据</div>';
+    document.getElementById('mistake-table').innerHTML = '<div class="empty">错题本为空 🎉</div>';
+  }
+})();
+
+// ===== 工具函数 =====
+function logout(){
+  try{ sessionStorage.removeItem('rx-admin-auth'); sessionStorage.removeItem('rx-admin-time'); }catch(e){}
+  location.replace('login.html');
+}
+
+async function hashStr(s){
+  if(window.crypto && crypto.subtle){
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('rx-admin::'+s));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+  let h = 5381;
+  for(let i=0;i<s.length;i++){ h = ((h<<5)+h+s.charCodeAt(i))|0; }
+  return 'djb2::'+(h>>>0);
+}
+
+async function changePwd(){
+  const nw = document.getElementById('pwd-new').value;
+  const cf = document.getElementById('pwd-confirm').value;
+  if(nw.length < 4){ window.__toast('⚠️ 新密码至少 4 位'); return; }
+  if(nw !== cf){ window.__toast('❌ 两次输入不一致'); return; }
+  try{
+    localStorage.setItem('rx-admin-pwd-hash', await hashStr(nw));
+    window.__toast('✅ 密码已更新');
+    document.getElementById('pwd-new').value='';
+    document.getElementById('pwd-confirm').value='';
+  }catch(e){ window.__toast('❌ 保存失败：'+e.message); }
+}
+
+function exportData(){
+  const data = {};
+  for(let i=0;i<localStorage.length;i++){
+    const k = localStorage.key(i);
+    if(k && !k.startsWith('rx-admin-pwd')) data[k] = localStorage.getItem(k);
+  }
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'rx-admin-data-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+  window.__toast('✅ 数据已导出');
+}
+
+function clearData(){
+  if(!confirm('确认清空本机练习历史与错题本？此操作不可恢复。')) return;
+  try{
+    localStorage.removeItem('rx-profile-history');
+    localStorage.removeItem('rx-mistakes');
+    window.__toast('✅ 学习数据已清空');
+    setTimeout(()=>location.reload(), 800);
+  }catch(e){ window.__toast('❌ 清空失败'); }
+}
 </script>
 </body>
 </html>

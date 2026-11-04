@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.css?v=20261104o">
+<link rel="stylesheet" href="css/rx.css?v=20261104p">
 </head>
 <body>
 
@@ -138,6 +138,13 @@
         </div>
         <div id="diag-feedback" class="diag-feedback"></div>
         <div id="diag-suggest" class="diag-suggest hidden"></div>
+        <!-- 次要诊断（诊断确认后显示） -->
+        <div id="secondary-diag-row" class="hidden" style="margin-top:12px;padding-top:12px;border-top:1px dashed #e2e8f0;">
+          <label style="font-size:13px;color:#64748b;">次要诊断/合并症（可选，多个用逗号分隔）：</label>
+          <div class="diag-row">
+            <input id="secondary-diag-input" type="text" placeholder="例如：高血压2级，2型糖尿病">
+          </div>
+        </div>
       </div>
 
       <div class="rx-type-row hidden" id="rx-type-row">
@@ -407,6 +414,6 @@
 
 <script src="js/rule-engine.js?v=20261104f"></script>
 <script src="js/review.js?v=20261104e"></script>
-<script src="js/app.js?v=20261104o"></script>
+<script src="js/app.js?v=20261104p"></script>
 </body>
 </html>

@@ -14,6 +14,7 @@
     patient: null,
     diagnosisInput: '',
     diagnosisOk: false,
+    secondaryDiagnosis: '',  // 次要诊断/合并症
     rxType: null,          // 'normal' | 'iv'
     normalItems: [],       // [{drug, quantity, single_dose, frequency, duration_days, route}]
     ivGroups: [],          // 多组输液：[{solvent, drugs:[], fields:{...}}]
@@ -423,6 +424,7 @@
       S.diagnosisOk = true;
       fb.innerHTML = `<span class="diag-ok">✅ 正确诊断：${dx.name}（ICD-10: ${dx.icd10}）</span>`;
       $('rx-type-row').classList.remove('hidden');
+      $('secondary-diag-row').classList.remove('hidden');
       return;
     }
     // 命中鉴别
@@ -1214,6 +1216,9 @@
       if (!groupsOk) return alert('每组都必须选择溶媒并至少加入一个药！');
     }
 
+    // 保存次要诊断
+    S.secondaryDiagnosis = $('secondary-diag-input')?.value?.trim() || '';
+
     // 构造 visit_ctx
     const visitId = 'V-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + String(Math.floor(Math.random()*900000+100000));
 
@@ -1308,7 +1313,7 @@
     const grade = $('r-grade');
     if (grade) grade.textContent = disp >= 90 ? '优秀 · 可独立接诊' : disp >= 75 ? '良好 · 基本掌握' : disp >= 60 ? '及格 · 需加强' : '不合格 · 重新学习';
     $('r-meta').textContent =
-      `诊断：${ctx.disease.name}（${ctx.disease.icd10}） · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁`;
+      `诊断：${ctx.disease.name}（${ctx.disease.icd10}）${S.secondaryDiagnosis ? ' · 次要诊断：' + S.secondaryDiagnosis : ''} · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁`;
 
     // 生命体征：与患者病情/处方结果动态关联，按医学标准变色
     const score = review.total;

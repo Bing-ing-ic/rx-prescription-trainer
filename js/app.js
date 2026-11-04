@@ -474,7 +474,8 @@
     const v = $('diag-input').value.trim();
     S.diagnosisInput = v;
     const fb = $('diag-feedback');
-    if (!v) { fb.innerHTML = '<span class="diag-err">请输入诊断。</span>'; return; }
+    const scrollFb = () => { try { fb.scrollIntoView({block:'center', behavior:'smooth'}); } catch(e){} };
+    if (!v) { fb.innerHTML = '<span class="diag-err">请输入诊断。</span>'; scrollFb(); return; }
 
     const dx = S.disease;
     // 命中主病名（支持中文名/ICD-10/拼音首拼）
@@ -483,12 +484,14 @@
       fb.innerHTML = `<span class="diag-ok">✅ 正确诊断：${dx.name}（ICD-10: ${dx.icd10}）</span>`;
       $('rx-type-row').classList.remove('hidden');
       $('secondary-diag-row').classList.remove('hidden');
+      scrollFb();
       return;
     }
     // 命中鉴别
     const diff = (dx.differential||[]).find(d => matchDisease(d, v));
     if (diff) {
       fb.innerHTML = `<span class="diag-warn">⚠️ 「${diff}」是重要鉴别诊断，需进一步检查排除，但不是本病例主诊断。</span>`;
+      scrollFb();
       return;
     }
     // 错误：追加方向提示
@@ -537,6 +540,7 @@
     if (S.diagWrongCount < 3) {
       $('diag-input').value = '';
     }
+    scrollFb();
     $('diag-input').focus();
   }
 

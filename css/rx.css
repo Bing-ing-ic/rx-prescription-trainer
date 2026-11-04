@@ -689,6 +689,8 @@ input, select, textarea { font-family: inherit; }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .stat-num { font-size: 24px; }
   .diff-label { display: block; width: 100%; text-align: center; }
+  /* 小屏隐藏 hero 人物图，避免遮挡副标题与难度单选 */
+  .hero-nurse, .tcm-hero-nurse, .acup-hero-nurse, .anat-hero-nurse { display: none; }
 }
 
 /* ========== 参考处方对比 ========== */
@@ -737,8 +739,9 @@ input, select, textarea { font-family: inherit; }
 .rx-corner     { border-radius: var(--radius-sm); }
 .hit-item .rule-id { border-radius: var(--radius-sm); }
 
-/* ---- 2. 视图切换淡入过渡（250ms） ---- */
-.view { animation: viewFadeIn .25s var(--ease); }
+/* ---- 2. 视图切换：静态显示，避免 animation 在 display:none→block 切换时卡在 opacity:0 ---- */
+.view { opacity: 1; transform: none; }
+/* 保留汉堡菜单展开用的 keyframes */
 @keyframes viewFadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }

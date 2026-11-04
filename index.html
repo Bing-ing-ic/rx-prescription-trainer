@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261104perf1">
+<link rel="stylesheet" href="css/rx.min.css?v=20261104fix1">
 <link rel="preload" as="image" href="img/nurse-hero.jpg" fetchpriority="high">
 </head>
 <body>
@@ -1050,11 +1050,10 @@
   }, true);
 })();
 </script>
-<script src="js/rule-engine.min.js?v=20261104perf1"></script>
+<script src="js/rule-engine.min.js?v=20261104fix1"></script>
 <script>
-// 网站访问统计
+// 网站访问统计（百度统计已在页面底部加载）
 (function() {
-  fetch('https://api.countapi.xyz/hit/rx-trainer-2026/visits').catch(()=>{});
   // 本机访问计数（供管理员后台查看）
   try {
     const today = new Date().toISOString().slice(0,10);
@@ -1073,14 +1072,14 @@
   document.body.appendChild(a);
 })();
 </script>
-<script src="js/review.min.js?v=20261104perf1"></script>
-<script src="js/app.min.js?v=20261104perf1"></script>
-<script src="js/tcm-engine.min.js?v=20261104perf1"></script>
-<script src="js/acup-engine.min.js?v=20261104perf1"></script>
-<script src="js/tcm-app.min.js?v=20261104perf1"></script>
-<script src="js/acup-app.min.js?v=20261104perf1"></script>
-<script src="js/module-views.min.js?v=20261104perf1"></script>
-<script src="js/anat-app.min.js?v=20261104perf1"></script>
+<script src="js/review.min.js?v=20261104fix1"></script>
+<script src="js/app.min.js?v=20261104fix1"></script>
+<script src="js/tcm-engine.min.js?v=20261104fix1"></script>
+<script src="js/acup-engine.min.js?v=20261104fix1"></script>
+<script src="js/tcm-app.min.js?v=20261104fix1"></script>
+<script src="js/acup-app.min.js?v=20261104fix1"></script>
+<script src="js/module-views.min.js?v=20261104fix1"></script>
+<script src="js/anat-app.min.js?v=20261104fix1"></script>
 
 <!-- 百度统计 -->
 <script>

@@ -80,9 +80,9 @@
       t.classList.toggle('active', on);
       t.setAttribute('aria-selected', on ? 'true' : 'false');
     });
-    // 药品库仅西医可见
+    // 药品库按钮仅西医模块可用；导航栏本身在所有模块下保持可见
     const drugsBtn = document.querySelector('[data-goto="drugs"]');
-    if (drugsBtn) drugsBtn.parentElement.style.display = (m === 'western') ? '' : 'none';
+    if (drugsBtn) drugsBtn.style.display = (m === 'western') ? '' : 'none';
     // 重置状态
     resetState();
     if (m === 'western') showView('view-home');
@@ -354,11 +354,14 @@
         </div>`).join('');
 
     // 参考对比
+    const _refCode = (S.case.reference_formula_code || '').toUpperCase();
+    const _refFm = S.formulas.find(f => (f.code || '').toUpperCase() === _refCode);
+    const _refFmName = _refFm ? _refFm.name : (S.case.reference_formula_code || '-');
     $('tcm-diff-box').innerHTML = `
       <div style="font-size:13px;line-height:1.9;">
         <p><b>参考证型：</b>${S.case.syndrome_differentiation || '-'}　<b>你辨证：</b>${ctx.zhengInput || '-'}</p>
         <p><b>参考治法：</b>${S.case.treatment_principle || '-'}　<b>你立法：</b>${ctx.faZhengInput || '-'}</p>
-        <p><b>参考用方：</b>${S.case.reference_formula_code || '-'}　<b>你选方：</b>${S.selectedFormula ? S.selectedFormula.name : '未选'}</p>
+        <p><b>参考用方：</b>${_refFmName}　<b>你选方：</b>${S.selectedFormula ? S.selectedFormula.name : '未选'}</p>
         <p><b>参考药味：</b>${(S.case.reference_herbs || []).join('、') || '-'}</p>
         <p><b>你处方：</b>${S.items.map(i => `${i.name}${i.dose}`).join('，')}</p>
       </div>`;

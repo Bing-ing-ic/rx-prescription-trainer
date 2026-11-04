@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>访问统计 - 管理员</title>
+<style>
+body { font-family: -apple-system, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; background: #f5f5f5; }
+.card { background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 2px 12px rgba(0,0,0,.1); }
+h1 { color: #1a6fb5; margin-top: 0; }
+.stat { font-size: 48px; font-weight: 700; color: #16a34a; margin: 20px 0; }
+.info { color: #64748b; font-size: 14px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="card">
+<h1>📊 网站访问统计</h1>
+<div class="stat" id="visits">加载中...</div>
+<div class="info">
+<p>总访问次数（CountAPI统计）</p>
+<p style="font-size:12px;color:#94a3b8;">数据来源：api.countapi.xyz，仅管理员可见此页面</p>
+</div>
+</div>
+<script>
+fetch('https://api.countapi.xyz/get/rx-trainer-2026/visits')
+  .then(r => r.json())
+  .then(d => { document.getElementById('visits').textContent = d.value + ' 次'; })
+  .catch(() => { document.getElementById('visits').textContent = '加载失败'; });
+</script>
+</body>
+</html>

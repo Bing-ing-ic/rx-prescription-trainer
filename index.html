@@ -417,6 +417,18 @@
 </footer>
 
 <script src="js/rule-engine.js?v=20261104f"></script>
+<script>
+// 网站访问统计
+(function() {
+  fetch('https://api.countapi.xyz/hit/rx-trainer-2026/visits');
+  // 管理员入口（右下角小字，仅自己知道）
+  const a = document.createElement('a');
+  a.href = '/admin.html';
+  a.style.cssText = 'position:fixed;bottom:4px;right:4px;font-size:10px;color:#ccc;z-index:9999;';
+  a.textContent = '统计';
+  document.body.appendChild(a);
+})();
+</script>
 <script src="js/review.js?v=20261104e"></script>
 <script src="js/app.js?v=20261104r"></script>
 </body>

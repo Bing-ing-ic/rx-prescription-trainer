@@ -1,0 +1,78 @@
+{
+  "version": "2026.11.04-atlas",
+  "note": "各系统解剖拓扑图热区。x/y 为相对插图左上角的百分比坐标(0-100)，供 SVG/DIV 覆盖层定位。值为 null 表示该结构在本系统示意图中未单独绘制，不设热区，但仍可在侧栏列表点开详情。",
+  "images": {
+    "locomotor":   "img/anat-locomotor.jpg",
+    "digestive":   "img/anat-digestive.jpg",
+    "respiratory": "img/anat-respiratory.jpg",
+    "circulatory": "img/anat-circulatory.jpg",
+    "nervous":     "img/anat-nervous.jpg",
+    "urinary":     "img/anat-urinary.jpg"
+  },
+  "hotspots": {
+    "locomotor": {
+      "fontanelle":         { "x": 50, "y": 7 },
+      "pterion":           { "x": 44, "y": 11 },
+      "temporomandibular": { "x": 46, "y": 15 },
+      "sternal_angle":      { "x": 50, "y": 25 },
+      "shoulder_joint":     { "x": 42, "y": 23 },
+      "elbow_joint":        { "x": 40, "y": 39 },
+      "diaphragm":         { "x": 50, "y": 40 },
+      "pelvis":             { "x": 50, "y": 48 },
+      "inguinal_canal":    { "x": 45, "y": 53 },
+      "hiatal_triangle":    { "x": 49, "y": 53 },
+      "knee_joint":         { "x": 46, "y": 69 }
+    },
+    "digestive": {
+      "isthmus_fauces":        { "x": 49, "y": 12 },
+      "pharynx_regions":       { "x": 50, "y": 16 },
+      "esophageal_stenosis":   { "x": 50, "y": 24 },
+      "stomach_regions":       { "x": 61, "y": 36 },
+      "liver_visceral_surface":{ "x": 35, "y": 33 },
+      "cystic_triangle":       { "x": 41, "y": 49 },
+      "major_duodenal_papilla":{ "x": 47, "y": 45 },
+      "jejunum_ileum":         { "x": 50, "y": 72 },
+      "colon_features":        { "x": 40, "y": 55 }
+    },
+    "respiratory": {
+      "paranasal_sinuses":  { "x": 39, "y": 10 },
+      "laryngeal_cavity":  { "x": 50, "y": 30 },
+      "carina":            { "x": 50, "y": 52 },
+      "main_bronchi":      { "x": 50, "y": 56 },
+      "lung_shape":        { "x": 40, "y": 62 },
+      "pleural_recess":    { "x": 35, "y": 82 },
+      "mediastinum":       { "x": 50, "y": 60 },
+      "pleura_cavity":     { "x": 68, "y": 68 }
+    },
+    "circulatory": {
+      "heart_position":      { "x": 50, "y": 58 },
+      "heart_valves":        { "x": 50, "y": 53 },
+      "coronary_artery":     { "x": 57, "y": 63 },
+      "aorta_segments":      { "x": 50, "y": 26 },
+      "superior_vena_cava":  { "x": 38, "y": 42 },
+      "inferior_vena_cava":  { "x": 39, "y": 80 },
+      "hepatic_portal":      null,
+      "thoracic_duct":       null
+    },
+    "nervous": {
+      "cortical_localization":   { "x": 50, "y": 9 },
+      "internal_capsule":        { "x": 50, "y": 12 },
+      "csf_circulation":        { "x": 50, "y": 16 },
+      "trigeminal_nerve":       { "x": 46, "y": 14 },
+      "facial_nerve":           { "x": 45, "y": 17 },
+      "hypoglossal_nerve":      { "x": 49, "y": 19 },
+      "vagus_nerve":            { "x": 49, "y": 23 },
+      "pyramidal_tract":        { "x": 50, "y": 28 },
+      "epidural_space":         { "x": 50, "y": 32 },
+      "superficial_sensory_path":{ "x": 50, "y": 45 },
+      "sciatic_nerve":          { "x": 45, "y": 70 }
+    },
+    "urinary": {
+      "renal_capsule":      { "x": 37, "y": 33 },
+      "renal_region":       { "x": 63, "y": 33 },
+      "ureter_stenosis":    { "x": 44, "y": 55 },
+      "trigone_bladder":    { "x": 50, "y": 74 },
+      "female_urethra":     { "x": 50, "y": 85 }
+    }
+  }
+}

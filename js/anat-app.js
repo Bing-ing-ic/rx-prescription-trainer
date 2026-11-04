@@ -8,7 +8,7 @@
   const $ = id => document.getElementById(id);
 
   const S = {
-    systems: [], questions: [], cases: [],
+    systems: [], questions: [], cases: [], hotspots: null,
     currentSystem: null,       // 当前浏览的系统对象
     currentStruct: null,       // 当前查看的结构
     quiz: {
@@ -44,14 +44,16 @@
   // ---------- 数据加载 ----------
   async function boot() {
     try {
-      const [sj, qj, cj] = await Promise.all([
+      const [sj, qj, cj, hj] = await Promise.all([
         loadJSON('data/anatomy-systems.json').catch(() => null),
         loadJSON('data/anatomy-quiz.json').catch(() => null),
-        loadJSON('data/anatomy-cases.json').catch(() => null)
+        loadJSON('data/anatomy-cases.json').catch(() => null),
+        loadJSON('data/anatomy-hotspots.json').catch(() => null)
       ]);
       S.systems = (sj && sj.systems) || [];
       S.questions = (qj && qj.questions) || [];
       S.cases = (cj && cj.cases) || [];
+      S.hotspots = hj || null;   // 加载失败静默降级：图区退回旧图、无热区
       if (S.systems.length === 0) {
         const tip = $('anat-data-tip'); if (tip) tip.classList.remove('hidden');
       }
@@ -165,14 +167,78 @@
   }
 
   // ---------- 解剖图谱 ----------
+  const FALLBACK_IMG = 'img/anatomy-body-diagram.jpg';
+
   function openAtlas() {
     if (S.systems.length === 0) { alert('解剖学系统数据加载中，请稍候。'); return; }
     if (!atlas.sys || !S.systems.find(s => s.id === atlas.sys.id)) atlas.sys = S.systems[0];
     renderAtlasTabs();
     renderAtlasStructures();
+    renderAtlasStage();
     $('anat-atlas-detail').classList.add('hidden');
     $('anat-atlas-list').classList.remove('hidden');
     showView('view-anat-atlas');
+  }
+
+  // 按当前系统切换插图并重绘热区圆点；无插图/无热区数据时回退旧图、不叠热区
+  function renderAtlasStage() {
+    const img = $('anat-atlas-img');
+    const layer = $('anat-atlas-hotlayer');
+    const wrap = $('anat-atlas-wrap');
+    if (!img || !layer) return;
+    layer.innerHTML = '';
+    if (wrap) wrap.classList.remove('img-missing');
+    const sysId = atlas.sys ? atlas.sys.id : null;
+    const imgs = (S.hotspots && S.hotspots.images) || {};
+    const hsAll = (S.hotspots && S.hotspots.hotspots) || {};
+    const imgPath = (sysId && imgs[sysId]) ? imgs[sysId] : FALLBACK_IMG;
+    if (img.getAttribute('src') !== imgPath) img.src = imgPath;
+    img.alt = atlas.sys ? ((atlas.sys.icon || '') + ' ' + atlas.sys.name + '解剖示意图') : '人体解剖示意图';
+    if (!sysId || !hsAll[sysId]) return;
+    const hs = hsAll[sysId] || {};
+    const structs = (atlas.sys && atlas.sys.structures) || [];
+    structs.forEach(st => {
+      const pos = hs[st.id];
+      if (!pos || typeof pos.x !== 'number' || typeof pos.y !== 'number') return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'anat-hotspot' + ((st.exam_points && st.exam_points.length) ? ' exam' : '');
+      btn.style.left = pos.x + '%';
+      btn.style.top = pos.y + '%';
+      btn.title = st.name;
+      btn.setAttribute('aria-label', st.name);
+      btn.dataset.id = st.id;
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        selectAtlasStruct(st, true);
+      };
+      layer.appendChild(btn);
+    });
+  }
+
+  // 双向高亮：清旧 → 写详情 → 高亮 chip 与热区（来自 chip 触发时热区脉冲提示）
+  function selectAtlasStruct(st, fromHotspot) {
+    clearAtlasActive();
+    openAtlasDetail(st);
+    const chip = document.querySelector('#anat-atlas-list .atlas-struct-chip[data-id="' + st.id + '"]');
+    if (chip) chip.classList.add('active');
+    const dot = document.querySelector('#anat-atlas-hotlayer .anat-hotspot[data-id="' + st.id + '"]');
+    if (dot) {
+      dot.classList.add('active');
+      if (!fromHotspot) {
+        dot.classList.remove('pulse');
+        void dot.offsetWidth; // 重启动画
+        dot.classList.add('pulse');
+        setTimeout(() => dot.classList.remove('pulse'), 2000);
+      }
+    }
+  }
+
+  function clearAtlasActive() {
+    document.querySelectorAll('#anat-atlas-hotlayer .anat-hotspot.active, #anat-atlas-hotlayer .anat-hotspot.pulse')
+      .forEach(n => n.classList.remove('active', 'pulse'));
+    document.querySelectorAll('#anat-atlas-list .atlas-struct-chip.active')
+      .forEach(n => n.classList.remove('active'));
   }
 
   function renderAtlasTabs() {
@@ -188,6 +254,7 @@
         atlas.sys = sys; atlas.struct = null;
         renderAtlasTabs();
         renderAtlasStructures();
+        renderAtlasStage();
         $('anat-atlas-detail').classList.add('hidden');
         $('anat-atlas-list').classList.remove('hidden');
       };
@@ -217,7 +284,7 @@
     box.querySelectorAll('.atlas-struct-chip').forEach(el => {
       el.onclick = () => {
         const st = structs.find(x => x.id === el.getAttribute('data-id'));
-        if (st) openAtlasDetail(st);
+        if (st) selectAtlasStruct(st, false);
       };
     });
   }
@@ -560,6 +627,7 @@
       $('anat-atlas-detail').classList.add('hidden');
       $('anat-atlas-list').classList.remove('hidden');
       atlas.struct = null;
+      clearAtlasActive();
     };
     $('anat-btn-quiz').onclick = startQuiz;
     $('anat-btn-cases').onclick = () => showView('view-anat-cases');

@@ -866,9 +866,12 @@
       <button class="btn" id="anat-btn-atlas-home">← 返回首页</button>
       <span class="toolbar-title">🫀 解剖图谱</span>
     </div>
-    <div class="atlas-body-wrap">
-      <img src="img/anatomy-body-diagram.jpg" alt="人体系统解剖示意图" class="atlas-body-img"
-           onerror="this.closest('.atlas-body-wrap').classList.add('img-missing')">
+    <div class="atlas-body-wrap" id="anat-atlas-wrap">
+      <div class="atlas-stage" id="anat-atlas-stage">
+        <img src="img/anatomy-body-diagram.jpg" alt="人体系统解剖示意图" class="atlas-body-img" id="anat-atlas-img"
+             onerror="this.closest('.atlas-body-wrap').classList.add('img-missing');var l=document.getElementById('anat-atlas-hotlayer');if(l)l.innerHTML='';">
+        <div class="atlas-hotlayer" id="anat-atlas-hotlayer"></div>
+      </div>
       <div class="atlas-body-fallback" hidden>人体系统解剖示意图（图片加载中…）</div>
     </div>
     <div id="anat-atlas-tabs" class="atlas-tabs"></div>

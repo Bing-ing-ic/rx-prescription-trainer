@@ -1267,7 +1267,7 @@
     $('r-meta').textContent =
       `诊断：${ctx.disease.name}（${ctx.disease.icd10}） · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁`;
 
-    // 生命体征：显示本病例患者的真实查体值（来自病例卡，与疾病一致），按医学标准动态变色
+    // 生命体征：与患者病情/处方结果动态关联，按医学标准变色
     const score = review.total;
     const pv = ctx.patient.vitals || null;
     // 生命体征颜色判断工具函数
@@ -1275,32 +1275,58 @@
       el.classList.remove('vital-normal','vital-warn','vital-danger','vital-low');
       el.classList.add('vital-' + level);
     }
+    // 根据处方评分动态推算病情严重度（AI参考值）
+    function adjustVitals(base, s) {
+      // 扣分越严重，病情越重：体温升高、心率加快、血压波动
+      let severity = 0;
+      if (s < 40) severity = 3;      // 重度
+      else if (s < 60) severity = 2; // 中度
+      else if (s < 80) severity = 1; // 轻度
+      const temp = (parseFloat(base.temp) || 36.8) + severity * 0.5;
+      const hr = Math.round((parseFloat(base.hr) || 75) + severity * 8);
+      const bpParts = String(base.bp || '120/80').split('/');
+      const sys = Math.round((parseFloat(bpParts[0]) || 120) - severity * 3);
+      const dia = Math.round((parseFloat(bpParts[1]) || 80) - severity * 2);
+      return {
+        temp: temp.toFixed(1),
+        hr: hr,
+        bp: sys + '/' + dia,
+        severity: severity
+      };
+    }
     if (pv && pv.hr) {
-      // 心率：正常60-100，<60心动过缓(蓝)，100-120心动过速(黄)，>120严重过速(红)
-      $('vital-hr').textContent = pv.hr + ' bpm';
-      const hr = parseFloat(pv.hr);
-      if (hr >= 60 && hr <= 100) setVitalColor($('vital-hr'), 'normal');
-      else if (hr < 60) setVitalColor($('vital-hr'), 'low');
-      else if (hr <= 120) setVitalColor($('vital-hr'), 'warn');
+      const vitals = adjustVitals(pv, score);
+      // 心率
+      $('vital-hr').textContent = vitals.hr + ' bpm';
+      if (vitals.hr >= 60 && vitals.hr <= 100) setVitalColor($('vital-hr'), 'normal');
+      else if (vitals.hr < 60) setVitalColor($('vital-hr'), 'low');
+      else if (vitals.hr <= 120) setVitalColor($('vital-hr'), 'warn');
       else setVitalColor($('vital-hr'), 'danger');
-
-      // 体温：正常36.0-37.2，<36低体温(蓝)，37.3-38.5低热(黄)，>38.5高热(红)
-      $('vital-temp').textContent = pv.temp + ' ℃';
-      const temp = parseFloat(pv.temp);
-      if (temp >= 36.0 && temp <= 37.2) setVitalColor($('vital-temp'), 'normal');
-      else if (temp < 36.0) setVitalColor($('vital-temp'), 'low');
-      else if (temp <= 38.5) setVitalColor($('vital-temp'), 'warn');
+      // 体温
+      $('vital-temp').textContent = vitals.temp + ' ℃';
+      if (vitals.temp >= 36.0 && vitals.temp <= 37.2) setVitalColor($('vital-temp'), 'normal');
+      else if (vitals.temp < 36.0) setVitalColor($('vital-temp'), 'low');
+      else if (vitals.temp <= 38.5) setVitalColor($('vital-temp'), 'warn');
       else setVitalColor($('vital-temp'), 'danger');
-
-      // 血压：解析收缩压/舒张压
-      $('vital-bp').textContent = pv.bp + ' mmHg';
-      const bpParts = String(pv.bp).split('/');
+      // 血压
+      $('vital-bp').textContent = vitals.bp + ' mmHg';
+      const bpParts = vitals.bp.split('/');
       const sys = parseFloat(bpParts[0]);
       const dia = parseFloat(bpParts[1]);
       if (sys >= 90 && sys <= 140 && dia >= 60 && dia <= 90) setVitalColor($('vital-bp'), 'normal');
       else if (sys < 90 || dia < 60) setVitalColor($('vital-bp'), 'low');
       else if (sys > 160 || dia > 100) setVitalColor($('vital-bp'), 'danger');
       else setVitalColor($('vital-bp'), 'warn');
+      // 显示参考标注
+      const refEl = $('vital-ref');
+      if (refEl) {
+        if (vitals.severity > 0) {
+          refEl.textContent = '* AI推算值，仅供医学参考';
+          refEl.style.display = 'block';
+        } else {
+          refEl.style.display = 'none';
+        }
+      }
     } else {
       $('vital-hr').textContent = '--';
       $('vital-temp').textContent = '--';

@@ -718,6 +718,21 @@
     if (!m) return {amount: 0, unit: '', packUnit: '支'};
     return {amount: parseFloat(m[1]), unit: m[2], packUnit: m[3]};
   }
+  // 频次转每日次数：qd=1, bid=2, tid=3, qid=4, qn=1, st=1, qod=0.5
+  function freqToPerDay(freq) {
+    if (!freq) return 1;
+    const f = String(freq).toLowerCase().trim();
+    if (f === 'qd' || f === 'qm' || f === 'qn' || f === 'hs') return 1;
+    if (f === 'bid') return 2;
+    if (f === 'tid') return 3;
+    if (f === 'qid') return 4;
+    if (f === 'qod') return 0.5; // 隔日一次
+    if (f === 'st' || f === 'prn') return 1;
+    if (f === 'q8h') return 3; // 每8小时一次
+    if (f === 'q12h') return 2; // 每12小时一次
+    if (f === 'q6h') return 4;
+    return 1; // 默认每天1次
+  }
   // 解析单次剂量 "1.125g" / "500mg" → {amount, unit}
   function parseDose(doseStr) {
     if (!doseStr) return {amount: 0, unit: ''};
@@ -912,9 +927,36 @@
         }
         it.single_dose = v;
       };
-      tr.querySelector('.n-qty').onchange = e => { it.quantity = parseInt(e.target.value)||1; updateAmount(); };
+      tr.querySelector('.n-qty').onchange = e => {
+        const qty = parseInt(e.target.value)||1;
+        it.quantity = qty;
+        // 改数量时，反推疗程天数（根据频次）
+        const freqPerDay = freqToPerDay(it.frequency);
+        const singleDoseNum = parseFloat(it.single_dose) || 1;
+        const specInfo = parseSpec(it.drug.spec);
+        const perSpec = specInfo.amount || 1; // 每盒/每板有多少片
+        if (freqPerDay > 0 && perSpec > 0) {
+          // qty是总片数？还是总盒数？这里假设qty是总片数
+          const totalDays = Math.round(qty / (singleDoseNum * freqPerDay) * 10) / 10;
+          it.duration_days = Math.max(1, totalDays);
+          tr.querySelector('.n-days').value = it.duration_days;
+        }
+        updateAmount();
+      };
       tr.querySelector('.n-freq').onchange = e => { it.frequency = e.target.value; updateAmount(); };
-      tr.querySelector('.n-days').onchange = e => { it.duration_days = parseInt(e.target.value)||1; updateAmount(); };
+      tr.querySelector('.n-days').onchange = e => {
+        const days = parseInt(e.target.value)||1;
+        it.duration_days = days;
+        // 改疗程时，自动算总数量（片数）
+        const freqPerDay = freqToPerDay(it.frequency);
+        const singleDoseNum = parseFloat(it.single_dose) || 1;
+        if (freqPerDay > 0 && singleDoseNum > 0) {
+          const totalQty = Math.round(days * freqPerDay * singleDoseNum);
+          it.quantity = totalQty;
+          tr.querySelector('.n-qty').value = totalQty;
+        }
+        updateAmount();
+      };
       tr.querySelector('button').onclick = () => { S.normalItems.splice(i,1); renderNormalItems(); renderDrugList(); };
       tb.appendChild(tr);
     });

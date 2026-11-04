@@ -106,10 +106,10 @@
 
   function bindNav() {
     document.querySelectorAll('[data-goto]').forEach(b => {
-      b.onclick = () => {
+      b.onclick = async () => {
         const t = b.getAttribute('data-goto');
         if (t === 'home') show('view-home');
-        else if (t === 'drugs') { renderDrugLib(); show('view-drugs'); }
+        else if (t === 'drugs') { await renderDrugLib(); show('view-drugs'); }
         else if (t === 'radar') { renderRadar(); show('view-radar'); }
         else if (t === 'mistakes') { renderMistakes(); show('view-mistakes'); }
         else if (t === 'stats') { renderStats(); show('view-stats'); }
@@ -1713,7 +1713,8 @@
     if (DRUG_LIB_DATA.length > 0) return DRUG_LIB_DATA;
     try {
       const resp = await fetch('data/drugs.json');
-      DRUG_LIB_DATA = await resp.json();
+      const json = await resp.json();
+      DRUG_LIB_DATA = json.drugs || json || [];
     } catch(e) {
       DRUG_LIB_DATA = [];
     }
@@ -1733,7 +1734,7 @@
     const k = kw.toLowerCase().trim();
     return item.generic_name.toLowerCase().includes(k) ||
            (item.pinyin || '').toLowerCase().includes(k) ||
-           (item.trade_name || '').toLowerCase().includes(k);
+           (item.brand_name || '').toLowerCase().includes(k);
   }
 
   async function renderDrugLib() {
@@ -1777,8 +1778,9 @@
         <div style="font-weight:600;font-size:15px;color:#1e293b;margin-bottom:4px;">${d.generic_name}</div>
         <div style="font-size:12px;color:#64748b;margin-bottom:8px;">${d.spec || ''} · ${d.pharmacology_class || ''}</div>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
-          ${d.medical_insurance_class ? `<span style="font-size:11px;padding:2px 8px;border-radius:10px;background:#eff6ff;color:#1d4ed8;">${d.medical_insurance_class}</span>` : ''}
-          ${d.is_base_drug ? `<span style="font-size:11px;padding:2px 8px;border-radius:10px;background:#f0fdf4;color:#15803d;">基药</span>` : ''}
+          ${d.medical_insurance_class ? `<span style="font-size:11px;padding:2px 8px;border-radius:10px;background:#eff6ff;color:#1d4ed8;">医保${d.medical_insurance_class}</span>` : ''}
+          ${d.essential_medicine ? `<span style="font-size:11px;padding:2px 8px;border-radius:10px;background:#f0fdf4;color:#15803d;">基药</span>` : ''}
+          ${d.otc_class === '非处方药' ? `<span style="font-size:11px;padding:2px 8px;border-radius:10px;background:#fef3c7;color:#92400e;">OTC</span>` : ''}
         </div>
       </div>
     `).join('');
@@ -1790,13 +1792,16 @@
     $('drug-detail-name').textContent = d.generic_name;
     $('drug-detail-body').innerHTML = `
       <div style="margin:12px 0;line-height:1.8;font-size:14px;color:#334155;">
+        <p><b>商品名：</b>${d.brand_name || '-'}</p>
         <p><b>规格：</b>${d.spec || '-'}</p>
         <p><b>药理分类：</b>${d.pharmacology_class || '-'}</p>
-        <p><b>医保分类：</b>${d.medical_insurance_class || '-'}</p>
-        <p><b>适应症：</b>${d.indication || '-'}</p>
-        <p><b>用法用量：</b>${d.dosage || '-'}</p>
-        <p><b>常用频次：</b>${d.common_frequency || '-'}</p>
-        <p><b>价格：</b>¥${d.price || '-'} / ${d.pack_unit || ''}</p>
+        <p><b>医保分类：</b>医保${d.medical_insurance_class || '-'}</p>
+        <p><b>处方类别：</b>${d.otc_class || '-'}</p>
+        <p><b>抗菌分级：</b>${d.abx_level === 'none' ? '非抗菌药' : d.abx_level}</p>
+        <p><b>用法用量：</b>每日${d.dose_range_json?.default_freq || '-'}，疗程${d.dose_range_json?.default_duration_days || '-'}天</p>
+        <p><b>价格：</b>¥${d.price_yuan || '-'} / ${d.unit || ''}</p>
+        <p><b>生产厂家：</b>${d.manufacturer || '-'}</p>
+        <p><b>注意事项：</b>${(d.special_warnings_json || []).join('、') || '-'}</p>
       </div>
     `;
     $('modal-drug-detail').classList.remove('hidden');

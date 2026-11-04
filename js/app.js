@@ -120,6 +120,7 @@
     $('btn-diag-check').onclick = checkDiagnosis;
     $('diag-input').oninput = onDiagInput;
     $('diag-input').onkeydown = onDiagKey;
+    $('secondary-diag-input').oninput = onSecondaryDiagInput;
     document.querySelectorAll('.btn-type').forEach(b => {
       b.addEventListener('click', () => openRx(b.getAttribute('data-type')));
     });
@@ -384,6 +385,31 @@
         $('diag-input').value = el.getAttribute('data-name');
         box.classList.add('hidden');
         checkDiagnosis();
+      };
+    });
+  }
+
+  // 次要诊断输入实时提示
+  function onSecondaryDiagInput() {
+    const input = $('secondary-diag-input');
+    const box = $('secondary-diag-suggest');
+    const val = input.value.trim();
+    if (!val || !S.diseases) { box.classList.add('hidden'); box.innerHTML=''; return; }
+    // 取最后一个逗号后的内容作为关键词
+    const parts = val.split(/[,，]/);
+    const lastKw = parts[parts.length-1].trim();
+    if (!lastKw) { box.classList.add('hidden'); box.innerHTML=''; return; }
+    const matched = S.diseases.filter(d => matchDisease(d.name, lastKw) || (d.icd10||'').toLowerCase().indexOf(lastKw.toLowerCase()) >= 0);
+    if (!matched.length) { box.classList.add('hidden'); box.innerHTML=''; return; }
+    box.classList.remove('hidden');
+    box.innerHTML = '匹配到：' +
+      matched.slice(0,6).map((d,i) => `<span class="sug-item${i===0?' kb-highlight':''}" data-name="${d.name}">${d.name}</span>`).join(' ');
+    box.querySelectorAll('.sug-item').forEach(el => {
+      el.onclick = () => {
+        // 替换最后一个关键词
+        const before = parts.slice(0, -1).join('，');
+        input.value = before ? before + '，' + el.getAttribute('data-name') : el.getAttribute('data-name');
+        box.classList.add('hidden');
       };
     });
   }

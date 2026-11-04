@@ -110,14 +110,14 @@
     }
 
     // ====================== 1. 格式类 ======================
-    // FMT-01 ≤5种
+    // FMT-01 ≤5种（降级为提示，实际分级扣分由FMT-01-EXT处理）
     ['normal_rx','iv_rx'].forEach(k => {
       const rx = ctx[k];
       if (!rx) return;
       const n = totalItems(rx);
-      if (n > 5) hits.push(hit(R['FMT-01'], 'error',
-        `当前处方共 ${n} 种药品（含溶媒），超过 5 种上限。`,
-        `删减至 ≤5 种；溶媒计入总数。`));
+      if (n > 5) {
+        hits.push(pass(R['FMT-01'], `当前处方共 ${n} 种药品（含溶媒），超5种上限，详见FMT-01-EXT分级扣分。`));
+      }
     });
 
     // FMT-02 通用名

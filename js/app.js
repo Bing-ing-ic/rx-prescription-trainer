@@ -1413,6 +1413,25 @@
     const cW = $('cnt-warn'); if (cW) cW.textContent = warnN;
     const cP = $('cnt-pass'); if (cP) cP.textContent = passN;
 
+    // 次要诊断提示：如果用户填写了次要诊断，提醒是否考虑合并症用药
+    if (S.secondaryDiagnosis) {
+      const tipDiv = document.createElement('div');
+      tipDiv.className = 'diag-warn';
+      tipDiv.style.margin = '12px 0';
+      tipDiv.style.padding = '10px 14px';
+      tipDiv.style.borderRadius = '8px';
+      tipDiv.style.background = '#fffbeb';
+      tipDiv.style.border = '1px solid #fde68a';
+      tipDiv.innerHTML = `
+        <div style="font-weight:600;margin-bottom:4px;">📋 次要诊断用药完整性检查</div>
+        <div style="font-size:13px;color:#92400e;line-height:1.6;">
+          你填写了次要诊断：<b>${S.secondaryDiagnosis}</b><br>
+          请确认处方中是否包含了合并症的常规用药（如高血压需降压药、糖尿病需降糖药），避免遗漏重要合并症治疗。
+        </div>
+      `;
+      hl.before(tipDiv);
+    }
+
     // 命中列表
     const hl = $('hit-list');
     hl.innerHTML = '';

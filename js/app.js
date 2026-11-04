@@ -1267,17 +1267,47 @@
     $('r-meta').textContent =
       `诊断：${ctx.disease.name}（${ctx.disease.icd10}） · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁`;
 
-    // 生命体征：显示本病例患者的真实查体值（来自病例卡，与疾病一致）
+    // 生命体征：显示本病例患者的真实查体值（来自病例卡，与疾病一致），按医学标准动态变色
     const score = review.total;
     const pv = ctx.patient.vitals || null;
+    // 生命体征颜色判断工具函数
+    function setVitalColor(el, level) {
+      el.classList.remove('vital-normal','vital-warn','vital-danger','vital-low');
+      el.classList.add('vital-' + level);
+    }
     if (pv && pv.hr) {
+      // 心率：正常60-100，<60心动过缓(蓝)，100-120心动过速(黄)，>120严重过速(红)
       $('vital-hr').textContent = pv.hr + ' bpm';
+      const hr = parseFloat(pv.hr);
+      if (hr >= 60 && hr <= 100) setVitalColor($('vital-hr'), 'normal');
+      else if (hr < 60) setVitalColor($('vital-hr'), 'low');
+      else if (hr <= 120) setVitalColor($('vital-hr'), 'warn');
+      else setVitalColor($('vital-hr'), 'danger');
+
+      // 体温：正常36.0-37.2，<36低体温(蓝)，37.3-38.5低热(黄)，>38.5高热(红)
       $('vital-temp').textContent = pv.temp + ' ℃';
+      const temp = parseFloat(pv.temp);
+      if (temp >= 36.0 && temp <= 37.2) setVitalColor($('vital-temp'), 'normal');
+      else if (temp < 36.0) setVitalColor($('vital-temp'), 'low');
+      else if (temp <= 38.5) setVitalColor($('vital-temp'), 'warn');
+      else setVitalColor($('vital-temp'), 'danger');
+
+      // 血压：解析收缩压/舒张压
       $('vital-bp').textContent = pv.bp + ' mmHg';
+      const bpParts = String(pv.bp).split('/');
+      const sys = parseFloat(bpParts[0]);
+      const dia = parseFloat(bpParts[1]);
+      if (sys >= 90 && sys <= 140 && dia >= 60 && dia <= 90) setVitalColor($('vital-bp'), 'normal');
+      else if (sys < 90 || dia < 60) setVitalColor($('vital-bp'), 'low');
+      else if (sys > 160 || dia > 100) setVitalColor($('vital-bp'), 'danger');
+      else setVitalColor($('vital-bp'), 'warn');
     } else {
       $('vital-hr').textContent = '--';
       $('vital-temp').textContent = '--';
       $('vital-bp').textContent = '--';
+      $('vital-hr').className = '';
+      $('vital-temp').className = '';
+      $('vital-bp').className = '';
     }
     // 表情：切换护士图片
     const nurseImg = $('nurse-face');

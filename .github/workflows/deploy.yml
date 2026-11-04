@@ -17,9 +17,53 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      # 组装发布目录：只把线上需要的文件拷进 _site/，
+      # 排除 *.bak*、_backup/、docs/、test/、*.py、.md、启动脚本等内部文件。
+      - name: Assemble _site artifact
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+
+          # 根目录 HTML（排除 .bak-* 备份）
+          find . -maxdepth 1 -name '*.html' ! -name '*.bak*' -exec cp {} _site/ \;
+
+          # css / js（排除 .bak-*）
+          mkdir -p _site/css _site/js
+          rsync -a --exclude='*.bak*' ./css/ _site/css/
+          rsync -a --exclude='*.bak*' ./js/   _site/js/
+
+          # img（排除 _backup/）
+          mkdir -p _site/img
+          rsync -a --exclude='_backup/' ./img/ _site/img/
+
+          # data（排除 _backup_before_*/）
+          mkdir -p _site/data
+          rsync -a --exclude='_backup_*/' ./data/ _site/data/
+
+          # 可选：CNAME / favicon.ico / _redirects（如存在）
+          [ -f CNAME ]      && cp CNAME _site/      || true
+          [ -f favicon.ico ] && cp favicon.ico _site/ || true
+
+          # 禁用 GitHub Pages 的 Jekyll 处理（否则 data/_backup 这类下划线目录会被忽略，
+          # 这里主要是为了让 data/ 下所有正常 JSON 不被 Jekyll 误判）
+          touch _site/.nojekyll
+
+          echo '=== _site top-level ==='
+          ls -la _site
+          echo '=== _site file count ==='
+          find _site -type f | wc -l
+          echo '=== ensure no leaked backups ==='
+          if find _site -name '*.bak*' -o -name '_backup*' | grep -q .; then
+            echo '::error::backup files leaked into _site'
+            find _site -name '*.bak*' -o -name '_backup*'
+            exit 1
+          fi
+
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ./
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4

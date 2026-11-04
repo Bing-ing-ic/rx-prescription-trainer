@@ -1495,9 +1495,9 @@
     const nurseImg = $('nurse-face');
     if (nurseImg) {
       if (score >= 75) {
-        nurseImg.src = 'img/nurse-happy.png';
+        nurseImg.src = 'img/nurse-happy.jpg';
       } else {
-        nurseImg.src = 'img/nurse-sad.png';
+        nurseImg.src = 'img/nurse-sad.jpg';
       }
     }
 

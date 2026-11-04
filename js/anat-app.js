@@ -8,7 +8,7 @@
   const $ = id => document.getElementById(id);
 
   const S = {
-    systems: [], questions: [], cases: [], hotspots: null,
+    systems: [], questions: [], cases: [], hotspots: null, tcmMappings: null,
     currentSystem: null,       // 当前浏览的系统对象
     currentStruct: null,       // 当前查看的结构
     quiz: {
@@ -44,16 +44,18 @@
   // ---------- 数据加载 ----------
   async function boot() {
     try {
-      const [sj, qj, cj, hj] = await Promise.all([
+      const [sj, qj, cj, hj, tj] = await Promise.all([
         loadJSON('data/anatomy-systems.json').catch(() => null),
         loadJSON('data/anatomy-quiz.json').catch(() => null),
         loadJSON('data/anatomy-cases.json').catch(() => null),
-        loadJSON('data/anatomy-hotspots.json').catch(() => null)
+        loadJSON('data/anatomy-hotspots.json').catch(() => null),
+        loadJSON('data/anatomy-tcm.json').catch(() => null)
       ]);
       S.systems = (sj && sj.systems) || [];
       S.questions = (qj && qj.questions) || [];
       S.cases = (cj && cj.cases) || [];
       S.hotspots = hj || null;   // 加载失败静默降级：图区退回旧图、无热区
+      S.tcmMappings = (tj && tj.mappings) || null;
       if (S.systems.length === 0) {
         const tip = $('anat-data-tip'); if (tip) tip.classList.remove('hidden');
       }
@@ -136,6 +138,27 @@
   }
 
   // ---------- 结构详情 ----------
+  // 渲染中医经络 section；无映射返回空字符串（不破坏原布局）
+  function renderTcmSection(st) {
+    const m = (S.tcmMappings && st && S.tcmMappings[st.id]) || null;
+    if (!m) return '';
+    const meridians = (m.meridians || []).map(x =>
+      `<span class="anat-exam-tag" style="background:rgba(34,139,87,.12);color:#1f7a4d;border:1px solid rgba(34,139,87,.3);">🌿 ${x}</span>`
+    ).join(' ');
+    const points = (m.acupoints || []).map(p =>
+      `<li><b>${p.name}</b> <small class="muted">（${p.code}）</small> — ${p.note || ''}</li>`
+    ).join('');
+    return `
+      <div class="anat-detail-section">
+        <div class="ads-label">🌿 中医经络</div>
+        <div class="ads-body">
+          ${meridians ? `<div style="margin-bottom:8px;">${meridians}</div>` : ''}
+          ${points ? `<ul style="margin:6px 0 0 18px;padding:0;">${points}</ul>` : ''}
+          ${m.tcm_note ? `<p style="margin:8px 0 0 0;font-style:italic;color:#444;">${m.tcm_note}</p>` : ''}
+        </div>
+      </div>`;
+  }
+
   function openDetail(st) {
     S.currentStruct = st;
     $('anat-detail-name').textContent = st.name + (st.latin ? '（' + st.latin + '）' : '');
@@ -158,6 +181,7 @@
           <div class="ads-label">🏥 临床意义</div>
           <div class="ads-body">${st.clinical || '-'}</div>
         </div>
+        ${renderTcmSection(st)}
         ${tags ? `<div class="anat-detail-section">
           <div class="ads-label">🎯 考点标记</div>
           <div class="ads-tags">${tags}</div>
@@ -312,6 +336,7 @@
         <div class="ads-label">🏥 临床意义</div>
         <div class="ads-body">${st.clinical || '-'}</div>
       </div>
+      ${renderTcmSection(st)}
       ${tags ? `<div class="anat-detail-section">
         <div class="ads-label">🎯 考点标记</div>
         <div class="ads-tags">${tags}</div>

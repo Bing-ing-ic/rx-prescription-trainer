@@ -1,0 +1,19 @@
+# ===== 编辑器 / 系统 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 依赖 / 构建产物 =====
+node_modules/
+_site/
+__pycache__/
+*.pyc
+*.pyo
+
+# ===== 备份文件（本地保留，但不入库、不发布） =====
+*.bak
+*.bak-*
+*~
+_backup/
+_backup_*/
+_archive/

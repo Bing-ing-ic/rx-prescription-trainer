@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.css?v=20261104map1">
+<link rel="stylesheet" href="css/rx.min.css?v=20261104perf1">
+<link rel="preload" as="image" href="img/nurse-hero.jpg" fetchpriority="high">
 </head>
 <body>
 
@@ -138,7 +139,7 @@
       </div>
       <!-- 右侧女医生形象（透明底PNG） -->
       <div class="hero-nurse">
-        <img src="img/nurse-hero.png" alt="女医生形象">
+        <img src="img/nurse-hero.jpg" alt="女医生形象" width="433" height="1568" fetchpriority="high">
       </div>
     </div>
 
@@ -299,7 +300,7 @@
       </div>
       <div class="patient-avatar" id="patient-avatar">
         <div class="nurse-img-wrap">
-          <img id="nurse-face" src="img/nurse-happy.png" alt="护士形象">
+          <img id="nurse-face" src="img/nurse-happy.jpg" alt="护士形象" loading="lazy" width="400" height="600">
         </div>
         <div class="vitals-panel">
           <div class="vital-row"><span>心率</span><b id="vital-hr">--</b></div>
@@ -440,7 +441,7 @@
         <label><input type="radio" name="tcm-diff" value="高级"> 高级</label>
       </div>
       <div class="hero-nurse tcm-hero-nurse">
-        <img src="img/tcm-doctor-hero.png" alt="老中医形象">
+        <img src="img/tcm-doctor-hero.jpg" alt="老中医形象" loading="lazy" width="1000" height="1374">
       </div>
     </div>
     <div id="tcm-data-tip" class="tcm-tip hidden">⏳ 中医数据加载中，请稍候…</div>
@@ -648,7 +649,7 @@
       </div>
       <!-- 右侧中医针灸师持针施治形象（透明底PNG） -->
       <div class="hero-nurse acup-hero-nurse">
-        <img src="img/acup-doctor-hero.png" alt="中医针灸师持针施治">
+        <img src="img/acup-doctor-hero.jpg" alt="中医针灸师持针施治" loading="lazy" width="1000" height="1422">
       </div>
     </div>
     <div id="acup-data-tip" class="tcm-tip hidden">⏳ 针灸数据加载中，请稍候…</div>
@@ -669,7 +670,7 @@
       </div>
       <div class="acup-map-body">
         <div class="acup-map-figure">
-          <img src="img/acup-meridian-chart.jpg" alt="人体经络正面图" id="acup-map-img"
+          <img src="img/acup-meridian-chart.jpg" alt="人体经络正面图" id="acup-map-img" loading="lazy" width="1067" height="1600"
                onerror="this.style.display='none';var f=this.nextElementSibling;if(f)f.classList.remove('hidden');">
           <div class="acup-map-fallback hidden">🖼️ 经络图加载中…（img/acup-meridian-chart.jpg）</div>
           <div class="acup-map-caption" id="acup-map-caption">十四经常用腧穴（十二经脉 + 任脉 + 督脉）</div>
@@ -852,7 +853,7 @@
         <button id="anat-btn-cases" class="hero-btn">🏥 临床案例</button>
       </div>
       <div class="hero-nurse anat-hero-nurse">
-        <img src="img/anat-skeleton-hero.png" alt="人体骨骼正面解剖图"
+        <img src="img/anat-skeleton-hero.jpg" alt="人体骨骼正面解剖图" loading="lazy" width="678" height="1600"
              onerror="this.closest('.anat-hero-nurse').style.display='none'">
       </div>
     </div>
@@ -868,7 +869,7 @@
     </div>
     <div class="atlas-body-wrap" id="anat-atlas-wrap">
       <div class="atlas-stage" id="anat-atlas-stage">
-        <img src="img/anatomy-body-diagram.jpg" alt="人体系统解剖示意图" class="atlas-body-img" id="anat-atlas-img"
+        <img src="img/anatomy-body-diagram.jpg" alt="人体系统解剖示意图" class="atlas-body-img" id="anat-atlas-img" loading="lazy" width="800" height="1200"
              onerror="this.closest('.atlas-body-wrap').classList.add('img-missing');var l=document.getElementById('anat-atlas-hotlayer');if(l)l.innerHTML='';">
         <div class="atlas-hotlayer" id="anat-atlas-hotlayer"></div>
       </div>
@@ -1049,11 +1050,11 @@
   }, true);
 })();
 </script>
-<script src="js/rule-engine.js?v=20261104f"></script>
+<script src="js/rule-engine.min.js?v=20261104perf1"></script>
 <script>
 // 网站访问统计
 (function() {
-  fetch('https://api.countapi.xyz/hit/rx-trainer-2026/visits');
+  fetch('https://api.countapi.xyz/hit/rx-trainer-2026/visits').catch(()=>{});
   // 本机访问计数（供管理员后台查看）
   try {
     const today = new Date().toISOString().slice(0,10);
@@ -1072,14 +1073,14 @@
   document.body.appendChild(a);
 })();
 </script>
-<script src="js/review.js?v=20261104e"></script>
-<script src="js/app.js?v=20261104r"></script>
-<script src="js/tcm-engine.js?v=20261104tcm1"></script>
-<script src="js/acup-engine.js?v=20261104ac1"></script>
-<script src="js/tcm-app.js?v=20261104map1"></script>
-<script src="js/acup-app.js?v=20261104map1"></script>
-<script src="js/module-views.js?v=20261104mv1"></script>
-<script src="js/anat-app.js?v=20261104map1"></script>
+<script src="js/review.min.js?v=20261104perf1"></script>
+<script src="js/app.min.js?v=20261104perf1"></script>
+<script src="js/tcm-engine.min.js?v=20261104perf1"></script>
+<script src="js/acup-engine.min.js?v=20261104perf1"></script>
+<script src="js/tcm-app.min.js?v=20261104perf1"></script>
+<script src="js/acup-app.min.js?v=20261104perf1"></script>
+<script src="js/module-views.min.js?v=20261104perf1"></script>
+<script src="js/anat-app.min.js?v=20261104perf1"></script>
 
 <!-- 百度统计 -->
 <script>

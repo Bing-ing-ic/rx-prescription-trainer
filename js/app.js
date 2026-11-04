@@ -890,23 +890,20 @@
   // 计算金额合计、医保支付、个人自付
   function updateAmount() {
     let total = 0;
-    // 口服药：按整盒算，需要盒数 = ceil(每日次数 × 天数 / 每盒片数)
+    // 口服药：单价 × 数量（片/粒/支）
     S.normalItems.forEach(it => {
-      const price = it.drug.price_yuan || 0;
-      const days = it.duration_days || 1;
-      const freqPerDay = ({'qd':1,'bid':2,'tid':3,'qid':4,'q8h':3,'q12h':2,'qn':1,'st':1,'prn':1})[it.frequency] || 1;
-      const perBox = it.quantity || 1;  // 每盒片数
-      const boxes = Math.max(1, Math.ceil(freqPerDay * days / perBox));
-      total += price * boxes;
+      const price = Number(it.drug.price_yuan) || 0;
+      const qty = Number(it.quantity) || 1;
+      total += price * qty;
     });
-    // 静脉药：每组一次量，按天数算
+    // 静脉药：单价 × 每次用量 × 每日次数 × 天数
     S.ivGroups.forEach(g => {
       if (g.solvent) {
-        total += g.solvent.price_yuan || 0;  // 溶媒每袋一次
+        total += Number(g.solvent.price_yuan) || 0;  // 溶媒每袋一次
       }
       g.drugs.forEach(it => {
-        const price = it.drug.price_yuan || 0;
-        const days = it.duration_days || 1;
+        const price = Number(it.drug.price_yuan) || 0;
+        const days = Number(it.duration_days) || 1;
         const freqPerDay = ({'qd':1,'bid':2,'tid':3,'qid':4,'q8h':3,'q12h':2,'qn':1,'st':1,'prn':1})[it.frequency] || 1;
         const qty = parseQty(it);
         total += price * qty * freqPerDay * days;
@@ -919,24 +916,21 @@
     let miPay = 0;
     if (!isSelfPay) {
     S.normalItems.forEach(it => {
-      const price = it.drug.price_yuan || 0;
-      const days = it.duration_days || 1;
-      const freqPerDay = ({'qd':1,'bid':2,'tid':3,'qid':4,'q8h':3,'q12h':2,'qn':1,'st':1,'prn':1})[it.frequency] || 1;
-      const perBox = it.quantity || 1;
-      const boxes = Math.max(1, Math.ceil(freqPerDay * days / perBox));
-      const sub = price * boxes;
+      const price = Number(it.drug.price_yuan) || 0;
+      const qty = Number(it.quantity) || 1;
+      const sub = price * qty;
       if (it.drug.medical_insurance_class === '甲') miPay += sub;
       else if (it.drug.medical_insurance_class === '乙') miPay += sub * 0.8;
     });
     S.ivGroups.forEach(g => {
       if (g.solvent) {
-        const sub = g.solvent.price_yuan || 0;
+        const sub = Number(g.solvent.price_yuan) || 0;
         if (g.solvent.medical_insurance_class === '甲') miPay += sub;
         else if (g.solvent.medical_insurance_class === '乙') miPay += sub * 0.8;
       }
       g.drugs.forEach(it => {
-        const price = it.drug.price_yuan || 0;
-        const days = it.duration_days || 1;
+        const price = Number(it.drug.price_yuan) || 0;
+        const days = Number(it.duration_days) || 1;
         const freqPerDay = ({'qd':1,'bid':2,'tid':3,'qid':4,'q8h':3,'q12h':2,'qn':1,'st':1,'prn':1})[it.frequency] || 1;
         const qty = parseQty(it);
         const sub = price * qty * freqPerDay * days;

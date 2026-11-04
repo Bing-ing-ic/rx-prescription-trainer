@@ -529,15 +529,29 @@ input, select, textarea { font-family: inherit; }
 
 /* ========== 难度筛选行 ========== */
 .difficulty-row {
-  margin-top: 16px; display: flex; gap: 16px; align-items: center;
+  margin-top: 16px; display: flex; gap: 12px; align-items: center;
   justify-content: center; flex-wrap: wrap;
+  position: relative; z-index: 2;
+  padding-bottom: 12px;
 }
-.diff-label { color: rgba(255,255,255,.85); font-size: 14px; font-weight: 600; }
+.diff-label { color: rgba(255,255,255,.95); font-size: 14px; font-weight: 600; }
 .difficulty-row label {
-  color: rgba(255,255,255,.9); font-size: 13px; cursor: pointer;
-  display: flex; align-items: center; gap: 4px;
+  color: rgba(255,255,255,.95); font-size: 13px; cursor: pointer;
+  display: flex; align-items: center; gap: 5px;
+  padding: 5px 12px; border-radius: 16px;
+  background: rgba(255,255,255,.15);
+  transition: background .2s;
+  user-select: none;
 }
-.difficulty-row input[type="radio"] { cursor: pointer; }
+.difficulty-row label:hover { background: rgba(255,255,255,.28); }
+.difficulty-row label:has(input:checked) {
+  background: rgba(255,255,255,.35);
+  font-weight: 600;
+}
+.difficulty-row input[type="radio"] {
+  cursor: pointer; accent-color: #0f4c81;
+  width: 14px; height: 14px; margin: 0;
+}
 
 /* ========== 错题本样式 ========== */
 .mistakes-list { max-width: 900px; margin: 0 auto; }

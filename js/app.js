@@ -135,18 +135,6 @@
     $('btn-clear-mistakes').onclick = () => {
       if (confirm('清空错题本？')) { localStorage.removeItem('rx-mistakes'); renderMistakes(); }
     };
-    // 深色模式切换
-    $('btn-dark-toggle').onclick = () => {
-      document.body.classList.toggle('dark-mode');
-      const isDark = document.body.classList.contains('dark-mode');
-      localStorage.setItem('rx-dark-mode', isDark ? '1' : '0');
-      $('btn-dark-toggle').textContent = isDark ? '☀️' : '🌙';
-    };
-    // 恢复深色模式
-    if (localStorage.getItem('rx-dark-mode') === '1') {
-      document.body.classList.add('dark-mode');
-      $('btn-dark-toggle').textContent = '☀️';
-    }
 
     $('drug-search').oninput = renderDrugList;
     $('iv-drug-search').oninput = renderIvDrugList;

@@ -618,37 +618,6 @@ input, select, textarea { font-family: inherit; }
 .dist-bar { height: 100%; background: linear-gradient(90deg, #38bdf8, #0f4c81); border-radius: 8px; }
 .dist-count { width: 50px; text-align: right; color: #64748b; }
 
-/* ========== 深色模式 ========== */
-body.dark-mode {
-  background: #0f172a; color: #e2e8f0;
-}
-body.dark-mode .topbar {
-  background: #1e293b; border-bottom-color: #334155;
-}
-body.dark-mode .brand span:last-child { color: #e2e8f0; }
-body.dark-mode .nav-btn { color: #cbd5e1; }
-body.dark-mode .nav-btn:hover { background: #334155; }
-body.dark-mode .case-card,
-body.dark-mode .panel,
-body.dark-mode .history-box,
-body.dark-mode .radar-wrap,
-body.dark-mode .stat-card,
-body.dark-mode .stats-section,
-body.dark-mode .mistake-card,
-body.dark-mode .dim-card {
-  background: #1e293b; color: #e2e8f0; box-shadow: 0 2px 10px rgba(0,0,0,.3);
-}
-body.dark-mode .muted { color: #94a3b8 !important; }
-body.dark-mode .hit-item { background: #0f172a; }
-body.dark-mode .hit-item.error { background: #450a0a; }
-body.dark-mode .hit-item.warn { background: #422006; }
-body.dark-mode .hit-item.pass { background: #052e16; }
-body.dark-mode .rx-paper { background: #1e293b; }
-body.dark-mode .rx-head, body.dark-mode .rx-pre, body.dark-mode .rx-foot { border-color: #475569; }
-body.dark-mode input, body.dark-mode select { background: #0f172a; color: #e2e8f0; border-color: #475569; }
-body.dark-mode .modal { background: #1e293b; color: #e2e8f0; }
-body.dark-mode .dist-bar-wrap { background: #0f172a; }
-
 /* ========== 移动端适配 ========== */
 @media (max-width: 768px) {
   .hero-icon svg { width: 60px; height: 60px; }

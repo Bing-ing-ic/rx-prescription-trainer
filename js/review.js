@@ -8,10 +8,10 @@
   // 按三甲医院处方点评管理规范调整权重
   const DIMS = [
     { key: 'format',     name: '处方格式规范',              weight: 8,  groups: ['FORMAT'] },
-    { key: 'indication', name: '诊断-用药匹配（循证适应症）', weight: 25, groups: ['INDICATION'] },
+    { key: 'indication', name: '诊断-用药匹配（循证适应症）', weight: 23, groups: ['INDICATION'] },
     { key: 'dosage',     name: '剂量用法（单次/每日量）',    weight: 15, groups: ['DOSAGE'] },
-    { key: 'duration',   name: '疗程适宜',                  weight: 5,  groups: ['DURATION'] },
-    { key: 'iv_reason',  name: '给药途径决策与输液合理性',   weight: 22, groups: ['IV_REASON'] },
+    { key: 'duration',   name: '疗程适宜',                  weight: 4,  groups: ['DURATION'] },
+    { key: 'iv_reason',  name: '给药途径决策与输液合理性',   weight: 20, groups: ['IV_REASON'] },
     { key: 'compat_sv',  name: '溶媒与配伍',                weight: 5,  groups: ['COMPAT'], onlyRuleIds: ['IV-06','IV-07'] },
     { key: 'compat_int', name: '药物相互作用/重复用药',      weight: 8,  groups: ['COMPAT'], excludeRuleIds: ['IV-06','IV-07'] },
     { key: 'special_pop',name: '特殊人群（儿童/老人/孕哺/肝肾）', weight: 10, groups: ['SPECIAL_POP'] },

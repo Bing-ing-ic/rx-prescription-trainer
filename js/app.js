@@ -196,6 +196,27 @@
   const GIVEN = ['伟','芳','娜','敏','静','磊','洋','艳','勇','军'];
   function randPick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
 
+  // 从疾病生命体征区间（如 "38.5-39.2"、"95-110"、"110-120/70"）抽取本次病例的真实值
+  function vitalsFromRange(v) {
+    if (!v) return { hr: 75, temp: '36.8', bp: '120/80', spo2: '98' };
+    const pickNum = (s, dft) => {
+      const m = String(s == null ? '' : s).match(/[\d.]+(?:\s*[-~]\s*[\d.]+)?/);
+      if (!m) return dft;
+      const parts = m[0].split(/[-~]/).map(Number);
+      if (parts.length === 2 && parts[1] > parts[0]) {
+        return Math.round((parts[0] + Math.random() * (parts[1] - parts[0])) * 10) / 10;
+      }
+      return parts[0] || dft;
+    };
+    const hr = Math.round(pickNum(v.hr, 75));
+    const temp = pickNum(v.temp, 36.8).toFixed(1);
+    let bpStr = String(v.bp || '120/80');
+    const slash = bpStr.split('/');
+    const sbp = Math.round(pickNum(slash[0], 120));
+    const dbp = Math.round(pickNum(slash[1], 80));
+    return { hr, temp, bp: sbp + '/' + dbp, spo2: v.spo2 || '98' };
+  }
+
   function newCase() {
     // 难度筛选
     const diffFilter = document.querySelector('input[name="diff-filter"]:checked');
@@ -216,30 +237,38 @@
     S.overLimitWarned = false;
     S.ivOverLimitWarned = false;
 
-    // 生成合成患者：年龄/性别/费别完全随机，但根据疾病匹配合理年龄
-    const elderlyDiseases = ['HTN-I10','CHD-I25','TIA-G45','COPD-J44','DM-E11','HYPOTHY-E03','POSTAPP-Z48','POSTHERNIA-Z48'];
-    const childOkDiseases = ['URI-J00','AB-BRONCH-J20','CAP-J18','AGE-A09','GASTRITIS-K29','FD-K30'];
+    // 生成合成患者：年龄/性别/费别根据疾病匹配
+    const elderlyDiseases = ['HTN-I10','CHD-I25','TIA-G45','COPD-J44','DM-E11','HYPOTHY-E03','POSTAPP-Z48','POSTHERNIA-Z48','HLP-E78','OP-M81','ISCHEMIC-I63','HF-I50','AF-I48','BPH-N40'];
+    const childOkDiseases = ['URI-J00','AB-BRONCH-J20','CAP-J18','AGE-A09','GASTRITIS-K29','FD-K30','MP-J15','CBRONCH-J20'];
     const code = S.disease.code;
+    const isPedDisease = code.endsWith('-PED') || (S.disease.name||'').indexOf('小儿')===0;
     let age;
-    if (elderlyDiseases.includes(code)) {
-      // 老年病：45-85岁
-      age = Math.floor(Math.random()*41+45);
-    } else if (childOkDiseases.includes(code) && Math.random() < 0.2) {
-      // 儿童常见病：2-13岁
-      age = Math.floor(Math.random()*12+2);
+    if (isPedDisease) {
+      // 明确儿科病例（如小儿感冒/小儿腹泻）：3-11 岁
+      age = Math.floor(Math.random()*9+3);
+    } else if (elderlyDiseases.includes(code)) {
+      // 老年慢性病：60-80 岁
+      age = Math.floor(Math.random()*21+60);
+    } else if (childOkDiseases.includes(code) && Math.random() < 0.3) {
+      // 儿童常见病散发病例：4-12 岁
+      age = Math.floor(Math.random()*9+4);
     } else {
-      // 普通成人：18-65岁
+      // 普通成人：18-65 岁
       age = Math.floor(Math.random()*48+18);
     }
     const gender = Math.random()<0.5 ? '男' : '女';
     let weight;
     if (age < 14) weight = Math.round((5 + age*2.5) * 10)/10;
     else weight = Math.round((50 + Math.random()*25) * 10)/10;
-    const feeTypes = ['城镇职工医保','城乡居民医保','自费'];
-    const feeType = feeTypes[Math.floor(Math.random()*feeTypes.length)];
+    // 费别与人群匹配：儿童多为居民医保，老年慢病多为职工医保
+    let feeType;
+    if (age < 14) feeType = Math.random()<0.8 ? '城乡居民医保' : '自费';
+    else if (elderlyDiseases.includes(code)) feeType = Math.random()<0.7 ? '城镇职工医保' : '城乡居民医保';
+    else feeType = ['城镇职工医保','城乡居民医保','自费'][Math.floor(Math.random()*3)];
     const name = SURNAMES[Math.floor(Math.random()*SURNAMES.length)] + GIVEN[Math.floor(Math.random()*GIVEN.length)];
+    const vitals = vitalsFromRange(S.disease.symptom_pool.vitals);
     S.patient = {
-      name, gender, age, weight, feeType,
+      name, gender, age, weight, feeType, vitals,
       id: '5301**********0011',
       mz: 'MZ' + new Date().toISOString().slice(0,10).replace(/-/g,'') + String(Math.floor(Math.random()*9000+1000)),
       renal_insufficiency: age > 65 && Math.random() < 0.2,
@@ -1207,8 +1236,8 @@
     renderReport(review, hits, ctx);
 
     // 写历史
-    saveHistory(review);
-    saveMistakes(review, ctx);
+    saveHistory(review, ctx);
+    saveMistakes(review, hits, ctx);
     show('view-report');
     } catch(e) {
       console.error(e);
@@ -1222,34 +1251,34 @@
     ctx.patient = ctx.patient || { name: '未知', gender: '', age: 0 };
     review = review || { total: 0, dims: {} };
     hits = Array.isArray(hits) ? hits.filter(Boolean) : [];
-    $('r-score').textContent = review.total;
+    // 评分器各维度权重合计为105，前端按百分制封顶展示（根因见报告，属评分器侧）
+    const disp = Math.max(0, Math.min(100, Math.round(review.total)));
+    $('r-score').textContent = disp;
     // 圆环动画
     const arc = $('score-arc');
     if (arc) {
       const C = 326.7;
-      arc.style.strokeDashoffset = C * (1 - review.total/100);
-      arc.style.stroke = review.total >= 80 ? '#16a34a' : review.total >= 60 ? '#f59e0b' : '#dc2626';
+      arc.style.strokeDashoffset = C * (1 - disp/100);
+      arc.style.stroke = disp >= 80 ? '#16a34a' : disp >= 60 ? '#f59e0b' : '#dc2626';
     }
     // 评级
     const grade = $('r-grade');
-    if (grade) grade.textContent = review.total >= 90 ? '优秀 · 可独立接诊' : review.total >= 75 ? '良好 · 基本掌握' : review.total >= 60 ? '及格 · 需加强' : '不合格 · 重新学习';
+    if (grade) grade.textContent = disp >= 90 ? '优秀 · 可独立接诊' : disp >= 75 ? '良好 · 基本掌握' : disp >= 60 ? '及格 · 需加强' : '不合格 · 重新学习';
     $('r-meta').textContent =
       `诊断：${ctx.disease.name}（${ctx.disease.icd10}） · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁`;
 
-    // 卡通患者生命体征（根据评分动态变化）
-    const errCount = hits.filter(h=>h.severity==='error').length;
-    const warnCount = hits.filter(h=>h.severity==='warn').length;
+    // 生命体征：显示本病例患者的真实查体值（来自病例卡，与疾病一致）
     const score = review.total;
-    // 心率：基础75，错误越多越快
-    const hr = Math.round(75 + errCount * 4 + warnCount * 1.5);
-    // 体温：基础36.8，错误越多越高
-    const temp = (36.8 + errCount * 0.15 + warnCount * 0.05).toFixed(1);
-    // 血压：基础110/70，错误越多越高
-    const sbp = Math.round(110 + errCount * 3 + warnCount);
-    const dbp = Math.round(70 + errCount * 1.5);
-    $('vital-hr').textContent = hr + ' bpm';
-    $('vital-temp').textContent = temp + ' ℃';
-    $('vital-bp').textContent = sbp + '/' + dbp + ' mmHg';
+    const pv = ctx.patient.vitals || null;
+    if (pv && pv.hr) {
+      $('vital-hr').textContent = pv.hr + ' bpm';
+      $('vital-temp').textContent = pv.temp + ' ℃';
+      $('vital-bp').textContent = pv.bp + ' mmHg';
+    } else {
+      $('vital-hr').textContent = '--';
+      $('vital-temp').textContent = '--';
+      $('vital-bp').textContent = '--';
+    }
     // 表情：切换护士图片
     const nurseImg = $('nurse-face');
     if (nurseImg) {
@@ -1296,29 +1325,76 @@
       hl.innerHTML = '<div style="text-align:center;padding:20px;color:#16a34a">✅ 未发现错误和警告，处方规范！</div>';
     }
 
-    // 与参考处方差异
+    // 与参考处方差异（真实集合比对：缺首选 / 已命中 / 额外用药）
     const dx = ctx.disease;
     const chosen = [...(ctx.normal_rx?.items||[]), ...(ctx.iv_rx?.items||[])].map(i=>i.drug.generic_name);
     const ref = ctx.iv_rx ? (dx.second_line_iv||[]) : (dx.first_line_oral||[]);
-    $('diff-box').innerHTML =
-      `<div>📚 参考方案（${ctx.iv_rx?'二线静脉':'一线口服'}）：<b>${ref.join('、') || '无（对症支持）'}</b></div>
-       <div>你开了：<b>${chosen.join('、') || '（空）'}</b></div>
-       <div class="muted" style="margin-top:6px">💡 教学要点：${dx.special_population_note || (dx.contraindications||[]).join('；') || '无特殊。'}</div>`;
+    const matched = ref.filter(n => chosen.includes(n));
+    const missing = ref.filter(n => !chosen.includes(n));
+    const extra = chosen.filter(n => !ref.includes(n));
+    const refLabel = ctx.iv_rx ? '二线静脉方案' : '一线口服方案';
+    let diffHtml = `<div class="diff-ref-row">📚 参考<b>${refLabel}</b>：<b>${ref.join('、') || '无（对症支持即可）'}</b></div>`;
+    if (ref.length) {
+      diffHtml += '<div class="diff-compare">';
+      diffHtml += matched.length
+        ? `<div class="diff-ok">✅ 已按指南用药：${matched.join('、')}</div>`
+        : '';
+      diffHtml += missing.length
+        ? `<div class="diff-miss">❌ 缺少首选/指南用药：${missing.join('、')}</div>`
+        : `<div class="diff-ok">✅ 指南首选药物已全部覆盖</div>`;
+      diffHtml += extra.length
+        ? `<div class="diff-extra">⚠️ 额外用药（非本病例首选）：${extra.join('、')}${ctx.iv_rx ? '　（若口服可控制，建议改为口服序贯）' : ''}</div>`
+        : '';
+      diffHtml += '</div>';
+    }
+    diffHtml += `<div class="muted" style="margin-top:8px">💡 教学要点：${dx.special_population_note || (dx.contraindications||[]).join('；') || '无特殊。'}</div>`;
+    $('diff-box').innerHTML = diffHtml;
 
-    // 知识点卡片
-    const tips = new Set();
-    hits.filter(h=>h.rule_id && h.rule_id.startsWith('IV-')).forEach(h=>tips.add(h.title));
-    if (hits.some(h=>h.rule_id==='ABX-01'||h.rule_id==='ABX-02')) tips.add('抗菌药物分级：non_restricted / restricted / special');
-    $('tips-box').innerHTML = tips.size
-      ? [...tips].map(t=>`<div>• ${t}</div>`).join('')
-      : '<div>本次处方无特别知识点，请再接再厉。</div>';
+    // 知识点卡片：按本次命中规则映射医学知识点
+    const KNOWLEDGE_TIPS = {
+      'POP-01': { t: '喹诺酮类为何18岁以下禁用', b: '左氧氟沙星、环丙沙星等喹诺酮类可损伤幼年动物负重关节软骨，可能影响儿童骨骼发育，故18岁以下禁用；儿童细菌感染宜选青霉素/头孢类β-内酰胺类。' },
+      'POP-02': { t: '老年人输液需个体化', b: '老年人常伴心肾功能减退，大量快速静滴可诱发心衰/肺水肿；滴速宜慢，输液量宜控制，用药后注意尿量与体重变化。' },
+      'ABX-01': { t: '特殊使用级抗菌药不得门诊使用', b: '万古霉素、碳青霉烯类等特殊使用级抗菌药须经抗菌药物管理工作组会诊、高级职称医师开具，仅限住院使用；门诊开具备属违规。' },
+      'ABX-02': { t: '抗菌药物分级管理', b: '抗菌药分非限制级/限制级/特殊级：非限制级可常规开具，限制级须中级以上职称，特殊级须高级职称会诊；目的是延缓耐药。' },
+      'IV-01': { t: '门诊输液指征', b: '原则：能口服不肌注，能肌注不静滴。仅在患者禁食、呕吐严重、药物无口服剂型、病情危重等情形下选择静脉给药。' },
+      'IV-02': { t: '口服序贯治疗', b: '感染控制后应及时由静脉转为口服序贯治疗（switch therapy），缩短住院时间、降低导管相关感染与费用。' },
+      'IV-05': { t: '门诊输液负面清单', b: '病毒性上感、轻症胃肠炎、皮肤病等原则上不输液；无指征输液既增加过敏风险，也属医保重点核查违规行为。' },
+      'IV-06': { t: '溶媒选择与配伍', b: 'β-内酰胺类多用0.9%氯化钠；部分药物不宜用葡萄糖（如泮托拉唑需NS）；应按说明书选择溶媒与浓度，避免浑浊沉淀。' },
+      'IV-07': { t: '中药注射剂单独输注', b: '中药注射剂成分复杂，过敏反应发生率高，严禁与其他药物同瓶混合；须单独输注、用前皮试（按说明书）、慢滴并备好抢救措施。' },
+      'INT-01': { t: '喹诺酮与金属离子螯合', b: '喹诺酮类可与钙、铝、镁等抗酸剂/钙片螯合而吸收减少，两者需间隔2小时以上服用。' },
+      'DUP-01': { t: '避免同类药物重复', b: '同一处方不得重复开具药理作用相同的药物（如两种β-内酰胺类联用，除特殊协同方案外），否则剂量叠加、不良反应增加。' },
+      'IND-01': { t: '诊断-用药相符原则', b: '处方药品须与临床诊断相符；无对应诊断开药（如无高血压诊断开氨氯地平）将被医保拒付，并属处方不适宜。' },
+      'DOSE-01': { t: '按说明书与体重计算剂量', b: '单次剂量须在说明书范围内；儿童须按 mg/kg 体重换算，不可照搬成人剂量；老年人及肝肾功能不全者需酌减。' },
+      'DUR-01': { t: '处方用量限制', b: '普通门诊处方一般≤7日量，急诊≤3日量；高血压、糖尿病等慢性病可延长至2周；超量需注明理由。' },
+      'FMT-01': { t: '每张处方≤5种药品', b: '《处方管理办法》规定每张处方不得超过5种药品；超限应评估必要性，避免大包围用药。' },
+      'YN-01': { t: '诊断须与患者性别相符', b: '如前列腺增生、盆腔炎等诊断须与患者性别一致；开具前核对性别，属处方前记合规基本要求。' },
+      'SPEC-01': { t: '特殊人群剂量换算', b: '儿童按体重(mg/kg)或体表面积算剂量；老年人按肌酐清除率调整经肾排泄药物；妊娠哺乳用药需选择妊娠分级适宜者。' },
+      'SPEC-02': { t: '用药前核对禁忌症', b: '开具前须核对过敏史、禁忌症（如青霉素过敏忌头孢、饮酒后忌头孢、哮喘患者慎用β阻滞剂）。' },
+      'IV-04': { t: '输液速度个体化', b: '成人常规滴速40-60滴/分；年老、心肺功能差者放慢；含钾溶液滴速≤20mmol/h，严禁静脉推注。' }
+    };
+    const tipSet = [];
+    const seenTip = new Set();
+    hits.filter(h => h.severity !== 'pass').forEach(h => {
+      const tip = KNOWLEDGE_TIPS[h.rule_id];
+      if (tip && !seenTip.has(tip.t)) { seenTip.add(tip.t); tipSet.push(tip); }
+    });
+    if (tipSet.length === 0) {
+      tipSet.push({ t: '本次处方规范', b: '未命中错误/警告规则。继续保持：诊断-用药相符、剂量疗程适宜、特殊人群与配伍均已核对。' });
+    }
+    $('tips-box').innerHTML = tipSet.map(t =>
+      `<div class="knowledge-card"><div class="knowledge-title">📖 ${t.t}</div><div class="knowledge-body">${t.b}</div></div>`
+    ).join('');
   }
 
   // ---------- 历史 & 雷达 ----------
-  function saveHistory(review) {
+  function saveHistory(review, ctx) {
     const arr = JSON.parse(localStorage.getItem('rx-profile-history')||'[]');
     const radar = window.Reviewer.mapReviewToRadar(review);
-    arr.unshift({ t: Date.now(), total: review.total, radar });
+    arr.unshift({
+      t: Date.now(), total: review.total, radar,
+      disease: ctx && ctx.disease ? ctx.disease.name : '',
+      disease_code: ctx && ctx.disease ? ctx.disease.code : ''
+    });
     localStorage.setItem('rx-profile-history', JSON.stringify(arr.slice(0,20)));
   }
 
@@ -1403,10 +1479,10 @@
   window.__checkDiag = checkDiagnosis;
 
   // ====================== 新增功能：错题本 ======================
-  function saveMistakes(review, ctx) {
-    if (!review || !review.hits) return;
-    const errors = review.hits.filter(h => h.severity === 'error');
-    const warns = review.hits.filter(h => h.severity === 'warn');
+  function saveMistakes(review, hits, ctx) {
+    hits = Array.isArray(hits) ? hits.filter(Boolean) : [];
+    const errors = hits.filter(h => h.severity === 'error');
+    const warns = hits.filter(h => h.severity === 'warn');
     if (errors.length === 0 && warns.length === 0) return;
 
     const arr = JSON.parse(localStorage.getItem('rx-mistakes')||'[]');
@@ -1495,9 +1571,24 @@
       trendBox.innerHTML = '<p class="muted">暂无数据</p>';
     }
 
-    // 疾病类型分布
+    // 疾病类型分布：基于全部训练历史（历次病例），错题作兜底
     const distBox = $('disease-dist');
-    if (mistakes.length > 0) {
+    const distSource = history.filter(h => h.disease && h.disease.length);
+    if (distSource.length > 0) {
+      const dist = {};
+      distSource.forEach(h => {
+        dist[h.disease] = (dist[h.disease] || 0) + 1;
+      });
+      const sorted = Object.entries(dist).sort((a,b) => b[1]-a[1]).slice(0, 10);
+      const maxC = Math.max(...sorted.map(s=>s[1]));
+      distBox.innerHTML = sorted.map(([name, count]) => `
+        <div class="dist-row">
+          <span class="dist-name">${name}</span>
+          <div class="dist-bar-wrap"><div class="dist-bar" style="width:${count/maxC*100}%"></div></div>
+          <span class="dist-count">${count}次</span>
+        </div>
+      `).join('');
+    } else if (mistakes.length > 0) {
       const dist = {};
       mistakes.forEach(m => {
         dist[m.disease] = (dist[m.disease] || 0) + 1;
@@ -1511,7 +1602,7 @@
         </div>
       `).join('');
     } else {
-      distBox.innerHTML = '<p class="muted">暂无错题数据</p>';
+      distBox.innerHTML = '<p class="muted">暂无数据</p>';
     }
   }
 

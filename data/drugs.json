@@ -33,7 +33,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.5,
-      "manufacturer": "辉瑞制药"
+      "manufacturer": "辉瑞制药",
+      "pinyin": "bhsaldpp",
+      "pinyin_code": "BHSALDPP"
     },
     {
       "generic_name": "硝苯地平控释片",
@@ -65,7 +67,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 2.5,
-      "manufacturer": "拜耳医药"
+      "manufacturer": "拜耳医药",
+      "pinyin": "xbdpksp",
+      "pinyin_code": "XBDPKSP"
     },
     {
       "generic_name": "盐酸二甲双胍缓释片",
@@ -98,7 +102,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.6,
-      "manufacturer": "中美上海施贵宝"
+      "manufacturer": "中美上海施贵宝",
+      "pinyin": "ysejsghsp",
+      "pinyin_code": "YSEJSGHSP"
     },
     {
       "generic_name": "阿莫西林胶囊",
@@ -131,7 +137,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.8,
-      "manufacturer": "珠海联邦制药"
+      "manufacturer": "珠海联邦制药",
+      "pinyin": "amxljn",
+      "pinyin_code": "AMXLJN"
     },
     {
       "generic_name": "布洛芬缓释胶囊",
@@ -164,7 +172,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.6,
-      "manufacturer": "中美天津史克"
+      "manufacturer": "中美天津史克",
+      "pinyin": "blfhsjn",
+      "pinyin_code": "BLFHSJN"
     },
     {
       "generic_name": "奥美拉唑肠溶胶囊",
@@ -196,7 +206,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1.5,
-      "manufacturer": "阿斯利康"
+      "manufacturer": "阿斯利康",
+      "pinyin": "amlzcrjn",
+      "pinyin_code": "AMLZCRJN"
     },
     {
       "generic_name": "头孢呋辛酯片",
@@ -229,7 +241,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "国产制药企业"
+      "manufacturer": "国产制药企业",
+      "pinyin": "tbfxzp",
+      "pinyin_code": "TBFXZP"
     },
     {
       "generic_name": "左氧氟沙星片",
@@ -264,7 +278,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "国产制药企业"
+      "manufacturer": "国产制药企业",
+      "pinyin": "zyfsxp",
+      "pinyin_code": "ZYFSXP"
     },
     {
       "generic_name": "谷维素片",
@@ -294,7 +310,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "国产制药企业"
+      "manufacturer": "国产制药企业",
+      "pinyin": "gwsp",
+      "pinyin_code": "GWSP"
     },
     {
       "generic_name": "复合维生素B片",
@@ -324,7 +342,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "国产制药企业"
+      "manufacturer": "国产制药企业",
+      "pinyin": "fhwssbp",
+      "pinyin_code": "FHWSSBP"
     },
     {
       "generic_name": "蒙脱石散",
@@ -357,7 +377,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1.5,
-      "manufacturer": "博福-益普生"
+      "manufacturer": "博福-益普生",
+      "pinyin": "mtss",
+      "pinyin_code": "MTSS"
     },
     {
       "generic_name": "口服补液盐III",
@@ -389,7 +411,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 2,
-      "manufacturer": "西安安健药业"
+      "manufacturer": "西安安健药业",
+      "pinyin": "kfbyy",
+      "pinyin_code": "KFBYY"
     },
     {
       "generic_name": "阿司匹林肠溶片",
@@ -422,7 +446,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.3,
-      "manufacturer": "拜耳医药"
+      "manufacturer": "拜耳医药",
+      "pinyin": "asplcrp",
+      "pinyin_code": "ASPLCRP"
     },
     {
       "generic_name": "阿托伐他汀钙片",
@@ -455,7 +481,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1.2,
-      "manufacturer": "北京嘉林药业"
+      "manufacturer": "北京嘉林药业",
+      "pinyin": "atfttgp",
+      "pinyin_code": "ATFTTGP"
     },
     {
       "generic_name": "左甲状腺素钠片",
@@ -488,7 +516,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.4,
-      "manufacturer": "德国默克"
+      "manufacturer": "德国默克",
+      "pinyin": "zjzxsnp",
+      "pinyin_code": "ZJZXSNP"
     },
     {
       "generic_name": "甲巯咪唑片",
@@ -521,7 +551,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.8,
-      "manufacturer": "德国默克"
+      "manufacturer": "德国默克",
+      "pinyin": "jqmzp",
+      "pinyin_code": "JQMZP"
     },
     {
       "generic_name": "多潘立酮片",
@@ -554,7 +586,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.5,
-      "manufacturer": "西安杨森"
+      "manufacturer": "西安杨森",
+      "pinyin": "dpltp",
+      "pinyin_code": "DPLTP"
     },
     {
       "generic_name": "双歧杆菌三联活菌胶囊",
@@ -587,7 +621,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 3,
-      "manufacturer": "上海信谊药厂"
+      "manufacturer": "上海信谊药厂",
+      "pinyin": "sqgjslhjjn",
+      "pinyin_code": "SQGJSLHJJN"
     },
     {
       "generic_name": "莫匹罗星软膏",
@@ -617,7 +653,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "国产制药企业"
+      "manufacturer": "国产制药企业",
+      "pinyin": "mplxrg",
+      "pinyin_code": "MPLXRG"
     },
     {
       "generic_name": "碘伏消毒液",
@@ -643,7 +681,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "国产制药企业"
+      "manufacturer": "国产制药企业",
+      "pinyin": "dfxdy",
+      "pinyin_code": "DFXDY"
     },
     {
       "generic_name": "维生素B12注射液",
@@ -674,7 +714,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "国产制药企业"
+      "manufacturer": "国产制药企业",
+      "pinyin": "wssb12zsy",
+      "pinyin_code": "WSSB12ZSY"
     },
     {
       "generic_name": "维生素B6注射液",
@@ -706,7 +748,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "国产制药企业"
+      "manufacturer": "国产制药企业",
+      "pinyin": "wssb6zsy",
+      "pinyin_code": "WSSB6ZSY"
     },
     {
       "generic_name": "注射用头孢呋辛钠",
@@ -743,7 +787,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 3.5,
-      "manufacturer": "广州白云山天心"
+      "manufacturer": "广州白云山天心",
+      "pinyin": "zsytbfxn",
+      "pinyin_code": "ZSYTBFXN"
     },
     {
       "generic_name": "注射用泮托拉唑钠",
@@ -778,7 +824,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 8,
-      "manufacturer": "杭州中美华东"
+      "manufacturer": "杭州中美华东",
+      "pinyin": "zsyptlzn",
+      "pinyin_code": "ZSYPTLZN"
     },
     {
       "generic_name": "盐酸左氧氟沙星注射液",
@@ -815,7 +863,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 15,
-      "manufacturer": "扬子江药业"
+      "manufacturer": "扬子江药业",
+      "pinyin": "yszyfsxzsy",
+      "pinyin_code": "YSZYFSXZSY"
     },
     {
       "generic_name": "地塞米松磷酸钠注射液",
@@ -850,7 +900,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1,
-      "manufacturer": "郑州卓峰制药"
+      "manufacturer": "郑州卓峰制药",
+      "pinyin": "dsmslsnzsy",
+      "pinyin_code": "DSMSLSNZSY"
     },
     {
       "generic_name": "维生素C注射液",
@@ -886,7 +938,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1.5,
-      "manufacturer": "天津药业集团"
+      "manufacturer": "天津药业集团",
+      "pinyin": "wssczsy",
+      "pinyin_code": "WSSCZSY"
     },
     {
       "generic_name": "氯化钾注射液",
@@ -923,7 +977,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1,
-      "manufacturer": "天津药业集团"
+      "manufacturer": "天津药业集团",
+      "pinyin": "lhjzsy",
+      "pinyin_code": "LHJZSY"
     },
     {
       "generic_name": "清开灵注射液",
@@ -960,7 +1016,9 @@
       "is_solvent": false,
       "is_tcm_injection": true,
       "price_yuan": 6,
-      "manufacturer": "广州白云山明兴"
+      "manufacturer": "广州白云山明兴",
+      "pinyin": "qklzsy",
+      "pinyin_code": "QKLZSY"
     },
     {
       "generic_name": "注射用盐酸万古霉素",
@@ -997,7 +1055,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 80,
-      "manufacturer": "日本礼来"
+      "manufacturer": "日本礼来",
+      "pinyin": "zsyyswgms",
+      "pinyin_code": "ZSYYSWGMS"
     },
     {
       "generic_name": "0.9%氯化钠注射液",
@@ -1022,7 +1082,9 @@
       "is_tcm_injection": false,
       "volume_ml": 100,
       "price_yuan": 2,
-      "manufacturer": "四川科伦药业"
+      "manufacturer": "四川科伦药业",
+      "pinyin": "lhnzsy",
+      "pinyin_code": "LHNZSY"
     },
     {
       "generic_name": "0.9%氯化钠注射液",
@@ -1047,7 +1109,9 @@
       "is_tcm_injection": false,
       "volume_ml": 250,
       "price_yuan": 2,
-      "manufacturer": "四川科伦药业"
+      "manufacturer": "四川科伦药业",
+      "pinyin": "lhnzsy",
+      "pinyin_code": "LHNZSY"
     },
     {
       "generic_name": "5%葡萄糖注射液",
@@ -1072,7 +1136,9 @@
       "is_tcm_injection": false,
       "volume_ml": 250,
       "price_yuan": 2.5,
-      "manufacturer": "四川科伦药业"
+      "manufacturer": "四川科伦药业",
+      "pinyin": "pttzsy",
+      "pinyin_code": "PTTZSY"
     },
     {
       "generic_name": "葡萄糖氯化钠注射液",
@@ -1097,7 +1163,9 @@
       "is_tcm_injection": false,
       "volume_ml": 250,
       "price_yuan": 5,
-      "manufacturer": "国产制药企业"
+      "manufacturer": "国产制药企业",
+      "pinyin": "pttlhnzsy",
+      "pinyin_code": "PTTLHNZSY"
     },
     {
       "generic_name": "复方氯化钠注射液",
@@ -1122,7 +1190,9 @@
       "is_tcm_injection": false,
       "volume_ml": 500,
       "price_yuan": 3.5,
-      "manufacturer": "四川科伦药业"
+      "manufacturer": "四川科伦药业",
+      "pinyin": "fflhnzsy",
+      "pinyin_code": "FFLHNZSY"
     },
     {
       "generic_name": "头孢拉定胶囊",
@@ -1152,7 +1222,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.6,
-      "manufacturer": "广州白云山制药"
+      "manufacturer": "广州白云山制药",
+      "pinyin": "tbldjn",
+      "pinyin_code": "TBLDJN"
     },
     {
       "generic_name": "盐酸左氧氟沙星片",
@@ -1185,7 +1257,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 4,
-      "manufacturer": "第一三共制药"
+      "manufacturer": "第一三共制药",
+      "pinyin": "yszyfsxp",
+      "pinyin_code": "YSZYFSXP"
     },
     {
       "generic_name": "甲硝唑片",
@@ -1217,7 +1291,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.2,
-      "manufacturer": "华中药业"
+      "manufacturer": "华中药业",
+      "pinyin": "jxzp",
+      "pinyin_code": "JXZP"
     },
     {
       "generic_name": "阿奇霉素分散片",
@@ -1247,7 +1323,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 8,
-      "manufacturer": "辉瑞制药"
+      "manufacturer": "辉瑞制药",
+      "pinyin": "aqmsfsp",
+      "pinyin_code": "AQMSFSP"
     },
     {
       "generic_name": "克拉霉素片",
@@ -1277,7 +1355,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "雅培制药"
+      "manufacturer": "雅培制药",
+      "pinyin": "klmsp",
+      "pinyin_code": "KLMSP"
     },
     {
       "generic_name": "呋喃妥因肠溶片",
@@ -1307,7 +1387,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.3,
-      "manufacturer": "山西云鹏制药"
+      "manufacturer": "山西云鹏制药",
+      "pinyin": "fntycrp",
+      "pinyin_code": "FNTYCRP"
     },
     {
       "generic_name": "注射用头孢曲松钠",
@@ -1341,7 +1423,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
-      "manufacturer": "罗氏制药"
+      "manufacturer": "罗氏制药",
+      "pinyin": "zsytbqsn",
+      "pinyin_code": "ZSYTBQSN"
     },
     {
       "generic_name": "注射用哌拉西林钠他唑巴坦钠",
@@ -1375,7 +1459,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 35,
-      "manufacturer": "惠氏制药"
+      "manufacturer": "惠氏制药",
+      "pinyin": "zsyplxlntzbtn",
+      "pinyin_code": "ZSYPLXLNTZBTN"
     },
     {
       "generic_name": "注射用头孢哌酮钠舒巴坦钠",
@@ -1409,7 +1495,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 25,
-      "manufacturer": "辉瑞制药"
+      "manufacturer": "辉瑞制药",
+      "pinyin": "zsytbptnsbtn",
+      "pinyin_code": "ZSYTBPTNSBTN"
     },
     {
       "generic_name": "硫酸阿米卡星注射液",
@@ -1443,7 +1531,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 2,
-      "manufacturer": "上海医药集团"
+      "manufacturer": "上海医药集团",
+      "pinyin": "lsamkxzsy",
+      "pinyin_code": "LSAMKXZSY"
     },
     {
       "generic_name": "甲硝唑注射液",
@@ -1475,7 +1565,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 4,
-      "manufacturer": "四川科伦药业"
+      "manufacturer": "四川科伦药业",
+      "pinyin": "jxzzsy",
+      "pinyin_code": "JXZZSY"
     },
     {
       "generic_name": "酒石酸美托洛尔片",
@@ -1508,7 +1600,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.5,
-      "manufacturer": "阿斯利康"
+      "manufacturer": "阿斯利康",
+      "pinyin": "jssmtlep",
+      "pinyin_code": "JSSMTLEP"
     },
     {
       "generic_name": "比索洛尔片",
@@ -1538,7 +1632,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 2.5,
-      "manufacturer": "德国默克"
+      "manufacturer": "德国默克",
+      "pinyin": "bslep",
+      "pinyin_code": "BSLEP"
     },
     {
       "generic_name": "卡托普利片",
@@ -1571,7 +1667,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.1,
-      "manufacturer": "上海施贵宝"
+      "manufacturer": "上海施贵宝",
+      "pinyin": "ktplp",
+      "pinyin_code": "KTPLP"
     },
     {
       "generic_name": "缬沙坦胶囊",
@@ -1603,7 +1701,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 3,
-      "manufacturer": "诺华制药"
+      "manufacturer": "诺华制药",
+      "pinyin": "xstjn",
+      "pinyin_code": "XSTJN"
     },
     {
       "generic_name": "呋塞米片",
@@ -1635,7 +1735,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.2,
-      "manufacturer": "上海朝晖药业"
+      "manufacturer": "上海朝晖药业",
+      "pinyin": "fsmp",
+      "pinyin_code": "FSMP"
     },
     {
       "generic_name": "螺内酯片",
@@ -1667,7 +1769,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.3,
-      "manufacturer": "杭州民生药业"
+      "manufacturer": "杭州民生药业",
+      "pinyin": "lnzp",
+      "pinyin_code": "LNZP"
     },
     {
       "generic_name": "单硝酸异山梨酯缓释片",
@@ -1699,7 +1803,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 2,
-      "manufacturer": "阿斯利康"
+      "manufacturer": "阿斯利康",
+      "pinyin": "dxsyslzhsp",
+      "pinyin_code": "DXSYSLZHSP"
     },
     {
       "generic_name": "硝酸甘油片",
@@ -1732,7 +1838,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.5,
-      "manufacturer": "北京益民药业"
+      "manufacturer": "北京益民药业",
+      "pinyin": "xsgyp",
+      "pinyin_code": "XSGYP"
     },
     {
       "generic_name": "氯吡格雷片",
@@ -1764,7 +1872,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 12,
-      "manufacturer": "赛诺菲制药"
+      "manufacturer": "赛诺菲制药",
+      "pinyin": "lpglp",
+      "pinyin_code": "LPGLP"
     },
     {
       "generic_name": "法莫替丁片",
@@ -1794,7 +1904,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.3,
-      "manufacturer": "上海信谊药厂"
+      "manufacturer": "上海信谊药厂",
+      "pinyin": "fmtdp",
+      "pinyin_code": "FMTDP"
     },
     {
       "generic_name": "兰索拉唑肠溶胶囊",
@@ -1824,7 +1936,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 3,
-      "manufacturer": "天津武田药品"
+      "manufacturer": "天津武田药品",
+      "pinyin": "lslzcrjn",
+      "pinyin_code": "LSLZCRJN"
     },
     {
       "generic_name": "泮托拉唑钠肠溶胶囊",
@@ -1854,7 +1968,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 2.5,
-      "manufacturer": "杭州中美华东"
+      "manufacturer": "杭州中美华东",
+      "pinyin": "ptlzncrjn",
+      "pinyin_code": "PTLZNCRJN"
     },
     {
       "generic_name": "乳果糖口服液",
@@ -1884,7 +2000,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 8,
-      "manufacturer": "荷兰苏威制药"
+      "manufacturer": "荷兰苏威制药",
+      "pinyin": "rgtkfy",
+      "pinyin_code": "RGTKFY"
     },
     {
       "generic_name": "开塞露",
@@ -1914,7 +2032,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1,
-      "manufacturer": "山西三晋药业"
+      "manufacturer": "山西三晋药业",
+      "pinyin": "ksl",
+      "pinyin_code": "KSL"
     },
     {
       "generic_name": "盐酸氨溴索口服液",
@@ -1944,7 +2064,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 3,
-      "manufacturer": "上海勃林格殷格翰"
+      "manufacturer": "上海勃林格殷格翰",
+      "pinyin": "ysaxskfy",
+      "pinyin_code": "YSAXSKFY"
     },
     {
       "generic_name": "茶碱缓释片",
@@ -1976,7 +2098,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.5,
-      "manufacturer": "广州迈特兴华"
+      "manufacturer": "广州迈特兴华",
+      "pinyin": "cjhsp",
+      "pinyin_code": "CJHSP"
     },
     {
       "generic_name": "孟鲁司特钠片",
@@ -2006,7 +2130,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 6,
-      "manufacturer": "默沙东制药"
+      "manufacturer": "默沙东制药",
+      "pinyin": "mlstnp",
+      "pinyin_code": "MLSTNP"
     },
     {
       "generic_name": "格列美脲片",
@@ -2038,7 +2164,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1.5,
-      "manufacturer": "赛诺菲制药"
+      "manufacturer": "赛诺菲制药",
+      "pinyin": "glmnp",
+      "pinyin_code": "GLMNP"
     },
     {
       "generic_name": "阿卡波糖片",
@@ -2068,7 +2196,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 2,
-      "manufacturer": "拜耳医药"
+      "manufacturer": "拜耳医药",
+      "pinyin": "akbtp",
+      "pinyin_code": "AKBTP"
     },
     {
       "generic_name": "甘精胰岛素注射液",
@@ -2101,7 +2231,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 70,
-      "manufacturer": "赛诺菲制药"
+      "manufacturer": "赛诺菲制药",
+      "pinyin": "gjydszsy",
+      "pinyin_code": "GJYDSZSY"
     },
     {
       "generic_name": "对乙酰氨基酚片",
@@ -2133,7 +2265,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.3,
-      "manufacturer": "云南白药集团"
+      "manufacturer": "云南白药集团",
+      "pinyin": "dyxajfp",
+      "pinyin_code": "DYXAJFP"
     },
     {
       "generic_name": "瑞舒伐他汀钙片",
@@ -2165,7 +2299,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 4,
-      "manufacturer": "阿斯利康"
+      "manufacturer": "阿斯利康",
+      "pinyin": "rsfttgp",
+      "pinyin_code": "RSFTTGP"
     },
     {
       "generic_name": "丹参注射液",
@@ -2200,7 +2336,9 @@
       "is_solvent": false,
       "is_tcm_injection": true,
       "price_yuan": 5,
-      "manufacturer": "四川升和药业"
+      "manufacturer": "四川升和药业",
+      "pinyin": "dczsy",
+      "pinyin_code": "DCZSY"
     },
     {
       "generic_name": "血栓通注射液",
@@ -2234,7 +2372,9 @@
       "is_solvent": false,
       "is_tcm_injection": true,
       "price_yuan": 25,
-      "manufacturer": "广西梧州制药"
+      "manufacturer": "广西梧州制药",
+      "pinyin": "xstzsy",
+      "pinyin_code": "XSTZSY"
     },
     {
       "generic_name": "参麦注射液",
@@ -2269,7 +2409,9 @@
       "is_solvent": false,
       "is_tcm_injection": true,
       "price_yuan": 15,
-      "manufacturer": "四川雅安三九"
+      "manufacturer": "四川雅安三九",
+      "pinyin": "cmzsy",
+      "pinyin_code": "CMZSY"
     },
     {
       "generic_name": "呋塞米注射液",
@@ -2303,7 +2445,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 3,
-      "manufacturer": "天津药业集团"
+      "manufacturer": "天津药业集团",
+      "pinyin": "fsmzsy",
+      "pinyin_code": "FSMZSY"
     },
     {
       "generic_name": "10%葡萄糖注射液",
@@ -2328,11 +2472,13 @@
       "is_tcm_injection": false,
       "volume_ml": 250,
       "price_yuan": 2.5,
-      "manufacturer": "四川科伦药业"
+      "manufacturer": "四川科伦药业",
+      "pinyin": "pttzsy",
+      "pinyin_code": "PTTZSY"
     },
     {
       "generic_name": "硝苯地平缓释片",
-      "pinyin_code": "XDBPHSP",
+      "pinyin_code": "XBDPHSP",
       "spec": "20mg×30片/盒",
       "dosage_form": "oral",
       "price_yuan": 15,
@@ -2346,7 +2492,8 @@
         "single_dose": "20mg",
         "frequency": "bid",
         "days": 7
-      }
+      },
+      "pinyin": "xbdphsp"
     },
     {
       "generic_name": "美托洛尔缓释片",
@@ -2364,11 +2511,12 @@
         "single_dose": "47.5mg",
         "frequency": "qd",
         "days": 30
-      }
+      },
+      "pinyin": "mtlehsp"
     },
     {
       "generic_name": "缬沙坦氨氯地平片",
-      "pinyin_code": "XSTALDP",
+      "pinyin_code": "XSTALDPP",
       "spec": "80mg/5mg×7片/盒",
       "dosage_form": "oral",
       "price_yuan": 45,
@@ -2382,7 +2530,8 @@
         "single_dose": "1片",
         "frequency": "qd",
         "days": 30
-      }
+      },
+      "pinyin": "xstaldpp"
     },
     {
       "generic_name": "非布司他片",
@@ -2400,7 +2549,8 @@
         "single_dose": "40mg",
         "frequency": "qd",
         "days": 30
-      }
+      },
+      "pinyin": "fbstp"
     },
     {
       "generic_name": "苯溴马隆片",
@@ -2418,11 +2568,12 @@
         "single_dose": "50mg",
         "frequency": "qd",
         "days": 14
-      }
+      },
+      "pinyin": "bxmlp"
     },
     {
       "generic_name": "别嘌醇片",
-      "pinyin_code": "BPT",
+      "pinyin_code": "BPCP",
       "spec": "0.1g×100片/瓶",
       "dosage_form": "oral",
       "price_yuan": 12,
@@ -2436,11 +2587,12 @@
         "single_dose": "0.1g",
         "frequency": "bid",
         "days": 30
-      }
+      },
+      "pinyin": "bpcp"
     },
     {
       "generic_name": "雷贝拉唑钠肠溶片",
-      "pinyin_code": "LBLZAC",
+      "pinyin_code": "LBLZNCRP",
       "spec": "10mg×14片/盒",
       "dosage_form": "oral",
       "price_yuan": 28,
@@ -2454,11 +2606,12 @@
         "single_dose": "10mg",
         "frequency": "qd",
         "days": 14
-      }
+      },
+      "pinyin": "lblzncrp"
     },
     {
       "generic_name": "铝碳酸镁咀嚼片",
-      "pinyin_code": "LTSMJJ",
+      "pinyin_code": "LTSMJJP",
       "spec": "0.5g×20片/盒",
       "dosage_form": "oral",
       "price_yuan": 20,
@@ -2472,7 +2625,8 @@
         "single_dose": "1g",
         "frequency": "tid",
         "days": 7
-      }
+      },
+      "pinyin": "ltsmjjp"
     },
     {
       "generic_name": "莫沙必利片",
@@ -2490,7 +2644,8 @@
         "single_dose": "5mg",
         "frequency": "tid",
         "days": 7
-      }
+      },
+      "pinyin": "msblp"
     },
     {
       "generic_name": "格列齐特缓释片",
@@ -2508,7 +2663,8 @@
         "single_dose": "30mg",
         "frequency": "qd",
         "days": 30
-      }
+      },
+      "pinyin": "glqthsp"
     },
     {
       "generic_name": "氯雷他定片",
@@ -2526,11 +2682,12 @@
         "single_dose": "10mg",
         "frequency": "qd",
         "days": 7
-      }
+      },
+      "pinyin": "lltdp"
     },
     {
       "generic_name": "西替利嗪片",
-      "pinyin_code": "XTLQ",
+      "pinyin_code": "XTLQP",
       "spec": "10mg×10片/盒",
       "dosage_form": "oral",
       "price_yuan": 8,
@@ -2544,7 +2701,8 @@
         "single_dose": "10mg",
         "frequency": "qd",
         "days": 7
-      }
+      },
+      "pinyin": "xtlqp"
     },
     {
       "generic_name": "复方甘草片",
@@ -2562,7 +2720,8 @@
         "single_dose": "3片",
         "frequency": "tid",
         "days": 5
-      }
+      },
+      "pinyin": "ffgcp"
     },
     {
       "generic_name": "肺力咳合剂",
@@ -2580,11 +2739,12 @@
         "single_dose": "20ml",
         "frequency": "tid",
         "days": 7
-      }
+      },
+      "pinyin": "flkhj"
     },
     {
       "generic_name": "头孢克肟胶囊",
-      "pinyin_code": "TBKWN",
+      "pinyin_code": "TBKWJN",
       "spec": "100mg×6粒/盒",
       "dosage_form": "oral",
       "price_yuan": 22,
@@ -2598,11 +2758,12 @@
         "single_dose": "100mg",
         "frequency": "bid",
         "days": 7
-      }
+      },
+      "pinyin": "tbkwjn"
     },
     {
       "generic_name": "磷霉素氨丁三醇散",
-      "pinyin_code": "LMSADSC",
+      "pinyin_code": "LMSADSCS",
       "spec": "3g×1袋/盒",
       "dosage_form": "oral",
       "price_yuan": 45,
@@ -2616,7 +2777,8 @@
         "single_dose": "3g",
         "frequency": "st",
         "days": 1
-      }
+      },
+      "pinyin": "lmsadscs"
     },
     {
       "generic_name": "注射用头孢他啶",
@@ -2634,7 +2796,8 @@
         "single_dose": "1g",
         "frequency": "bid",
         "days": 7
-      }
+      },
+      "pinyin": "zsytbtd"
     },
     {
       "generic_name": "注射用美罗培南",
@@ -2652,11 +2815,12 @@
         "single_dose": "0.5g",
         "frequency": "q8h",
         "days": 7
-      }
+      },
+      "pinyin": "zsymlpn"
     },
     {
       "generic_name": "注射用阿奇霉素",
-      "pinyin_code": "ZSYQMS",
+      "pinyin_code": "ZSYAQMS",
       "spec": "0.25g/支",
       "dosage_form": "iv_drip",
       "price_yuan": 28,
@@ -2670,7 +2834,8 @@
         "single_dose": "0.5g",
         "frequency": "qd",
         "days": 5
-      }
+      },
+      "pinyin": "zsyaqms"
     },
     {
       "generic_name": "注射用克林霉素",
@@ -2688,11 +2853,12 @@
         "single_dose": "0.6g",
         "frequency": "bid",
         "days": 7
-      }
+      },
+      "pinyin": "zsyklms"
     },
     {
       "generic_name": "维生素B6注射液",
-      "pinyin_code": "WSSB6",
+      "pinyin_code": "WSSB6ZSY",
       "spec": "100mg/2ml/支",
       "dosage_form": "iv_drip",
       "price_yuan": 2.5,
@@ -2706,11 +2872,12 @@
         "single_dose": "200mg",
         "frequency": "qd",
         "days": 3
-      }
+      },
+      "pinyin": "wssb6zsy"
     },
     {
       "generic_name": "肌苷注射液",
-      "pinyin_code": "GYZSY",
+      "pinyin_code": "JGZSY",
       "spec": "0.1g/2ml/支",
       "dosage_form": "iv_drip",
       "price_yuan": 3,
@@ -2724,11 +2891,12 @@
         "single_dose": "0.2g",
         "frequency": "bid",
         "days": 7
-      }
+      },
+      "pinyin": "jgzsy"
     },
     {
       "generic_name": "甲氧氯普胺注射液",
-      "pinyin_code": "JYLANZ",
+      "pinyin_code": "JYLPAZSY",
       "spec": "10mg/1ml/支",
       "dosage_form": "iv_drip",
       "price_yuan": 2,
@@ -2742,11 +2910,12 @@
         "single_dose": "10mg",
         "frequency": "st",
         "days": 1
-      }
+      },
+      "pinyin": "jylpazsy"
     },
     {
       "generic_name": "山莨菪碱注射液",
-      "pinyin_code": "SLZJZ",
+      "pinyin_code": "SLDJZSY",
       "spec": "10mg/1ml/支",
       "dosage_form": "iv_drip",
       "price_yuan": 3.5,
@@ -2760,7 +2929,8 @@
         "single_dose": "10mg",
         "frequency": "st",
         "days": 1
-      }
+      },
+      "pinyin": "sldjzsy"
     },
     {
       "generic_name": "阿托品注射液",
@@ -2778,7 +2948,8 @@
         "single_dose": "0.5mg",
         "frequency": "st",
         "days": 1
-      }
+      },
+      "pinyin": "atpzsy"
     },
     {
       "generic_name": "多巴胺注射液",
@@ -2796,7 +2967,8 @@
         "single_dose": "20mg",
         "frequency": "st",
         "days": 1
-      }
+      },
+      "pinyin": "dbazsy"
     },
     {
       "generic_name": "甘露醇注射液",
@@ -2814,7 +2986,8 @@
         "single_dose": "250ml",
         "frequency": "st",
         "days": 1
-      }
+      },
+      "pinyin": "glczsy"
     },
     {
       "generic_name": "血必净注射液",
@@ -2833,7 +3006,8 @@
         "single_dose": "50ml",
         "frequency": "bid",
         "days": 7
-      }
+      },
+      "pinyin": "xbjzsy"
     },
     {
       "generic_name": "痰热清注射液",
@@ -2852,7 +3026,8 @@
         "single_dose": "20ml",
         "frequency": "qd",
         "days": 7
-      }
+      },
+      "pinyin": "trqzsy"
     },
     {
       "generic_name": "生脉注射液",
@@ -2871,7 +3046,8 @@
         "single_dose": "40ml",
         "frequency": "qd",
         "days": 7
-      }
+      },
+      "pinyin": "smzsy"
     },
     {
       "generic_name": "双氯芬酸钠缓释片",
@@ -2889,11 +3065,12 @@
         "single_dose": "75mg",
         "frequency": "qd",
         "days": 5
-      }
+      },
+      "pinyin": "slfsnhsp"
     },
     {
       "generic_name": "塞来昔布胶囊",
-      "pinyin_code": "SLXBN",
+      "pinyin_code": "SLXBJN",
       "spec": "0.2g×6粒/盒",
       "dosage_form": "oral",
       "price_yuan": 32,
@@ -2907,7 +3084,8 @@
         "single_dose": "0.2g",
         "frequency": "bid",
         "days": 7
-      }
+      },
+      "pinyin": "slxbjn"
     },
     {
       "generic_name": "氯化钾注射液",
@@ -2941,8 +3119,9 @@
       "special_warnings_json": [
         "浓度≤0.3%"
       ],
-      "pinyin": "hlhsdsy",
-      "is_tcm_injection": false
+      "pinyin": "lhjzsy",
+      "is_tcm_injection": false,
+      "pinyin_code": "LHJZSY"
     },
     {
       "generic_name": "10%葡萄糖酸钙注射液",
@@ -2973,8 +3152,9 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "pttssgs",
-      "is_tcm_injection": false
+      "pinyin": "pttsgzsy",
+      "is_tcm_injection": false,
+      "pinyin_code": "PTTSGZSY"
     },
     {
       "generic_name": "清开灵注射液",
@@ -3008,8 +3188,9 @@
         "单独输注",
         "过敏体质"
       ],
-      "pinyin": "qlkzs",
-      "is_tcm_injection": true
+      "pinyin": "qklzsy",
+      "is_tcm_injection": true,
+      "pinyin_code": "QKLZSY"
     },
     {
       "generic_name": "血塞通注射液",
@@ -3043,8 +3224,9 @@
       "special_warnings_json": [
         "单独输注"
       ],
-      "pinyin": "xsttzs",
-      "is_tcm_injection": true
+      "pinyin": "xstzsy",
+      "is_tcm_injection": true,
+      "pinyin_code": "XSTZSY"
     },
     {
       "generic_name": "丹参注射液",
@@ -3077,8 +3259,9 @@
       "special_warnings_json": [
         "单独输注"
       ],
-      "pinyin": "ddzs",
-      "is_tcm_injection": true
+      "pinyin": "dczsy",
+      "is_tcm_injection": true,
+      "pinyin_code": "DCZSY"
     },
     {
       "generic_name": "参麦注射液",
@@ -3111,8 +3294,9 @@
       "special_warnings_json": [
         "单独输注"
       ],
-      "pinyin": "smzs",
-      "is_tcm_injection": true
+      "pinyin": "cmzsy",
+      "is_tcm_injection": true,
+      "pinyin_code": "CMZSY"
     },
     {
       "generic_name": "5%葡萄糖氯化钠注射液",
@@ -3141,8 +3325,9 @@
       "drip_speed_max_mlh": 60,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "pttahlnz",
-      "is_tcm_injection": false
+      "pinyin": "pttlhnzsy",
+      "is_tcm_injection": false,
+      "pinyin_code": "PTTLHNZSY"
     },
     {
       "generic_name": "10%葡萄糖注射液",
@@ -3171,8 +3356,9 @@
       "drip_speed_max_mlh": 60,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "ptttss",
-      "is_tcm_injection": false
+      "pinyin": "pttzsy",
+      "is_tcm_injection": false,
+      "pinyin_code": "PTTZSY"
     },
     {
       "generic_name": "复方氨基酸注射液",
@@ -3201,8 +3387,9 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "ffajszs",
-      "is_tcm_injection": false
+      "pinyin": "ffajszsy",
+      "is_tcm_injection": false,
+      "pinyin_code": "FFAJSZSY"
     },
     {
       "generic_name": "缬沙坦胶囊",
@@ -3233,7 +3420,8 @@
       "special_warnings_json": [
         "孕妇禁用"
       ],
-      "pinyin": "xstjn"
+      "pinyin": "xstjn",
+      "pinyin_code": "XSTJN"
     },
     {
       "generic_name": "美托洛尔缓释片",
@@ -3264,7 +3452,8 @@
       "special_warnings_json": [
         "哮喘禁用"
       ],
-      "pinyin": "mtgesp"
+      "pinyin": "mtlehsp",
+      "pinyin_code": "MTLEHSP"
     },
     {
       "generic_name": "阿托伐他汀钙片",
@@ -3293,7 +3482,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "atftg"
+      "pinyin": "atfttgp",
+      "pinyin_code": "ATFTTGP"
     },
     {
       "generic_name": "阿司匹林肠溶片",
@@ -3324,7 +3514,8 @@
       "special_warnings_json": [
         "出血倾向禁用"
       ],
-      "pinyin": "aspclp"
+      "pinyin": "asplcrp",
+      "pinyin_code": "ASPLCRP"
     },
     {
       "generic_name": "氯吡格雷片",
@@ -3353,7 +3544,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "blglp"
+      "pinyin": "lpglp",
+      "pinyin_code": "LPGLP"
     },
     {
       "generic_name": "雷贝拉唑钠肠溶片",
@@ -3382,7 +3574,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "blzcncp"
+      "pinyin": "lblzncrp",
+      "pinyin_code": "LBLZNCRP"
     },
     {
       "generic_name": "铝碳酸镁片",
@@ -3411,7 +3604,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "ltsmp"
+      "pinyin": "ltsmp",
+      "pinyin_code": "LTSMP"
     },
     {
       "generic_name": "多潘立酮片",
@@ -3442,7 +3636,8 @@
       "special_warnings_json": [
         "心脏QT间期"
       ],
-      "pinyin": "ddltp"
+      "pinyin": "dpltp",
+      "pinyin_code": "DPLTP"
     },
     {
       "generic_name": "蒙脱石散",
@@ -3471,7 +3666,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "mtsd"
+      "pinyin": "mtss",
+      "pinyin_code": "MTSS"
     },
     {
       "generic_name": "口服补液盐Ⅲ",
@@ -3500,7 +3696,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "kfbyy"
+      "pinyin": "kfbyy",
+      "pinyin_code": "KFBYY"
     },
     {
       "generic_name": "左甲状腺素钠片",
@@ -3531,7 +3728,8 @@
       "special_warnings_json": [
         "空腹服"
       ],
-      "pinyin": "zjzxsnsp"
+      "pinyin": "zjzxsnp",
+      "pinyin_code": "ZJZXSNP"
     },
     {
       "generic_name": "甲巯咪唑片",
@@ -3562,7 +3760,8 @@
       "special_warnings_json": [
         "粒细胞缺乏"
       ],
-      "pinyin": "jqmlzp"
+      "pinyin": "jqmzp",
+      "pinyin_code": "JQMZP"
     },
     {
       "generic_name": "氯雷他定片",
@@ -3591,7 +3790,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "llatp"
+      "pinyin": "lltdp",
+      "pinyin_code": "LLTDP"
     },
     {
       "generic_name": "西替利嗪片",
@@ -3620,7 +3820,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "xtlqp"
+      "pinyin": "xtlqp",
+      "pinyin_code": "XTLQP"
     },
     {
       "generic_name": "布洛芬混悬液",
@@ -3651,7 +3852,8 @@
       "special_warnings_json": [
         "儿童按体重"
       ],
-      "pinyin": "blfhxy"
+      "pinyin": "blfhxy",
+      "pinyin_code": "BLFHXY"
     },
     {
       "generic_name": "氨溴索口服溶液",
@@ -3680,7 +3882,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "axskfry"
+      "pinyin": "axskfry",
+      "pinyin_code": "AXSKFRY"
     },
     {
       "generic_name": "川贝枇杷膏",
@@ -3709,7 +3912,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "cbppg"
+      "pinyin": "cbppg",
+      "pinyin_code": "CBPPG"
     },
     {
       "generic_name": "藿香正气水",
@@ -3740,7 +3944,8 @@
       "special_warnings_json": [
         "含酒精"
       ],
-      "pinyin": "hxzqs"
+      "pinyin": "hxzqs",
+      "pinyin_code": "HXZQS"
     },
     {
       "generic_name": "板蓝根颗粒",
@@ -3769,7 +3974,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "blgkl"
+      "pinyin": "blgkl",
+      "pinyin_code": "BLGKL"
     },
     {
       "generic_name": "连花清瘟胶囊",
@@ -3798,7 +4004,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "lhqwnjn"
+      "pinyin": "lhqwjn",
+      "pinyin_code": "LHQWJN"
     },
     {
       "generic_name": "注射用头孢曲松钠",
@@ -3832,8 +4039,9 @@
       "special_warnings_json": [
         "禁与钙剂合用"
       ],
-      "pinyin": "zstbqsn",
-      "is_tcm_injection": false
+      "pinyin": "zsytbqsn",
+      "is_tcm_injection": false,
+      "pinyin_code": "ZSYTBQSN"
     },
     {
       "generic_name": "注射用头孢他啶",
@@ -3864,8 +4072,9 @@
       "drip_speed_max_mlh": 60,
       "skin_test_required": true,
       "special_warnings_json": [],
-      "pinyin": "zstbtd",
-      "is_tcm_injection": false
+      "pinyin": "zsytbtd",
+      "is_tcm_injection": false,
+      "pinyin_code": "ZSYTBTD"
     },
     {
       "generic_name": "注射用头孢哌酮钠舒巴坦钠",
@@ -3898,8 +4107,9 @@
       "special_warnings_json": [
         "双硫仑样反应"
       ],
-      "pinyin": "zstbpnnsn",
-      "is_tcm_injection": false
+      "pinyin": "zsytbptnsbtn",
+      "is_tcm_injection": false,
+      "pinyin_code": "ZSYTBPTNSBTN"
     },
     {
       "generic_name": "注射用阿莫西林钠克拉维酸钾",
@@ -3930,8 +4140,9 @@
       "drip_speed_max_mlh": 60,
       "skin_test_required": true,
       "special_warnings_json": [],
-      "pinyin": "zsxmxtnklwjsn",
-      "is_tcm_injection": false
+      "pinyin": "zsyamxlnklwsj",
+      "is_tcm_injection": false,
+      "pinyin_code": "ZSYAMXLNKLWSJ"
     },
     {
       "generic_name": "注射用哌拉西林钠他唑巴坦钠",
@@ -3962,8 +4173,9 @@
       "drip_speed_max_mlh": 60,
       "skin_test_required": true,
       "special_warnings_json": [],
-      "pinyin": "zspalxnstzbt",
-      "is_tcm_injection": false
+      "pinyin": "zsyplxlntzbtn",
+      "is_tcm_injection": false,
+      "pinyin_code": "ZSYPLXLNTZBTN"
     },
     {
       "generic_name": "注射用万古霉素",
@@ -3998,8 +4210,9 @@
         "慢滴",
         "红人综合征"
       ],
-      "pinyin": "zswkms",
-      "is_tcm_injection": false
+      "pinyin": "zsywgms",
+      "is_tcm_injection": false,
+      "pinyin_code": "ZSYWGMS"
     },
     {
       "generic_name": "注射用奥美拉唑钠",
@@ -4030,8 +4243,9 @@
       "drip_speed_max_mlh": 60,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "zsalmezsn",
-      "is_tcm_injection": false
+      "pinyin": "zsyamlzn",
+      "is_tcm_injection": false,
+      "pinyin_code": "ZSYAMLZN"
     },
     {
       "generic_name": "呋塞米注射液",
@@ -4064,8 +4278,9 @@
       "special_warnings_json": [
         "监测电解质"
       ],
-      "pinyin": "fsmdsy",
-      "is_tcm_injection": false
+      "pinyin": "fsmzsy",
+      "is_tcm_injection": false,
+      "pinyin_code": "FSMZSY"
     },
     {
       "generic_name": "缬沙坦氨氯地平片",
@@ -4094,7 +4309,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "xstlandp"
+      "pinyin": "xstaldpp",
+      "pinyin_code": "XSTALDPP"
     },
     {
       "generic_name": "非洛地平缓释片",
@@ -4123,7 +4339,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "fldpsp"
+      "pinyin": "fldphsp",
+      "pinyin_code": "FLDPHSP"
     },
     {
       "generic_name": "盐酸贝那普利片",
@@ -4154,7 +4371,8 @@
       "special_warnings_json": [
         "干咳"
       ],
-      "pinyin": "ysbynp"
+      "pinyin": "ysbnplp",
+      "pinyin_code": "YSBNPLP"
     },
     {
       "generic_name": "吲达帕胺缓释片",
@@ -4185,7 +4403,8 @@
       "special_warnings_json": [
         "低血钾"
       ],
-      "pinyin": "ydpasp"
+      "pinyin": "ydpahsp",
+      "pinyin_code": "YDPAHSP"
     },
     {
       "generic_name": "硝酸甘油片",
@@ -4216,7 +4435,8 @@
       "special_warnings_json": [
         "舌下含服"
       ],
-      "pinyin": "xsgryp"
+      "pinyin": "xsgyp",
+      "pinyin_code": "XSGYP"
     },
     {
       "generic_name": "辛伐他汀片",
@@ -4245,7 +4465,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "xgttp"
+      "pinyin": "xfttp",
+      "pinyin_code": "XFTTP"
     },
     {
       "generic_name": "非诺贝特胶囊",
@@ -4274,7 +4495,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "febttn"
+      "pinyin": "fnbtjn",
+      "pinyin_code": "FNBTJN"
     },
     {
       "generic_name": "硝苯地平片",
@@ -4303,7 +4525,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "xbbp"
+      "pinyin": "xbdpp",
+      "pinyin_code": "XBDPP"
     },
     {
       "generic_name": "雷尼替丁胶囊",
@@ -4332,7 +4555,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "lntdj n"
+      "pinyin": "lntdjn",
+      "pinyin_code": "LNTDJN"
     },
     {
       "generic_name": "枸橼酸铋钾颗粒",
@@ -4363,7 +4587,8 @@
       "special_warnings_json": [
         "黑便"
       ],
-      "pinyin": "jysbjk kl"
+      "pinyin": "jysbjkl",
+      "pinyin_code": "JYSBJKL"
     },
     {
       "generic_name": "熊去氧胆酸胶囊",
@@ -4392,7 +4617,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "xqy dsnjn"
+      "pinyin": "xqydsjn",
+      "pinyin_code": "XQYDSJN"
     },
     {
       "generic_name": "美沙拉嗪缓释颗粒",
@@ -4421,7 +4647,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "mslq ksl"
+      "pinyin": "mslqhskl",
+      "pinyin_code": "MSLQHSKL"
     },
     {
       "generic_name": "匹维溴铵片",
@@ -4450,7 +4677,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "pwm ap"
+      "pinyin": "pwxap",
+      "pinyin_code": "PWXAP"
     },
     {
       "generic_name": "乳果糖口服液",
@@ -4479,7 +4707,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "rg tg kf"
+      "pinyin": "rgtkfy",
+      "pinyin_code": "RGTKFY"
     },
     {
       "generic_name": "甘精胰岛素注射液",
@@ -4510,7 +4739,8 @@
       "special_warnings_json": [
         "低血糖"
       ],
-      "pinyin": "gjyds zsy"
+      "pinyin": "gjydszsy",
+      "pinyin_code": "GJYDSZSY"
     },
     {
       "generic_name": "门冬胰岛素注射液",
@@ -4541,7 +4771,8 @@
       "special_warnings_json": [
         "餐前注射"
       ],
-      "pinyin": "mdyds zsy"
+      "pinyin": "mdydszsy",
+      "pinyin_code": "MDYDSZSY"
     },
     {
       "generic_name": "阿卡波糖片",
@@ -4572,7 +4803,8 @@
       "special_warnings_json": [
         "随第一口饭嚼服"
       ],
-      "pinyin": "akbtp"
+      "pinyin": "akbtp",
+      "pinyin_code": "AKBTP"
     },
     {
       "generic_name": "达格列净片",
@@ -4603,7 +4835,8 @@
       "special_warnings_json": [
         "泌尿生殖系统感染"
       ],
-      "pinyin": "dgljp"
+      "pinyin": "dgljp",
+      "pinyin_code": "DGLJP"
     },
     {
       "generic_name": "瑞格列奈片",
@@ -4634,7 +4867,8 @@
       "special_warnings_json": [
         "餐前15分钟"
       ],
-      "pinyin": "rglnp"
+      "pinyin": "rglnp",
+      "pinyin_code": "RGLNP"
     },
     {
       "generic_name": "孟鲁司特钠片",
@@ -4663,7 +4897,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "mlstnp"
+      "pinyin": "mlstnp",
+      "pinyin_code": "MLSTNP"
     },
     {
       "generic_name": "茶碱缓释片",
@@ -4694,7 +4929,8 @@
       "special_warnings_json": [
         "治疗窗窄"
       ],
-      "pinyin": "jch sp"
+      "pinyin": "cjhsp",
+      "pinyin_code": "CJHSP"
     },
     {
       "generic_name": "乙酰半胱氨酸泡腾片",
@@ -4725,7 +4961,8 @@
       "special_warnings_json": [
         "温水溶解"
       ],
-      "pinyin": "yxbn anpt"
+      "pinyin": "yxbgasptp",
+      "pinyin_code": "YXBGASPTP"
     },
     {
       "generic_name": "复方甘草片",
@@ -4756,7 +4993,8 @@
       "special_warnings_json": [
         "含阿片"
       ],
-      "pinyin": "ffgc p"
+      "pinyin": "ffgcp",
+      "pinyin_code": "FFGCP"
     },
     {
       "generic_name": "头孢克肟分散片",
@@ -4785,7 +5023,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "tbk wfs"
+      "pinyin": "tbkwfsp",
+      "pinyin_code": "TBKWFSP"
     },
     {
       "generic_name": "头孢地尼分散片",
@@ -4814,7 +5053,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "tb dn fs"
+      "pinyin": "tbdnfsp",
+      "pinyin_code": "TBDNFSP"
     },
     {
       "generic_name": "克拉霉素片",
@@ -4843,7 +5083,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "klms p"
+      "pinyin": "klmsp",
+      "pinyin_code": "KLMSP"
     },
     {
       "generic_name": "阿奇霉素干混悬剂",
@@ -4874,7 +5115,8 @@
       "special_warnings_json": [
         "儿童适用"
       ],
-      "pinyin": "aqms g hx"
+      "pinyin": "aqmsghxj",
+      "pinyin_code": "AQMSGHXJ"
     },
     {
       "generic_name": "多西环素片",
@@ -4905,7 +5147,8 @@
       "special_warnings_json": [
         "8岁以下禁用"
       ],
-      "pinyin": "dhs p"
+      "pinyin": "dxhsp",
+      "pinyin_code": "DXHSP"
     },
     {
       "generic_name": "呋喃妥因肠溶片",
@@ -4934,7 +5177,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "fnt yn cp"
+      "pinyin": "fntycrp",
+      "pinyin_code": "FNTYCRP"
     },
     {
       "generic_name": "磷霉素氨丁三醇散",
@@ -4965,7 +5209,8 @@
       "special_warnings_json": [
         "单剂疗法"
       ],
-      "pinyin": "lms ad sc"
+      "pinyin": "lmsadscs",
+      "pinyin_code": "LMSADSCS"
     },
     {
       "generic_name": "注射用头孢唑林钠",
@@ -4996,7 +5241,8 @@
       "drip_speed_max_mlh": 60,
       "skin_test_required": true,
       "special_warnings_json": [],
-      "pinyin": "zstbzln s"
+      "pinyin": "zsytbzln",
+      "pinyin_code": "ZSYTBZLN"
     },
     {
       "generic_name": "注射用头孢硫脒",
@@ -5027,7 +5273,8 @@
       "drip_speed_max_mlh": 60,
       "skin_test_required": true,
       "special_warnings_json": [],
-      "pinyin": "zstblm"
+      "pinyin": "zsytblm",
+      "pinyin_code": "ZSYTBLM"
     },
     {
       "generic_name": "注射用乳糖酸红霉素",
@@ -5060,7 +5307,8 @@
       "special_warnings_json": [
         "胃肠道反应"
       ],
-      "pinyin": "zstrs a hms"
+      "pinyin": "zsyrtshms",
+      "pinyin_code": "ZSYRTSHMS"
     },
     {
       "generic_name": "注射用阿奇霉素",
@@ -5092,7 +5340,8 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "zsaqms"
+      "pinyin": "zsyaqms",
+      "pinyin_code": "ZSYAQMS"
     },
     {
       "generic_name": "注射用克林霉素磷酸酯",
@@ -5126,7 +5375,8 @@
       "special_warnings_json": [
         "伪膜性肠炎"
       ],
-      "pinyin": "zsklm ls zs"
+      "pinyin": "zsyklmslsz",
+      "pinyin_code": "ZSYKLMSLSZ"
     },
     {
       "generic_name": "氟康唑氯化钠注射液",
@@ -5155,7 +5405,8 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "fkz hlnz sy"
+      "pinyin": "fkzlhnzsy",
+      "pinyin_code": "FKZLHNZSY"
     },
     {
       "generic_name": "注射用泮托拉唑钠",
@@ -5186,7 +5437,8 @@
       "drip_speed_max_mlh": 60,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "zspntl zsn"
+      "pinyin": "zsyptlzn",
+      "pinyin_code": "ZSYPTLZN"
     },
     {
       "generic_name": "醒脑静注射液",
@@ -5220,8 +5472,9 @@
       "special_warnings_json": [
         "单独输注"
       ],
-      "pinyin": "xnj zs",
-      "is_tcm_injection": true
+      "pinyin": "xnjzsy",
+      "is_tcm_injection": true,
+      "pinyin_code": "XNJZSY"
     },
     {
       "generic_name": "脉络宁注射液",
@@ -5254,8 +5507,9 @@
       "special_warnings_json": [
         "单独输注"
       ],
-      "pinyin": "mln zs",
-      "is_tcm_injection": true
+      "pinyin": "mlnzsy",
+      "is_tcm_injection": true,
+      "pinyin_code": "MLNZSY"
     },
     {
       "generic_name": "血栓通注射液",
@@ -5289,8 +5543,9 @@
       "special_warnings_json": [
         "单独输注"
       ],
-      "pinyin": "xstt zs",
-      "is_tcm_injection": true
+      "pinyin": "xstzsy",
+      "is_tcm_injection": true,
+      "pinyin_code": "XSTZSY"
     },
     {
       "generic_name": "天麻素注射液",
@@ -5322,8 +5577,9 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "tms zs",
-      "is_tcm_injection": true
+      "pinyin": "tmszsy",
+      "is_tcm_injection": true,
+      "pinyin_code": "TMSZSY"
     },
     {
       "generic_name": "莫匹罗星软膏",
@@ -5352,7 +5608,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "mplx rg"
+      "pinyin": "mplxrg",
+      "pinyin_code": "MPLXRG"
     },
     {
       "generic_name": "红霉素软膏",
@@ -5381,7 +5638,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "hms rg"
+      "pinyin": "hmsrg",
+      "pinyin_code": "HMSRG"
     },
     {
       "generic_name": "酮康唑乳膏",
@@ -5410,7 +5668,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "tkz rg"
+      "pinyin": "tkzrg",
+      "pinyin_code": "TKZRG"
     },
     {
       "generic_name": "丁酸氢化可的松乳膏",
@@ -5441,7 +5700,8 @@
       "special_warnings_json": [
         "面部避免长期用"
       ],
-      "pinyin": "dsqnhdks rg"
+      "pinyin": "dsqhkdsrg",
+      "pinyin_code": "DSQHKDSRG"
     },
     {
       "generic_name": "炉甘石洗剂",
@@ -5470,7 +5730,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "lgs xj"
+      "pinyin": "lgsxj",
+      "pinyin_code": "LGSXJ"
     },
     {
       "generic_name": "双氯芬酸二乙胺乳胶剂",
@@ -5499,7 +5760,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [],
-      "pinyin": "slfs se ya"
+      "pinyin": "slfseyarjj",
+      "pinyin_code": "SLFSEYARJJ"
     },
     {
       "generic_name": "头孢克洛",
@@ -5514,7 +5776,9 @@
         "single_max_mg": 500,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "tbkl",
+      "pinyin_code": "TBKL"
     },
     {
       "generic_name": "头孢呋辛酯",
@@ -5529,7 +5793,9 @@
         "single_max_mg": 500,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "tbfxz",
+      "pinyin_code": "TBFXZ"
     },
     {
       "generic_name": "头孢地尼",
@@ -5544,7 +5810,9 @@
         "single_max_mg": 200,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "tbdn",
+      "pinyin_code": "TBDN"
     },
     {
       "generic_name": "头孢克肟",
@@ -5559,7 +5827,9 @@
         "single_max_mg": 100,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "tbkw",
+      "pinyin_code": "TBKW"
     },
     {
       "generic_name": "头孢哌酮舒巴坦",
@@ -5575,7 +5845,9 @@
         "single_max_mg": 4000,
         "default_freq": "bid",
         "default_duration_days": 5
-      }
+      },
+      "pinyin": "tbptsbt",
+      "pinyin_code": "TBPTSBT"
     },
     {
       "generic_name": "头孢他啶",
@@ -5591,7 +5863,9 @@
         "single_max_mg": 2000,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "tbtd",
+      "pinyin_code": "TBTD"
     },
     {
       "generic_name": "头孢曲松",
@@ -5607,7 +5881,9 @@
         "single_max_mg": 2000,
         "default_freq": "qd",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "tbqs",
+      "pinyin_code": "TBQS"
     },
     {
       "generic_name": "阿莫西林克拉维酸钾",
@@ -5623,7 +5899,9 @@
         "single_max_mg": 750,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "amxlklwsj",
+      "pinyin_code": "AMXLKLWSJ"
     },
     {
       "generic_name": "哌拉西林他唑巴坦",
@@ -5639,7 +5917,9 @@
         "single_max_mg": 4500,
         "default_freq": "q8h",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "plxltzbt",
+      "pinyin_code": "PLXLTZBT"
     },
     {
       "generic_name": "苄星青霉素",
@@ -5653,7 +5933,9 @@
       "dose_range_json": {
         "default_freq": "qw",
         "default_duration_days": 28
-      }
+      },
+      "pinyin": "bxqms",
+      "pinyin_code": "BXQMS"
     },
     {
       "generic_name": "诺氟沙星",
@@ -5668,7 +5950,9 @@
         "single_max_mg": 400,
         "default_freq": "tid",
         "default_duration_days": 3
-      }
+      },
+      "pinyin": "nfsx",
+      "pinyin_code": "NFSX"
     },
     {
       "generic_name": "莫西沙星",
@@ -5683,7 +5967,9 @@
         "single_max_mg": 400,
         "default_freq": "qd",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "mxsx",
+      "pinyin_code": "MXSX"
     },
     {
       "generic_name": "阿奇霉素",
@@ -5698,7 +5984,9 @@
         "single_max_mg": 500,
         "default_freq": "qd",
         "default_duration_days": 5
-      }
+      },
+      "pinyin": "aqms",
+      "pinyin_code": "AQMS"
     },
     {
       "generic_name": "罗红霉素",
@@ -5713,7 +6001,9 @@
         "single_max_mg": 300,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "lhms",
+      "pinyin_code": "LHMS"
     },
     {
       "generic_name": "克拉霉素",
@@ -5728,7 +6018,9 @@
         "single_max_mg": 500,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "klms",
+      "pinyin_code": "KLMS"
     },
     {
       "generic_name": "甲硝唑",
@@ -5743,7 +6035,9 @@
         "single_max_mg": 400,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "jxz",
+      "pinyin_code": "JXZ"
     },
     {
       "generic_name": "替硝唑",
@@ -5758,7 +6052,9 @@
         "single_max_mg": 1000,
         "default_freq": "bid",
         "default_duration_days": 5
-      }
+      },
+      "pinyin": "txz",
+      "pinyin_code": "TXZ"
     },
     {
       "generic_name": "呋喃妥因",
@@ -5773,7 +6069,9 @@
         "single_max_mg": 100,
         "default_freq": "qid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "fnty",
+      "pinyin_code": "FNTY"
     },
     {
       "generic_name": "磷霉素",
@@ -5788,7 +6086,9 @@
         "single_max_mg": 3000,
         "default_freq": "qd",
         "default_duration_days": 3
-      }
+      },
+      "pinyin": "lms",
+      "pinyin_code": "LMS"
     },
     {
       "generic_name": "氨溴索",
@@ -5803,7 +6103,9 @@
         "single_max_mg": 60,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "axs",
+      "pinyin_code": "AXS"
     },
     {
       "generic_name": "乙酰半胱氨酸",
@@ -5818,7 +6120,9 @@
         "single_max_mg": 600,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "yxbgas",
+      "pinyin_code": "YXBGAS"
     },
     {
       "generic_name": "右美沙芬",
@@ -5833,7 +6137,9 @@
         "single_max_mg": 30,
         "default_freq": "tid",
         "default_duration_days": 5
-      }
+      },
+      "pinyin": "ymsf",
+      "pinyin_code": "YMSF"
     },
     {
       "generic_name": "沙丁胺醇",
@@ -5848,7 +6154,9 @@
         "single_max_mg": 4.8,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "sdac",
+      "pinyin_code": "SDAC"
     },
     {
       "generic_name": "氨茶碱",
@@ -5863,7 +6171,9 @@
         "single_max_mg": 200,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "acj",
+      "pinyin_code": "ACJ"
     },
     {
       "generic_name": "布地奈德",
@@ -5878,7 +6188,9 @@
         "single_max_mg": 2,
         "default_freq": "bid",
         "default_duration_days": 5
-      }
+      },
+      "pinyin": "bdnd",
+      "pinyin_code": "BDND"
     },
     {
       "generic_name": "丙酸氟替卡松",
@@ -5891,7 +6203,9 @@
       "dose_range_json": {
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "bsftks",
+      "pinyin_code": "BSFTKS"
     },
     {
       "generic_name": "奥美拉唑",
@@ -5906,7 +6220,9 @@
         "single_max_mg": 40,
         "default_freq": "qd",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "amlz",
+      "pinyin_code": "AMLZ"
     },
     {
       "generic_name": "兰索拉唑",
@@ -5921,7 +6237,9 @@
         "single_max_mg": 30,
         "default_freq": "qd",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "lslz",
+      "pinyin_code": "LSLZ"
     },
     {
       "generic_name": "泮托拉唑",
@@ -5936,7 +6254,9 @@
         "single_max_mg": 80,
         "default_freq": "qd",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "ptlz",
+      "pinyin_code": "PTLZ"
     },
     {
       "generic_name": "法莫替丁",
@@ -5951,7 +6271,9 @@
         "single_max_mg": 40,
         "default_freq": "bid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "fmtd",
+      "pinyin_code": "FMTD"
     },
     {
       "generic_name": "铝碳酸镁",
@@ -5966,7 +6288,9 @@
         "single_max_mg": 1000,
         "default_freq": "tid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "ltsm",
+      "pinyin_code": "LTSM"
     },
     {
       "generic_name": "多潘立酮",
@@ -5981,7 +6305,9 @@
         "single_max_mg": 20,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "dplt",
+      "pinyin_code": "DPLT"
     },
     {
       "generic_name": "莫沙必利",
@@ -5996,7 +6322,9 @@
         "single_max_mg": 5,
         "default_freq": "tid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "msbl",
+      "pinyin_code": "MSBL"
     },
     {
       "generic_name": "双歧杆菌三联活菌",
@@ -6011,7 +6339,9 @@
         "single_max_mg": 840,
         "default_freq": "bid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "sqgjslhj",
+      "pinyin_code": "SQGJSLHJ"
     },
     {
       "generic_name": "乳果糖",
@@ -6026,7 +6356,9 @@
         "single_max_ml": 30,
         "default_freq": "qd",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "rgt",
+      "pinyin_code": "RGT"
     },
     {
       "generic_name": "复方消化酶",
@@ -6039,7 +6371,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "ffxhm",
+      "pinyin_code": "FFXHM"
     },
     {
       "generic_name": "美托洛尔",
@@ -6054,7 +6388,9 @@
         "single_max_mg": 50,
         "default_freq": "bid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "mtle",
+      "pinyin_code": "MTLE"
     },
     {
       "generic_name": "比索洛尔",
@@ -6069,7 +6405,9 @@
         "single_max_mg": 10,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "bsle",
+      "pinyin_code": "BSLE"
     },
     {
       "generic_name": "氨氯地平",
@@ -6084,7 +6422,9 @@
         "single_max_mg": 10,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "aldp",
+      "pinyin_code": "ALDP"
     },
     {
       "generic_name": "缬沙坦",
@@ -6099,7 +6439,9 @@
         "single_max_mg": 160,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "xst",
+      "pinyin_code": "XST"
     },
     {
       "generic_name": "厄贝沙坦",
@@ -6114,7 +6456,9 @@
         "single_max_mg": 300,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "ebst",
+      "pinyin_code": "EBST"
     },
     {
       "generic_name": "依那普利",
@@ -6129,7 +6473,9 @@
         "single_max_mg": 20,
         "default_freq": "bid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "ynpl",
+      "pinyin_code": "YNPL"
     },
     {
       "generic_name": "阿托伐他汀",
@@ -6144,7 +6490,9 @@
         "single_max_mg": 40,
         "default_freq": "qn",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "atftt",
+      "pinyin_code": "ATFTT"
     },
     {
       "generic_name": "瑞舒伐他汀",
@@ -6159,7 +6507,9 @@
         "single_max_mg": 20,
         "default_freq": "qn",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "rsftt",
+      "pinyin_code": "RSFTT"
     },
     {
       "generic_name": "氯吡格雷",
@@ -6174,7 +6524,9 @@
         "single_max_mg": 75,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "lpgl",
+      "pinyin_code": "LPGL"
     },
     {
       "generic_name": "二甲双胍",
@@ -6189,7 +6541,9 @@
         "single_max_mg": 1000,
         "default_freq": "bid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "ejsg",
+      "pinyin_code": "EJSG"
     },
     {
       "generic_name": "格列美脲",
@@ -6204,7 +6558,9 @@
         "single_max_mg": 6,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "glmn",
+      "pinyin_code": "GLMN"
     },
     {
       "generic_name": "阿卡波糖",
@@ -6219,7 +6575,9 @@
         "single_max_mg": 100,
         "default_freq": "tid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "akbt",
+      "pinyin_code": "AKBT"
     },
     {
       "generic_name": "左甲状腺素钠",
@@ -6234,7 +6592,9 @@
         "single_max_ug": 100,
         "default_freq": "qd",
         "default_duration_days": 365
-      }
+      },
+      "pinyin": "zjzxsn",
+      "pinyin_code": "ZJZXSN"
     },
     {
       "generic_name": "布洛芬",
@@ -6249,7 +6609,9 @@
         "single_max_mg": 600,
         "default_freq": "bid",
         "default_duration_days": 5
-      }
+      },
+      "pinyin": "blf",
+      "pinyin_code": "BLF"
     },
     {
       "generic_name": "双氯芬酸钠",
@@ -6264,7 +6626,9 @@
         "single_max_mg": 50,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "slfsn",
+      "pinyin_code": "SLFSN"
     },
     {
       "generic_name": "对乙酰氨基酚",
@@ -6279,7 +6643,9 @@
         "single_max_mg": 1000,
         "default_freq": "tid",
         "default_duration_days": 3
-      }
+      },
+      "pinyin": "dyxajf",
+      "pinyin_code": "DYXAJF"
     },
     {
       "generic_name": "艾司唑仑",
@@ -6294,7 +6660,9 @@
         "single_max_mg": 2,
         "default_freq": "qn",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "aszl",
+      "pinyin_code": "ASZL"
     },
     {
       "generic_name": "谷维素",
@@ -6309,7 +6677,9 @@
         "single_max_mg": 20,
         "default_freq": "tid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "gws",
+      "pinyin_code": "GWS"
     },
     {
       "generic_name": "甲钴胺",
@@ -6324,7 +6694,9 @@
         "single_max_mg": 500,
         "default_freq": "tid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "jga",
+      "pinyin_code": "JGA"
     },
     {
       "generic_name": "维生素C",
@@ -6339,7 +6711,9 @@
         "single_max_mg": 200,
         "default_freq": "tid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "wssc",
+      "pinyin_code": "WSSC"
     },
     {
       "generic_name": "维生素B6",
@@ -6354,7 +6728,9 @@
         "single_max_mg": 20,
         "default_freq": "tid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "wssb6",
+      "pinyin_code": "WSSB6"
     },
     {
       "generic_name": "葡萄糖酸钙",
@@ -6367,7 +6743,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "pttsg",
+      "pinyin_code": "PTTSG"
     },
     {
       "generic_name": "氯化钾缓释片",
@@ -6382,7 +6760,9 @@
         "single_max_mg": 1000,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "lhjhsp",
+      "pinyin_code": "LHJHSP"
     },
     {
       "generic_name": "感冒灵颗粒",
@@ -6395,7 +6775,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 3
-      }
+      },
+      "pinyin": "gmlkl",
+      "pinyin_code": "GMLKL"
     },
     {
       "generic_name": "小柴胡颗粒",
@@ -6408,7 +6790,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 5
-      }
+      },
+      "pinyin": "xchkl",
+      "pinyin_code": "XCHKL"
     },
     {
       "generic_name": "急支糖浆",
@@ -6421,7 +6805,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "jztj",
+      "pinyin_code": "JZTJ"
     },
     {
       "generic_name": "复方丹参滴丸",
@@ -6434,7 +6820,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "ffdcdw",
+      "pinyin_code": "FFDCDW"
     },
     {
       "generic_name": "速效救心丸",
@@ -6447,7 +6835,9 @@
       "dose_range_json": {
         "default_freq": "prn",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "sxjxw",
+      "pinyin_code": "SXJXW"
     },
     {
       "generic_name": "健胃消食片",
@@ -6460,7 +6850,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "jwxsp",
+      "pinyin_code": "JWXSP"
     },
     {
       "generic_name": "布地奈德鼻喷雾剂",
@@ -6473,7 +6865,9 @@
       "dose_range_json": {
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "bdndbpwj",
+      "pinyin_code": "BDNDBPWJ"
     },
     {
       "generic_name": "左氧氟沙星滴眼液",
@@ -6486,7 +6880,9 @@
       "dose_range_json": {
         "default_freq": "qid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "zyfsxdyy",
+      "pinyin_code": "ZYFSXDYY"
     },
     {
       "generic_name": "氯雷他定",
@@ -6501,7 +6897,9 @@
         "single_max_mg": 10,
         "default_freq": "qd",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "lltd",
+      "pinyin_code": "LLTD"
     },
     {
       "generic_name": "西替利嗪",
@@ -6516,7 +6914,9 @@
         "single_max_mg": 10,
         "default_freq": "qd",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "xtlq",
+      "pinyin_code": "XTLQ"
     },
     {
       "generic_name": "头孢丙烯",
@@ -6531,7 +6931,9 @@
         "single_max_mg": 500,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "tbbx",
+      "pinyin_code": "TBBX"
     },
     {
       "generic_name": "头孢泊肟酯",
@@ -6546,7 +6948,9 @@
         "single_max_mg": 200,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "tbbwz",
+      "pinyin_code": "TBBWZ"
     },
     {
       "generic_name": "阿米卡星",
@@ -6561,7 +6965,9 @@
         "single_max_mg": 400,
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "amkx",
+      "pinyin_code": "AMKX"
     },
     {
       "generic_name": "庆大霉素",
@@ -6574,7 +6980,9 @@
       "dose_range_json": {
         "default_freq": "bid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "qdms",
+      "pinyin_code": "QDMS"
     },
     {
       "generic_name": "克林霉素",
@@ -6589,7 +6997,9 @@
         "single_max_mg": 900,
         "default_freq": "q12h",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "klms",
+      "pinyin_code": "KLMS"
     },
     {
       "generic_name": "磷霉素钠",
@@ -6604,7 +7014,9 @@
         "single_max_mg": 8000,
         "default_freq": "qd",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "lmsn",
+      "pinyin_code": "LMSN"
     },
     {
       "generic_name": "万古霉素",
@@ -6619,7 +7031,9 @@
         "single_max_mg": 1000,
         "default_freq": "q12h",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "wgms",
+      "pinyin_code": "WGMS"
     },
     {
       "generic_name": "利奈唑胺",
@@ -6634,7 +7048,9 @@
         "single_max_mg": 600,
         "default_freq": "q12h",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "lnza",
+      "pinyin_code": "LNZA"
     },
     {
       "generic_name": "孟鲁司特钠",
@@ -6649,7 +7065,9 @@
         "single_max_mg": 10,
         "default_freq": "qn",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "mlstn",
+      "pinyin_code": "MLSTN"
     },
     {
       "generic_name": "复方甲氧那明",
@@ -6662,7 +7080,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "ffjynm",
+      "pinyin_code": "FFJYNM"
     },
     {
       "generic_name": "羧甲司坦",
@@ -6677,7 +7097,9 @@
         "single_max_mg": 500,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "sjst",
+      "pinyin_code": "SJST"
     },
     {
       "generic_name": "雷贝拉唑",
@@ -6692,7 +7114,9 @@
         "single_max_mg": 20,
         "default_freq": "qd",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "lblz",
+      "pinyin_code": "LBLZ"
     },
     {
       "generic_name": "枸橼酸铋钾",
@@ -6707,7 +7131,9 @@
         "single_max_mg": 600,
         "default_freq": "qid",
         "default_duration_days": 28
-      }
+      },
+      "pinyin": "jysbj",
+      "pinyin_code": "JYSBJ"
     },
     {
       "generic_name": "颠茄片",
@@ -6720,7 +7146,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 3
-      }
+      },
+      "pinyin": "dqp",
+      "pinyin_code": "DQP"
     },
     {
       "generic_name": "匹维溴铵",
@@ -6735,7 +7163,9 @@
         "single_max_mg": 100,
         "default_freq": "tid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "pwxa",
+      "pinyin_code": "PWXA"
     },
     {
       "generic_name": "卡托普利",
@@ -6750,7 +7180,9 @@
         "single_max_mg": 50,
         "default_freq": "tid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "ktpl",
+      "pinyin_code": "KTPL"
     },
     {
       "generic_name": "氯沙坦钾",
@@ -6765,7 +7197,9 @@
         "single_max_mg": 100,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "lstj",
+      "pinyin_code": "LSTJ"
     },
     {
       "generic_name": "非洛地平",
@@ -6780,7 +7214,9 @@
         "single_max_mg": 10,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "fldp",
+      "pinyin_code": "FLDP"
     },
     {
       "generic_name": "福辛普利",
@@ -6795,7 +7231,9 @@
         "single_max_mg": 40,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "fxpl",
+      "pinyin_code": "FXPL"
     },
     {
       "generic_name": "尼群地平",
@@ -6810,7 +7248,9 @@
         "single_max_mg": 20,
         "default_freq": "bid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "nqdp",
+      "pinyin_code": "NQDP"
     },
     {
       "generic_name": "格列齐特",
@@ -6825,7 +7265,9 @@
         "single_max_mg": 80,
         "default_freq": "bid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "glqt",
+      "pinyin_code": "GLQT"
     },
     {
       "generic_name": "罗格列酮",
@@ -6840,7 +7282,9 @@
         "single_max_mg": 8,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "lglt",
+      "pinyin_code": "LGLT"
     },
     {
       "generic_name": "瑞格列奈",
@@ -6855,7 +7299,9 @@
         "single_max_mg": 4,
         "default_freq": "tid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "rgln",
+      "pinyin_code": "RGLN"
     },
     {
       "generic_name": "甲钴胺注射液",
@@ -6870,7 +7316,9 @@
         "single_max_ug": 500,
         "default_freq": "qw",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "jgazsy",
+      "pinyin_code": "JGAZSY"
     },
     {
       "generic_name": "胞磷胆碱钠",
@@ -6885,7 +7333,9 @@
         "single_max_mg": 500,
         "default_freq": "qd",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "bldjn",
+      "pinyin_code": "BLDJN"
     },
     {
       "generic_name": "银杏叶提取物",
@@ -6900,7 +7350,9 @@
         "single_max_mg": 80,
         "default_freq": "tid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "yxytqw",
+      "pinyin_code": "YXYTQW"
     },
     {
       "generic_name": "尼莫地平",
@@ -6915,7 +7367,9 @@
         "single_max_mg": 60,
         "default_freq": "tid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "nmdp",
+      "pinyin_code": "NMDP"
     },
     {
       "generic_name": "塞来昔布",
@@ -6930,7 +7384,9 @@
         "single_max_mg": 200,
         "default_freq": "qd",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "slxb",
+      "pinyin_code": "SLXB"
     },
     {
       "generic_name": "美洛昔康",
@@ -6945,7 +7401,9 @@
         "single_max_mg": 15,
         "default_freq": "qd",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "mlxk",
+      "pinyin_code": "MLXK"
     },
     {
       "generic_name": "秋水仙碱",
@@ -6960,7 +7418,9 @@
         "single_max_mg": 1,
         "default_freq": "tid",
         "default_duration_days": 3
-      }
+      },
+      "pinyin": "qsxj",
+      "pinyin_code": "QSXJ"
     },
     {
       "generic_name": "别嘌醇",
@@ -6975,7 +7435,9 @@
         "single_max_mg": 300,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "bpc",
+      "pinyin_code": "BPC"
     },
     {
       "generic_name": "非布司他",
@@ -6990,7 +7452,9 @@
         "single_max_mg": 80,
         "default_freq": "qd",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "fbst",
+      "pinyin_code": "FBST"
     },
     {
       "generic_name": "六味地黄丸",
@@ -7003,7 +7467,9 @@
       "dose_range_json": {
         "default_freq": "bid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "lwdhw",
+      "pinyin_code": "LWDHW"
     },
     {
       "generic_name": "逍遥丸",
@@ -7016,7 +7482,9 @@
       "dose_range_json": {
         "default_freq": "bid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "xyw",
+      "pinyin_code": "XYW"
     },
     {
       "generic_name": "牛黄解毒片",
@@ -7029,7 +7497,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 3
-      }
+      },
+      "pinyin": "nhjdp",
+      "pinyin_code": "NHJDP"
     },
     {
       "generic_name": "云南白药胶囊",
@@ -7042,7 +7512,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "ynbyjn",
+      "pinyin_code": "YNBYJN"
     },
     {
       "generic_name": "三七伤药片",
@@ -7055,7 +7527,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "sqsyp",
+      "pinyin_code": "SQSYP"
     },
     {
       "generic_name": "胃苏颗粒",
@@ -7068,7 +7542,9 @@
       "dose_range_json": {
         "default_freq": "tid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "wskl",
+      "pinyin_code": "WSKL"
     },
     {
       "generic_name": "血脂康胶囊",
@@ -7081,7 +7557,9 @@
       "dose_range_json": {
         "default_freq": "bid",
         "default_duration_days": 30
-      }
+      },
+      "pinyin": "xzkjn",
+      "pinyin_code": "XZKJN"
     },
     {
       "generic_name": "硝酸咪康唑乳膏",
@@ -7094,7 +7572,9 @@
       "dose_range_json": {
         "default_freq": "bid",
         "default_duration_days": 14
-      }
+      },
+      "pinyin": "xsmkzrg",
+      "pinyin_code": "XSMKZRG"
     },
     {
       "generic_name": "西咪替丁",
@@ -7109,7 +7589,9 @@
         "single_max_mg": 400,
         "default_freq": "q12h",
         "default_duration_days": 7
-      }
+      },
+      "pinyin": "xmtd",
+      "pinyin_code": "XMTD"
     },
     {
       "generic_name": "甲氧氯普胺",
@@ -7124,7 +7606,9 @@
         "single_max_mg": 20,
         "default_freq": "tid",
         "default_duration_days": 3
-      }
+      },
+      "pinyin": "jylpa",
+      "pinyin_code": "JYLPA"
     },
     {
       "generic_name": "维生素K1",
@@ -7139,7 +7623,9 @@
         "single_max_mg": 10,
         "default_freq": "qd",
         "default_duration_days": 3
-      }
+      },
+      "pinyin": "wssk1",
+      "pinyin_code": "WSSK1"
     },
     {
       "generic_name": "盐酸氟西汀胶囊",
@@ -7173,7 +7659,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 3.5,
-      "manufacturer": "礼来制药"
+      "manufacturer": "礼来制药",
+      "pinyin": "ysfxtjn",
+      "pinyin_code": "YSFXTJN"
     },
     {
       "generic_name": "盐酸帕罗西汀片",
@@ -7207,7 +7695,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 2.8,
-      "manufacturer": "葛兰素史克"
+      "manufacturer": "葛兰素史克",
+      "pinyin": "ysplxtp",
+      "pinyin_code": "YSPLXTP"
     },
     {
       "generic_name": "草酸艾司西酞普兰片",
@@ -7240,7 +7730,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5.2,
-      "manufacturer": "灵北制药"
+      "manufacturer": "灵北制药",
+      "pinyin": "csasxtplp",
+      "pinyin_code": "CSASXTPLP"
     },
     {
       "generic_name": "阿普唑仑片",
@@ -7275,7 +7767,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.1,
-      "manufacturer": "中美天津史克"
+      "manufacturer": "中美天津史克",
+      "pinyin": "apzlp",
+      "pinyin_code": "APZLP"
     },
     {
       "generic_name": "佐匹克隆片",
@@ -7309,7 +7803,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1.2,
-      "manufacturer": "山东云门药业"
+      "manufacturer": "山东云门药业",
+      "pinyin": "zpklp",
+      "pinyin_code": "ZPKLP"
     },
     {
       "generic_name": "盐酸丁螺环酮片",
@@ -7342,7 +7838,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1.5,
-      "manufacturer": "江苏恩华药业"
+      "manufacturer": "江苏恩华药业",
+      "pinyin": "ysdlhtp",
+      "pinyin_code": "YSDLHTP"
     },
     {
       "generic_name": "奥氮平片",
@@ -7375,8 +7873,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 12.0,
-      "manufacturer": "礼来制药"
+      "price_yuan": 12,
+      "manufacturer": "礼来制药",
+      "pinyin": "adpp",
+      "pinyin_code": "ADPP"
     },
     {
       "generic_name": "利培酮片",
@@ -7410,7 +7910,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 2.5,
-      "manufacturer": "西安杨森"
+      "manufacturer": "西安杨森",
+      "pinyin": "lptp",
+      "pinyin_code": "LPTP"
     },
     {
       "generic_name": "盐酸曲马多缓释片",
@@ -7443,8 +7945,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 3.0,
-      "manufacturer": "格兰泰制药"
+      "price_yuan": 3,
+      "manufacturer": "格兰泰制药",
+      "pinyin": "ysqmdhsp",
+      "pinyin_code": "YSQMDHSP"
     },
     {
       "generic_name": "注射用帕瑞昔布钠",
@@ -7479,8 +7983,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 28.0,
-      "manufacturer": "辉瑞制药"
+      "price_yuan": 28,
+      "manufacturer": "辉瑞制药",
+      "pinyin": "zsyprxbn",
+      "pinyin_code": "ZSYPRXBN"
     },
     {
       "generic_name": "糠酸莫米松乳膏",
@@ -7512,8 +8018,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 12.0,
-      "manufacturer": "默沙东"
+      "price_yuan": 12,
+      "manufacturer": "默沙东",
+      "pinyin": "ksmmsrg",
+      "pinyin_code": "KSMMSRG"
     },
     {
       "generic_name": "他克莫司软膏",
@@ -7546,8 +8054,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 65.0,
-      "manufacturer": "安斯泰来"
+      "price_yuan": 65,
+      "manufacturer": "安斯泰来",
+      "pinyin": "tkmsrg",
+      "pinyin_code": "TKMSRG"
     },
     {
       "generic_name": "重组人干扰素α-2b凝胶",
@@ -7579,8 +8089,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 35.0,
-      "manufacturer": "科兴生物"
+      "price_yuan": 35,
+      "manufacturer": "科兴生物",
+      "pinyin": "czrgrs2bnj",
+      "pinyin_code": "CZRGRS2BNJ"
     },
     {
       "generic_name": "玻璃酸钠滴眼液",
@@ -7612,8 +8124,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 45.0,
-      "manufacturer": "URSAPHARM"
+      "price_yuan": 45,
+      "manufacturer": "URSAPHARM",
+      "pinyin": "blsndyy",
+      "pinyin_code": "BLSNDYY"
     },
     {
       "generic_name": "妥布霉素地塞米松滴眼液",
@@ -7646,8 +8160,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 22.0,
-      "manufacturer": "诺华制药"
+      "price_yuan": 22,
+      "manufacturer": "诺华制药",
+      "pinyin": "tbmsdsmsdyy",
+      "pinyin_code": "TBMSDSMSDYY"
     },
     {
       "generic_name": "普拉洛芬滴眼液",
@@ -7679,8 +8195,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 28.0,
-      "manufacturer": "千寿制药"
+      "price_yuan": 28,
+      "manufacturer": "千寿制药",
+      "pinyin": "pllfdyy",
+      "pinyin_code": "PLLFDYY"
     },
     {
       "generic_name": "丙酸氟替卡松鼻喷雾剂",
@@ -7713,8 +8231,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 65.0,
-      "manufacturer": "葛兰素史克"
+      "price_yuan": 65,
+      "manufacturer": "葛兰素史克",
+      "pinyin": "bsftksbpwj",
+      "pinyin_code": "BSFTKSBPWJ"
     },
     {
       "generic_name": "盐酸羟甲唑啉滴鼻液",
@@ -7747,8 +8267,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 8.0,
-      "manufacturer": "深圳大佛药业"
+      "price_yuan": 8,
+      "manufacturer": "深圳大佛药业",
+      "pinyin": "ysqjzldby",
+      "pinyin_code": "YSQJZLDBY"
     },
     {
       "generic_name": "氧氟沙星滴耳液",
@@ -7781,8 +8303,10 @@
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
-      "price_yuan": 9.0,
-      "manufacturer": "第一三共"
+      "price_yuan": 9,
+      "manufacturer": "第一三共",
+      "pinyin": "yfsxdey",
+      "pinyin_code": "YFSXDEY"
     },
     {
       "generic_name": "胸腺肽肠溶片",
@@ -7815,7 +8339,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 4.5,
-      "manufacturer": "西安迪赛生物"
+      "manufacturer": "西安迪赛生物",
+      "pinyin": "xxtcrp",
+      "pinyin_code": "XXTCRP"
     },
     {
       "generic_name": "地榆升白片",
@@ -7848,7 +8374,9 @@
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1.8,
-      "manufacturer": "成都地奥制药"
+      "manufacturer": "成都地奥制药",
+      "pinyin": "dysbp",
+      "pinyin_code": "DYSBP"
     }
   ]
 }

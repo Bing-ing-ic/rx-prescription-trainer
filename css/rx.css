@@ -463,10 +463,14 @@ input, select, textarea { font-family: inherit; }
   body { background: #fff !important; font-size: 12pt; }
   .view { max-width: none !important; padding: 0 !important; margin: 0 !important; }
   .rx-paper {
-    box-shadow: none !important; border: none !important;
-    border-radius: 0 !important; padding: 20px 30px !important;
+    box-shadow: none !important; border: 1px solid #94a3b8 !important; border-radius: 0 !important;
+    padding: 20px 30px !important;
     background: #fff !important;
   }
+  /* 处方笺颜色编码按国标保留到打印：普通白 / 急诊淡黄 / 儿科淡绿 / 麻精淡红 */
+  .rx-paper.emergency { background: #fffbeb !important; }
+  .rx-paper.pediatric { background: #f0fdf4 !important; }
+  .rx-paper.narcotic { background: #fef2f2 !important; }
   .rx-corner { display: none !important; }
   .rx-hospital { font-size: 22pt !important; letter-spacing: 6px !important; font-weight: 700 !important; }
   .rx-title { font-size: 14pt !important; margin-top: 6px !important; }
@@ -646,3 +650,22 @@ input, select, textarea { font-family: inherit; }
   .stat-num { font-size: 24px; }
   .diff-label { display: block; width: 100%; text-align: center; }
 }
+
+/* ========== 参考处方对比 ========== */
+#diff-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; font-size: 13px; color: #334155; }
+.diff-ref-row { margin-bottom: 10px; color: #1e293b; }
+.diff-compare { display: flex; flex-direction: column; gap: 6px; }
+.diff-ok { background: #f0fdf4; border-left: 3px solid #16a34a; padding: 6px 10px; border-radius: 0 6px 6px 0; font-size: 12.5px; }
+.diff-miss { background: #fef2f2; border-left: 3px solid #dc2626; padding: 6px 10px; border-radius: 0 6px 6px 0; font-size: 12.5px; }
+.diff-extra { background: #fffbeb; border-left: 3px solid #ca8a04; padding: 6px 10px; border-radius: 0 6px 6px 0; font-size: 12.5px; }
+
+/* ========== 知识点卡片 ========== */
+#tips-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+.knowledge-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+  border: 1px solid #dbeafe; border-left: 4px solid #0f4c81;
+  border-radius: 10px; padding: 12px 14px;
+  box-shadow: 0 2px 8px rgba(15,76,129,.06);
+}
+.knowledge-title { font-weight: 700; color: #0f4c81; font-size: 13px; margin-bottom: 6px; }
+.knowledge-body { font-size: 12.5px; color: #475569; line-height: 1.7; }

@@ -49,6 +49,45 @@
     return { oral, iv };
   }
 
+  // ---------- 通用辅助 ----------
+  // 喹诺酮类识别（兼容中文“喹诺酮类”与英文 quinolone 分类名）
+  function isQuinolone(drug) {
+    if (!drug) return false;
+    const c = drug.pharmacology_class || '';
+    return c === '喹诺酮类' || /quinol/i.test(c);
+  }
+  // 从剂量字符串解析出 mg 数值（兼容 mg/g/ug/μg）
+  function parseDoseMg(str) {
+    if (str == null) return null;
+    const m = String(str).match(/([\d.]+)\s*(mg|g|ug|μg)/i);
+    if (!m) return null;
+    let v = parseFloat(m[1]);
+    if (isNaN(v)) return null;
+    const u = m[2].toLowerCase();
+    if (u === 'g') v *= 1000;
+    else if (u === 'ug' || u === 'μg') v /= 1000;
+    return v;
+  }
+  // 单次最大剂量（mg），兼容 dose_range_json 中 mg / g 两种字段
+  function doseMaxMg(drug) {
+    const dr = (drug && drug.dose_range_json) || {};
+    if (dr.single_max_mg != null) return dr.single_max_mg;
+    if (dr.single_max_g != null) return dr.single_max_g * 1000;
+    return null;
+  }
+  function doseMinMg(drug) {
+    const dr = (drug && drug.dose_range_json) || {};
+    if (dr.single_min_mg != null) return dr.single_min_mg;
+    if (dr.single_min_g != null) return dr.single_min_g * 1000;
+    return null;
+  }
+  // 输液指征强弱：弱指征 → error，强客观指征 → warn
+  function isWeakIvReason(reason) {
+    if (!reason) return true;
+    const weak = ['fever', 'patient_request', 'patient', 'other', 'other_without_note', '患者要求', '发热', '其他'];
+    return weak.includes(reason);
+  }
+
   // =====================================================================
   // 主入口
   // =====================================================================
@@ -107,8 +146,9 @@
 
     // FMT-04 法定公制单位 — 演示：剂量必须带单位
     ['normal_rx','iv_rx'].forEach(k => {
-      const rx = ctx[k]; if (!rx) return;
+      const rx = ctx[k]; if (!rx || !Array.isArray(rx.items)) return;
       rx.items.forEach(it => {
+        if (!it || !it.drug) return;
         if (it.drug.dosage_form === 'solvent') return;
         if (it.single_dose && !/\d+\s*(mg|g|ml|ug|μg|U|IU)/.test(it.single_dose)) {
           hits.push(hit(R['FMT-04'], 'warn',
@@ -130,11 +170,11 @@
     }
 
     // ====================== 2. 适应症 ======================
-    // IND-01 / IND-02：遍历治疗性药品，检查是否在 disease 推荐列表
+    // IND-01 / IND-02 / IND-03：遍历治疗性药品，检查是否在 disease 推荐列表
     // 对症支持类药物（止咳/化痰/抗过敏/解热镇痛/缓解鼻塞）不判超适应症
     const symptomaticDrugs = /氨溴索|乙酰半胱氨酸|羧甲司坦|右美沙芬|复方甘草|可待因|氯雷他定|西替利嗪|苯海拉明|布洛芬|对乙酰氨基酚|双氯芬酸|塞来昔布|美洛昔康|酚咖|感冒灵|小柴胡|板蓝根|连花清瘟|肺力咳|急支|川贝|甲氧那明|茶碱|孟鲁司特|伪麻黄碱|氯苯那敏|银黄|清肺/;
     ['normal_rx','iv_rx'].forEach(k => {
-      const rx = ctx[k]; if (!rx) return;
+      const rx = ctx[k]; if (!rx || !Array.isArray(rx.items)) return;
       therapeuticItems(rx).forEach(it => {
         const g = it.drug.generic_name;
         // 对症药不判超适应症
@@ -146,48 +186,62 @@
         const inSecond = (disease.second_line_iv || []).includes(g);
         if (inFirst || inSecond) {
           hits.push(pass(R['IND-01'], `「${g}」与诊断「${disease.name}」适应症匹配。`));
+          // IND-03：乙类药品即使适应症匹配，也提示核对医保限定支付范围
+          if (it.drug.medical_insurance_class === '乙') {
+            hits.push(hit(R['IND-03'], 'warn',
+              `「${g}」为医保乙类药品，须核对其限定支付范围是否覆盖「${disease.name}」。`,
+              `如诊断不在医保限定支付目录，需补充诊断或由患者自费。`));
+          }
         } else {
+          // IND-01：不在一线/二线推荐 → 超适应症 error
           hits.push(hit(R['IND-01'], 'error',
             `「${g}」不在「${disease.name}」的一线/二线推荐列表中，可能超适应症。`,
             `核对药品说明书适应症；或更换为推荐用药。`));
+          // IND-02：超说明书用药提示（与 IND-01 互补，提醒循证/审批）
+          hits.push(hit(R['IND-02'], 'warn',
+            `「${g}」未列入本病种推荐目录，属超说明书用药，须有循证依据并经审批。`,
+            `超说明书用药应循证并经医院药事管理与药物治疗学委员会审批。`));
         }
       });
     });
 
     // ====================== 3. 剂量 ======================
     ['normal_rx','iv_rx'].forEach(k => {
-      const rx = ctx[k]; if (!rx) return;
+      const rx = ctx[k]; if (!rx || !Array.isArray(rx.items)) return;
       therapeuticItems(rx).forEach(it => {
-        const dr = it.drug.dose_range_json || {};
+        const maxMg = doseMaxMg(it.drug);
+        const minMg = doseMinMg(it.drug);
         // 简单演示：若 single_dose 填了数字，检查是否在范围内
-        if (it.single_dose && dr.single_min_mg != null) {
-          const m = String(it.single_dose).match(/([\d.]+)\s*(mg|g)/i);
-          if (m) {
-            let v = parseFloat(m[1]);
-            if (m[2].toLowerCase() === 'g') v *= 1000;
-            if (v > dr.single_max_mg * 1.5) {
+        if (it.single_dose && maxMg != null) {
+          const v = parseDoseMg(it.single_dose);
+          if (v != null) {
+            if (v > maxMg * 1.5) {
               hits.push(hit(R['DOSE-01'], 'error',
-                `「${it.drug.generic_name}」单次剂量 ${v}mg 超过说明书上限 ${dr.single_max_mg}mg。`,
+                `「${it.drug.generic_name}」单次剂量 ${v}mg 超过说明书上限 ${maxMg}mg（1.5倍）。`,
                 `下调至说明书范围。`));
-            } else if (v > dr.single_max_mg) {
+            } else if (v > maxMg) {
               hits.push(hit(R['DOSE-01'], 'warn',
-                `「${it.drug.generic_name}」单次剂量 ${v}mg 略超说明书上限 ${dr.single_max_mg}mg。`,
+                `「${it.drug.generic_name}」单次剂量 ${v}mg 略超说明书上限 ${maxMg}mg。`,
                 `复核剂量。`));
+            } else if (minMg != null && v < minMg * 0.5) {
+              hits.push(hit(R['DOSE-01'], 'warn',
+                `「${it.drug.generic_name}」单次剂量 ${v}mg 低于说明书下限 ${minMg}mg 的一半，可能剂量不足。`,
+                `复核给药剂量。`));
             }
           }
         }
       });
     });
 
-    // DOSE-02 肝肾功能（演示：patient.renal_insufficiency=true 时提示）
-    if (patient.renal_insufficiency) {
+    // DOSE-02 肝肾功能（演示：patient.renal_insufficiency / hepatic_insufficiency=true 时提示）
+    if (patient.renal_insufficiency || patient.hepatic_insufficiency) {
       ['normal_rx','iv_rx'].forEach(k => {
-        const rx = ctx[k]; if (!rx) return;
+        const rx = ctx[k]; if (!rx || !Array.isArray(rx.items)) return;
         therapeuticItems(rx).forEach(it => {
           if (it.drug.liver_renal_note && /减量|不全|慎用/.test(it.drug.liver_renal_note)) {
             hits.push(hit(R['DOSE-02'], 'warn',
-              `患者肾功能不全，「${it.drug.generic_name}」需调整剂量：${it.drug.liver_renal_note}`,
-              `按 eGFR 调整剂量。`));
+              `患者肝/肾功能不全，「${it.drug.generic_name}」需调整剂量：${it.drug.liver_renal_note}`,
+              `按 eGFR/Child-Pugh 调整剂量。`));
           }
         });
       });
@@ -250,9 +304,9 @@
 
     // INT-01 喹诺酮 + 钙铝抗酸剂（演示：若处方内同时有喹诺酮和"含钙/铝"关键词药）
     const allRx = [...oral, ...ivDrugs];
-    const hasFq = allRx.some(it => it.drug.pharmacology_class === '喹诺酮类');
+    const hasFq = allRx.some(it => isQuinolone(it.drug));
     if (hasFq) {
-      const antacid = allRx.find(it => /钙|铝|镁|铋|铁/.test(it.drug.generic_name));
+      const antacid = allRx.find(it => /钙|铝|镁|铋|铁/.test(it.drug.generic_name || ''));
       if (antacid) {
         hits.push(hit(R['INT-01'], 'error',
           `喹诺酮类与「${antacid.drug.generic_name}」同处方：二价阳离子螯合显著降低喹诺酮吸收。`,
@@ -260,12 +314,12 @@
       }
     }
 
-    // INT-02 ACEI + 保钾利尿剂（演示）
-    const hasACEI = allRx.some(it => /普利/.test(it.drug.generic_name));
-    const hasKspare = allRx.some(it => /螺内酯|氨苯蝶啶/.test(it.drug.generic_name));
-    if (hasACEI && hasKspare) {
+    // INT-02 ACEI/ARB + 保钾利尿剂（演示）
+    const hasACEI_ARB_legacy = allRx.some(it => /普利|沙坦/.test(it.drug.generic_name || ''));
+    const hasKspare = allRx.some(it => /螺内酯|氨苯蝶啶|阿米洛利/.test(it.drug.generic_name || ''));
+    if (hasACEI_ARB_legacy && hasKspare) {
       hits.push(hit(R['INT-02'], 'warn',
-        `ACEI 与保钾利尿剂联用，警惕高钾血症。`, `监测血钾。`));
+        `ACEI/ARB 与保钾利尿剂联用，警惕高钾血症。`, `监测血钾。`));
     }
 
     // TCM-01 占位
@@ -275,7 +329,7 @@
     // POP-01 儿童喹诺酮
     if (patient.age < 18) {
       allRx.forEach(it => {
-        if (it.drug.pharmacology_class === '喹诺酮类') {
+        if (isQuinolone(it.drug)) {
           hits.push(hit(R['POP-01'], 'error',
             `患者实足年龄 ${patient.age} 岁（<18），禁用喹诺酮类「${it.drug.generic_name}」。`,
             `更换为青霉素/头孢类等儿童安全抗菌药。`));
@@ -283,17 +337,18 @@
       });
     }
 
-    // POP-02 老年输液速度
-    if (patient.age >= 65 && iv && iv.items) {
-      iv.items.forEach(it => {
-        if (it.drug.dosage_form === 'solvent') return;
-        const speed = parseFloat(iv.drip_speed_mlh);
-        const max = it.drug.drip_speed_max_mlh;
-        if (!isNaN(speed) && max && speed > 60) {
-          hits.push(hit(R['POP-02'], 'warn',
-            `老年患者滴速 ${speed}ml/h 偏快（建议≤60ml/h）。`, `减速并监测心肺。`));
-        }
-      });
+    // POP-02 老年输液速度/入量（每条处方只报一次）
+    if (patient.age >= 65 && iv && Array.isArray(iv.items) && iv.items.length) {
+      const speed = parseFloat(iv.drip_speed_mlh);
+      if (!isNaN(speed) && speed > 60) {
+        hits.push(hit(R['POP-02'], 'warn',
+          `老年患者滴速 ${speed}ml/h 偏快（建议≤60ml/h）。`, `减速并监测心肺。`));
+      }
+      const tv = parseFloat(iv.total_volume_ml);
+      if (!isNaN(tv) && tv > 1000) {
+        hits.push(hit(R['POP-02'], 'warn',
+          `老年患者单次输液总量 ${tv}ml 偏大（建议≤500ml）。`, `分次输注或改口服。`));
+      }
     }
 
     // ====================== 7. 抗菌药物分级 ======================
@@ -323,18 +378,35 @@
     // ====================== 8. 静脉输液专项 IV-01 ~ IV-09 ======================
     if (iv && iv.items && iv.items.length) {
 
-      // IV-01 输液指征与疾病标签一致性（学生选了输液通道即视为有指征；usually_no_iv 给 warn 提醒而非 error）
+      // IV-01 输液指征与疾病标签一致性
+      // 弱指征（发热/患者要求/其他/未填）→ error；有客观证据（脱水/不能口服/序贯）→ warn
       if (disease.iv_suitability === 'usually_no_iv') {
-        hits.push(hit(R['IV-01'], 'warn',
-          `疾病「${disease.name}」标签为 usually_no_iv（通常无需输液），学生选择了静脉通道。`,
-          `请复核：是否确有脱水/不能进食/重症感染等客观指征？否则建议改口服方案。`));
+        if (isWeakIvReason(iv.iv_reason)) {
+          hits.push(hit(R['IV-01'], 'error',
+            `疾病「${disease.name}」通常无需输液（usually_no_iv），且输液指征不充分（${iv.iv_reason || '未填写'}）。`,
+            `请复核：确有脱水/不能进食/重症感染等客观指征？否则建议改口服方案。`));
+        } else {
+          hits.push(hit(R['IV-01'], 'warn',
+            `疾病「${disease.name}」通常无需输液，学生选择了静脉通道（指征：${iv.iv_reason}）。`,
+            `请补充客观指征证据；否则建议改口服方案。`));
+        }
       }
 
-      // IV-02 口服替代可行性（学生已明确选择输液，不再警告）
-      // （原规则已停用：避免对学生做重复提示）
+      // IV-02 口服/肌注替代可行性：有一线口服方案却无充分理由选静脉 → warn
+      if (Array.isArray(disease.first_line_oral) && disease.first_line_oral.length > 0 &&
+          iv.items.some(it => it.drug && it.drug.dosage_form === 'iv_drip')) {
+        if (isWeakIvReason(iv.iv_reason)) {
+          hits.push(hit(R['IV-02'], 'warn',
+            `「${disease.name}」有一线口服方案（${disease.first_line_oral.slice(0,3).join('、')}），却无充分理由选择静脉给药。`,
+            `遵循“能口服不肌注，能肌注不输液”原则；如确需静脉，请补充指征。`));
+        } else {
+          hits.push(pass(R['IV-02'], `有客观输液指征（${iv.iv_reason}），口服替代不适用。`));
+        }
+      }
 
-      // IV-03 专项字段完整性（终浓度/输注时间已由医生按临床判断，不再强制）
+      // IV-03 专项字段完整性
       const missing = [];
+      if (!iv.iv_reason) missing.push('iv_reason');
       if (!iv.solvent_name) missing.push('solvent_name');
       if (!iv.drip_speed_mlh) missing.push('drip_speed_mlh');
       if (missing.length) {
@@ -421,11 +493,22 @@
         hits.push(pass(R['IV-07'], `中药注射剂「${tcmInPump.map(d=>d.drug.generic_name).join('、')}」单独输注，合规。`));
       }
 
-      // IV-08 皮试（按现行抗菌药物临床应用指导原则，青霉素类等可在详细询问过敏史后免皮试，不再强制）
+      // IV-08 皮试核查：需皮试药品未填皮试结果或皮试阳性仍使用 → error；阴性 → pass
       iv.items.forEach(it => {
-        if (!it.drug.skin_test_required) return;
-        hits.push(pass(R['IV-08'],
-          `「${it.drug.generic_name}」按说明书建议皮试，已按现行规范豁免强制皮试（须详细询问过敏史并记录）。`));
+        if (!it || !it.drug || !it.drug.skin_test_required) return;
+        const result = it.skin_test_result;
+        if (result == null || result === '' || result === 'pending') {
+          hits.push(hit(R['IV-08'], 'error',
+            `「${it.drug.generic_name}」需皮试，但未填写皮试结果。`,
+            `用药前必须完成皮试并记录阴性结果。`));
+        } else if (result === 'positive' || result === '阳性') {
+          hits.push(hit(R['IV-08'], 'error',
+            `「${it.drug.generic_name}」皮试阳性，严禁使用。`,
+            `更换为非青霉素/头孢类替代药物。`));
+        } else {
+          hits.push(pass(R['IV-08'],
+            `「${it.drug.generic_name}」皮试阴性（${result}），可使用。`));
+        }
       });
 
       // IV-09 门诊输液处方量
@@ -510,20 +593,16 @@
       const popDesc = isElderly ? '老年患者（≥65岁）' : isChild ? '儿童患者' :
                       hasRenalIssue ? '肾功能不全患者' : '肝功能不全患者';
       ['normal_rx','iv_rx'].forEach(k => {
-        const rx = ctx[k]; if (!rx) return;
+        const rx = ctx[k]; if (!rx || !Array.isArray(rx.items)) return;
         therapeuticItems(rx).forEach(it => {
-          const dr = it.drug.dose_range_json || {};
           // 检查老年患者是否用了成人常规剂量（简化判断：有single_dose且超过上限的70%）
-          if (isElderly && it.single_dose && dr.single_max_mg != null) {
-            const m = String(it.single_dose).match(/([\d.]+)\s*(mg|g)/i);
-            if (m) {
-              let v = parseFloat(m[1]);
-              if (m[2].toLowerCase() === 'g') v *= 1000;
-              if (v > dr.single_max_mg * 0.7) {
-                hits.push(hit(R['SPEC-01'], 'warn',
-                  `${popDesc}「${it.drug.generic_name}」单次剂量 ${v}mg，建议从常规剂量的半量开始滴定（约 ${Math.round(dr.single_max_mg*0.5)}mg）。`,
-                  `老年患者起始剂量宜减半，根据耐受情况逐步调整。`));
-              }
+          const maxMg = doseMaxMg(it.drug);
+          if (isElderly && it.single_dose && maxMg != null) {
+            const v = parseDoseMg(it.single_dose);
+            if (v != null && v > maxMg * 0.7) {
+              hits.push(hit(R['SPEC-01'], 'warn',
+                `${popDesc}「${it.drug.generic_name}」单次剂量 ${v}mg，建议从常规剂量的半量开始滴定（约 ${Math.round(maxMg*0.5)}mg）。`,
+                `老年患者起始剂量宜减半，根据耐受情况逐步调整。`));
             }
           }
           // 儿童未按体重换算提示
@@ -615,8 +694,8 @@
     const hasStatin = drugNames.some(n => /阿托伐他汀|瑞舒伐他汀|辛伐他汀|普伐他汀/.test(n));
     const hasMacrolide = drugNames.some(n => /红霉素|克拉霉素|阿奇霉素/.test(n));
     if (hasStatin && hasMacrolide) {
-      hits.push(hit(R['INTER-01'], 'warn',
-        `他汀类与大环内酯类抗生素合用，可增加横纹肌溶解风险（CYP3A4抑制）。`,
+      hits.push(hit(R['INTER-01'], 'error',
+        `他汀类与大环内酯类抗生素合用，可显著增加横纹肌溶解风险（CYP3A4抑制）。`,
         `建议暂停他汀，或更换为头孢类/喹诺酮类抗生素。`));
     }
     // 两种以上中枢抑制药合用（镇静叠加）

@@ -646,8 +646,15 @@
   }
 
   function defaultQty(d) {
-    if (d.dosage_form==='oral') return d.spec.includes('×7')?7:(d.spec.includes('×6')?6:(d.spec.includes('×20')?20:(d.spec.includes('×100')?100:1)));
-    return 1;
+    // 口服药：按疗程×频次自动算最小单位数量（片/粒）
+    if (d.dosage_form==='oral') {
+      const r = d.dose_range_json || {};
+      const days = r.default_duration_days || 7;
+      const freqMap = {'qd':1,'bid':2,'tid':3,'qid':4,'qn':1};
+      const perDay = freqMap[r.default_freq] || 1;
+      return Math.max(1, days * perDay);  // 总片数
+    }
+    return 1;  // 注射剂/外用药默认1
   }
   function defaultSingleDose(d) {
     const r = d.dose_range_json||{};

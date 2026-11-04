@@ -37,6 +37,9 @@
   <button class="module-tab" data-module="acup" role="tab" aria-selected="false">
     <span class="mt-icon">☯</span><span class="mt-text">针灸推拿</span>
   </button>
+  <button class="module-tab" data-module="anat" role="tab" aria-selected="false">
+    <span class="mt-icon">🦴</span><span class="mt-text">解剖学</span>
+  </button>
 </div>
 
 <main id="app">
@@ -768,6 +771,100 @@
     </div>
   </section>
 
+  <!-- ============ 解剖学：首页 hero ============ -->
+  <section class="view hidden" id="view-anat-home">
+    <div class="hero-modern anat-hero">
+      <div class="hero-icon anat-hero-icon">
+        <span style="font-size:48px;line-height:1;">🦴</span>
+      </div>
+      <h1>系统解剖学训练</h1>
+      <p class="hero-sub">结构识别 · 毗邻推理 · 临床案例 · 考点标记</p>
+      <div class="anat-home-btns">
+        <button id="anat-btn-learn" class="hero-btn">📚 开始系统学习</button>
+        <button id="anat-btn-quiz" class="hero-btn">🎯 进入测验</button>
+        <button id="anat-btn-cases" class="hero-btn">🏥 临床案例</button>
+      </div>
+    </div>
+    <div id="anat-data-tip" class="anat-tip hidden">⏳ 解剖学数据加载中，请稍候…</div>
+    <div id="anat-system-grid" class="anat-system-grid" style="margin-top:16px;"></div>
+  </section>
+
+  <!-- ============ 解剖学：系统结构列表 ============ -->
+  <section class="view hidden" id="view-anat-system">
+    <div class="rx-toolbar no-print">
+      <button class="btn" id="anat-btn-back-home">← 返回首页</button>
+      <span class="toolbar-title" id="anat-system-title">系统结构</span>
+    </div>
+    <div class="anat-filter-row no-print">
+      <input type="text" id="anat-struct-search" placeholder="🔍 搜索结构名（中文/拉丁）...">
+      <select id="anat-subsystem-filter">
+        <option value="">全部子分类</option>
+      </select>
+    </div>
+    <div id="anat-struct-list" class="anat-struct-list"></div>
+  </section>
+
+  <!-- ============ 解剖学：结构详情 ============ -->
+  <section class="view hidden" id="view-anat-detail">
+    <div class="rx-toolbar no-print">
+      <button class="btn" id="anat-btn-back-list">← 返回列表</button>
+      <span class="toolbar-title" id="anat-detail-name">结构详情</span>
+    </div>
+    <div id="anat-detail-body"></div>
+  </section>
+
+  <!-- ============ 解剖学：测验 ============ -->
+  <section class="view hidden" id="view-anat-quiz">
+    <div class="rx-toolbar no-print">
+      <button class="btn" id="anat-btn-quiz-home">← 返回首页</button>
+      <span class="toolbar-title">解剖学测验</span>
+      <span class="spacer"></span>
+      <select id="anat-quiz-diff">
+        <option value="all">全部难度</option>
+        <option value="初级">初级</option>
+        <option value="中级">中级</option>
+        <option value="高级">高级</option>
+      </select>
+      <button class="btn btn-primary" id="anat-btn-quiz-start">🎲 抽10题</button>
+    </div>
+    <div id="anat-quiz-progress" class="anat-quiz-progress">尚未开始</div>
+    <div id="anat-quiz-card" class="anat-quiz-card"></div>
+    <div id="anat-quiz-result" class="anat-quiz-result hidden">
+      <div class="report-hero anat-report-hero">
+        <div class="score-ring-wrap">
+          <svg class="score-ring" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="8"/>
+            <circle id="anat-quiz-score-arc" cx="60" cy="60" r="52" fill="none" stroke="#fff" stroke-width="8"
+                    stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"
+                    transform="rotate(-90 60 60)"/>
+          </svg>
+          <div class="score-center">
+            <div class="score-num" id="anat-quiz-score">--</div>
+            <div class="score-label">分</div>
+          </div>
+        </div>
+        <div class="report-summary">
+          <h2 id="anat-quiz-grade">完成</h2>
+          <p class="muted" id="anat-quiz-meta"></p>
+          <button class="btn btn-primary no-print" id="anat-btn-quiz-again">🔁 再测一次</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 解剖学：临床案例 ============ -->
+  <section class="view hidden" id="view-anat-cases">
+    <div class="rx-toolbar no-print">
+      <button class="btn" id="anat-btn-cases-home">← 返回首页</button>
+      <span class="toolbar-title">临床毗邻案例</span>
+    </div>
+    <div id="anat-case-list" class="anat-case-list"></div>
+    <div id="anat-case-detail" class="anat-case-detail hidden">
+      <button class="btn no-print" id="anat-btn-back-cases">← 返回案例列表</button>
+      <div id="anat-case-detail-body"></div>
+    </div>
+  </section>
+
 </main>
 
 <!-- 全局 Loading 指示（医疗专业感，简洁圆环） -->
@@ -887,6 +984,7 @@
 <script src="js/tcm-app.js?v=20261104tcm1"></script>
 <script src="js/acup-app.js?v=20261104ac1"></script>
 <script src="js/module-views.js?v=20261104mv1"></script>
+<script src="js/anat-app.js?v=20261104anat1"></script>
 
 <!-- 百度统计 -->
 <script>

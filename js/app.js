@@ -1471,6 +1471,10 @@
     const cW = $('cnt-warn'); if (cW) cW.textContent = warnN;
     const cP = $('cnt-pass'); if (cP) cP.textContent = passN;
 
+    // 命中列表
+    const hl = $('hit-list');
+    hl.innerHTML = '';
+
     // 次要诊断提示：如果用户填写了次要诊断，提醒是否考虑合并症用药
     if (S.secondaryDiagnosis) {
       const tipDiv = document.createElement('div');
@@ -1491,8 +1495,6 @@
     }
 
     // 命中列表
-    const hl = $('hit-list');
-    hl.innerHTML = '';
     hits.filter(h=>h.severity!=='pass').forEach(h => {
       const div = document.createElement('div');
       div.className = 'hit-item ' + h.severity;

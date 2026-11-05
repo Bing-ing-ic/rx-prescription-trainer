@@ -1006,7 +1006,7 @@
         <td><input class="n-freq" type="text" value="${it.frequency}" style="width:60px"></td>
         <td><input class="n-days" type="number" value="${it.duration_days}" style="width:60px">天</td>
         <td><button class="btn btn-danger btn-xs" data-i="${i}">删</button></td>`;
-      // 单次剂量：只输数字自动补单位
+      // 单次剂量：只输数字自动补单位，并联动频次和疗程
       tr.querySelector('.n-dose').onchange = e => {
         let v = e.target.value.trim();
         if (/^[\d.]+$/.test(v)) {
@@ -1015,6 +1015,48 @@
           e.target.value = v;
         }
         it.single_dose = v;
+
+        // 联动：根据单次剂量自动推荐频次和疗程
+        const doseInfo = parseDose(v);
+        const r = it.drug.dose_range_json || {};
+
+        // 如果有剂量范围数据，根据剂量大小推荐频次
+        if (r.single_min_mg != null || r.single_min_g != null) {
+          let doseMg = doseInfo.amount;
+          if (doseInfo.unit === 'g') doseMg *= 1000;
+          if (doseInfo.unit === 'μg') doseMg /= 1000;
+
+          const minMg = r.single_min_mg || (r.single_min_g || 0) * 1000;
+          const maxMg = r.single_max_mg || (r.single_max_g || 0) * 1000;
+
+          // 剂量偏小→增加频次，偏大→减少频次
+          if (minMg > 0 && maxMg > 0) {
+            const mid = (minMg + maxMg) / 2;
+            const ratio = doseMg / mid;
+            if (ratio < 0.5) it.frequency = 'tid';      // 小剂量→每日3次
+            else if (ratio > 1.5) it.frequency = 'qd';   // 大剂量→每日1次
+            // 中间范围保持默认频次
+            tr.querySelector('.n-freq').value = it.frequency;
+          }
+        }
+
+        // 联动：根据单次剂量×频次自动计算总数量和疗程
+        const freqPerDay = freqToPerDay(it.frequency);
+        const doseNum = parseFloat(v) || 1;
+        const specInfo = parseSpec(it.drug.spec);
+        const perSpec = specInfo.amount || 1;
+
+        if (freqPerDay > 0 && doseNum > 0 && perSpec > 0) {
+          // 按默认疗程天数算总数量
+          const defaultDays = r.default_duration_days || 7;
+          const totalQty = Math.round(defaultDays * freqPerDay * doseNum / perSpec);
+          it.quantity = Math.max(1, totalQty);
+          it.duration_days = defaultDays;
+          tr.querySelector('.n-qty').value = it.quantity;
+          tr.querySelector('.n-days').value = it.duration_days;
+        }
+
+        updateAmount();
       };
       tr.querySelector('.n-qty').onchange = e => {
         const qty = parseInt(e.target.value)||1;
@@ -1032,7 +1074,25 @@
         }
         updateAmount();
       };
-      tr.querySelector('.n-freq').onchange = e => { it.frequency = e.target.value; updateAmount(); };
+      tr.querySelector('.n-freq').onchange = e => {
+        it.frequency = e.target.value;
+        // 联动：改频次时自动重新计算总数量和疗程
+        const freqPerDay = freqToPerDay(it.frequency);
+        const doseInfo = parseDose(it.single_dose);
+        const doseNum = doseInfo.amount || 1;
+        const specInfo = parseSpec(it.drug.spec);
+        const perSpec = specInfo.amount || 1;
+        const defaultDays = (it.drug.dose_range_json||{}).default_duration_days || 7;
+
+        if (freqPerDay > 0 && doseNum > 0 && perSpec > 0) {
+          const totalQty = Math.round(defaultDays * freqPerDay * doseNum / perSpec);
+          it.quantity = Math.max(1, totalQty);
+          it.duration_days = defaultDays;
+          tr.querySelector('.n-qty').value = it.quantity;
+          tr.querySelector('.n-days').value = it.duration_days;
+        }
+        updateAmount();
+      };
       tr.querySelector('.n-days').onchange = e => {
         const days = parseInt(e.target.value)||1;
         it.duration_days = days;

@@ -786,12 +786,20 @@
     return '';
   }
 
-  // 解析 "1.5g/支" / "0.5g/100ml" / "100ml/袋" → {amount, unit, packUnit}
+  // 解析 "1.5g/支" / "0.5g/100ml" / "5mg×7片" / "100ml/袋" → {amount, unit, packUnit}
   function parseSpec(spec) {
     if (!spec) return {amount: 0, unit: '', packUnit: '支'};
-    const m = String(spec).match(/([\d.]+)\s*(g|mg|μg|ml|IU|U)\s*\/\s*(\S+)/);
-    if (!m) return {amount: 0, unit: '', packUnit: '支'};
-    return {amount: parseFloat(m[1]), unit: m[2], packUnit: m[3]};
+    const s = String(spec);
+    // 先尝试 "1.5g/支" 格式
+    let m = s.match(/([\d.]+)\s*(g|mg|μg|ml|IU|U)\s*\/\s*(\S+)/);
+    if (m) return {amount: parseFloat(m[1]), unit: m[2], packUnit: m[3]};
+    // 再尝试 "5mg×7片" 格式
+    m = s.match(/([\d.]+)\s*(g|mg|μg|ml|IU|U)\s*[×x*]\s*(\d+)\s*([片粒袋支瓶盒])?/);
+    if (m) return {amount: parseFloat(m[1]), unit: m[2], packUnit: m[4] || '片'};
+    // 只提取剂量单位
+    m = s.match(/([\d.]+)\s*(g|mg|μg|ml|IU|U)/);
+    if (m) return {amount: parseFloat(m[1]), unit: m[2], packUnit: '片'};
+    return {amount: 0, unit: '', packUnit: '片'};
   }
   // 频次转每日次数：qd=1, bid=2, tid=3, qid=4, qn=1, st=1, qod=0.5
   function freqToPerDay(freq) {

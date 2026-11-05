@@ -10,6 +10,8 @@
     "urinary":     "img/anat-urinary.jpg",
     "reproductive":"img/anat-reproductive.jpg",
     "endocrine":   "img/anat-endocrine.jpg",
+    "immune":       "img/anat-immune.jpg",
+    "muscular":     "img/anat-muscular.jpg",
     "regional_headneck": "img/anat-regional-headneck.jpg",
     "regional_thorax":  "img/anat-regional-thorax.jpg",
     "regional_abdomen":  "img/anat-regional-abdomen.jpg",
@@ -22,30 +24,39 @@
       "temporomandibular": { "x": 46, "y": 15 },
       "sternal_angle":      { "x": 50, "y": 25 },
       "shoulder_joint":     { "x": 42, "y": 23 },
+      "clavicle":           { "x": 46, "y": 22 },
+      "scapula":           { "x": 58, "y": 28 },
       "elbow_joint":        { "x": 40, "y": 39 },
       "diaphragm":         { "x": 50, "y": 40 },
       "pelvis":             { "x": 50, "y": 48 },
+      "hip_bone":           { "x": 40, "y": 48 },
       "inguinal_canal":    { "x": 45, "y": 53 },
       "hiatal_triangle":    { "x": 49, "y": 53 },
-      "knee_joint":         { "x": 46, "y": 69 }
+      "knee_joint":         { "x": 46, "y": 69 },
+      "knee_meniscus":      { "x": 46, "y": 71 }
     },
     "digestive": {
       "isthmus_fauces":        { "x": 49, "y": 12 },
+      "oral_cavity":           { "x": 50, "y": 10 },
       "pharynx_regions":       { "x": 50, "y": 16 },
       "esophageal_stenosis":   { "x": 50, "y": 24 },
       "stomach_regions":       { "x": 61, "y": 36 },
       "liver_visceral_surface":{ "x": 35, "y": 33 },
+      "liver_segments":         { "x": 38, "y": 35 },
       "cystic_triangle":       { "x": 41, "y": 49 },
       "major_duodenal_papilla":{ "x": 47, "y": 45 },
       "jejunum_ileum":         { "x": 50, "y": 72 },
-      "colon_features":        { "x": 40, "y": 55 }
+      "colon_features":        { "x": 40, "y": 55 },
+      "rectal_flexures":       { "x": 50, "y": 85 }
     },
     "respiratory": {
       "paranasal_sinuses":  { "x": 39, "y": 10 },
       "laryngeal_cavity":  { "x": 50, "y": 30 },
+      "laryngeal_cartilages": { "x": 50, "y": 28 },
       "carina":            { "x": 50, "y": 52 },
       "main_bronchi":      { "x": 50, "y": 56 },
       "lung_shape":        { "x": 40, "y": 62 },
+      "lung_segments":      { "x": 42, "y": 64 },
       "pleural_recess":    { "x": 35, "y": 82 },
       "mediastinum":       { "x": 50, "y": 60 },
       "pleura_cavity":     { "x": 68, "y": 68 }
@@ -57,6 +68,7 @@
       "aorta_segments":      { "x": 50, "y": 26 },
       "superior_vena_cava":  { "x": 38, "y": 42 },
       "inferior_vena_cava":  { "x": 39, "y": 80 },
+      "compression_points":  null,
       "hepatic_portal":      null,
       "thoracic_duct":       null
     },
@@ -70,6 +82,7 @@
       "vagus_nerve":            { "x": 49, "y": 23 },
       "pyramidal_tract":        { "x": 50, "y": 28 },
       "epidural_space":         { "x": 50, "y": 32 },
+      "spinal_segment_vertebra":{ "x": 50, "y": 55 },
       "superficial_sensory_path":{ "x": 50, "y": 45 },
       "sciatic_nerve":          { "x": 45, "y": 70 }
     },
@@ -92,7 +105,55 @@
       "pineal":             { "x": 43, "y": 21 },
       "thyroid":            { "x": 50, "y": 37 },
       "parathyroid":        { "x": 50, "y": 39 },
-      "adrenal":            { "x": 50, "y": 64 }
+      "adrenal":            { "x": 50, "y": 64 },
+      "adrenal_cortex_medulla": { "x": 50, "y": 66 },
+      "pancreatic_islets":   { "x": 55, "y": 50 }
+    },
+    "immune": {
+      "thymus":               { "x": 50, "y": 22 },
+      "bone_marrow":           { "x": 30, "y": 70 },
+      "tonsils":              { "x": 50, "y": 14 },
+      "lymph_node_cervical":  { "x": 50, "y": 18 },
+      "lymph_node_axillary":  { "x": 22, "y": 32 },
+      "lymph_node_inguinal_superficial": { "x": 35, "y": 68 },
+      "lymph_node_mesenteric":{ "x": 50, "y": 55 },
+      "spleen":               { "x": 78, "y": 45 },
+      "lymphatic_vessels":    { "x": 25, "y": 50 },
+      "thoracic_duct":        { "x": 45, "y": 35 },
+      "right_lymphatic_duct": { "x": 55, "y": 20 },
+      "malt":                 { "x": 50, "y": 60 }
+    },
+    "muscular": {
+      "trapezius":          { "x": 50, "y": 14 },
+      "scalene_gap":        { "x": 50, "y": 20 },
+      "pectoralis_major":   { "x": 35, "y": 30 },
+      "latissimus_dorsi":   { "x": 65, "y": 38 },
+      "biceps_brachii":     { "x": 22, "y": 42 },
+      "triceps_brachii":    { "x": 78, "y": 42 },
+      "rectus_abdominis":   { "x": 50, "y": 50 },
+      "external_oblique":   { "x": 35, "y": 55 },
+      "sartorius":          { "x": 40, "y": 68 },
+      "quadriceps_femoris": { "x": 35, "y": 72 },
+      "triceps_surae":      { "x": 65, "y": 82 },
+      "piriformis":         { "x": 50, "y": 60 }
+    },
+    "integumentary": {
+      "epidermis":         { "x": 50, "y": 30 },
+      "dermis":            { "x": 50, "y": 45 },
+      "subcutaneous_tissue":{ "x": 50, "y": 60 },
+      "hair":              { "x": 30, "y": 40 },
+      "sebaceous_gland":    { "x": 35, "y": 48 },
+      "sweat_gland":        { "x": 65, "y": 55 }
+    },
+    "sensory": {
+      "eyewall":           { "x": 35, "y": 18 },
+      "refractive_media":  { "x": 35, "y": 22 },
+      "aqueous_humor":     { "x": 30, "y": 20 },
+      "auricle_external_meatus": { "x": 68, "y": 18 },
+      "tympanic_middle_ear":{ "x": 65, "y": 25 },
+      "inner_ear_bony":    { "x": 62, "y": 32 },
+      "inner_ear_membranous": { "x": 62, "y": 36 },
+      "olfactory_organ":   { "x": 35, "y": 10 }
     },
     "regional_headneck": {
       "cerebrum_sagittal":   { "x": 38, "y": 18 },

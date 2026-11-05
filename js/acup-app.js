@@ -143,18 +143,23 @@
       (!m || p.meridian === m)
     );
     if (items.length === 0) { list.innerHTML = '<div style="padding:10px;color:#94a3b8;">无匹配穴位</div>'; return; }
-    list.innerHTML = items.slice(0, 80).map(p => `
-      <div class="acup-point-item" data-pt="${p.name}">
+    list.innerHTML = items.slice(0, 80).map(p => {
+      const picked = S.items.some(it => it.name === p.name);
+      return `
+      <div class="acup-point-item ${picked ? 'selected' : ''}" data-pt="${p.name}">
         <span><b>${p.name}</b> <span class="meridian-tag">${p.meridian || ''}</span></span>
         <small class="muted">${(p.indication || '').slice(0, 26)}</small>
-      </div>`).join('');
+      </div>`;
+    }).join('');
     list.querySelectorAll('.acup-point-item').forEach(el => {
       el.onclick = () => {
         const p = S.points.find(x => x.name === el.getAttribute('data-pt'));
         if (!p) return;
-        if (S.items.find(it => it.name === p.name)) { alert('已选：' + p.name); return; }
+        if (S.items.some(it => it.name === p.name)) return; // 已选：静默，视觉上已 selected
         S.items.push({ name: p.name, meridian: p.meridian || '', method: '平补平泻', retainMin: 20, moxa: '' });
         renderItems();
+        const curKw = ($('acup-point-search') || {}).value || '';
+        renderPointList(curKw);
       };
     });
   }
@@ -316,20 +321,26 @@
       return;
     }
     box.innerHTML = list.map(p => `
-      <div class="acup-map-point-card" data-code="${p.code}">
-        <span class="mc-code">${p.code || ''}</span>
-        <span class="mc-name">${p.name}</span>
+      <div class="acup-map-point-card" data-code="${p.code}" role="button" tabindex="0">
+        <div class="mc-top"><span class="mc-name">${p.name}</span><span class="mc-code">${p.code || ''}</span></div>
         <div class="mc-meridian">${p.meridian || ''} · ${p.category || ''}</div>
       </div>`).join('');
     box.querySelectorAll('.acup-map-point-card').forEach(el => {
-      el.onclick = () => {
+      const open = () => {
         const p = S.points.find(x => x.code === el.getAttribute('data-code'));
         if (p) openPointDetail(p);
+      };
+      el.onclick = open;
+      el.onkeydown = e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
       };
     });
   }
 
   function openPointDetail(p) {
+    document.querySelectorAll('.acup-map-point-card.active').forEach(el => el.classList.remove('active'));
+    const card = document.querySelector(`.acup-map-point-card[data-code="${p.code}"]`);
+    if (card) card.classList.add('active');
     $('ap-name').innerHTML = `${p.name} <small style="font-weight:400;color:#64748b;font-size:13px;">${p.code||''} · ${p.meridian||''}</small>`;
     const chips = (Array.isArray(p.indications) ? p.indications : (p.indications ? [p.indications] : []))
       .map(i => `<span class="ap-chip">${i}</span>`).join('');

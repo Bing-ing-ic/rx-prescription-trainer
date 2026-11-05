@@ -77,17 +77,23 @@
     }
     grid.innerHTML = S.systems.map(s => {
       const cnt = (s.structures || []).length;
-      return `<div class="anat-system-card" data-sys="${s.id}">
+      // P1 a11y：卡片改为键盘可达（tabindex/role/aria-label/Enter+Space）
+      return `<div class="anat-system-card" data-sys="${s.id}" tabindex="0" role="button"
+        aria-label="进入${s.name}，共 ${cnt} 个结构">
         <div class="asc-icon">${s.icon || '🦴'}</div>
         <div class="asc-name">${s.name}</div>
         <div class="asc-count">${cnt} 个结构</div>
       </div>`;
     }).join('');
     grid.querySelectorAll('.anat-system-card').forEach(el => {
-      el.onclick = () => {
+      const activate = () => {
         const id = el.getAttribute('data-sys');
         const sys = S.systems.find(x => x.id === id);
         if (sys) openSystem(sys);
+      };
+      el.onclick = activate;
+      el.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
       };
     });
   }
@@ -121,7 +127,8 @@
       return;
     }
     list.innerHTML = items.map(s => `
-      <div class="anat-struct-item" data-id="${s.id}">
+      <div class="anat-struct-item" data-id="${s.id}" tabindex="0" role="button"
+        aria-label="查看结构 ${s.name}${s.latin ? '（' + s.latin + '）' : ''}">
         <div class="asi-main">
           <b>${s.name}</b>
           <small class="asi-latin">${s.latin || ''}</small>
@@ -129,10 +136,14 @@
         <div class="asi-sub">${s.subsystem || ''}</div>
       </div>`).join('');
     list.querySelectorAll('.anat-struct-item').forEach(el => {
-      el.onclick = () => {
+      const activate = () => {
         const id = el.getAttribute('data-id');
         const st = (S.currentSystem.structures || []).find(x => x.id === id);
         if (st) openDetail(st);
+      };
+      el.onclick = activate;
+      el.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
       };
     });
   }
@@ -302,13 +313,18 @@
     box.innerHTML = Object.keys(groups).map(key => `
       <div class="atlas-subgroup-title">${key}</div>
       ${groups[key].map(s => `
-        <span class="atlas-struct-chip" data-id="${s.id}">${s.name}<span class="latin">${s.latin || ''}</span></span>
+        <span class="atlas-struct-chip" data-id="${s.id}" tabindex="0" role="button"
+          aria-label="定位${s.name}">${s.name}<span class="latin">${s.latin || ''}</span></span>
       `).join('')}
     `).join('');
     box.querySelectorAll('.atlas-struct-chip').forEach(el => {
-      el.onclick = () => {
+      const activate = () => {
         const st = structs.find(x => x.id === el.getAttribute('data-id'));
         if (st) selectAtlasStruct(st, false);
+      };
+      el.onclick = activate;
+      el.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
       };
     });
   }
@@ -368,9 +384,22 @@
     showView('view-anat-quiz');
   }
 
+  // P1：进度条可视化——把纯文字 pill 升级为「文字 + 槽+填充」
+  function updateQuizProgress() {
+    const el = $('anat-quiz-progress');
+    if (!el) return;
+    const total = S.quiz.pool.length || 1;
+    const pct = Math.round(((S.quiz.idx) / total) * 100); // 已完成题数百分比
+    el.innerHTML =
+      `<div class="aq-progress-text">第 ${S.quiz.idx + 1} / ${total} 题　当前得分 ${S.quiz.score}</div>` +
+      `<div class="aq-progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="${total}"` +
+      ` aria-valuenow="${S.quiz.idx}" aria-label="测验进度">` +
+      `<div class="aq-progress-fill" style="width:${pct}%"></div></div>`;
+  }
+
   function renderQuizQuestion() {
     const q = S.quiz.pool[S.quiz.idx];
-    $('anat-quiz-progress').textContent = `第 ${S.quiz.idx + 1} / ${S.quiz.pool.length} 题　当前得分 ${S.quiz.score}`;
+    updateQuizProgress();
     const box = $('anat-quiz-card');
     if (!q) return;
 
@@ -435,7 +464,7 @@
           S.quiz.score += correct ? 10 : 0;
           S.quiz.answers.push({ q, score: correct ? 10 : 0, correct });
           $('anat-btn-quiz-next').classList.remove('hidden');
-          $('anat-quiz-progress').textContent = `第 ${S.quiz.idx + 1} / ${S.quiz.pool.length} 题　当前得分 ${S.quiz.score}`;
+          updateQuizProgress();
         };
       });
     } else if (q.type === 'match') {
@@ -446,9 +475,17 @@
       let matched = 0;
       box.querySelectorAll('.anat-match-item').forEach(btn => {
         btn.onclick = () => {
-          if (btn.classList.contains('matched')) return;
+          // P0 修复：实际命中后写入的 class 是 matched-correct，
+          // 原判断 contains('matched') 永远为 false，已配对项可被重复点击。
+          if (btn.classList.contains('matched-correct')) return;
           const side = btn.getAttribute('data-side');
           if (side === 'l') {
+            // P1 UX：再点一次已选中的左项 → 取消选中
+            if (btn.classList.contains('sel')) {
+              btn.classList.remove('sel');
+              S.quiz.matchSel = null;
+              return;
+            }
             box.querySelectorAll('#anat-match-left .anat-match-item').forEach(b => b.classList.remove('sel'));
             btn.classList.add('sel');
             S.quiz.matchSel = btn;
@@ -470,7 +507,7 @@
                 S.quiz.score += 10;
                 S.quiz.answers.push({ q, score: 10, correct: true });
                 $('anat-btn-quiz-next').classList.remove('hidden');
-                $('anat-quiz-progress').textContent = `第 ${S.quiz.idx + 1} / ${S.quiz.pool.length} 题　当前得分 ${S.quiz.score}`;
+                updateQuizProgress();
               }
             } else {
               btn.classList.add('wrong');
@@ -502,7 +539,7 @@
           $('aq-feedback').classList.remove('hidden');
           $('aq-feedback').innerHTML = `已记录：${s === 10 ? '完全答对' : s === 5 ? '部分正确' : '未答对'}（+${s}）`;
           $('anat-btn-quiz-next').classList.remove('hidden');
-          $('anat-quiz-progress').textContent = `第 ${S.quiz.idx + 1} / ${S.quiz.pool.length} 题　当前得分 ${S.quiz.score}`;
+          updateQuizProgress();
         };
       });
     }
@@ -581,7 +618,8 @@
       return;
     }
     box.innerHTML = S.cases.map(c => `
-      <div class="anat-case-card" data-id="${c.id}">
+      <div class="anat-case-card" data-id="${c.id}" tabindex="0" role="button"
+        aria-label="查看案例 ${c.title}">
         <div class="acc-head">
           <span class="tag tag-diff">${c.difficulty || '初级'}</span>
           <b>${c.title}</b>
@@ -589,10 +627,14 @@
         <div class="acc-meta muted">${c.system || ''}${c.subsystem ? ' · ' + c.subsystem : ''}</div>
       </div>`).join('');
     box.querySelectorAll('.anat-case-card').forEach(el => {
-      el.onclick = () => {
+      const activate = () => {
         const id = el.getAttribute('data-id');
         const c = S.cases.find(x => x.id === id);
         if (c) openCase(c);
+      };
+      el.onclick = activate;
+      el.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
       };
     });
   }

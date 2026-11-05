@@ -162,18 +162,18 @@
 
   function checkZheng() {
     const input = ($('tcm-zheng-input').value || '').trim();
-    if (!input) { $('tcm-zheng-feedback').innerHTML = '<span style="color:#b91c1c;">请输入证型。</span>'; return; }
+    if (!input) { $('tcm-zheng-feedback').innerHTML = '<span class="diag-err">请输入证型。</span>'; return; }
     const ref = (S.case.syndrome_differentiation || '').trim();
     const ok = input === ref || (ref && (ref.indexOf(input) >= 0 || input.indexOf(ref) >= 0));
     if (ok) {
       S.zhengOk = true;
-      $('tcm-zheng-feedback').innerHTML = `<span style="color:#15803d;">✅ 辨证正确：${ref}</span>`;
+      $('tcm-zheng-feedback').innerHTML = `<span class="diag-ok">✅ 辨证正确：${ref}</span>`;
       $('tcm-fazheng-row').classList.remove('hidden');
       // 自动填入治法作为提示
       if (!$('tcm-fazheng-input').value) $('tcm-fazheng-input').placeholder = S.case.treatment_principle || '';
     } else {
       S.zhengOk = false;
-      $('tcm-zheng-feedback').innerHTML = `<span style="color:#b91c1c;">❌ 辨证待斟酌。再结合舌象、脉象想想。</span>`;
+      $('tcm-zheng-feedback').innerHTML = `<span class="diag-err">❌ 辨证待斟酌。再结合舌象、脉象想想。</span>`;
     }
   }
 
@@ -200,6 +200,10 @@
     renderItems();
     renderFormulaList('');
     renderHerbList('');
+    // 清空煎服法控件与打印版
+    const ps = $('tcm-prep-select'); if (ps) Array.from(ps.options).forEach(o => o.selected = false);
+    const pn = $('tcm-prep-note'); if (pn) pn.value = '';
+    if (window.__tcmSyncPrep) window.__tcmSyncPrep();
     showView('view-tcm-rx');
   }
 
@@ -511,6 +515,32 @@
     });
     $('herb-lib-search').oninput = renderHerbLibGrid;
     $('herb-lib-category').onchange = renderHerbLibGrid;
+    // 煎服法备注：编辑控件屏幕可见，打印时由 CSS 隐藏；选中值实时同步到打印版文本（屏幕隐藏，打印显示）
+    (function bindPrepPrint() {
+      const paper = $('tcm-rx-paper');
+      if (!paper) return;
+      let printBox = $('tcm-prep-print');
+      if (!printBox) {
+        printBox = document.createElement('div');
+        printBox.id = 'tcm-prep-print';
+        printBox.className = 'tcm-prep-print';
+        const foot = paper.querySelector('.rx-foot');
+        paper.insertBefore(printBox, foot || null);
+      }
+      const syncPrep = () => {
+        const sel = $('tcm-prep-select');
+        const note = $('tcm-prep-note');
+        const parts = [];
+        if (sel) Array.from(sel.selectedOptions).forEach(o => { if (o.value) parts.push(o.textContent || o.value); });
+        if (note && note.value.trim()) parts.push(note.value.trim());
+        printBox.innerHTML = parts.length ? '<b>煎服法：</b>' + parts.join('；') : '';
+      };
+      const sel = $('tcm-prep-select');
+      const note = $('tcm-prep-note');
+      if (sel) sel.addEventListener('change', syncPrep);
+      if (note) note.addEventListener('input', syncPrep);
+      window.__tcmSyncPrep = syncPrep;
+    })();
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && !$('modal-herb-lib').classList.contains('hidden')) closeHerbLib();
     });

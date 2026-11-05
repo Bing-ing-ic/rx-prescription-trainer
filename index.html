@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261105ui1">
+<link rel="stylesheet" href="css/rx.min.css?v=20261105qk1">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -21,6 +21,7 @@
   <nav class="nav" id="main-nav">
     <button class="nav-btn" data-goto="home">首页</button>
     <button class="nav-btn" data-goto="drugs">药品库</button>
+    <button class="nav-btn" data-goto="quickref">📖 速查</button>
     <button class="nav-btn" data-goto="radar">能力画像</button>
     <button class="nav-btn" data-goto="mistakes">错题本</button>
     <button class="nav-btn" data-goto="stats">学习统计</button>
@@ -961,6 +962,52 @@
     </div>
   </section>
 
+  <!-- ============ 跨模块：知识点速查 ============ -->
+  <section class="view hidden" id="view-quickref">
+    <div class="report-head">
+      <button class="btn" data-goto="home">← 返回首页</button>
+      <h2>📖 知识点速查</h2>
+      <p class="muted">跨模块检索：药品 / 穴位 / 方剂 / 中药 / 解剖结构 / 疾病。支持中文、拼音、拼音首字母。</p>
+    </div>
+    <div class="quickref-search-bar">
+      <input type="text" id="quickref-input" autocomplete="off"
+             placeholder="🔍 输入关键词：氨氯地平 / 合谷 / 桂枝汤 / 麻黄 / 心 / 高血压…" />
+      <select id="quickref-cat">
+        <option value="">全部分类</option>
+        <option value="drug">💊 药品</option>
+        <option value="herb">🌿 中药</option>
+        <option value="formula">📜 方剂</option>
+        <option value="point">📍 穴位</option>
+        <option value="anat">🫀 解剖结构</option>
+        <option value="disease">🏥 疾病</option>
+      </select>
+      <span class="quickref-count muted" id="quickref-count"></span>
+    </div>
+    <div id="quickref-hot" class="quickref-hot">
+      <span class="muted">热门：</span>
+      <button class="qr-hot-btn" data-kw="氨氯地平">氨氯地平</button>
+      <button class="qr-hot-btn" data-kw="合谷">合谷</button>
+      <button class="qr-hot-btn" data-kw="桂枝汤">桂枝汤</button>
+      <button class="qr-hot-btn" data-kw="麻黄">麻黄</button>
+      <button class="qr-hot-btn" data-kw="肺炎">肺炎</button>
+      <button class="qr-hot-btn" data-kw="心脏">心脏</button>
+    </div>
+    <div id="quickref-results" class="quickref-results">
+      <p class="muted center" style="padding:40px 12px;">输入关键词开始检索，数据来自本地知识库。</p>
+    </div>
+  </section>
+
+  <!-- 速查详情弹窗 -->
+  <div class="modal-mask hidden" id="modal-quickref">
+    <div class="modal" style="max-width:640px;">
+      <h3 id="qr-detail-name"></h3>
+      <div id="qr-detail-body"></div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="qr-detail-close">关闭</button>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <!-- 全局 Loading 指示（医疗专业感，简洁圆环） -->
@@ -1080,6 +1127,7 @@
 <script src="js/acup-app.min.js?v=20261105ui1"></script>
 <script src="js/module-views.min.js?v=20261104fix1"></script>
 <script src="js/anat-app.min.js?v=20261105ui1"></script>
+<script src="js/platform-enhance.js?v=20261105qk1"></script>
 
 <!-- 百度统计 -->
 <script>

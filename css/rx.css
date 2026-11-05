@@ -79,8 +79,10 @@ input, select, textarea { font-family: inherit; }
   width: auto;
   object-fit: contain;
   object-position: bottom right;
-  mix-blend-mode: multiply;
-  filter: drop-shadow(0 10px 18px rgba(0, 20, 50, .35));
+  opacity: .96;
+  filter: drop-shadow(14px 18px 30px rgba(8, 40, 90, .42)) saturate(1.04);
+  -webkit-mask-image: linear-gradient(to bottom, black 82%, rgba(0,0,0,.6) 93%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 82%, rgba(0,0,0,.6) 93%, transparent 100%);
 }
 .hero-modern h1 {
   font-size: 24px; font-weight: 700; margin: 0 0 6px;
@@ -1056,10 +1058,10 @@ input, select, textarea { font-family: inherit; }
 /* 中医老中医 hero 形象 */
 .tcm-hero-nurse { right: 24px; }
 .tcm-hero-nurse img {
-  mix-blend-mode: multiply;
-  filter: drop-shadow(0 10px 18px rgba(40,20,5,.35));
-  -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+  opacity: .95;
+  filter: drop-shadow(14px 18px 30px rgba(55, 28, 8, .45)) saturate(1.03);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, rgba(0,0,0,.55) 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 80%, rgba(0,0,0,.55) 92%, transparent 100%);
 }
 .hero-btn-ghost {
   background: rgba(255,255,255,.18) !important; color: #fff8e7 !important;
@@ -1161,10 +1163,10 @@ input, select, textarea { font-family: inherit; }
 .acup-map-btn:hover { background: rgba(255,255,255,.28); }
 .acup-hero-nurse { right: 24px; }
 .acup-hero-nurse img {
-  mix-blend-mode: multiply;
-  filter: drop-shadow(0 10px 18px rgba(0,25,12,.35));
-  -webkit-mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 78%, transparent 100%);
+  opacity: .95;
+  filter: drop-shadow(14px 18px 30px rgba(4, 32, 16, .45)) saturate(1.06);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, rgba(0,0,0,.55) 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 80%, rgba(0,0,0,.55) 92%, transparent 100%);
 }
 
 /* 经络穴位图浏览页 */
@@ -1260,10 +1262,10 @@ input, select, textarea { font-family: inherit; }
 }
 .anat-hero-nurse img {
   height: 100%; width: auto; object-fit: contain; object-position: bottom right;
-  mix-blend-mode: screen;
-  filter: drop-shadow(0 10px 18px rgba(10,40,80,.35));
-  -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+  opacity: .93;
+  filter: drop-shadow(14px 18px 30px rgba(6, 35, 70, .4)) brightness(1.06);
+  -webkit-mask-image: linear-gradient(to bottom, black 86%, rgba(0,0,0,.5) 94%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 86%, rgba(0,0,0,.5) 94%, transparent 100%);
 }
 
 /* ============ 解剖图谱视图 ============ */

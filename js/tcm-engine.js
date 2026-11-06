@@ -482,38 +482,49 @@
             break;
           }
           case 'elderly_caution': {
-            // P2-3：老年（>=65岁）慎用峻汗峻下/有毒药
+            // P2-3/P3-3：老年（>=65岁）慎用温燥发汗/峻下/有毒药
+            // P3-3 扩展：分三类 warn——温燥发汗（防汗脱）、峻下（防脱水）、有毒（防蓄积）
             const lim = r.limits || {};
             const ageThr = typeof lim.age_threshold === 'number' ? lim.age_threshold : 65;
             const age = typeof patientAge === 'number' ? patientAge : null;
             if (age === null || age < ageThr) break;
-            const harsh = lim.harsh_herbs || [];
+            const warm = lim.warm_dry_herbs || [];
+            const purge = lim.harsh_herbs || [];
             const toxic = lim.toxic_herbs || [];
             herbs.forEach(h => {
               const n = normalizeHerbName(h.name);
-              if (harsh.indexOf(n) >= 0) {
-                hits.push(mk(r.id || 'TCM-ELDERLY', r.group || 'SPECIAL_POP',
+              if (warm.indexOf(n) >= 0) {
+                hits.push(mk(r.id || 'TCM-ELDERLY-WARM', r.group || 'SPECIAL_POP',
+                  warn(r.title || '老年慎用温燥发汗药'),
+                  '患者' + age + '岁（老年），方中使用温燥发汗药“' + n + '”，老年腠理疏松、气阴偏虚，过汗易致亡阳脱液；应减量并配伍敛阴扶正药。',
+                  r.suggestion || '请减量使用，中病即止；可佐白芍、五味子等敛阴。', r.basis || ''));
+              } else if (purge.indexOf(n) >= 0) {
+                hits.push(mk(r.id || 'TCM-ELDERLY-PURGE', r.group || 'SPECIAL_POP',
                   warn(r.title || '老年慎用峻下药'),
-                  '患者' + age + '岁（老年），方中使用峻下/峻汗药“' + n + '”，易耗伤正气；老年患者应减量或配伍扶正药。',
-                  r.suggestion || '请减量使用，或配伍黄芪、党参等扶正药；中病即止。', r.basis || ''));
+                  '患者' + age + '岁（老年），方中使用峻下逐水药“' + n + '”，老年津液亏虚、电解质调节能力差，峻下易致脱水与电解质紊乱；须中病即止。',
+                  r.suggestion || '请减量使用，便通即止；注意补液与电解质。', r.basis || ''));
               } else if (toxic.indexOf(n) >= 0) {
                 hits.push(mk(r.id || 'TCM-ELDERLY-TOXIC', r.group || 'SPECIAL_POP',
                   warn(r.title || '老年慎用有毒药'),
-                  '患者' + age + '岁（老年），肝肾功能减退，方中使用有毒药“' + n + '”，易蓄积中毒；须严格减量并监测。',
-                  r.suggestion || '请从小剂量起始，中病即止，监测肝肾功能。', r.basis || ''));
+                  '患者' + age + '岁（老年），肝肾功能生理性减退，方中使用有毒药“' + n + '”，代谢排泄减慢易蓄积中毒；须严格减量并监测。',
+                  r.suggestion || '请从小剂量起始，先煎久煎，中病即止，监测肝肾功能。', r.basis || ''));
               }
             });
             break;
           }
           case 'pediatric_dose': {
             // P2-3：小儿（<=12岁）禁用药与剂量折算
+            // P3-2 扩展：所有药在小儿下超成人量1/2 warn、超2/3 error；峻下药小儿即使合规也 warn
             const lim = r.limits || {};
             const ageThr = typeof lim.age_threshold === 'number' ? lim.age_threshold : 12;
             const age = typeof patientAge === 'number' ? patientAge : null;
             if (age === null || age > ageThr) break;
             const forbidden = lim.forbidden_herbs || [];
-            const caution = lim.caution_herbs || [];
-            const frac = (lim.dose_fraction && lim.dose_fraction.length === 2) ? lim.dose_fraction : [0.33, 0.5];
+            // P3-2：峻下/逐水药小儿即使剂量合规也 warn（小儿脏腑娇嫩，易伤脾胃）
+            const harshPediatric = lim.harsh_pediatric_herbs || ['大黄','芒硝','玄明粉','番泻叶','甘遂','京大戟','大戟','芫花','牵牛子','黑丑','白丑','巴豆','巴豆霜','商陆'];
+            // P3-2：小儿剂量折算阈值
+            const WARN_FRAC = 1 / 2;   // >成人量1/2 → warn
+            const ERR_FRAC  = 2 / 3;   // >成人量2/3 → error
             herbs.forEach(h => {
               const n = normalizeHerbName(h.name);
               const dose = parseFloat(h.dose);
@@ -523,20 +534,29 @@
                   error(r.title || '小儿禁用药'),
                   '患者' + age + '岁（小儿），方中使用“' + n + '”，该药为小儿禁用药，可致蓄积中毒或神经系统损害，必须撤除。',
                   r.suggestion || '请改用安全的同类药物；如确需使用须在儿科医师指导下严格折算。', r.basis || ''));
-              } else if (caution.indexOf(n) >= 0 && !isNaN(dose)) {
-                // 有毒药小儿剂量应折算为成人量的 1/3-1/2
-                const adultMax = (DOSE_LIMITS[n] && DOSE_LIMITS[n].max) || (meta[n] && meta[n].max) || null;
-                if (adultMax && dose > adultMax * frac[1]) {
-                  hits.push(mk(r.id || 'TCM-PED-DOSE', r.group || 'SPECIAL_POP',
-                    error(r.title || '小儿有毒药超量'),
-                    '患者' + age + '岁（小儿），“' + n + '”用' + dose + 'g，超过小儿折算上限（成人量' + adultMax + 'g 的' + Math.round(frac[1]*100) + '%≈' + (adultMax*frac[1]).toFixed(1) + 'g）。',
-                    r.suggestion || '小儿剂量应按成人量的1/3-1/2折算；新生儿1/6，婴儿1/3，幼儿1/2，学龄儿童2/3。', r.basis || ''));
-                } else if (adultMax && dose > adultMax * frac[0]) {
-                  hits.push(mk(r.id || 'TCM-PED-DOSE-W', r.group || 'SPECIAL_POP',
-                    warn(r.title || '小儿剂量偏大'),
-                    '患者' + age + '岁（小儿），“' + n + '”用' + dose + 'g，已接近小儿折算上限（成人量' + adultMax + 'g 的1/3≈' + (adultMax*frac[0]).toFixed(1) + 'g），请复核。',
-                    r.suggestion || '请按年龄折算：新生儿1/6，婴儿1/3，幼儿1/2，学龄儿童2/3。', r.basis || ''));
-                }
+                return;
+              }
+              // P3-2：峻下药小儿即使剂量合规也 warn
+              if (harshPediatric.indexOf(n) >= 0) {
+                hits.push(mk(r.id || 'TCM-PED-HARSH', r.group || 'SPECIAL_POP',
+                  warn(r.title || '小儿慎用峻下药'),
+                  '患者' + age + '岁（小儿），方中使用峻下逐水药“' + n + '”，小儿脏腑娇嫩、脾常不足，峻下易伤正气、致脱水；须中病即止，避免久服。',
+                  r.suggestion || '请减量使用，便通即止；必要时配伍健脾和胃药。', r.basis || ''));
+              }
+              // P3-2：所有药剂量折算（含原 caution_herbs 范围内的药）
+              if (isNaN(dose)) return;
+              const adultMax = (DOSE_LIMITS[n] && DOSE_LIMITS[n].max) || (meta[n] && meta[n].max) || null;
+              if (!adultMax || adultMax <= 0) return;
+              if (dose > adultMax * ERR_FRAC) {
+                hits.push(mk(r.id || 'TCM-PED-DOSE-E', r.group || 'SPECIAL_POP',
+                  error(r.title || '小儿剂量超量'),
+                  '患者' + age + '岁（小儿），“' + n + '”用' + dose + 'g，超过小儿折算上限（成人量' + adultMax + 'g 的2/3≈' + (adultMax * ERR_FRAC).toFixed(1) + 'g）。',
+                  r.suggestion || '小儿剂量应按年龄折算：新生儿1/6，婴儿1/3，幼儿1/2，学龄儿童2/3。', r.basis || ''));
+              } else if (dose > adultMax * WARN_FRAC) {
+                hits.push(mk(r.id || 'TCM-PED-DOSE-W', r.group || 'SPECIAL_POP',
+                  warn(r.title || '小儿剂量偏大'),
+                  '患者' + age + '岁（小儿），“' + n + '”用' + dose + 'g，已超过小儿折算参考量（成人量' + adultMax + 'g 的1/2≈' + (adultMax * WARN_FRAC).toFixed(1) + 'g），请复核。',
+                  r.suggestion || '请按年龄折算：新生儿1/6，婴儿1/3，幼儿1/2，学龄儿童2/3。', r.basis || ''));
               }
             });
             break;

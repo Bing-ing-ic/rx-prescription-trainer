@@ -967,7 +967,11 @@
             "位置：第2-6肋，胸大肌浅面",
             "详细见局部解剖-胸壁组"
           ],
-          "tags": ["breast", "female_reproductive", "cross_reference"]
+          "tags": [
+            "breast",
+            "female_reproductive",
+            "cross_reference"
+          ]
         }
       ]
     },
@@ -2674,7 +2678,12 @@
             "一端连皮肤，一端连胸肌筋膜",
             "癌侵犯→酒窝征/橘皮样变"
           ],
-          "tags": ["breast", "female_reproductive", "chest_wall"]
+          "tags": [
+            "breast",
+            "female_reproductive",
+            "chest_wall",
+            "lymphatic"
+          ]
         },
         {
           "id": "breast_lymphatic_drainage",

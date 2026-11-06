@@ -53,7 +53,9 @@
         "孕妇禁用ACEI/ARB",
         "双侧肾动脉狭窄禁用ACEI/ARB"
       ],
-      "special_population_note": "老年患者首选CCB，注意体位性低血压"
+      "special_population_note": "老年患者首选CCB，注意体位性低血压",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "CHD-I25",
@@ -107,7 +109,9 @@
         "活动性出血禁用阿司匹林",
         "严重他汀类肌病禁用他汀"
       ],
-      "special_population_note": "老年患者注意出血风险"
+      "special_population_note": "老年患者注意出血风险",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "TIA-G45",
@@ -160,7 +164,9 @@
         "颅内出血禁用抗血小板",
         "近期手术禁用抗血小板"
       ],
-      "special_population_note": "建议收入卒中单元，门诊仅做二级预防处方"
+      "special_population_note": "建议收入卒中单元，门诊仅做二级预防处方",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "URI-J00",
@@ -310,7 +316,9 @@
       "contraindications": [
         "β受体阻滞剂慎用"
       ],
-      "special_population_note": "稳定期以吸入制剂为主，门诊不常规输液"
+      "special_population_note": "稳定期以吸入制剂为主，门诊不常规输液",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "CAP-J18",
@@ -418,7 +426,9 @@
         "eGFR<30禁用二甲双胍",
         "严重感染/酸中毒禁用二甲双胍"
       ],
-      "special_population_note": "造影前后48小时停用二甲双胍"
+      "special_population_note": "造影前后48小时停用二甲双胍",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "HYPERTHY-E05",
@@ -469,7 +479,9 @@
         "妊娠早期首选丙硫氧嘧啶",
         "粒细胞缺乏禁用甲巯咪唑"
       ],
-      "special_population_note": "用药后每周复查血常规"
+      "special_population_note": "用药后每周复查血常规",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "HYPOTHY-E03",
@@ -519,7 +531,9 @@
         "心绞痛/快速心律失常慎用",
         "需空腹服用"
       ],
-      "special_population_note": "老年患者从小剂量起始"
+      "special_population_note": "老年患者从小剂量起始",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "GASTRITIS-K29",
@@ -1418,7 +1432,9 @@
       "contraindications": [
         "严重肝肾功能不全慎用PPI"
       ],
-      "special_population_note": "老年患者长期用PPI注意骨质疏松和维生素B12缺乏"
+      "special_population_note": "老年患者长期用PPI注意骨质疏松和维生素B12缺乏",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "UC-K51",
@@ -1469,7 +1485,9 @@
       "contraindications": [
         "对水杨酸类过敏者禁用美沙拉嗪"
       ],
-      "special_population_note": "活动期需评估营养状况，严重者需住院静脉用药"
+      "special_population_note": "活动期需评估营养状况，严重者需住院静脉用药",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "HLP-E78",
@@ -1518,7 +1536,9 @@
         "活动性肝病禁用他汀类",
         "孕妇及哺乳期禁用"
       ],
-      "special_population_note": "他汀类夜间服用效果佳，定期监测肝功能和肌酶"
+      "special_population_note": "他汀类夜间服用效果佳，定期监测肝功能和肌酶",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "AF-I48",
@@ -1569,7 +1589,9 @@
         "二度以上房室传导阻滞禁用β受体阻滞剂",
         "甲亢禁用胺碘酮"
       ],
-      "special_population_note": "需评估CHA2DS2-VASc评分决定抗凝策略"
+      "special_population_note": "需评估CHA2DS2-VASc评分决定抗凝策略",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "HF-I50",
@@ -1623,7 +1645,9 @@
         "低血压禁用ACEI/ARB/ARNI",
         "严重肾功能不全慎用利尿剂"
       ],
-      "special_population_note": "老年患者注意监测电解质和肾功能，避免过度利尿"
+      "special_population_note": "老年患者注意监测电解质和肾功能，避免过度利尿",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "GOUT-M10",
@@ -1724,7 +1748,9 @@
         "食管狭窄禁用阿仑膦酸钠",
         "低钙血症禁用双膦酸盐"
       ],
-      "special_population_note": "阿仑膦酸钠需晨起空腹用200ml白水送服，服药后保持直立30分钟"
+      "special_population_note": "阿仑膦酸钠需晨起空腹用200ml白水送服，服药后保持直立30分钟",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "ISCHEMIC-I63",
@@ -1776,7 +1802,9 @@
         "活动性出血禁用抗血小板药",
         "肝功能不全慎用他汀"
       ],
-      "special_population_note": "需评估吞咽功能，防误吸；老年患者注意跌倒预防"
+      "special_population_note": "需评估吞咽功能，防误吸；老年患者注意跌倒预防",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "BELL-G51",
@@ -1929,7 +1957,9 @@
       "contraindications": [
         "对糖皮质激素过敏者禁用"
       ],
-      "special_population_note": "面部及皮肤皱褶处慎用强效激素，避免长期大面积使用"
+      "special_population_note": "面部及皮肤皱褶处慎用强效激素，避免长期大面积使用",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "BPH-N40",
@@ -1979,7 +2009,9 @@
         "体位性低血压慎用α受体阻滞剂",
         "女性禁用非那雄胺"
       ],
-      "special_population_note": "坦索罗辛首次睡前服用，注意体位性低血压"
+      "special_population_note": "坦索罗辛首次睡前服用，注意体位性低血压",
+      "chronic": true,
+      "max_long_rx_days": 84
     },
     {
       "code": "STONE-N20",

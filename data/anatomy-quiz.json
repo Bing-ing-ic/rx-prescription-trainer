@@ -2664,6 +2664,57 @@
       "explanation": "正中神经经腕管入手掌，长期受压致桡侧3.1指麻木、大鱼际萎缩（猿手畸形）；尺神经经尺神经管（Guyon管）受压致爪形手。",
       "exam_point": "腕管综合征→正中神经受压",
       "type": "identify"
+    },
+    {
+      "id": "id-av-node-artery",
+      "system": "circulatory",
+      "subsystem": "心",
+      "difficulty": "中级",
+      "prompt": "房室结的血液供应主要来自：",
+      "options": [
+        "右冠状动脉房室结支",
+        "左前降支",
+        "左旋支",
+        "对角支"
+      ],
+      "answer": 0,
+      "explanation": "房室结动脉约90%起自右冠状动脉（多在右冠状动脉转弯处发出），少数起自左旋支；房室结是房室传导的必经之路，其血供不足易致房室传导阻滞（二度/三度AVB）。",
+      "exam_point": "房室结动脉90%来自右冠脉",
+      "type": "identify"
+    },
+    {
+      "id": "id-ligamentum-flavum-thickening",
+      "system": "locomotor",
+      "subsystem": "关节学（脊柱）",
+      "difficulty": "中级",
+      "prompt": "黄韧带肥厚超过多少毫米时，可导致腰椎管狭窄？",
+      "options": [
+        "5mm",
+        "3mm",
+        "8mm",
+        "10mm"
+      ],
+      "answer": 0,
+      "explanation": "黄韧带正常厚度约2～4mm（腰段正常<5mm），由黄色弹性纤维构成；肥厚超过5mm时可使椎管矢状径减小、压迫马尾神经，出现间歇性跛行；硬膜外穿刺时黄韧带的阻力与穿破后\"落空感\"是进入硬膜外隙的标志。",
+      "exam_point": "黄韧带肥厚>5mm→腰椎管狭窄",
+      "type": "identify"
+    },
+    {
+      "id": "id-breast-lymph-first-station",
+      "system": "regional_thorax",
+      "subsystem": "胸壁",
+      "difficulty": "初级",
+      "prompt": "乳腺癌淋巴道转移的第一站通常是：",
+      "options": [
+        "腋淋巴结（胸肌组）",
+        "胸骨旁淋巴结",
+        "锁骨上淋巴结",
+        "纵隔淋巴结"
+      ],
+      "answer": 0,
+      "explanation": "约75%的乳腺淋巴引流至腋淋巴结（胸肌淋巴结沿胸小肌下缘、胸外侧血管排列），是乳腺癌淋巴转移的第一站；乳腺内侧部引流至胸骨旁淋巴结，上部可至锁骨上淋巴结（Virchow淋巴结）。",
+      "exam_point": "乳腺癌第一站→腋淋巴结（胸肌组）",
+      "type": "identify"
     }
   ]
 }

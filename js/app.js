@@ -34,6 +34,7 @@
     surgeryCases: {},      // disease.code -> surgery case（来自 data/surgeries.json）
     surgeryOrder: { decision: null, timing: null, procedure_id: null },
     dxAliases: {},         // P2-1 诊断别名归一化：{别名: 规范病名}（来自 data/diagnosis-aliases.json）
+    dxPinyin: {},          // P3-2 诊断拼音首字母映射：{小写首字母: 规范病名}（来自 data/pinyin-map.json）
   };
 
   // ---------- DOM ----------
@@ -179,6 +180,12 @@
           Object.keys(a).forEach(k => { if (!k.startsWith('_')) S.dxAliases[k] = a[k]; });
         }
       }).catch(() => { /* 别名表加载失败时静默降级 */ });
+      // P3-2 异步加载拼音首字母映射表（失败时静默降级）
+      fetch('data/pinyin-map.json').then(r => r.ok ? r.json() : null).then(a => {
+        if (a && typeof a === 'object') {
+          Object.keys(a).forEach(k => { if (!k.startsWith('_')) S.dxPinyin[k.toLowerCase()] = a[k]; });
+        }
+      }).catch(() => { /* 拼音映射加载失败时静默降级 */ });
     } catch (e) {
       alert('数据加载失败：' + e.message + '\n请用 python -m http.server 或双击 index.html 后通过 http:// 打开。');
     }
@@ -640,6 +647,7 @@
 
   // P2-1 诊断别名归一化：把用户输入的别名/俗称/英文缩写映射到规范病名。
   // 仅做 trim 后精确匹配（不做子串），命中返回规范病名数组（可能多个）；未命中返回空数组。
+  // P3-2 扩展：同时支持拼音首字母小写精确匹配（如 gxy/tnb/xc）。
   function dxAliasTargets(kw) {
     if (!kw || !S.dxAliases) return [];
     const k = String(kw).trim();
@@ -652,7 +660,13 @@
         if (canon && !out.includes(canon)) out.push(canon);
       }
     });
-    // 2) 若输入串本身就是规范病名（带括号后缀），也直接命中
+    // 2) P3-2 拼音首字母小写精确匹配（如 gxy→高血压、tnb→糖尿病）
+    if (S.dxPinyin && typeof S.dxPinyin === 'object') {
+      const kl = k.toLowerCase();
+      const pyCanon = S.dxPinyin[kl];
+      if (pyCanon && !out.includes(pyCanon)) out.push(pyCanon);
+    }
+    // 3) 若输入串本身就是规范病名（带括号后缀），也直接命中
     if (S.diseases && S.diseases.some(d => d.name === k) && !out.includes(k)) out.push(k);
     return out;
   }

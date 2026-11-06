@@ -268,13 +268,28 @@
     }
 
     // ====================== 4. 疗程 ======================
-    // DUR-01
+    // DUR-01 疗程上限（P3-1 慢性病长处方适配：依据《长期处方管理规范（试行）》国卫办医发〔2021〕17号，
+    //   诊断明确、用药稳定的慢性病可开具 4-12 周长处方，不按普通处方7日上限告警）
+    const dx = ctx.disease || {};
+    const isChronic = dx.chronic === true;
+    const maxLongDays = Number(dx.max_long_rx_days) || 84; // 12周=84天
     ['normal_rx','iv_rx'].forEach(k => {
       const rx = ctx[k]; if (!rx) return;
       therapeuticItems(rx).forEach(it => {
         const d = parseFloat(it.duration_days);
         if (isNaN(d)) return;
-        if (k === 'normal_rx' && d > 7) {
+        if (k !== 'normal_rx') return;
+        if (isChronic && d >= 28) {
+          // 慢性病长处方分支：28-84天不 warn，仅记录 pass 级"长处方"提示
+          if (d <= maxLongDays) {
+            hits.push(pass(R['DUR-01'],
+              `慢性病长处方：疗程 ${d} 天（${Math.round(d/7*10)/10} 周），符合《长期处方管理规范》4-12周范围。`));
+          } else {
+            hits.push(hit(R['DUR-01'], 'warn',
+              `慢性病长处方疗程 ${d} 天，超过 ${maxLongDays} 天（${Math.round(maxLongDays/7)} 周）上限。`,
+              `长处方一般≤12周（84天）；超过需上级医师评估并备注。`));
+          }
+        } else if (!isChronic && d > 7) {
           hits.push(hit(R['DUR-01'], 'warn',
             `普通处方疗程 ${d} 天，超过 7 日上限。`, `一般≤7日。`));
         }

@@ -6,8 +6,12 @@
 (function (global) {
   'use strict';
 
-  // 孕妇禁针/慎针穴（高风险，error）
-  const PREGNANCY_FORBIDDEN = ['合谷','三阴交','昆仑','至阴','肩井','缺盆','天枢','次髎','中极','关元','石门','急脉','血海'];
+  // 孕妇绝对禁针穴（error）：教材明确列为孕妇禁针/禁灸，可动胎气
+  // 依据：人卫《针灸学》"妊娠禁刺"节；合谷、三阴交泻血行气，昆仑、至阴活血催产，肩井深部为肺尖且气动胎，缺盆近胎气
+  const PREGNANCY_FORBIDDEN = ['合谷','三阴交','昆仑','至阴','肩井','缺盆'];
+  // 孕妇慎用穴（warn）：血海为活血调经穴，非绝对禁忌，妊娠期间应避免强刺激；
+  // 天枢、次髎、中极、关元、石门、急脉为腹部/腰骶部穴，妊娠期间应禁强刺激、忌深刺重灸
+  const PREGNANCY_CAUTION = ['血海','天枢','次髎','中极','关元','石门','急脉'];
   // 大血管/延髓附近禁深刺（warn）
   const DEEP_FORBIDDEN = ['风府','哑门','风池','天柱','颈动脉窦','人迎','晴明','承泣','球后','玉枕'];
   // 重要脏器附近禁直刺深刺
@@ -57,12 +61,18 @@
       return { hits, score: score(hits) };
     }
 
-    // 2) 孕妇禁针
+    // 2) 孕妇禁针（error：绝对禁针穴；warn：腹部/腰骶/血海等慎用穴）
     if (patient.isPregnant) {
       PREGNANCY_FORBIDDEN.forEach(p => {
         if (names.has(p)) {
-          hits.push(mk('ACU-PG-' + p, 'SAFETY', error('孕妇禁针：' + p),
-            p + '为孕妇禁/慎针穴，妊娠期间尤其妊娠3个月内禁针，以免堕胎。'));
+          hits.push(mk('ACU-PG-' + p, 'SAFETY', error('孕妇绝对禁针：' + p),
+            p + '为孕妇禁针穴，妊娠期间尤其妊娠3个月内禁针，以免堕胎。合谷、三阴交泻血行气，昆仑、至阴活血催产，肩井、缺盆气动胎元。'));
+        }
+      });
+      PREGNANCY_CAUTION.forEach(p => {
+        if (names.has(p)) {
+          hits.push(mk('ACU-PG-' + p, 'SAFETY', warn('孕妇慎用：' + p),
+            p + '为孕妇慎用穴，非绝对禁忌；妊娠期间应避免强刺激、深刺重灸，确需使用宜浅刺轻刺激并告知患者。'));
         }
       });
     }
@@ -153,5 +163,5 @@
   function error(title) { return { severity: 'error', title: title }; }
   function warn(title) { return { severity: 'warn', title: title }; }
 
-  global.ACUPENGINE = { load, check, score, DIMS, PREGNANCY_FORBIDDEN, DEEP_FORBIDDEN };
+  global.ACUPENGINE = { load, check, score, DIMS, PREGNANCY_FORBIDDEN, PREGNANCY_CAUTION, DEEP_FORBIDDEN };
 })(window);

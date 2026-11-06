@@ -50,8 +50,8 @@ for (const n of expectNew) {
 
 // 5. 穴位数只增不减
 console.log('\n[5] 穴位总数');
-if (pts.points.length === 143) ok(`穴位数 = ${pts.points.length}（138+5）`);
-else bad(`穴位数 = ${pts.points.length}（期望 143）`);
+if (pts.points.length === 152) ok(`穴位数 = ${pts.points.length}（143+9，P1补募穴/特定穴）`);
+else bad(`穴位数 = ${pts.points.length}（期望 152）`);
 
 // 6. 从 rules + cases 中提取所有中文穴位名，与 points.name 集合比对
 console.log('\n[6] rules/cases 引用穴位完整性');
@@ -84,12 +84,37 @@ for (const n of referenced) {
 if (missing.length === 0) ok(`所有 P0 范围内 rules/cases 引用的穴位均在穴位库中（共 ${referenced.size} 个引用点）`);
 else bad(`缺失穴位: ${missing.join('、')}`);
 
-// P1 级缺失穴（规则文案举例提到，但 P0 范围未要求补）
-const p1Expected = ['巨阙','经渠','箕门','冲门','急脉','日月','京门','飞扬','大钟','水泉'];
-for (const n of p1Expected) {
-  if (!pointNames.has(n)) p1Missing.push(n);
+// P1 级新增穴（P1-2 补募穴/特定穴）
+const p1NewPoints = ['巨阙','日月','京门','飞扬','大钟','水泉','经渠','箕门','冲门'];
+console.log('\n[8] P1-2 新增 9 穴完整性');
+for (const n of p1NewPoints) {
+  const p = pts.points.find(x => x.name === n);
+  if (p && p.category) ok(`${p.code} ${n} | ${p.meridian} | category=${p.category}`);
+  else bad(`${n} 未找到或缺 category`);
 }
-if (p1Missing.length > 0) console.log(`  ℹ P1 级缺失穴（不在本次 P0 范围，建议后续补）: ${p1Missing.join('、')}`);
+
+// P1-1 孕妇禁针分级：error 级不含血海；warn 级含血海；合谷/三阴交仍在 error
+console.log('\n[9] P1-1 孕妇禁针分级');
+const engineSrc = fs.readFileSync(path.join(__dirname, '..', 'js', 'acup-engine.js'), 'utf8');
+// 提取 PREGNANCY_FORBIDDEN 数组
+const mErr = engineSrc.match(/const PREGNANCY_FORBIDDEN\s*=\s*\[([^\]]+)\]/);
+const mCau = engineSrc.match(/const PREGNANCY_CAUTION\s*=\s*\[([^\]]+)\]/);
+const errList = mErr ? mErr[1].match(/'([^']+)'/g).map(s => s.replace(/'/g, '')) : [];
+const cauList = mCau ? mCau[1].match(/'([^']+)'/g).map(s => s.replace(/'/g, '')) : [];
+console.log('  error 级:', errList.join('、'));
+console.log('  warn 级 :', cauList.join('、'));
+if (!errList.includes('血海')) ok('error 级不含血海（血海已降为 warn）');
+else bad('error 级仍含血海');
+if (cauList.includes('血海')) ok('warn 级含血海（孕妇慎用）');
+else bad('warn 级不含血海');
+for (const mustErr of ['合谷','三阴交','昆仑','至阴','肩井','缺盆']) {
+  if (errList.includes(mustErr)) ok(`error 级保留 ${mustErr}`);
+  else bad(`error 级丢失 ${mustErr}`);
+}
+// 血海条目自身 contraindication 字段自洽
+const xuehai = pts.points.find(p => p.name === '血海');
+if (xuehai && /孕妇慎用/.test(xuehai.special_note || '')) ok('血海条目 special_note 标注"孕妇慎用"');
+else bad('血海条目未标注孕妇慎用');
 
 // 7. 规则里 TD 组引用的特定穴是否都在库
 console.log('\n[7] TD 规则引用的特定穴命中检查');

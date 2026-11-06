@@ -553,7 +553,7 @@
         "膝股痛"
       ],
       "needling_method": "直刺1-1.5寸",
-      "special_note": "治血要穴，皮肤病常用"
+      "special_note": "治血要穴，皮肤病常用；孕妇慎用（活血调经，非绝对禁忌，妊娠期间避免强刺激）"
     },
     {
       "code": "SP-21",
@@ -2886,6 +2886,183 @@
       ],
       "needling_method": "直刺1-1.5寸，避开腘动静脉及股二头肌腱",
       "special_note": "三焦之下合穴；调理三焦气机、通利水道要穴"
+    },
+    {
+      "code": "RN-14",
+      "name": "巨阙",
+      "pinyin": "juque",
+      "meridian": "任脉",
+      "location": "前正中线上，脐中上6寸",
+      "category": "心募穴",
+      "functions": "宽胸化痰，宁心安神，和胃降逆",
+      "indications": [
+        "胸痛",
+        "心悸",
+        "心痛",
+        "噎膈",
+        "呕吐",
+        "癫狂痫",
+        "健忘",
+        "失眠"
+      ],
+      "needling_method": "直刺0.5-0.8寸，或向上斜刺0.5-1寸；不可深刺（深部为肝脏）",
+      "special_note": "心之募穴；任脉；俞募配穴常配心俞；宁心安神要穴"
+    },
+    {
+      "code": "GB-24",
+      "name": "日月",
+      "pinyin": "riyue",
+      "meridian": "足少阳胆经",
+      "location": "乳头直下，第7肋间隙，前正中线旁开4寸",
+      "category": "胆募穴",
+      "functions": "疏肝利胆，健脾降逆",
+      "indications": [
+        "胁肋疼痛",
+        "呕吐",
+        "吞酸",
+        "黄疸",
+        "胃脘痛",
+        "口苦",
+        "胆道蛔虫"
+      ],
+      "needling_method": "斜刺0.5-0.8寸，不可直刺深刺（深部为肝脏）",
+      "special_note": "胆之募穴；足少阳、足太阴、阳维脉交会穴；俞募配穴常配胆俞"
+    },
+    {
+      "code": "GB-25",
+      "name": "京门",
+      "pinyin": "jingmen",
+      "meridian": "足少阳胆经",
+      "location": "侧腰部，第12肋游离端下方处",
+      "category": "肾募穴",
+      "functions": "健脾通淋，温阳益肾",
+      "indications": [
+        "小便不利",
+        "水肿",
+        "腰痛",
+        "胁痛",
+        "腹胀",
+        "泄泻",
+        "脊强反折"
+      ],
+      "needling_method": "斜刺0.5-0.8寸，不可深刺（深部为肾脏）",
+      "special_note": "肾之募穴；俞募配穴常配肾俞；治腰痛要穴"
+    },
+    {
+      "code": "BL-58",
+      "name": "飞扬",
+      "pinyin": "feiyang",
+      "meridian": "足太阳膀胱经",
+      "location": "小腿后外侧，昆仑直上7寸，承山外下方1寸",
+      "category": "络穴",
+      "functions": "舒筋活络，清热安神",
+      "indications": [
+        "头痛",
+        "目眩",
+        "鼻塞",
+        "鼻衄",
+        "痔疾",
+        "腰腿疼痛",
+        "癫狂",
+        "痔瘘"
+      ],
+      "needling_method": "直刺1-1.5寸",
+      "special_note": "膀胱经络穴，别走足少阴肾经；治腰腿痛、痔疾要穴"
+    },
+    {
+      "code": "KI-04",
+      "name": "大钟",
+      "pinyin": "dazhong",
+      "meridian": "足少阴肾经",
+      "location": "足内侧，内踝后下方，跟腱附着部内前方凹陷处",
+      "category": "络穴",
+      "functions": "益肾平喘，通调二便",
+      "indications": [
+        "癃闭",
+        "遗尿",
+        "便秘",
+        "咳血",
+        "气喘",
+        "咽喉肿痛",
+        "痴呆",
+        "腰痛"
+      ],
+      "needling_method": "直刺0.3-0.5寸",
+      "special_note": "肾经络穴，别走足太阳膀胱经；治痴呆、癃闭、便秘要穴"
+    },
+    {
+      "code": "KI-05",
+      "name": "水泉",
+      "pinyin": "shuiquan",
+      "meridian": "足少阴肾经",
+      "location": "足内侧内踝后下方，太溪直上1寸，跟骨结节内侧上缘",
+      "category": "郄穴",
+      "functions": "调经止痛，清热利水",
+      "indications": [
+        "月经不调",
+        "痛经",
+        "经闭",
+        "子宫脱垂",
+        "小便不利",
+        "足跟痛"
+      ],
+      "needling_method": "直刺0.3-0.5寸",
+      "special_note": "肾经郄穴；善治妇科急性血证、痛经"
+    },
+    {
+      "code": "LU-08",
+      "name": "经渠",
+      "pinyin": "jingqu",
+      "meridian": "手太阴肺经",
+      "location": "桡骨茎突内侧，腕横纹上1寸，桡动脉搏动处桡侧凹陷中",
+      "category": "经穴（五输穴之经穴）",
+      "functions": "宣肺利咽，理气平喘",
+      "indications": [
+        "咳嗽",
+        "气喘",
+        "胸痛",
+        "咽喉肿痛",
+        "手腕痛",
+        "掌中热"
+      ],
+      "needling_method": "避开桡动脉，直刺0.2-0.3寸；不宜灸",
+      "special_note": "肺经经穴（金穴）；经主喘咳寒热；邻近桡动脉须避开"
+    },
+    {
+      "code": "SP-11",
+      "name": "箕门",
+      "pinyin": "jimen",
+      "meridian": "足太阴脾经",
+      "location": "大腿内侧，血海上6寸，股内侧肌隆起处",
+      "category": "脾经穴",
+      "functions": "健脾渗湿，清热利尿",
+      "indications": [
+        "小便不利",
+        "遗尿",
+        "腹股沟肿痛",
+        "阴囊湿疹"
+      ],
+      "needling_method": "避开股动静脉，直刺0.5-1寸",
+      "special_note": "邻近股动脉、股静脉，须避开血管进针；治小便不利要穴"
+    },
+    {
+      "code": "SP-12",
+      "name": "冲门",
+      "pinyin": "chongmen",
+      "meridian": "足太阴脾经",
+      "location": "腹股沟外侧，距耻骨联合上缘中点3.5寸，髂前上棘与耻骨联合连线中点处，股动脉搏动处外侧",
+      "category": "脾经穴（足太阴、足厥阴交会）",
+      "functions": "健脾化湿，理气止痛",
+      "indications": [
+        "腹痛",
+        "疝气",
+        "崩漏",
+        "带下",
+        "乳少",
+        "腹股沟疼痛"
+      ],
+      "needling_method": "避开股动脉，直刺0.5-1寸；不可深刺",
+      "special_note": "足太阴、足厥阴交会穴；邻近股动脉须避开；孕妇慎用"
     }
   ]
 }

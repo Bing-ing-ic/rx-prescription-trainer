@@ -337,10 +337,10 @@
       "department": "甲状腺乳腺外科/普外科",
       "difficulty": "高级",
       "standard": {
-        "decision": "surgery",
+        "decision": "conservative",
         "timing": "elective",
         "procedure_id": "FNA_first",
-        "conservative_ok": false
+        "conservative_ok": true
       },
       "timing_options": [
         {
@@ -1256,10 +1256,10 @@
       "department": "骨科/脊柱外科",
       "difficulty": "高级",
       "standard": {
-        "decision": "surgery",
-        "timing": "elective",
-        "procedure_id": "PTED",
-        "conservative_ok": false
+        "decision": "conservative",
+        "timing": "none",
+        "procedure_id": "conservative_physio",
+        "conservative_ok": true
       },
       "timing_options": [
         {

@@ -1128,13 +1128,13 @@
         "note": "创伤后轻度升高可接受"
       },
       {
-        "exam_code": "BIO-CR",
+        "exam_code": "BIO-CREA",
         "result": "75",
         "status": "normal",
         "note": "肌酐正常，术前评估"
       },
       {
-        "exam_code": "IMG-XRAY-WRIST",
+        "exam_code": "IMG-WRIST-XR",
         "result": "桡骨远端距关节面3cm以内横形骨折，远折端向桡背侧移位，呈Colles骨折表现，关节面尚平整",
         "status": "abnormal",
         "note": "桡骨远端Colles骨折"
@@ -1142,13 +1142,13 @@
     ],
     "THYROID-E04": [
       {
-        "exam_code": "BIO-TSH",
+        "exam_code": "IMM-TSH",
         "result": "2.1",
         "status": "normal",
         "note": "甲状腺功能正常"
       },
       {
-        "exam_code": "TUMOR-TG",
+        "exam_code": "IMM-TG",
         "result": "22",
         "status": "normal",
         "note": "甲状腺球蛋白正常范围"
@@ -1194,13 +1194,13 @@
         "note": "CRP显著升高"
       },
       {
-        "exam_code": "BIO-AMYLASE",
+        "exam_code": "BIO-AMY",
         "result": "280",
         "status": "high",
         "note": "血淀粉酶可轻度升高，需与胰腺炎鉴别"
       },
       {
-        "exam_code": "IMG-XRAY-ABDOM",
+        "exam_code": "IMG-ABDOM-XR",
         "result": "立位腹平片可见双侧膈下游离气体，肠管轻度胀气",
         "status": "abnormal",
         "note": "消化道穿孔典型表现"
@@ -1214,13 +1214,13 @@
         "note": "白细胞升高"
       },
       {
-        "exam_code": "BIO-K",
+        "exam_code": "ELE-K",
         "result": "3.1",
         "status": "low",
         "note": "低钾，需纠正"
       },
       {
-        "exam_code": "IMG-XRAY-ABDOM",
+        "exam_code": "IMG-ABDOM-XR",
         "result": "腹中部可见多个扩张肠袢及阶梯状气液平面，结肠未见胀气",
         "status": "abnormal",
         "note": "机械性小肠梗阻典型X线"
@@ -1234,13 +1234,13 @@
         "note": "血常规正常"
       },
       {
-        "exam_code": "BIO-PLT",
+        "exam_code": "CBC-PLT",
         "result": "210",
         "status": "normal",
         "note": "血小板正常"
       },
       {
-        "exam_code": "IMG-LOWER-VEIN-DUPLEX",
+        "exam_code": "IMG-VEIN-DUPLEX",
         "result": "大隐静脉隐股瓣膜反流，深静脉通畅未见血栓，浅静脉迂曲扩张",
         "status": "abnormal",
         "note": "大隐静脉反流、深静脉通畅"
@@ -1254,13 +1254,13 @@
         "note": "白细胞显著升高"
       },
       {
-        "exam_code": "BIO-AMYLASE",
+        "exam_code": "BIO-AMY",
         "result": "1250",
         "status": "high",
         "note": "血淀粉酶显著升高（>正常值3倍）"
       },
       {
-        "exam_code": "BIO-LIPASE",
+        "exam_code": "BIO-LIP",
         "result": "860",
         "status": "high",
         "note": "脂肪酶升高，特异性更高"
@@ -1280,19 +1280,19 @@
         "note": "小细胞低色素贫血"
       },
       {
-        "exam_code": "BIO-CEA",
+        "exam_code": "IMM-CEA",
         "result": "12.5",
         "status": "high",
         "note": "CEA升高"
       },
       {
-        "exam_code": "BIO-CA199",
+        "exam_code": "IMM-CA199",
         "result": "85",
         "status": "high",
         "note": "CA19-9升高"
       },
       {
-        "exam_code": "IMG-GASTROSCOPY",
+        "exam_code": "FUNC-GASTRO",
         "result": "胃窦小弯侧溃疡型肿物3×4cm，边缘隆起，底凹凸不平，活检病理腺癌",
         "status": "abnormal",
         "note": "胃镜+活检确诊胃癌"
@@ -1306,19 +1306,19 @@
         "note": "贫血"
       },
       {
-        "exam_code": "FEC-OB",
+        "exam_code": "ST-OB",
         "result": "阳性",
         "status": "abnormal",
         "note": "粪便隐血持续阳性"
       },
       {
-        "exam_code": "BIO-CEA",
+        "exam_code": "IMM-CEA",
         "result": "18.6",
         "status": "high",
         "note": "CEA明显升高"
       },
       {
-        "exam_code": "IMG-COLONOSCOPY",
+        "exam_code": "FUNC-COLONOSCOPY",
         "result": "升结肠菜花状肿物3×4cm，管腔狭窄，活检病理腺癌",
         "status": "abnormal",
         "note": "结肠镜+活检确诊"
@@ -1332,13 +1332,13 @@
         "note": "血常规正常"
       },
       {
-        "exam_code": "FEC-OB",
+        "exam_code": "ST-OB",
         "result": "弱阳性",
         "status": "abnormal",
         "note": "便血后隐血可阳性，需与肿瘤鉴别"
       },
       {
-        "exam_code": "ANUS-SCOPY",
+        "exam_code": "FUNC-ANOSCOPY",
         "result": "齿状线上方3/7/11点珊瑚状紫红色痔块，III度",
         "status": "abnormal",
         "note": "肛门镜见内痔"
@@ -1366,13 +1366,13 @@
     ],
     "THYROID-ADENOMA-E04": [
       {
-        "exam_code": "BIO-TSH",
+        "exam_code": "IMM-TSH",
         "result": "1.8",
         "status": "normal",
         "note": "甲状腺功能正常"
       },
       {
-        "exam_code": "BIO-T3T4",
+        "exam_code": "IMM-FT4",
         "result": "正常",
         "status": "normal",
         "note": "甲功正常，排除高功能腺瘤"
@@ -1392,7 +1392,7 @@
         "note": "早期可正常"
       },
       {
-        "exam_code": "UR-ROUTINE",
+        "exam_code": "UA-LEU",
         "result": "WBC 0-2/HP",
         "status": "normal",
         "note": "尿常规正常，排除附睾炎"
@@ -1412,7 +1412,7 @@
         "note": "白细胞升高"
       },
       {
-        "exam_code": "BIO-K",
+        "exam_code": "ELE-K",
         "result": "3.3",
         "status": "low",
         "note": "低钾，需纠正"
@@ -1432,13 +1432,13 @@
         "note": "血常规正常"
       },
       {
-        "exam_code": "ABG",
+        "exam_code": "BIO-ABG",
         "result": "pH 7.45, PaO2 65, PaCO2 35",
         "status": "abnormal",
         "note": "低氧血症，呼吸性碱中毒早期"
       },
       {
-        "exam_code": "IMG-XRAY-CHEST",
+        "exam_code": "IMG-CHEST-XR",
         "result": "右侧肺野外带无肺纹理透光影，肺组织压缩约40%，气胸线清晰",
         "status": "abnormal",
         "note": "闭合性气胸典型胸片"

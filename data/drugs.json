@@ -36,7 +36,10 @@
       "manufacturer": "辉瑞制药",
       "pinyin": "bhsaldpp",
       "pinyin_code": "BHSALDPP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "氨氯地平"
+      ]
     },
     {
       "generic_name": "硝苯地平控释片",
@@ -107,7 +110,10 @@
       "manufacturer": "中美上海施贵宝",
       "pinyin": "ysejsghsp",
       "pinyin_code": "YSEJSGHSP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "二甲双胍"
+      ]
     },
     {
       "generic_name": "阿莫西林胶囊",
@@ -179,7 +185,10 @@
       "manufacturer": "中美天津史克",
       "pinyin": "blfhsjn",
       "pinyin_code": "BLFHSJN",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "布洛芬"
+      ]
     },
     {
       "generic_name": "奥美拉唑肠溶胶囊",
@@ -214,7 +223,10 @@
       "manufacturer": "阿斯利康",
       "pinyin": "amlzcrjn",
       "pinyin_code": "AMLZCRJN",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "奥美拉唑"
+      ]
     },
     {
       "generic_name": "头孢呋辛酯片",
@@ -250,7 +262,10 @@
       "manufacturer": "国产制药企业",
       "pinyin": "tbfxzp",
       "pinyin_code": "TBFXZP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "头孢呋辛酯"
+      ]
     },
     {
       "generic_name": "左氧氟沙星片",
@@ -280,7 +295,8 @@
         "18岁以下禁用",
         "孕妇哺乳期禁用",
         "避免与含钙铝抗酸剂同服",
-        "警惕QT间期延长"
+        "警惕QT间期延长",
+        "孕妇禁用"
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
@@ -288,7 +304,10 @@
       "manufacturer": "国产制药企业",
       "pinyin": "zyfsxp",
       "pinyin_code": "ZYFSXP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "盐酸左氧氟沙星片"
+      ]
     },
     {
       "generic_name": "谷维素片",
@@ -321,7 +340,10 @@
       "manufacturer": "国产制药企业",
       "pinyin": "gwsp",
       "pinyin_code": "GWSP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "谷维素"
+      ]
     },
     {
       "generic_name": "复合维生素B片",
@@ -382,7 +404,8 @@
       "skin_test_required": false,
       "special_warnings_json": [
         "需与其他药物间隔1-2小时服用",
-        "儿童禁用"
+        "儿童可用：<1岁每日1袋、1-2岁每日1-2袋、>2岁每日2-3袋，分3次服用",
+        "感染性腹泻应在抗感染基础上使用，不宜单用止泻"
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
@@ -533,7 +556,10 @@
       "manufacturer": "德国默克",
       "pinyin": "zjzxsnp",
       "pinyin_code": "ZJZXSNP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "左甲状腺素钠"
+      ]
     },
     {
       "generic_name": "甲巯咪唑片",
@@ -605,7 +631,10 @@
       "manufacturer": "西安杨森",
       "pinyin": "dpltp",
       "pinyin_code": "DPLTP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "多潘立酮"
+      ]
     },
     {
       "generic_name": "双歧杆菌三联活菌胶囊",
@@ -641,7 +670,10 @@
       "manufacturer": "上海信谊药厂",
       "pinyin": "sqgjslhjjn",
       "pinyin_code": "SQGJSLHJJN",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "双歧杆菌三联活菌"
+      ]
     },
     {
       "generic_name": "莫匹罗星软膏",
@@ -1263,42 +1295,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "盐酸左氧氟沙星片",
-      "brand_name": "可乐必妥",
-      "dosage_form": "oral",
-      "spec": "0.5g×5片",
-      "unit": "片",
-      "medical_insurance_class": "乙",
-      "essential_medicine": true,
-      "jtc_batch": "第3批",
-      "otc_class": "处方药",
-      "abx_level": "restricted",
-      "pharmacology_class": "喹诺酮类",
-      "dose_range_json": {
-        "single_min_g": 0.2,
-        "single_max_g": 0.5,
-        "daily_max_g": 0.5,
-        "default_freq": "qd",
-        "default_duration_days": 7
-      },
-      "liver_renal_note": "",
-      "is_iv_capable": false,
-      "allowed_solvents_json": [],
-      "drip_speed_max_mlh": null,
-      "skin_test_required": false,
-      "special_warnings_json": [
-        "18岁以下禁用",
-        "孕妇禁用"
-      ],
-      "is_solvent": false,
-      "is_tcm_injection": false,
-      "price_yuan": 4,
-      "manufacturer": "第一三共制药",
-      "pinyin": "yszyfsxp",
-      "pinyin_code": "YSZYFSXP",
-      "reference_status": "core"
-    },
-    {
       "generic_name": "甲硝唑片",
       "brand_name": "",
       "dosage_form": "oral",
@@ -1364,7 +1360,10 @@
       "manufacturer": "辉瑞制药",
       "pinyin": "aqmsfsp",
       "pinyin_code": "AQMSFSP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "阿奇霉素"
+      ]
     },
     {
       "generic_name": "克拉霉素片",
@@ -1430,7 +1429,10 @@
       "manufacturer": "山西云鹏制药",
       "pinyin": "fntycrp",
       "pinyin_code": "FNTYCRP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "呋喃妥因"
+      ]
     },
     {
       "generic_name": "注射用头孢曲松钠",
@@ -1546,43 +1548,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "硫酸阿米卡星注射液",
-      "brand_name": "",
-      "dosage_form": "iv_drip",
-      "spec": "0.2g/2ml",
-      "unit": "支",
-      "medical_insurance_class": "甲",
-      "essential_medicine": true,
-      "jtc_batch": null,
-      "otc_class": "处方药",
-      "abx_level": "restricted",
-      "pharmacology_class": "氨基糖苷类",
-      "dose_range_json": {
-        "single_min_g": 0.2,
-        "single_max_g": 0.4,
-        "daily_max_g": 1.5,
-        "default_freq": "q12h",
-        "default_duration_days": 7
-      },
-      "liver_renal_note": "肾毒性/耳毒性",
-      "is_iv_capable": true,
-      "allowed_solvents_json": [
-        "0.9%氯化钠注射液 250ml"
-      ],
-      "drip_speed_max_mlh": 40,
-      "skin_test_required": false,
-      "special_warnings_json": [
-        "儿童/老人慎用"
-      ],
-      "is_solvent": false,
-      "is_tcm_injection": false,
-      "price_yuan": 2,
-      "manufacturer": "上海医药集团",
-      "pinyin": "lsamkxzsy",
-      "pinyin_code": "LSAMKXZSY",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "甲硝唑注射液",
       "brand_name": "",
       "dosage_form": "iv_drip",
@@ -1651,7 +1616,10 @@
       "manufacturer": "阿斯利康",
       "pinyin": "jssmtlep",
       "pinyin_code": "JSSMTLEP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "美托洛尔"
+      ]
     },
     {
       "generic_name": "比索洛尔片",
@@ -1684,7 +1652,10 @@
       "manufacturer": "德国默克",
       "pinyin": "bslep",
       "pinyin_code": "BSLEP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "比索洛尔"
+      ]
     },
     {
       "generic_name": "卡托普利片",
@@ -1720,7 +1691,10 @@
       "manufacturer": "上海施贵宝",
       "pinyin": "ktplp",
       "pinyin_code": "KTPLP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "卡托普利"
+      ]
     },
     {
       "generic_name": "缬沙坦胶囊",
@@ -1755,7 +1729,10 @@
       "manufacturer": "诺华制药",
       "pinyin": "xstjn",
       "pinyin_code": "XSTJN",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "缬沙坦"
+      ]
     },
     {
       "generic_name": "呋塞米片",
@@ -1931,7 +1908,10 @@
       "manufacturer": "赛诺菲制药",
       "pinyin": "lpglp",
       "pinyin_code": "LPGLP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "氯吡格雷"
+      ]
     },
     {
       "generic_name": "法莫替丁片",
@@ -1964,7 +1944,10 @@
       "manufacturer": "上海信谊药厂",
       "pinyin": "fmtdp",
       "pinyin_code": "FMTDP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "法莫替丁"
+      ]
     },
     {
       "generic_name": "兰索拉唑肠溶胶囊",
@@ -1997,7 +1980,10 @@
       "manufacturer": "天津武田药品",
       "pinyin": "lslzcrjn",
       "pinyin_code": "LSLZCRJN",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "兰索拉唑"
+      ]
     },
     {
       "generic_name": "泮托拉唑钠肠溶胶囊",
@@ -2063,7 +2049,10 @@
       "manufacturer": "荷兰苏威制药",
       "pinyin": "rgtkfy",
       "pinyin_code": "RGTKFY",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "乳果糖"
+      ]
     },
     {
       "generic_name": "开塞露",
@@ -2197,7 +2186,10 @@
       "manufacturer": "默沙东制药",
       "pinyin": "mlstnp",
       "pinyin_code": "MLSTNP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "孟鲁司特钠"
+      ]
     },
     {
       "generic_name": "格列美脲片",
@@ -2232,7 +2224,10 @@
       "manufacturer": "赛诺菲制药",
       "pinyin": "glmnp",
       "pinyin_code": "GLMNP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "格列美脲"
+      ]
     },
     {
       "generic_name": "阿卡波糖片",
@@ -2265,7 +2260,10 @@
       "manufacturer": "拜耳医药",
       "pinyin": "akbtp",
       "pinyin_code": "AKBTP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "阿卡波糖"
+      ]
     },
     {
       "generic_name": "甘精胰岛素注射液",
@@ -2336,7 +2334,10 @@
       "manufacturer": "云南白药集团",
       "pinyin": "dyxajfp",
       "pinyin_code": "DYXAJFP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "对乙酰氨基酚"
+      ]
     },
     {
       "generic_name": "瑞舒伐他汀钙片",
@@ -2554,7 +2555,11 @@
       },
       "pinyin": "fbstp",
       "pharmacology_class": "抗痛风药",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "非布司他"
+      ],
+      "special_warnings_json": []
     },
     {
       "generic_name": "苯溴马隆片",
@@ -2596,7 +2601,11 @@
       },
       "pinyin": "bpcp",
       "pharmacology_class": "抗痛风药",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "别嘌醇"
+      ],
+      "special_warnings_json": []
     },
     {
       "generic_name": "铝碳酸镁咀嚼片",
@@ -2617,7 +2626,11 @@
       },
       "pinyin": "ltsmjjp",
       "pharmacology_class": "抗酸药/胃黏膜保护剂",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "铝碳酸镁"
+      ],
+      "special_warnings_json": []
     },
     {
       "generic_name": "莫沙必利片",
@@ -2638,7 +2651,11 @@
       },
       "pinyin": "msblp",
       "pharmacology_class": "促胃肠动力药",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "莫沙必利"
+      ],
+      "special_warnings_json": []
     },
     {
       "generic_name": "格列齐特缓释片",
@@ -2659,7 +2676,11 @@
       },
       "pinyin": "glqthsp",
       "pharmacology_class": "磺脲类",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "格列齐特"
+      ],
+      "special_warnings_json": []
     },
     {
       "generic_name": "肺力咳合剂",
@@ -2701,7 +2722,11 @@
       },
       "pinyin": "tbkwjn",
       "pharmacology_class": "第三代头孢菌素",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "头孢克肟"
+      ],
+      "special_warnings_json": []
     },
     {
       "generic_name": "注射用美罗培南",
@@ -2971,7 +2996,11 @@
       },
       "pinyin": "slfsnhsp",
       "pharmacology_class": "非甾体抗炎药（NSAIDs）",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "双氯芬酸钠"
+      ],
+      "special_warnings_json": []
     },
     {
       "generic_name": "塞来昔布胶囊",
@@ -2992,7 +3021,11 @@
       },
       "pinyin": "slxbjn",
       "pharmacology_class": "COX-2抑制剂",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "塞来昔布"
+      ],
+      "special_warnings_json": []
     },
     {
       "generic_name": "10%葡萄糖酸钙注射液",
@@ -3162,39 +3195,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "美托洛尔缓释片",
-      "brand_name": "倍他乐克",
-      "dosage_form": "oral",
-      "spec": "47.5mg×7片",
-      "unit": "片",
-      "medical_insurance_class": "乙",
-      "essential_medicine": true,
-      "jtc_batch": "第4批",
-      "otc_class": "处方药",
-      "abx_level": "none",
-      "pharmacology_class": "β受体阻滞剂",
-      "price_yuan": 2.5,
-      "manufacturer": "阿斯利康",
-      "dose_range_json": {
-        "single_min_mg": 23.75,
-        "single_max_mg": 95,
-        "daily_max_mg": 190,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "liver_renal_note": "",
-      "is_iv_capable": false,
-      "allowed_solvents_json": [],
-      "drip_speed_max_mlh": null,
-      "skin_test_required": false,
-      "special_warnings_json": [
-        "哮喘禁用"
-      ],
-      "pinyin": "mtlehsp",
-      "pinyin_code": "MTLEHSP",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "雷贝拉唑钠肠溶片",
       "brand_name": "波利特",
       "dosage_form": "oral",
@@ -3316,7 +3316,10 @@
       "special_warnings_json": [],
       "pinyin": "lltdp",
       "pinyin_code": "LLTDP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "氯雷他定"
+      ]
     },
     {
       "generic_name": "西替利嗪片",
@@ -3347,7 +3350,10 @@
       "special_warnings_json": [],
       "pinyin": "xtlqp",
       "pinyin_code": "XTLQP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "西替利嗪"
+      ]
     },
     {
       "generic_name": "布洛芬混悬液",
@@ -3381,37 +3387,6 @@
       "pinyin": "blfhxy",
       "pinyin_code": "BLFHXY",
       "reference_status": "core"
-    },
-    {
-      "generic_name": "氨溴索口服溶液",
-      "brand_name": "沐舒坦",
-      "dosage_form": "oral",
-      "spec": "100ml:0.6g",
-      "unit": "瓶",
-      "medical_insurance_class": "乙",
-      "essential_medicine": true,
-      "jtc_batch": "第4批",
-      "otc_class": "OTC甲类",
-      "abx_level": "none",
-      "pharmacology_class": "祛痰药",
-      "price_yuan": 18,
-      "manufacturer": "勃林格殷格翰",
-      "dose_range_json": {
-        "single_min_mg": 30,
-        "single_max_mg": 60,
-        "daily_max_mg": 120,
-        "default_freq": "tid",
-        "default_duration_days": 7
-      },
-      "liver_renal_note": "",
-      "is_iv_capable": false,
-      "allowed_solvents_json": [],
-      "drip_speed_max_mlh": null,
-      "skin_test_required": false,
-      "special_warnings_json": [],
-      "pinyin": "axskfry",
-      "pinyin_code": "AXSKFRY",
-      "reference_status": "backup"
     },
     {
       "generic_name": "川贝枇杷膏",
@@ -3701,7 +3676,10 @@
       "special_warnings_json": [],
       "pinyin": "fldphsp",
       "pinyin_code": "FLDPHSP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "非洛地平"
+      ]
     },
     {
       "generic_name": "盐酸贝那普利片",
@@ -3924,7 +3902,10 @@
       ],
       "pinyin": "jysbjkl",
       "pinyin_code": "JYSBJKL",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "枸橼酸铋钾"
+      ]
     },
     {
       "generic_name": "熊去氧胆酸胶囊",
@@ -4017,7 +3998,10 @@
       "special_warnings_json": [],
       "pinyin": "pwxap",
       "pinyin_code": "PWXAP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "匹维溴铵"
+      ]
     },
     {
       "generic_name": "门冬胰岛素注射液",
@@ -4051,6 +4035,47 @@
       "pinyin": "mdydszsy",
       "pinyin_code": "MDYDSZSY",
       "reference_status": "backup"
+    },
+    {
+      "generic_name": "普通胰岛素注射液",
+      "brand_name": "诺和灵R",
+      "dosage_form": "iv_drip",
+      "spec": "400u/10ml",
+      "unit": "支",
+      "medical_insurance_class": "甲",
+      "essential_medicine": true,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "短效胰岛素",
+      "dose_range_json": {
+        "single_min_u": 4,
+        "single_max_u": 12,
+        "daily_max_u": 48,
+        "default_freq": "持续静滴",
+        "default_duration_days": 1
+      },
+      "liver_renal_note": "肾功能不全者胰岛素清除减慢，需减量并监测血糖",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液 50ml",
+        "0.9%氯化钠注射液 250ml"
+      ],
+      "drip_speed_max_mlh": 20,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "DKA/酮症酸中毒时予0.05-0.1 U/kg/h持续静脉泵入，每1-2h监测血糖",
+        "血糖降至13.9mmol/L后换5%葡萄糖液+胰岛素中和",
+        "亦可皮下注射用于餐时血糖控制，静脉仅用于急症",
+        "可致低血糖，需备50%葡萄糖"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 20,
+      "manufacturer": "诺和诺德",
+      "pinyin": "ptdszsy",
+      "pinyin_code": "PTDSZSY",
+      "reference_status": "core"
     },
     {
       "generic_name": "达格列净片",
@@ -4116,7 +4141,10 @@
       ],
       "pinyin": "rglnp",
       "pinyin_code": "RGLNP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "瑞格列奈"
+      ]
     },
     {
       "generic_name": "乙酰半胱氨酸泡腾片",
@@ -4149,7 +4177,10 @@
       ],
       "pinyin": "yxbgasptp",
       "pinyin_code": "YXBGASPTP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "乙酰半胱氨酸"
+      ]
     },
     {
       "generic_name": "复方甘草片",
@@ -4244,7 +4275,10 @@
       "special_warnings_json": [],
       "pinyin": "tbdnfsp",
       "pinyin_code": "TBDNFSP",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "头孢地尼"
+      ]
     },
     {
       "generic_name": "阿奇霉素干混悬剂",
@@ -4869,63 +4903,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "头孢呋辛酯",
-      "brand_name": "西力欣",
-      "dosage_form": "oral",
-      "spec": "0.25g×6片",
-      "pharmacology_class": "第二代头孢菌素",
-      "abx_level": "non_restricted",
-      "price_yuan": 32,
-      "dose_range_json": {
-        "single_min_mg": 250,
-        "single_max_mg": 500,
-        "default_freq": "bid",
-        "default_duration_days": 7
-      },
-      "pinyin": "tbfxz",
-      "pinyin_code": "TBFXZ",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "头孢地尼",
-      "brand_name": "世福素",
-      "dosage_form": "oral",
-      "spec": "0.1g×9粒",
-      "pharmacology_class": "第三代头孢菌素",
-      "abx_level": "restricted",
-      "price_yuan": 45,
-      "dose_range_json": {
-        "single_min_mg": 100,
-        "single_max_mg": 200,
-        "default_freq": "tid",
-        "default_duration_days": 7
-      },
-      "pinyin": "tbdn",
-      "pinyin_code": "TBDN",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "头孢克肟",
-      "brand_name": "世福素",
-      "dosage_form": "oral",
-      "spec": "50mg×12袋",
-      "pharmacology_class": "第三代头孢菌素",
-      "abx_level": "restricted",
-      "price_yuan": 38,
-      "dose_range_json": {
-        "single_min_mg": 50,
-        "single_max_mg": 100,
-        "default_freq": "bid",
-        "default_duration_days": 7
-      },
-      "pinyin": "tbkw",
-      "pinyin_code": "TBKW",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "头孢曲松",
       "brand_name": "罗氏芬",
       "dosage_form": "iv_drip",
@@ -4943,26 +4920,6 @@
       "pinyin": "tbqs",
       "pinyin_code": "TBQS",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "阿莫西林克拉维酸钾",
-      "brand_name": "安灭菌",
-      "dosage_form": "oral",
-      "spec": "0.375g×12片",
-      "pharmacology_class": "青霉素类",
-      "abx_level": "non_restricted",
-      "price_yuan": 35,
-      "skin_test_required": true,
-      "dose_range_json": {
-        "single_min_mg": 375,
-        "single_max_mg": 750,
-        "default_freq": "tid",
-        "default_duration_days": 7
-      },
-      "pinyin": "amxlklwsj",
-      "pinyin_code": "AMXLKLWSJ",
-      "medical_insurance_class": "甲",
       "reference_status": "backup"
     },
     {
@@ -5022,25 +4979,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "阿奇霉素",
-      "brand_name": "希舒美",
-      "dosage_form": "oral",
-      "spec": "0.25g×6片",
-      "pharmacology_class": "大环内酯类",
-      "abx_level": "non_restricted",
-      "price_yuan": 42,
-      "dose_range_json": {
-        "single_min_mg": 250,
-        "single_max_mg": 500,
-        "default_freq": "qd",
-        "default_duration_days": 5
-      },
-      "pinyin": "aqms",
-      "pinyin_code": "AQMS",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "罗红霉素",
       "brand_name": "严迪",
       "dosage_form": "oral",
@@ -5079,25 +5017,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "呋喃妥因",
-      "brand_name": "呋喃坦啶",
-      "dosage_form": "oral",
-      "spec": "50mg×100片",
-      "pharmacology_class": "硝基呋喃类",
-      "abx_level": "non_restricted",
-      "price_yuan": 12,
-      "dose_range_json": {
-        "single_min_mg": 50,
-        "single_max_mg": 100,
-        "default_freq": "qid",
-        "default_duration_days": 7
-      },
-      "pinyin": "fnty",
-      "pinyin_code": "FNTY",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "磷霉素",
       "brand_name": "维尼康",
       "dosage_form": "oral",
@@ -5117,7 +5036,7 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "氨溴索",
+      "generic_name": "氨溴索片",
       "brand_name": "沐舒坦",
       "dosage_form": "oral",
       "spec": "30mg×20片",
@@ -5133,26 +5052,8 @@
       "pinyin": "axs",
       "pinyin_code": "AXS",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "乙酰半胱氨酸",
-      "brand_name": "富露施",
-      "dosage_form": "oral",
-      "spec": "0.6g×10片",
-      "pharmacology_class": "祛痰药",
-      "abx_level": "none",
-      "price_yuan": 28,
-      "dose_range_json": {
-        "single_min_mg": 600,
-        "single_max_mg": 600,
-        "default_freq": "bid",
-        "default_duration_days": 7
-      },
-      "pinyin": "yxbgas",
-      "pinyin_code": "YXBGAS",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "unit": "片"
     },
     {
       "generic_name": "右美沙芬",
@@ -5191,6 +5092,43 @@
       "pinyin_code": "SDAC",
       "medical_insurance_class": "甲",
       "reference_status": "backup"
+    },
+    {
+      "generic_name": "沙丁胺醇雾化吸入溶液",
+      "brand_name": "万托林",
+      "dosage_form": "inhalation",
+      "spec": "2.5mg/2.5ml",
+      "unit": "支",
+      "medical_insurance_class": "甲",
+      "essential_medicine": true,
+      "jtc_batch": "第8批",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "短效β2受体激动剂（SABA）",
+      "dose_range_json": {
+        "single_min_mg": 2.5,
+        "single_max_mg": 5,
+        "daily_max_mg": 20,
+        "default_freq": "q20min×3后q1-4h",
+        "default_duration_days": 1
+      },
+      "liver_renal_note": "无特殊",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "哮喘急性发作一线急救用药，雾化吸入",
+        "常见心悸、手抖、低钾，过量可致心律失常",
+        "SpO2<92%需联合吸氧及全身激素"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 3,
+      "manufacturer": "葛兰素史克",
+      "pinyin": "sdmwhxrr",
+      "pinyin_code": "SDMWHXRR",
+      "reference_status": "core"
     },
     {
       "generic_name": "氨茶碱",
@@ -5252,44 +5190,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "奥美拉唑",
-      "brand_name": "洛赛克",
-      "dosage_form": "oral",
-      "spec": "20mg×14粒",
-      "pharmacology_class": "质子泵抑制剂（PPI）",
-      "abx_level": "none",
-      "price_yuan": 28,
-      "dose_range_json": {
-        "single_min_mg": 20,
-        "single_max_mg": 40,
-        "default_freq": "qd",
-        "default_duration_days": 14
-      },
-      "pinyin": "amlz",
-      "pinyin_code": "AMLZ",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "兰索拉唑",
-      "brand_name": "达克普隆",
-      "dosage_form": "oral",
-      "spec": "30mg×14片",
-      "pharmacology_class": "质子泵抑制剂（PPI）",
-      "abx_level": "none",
-      "price_yuan": 35,
-      "dose_range_json": {
-        "single_min_mg": 30,
-        "single_max_mg": 30,
-        "default_freq": "qd",
-        "default_duration_days": 14
-      },
-      "pinyin": "lslz",
-      "pinyin_code": "LSLZ",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "泮托拉唑",
       "brand_name": "泮立苏",
       "dosage_form": "iv_drip",
@@ -5309,120 +5209,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "法莫替丁",
-      "brand_name": "高舒达",
-      "dosage_form": "oral",
-      "spec": "20mg×30片",
-      "pharmacology_class": "H2受体拮抗剂",
-      "abx_level": "none",
-      "price_yuan": 15,
-      "dose_range_json": {
-        "single_min_mg": 20,
-        "single_max_mg": 40,
-        "default_freq": "bid",
-        "default_duration_days": 14
-      },
-      "pinyin": "fmtd",
-      "pinyin_code": "FMTD",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "铝碳酸镁",
-      "brand_name": "达喜",
-      "dosage_form": "oral",
-      "spec": "0.5g×20片",
-      "pharmacology_class": "抗酸药/胃黏膜保护剂",
-      "abx_level": "none",
-      "price_yuan": 22,
-      "dose_range_json": {
-        "single_min_mg": 500,
-        "single_max_mg": 1000,
-        "default_freq": "tid",
-        "default_duration_days": 14
-      },
-      "pinyin": "ltsm",
-      "pinyin_code": "LTSM",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "多潘立酮",
-      "brand_name": "吗丁啉",
-      "dosage_form": "oral",
-      "spec": "10mg×30片",
-      "pharmacology_class": "促胃肠动力药",
-      "abx_level": "none",
-      "price_yuan": 18,
-      "dose_range_json": {
-        "single_min_mg": 10,
-        "single_max_mg": 20,
-        "default_freq": "tid",
-        "default_duration_days": 7
-      },
-      "pinyin": "dplt",
-      "pinyin_code": "DPLT",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "莫沙必利",
-      "brand_name": "加斯清",
-      "dosage_form": "oral",
-      "spec": "5mg×24片",
-      "pharmacology_class": "促胃肠动力药",
-      "abx_level": "none",
-      "price_yuan": 28,
-      "dose_range_json": {
-        "single_min_mg": 5,
-        "single_max_mg": 5,
-        "default_freq": "tid",
-        "default_duration_days": 14
-      },
-      "pinyin": "msbl",
-      "pinyin_code": "MSBL",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "双歧杆菌三联活菌",
-      "brand_name": "培菲康",
-      "dosage_form": "oral",
-      "spec": "420mg×20粒",
-      "pharmacology_class": "微生态制剂",
-      "abx_level": "none",
-      "price_yuan": 35,
-      "dose_range_json": {
-        "single_min_mg": 420,
-        "single_max_mg": 840,
-        "default_freq": "bid",
-        "default_duration_days": 14
-      },
-      "pinyin": "sqgjslhj",
-      "pinyin_code": "SQGJSLHJ",
-      "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "乳果糖",
-      "brand_name": "杜密克",
-      "dosage_form": "oral",
-      "spec": "15ml×袋",
-      "pharmacology_class": "缓泻剂",
-      "abx_level": "none",
-      "price_yuan": 32,
-      "dose_range_json": {
-        "single_min_ml": 15,
-        "single_max_ml": 30,
-        "default_freq": "qd",
-        "default_duration_days": 7
-      },
-      "pinyin": "rgt",
-      "pinyin_code": "RGT",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "复方消化酶",
       "brand_name": "达吉",
       "dosage_form": "oral",
@@ -5437,82 +5223,6 @@
       "pinyin": "ffxhm",
       "pinyin_code": "FFXHM",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "美托洛尔",
-      "brand_name": "倍他乐克",
-      "dosage_form": "oral",
-      "spec": "25mg×20片",
-      "pharmacology_class": "β受体阻滞剂",
-      "abx_level": "none",
-      "price_yuan": 18,
-      "dose_range_json": {
-        "single_min_mg": 12.5,
-        "single_max_mg": 50,
-        "default_freq": "bid",
-        "default_duration_days": 30
-      },
-      "pinyin": "mtle",
-      "pinyin_code": "MTLE",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "比索洛尔",
-      "brand_name": "康忻",
-      "dosage_form": "oral",
-      "spec": "5mg×10片",
-      "pharmacology_class": "β受体阻滞剂",
-      "abx_level": "none",
-      "price_yuan": 32,
-      "dose_range_json": {
-        "single_min_mg": 2.5,
-        "single_max_mg": 10,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "pinyin": "bsle",
-      "pinyin_code": "BSLE",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "氨氯地平",
-      "brand_name": "络活喜",
-      "dosage_form": "oral",
-      "spec": "5mg×7片",
-      "pharmacology_class": "钙通道阻滞剂（CCB）",
-      "abx_level": "none",
-      "price_yuan": 35,
-      "dose_range_json": {
-        "single_min_mg": 2.5,
-        "single_max_mg": 10,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "pinyin": "aldp",
-      "pinyin_code": "ALDP",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "缬沙坦",
-      "brand_name": "代文",
-      "dosage_form": "oral",
-      "spec": "80mg×7粒",
-      "pharmacology_class": "血管紧张素II受体拮抗剂（ARB）",
-      "abx_level": "none",
-      "price_yuan": 38,
-      "dose_range_json": {
-        "single_min_mg": 80,
-        "single_max_mg": 160,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "pinyin": "xst",
-      "pinyin_code": "XST",
-      "medical_insurance_class": "甲",
       "reference_status": "backup"
     },
     {
@@ -5592,158 +5302,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "氯吡格雷",
-      "brand_name": "波立维",
-      "dosage_form": "oral",
-      "spec": "75mg×7片",
-      "pharmacology_class": "抗血小板药",
-      "abx_level": "none",
-      "price_yuan": 85,
-      "dose_range_json": {
-        "single_min_mg": 75,
-        "single_max_mg": 75,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "pinyin": "lpgl",
-      "pinyin_code": "LPGL",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "二甲双胍",
-      "brand_name": "格华止",
-      "dosage_form": "oral",
-      "spec": "0.5g×20片",
-      "pharmacology_class": "双胍类",
-      "abx_level": "none",
-      "price_yuan": 18,
-      "dose_range_json": {
-        "single_min_mg": 500,
-        "single_max_mg": 1000,
-        "default_freq": "bid",
-        "default_duration_days": 30
-      },
-      "pinyin": "ejsg",
-      "pinyin_code": "EJSG",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "格列美脲",
-      "brand_name": "亚莫利",
-      "dosage_form": "oral",
-      "spec": "2mg×15片",
-      "pharmacology_class": "磺脲类",
-      "abx_level": "none",
-      "price_yuan": 32,
-      "dose_range_json": {
-        "single_min_mg": 1,
-        "single_max_mg": 6,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "pinyin": "glmn",
-      "pinyin_code": "GLMN",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "阿卡波糖",
-      "brand_name": "拜糖平",
-      "dosage_form": "oral",
-      "spec": "50mg×30片",
-      "pharmacology_class": "α-糖苷酶抑制剂",
-      "abx_level": "none",
-      "price_yuan": 38,
-      "dose_range_json": {
-        "single_min_mg": 50,
-        "single_max_mg": 100,
-        "default_freq": "tid",
-        "default_duration_days": 30
-      },
-      "pinyin": "akbt",
-      "pinyin_code": "AKBT",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "左甲状腺素钠",
-      "brand_name": "优甲乐",
-      "dosage_form": "oral",
-      "spec": "50μg×100片",
-      "pharmacology_class": "甲状腺激素",
-      "abx_level": "none",
-      "price_yuan": 35,
-      "dose_range_json": {
-        "single_min_ug": 25,
-        "single_max_ug": 100,
-        "default_freq": "qd",
-        "default_duration_days": 365
-      },
-      "pinyin": "zjzxsn",
-      "pinyin_code": "ZJZXSN",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "布洛芬",
-      "brand_name": "芬必得",
-      "dosage_form": "oral",
-      "spec": "0.3g×20粒",
-      "pharmacology_class": "非甾体抗炎药（NSAIDs）",
-      "abx_level": "none",
-      "price_yuan": 18,
-      "dose_range_json": {
-        "single_min_mg": 300,
-        "single_max_mg": 600,
-        "default_freq": "bid",
-        "default_duration_days": 5
-      },
-      "pinyin": "blf",
-      "pinyin_code": "BLF",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "双氯芬酸钠",
-      "brand_name": "扶他林",
-      "dosage_form": "oral",
-      "spec": "25mg×30片",
-      "pharmacology_class": "非甾体抗炎药（NSAIDs）",
-      "abx_level": "none",
-      "price_yuan": 15,
-      "dose_range_json": {
-        "single_min_mg": 25,
-        "single_max_mg": 50,
-        "default_freq": "tid",
-        "default_duration_days": 7
-      },
-      "pinyin": "slfsn",
-      "pinyin_code": "SLFSN",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "对乙酰氨基酚",
-      "brand_name": "泰诺林",
-      "dosage_form": "oral",
-      "spec": "0.5g×20片",
-      "pharmacology_class": "非甾体抗炎药（NSAIDs）",
-      "abx_level": "none",
-      "price_yuan": 12,
-      "dose_range_json": {
-        "single_min_mg": 500,
-        "single_max_mg": 1000,
-        "default_freq": "tid",
-        "default_duration_days": 3
-      },
-      "pinyin": "dyxajf",
-      "pinyin_code": "DYXAJF",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "艾司唑仑",
       "brand_name": "舒乐安定",
       "dosage_form": "oral",
@@ -5760,44 +5318,6 @@
       "pinyin": "aszl",
       "pinyin_code": "ASZL",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "谷维素",
-      "brand_name": "谷维素片",
-      "dosage_form": "oral",
-      "spec": "10mg×100片",
-      "pharmacology_class": "神经营养药",
-      "abx_level": "none",
-      "price_yuan": 6,
-      "dose_range_json": {
-        "single_min_mg": 10,
-        "single_max_mg": 20,
-        "default_freq": "tid",
-        "default_duration_days": 30
-      },
-      "pinyin": "gws",
-      "pinyin_code": "GWS",
-      "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "甲钴胺",
-      "brand_name": "弥可保",
-      "dosage_form": "oral",
-      "spec": "0.5mg×20片",
-      "pharmacology_class": "维生素B12类",
-      "abx_level": "none",
-      "price_yuan": 28,
-      "dose_range_json": {
-        "single_min_mg": 500,
-        "single_max_mg": 500,
-        "default_freq": "tid",
-        "default_duration_days": 30
-      },
-      "pinyin": "jga",
-      "pinyin_code": "JGA",
-      "medical_insurance_class": "甲",
       "reference_status": "backup"
     },
     {
@@ -6011,44 +5531,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "氯雷他定",
-      "brand_name": "开瑞坦",
-      "dosage_form": "oral",
-      "spec": "10mg×6片",
-      "pharmacology_class": "抗组胺药",
-      "abx_level": "none",
-      "price_yuan": 28,
-      "dose_range_json": {
-        "single_min_mg": 10,
-        "single_max_mg": 10,
-        "default_freq": "qd",
-        "default_duration_days": 7
-      },
-      "pinyin": "lltd",
-      "pinyin_code": "LLTD",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "西替利嗪",
-      "brand_name": "仙特明",
-      "dosage_form": "oral",
-      "spec": "10mg×5片",
-      "pharmacology_class": "抗组胺药",
-      "abx_level": "none",
-      "price_yuan": 25,
-      "dose_range_json": {
-        "single_min_mg": 10,
-        "single_max_mg": 10,
-        "default_freq": "qd",
-        "default_duration_days": 7
-      },
-      "pinyin": "xtlq",
-      "pinyin_code": "XTLQ",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "头孢丙烯",
       "brand_name": "施复捷",
       "dosage_form": "oral",
@@ -6103,7 +5585,13 @@
       "pinyin": "amkx",
       "pinyin_code": "AMKX",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "aliases": [
+        "硫酸阿米卡星注射液"
+      ],
+      "special_warnings_json": [
+        "儿童/老人慎用"
+      ]
     },
     {
       "generic_name": "庆大霉素",
@@ -6158,25 +5646,6 @@
       "pinyin": "lnza",
       "pinyin_code": "LNZA",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "孟鲁司特钠",
-      "brand_name": "顺尔宁",
-      "dosage_form": "oral",
-      "spec": "10mg×5片",
-      "pharmacology_class": "白三烯受体拮抗剂",
-      "abx_level": "none",
-      "price_yuan": 45,
-      "dose_range_json": {
-        "single_min_mg": 10,
-        "single_max_mg": 10,
-        "default_freq": "qn",
-        "default_duration_days": 30
-      },
-      "pinyin": "mlstn",
-      "pinyin_code": "MLSTN",
-      "medical_insurance_class": "甲",
       "reference_status": "backup"
     },
     {
@@ -6235,25 +5704,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "枸橼酸铋钾",
-      "brand_name": "丽珠得乐",
-      "dosage_form": "oral",
-      "spec": "0.3g×56袋",
-      "pharmacology_class": "胃黏膜保护剂",
-      "abx_level": "none",
-      "price_yuan": 28,
-      "dose_range_json": {
-        "single_min_mg": 300,
-        "single_max_mg": 600,
-        "default_freq": "qid",
-        "default_duration_days": 28
-      },
-      "pinyin": "jysbj",
-      "pinyin_code": "JYSBJ",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "颠茄片",
       "brand_name": "颠茄片",
       "dosage_form": "oral",
@@ -6268,44 +5718,6 @@
       "pinyin": "dqp",
       "pinyin_code": "DQP",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "匹维溴铵",
-      "brand_name": "得舒特",
-      "dosage_form": "oral",
-      "spec": "50mg×15片",
-      "pharmacology_class": "解痉药",
-      "abx_level": "none",
-      "price_yuan": 45,
-      "dose_range_json": {
-        "single_min_mg": 50,
-        "single_max_mg": 100,
-        "default_freq": "tid",
-        "default_duration_days": 14
-      },
-      "pinyin": "pwxa",
-      "pinyin_code": "PWXA",
-      "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "卡托普利",
-      "brand_name": "开博通",
-      "dosage_form": "oral",
-      "spec": "25mg×100片",
-      "pharmacology_class": "血管紧张素转换酶抑制剂（ACEI）",
-      "abx_level": "none",
-      "price_yuan": 12,
-      "dose_range_json": {
-        "single_min_mg": 12.5,
-        "single_max_mg": 50,
-        "default_freq": "tid",
-        "default_duration_days": 30
-      },
-      "pinyin": "ktpl",
-      "pinyin_code": "KTPL",
-      "medical_insurance_class": "甲",
       "reference_status": "backup"
     },
     {
@@ -6324,25 +5736,6 @@
       },
       "pinyin": "lstj",
       "pinyin_code": "LSTJ",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "非洛地平",
-      "brand_name": "波依定",
-      "dosage_form": "oral",
-      "spec": "5mg×10片",
-      "pharmacology_class": "钙通道阻滞剂（CCB）",
-      "abx_level": "none",
-      "price_yuan": 32,
-      "dose_range_json": {
-        "single_min_mg": 2.5,
-        "single_max_mg": 10,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "pinyin": "fldp",
-      "pinyin_code": "FLDP",
       "medical_insurance_class": "甲",
       "reference_status": "backup"
     },
@@ -6385,25 +5778,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "格列齐特",
-      "brand_name": "达美康",
-      "dosage_form": "oral",
-      "spec": "80mg×60片",
-      "pharmacology_class": "磺脲类",
-      "abx_level": "none",
-      "price_yuan": 28,
-      "dose_range_json": {
-        "single_min_mg": 40,
-        "single_max_mg": 80,
-        "default_freq": "bid",
-        "default_duration_days": 30
-      },
-      "pinyin": "glqt",
-      "pinyin_code": "GLQT",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "罗格列酮",
       "brand_name": "文迪雅",
       "dosage_form": "oral",
@@ -6420,25 +5794,6 @@
       "pinyin": "lglt",
       "pinyin_code": "LGLT",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "瑞格列奈",
-      "brand_name": "诺和龙",
-      "dosage_form": "oral",
-      "spec": "1mg×30片",
-      "pharmacology_class": "格列奈类",
-      "abx_level": "none",
-      "price_yuan": 42,
-      "dose_range_json": {
-        "single_min_mg": 0.5,
-        "single_max_mg": 4,
-        "default_freq": "tid",
-        "default_duration_days": 30
-      },
-      "pinyin": "rgln",
-      "pinyin_code": "RGLN",
-      "medical_insurance_class": "甲",
       "reference_status": "backup"
     },
     {
@@ -6518,25 +5873,6 @@
       "reference_status": "backup"
     },
     {
-      "generic_name": "塞来昔布",
-      "brand_name": "西乐葆",
-      "dosage_form": "oral",
-      "spec": "0.2g×6粒",
-      "pharmacology_class": "COX-2抑制剂",
-      "abx_level": "none",
-      "price_yuan": 45,
-      "dose_range_json": {
-        "single_min_mg": 200,
-        "single_max_mg": 200,
-        "default_freq": "qd",
-        "default_duration_days": 14
-      },
-      "pinyin": "slxb",
-      "pinyin_code": "SLXB",
-      "medical_insurance_class": "乙",
-      "reference_status": "backup"
-    },
-    {
       "generic_name": "美洛昔康",
       "brand_name": "莫比可",
       "dosage_form": "oral",
@@ -6552,63 +5888,6 @@
       },
       "pinyin": "mlxk",
       "pinyin_code": "MLXK",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "秋水仙碱",
-      "brand_name": "秋水仙碱片",
-      "dosage_form": "oral",
-      "spec": "0.5mg×20片",
-      "pharmacology_class": "抗痛风药",
-      "abx_level": "none",
-      "price_yuan": 15,
-      "dose_range_json": {
-        "single_min_mg": 0.5,
-        "single_max_mg": 1,
-        "default_freq": "tid",
-        "default_duration_days": 3
-      },
-      "pinyin": "qsxj",
-      "pinyin_code": "QSXJ",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "别嘌醇",
-      "brand_name": "别嘌醇片",
-      "dosage_form": "oral",
-      "spec": "0.1g×100片",
-      "pharmacology_class": "抗痛风药",
-      "abx_level": "none",
-      "price_yuan": 18,
-      "dose_range_json": {
-        "single_min_mg": 100,
-        "single_max_mg": 300,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "pinyin": "bpc",
-      "pinyin_code": "BPC",
-      "medical_insurance_class": "甲",
-      "reference_status": "backup"
-    },
-    {
-      "generic_name": "非布司他",
-      "brand_name": "优立通",
-      "dosage_form": "oral",
-      "spec": "40mg×14片",
-      "pharmacology_class": "抗痛风药",
-      "abx_level": "none",
-      "price_yuan": 58,
-      "dose_range_json": {
-        "single_min_mg": 20,
-        "single_max_mg": 80,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "pinyin": "fbst",
-      "pinyin_code": "FBST",
       "medical_insurance_class": "甲",
       "reference_status": "backup"
     },
@@ -7723,42 +7002,6 @@
       "reference_status": "core"
     },
     {
-      "generic_name": "盐酸美托洛尔缓释片",
-      "brand_name": "倍他乐克",
-      "dosage_form": "oral",
-      "spec": "47.5mg×7片",
-      "unit": "盒",
-      "medical_insurance_class": "乙",
-      "essential_medicine": false,
-      "jtc_batch": false,
-      "otc_class": "处方药",
-      "abx_level": "none",
-      "pharmacology_class": "β受体阻滞剂",
-      "dose_range_json": {
-        "single_min_mg": 23.75,
-        "single_max_mg": 95,
-        "daily_max_mg": 190,
-        "default_freq": "qd",
-        "default_duration_days": 30
-      },
-      "liver_renal_note": "",
-      "is_iv_capable": false,
-      "allowed_solvents_json": [],
-      "drip_speed_max_mlh": null,
-      "skin_test_required": false,
-      "special_warnings_json": [
-        "病窦综合征/II度以上房室传导阻滞禁用",
-        "不可突然停药"
-      ],
-      "is_solvent": false,
-      "is_tcm_injection": false,
-      "price_yuan": 2.5,
-      "manufacturer": "",
-      "pinyin": "ysmtehspp",
-      "pinyin_code": "YSMTEHSPP",
-      "reference_status": "core"
-    },
-    {
       "generic_name": "华法林钠片",
       "brand_name": "华法林",
       "dosage_form": "oral",
@@ -7897,7 +7140,8 @@
       "skin_test_required": false,
       "special_warnings_json": [
         "病窦综合征/II度以上房室传导阻滞禁用",
-        "不可突然停药"
+        "不可突然停药",
+        "哮喘禁用"
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
@@ -7905,7 +7149,11 @@
       "manufacturer": "",
       "pinyin": "hpsmtehspp",
       "pinyin_code": "HPSMTEHSPP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "美托洛尔缓释片",
+        "盐酸美托洛尔缓释片"
+      ]
     },
     {
       "generic_name": "秋水仙碱片",
@@ -7941,7 +7189,10 @@
       "manufacturer": "",
       "pinyin": "qsxjp",
       "pinyin_code": "QSXJP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "秋水仙碱"
+      ]
     },
     {
       "generic_name": "碳酸钙D3片",
@@ -8586,7 +7837,10 @@
       "manufacturer": "",
       "pinyin": "jgwp",
       "pinyin_code": "JGWP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "甲钴胺"
+      ]
     },
     {
       "generic_name": "地塞米松片",
@@ -8657,7 +7911,10 @@
       "manufacturer": "",
       "pinyin": "amxlklwjsp",
       "pinyin_code": "AMXLKLWJSP",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "阿莫西林克拉维酸钾"
+      ]
     },
     {
       "generic_name": "盐酸氨溴索口服溶液",
@@ -8690,7 +7947,10 @@
       "manufacturer": "",
       "pinyin": "ysxskfry",
       "pinyin_code": "YSXSKFRY",
-      "reference_status": "core"
+      "reference_status": "core",
+      "aliases": [
+        "氨溴索口服溶液"
+      ]
     },
     {
       "generic_name": "盐酸氨溴索注射液",
@@ -8768,6 +8028,82 @@
       "pinyin": "acjzsy",
       "pinyin_code": "ACJZSY",
       "reference_status": "core"
+    },
+    {
+      "generic_name": "注射用头孢哌酮舒巴坦钠",
+      "brand_name": "舒普深",
+      "dosage_form": "iv_drip",
+      "spec": "2.0g/支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": true,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "restricted",
+      "pharmacology_class": "β内酰胺酶抑制剂复方",
+      "dose_range_json": {
+        "single_min_g": 2,
+        "single_max_g": 4,
+        "daily_max_g": 8,
+        "default_freq": "q12h",
+        "default_duration_days": 7
+      },
+      "liver_renal_note": "肝功能不全慎用，需调整剂量",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液 100ml"
+      ],
+      "drip_speed_max_mlh": 60,
+      "skin_test_required": true,
+      "special_warnings_json": [
+        "可影响凝血功能，用药期间监测出血倾向",
+        "含甲硫四氮唑侧链，用药期间及停药7天内禁酒"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 45,
+      "manufacturer": "辉瑞制药",
+      "pinyin": "zsytbpstna",
+      "pinyin_code": "ZSYTBPSTNA",
+      "reference_status": "core",
+      "aliases": []
+    },
+    {
+      "generic_name": "地奥司明片",
+      "brand_name": "爱脉朗",
+      "dosage_form": "oral",
+      "spec": "0.45g×24片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "静脉张力剂/毛细血管保护剂",
+      "dose_range_json": {
+        "single_min_mg": 450,
+        "single_max_mg": 900,
+        "daily_max_mg": 1800,
+        "default_freq": "bid",
+        "default_duration_days": 28
+      },
+      "liver_renal_note": "严重肾功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "急性发作期剂量可加至1800mg/日",
+        "胃肠道不适时随餐服用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 35,
+      "manufacturer": "施维雅",
+      "pinyin": "dasmp",
+      "pinyin_code": "DASMP",
+      "reference_status": "core",
+      "aliases": []
     }
   ]
 }

@@ -709,6 +709,24 @@
   };
   var FALLBACK_IMG = 'img/acup-meridian-chart.jpg';
 
+  // 每张经络图的实际像素尺寸（用 System.Drawing 核实），切换 src 时同步 width/height 属性，
+  // 浏览器据此保持原始比例渲染，避免横版/竖版图被写死的 1300x867 拉伸变形。
+  var MERIDIAN_IMG_SIZE = {
+    'img/acup-meridian-chart.jpg': [1300, 867],   // 总图：横版三视图
+    'img/meridians/EX-extra-points.jpg': [1300, 1300] // 经外奇穴：方图
+  };
+  // 14 张分经图全部为 1672x2508 竖版人体图
+  (function () {
+    var list = [
+      'img/meridians/LU-lung.jpg','img/meridians/LI-large-intestine.jpg','img/meridians/ST-stomach.jpg',
+      'img/meridians/SP-spleen.jpg','img/meridians/HT-heart.jpg','img/meridians/SI-small-intestine.jpg',
+      'img/meridians/BL-bladder.jpg','img/meridians/KI-kidney.jpg','img/meridians/PC-pericardium.jpg',
+      'img/meridians/TE-sanjiao.jpg','img/meridians/GB-gallbladder.jpg','img/meridians/LR-liver.jpg',
+      'img/meridians/RN-ren.jpg','img/meridians/GV-du.jpg'
+    ];
+    for (var i = 0; i < list.length; i++) MERIDIAN_IMG_SIZE[list[i]] = [1672, 2508];
+  })();
+
   // 常用穴位定位特写图（code -> 局部解剖特写）
   var POINT_CLOSEUP_IMG = {
     'LI-04': 'img/meridians/EX-point-hegu.jpg',
@@ -732,11 +750,27 @@
       // 避免重复加载同一张
       if (img.getAttribute('src') === src) return;
       img.onerror = function () {
-        // 分经图不存在时回退总图（避免死循环：若已经是总图则不再切）
+        // 分经图不存在时回退总图：同步尺寸和布局类，避免总图被按竖版比例渲染变形
         if (img.getAttribute('src') !== FALLBACK_IMG) {
+          img.onerror = null; // 防止循环
+          var sz = MERIDIAN_IMG_SIZE[FALLBACK_IMG] || [1300, 867];
+          img.width = sz[0]; img.height = sz[1];
+          var b = document.querySelector('.acup-map-body');
+          if (b) b.classList.add('mode-chart');
           img.src = FALLBACK_IMG;
         }
       };
+      // 同步更新 width/height 属性：浏览器据此保持原始比例，CSS 的 height:auto 才不会拉伸
+      var size = MERIDIAN_IMG_SIZE[src] || [1300, 867];
+      img.width = size[0];
+      img.height = size[1];
+      if ('decoding' in img) img.decoding = 'async';
+      // 切换布局模式：总图（横版三视图）单列居中放大；分经图/奇穴走双栏左图右列表
+      var body = document.querySelector('.acup-map-body');
+      if (body) {
+        if (src === FALLBACK_IMG) body.classList.add('mode-chart');
+        else body.classList.remove('mode-chart');
+      }
       img.src = src;
       if (caption) {
         caption.textContent = m ? (m + ' 穴位图') : '十四经常用腧穴（十二经脉 + 任脉 + 督脉）';

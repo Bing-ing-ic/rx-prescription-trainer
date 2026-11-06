@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261106surg1">
+<link rel="stylesheet" href="css/rx.min.css?v=20261106acupmap1">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -876,9 +876,9 @@
         </label>
         <input type="text" id="acup-map-search" placeholder="🔍 搜索穴名/拼音（如 合谷 / hegu）">
       </div>
-      <div class="acup-map-body">
+      <div class="acup-map-body mode-chart">
         <div class="acup-map-figure">
-          <img src="img/acup-meridian-chart.jpg" alt="人体十四经经络穴位总图（正面+背面+侧面三视图）" id="acup-map-img" loading="lazy" width="1300" height="867"
+          <img src="img/acup-meridian-chart.jpg" alt="人体十四经经络穴位总图（正面+背面+侧面三视图）" id="acup-map-img" loading="lazy" decoding="async" width="1300" height="867"
                onerror="this.style.display='none';var f=this.nextElementSibling;if(f)f.classList.remove('hidden');">
           <div class="acup-map-fallback hidden">🖼️ 经络图加载中…（img/acup-meridian-chart.jpg）</div>
           <div class="acup-map-caption" id="acup-map-caption">十四经常用腧穴（十二经脉 + 任脉 + 督脉）</div>
@@ -1394,7 +1394,7 @@
 <script src="js/acup-app.min.js?v=20261105ui1"></script>
 <script src="js/module-views.min.js?v=20261104fix1"></script>
 <script src="js/anat-app.min.js?v=20261105ui1"></script>
-<script src="js/platform-enhance.js?v=20261105qk1"></script>
+<script src="js/platform-enhance.js?v=20261106acupmap1"></script>
 
 <!-- 百度统计 -->
 <script>

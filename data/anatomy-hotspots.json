@@ -1,206 +1,692 @@
 {
-  "version": "2026.11.04-atlas-v2",
-  "note": "各系统解剖拓扑图热区。x/y 为相对插图左上角的百分比坐标(0-100)，供 SVG/DIV 覆盖层定位。值为 null 表示该结构在本系统示意图中未单独绘制，不设热区，但仍可在侧栏列表点开详情。",
+  "version": "2026.11.06-atlas-v3",
+  "note": "各系统解剖拓扑图热区 + 结构级细节图映射。x/y 为相对插图左上角的百分比坐标(0-100)。detail_images 字段为结构级解剖详图（人卫教材风格中文标注），在详情视图中展示。2026-11-06新增：19张教材级中文注解解剖详图，替换乱码循环总图。",
   "images": {
-    "locomotor":   "img/anat-locomotor.jpg",
-    "digestive":   "img/anat-digestive.jpg",
+    "locomotor": "img/anat-locomotor.jpg",
+    "digestive": "img/anat-digestive.jpg",
     "respiratory": "img/anat-respiratory.jpg",
     "circulatory": "img/anat-circulatory.jpg",
-    "nervous":     "img/anat-nervous.jpg",
-    "urinary":     "img/anat-urinary.jpg",
-    "reproductive":"img/anat-reproductive.jpg",
-    "endocrine":   "img/anat-endocrine.jpg",
-    "immune":       "img/anat-immune.jpg",
-    "muscular":     "img/anat-muscular.jpg",
-    "integumentary":"img/anat-integumentary.jpg",
-    "sensory":      "img/anat-sensory.jpg",
+    "nervous": "img/anat-nervous.jpg",
+    "urinary": "img/anat-urinary.jpg",
+    "reproductive": "img/anat-reproductive.jpg",
+    "endocrine": "img/anat-endocrine.jpg",
+    "immune": "img/anat-immune.jpg",
+    "muscular": "img/anat-muscular.jpg",
+    "integumentary": "img/anat-integumentary.jpg",
+    "sensory": "img/anat-sensory.jpg",
     "regional_headneck": "img/anat-regional-headneck.jpg",
-    "regional_thorax":  "img/anat-regional-thorax.jpg",
-    "regional_abdomen":  "img/anat-regional-abdomen.jpg",
-    "regional_limbs":    "img/anat-regional-limbs.jpg"
+    "regional_thorax": "img/anat-regional-thorax.jpg",
+    "regional_abdomen": "img/anat-regional-abdomen.jpg",
+    "regional_limbs": "img/anat-regional-limbs.jpg"
   },
   "hotspots": {
     "locomotor": {
-      "fontanelle":         { "x": 50, "y": 7 },
-      "pterion":           { "x": 44, "y": 11 },
-      "temporomandibular": { "x": 46, "y": 15 },
-      "sternal_angle":      { "x": 50, "y": 25 },
-      "shoulder_joint":     { "x": 42, "y": 23 },
-      "clavicle":           { "x": 46, "y": 22 },
-      "scapula":           { "x": 58, "y": 28 },
-      "elbow_joint":        { "x": 40, "y": 39 },
-      "diaphragm":         { "x": 50, "y": 40 },
-      "pelvis":             { "x": 50, "y": 48 },
-      "hip_bone":           { "x": 40, "y": 48 },
-      "inguinal_canal":    { "x": 45, "y": 53 },
-      "hiatal_triangle":    { "x": 49, "y": 53 },
-      "knee_joint":         { "x": 46, "y": 69 },
-      "knee_meniscus":      { "x": 46, "y": 71 }
+      "fontanelle": {
+        "x": 50,
+        "y": 7
+      },
+      "pterion": {
+        "x": 44,
+        "y": 11
+      },
+      "temporomandibular": {
+        "x": 46,
+        "y": 15
+      },
+      "sternal_angle": {
+        "x": 50,
+        "y": 25
+      },
+      "shoulder_joint": {
+        "x": 42,
+        "y": 23
+      },
+      "clavicle": {
+        "x": 46,
+        "y": 22
+      },
+      "scapula": {
+        "x": 58,
+        "y": 28
+      },
+      "elbow_joint": {
+        "x": 40,
+        "y": 39
+      },
+      "diaphragm": {
+        "x": 50,
+        "y": 40
+      },
+      "pelvis": {
+        "x": 50,
+        "y": 48
+      },
+      "hip_bone": {
+        "x": 40,
+        "y": 48
+      },
+      "inguinal_canal": {
+        "x": 45,
+        "y": 53
+      },
+      "hiatal_triangle": {
+        "x": 49,
+        "y": 53
+      },
+      "knee_joint": {
+        "x": 46,
+        "y": 69
+      },
+      "knee_meniscus": {
+        "x": 46,
+        "y": 71
+      }
     },
     "digestive": {
-      "isthmus_fauces":        { "x": 49, "y": 12 },
-      "oral_cavity":           { "x": 50, "y": 10 },
-      "pharynx_regions":       { "x": 50, "y": 16 },
-      "esophageal_stenosis":   { "x": 50, "y": 24 },
-      "stomach_regions":       { "x": 61, "y": 36 },
-      "liver_visceral_surface":{ "x": 35, "y": 33 },
-      "liver_segments":         { "x": 38, "y": 35 },
-      "cystic_triangle":       { "x": 41, "y": 49 },
-      "major_duodenal_papilla":{ "x": 47, "y": 45 },
-      "jejunum_ileum":         { "x": 50, "y": 72 },
-      "colon_features":        { "x": 40, "y": 55 },
-      "rectal_flexures":       { "x": 50, "y": 85 }
+      "isthmus_fauces": {
+        "x": 49,
+        "y": 12
+      },
+      "oral_cavity": {
+        "x": 50,
+        "y": 10
+      },
+      "pharynx_regions": {
+        "x": 50,
+        "y": 16
+      },
+      "esophageal_stenosis": {
+        "x": 50,
+        "y": 24
+      },
+      "stomach_regions": {
+        "x": 61,
+        "y": 36
+      },
+      "liver_visceral_surface": {
+        "x": 35,
+        "y": 33
+      },
+      "liver_segments": {
+        "x": 38,
+        "y": 35
+      },
+      "cystic_triangle": {
+        "x": 41,
+        "y": 49
+      },
+      "major_duodenal_papilla": {
+        "x": 47,
+        "y": 45
+      },
+      "jejunum_ileum": {
+        "x": 50,
+        "y": 72
+      },
+      "colon_features": {
+        "x": 40,
+        "y": 55
+      },
+      "rectal_flexures": {
+        "x": 50,
+        "y": 85
+      }
     },
     "respiratory": {
-      "paranasal_sinuses":  { "x": 39, "y": 10 },
-      "laryngeal_cavity":  { "x": 50, "y": 30 },
-      "laryngeal_cartilages": { "x": 50, "y": 28 },
-      "carina":            { "x": 50, "y": 52 },
-      "main_bronchi":      { "x": 50, "y": 56 },
-      "lung_shape":        { "x": 40, "y": 62 },
-      "lung_segments":      { "x": 42, "y": 64 },
-      "pleural_recess":    { "x": 35, "y": 82 },
-      "mediastinum":       { "x": 50, "y": 60 },
-      "pleura_cavity":     { "x": 68, "y": 68 }
+      "paranasal_sinuses": {
+        "x": 39,
+        "y": 10
+      },
+      "laryngeal_cavity": {
+        "x": 50,
+        "y": 30
+      },
+      "laryngeal_cartilages": {
+        "x": 50,
+        "y": 28
+      },
+      "carina": {
+        "x": 50,
+        "y": 52
+      },
+      "main_bronchi": {
+        "x": 50,
+        "y": 56
+      },
+      "lung_shape": {
+        "x": 40,
+        "y": 62
+      },
+      "lung_segments": {
+        "x": 42,
+        "y": 64
+      },
+      "pleural_recess": {
+        "x": 35,
+        "y": 82
+      },
+      "mediastinum": {
+        "x": 50,
+        "y": 60
+      },
+      "pleura_cavity": {
+        "x": 68,
+        "y": 68
+      }
     },
     "circulatory": {
-      "heart_position":      { "x": 50, "y": 58 },
-      "heart_valves":        { "x": 50, "y": 53 },
-      "coronary_artery":     { "x": 57, "y": 63 },
-      "aorta_segments":      { "x": 50, "y": 26 },
-      "superior_vena_cava":  { "x": 38, "y": 42 },
-      "inferior_vena_cava":  { "x": 39, "y": 80 },
-      "compression_points":  null,
-      "hepatic_portal":      null,
-      "thoracic_duct":       null
+      "heart_position": {
+        "x": 50,
+        "y": 58
+      },
+      "heart_valves": {
+        "x": 50,
+        "y": 53
+      },
+      "coronary_artery": {
+        "x": 57,
+        "y": 63
+      },
+      "aorta_segments": {
+        "x": 50,
+        "y": 26
+      },
+      "superior_vena_cava": {
+        "x": 38,
+        "y": 42
+      },
+      "inferior_vena_cava": {
+        "x": 39,
+        "y": 80
+      },
+      "compression_points": null,
+      "hepatic_portal": null,
+      "thoracic_duct": null
     },
     "nervous": {
-      "cortical_localization":   { "x": 50, "y": 9 },
-      "internal_capsule":        { "x": 50, "y": 12 },
-      "csf_circulation":        { "x": 50, "y": 16 },
-      "trigeminal_nerve":       { "x": 46, "y": 14 },
-      "facial_nerve":           { "x": 45, "y": 17 },
-      "hypoglossal_nerve":      { "x": 49, "y": 19 },
-      "vagus_nerve":            { "x": 49, "y": 23 },
-      "pyramidal_tract":        { "x": 50, "y": 28 },
-      "epidural_space":         { "x": 50, "y": 32 },
-      "spinal_segment_vertebra":{ "x": 50, "y": 55 },
-      "superficial_sensory_path":{ "x": 50, "y": 45 },
-      "sciatic_nerve":          { "x": 45, "y": 70 }
+      "cortical_localization": {
+        "x": 50,
+        "y": 9
+      },
+      "internal_capsule": {
+        "x": 50,
+        "y": 12
+      },
+      "csf_circulation": {
+        "x": 50,
+        "y": 16
+      },
+      "trigeminal_nerve": {
+        "x": 46,
+        "y": 14
+      },
+      "facial_nerve": {
+        "x": 45,
+        "y": 17
+      },
+      "hypoglossal_nerve": {
+        "x": 49,
+        "y": 19
+      },
+      "vagus_nerve": {
+        "x": 49,
+        "y": 23
+      },
+      "pyramidal_tract": {
+        "x": 50,
+        "y": 28
+      },
+      "epidural_space": {
+        "x": 50,
+        "y": 32
+      },
+      "spinal_segment_vertebra": {
+        "x": 50,
+        "y": 55
+      },
+      "superficial_sensory_path": {
+        "x": 50,
+        "y": 45
+      },
+      "sciatic_nerve": {
+        "x": 45,
+        "y": 70
+      }
     },
     "urinary": {
-      "renal_capsule":      { "x": 37, "y": 33 },
-      "renal_region":       { "x": 63, "y": 33 },
-      "ureter_stenosis":    { "x": 44, "y": 55 },
-      "trigone_bladder":    { "x": 50, "y": 74 },
-      "female_urethra":     { "x": 50, "y": 85 }
+      "renal_capsule": {
+        "x": 37,
+        "y": 33
+      },
+      "renal_region": {
+        "x": 63,
+        "y": 33
+      },
+      "ureter_stenosis": {
+        "x": 44,
+        "y": 55
+      },
+      "trigone_bladder": {
+        "x": 50,
+        "y": 74
+      },
+      "female_urethra": {
+        "x": 50,
+        "y": 85
+      }
     },
     "reproductive": {
-      "spermatic_cord":     { "x": 28, "y": 72 },
-      "male_urethra":       { "x": 50, "y": 82 },
-      "uterine_tube":       { "x": 50, "y": 52 },
-      "uterine_ligaments":  { "x": 50, "y": 62 },
-      "vaginal_fornix":     { "x": 50, "y": 75 }
+      "spermatic_cord": {
+        "x": 28,
+        "y": 72
+      },
+      "male_urethra": {
+        "x": 50,
+        "y": 82
+      },
+      "uterine_tube": {
+        "x": 50,
+        "y": 52
+      },
+      "uterine_ligaments": {
+        "x": 50,
+        "y": 62
+      },
+      "vaginal_fornix": {
+        "x": 50,
+        "y": 75
+      }
     },
     "endocrine": {
-      "hypophysis":         { "x": 52, "y": 17 },
-      "pineal":             { "x": 43, "y": 21 },
-      "thyroid":            { "x": 50, "y": 37 },
-      "parathyroid":        { "x": 50, "y": 39 },
-      "adrenal":            { "x": 50, "y": 64 },
-      "adrenal_cortex_medulla": { "x": 50, "y": 66 },
-      "pancreatic_islets":   { "x": 55, "y": 50 }
+      "hypophysis": {
+        "x": 52,
+        "y": 17
+      },
+      "pineal": {
+        "x": 43,
+        "y": 21
+      },
+      "thyroid": {
+        "x": 50,
+        "y": 37
+      },
+      "parathyroid": {
+        "x": 50,
+        "y": 39
+      },
+      "adrenal": {
+        "x": 50,
+        "y": 64
+      },
+      "adrenal_cortex_medulla": {
+        "x": 50,
+        "y": 66
+      },
+      "pancreatic_islets": {
+        "x": 55,
+        "y": 50
+      }
     },
     "immune": {
-      "thymus":               { "x": 50, "y": 22 },
-      "bone_marrow":           { "x": 30, "y": 70 },
-      "tonsils":              { "x": 50, "y": 14 },
-      "lymph_node_cervical":  { "x": 50, "y": 18 },
-      "lymph_node_axillary":  { "x": 22, "y": 32 },
-      "lymph_node_inguinal_superficial": { "x": 35, "y": 68 },
-      "lymph_node_mesenteric":{ "x": 50, "y": 55 },
-      "spleen":               { "x": 78, "y": 45 },
-      "lymphatic_vessels":    { "x": 25, "y": 50 },
-      "thoracic_duct":        { "x": 45, "y": 35 },
-      "right_lymphatic_duct": { "x": 55, "y": 20 },
-      "malt":                 { "x": 50, "y": 60 }
+      "thymus": {
+        "x": 50,
+        "y": 22
+      },
+      "bone_marrow": {
+        "x": 30,
+        "y": 70
+      },
+      "tonsils": {
+        "x": 50,
+        "y": 14
+      },
+      "lymph_node_cervical": {
+        "x": 50,
+        "y": 18
+      },
+      "lymph_node_axillary": {
+        "x": 22,
+        "y": 32
+      },
+      "lymph_node_inguinal_superficial": {
+        "x": 35,
+        "y": 68
+      },
+      "lymph_node_mesenteric": {
+        "x": 50,
+        "y": 55
+      },
+      "spleen": {
+        "x": 78,
+        "y": 45
+      },
+      "lymphatic_vessels": {
+        "x": 25,
+        "y": 50
+      },
+      "thoracic_duct": {
+        "x": 45,
+        "y": 35
+      },
+      "right_lymphatic_duct": {
+        "x": 55,
+        "y": 20
+      },
+      "malt": {
+        "x": 50,
+        "y": 60
+      }
     },
     "muscular": {
-      "trapezius":          { "x": 50, "y": 14 },
-      "scalene_gap":        { "x": 50, "y": 20 },
-      "pectoralis_major":   { "x": 35, "y": 30 },
-      "latissimus_dorsi":   { "x": 65, "y": 38 },
-      "biceps_brachii":     { "x": 22, "y": 42 },
-      "triceps_brachii":    { "x": 78, "y": 42 },
-      "rectus_abdominis":   { "x": 50, "y": 50 },
-      "external_oblique":   { "x": 35, "y": 55 },
-      "sartorius":          { "x": 40, "y": 68 },
-      "quadriceps_femoris": { "x": 35, "y": 72 },
-      "triceps_surae":      { "x": 65, "y": 82 },
-      "piriformis":         { "x": 50, "y": 60 }
+      "trapezius": {
+        "x": 50,
+        "y": 14
+      },
+      "scalene_gap": {
+        "x": 50,
+        "y": 20
+      },
+      "pectoralis_major": {
+        "x": 35,
+        "y": 30
+      },
+      "latissimus_dorsi": {
+        "x": 65,
+        "y": 38
+      },
+      "biceps_brachii": {
+        "x": 22,
+        "y": 42
+      },
+      "triceps_brachii": {
+        "x": 78,
+        "y": 42
+      },
+      "rectus_abdominis": {
+        "x": 50,
+        "y": 50
+      },
+      "external_oblique": {
+        "x": 35,
+        "y": 55
+      },
+      "sartorius": {
+        "x": 40,
+        "y": 68
+      },
+      "quadriceps_femoris": {
+        "x": 35,
+        "y": 72
+      },
+      "triceps_surae": {
+        "x": 65,
+        "y": 82
+      },
+      "piriformis": {
+        "x": 50,
+        "y": 60
+      }
     },
     "integumentary": {
-      "epidermis":         { "x": 50, "y": 30 },
-      "dermis":            { "x": 50, "y": 45 },
-      "subcutaneous_tissue":{ "x": 50, "y": 60 },
-      "hair":              { "x": 30, "y": 40 },
-      "sebaceous_gland":    { "x": 35, "y": 48 },
-      "sweat_gland":        { "x": 65, "y": 55 }
+      "epidermis": {
+        "x": 50,
+        "y": 30
+      },
+      "dermis": {
+        "x": 50,
+        "y": 45
+      },
+      "subcutaneous_tissue": {
+        "x": 50,
+        "y": 60
+      },
+      "hair": {
+        "x": 30,
+        "y": 40
+      },
+      "sebaceous_gland": {
+        "x": 35,
+        "y": 48
+      },
+      "sweat_gland": {
+        "x": 65,
+        "y": 55
+      }
     },
     "sensory": {
-      "eyewall":           { "x": 35, "y": 18 },
-      "refractive_media":  { "x": 35, "y": 22 },
-      "aqueous_humor":     { "x": 30, "y": 20 },
-      "auricle_external_meatus": { "x": 68, "y": 18 },
-      "tympanic_middle_ear":{ "x": 65, "y": 25 },
-      "inner_ear_bony":    { "x": 62, "y": 32 },
-      "inner_ear_membranous": { "x": 62, "y": 36 },
-      "olfactory_organ":   { "x": 35, "y": 10 }
+      "eyewall": {
+        "x": 35,
+        "y": 18
+      },
+      "refractive_media": {
+        "x": 35,
+        "y": 22
+      },
+      "aqueous_humor": {
+        "x": 30,
+        "y": 20
+      },
+      "auricle_external_meatus": {
+        "x": 68,
+        "y": 18
+      },
+      "tympanic_middle_ear": {
+        "x": 65,
+        "y": 25
+      },
+      "inner_ear_bony": {
+        "x": 62,
+        "y": 32
+      },
+      "inner_ear_membranous": {
+        "x": 62,
+        "y": 36
+      },
+      "olfactory_organ": {
+        "x": 35,
+        "y": 10
+      }
     },
     "regional_headneck": {
-      "cerebrum_sagittal":   { "x": 38, "y": 18 },
-      "cerebellum":          { "x": 28, "y": 33 },
-      "brainstem":           { "x": 35, "y": 42 },
-      "pituitary_gland":     { "x": 48, "y": 26 },
-      "pharynx":             { "x": 62, "y": 45 },
-      "larynx":              { "x": 60, "y": 56 },
-      "thyroid_gland":       { "x": 55, "y": 65 },
-      "trachea_cervical":    { "x": 58, "y": 73 },
-      "esophagus_cervical":  { "x": 45, "y": 65 },
-      "cervical_vertebrae":  { "x": 22, "y": 58 }
+      "cerebrum_sagittal": {
+        "x": 38,
+        "y": 18
+      },
+      "cerebellum": {
+        "x": 28,
+        "y": 33
+      },
+      "brainstem": {
+        "x": 35,
+        "y": 42
+      },
+      "pituitary_gland": {
+        "x": 48,
+        "y": 26
+      },
+      "pharynx": {
+        "x": 62,
+        "y": 45
+      },
+      "larynx": {
+        "x": 60,
+        "y": 56
+      },
+      "thyroid_gland": {
+        "x": 55,
+        "y": 65
+      },
+      "trachea_cervical": {
+        "x": 58,
+        "y": 73
+      },
+      "esophagus_cervical": {
+        "x": 45,
+        "y": 65
+      },
+      "cervical_vertebrae": {
+        "x": 22,
+        "y": 58
+      }
     },
     "regional_thorax": {
-      "trachea_thoracic":    { "x": 50, "y": 14 },
-      "aortic_arch":         { "x": 56, "y": 27 },
-      "superior_vena_cava_thorax": { "x": 38, "y": 24 },
-      "heart_mediastinum":   { "x": 50, "y": 46 },
-      "left_lung":           { "x": 24, "y": 46 },
-      "right_lung":          { "x": 76, "y": 46 },
-      "main_bronchi_thorax": { "x": 50, "y": 35 },
-      "diaphragm_thorax":    { "x": 50, "y": 76 },
-      "rib_cage":            { "x": 14, "y": 42 }
+      "trachea_thoracic": {
+        "x": 50,
+        "y": 14
+      },
+      "aortic_arch": {
+        "x": 56,
+        "y": 27
+      },
+      "superior_vena_cava_thorax": {
+        "x": 38,
+        "y": 24
+      },
+      "heart_mediastinum": {
+        "x": 50,
+        "y": 46
+      },
+      "left_lung": {
+        "x": 24,
+        "y": 46
+      },
+      "right_lung": {
+        "x": 76,
+        "y": 46
+      },
+      "main_bronchi_thorax": {
+        "x": 50,
+        "y": 35
+      },
+      "diaphragm_thorax": {
+        "x": 50,
+        "y": 76
+      },
+      "rib_cage": {
+        "x": 14,
+        "y": 42
+      }
     },
     "regional_abdomen": {
-      "liver_abdomen":        { "x": 28, "y": 24 },
-      "stomach_abdomen":      { "x": 68, "y": 27 },
-      "spleen_abdomen":       { "x": 82, "y": 29 },
-      "pancreas_abdomen":    { "x": 55, "y": 38 },
-      "left_kidney_abdomen":  { "x": 24, "y": 42 },
-      "right_kidney_abdomen":{ "x": 76, "y": 42 },
-      "small_intestine_abdomen": { "x": 50, "y": 62 },
-      "colon_abdomen":        { "x": 18, "y": 68 },
-      "abdominal_aorta":      { "x": 50, "y": 52 },
-      "inferior_vena_cava_abdomen": { "x": 44, "y": 52 }
+      "liver_abdomen": {
+        "x": 28,
+        "y": 24
+      },
+      "stomach_abdomen": {
+        "x": 68,
+        "y": 27
+      },
+      "spleen_abdomen": {
+        "x": 82,
+        "y": 29
+      },
+      "pancreas_abdomen": {
+        "x": 55,
+        "y": 38
+      },
+      "left_kidney_abdomen": {
+        "x": 24,
+        "y": 42
+      },
+      "right_kidney_abdomen": {
+        "x": 76,
+        "y": 42
+      },
+      "small_intestine_abdomen": {
+        "x": 50,
+        "y": 62
+      },
+      "colon_abdomen": {
+        "x": 18,
+        "y": 68
+      },
+      "abdominal_aorta": {
+        "x": 50,
+        "y": 52
+      },
+      "inferior_vena_cava_abdomen": {
+        "x": 44,
+        "y": 52
+      }
     },
     "regional_limbs": {
-      "brachial_plexus":      { "x": 18, "y": 14 },
-      "axillary_artery":      { "x": 20, "y": 22 },
-      "elbow_joint_limbs":    { "x": 25, "y": 42 },
-      "radial_nerve":         { "x": 28, "y": 55 },
-      "femoral_artery":       { "x": 74, "y": 24 },
-      "sciatic_nerve_limbs":  { "x": 76, "y": 46 },
-      "knee_joint_limbs":     { "x": 78, "y": 76 },
-      "tibial_nerve":         { "x": 78, "y": 88 }
+      "brachial_plexus": {
+        "x": 18,
+        "y": 14
+      },
+      "axillary_artery": {
+        "x": 20,
+        "y": 22
+      },
+      "elbow_joint_limbs": {
+        "x": 25,
+        "y": 42
+      },
+      "radial_nerve": {
+        "x": 28,
+        "y": 55
+      },
+      "femoral_artery": {
+        "x": 74,
+        "y": 24
+      },
+      "sciatic_nerve_limbs": {
+        "x": 76,
+        "y": 46
+      },
+      "knee_joint_limbs": {
+        "x": 78,
+        "y": 76
+      },
+      "tibial_nerve": {
+        "x": 78,
+        "y": 88
+      }
     }
+  },
+  "detail_images": {
+    "cerebrum_sagittal": "img/atlas/anat-detail-brain-sagittal.jpg",
+    "cerebellum": "img/atlas/anat-detail-brain-sagittal.jpg",
+    "brainstem": "img/atlas/anat-detail-brain-sagittal.jpg",
+    "cortical_localization": "img/atlas/anat-detail-brain-sagittal.jpg",
+    "internal_capsule": "img/atlas/anat-detail-brain-sagittal.jpg",
+    "csf_circulation": "img/atlas/anat-detail-brain-sagittal.jpg",
+    "spinal_segment_vertebra": "img/atlas/anat-detail-spinal-segment-vertebra.jpg",
+    "epidural_space": "img/atlas/anat-detail-spinal-cord-cross-section.jpg",
+    "cranial_nerves_summary": "img/atlas/anat-detail-cranial-nerves-brainstem.jpg",
+    "trigeminal_nerve": "img/atlas/anat-detail-cranial-nerves-brainstem.jpg",
+    "facial_nerve": "img/atlas/anat-detail-cranial-nerves-brainstem.jpg",
+    "vagus_nerve": "img/atlas/anat-detail-cranial-nerves-brainstem.jpg",
+    "hypoglossal_nerve": "img/atlas/anat-detail-cranial-nerves-brainstem.jpg",
+    "median_nerve": "img/atlas/anat-detail-hand-nerve-supply.jpg",
+    "ulnar_nerve": "img/atlas/anat-detail-hand-nerve-supply.jpg",
+    "musculocutaneous_nerve": "img/atlas/anat-detail-nervous-system-overview.jpg",
+    "sciatic_nerve": "img/atlas/anat-detail-sciatic-nerve.jpg",
+    "sciatic_nerve_limbs": "img/atlas/anat-detail-sciatic-nerve.jpg",
+    "pyramidal_tract": "img/atlas/anat-detail-sciatic-nerve.jpg",
+    "coronary_artery": "img/atlas/anat-detail-coronary.jpg",
+    "heart_position": "img/atlas/anat-detail-coronary.jpg",
+    "heart_valves": "img/atlas/anat-detail-coronary.jpg",
+    "sa_node": "img/atlas/anat-detail-conduction.jpg",
+    "av_node": "img/atlas/anat-detail-conduction.jpg",
+    "av_bundle": "img/atlas/anat-detail-conduction.jpg",
+    "purkinje_fibers": "img/atlas/anat-detail-conduction.jpg",
+    "hepatic_portal": "img/atlas/anat-detail-portal.jpg",
+    "aorta_segments": "img/atlas/anat-detail-aorta.jpg",
+    "superior_vena_cava": "img/atlas/anat-detail-aorta.jpg",
+    "inferior_vena_cava": "img/atlas/anat-detail-aorta.jpg",
+    "compression_points": "img/atlas/anat-detail-aorta.jpg",
+    "cooper_ligament": "img/atlas/anat-detail-breast.jpg",
+    "breast_lymphatic_drainage": "img/atlas/anat-detail-breast-lymph.jpg",
+    "breast_cross_ref": "img/atlas/anat-detail-breast.jpg",
+    "anterior_longitudinal_ligament": "img/atlas/anat-detail-spine-ligaments.jpg",
+    "posterior_longitudinal_ligament": "img/atlas/anat-detail-spine-ligaments.jpg",
+    "ligamentum_flavum": "img/atlas/anat-detail-spine-ligaments.jpg",
+    "interspinous_ligament": "img/atlas/anat-detail-spine-ligaments.jpg",
+    "supraspinous_ligament": "img/atlas/anat-detail-spine-ligaments.jpg",
+    "cervical_vertebrae": "img/atlas/anat-detail-vertebral-column.jpg",
+    "knee_joint": "img/atlas/anat-detail-knee-joint.jpg",
+    "knee_meniscus": "img/atlas/anat-detail-knee-joint.jpg",
+    "pelvis": "img/atlas/anat-detail-hip-joint.jpg"
   }
 }

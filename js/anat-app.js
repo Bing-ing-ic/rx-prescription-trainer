@@ -332,10 +332,16 @@
   function openAtlasDetail(st) {
     atlas.struct = st;
     const tags = (st.exam_points || []).map(t => `<span class="anat-exam-tag">🎯 ${t}</span>`).join('');
+    const detailImgs = (S.hotspots && S.hotspots.detail_images) || {};
+    const detailImg = detailImgs[st.id] || '';
     $('anat-atlas-detail-body').innerHTML = `
       <div class="atlas-detail-title">${st.name}</div>
       <div class="atlas-detail-latin">${st.latin || ''}</div>
       <div class="atlas-detail-meta">${atlas.sys ? atlas.sys.name : ''} · ${st.subsystem || ''}</div>
+      ${detailImg ? `<div class="atlas-detail-figure">
+        <img src="${detailImg}" alt="${st.name}解剖图" loading="lazy" onclick="window.open('${detailImg}','_blank')" title="点击放大查看">
+        <div class="atlas-detail-figure-caption">📷 ${st.name} · 解剖图（点击放大）</div>
+      </div>` : ''}
       <div class="anat-detail-section">
         <div class="ads-label">📍 位置</div>
         <div class="ads-body">${st.location || '-'}</div>

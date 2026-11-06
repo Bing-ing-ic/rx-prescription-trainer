@@ -25,7 +25,7 @@
       "description": "处方前记",
       "required": ["hospital", "patient_name", "gender", "age_years", "weight_kg", "id_masked", " outpatient_no", "dept", "diagnosis", "rx_date", "insurance_type"],
       "properties": {
-        "hospital": {"type": "string", "const": "××医科大学附属训练医院"},
+        "hospital": {"type": "string", "const": "微光医院"},
         "patient_name": {"type": "string", "example": ["张三", "李四", "患儿王某"]},
         "gender": {"type": "string", "enum": ["男", "女"]},
         "age_years": {"type": "number", "minimum": 0, "maximum": 120, "description": "实足年龄"},
@@ -140,7 +140,7 @@
       "rx_type": "outpatient_iv",
       "visit_id": "V-20261102-000007",
       "header": {
-        "hospital": "××医科大学附属训练医院",
+        "hospital": "微光医院",
         "patient_name": "王五",
         "gender": "男",
         "age_years": 45,

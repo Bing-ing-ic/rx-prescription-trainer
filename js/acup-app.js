@@ -376,6 +376,77 @@
     '任脉','督脉','经外奇穴'
   ];
 
+  // 中文经络名 -> img/meridians/ 下分经图文件名（不含扩展名）
+  const MERIDIAN_IMG_MAP = {
+    '手太阴肺经': 'LU-lung',
+    '手阳明大肠经': 'LI-large-intestine',
+    '足阳明胃经': 'ST-stomach',
+    '足太阴脾经': 'SP-spleen',
+    '手少阴心经': 'HT-heart',
+    '手太阳小肠经': 'SI-small-intestine',
+    '足太阳膀胱经': 'BL-bladder',
+    '足少阴肾经': 'KI-kidney',
+    '手厥阴心包经': 'PC-pericardium',
+    '手少阳三焦经': 'TE-sanjiao',
+    '足少阳胆经': 'GB-gallbladder',
+    '足厥阴肝经': 'LR-liver',
+    '任脉': 'RN-ren',
+    '督脉': 'GV-du',
+    '经外奇穴': 'EX-extra-points'
+  };
+  const MERIDIAN_CHART_URL = 'img/acup-meridian-chart.jpg';
+
+  // 切换经络下拉时，左侧大图跟着切到对应分经图；失败逐级回退到总图
+  function updateMeridianChart(m) {
+    const img = $('acup-map-img');
+    if (!img) return;
+    const fallbackDiv = img.nextElementSibling; // .acup-map-fallback
+    const caption = $('acup-map-caption');
+    const stem = m ? MERIDIAN_IMG_MAP[m] : null;
+    const newSrc = stem ? ('img/meridians/' + stem + '.jpg') : MERIDIAN_CHART_URL;
+    img.style.display = '';
+    if (fallbackDiv) fallbackDiv.classList.add('hidden');
+    img.onerror = () => {
+      if (!stem) {
+        // 总图本身也加载失败：隐藏图、显示占位文案
+        img.style.display = 'none';
+        if (fallbackDiv) fallbackDiv.classList.remove('hidden');
+        return;
+      }
+      console.warn('[acup] 分经图缺失，回退总图：', newSrc);
+      img.onerror = () => {
+        img.style.display = 'none';
+        if (fallbackDiv) fallbackDiv.classList.remove('hidden');
+      };
+      img.src = MERIDIAN_CHART_URL;
+    };
+    img.src = newSrc;
+    img.alt = m ? (m + ' 经络穴位图') : '人体十四经经络穴位总图';
+    if (caption) caption.textContent = m ? (m + ' · 分经穴位图') : '十四经常用腧穴（十二经脉 + 任脉 + 督脉）';
+  }
+
+  // 穴位详情弹窗图片加载链：新特写 -> 老特写 -> 所属经络分经图 -> 总图 -> 隐藏
+  function loadPointDetailImage(p) {
+    const img = $('ap-img');
+    const wrap = $('ap-img-wrap');
+    if (!img) return;
+    const py = (p.pinyin || '').toLowerCase();
+    const merStem = p.meridian ? MERIDIAN_IMG_MAP[p.meridian] : null;
+    const chain = [];
+    if (py) chain.push('img/meridians/point-' + py + '.jpg');
+    if (py) chain.push('img/meridians/EX-point-' + py + '.jpg');
+    if (merStem) chain.push('img/meridians/' + merStem + '.jpg');
+    chain.push(MERIDIAN_CHART_URL);
+    let i = 0;
+    (function tryNext() {
+      if (i >= chain.length) { if (wrap) wrap.style.display = 'none'; return; }
+      const src = chain[i++];
+      img.onerror = () => { console.warn('[acup] 穴位图回退：', src); tryNext(); };
+      img.onload = () => { if (wrap) wrap.style.display = ''; };
+      img.src = src;
+    })();
+  }
+
   function initMap() {
     const sel = $('acup-map-meridian');
     if (!sel) return;
@@ -403,6 +474,7 @@
     if (!box) return;
     const m = $('acup-map-meridian') ? $('acup-map-meridian').value : '';
     const k = ($('acup-map-search') ? $('acup-map-search').value : '').toLowerCase();
+    updateMeridianChart(m); // 同步切换左侧分经图
     const list = S.points.filter(p =>
       (!m || p.meridian === m) &&
       (!k || p.name.toLowerCase().indexOf(k) >= 0 || (p.pinyin || '').indexOf(k) >= 0)
@@ -442,12 +514,14 @@
     const chips = (Array.isArray(p.indications) ? p.indications : (p.indications ? [p.indications] : []))
       .map(i => `<span class="ap-chip">${i}</span>`).join('');
     $('ap-body').innerHTML = `
+      <div id="ap-img-wrap"><img id="ap-img" alt="${p.name} 定位图"></div>
       <div class="ap-row"><span class="ap-label">【定位】</span>${p.location || '-'}</div>
       <div class="ap-row"><span class="ap-label">【类属】</span>${p.category || '-'}　<span class="ap-label">【功用】</span>${p.functions || '-'}</div>
       <div class="ap-row"><span class="ap-label">【主治】</span>${chips || '-'}</div>
       <div class="ap-row"><span class="ap-label">【操作】</span>${p.needling_method || '-'}</div>
       ${p.special_note ? `<div class="ap-note">⚠ ${p.special_note}</div>` : ''}
     `;
+    loadPointDetailImage(p);
     $('modal-acup-point').classList.remove('hidden');
   }
 

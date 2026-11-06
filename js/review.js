@@ -17,6 +17,7 @@
     { key: 'special_pop',name: '特殊人群（儿童/老人/孕哺/肝肾）', weight: 10, groups: ['SPECIAL_POP'] },
     { key: 'abx',        name: '抗菌药物分级管理',          weight: 5,  groups: ['ABX'] },
     { key: 'insurance',  name: '医保/基药/集采经济性',        weight: 2,  groups: ['INSURANCE'] },
+    { key: 'lab',       name: '检验检查适宜性',              weight: 5,  groups: ['LAB'] },
   ];
 
   function classifyHit(h) {

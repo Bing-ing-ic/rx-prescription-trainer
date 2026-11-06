@@ -26,7 +26,10 @@
     labExams: [],          // 检验项目字典数组
     labExamDict: {},       // code -> exam 对象
     diseaseLabMap: {},     // disease.code -> [{exam_code,result,status,note}]
-    labReportLoaded: false // 两个 lab JSON 是否加载完成
+    labReportLoaded: false, // 两个 lab JSON 是否加载完成
+    // ---- 医生开具的检验检查单（处方笺同纸打印） ----
+    labOrders: [],         // [{code,name,abbr,category,subcategory,unit,ref_range,clinical_significance}]
+    labCatFilter: '全部'   // 选择器类别筛选
   };
 
   // ---------- DOM ----------
@@ -267,6 +270,18 @@
 
     $('drug-search').oninput = renderDrugList;
     $('iv-drug-search').oninput = renderIvDrugList;
+
+    // 检验检查单：搜索 + 类别筛选 chips
+    const labSearch = $('lab-search');
+    if (labSearch) labSearch.oninput = renderLabExamList;
+    document.querySelectorAll('#lab-cat-chips .lab-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#lab-cat-chips .lab-chip').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        S.labCatFilter = btn.getAttribute('data-cat') || '全部';
+        renderLabExamList();
+      });
+    });
 
     // 检验检查报告面板：点击 header 展开/收起
     const labHeader = document.querySelector('#lab-report-row .lab-report-header');
@@ -761,7 +776,23 @@
       $('rx-body-iv').classList.add('hidden');
       document.querySelectorAll('.iv-only').forEach(e=>e.classList.add('hidden'));
     }
+    // 重置检验检查单（每次打开处方笺清空上一次选择）
+    S.labOrders = [];
+    S.labCatFilter = '全部';
+    const ls = $('lab-search'); if (ls) ls.value = '';
+    document.querySelectorAll('#lab-cat-chips .lab-chip').forEach((b, i) => {
+      b.classList.toggle('active', i === 0);
+    });
+    // 检验申请单前记（复用处方前记患者信息）
+    if ($('lo-name')) $('lo-name').textContent = S.patient.name;
+    if ($('lo-gender')) $('lo-gender').textContent = S.patient.gender;
+    if ($('lo-age')) $('lo-age').textContent = S.patient.age;
+    if ($('lo-mz')) $('lo-mz').textContent = S.patient.mz;
+    if ($('lo-dx')) $('lo-dx').textContent = S.disease.name;
+    if ($('lo-date')) $('lo-date').textContent = new Date().toISOString().slice(0, 10);
+
     renderDrugList(); renderIvDrugList(); renderNormalItems(); renderIvGroups();
+    renderLabOrderPaper(); renderLabExamList();
     show('view-rx');
     } catch(e) {
       document.body.insertAdjacentHTML('afterbegin',
@@ -797,6 +828,163 @@
     });
     updateCount();
   }
+
+  // ---------- 检验检查单：项目选择器 / 打印表格 ----------
+  // 模糊匹配：中文名子串 / abbr / code / subcategory / category
+  function matchLabExam(e, kw) {
+    kw = (kw || '').toLowerCase().trim();
+    if (!kw) return true;
+    if ((e.name || '').toLowerCase().indexOf(kw) >= 0) return true;
+    if ((e.abbr || '').toLowerCase().indexOf(kw) >= 0) return true;
+    if ((e.code || '').toLowerCase().indexOf(kw) >= 0) return true;
+    if ((e.subcategory || '').toLowerCase().indexOf(kw) >= 0) return true;
+    if ((e.category || '').toLowerCase().indexOf(kw) >= 0) return true;
+    return false;
+  }
+
+  function labOrderCodes() {
+    return new Set(S.labOrders.map(o => o.code));
+  }
+
+  function addLabOrder(code) {
+    const exam = S.labExamDict[code];
+    if (!exam) return;
+    if (labOrderCodes().has(code)) return; // 防重复（规则 LAB-01 兜底）
+    S.labOrders.push({
+      code: exam.code, name: exam.name, abbr: exam.abbr || '',
+      category: exam.category || '', subcategory: exam.subcategory || '',
+      unit: exam.unit || '', ref_range: exam.ref_range || '—',
+      clinical_significance: exam.clinical_significance || ''
+    });
+    renderLabOrderPaper();
+    renderLabExamList();
+  }
+
+  function removeLabOrder(idx) {
+    if (idx < 0 || idx >= S.labOrders.length) return;
+    S.labOrders.splice(idx, 1);
+    renderLabOrderPaper();
+    renderLabExamList();
+  }
+
+  // 渲染处方笺内的检验申请单表格（打印区）
+  function renderLabOrderPaper() {
+    const tbody = $('lab-order-items');
+    const empty = $('lab-order-empty');
+    const cnt = $('lab-count');
+    if (cnt) cnt.textContent = '已开 ' + S.labOrders.length + ' 项';
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    if (!S.labOrders.length) {
+      if (empty) empty.style.display = '';
+      return;
+    }
+    if (empty) empty.style.display = 'none';
+    S.labOrders.forEach((o, i) => {
+      const tr = document.createElement('tr');
+      const abbr = o.abbr ? ` <span style="color:#0f4c81;font-size:12px;">(${o.abbr})</span>` : '';
+      tr.innerHTML =
+        `<td>${i + 1}</td>` +
+        `<td style="text-align:left;font-weight:600;color:#1e293b;">${o.name}${abbr}</td>` +
+        `<td>${o.subcategory || o.category || ''}</td>` +
+        `<td style="font-size:12px;color:#64748b;">${o.ref_range || '—'}</td>` +
+        `<td class="lab-result-cell">　</td>` +
+        `<td>${o.unit || ''}</td>` +
+        `<td class="no-print"><button class="lab-order-remove" data-idx="${i}">移除</button></td>`;
+      tbody.appendChild(tr);
+    });
+    tbody.querySelectorAll('.lab-order-remove').forEach(btn => {
+      btn.addEventListener('click', () => removeLabOrder(parseInt(btn.getAttribute('data-idx'), 10)));
+    });
+  }
+
+  // 渲染选择器：搜索 + 类别筛选 + 本病例建议 chips + 分组列表
+  function renderLabExamList() {
+    const list = $('lab-exam-list');
+    const recRow = $('lab-rec-row');
+    const recBox = $('lab-rec-chips');
+    if (!list) return;
+    const kw = ($('lab-search') ? $('lab-search').value : '').trim();
+    const cat = S.labCatFilter || '全部';
+    const added = labOrderCodes();
+
+    // ---- 本病例建议区（来自 diseaseLabMap） ----
+    if (recRow && recBox && S.disease && S.disease.code) {
+      const recs = S.diseaseLabMap[S.disease.code] || [];
+      if (recs.length) {
+        recRow.classList.remove('hidden');
+        recBox.innerHTML = '';
+        recs.forEach(r => {
+          const exam = S.labExamDict[r.exam_code];
+          if (!exam) return;
+          const chip = document.createElement('button');
+          chip.className = 'lab-rec-chip' + (added.has(exam.code) ? ' added' : '');
+          chip.textContent = (exam.abbr ? exam.abbr + ' · ' : '') + exam.name;
+          chip.title = exam.clinical_significance || '';
+          if (!added.has(exam.code)) {
+            chip.addEventListener('click', () => addLabOrder(exam.code));
+          }
+          recBox.appendChild(chip);
+        });
+      } else {
+        recRow.classList.add('hidden');
+        recBox.innerHTML = '';
+      }
+    } else if (recRow) {
+      recRow.classList.add('hidden');
+    }
+
+    // ---- 过滤 + 分组（category -> subcategory） ----
+    const pool = S.labExams.filter(e => {
+      if (!e || !e.code) return false;
+      if (cat !== '全部' && e.category !== cat) return false;
+      return matchLabExam(e, kw);
+    });
+    const groups = {};
+    pool.forEach(e => {
+      const c = e.category || '其他';
+      if (!groups[c]) groups[c] = {};
+      const s = e.subcategory || '其他';
+      if (!groups[c][s]) groups[c][s] = [];
+      groups[c][s].push(e);
+    });
+
+    list.innerHTML = '';
+    if (!pool.length) {
+      list.innerHTML = '<div style="padding:16px;text-align:center;color:#94a3b8;font-size:13px;">未找到匹配的检验检查项目</div>';
+      return;
+    }
+    Object.keys(groups).forEach(catName => {
+      const subMap = groups[catName];
+      const catTitle = document.createElement('div');
+      catTitle.className = 'lab-exam-group-title';
+      catTitle.textContent = catName;
+      list.appendChild(catTitle);
+      Object.keys(subMap).forEach(subName => {
+        subMap[subName].forEach(e => {
+          const isAdded = added.has(e.code);
+          const div = document.createElement('div');
+          div.className = 'lab-exam-item' + (isAdded ? ' added' : '');
+          const sig = e.clinical_significance ? `<div class="lab-exam-sig">ℹ ${e.clinical_significance}</div>` : '';
+          div.innerHTML =
+            `<div class="lab-exam-main">` +
+            `<span class="lab-exam-name">${e.name}</span>` +
+            (e.abbr ? `<span class="lab-exam-abbr">${e.abbr}</span>` : '') +
+            `<span class="lab-exam-sub">${subName} · ${e.unit || ''}</span>` +
+            sig +
+            `</div>` +
+            (isAdded
+              ? `<button class="btn btn-sm" disabled>已添加</button>`
+              : `<button class="btn btn-sm btn-primary">+ 添加</button>`);
+          if (!isAdded) {
+            div.querySelector('button').addEventListener('click', () => addLabOrder(e.code));
+          }
+          list.appendChild(div);
+        });
+      });
+    });
+  }
+
   function abxChip(lv) {
     if (!lv || lv==='none') return '';
     const map = {non_restricted:'non-restr', restricted:'restricted', special:'special'};
@@ -1598,11 +1786,22 @@
       duration_days: S.normalItems.length ? S.normalItems[0].duration_days : 7
     } : (S.rxType === 'iv' ? { rx_id: 'NORMAL-PLACEHOLDER', items: [], duration_days: 0 } : null);
 
+    const labCtx = {
+      rx_id: $('rx-no').textContent,
+      items: S.labOrders.map(o => ({
+        exam_code: o.code, name: o.name, abbr: o.abbr || '',
+        category: o.category || '', subcategory: o.subcategory || '',
+        unit: o.unit || '', ref_range: o.ref_range || ''
+      }))
+    };
+
     const ctx = {
       disease: S.disease,
       patient: S.patient,
       normal_rx: normalCtx,
       iv_rx: ivCtx,
+      lab_rx: labCtx,
+      disease_lab_map: S.diseaseLabMap,
       rulesMeta: S.rules,
       compatData: S.compat,
       restricted_confirmed: S.restrictedConfirmed

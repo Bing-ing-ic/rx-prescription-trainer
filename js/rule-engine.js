@@ -744,6 +744,52 @@
         `避免联用两种以上中枢抑制剂；确需合用时需监测呼吸和意识状态。`));
     }
 
+    // ====================== 11. 检验检查单（LAB） ======================
+    const labRx = ctx.lab_rx;
+    const labItems = (labRx && Array.isArray(labRx.items)) ? labRx.items : [];
+    const diseaseLabMap = ctx.disease_lab_map || {};
+    const expectedRows = (disease && disease.code && diseaseLabMap[disease.code]) ? diseaseLabMap[disease.code] : [];
+    const expectedCodes = new Set(expectedRows.map(r => r.exam_code));
+    // 本病种是否存在异常指标（abnormal/high/low）
+    const hasAbnormalInCase = expectedRows.some(r => r.status === 'abnormal' || r.status === 'high' || r.status === 'low');
+
+    // LAB-01 重复开具：同一 exam_code 出现 >1 次
+    const codeCount = {};
+    labItems.forEach(it => {
+      const c = it.exam_code || (it.name || '');
+      codeCount[c] = (codeCount[c] || 0) + 1;
+    });
+    const dupCodes = Object.keys(codeCount).filter(c => codeCount[c] > 1);
+    if (dupCodes.length) {
+      const dupNames = dupCodes.map(c => {
+        const it = labItems.find(x => (x.exam_code || x.name) === c);
+        return (it && it.name) ? it.name : c;
+      });
+      hits.push(hit(R['LAB-01'], 'error',
+        `检验检查单存在重复项目：${dupNames.join('、')}（同一项目开具 ${dupCodes.map(c => codeCount[c]).join('、')} 次）。`,
+        `删除重复行；同一申请单内一个检验项目只应开具一次，复查应在病程中另行申请。`));
+    }
+
+    // LAB-02 过度检查/适应症不符：已开项目不在本病种预期 exam_code 列表内
+    const offTarget = labItems.filter(it => it.exam_code && !expectedCodes.has(it.exam_code));
+    if (offTarget.length) {
+      const names = offTarget.map(it => it.name + (it.abbr ? `（${it.abbr}）` : ''));
+      hits.push(hit(R['LAB-02'], 'warn',
+        `开具的检验检查项目「${names.join('、')}」与本病种「${disease.name}」常规评估项目无明显对应关系，存在无指征检查可能。`,
+        `检验项目应与临床诊断相适应；如为鉴别诊断或合并症需要，请在病历中说明理由，否则建议删减。`));
+    }
+
+    // LAB-03 应检未检：本病种存在异常指标，但学生一项检验都没开
+    if (hasAbnormalInCase && labItems.length === 0) {
+      const abnormalNames = expectedRows
+        .filter(r => r.status === 'abnormal' || r.status === 'high' || r.status === 'low')
+        .map(r => r.exam_code)
+        .filter(Boolean);
+      hits.push(hit(R['LAB-03'], 'warn',
+        `本病例已有异常指标（${abnormalNames.join('、')}），但本次处方未开具任何检验检查项目进行复核/追踪。`,
+        `建议针对异常指标开具相应检验检查单（如血常规、生化、心电图等），以支撑诊断与疗效观察。`));
+    }
+
     return hits;
   }
 

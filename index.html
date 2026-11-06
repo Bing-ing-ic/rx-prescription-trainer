@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261106lab1">
+<link rel="stylesheet" href="css/rx.min.css?v=20261106lab2">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -267,6 +267,60 @@
           </div>
           <div id="iv-drug-list" class="drug-list"></div>
         </div>
+      </div>
+
+      <!-- ============ 检验检查单（与处方笺同纸打印；普通/输液均显示） ============ -->
+      <div class="lab-order-paper" id="lab-order-paper">
+        <div class="lab-order-head">
+          <div class="lab-order-title">检 验 检 查 申 请 单</div>
+          <div class="lab-order-meta">
+            <span>姓名: <b id="lo-name">-</b></span>
+            <span>性别: <b id="lo-gender">-</b></span>
+            <span>年龄: <b id="lo-age">-</b></span>
+            <span>门诊号: <b id="lo-mz">-</b></span>
+            <span>临床诊断: <b id="lo-dx">-</b></span>
+            <span>申请日期: <b id="lo-date">-</b></span>
+          </div>
+        </div>
+        <table class="rx-table lab-order-table">
+          <thead>
+            <tr>
+              <th style="width:6%;">序号</th>
+              <th style="width:30%;text-align:left;">检验项目</th>
+              <th style="width:14%;">类别</th>
+              <th style="width:20%;">参考范围</th>
+              <th style="width:14%;">结果</th>
+              <th style="width:10%;">单位</th>
+              <th class="no-print" style="width:6%;">操作</th>
+            </tr>
+          </thead>
+          <tbody id="lab-order-items"></tbody>
+        </table>
+        <div id="lab-order-empty" class="lab-order-empty">未开具检验检查项目</div>
+        <div class="lab-order-sign">
+          <span>申请医师: ____________</span>
+          <span>申请日期: ____________</span>
+          <span class="no-print" style="color:#94a3b8;">（结果列打印后手填或检验系统回填）</span>
+        </div>
+      </div>
+
+      <!-- 检验项目选择器（仅屏幕交互，打印隐藏） -->
+      <div class="picker no-print lab-picker" id="lab-picker">
+        <div class="picker-head">
+          <input id="lab-search" type="text" placeholder="🔍 搜项目名 / 缩写（WBC/ECG/CT/B超）/ 编码 / 类别...">
+          <span id="lab-count" class="drug-count">已开 0 项</span>
+        </div>
+        <div class="lab-cat-chips" id="lab-cat-chips">
+          <button class="lab-chip active" data-cat="全部">全部</button>
+          <button class="lab-chip" data-cat="检验科">检验科</button>
+          <button class="lab-chip" data-cat="影像学">影像学</button>
+          <button class="lab-chip" data-cat="功能检查">功能检查</button>
+        </div>
+        <div class="lab-rec-row hidden" id="lab-rec-row">
+          <span class="lab-rec-label">📌 本病例建议：</span>
+          <span id="lab-rec-chips"></span>
+        </div>
+        <div id="lab-exam-list" class="drug-list lab-exam-list"></div>
       </div>
 
       <div class="rx-foot">
@@ -1106,7 +1160,7 @@
   }, true);
 })();
 </script>
-<script src="js/rule-engine.min.js?v=20261104fix1"></script>
+<script src="js/rule-engine.min.js?v=20261106lab2"></script>
 <script>
 // 网站访问统计（百度统计已在页面底部加载）
 (function() {
@@ -1128,8 +1182,8 @@
   document.body.appendChild(a);
 })();
 </script>
-<script src="js/review.min.js?v=20261104fix1"></script>
-<script src="js/app.min.js?v=20261106lab1"></script>
+<script src="js/review.min.js?v=20261106lab2"></script>
+<script src="js/app.min.js?v=20261106lab2"></script>
 <script src="js/tcm-engine.min.js?v=20261104fix1"></script>
 <script src="js/acup-engine.min.js?v=20261104fix1"></script>
 <script src="js/tcm-app.min.js?v=20261105ui1"></script>

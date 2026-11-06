@@ -1,6 +1,6 @@
 {
   "version": "2026.11",
-  "note": "处方点评规则库。group 取值：FORMAT/INDICATION/DOSAGE/DURATION/IV_REASON/COMPAT/SPECIAL_POP/ABX/INSURANCE/TCM。severity: pass/warn/error。weight_hint 用于评分维度归属，最终权重写死在 review.js。",
+  "note": "处方点评规则库。group 取值：FORMAT/INDICATION/DOSAGE/DURATION/IV_REASON/COMPAT/SPECIAL_POP/ABX/INSURANCE/TCM/LAB。severity: pass/warn/error。weight_hint 用于评分维度归属，最终权重写死在 review.js。",
   "rules": [
     {
       "rule_id": "FMT-01",
@@ -361,6 +361,36 @@
       "severity": "error",
       "basis": "《静脉用药集中调配操作规程》：两种药液混合前必须确认理化相容；国家 adverse 配伍通报（如头孢+VC 同瓶降解）。",
       "weight_hint": "compat"
+    },
+    {
+      "rule_id": "LAB-01",
+      "group": "LAB",
+      "title": "检验检查项目重复开具",
+      "trigger": "同一张检验检查申请单内同一 exam_code 出现 >1 次",
+      "logic": "按 exam_code 统计次数，>1 判 error",
+      "severity": "error",
+      "basis": "《医学检验项目临床应用原则》：同一申请单内同一检验项目不得重复开具；复查应在后续就诊或病程中另行申请。",
+      "weight_hint": "lab"
+    },
+    {
+      "rule_id": "LAB-02",
+      "group": "LAB",
+      "title": "检验检查适应症不符/过度检查",
+      "trigger": "已开检验项目不在本病种 diseaseLabMap 预期 exam_code 列表内",
+      "logic": "对照 diseaseLabMap[disease.code] 的 exam_code 白名单；未命中且非鉴别诊断需要 → warn",
+      "severity": "warn",
+      "basis": "《医学检验项目临床应用原则》：检验项目应与临床诊断相适应，避免无指征检查；过度检查既增加患者负担也浪费医保资源。",
+      "weight_hint": "lab"
+    },
+    {
+      "rule_id": "LAB-03",
+      "group": "LAB",
+      "title": "应检未检（异常指标未复核）",
+      "trigger": "本病种 diseaseLabMap 中存在 status=abnormal/high/low 的异常项，但学生一项检验检查都没开",
+      "logic": "异常指标存在且 lab_rx.items.length === 0 → warn",
+      "severity": "warn",
+      "basis": "《病历书写基本规范》：异常检验指标应复查并追踪；《处方管理办法》第十四条：医师应根据诊断与病情需要开具相应检查。",
+      "weight_hint": "lab"
     }
   ]
 }

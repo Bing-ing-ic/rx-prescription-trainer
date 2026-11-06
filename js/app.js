@@ -827,7 +827,14 @@
     dxAliasTargets(v).forEach(c => { if (!diffCandidates.includes(c)) diffCandidates.push(c); });
     const diff = diffCandidates.find(d => matchDisease(d, v) || d === v);
     if (diff) {
-      fb.innerHTML = `<span class="diag-warn">⚠️ 「${diff}」是重要鉴别诊断，需进一步检查排除，但不是本病例主诊断。</span>`;
+      S.diagWrongCount = (S.diagWrongCount || 0) + 1;
+      fb.innerHTML = `<span class="diag-warn">⚠️ 「${diff}」是重要鉴别诊断，需进一步检查排除，但不是本病例主诊断。（已错 ${S.diagWrongCount} 次）</span>`;
+      // 鉴别诊断也计入错误次数，三次后自动填入
+      if (S.diagWrongCount >= 3) {
+        fb.innerHTML += `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:6px;color:#c0392b;font-size:13px">🔑 已自动填入正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
+        $('diag-input').value = dx.name;
+        setTimeout(() => checkDiagnosis(), 800);
+      }
       scrollFb();
       return;
     }

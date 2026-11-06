@@ -6182,6 +6182,3119 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.05
+    },
+    {
+      "name": "香薷",
+      "pinyin": "xiangru",
+      "nature": "微温",
+      "taste": "辛",
+      "meridian": "肺、胃经",
+      "category": "解表药-辛温解表药",
+      "dose_range": "3-9g",
+      "functions": "发汗解表，化湿和中，利水消肿",
+      "indications": [
+        "暑湿感冒",
+        "水肿脚气"
+      ],
+      "contraindications": [
+        "表虚自汗",
+        "阴虚盗汗"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "藁本",
+      "pinyin": "gaoben",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "膀胱经",
+      "category": "解表药-辛温解表药",
+      "dose_range": "3-9g",
+      "functions": "祛风散寒，除湿止痛",
+      "indications": [
+        "风寒感冒",
+        "巅顶疼痛",
+        "风湿痹痛"
+      ],
+      "contraindications": [
+        "血虚头痛"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "苍耳子",
+      "pinyin": "cangerzi",
+      "nature": "温",
+      "taste": "辛、苦",
+      "meridian": "肺经",
+      "category": "解表药-辛温解表药",
+      "dose_range": "3-10g",
+      "functions": "散风寒，通鼻窍，祛风湿，止痛",
+      "indications": [
+        "风寒感冒",
+        "鼻渊头痛",
+        "风湿痹痛",
+        "风疹瘙痒"
+      ],
+      "contraindications": [
+        "血虚头痛",
+        "不宜过量服用"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "辛夷",
+      "pinyin": "xinyi",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "肺、胃经",
+      "category": "解表药-辛温解表药",
+      "dose_range": "3-10g",
+      "functions": "散风寒，通鼻窍",
+      "indications": [
+        "风寒头痛",
+        "鼻塞鼻渊",
+        "鼻流浊涕"
+      ],
+      "contraindications": [
+        "阴虚火旺"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.07
+    },
+    {
+      "name": "葱白",
+      "pinyin": "congbai",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "肺、胃经",
+      "category": "解表药-辛温解表药",
+      "dose_range": "3-9g",
+      "functions": "发汗解表，散寒通阳",
+      "indications": [
+        "风寒感冒",
+        "阴盛格阳",
+        "乳汁郁滞"
+      ],
+      "contraindications": [
+        "表虚多汗"
+      ],
+      "incompatibility": "畏五灵脂（传统说法）",
+      "price_yuan": 0.02
+    },
+    {
+      "name": "蔓荆子",
+      "pinyin": "manjingzi",
+      "nature": "微寒",
+      "taste": "辛、苦",
+      "meridian": "膀胱、肝、胃经",
+      "category": "解表药-辛凉解表药",
+      "dose_range": "5-10g",
+      "functions": "疏散风热，清利头目",
+      "indications": [
+        "风热感冒",
+        "头痛头晕",
+        "目赤肿痛"
+      ],
+      "contraindications": [
+        "血虚头痛"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "夏枯草",
+      "pinyin": "xiakucao",
+      "nature": "寒",
+      "taste": "辛、苦",
+      "meridian": "肝、胆经",
+      "category": "清热药-清热泻火药",
+      "dose_range": "9-15g",
+      "functions": "清肝泻火，明目，散结消肿",
+      "indications": [
+        "目赤肿痛",
+        "头痛眩晕",
+        "瘰疬瘿瘤",
+        "乳痈肿痛"
+      ],
+      "contraindications": [
+        "脾胃虚弱"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "决明子",
+      "pinyin": "juemingzi",
+      "nature": "微寒",
+      "taste": "甘、苦、咸",
+      "meridian": "肝、大肠经",
+      "category": "清热药-清热泻火药",
+      "dose_range": "9-15g",
+      "functions": "清热明目，润肠通便",
+      "indications": [
+        "目赤涩痛",
+        "目暗不明",
+        "头痛眩晕",
+        "大便秘结"
+      ],
+      "contraindications": [
+        "气虚便溏"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.03
+    },
+    {
+      "name": "谷精草",
+      "pinyin": "gujingcao",
+      "nature": "平",
+      "taste": "辛、甘",
+      "meridian": "肝、肺经",
+      "category": "清热药-清热泻火药",
+      "dose_range": "5-10g",
+      "functions": "疏散风热，明目退翳",
+      "indications": [
+        "风热目赤",
+        "目生翳膜"
+      ],
+      "contraindications": [
+        "血虚目疾"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "密蒙花",
+      "pinyin": "menghuanghua",
+      "nature": "微寒",
+      "taste": "甘",
+      "meridian": "肝经",
+      "category": "清热药-清热泻火药",
+      "dose_range": "3-9g",
+      "functions": "清热泻火，养肝明目，退翳",
+      "indications": [
+        "目赤肿痛",
+        "目生翳膜",
+        "肝虚目暗"
+      ],
+      "contraindications": [
+        "阳虚目疾"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "青葙子",
+      "pinyin": "qingxiangzi",
+      "nature": "微寒",
+      "taste": "苦",
+      "meridian": "肝经",
+      "category": "清热药-清热泻火药",
+      "dose_range": "9-15g",
+      "functions": "清肝泻火，明目退翳",
+      "indications": [
+        "肝热目赤",
+        "目生翳膜",
+        "视物昏花"
+      ],
+      "contraindications": [
+        "瞳孔散大",
+        "青光眼"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "秦皮",
+      "pinyin": "qinpi",
+      "nature": "寒",
+      "taste": "苦、涩",
+      "meridian": "肝、胆、大肠经",
+      "category": "清热药-清热燥湿药",
+      "dose_range": "6-12g",
+      "functions": "清热燥湿，收涩止痢，止带，明目",
+      "indications": [
+        "湿热泻痢",
+        "赤白带下",
+        "目赤肿痛"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "恶吴茱萸（传统说法）",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "紫花地丁",
+      "pinyin": "zihuadiding",
+      "nature": "寒",
+      "taste": "苦、辛",
+      "meridian": "心、肝经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "15-30g",
+      "functions": "清热解毒，凉血消肿",
+      "indications": [
+        "疔疮肿毒",
+        "痈疽发背",
+        "丹毒",
+        "毒蛇咬伤"
+      ],
+      "contraindications": [
+        "虚寒证"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "大青叶",
+      "pinyin": "daqingye",
+      "nature": "寒",
+      "taste": "苦",
+      "meridian": "心、胃经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "9-15g",
+      "functions": "清热解毒，凉血消斑",
+      "indications": [
+        "温病高热",
+        "神昏",
+        "发斑发疹",
+        "黄疸",
+        "热痢",
+        "痄腮",
+        "喉痹",
+        "丹毒",
+        "痈肿"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "青黛",
+      "pinyin": "qingdai",
+      "nature": "寒",
+      "taste": "咸",
+      "meridian": "肝经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "1-3g",
+      "functions": "清热解毒，凉血消斑，泻火定惊",
+      "indications": [
+        "温毒发斑",
+        "血热吐衄",
+        "胸痛咳血",
+        "口疮",
+        "痄腮",
+        "喉痹",
+        "小儿惊痫"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.15
+    },
+    {
+      "name": "贯众",
+      "pinyin": "guanzhong",
+      "nature": "微寒",
+      "taste": "苦",
+      "meridian": "肝、胃经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "5-10g",
+      "functions": "清热解毒，凉血止血，杀虫",
+      "indications": [
+        "风热感冒",
+        "温热癍疹",
+        "吐血衄血",
+        "便血崩漏",
+        "虫积腹痛"
+      ],
+      "contraindications": [
+        "孕妇",
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "野菊花",
+      "pinyin": "yejuhua",
+      "nature": "微寒",
+      "taste": "苦、辛",
+      "meridian": "肝、心经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "9-15g",
+      "functions": "清热解毒，泻火平肝",
+      "indications": [
+        "疔疮痈肿",
+        "目赤肿痛",
+        "头痛眩晕"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "败酱草",
+      "pinyin": "baijiangcao",
+      "nature": "凉",
+      "taste": "辛、苦",
+      "meridian": "胃、大肠、肝经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "6-15g",
+      "functions": "清热解毒，祛瘀排脓",
+      "indications": [
+        "肠痈",
+        "肺痈",
+        "痈肿疮毒",
+        "产后瘀阻腹痛"
+      ],
+      "contraindications": [
+        "脾胃虚弱",
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "红藤",
+      "pinyin": "honteng",
+      "nature": "平",
+      "taste": "苦",
+      "meridian": "大肠、肝经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "9-15g",
+      "functions": "清热解毒，活血，祛风",
+      "indications": [
+        "肠痈腹痛",
+        "热毒疮疡",
+        "经闭痛经",
+        "风湿痹痛",
+        "跌扑肿痛"
+      ],
+      "contraindications": [
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "土茯苓",
+      "pinyin": "tufuling",
+      "nature": "平",
+      "taste": "甘、淡",
+      "meridian": "肝、胃经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "15-60g",
+      "functions": "解毒，除湿，通利关节",
+      "indications": [
+        "梅毒及汞中毒所致肢体拘挛",
+        "湿热淋浊",
+        "带下",
+        "痈肿",
+        "瘰疬",
+        "疥癣"
+      ],
+      "contraindications": [
+        "肝肾阴虚"
+      ],
+      "incompatibility": "忌茶",
+      "price_yuan": 0.03
+    },
+    {
+      "name": "水牛角",
+      "pinyin": "shuiniujiao",
+      "nature": "寒",
+      "taste": "苦",
+      "meridian": "心、肝经",
+      "category": "清热药-清热凉血药",
+      "dose_range": "15-30g",
+      "functions": "清热凉血，解毒，定惊",
+      "indications": [
+        "温病高热",
+        "神昏谵语",
+        "发斑发疹",
+        "吐血衄血",
+        "惊风",
+        "癫狂"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.2
+    },
+    {
+      "name": "紫草",
+      "pinyin": "zicao",
+      "nature": "寒",
+      "taste": "甘、咸",
+      "meridian": "心、肝经",
+      "category": "清热药-清热凉血药",
+      "dose_range": "5-10g",
+      "functions": "清热凉血，活血，解毒透疹",
+      "indications": [
+        "血热毒盛",
+        "斑疹紫黑",
+        "麻疹不透",
+        "疮疡",
+        "湿疹",
+        "水火烫伤"
+      ],
+      "contraindications": [
+        "脾虚便溏"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "青蒿",
+      "pinyin": "qinghao",
+      "nature": "寒",
+      "taste": "苦、辛",
+      "meridian": "肝、胆经",
+      "category": "清热药-清虚热药",
+      "dose_range": "6-12g",
+      "functions": "清虚热，除骨蒸，解暑热，截疟，退黄",
+      "indications": [
+        "温邪伤阴",
+        "夜热早凉",
+        "阴虚发热",
+        "暑邪发热",
+        "疟疾寒热",
+        "湿热黄疸"
+      ],
+      "contraindications": [
+        "脾胃虚弱",
+        "肠滑泄泻"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "白薇",
+      "pinyin": "baiwei",
+      "nature": "寒",
+      "taste": "苦、咸",
+      "meridian": "胃、肝、肾经",
+      "category": "清热药-清虚热药",
+      "dose_range": "5-10g",
+      "functions": "清热凉血，利尿通淋，解毒疗疮",
+      "indications": [
+        "温邪伤营发热",
+        "阴虚发热",
+        "骨蒸劳热",
+        "产后血虚发热",
+        "热淋血淋",
+        "痈疽肿毒"
+      ],
+      "contraindications": [
+        "脾胃虚寒",
+        "大便泄泻"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "地骨皮",
+      "pinyin": "digupi",
+      "nature": "寒",
+      "taste": "甘",
+      "meridian": "肺、肝、肾经",
+      "category": "清热药-清虚热药",
+      "dose_range": "9-15g",
+      "functions": "凉血除蒸，清肺降火",
+      "indications": [
+        "阴虚潮热",
+        "骨蒸盗汗",
+        "肺热咳嗽",
+        "咯血衄血",
+        "内热消渴"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "忌铁（传统说法）",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "银柴胡",
+      "pinyin": "yinchaihu",
+      "nature": "微寒",
+      "taste": "甘",
+      "meridian": "肝、胃经",
+      "category": "清热药-清虚热药",
+      "dose_range": "3-10g",
+      "functions": "清虚热，除疳热",
+      "indications": [
+        "阴虚发热",
+        "骨蒸劳热",
+        "小儿疳热"
+      ],
+      "contraindications": [
+        "外感风寒",
+        "血虚无热"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "胡黄连",
+      "pinyin": "huhuanglian",
+      "nature": "寒",
+      "taste": "苦",
+      "meridian": "肝、胃、大肠经",
+      "category": "清热药-清虚热药",
+      "dose_range": "3-10g",
+      "functions": "退虚热，除疳热，清湿热",
+      "indications": [
+        "骨蒸潮热",
+        "小儿疳热",
+        "湿热泻痢",
+        "黄疸"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.07
+    },
+    {
+      "name": "番泻叶",
+      "pinyin": "fanxieye",
+      "nature": "寒",
+      "taste": "甘、苦",
+      "meridian": "大肠经",
+      "category": "泻下药-攻下药",
+      "dose_range": "2-6g",
+      "functions": "泻热行滞，通便，利水",
+      "indications": [
+        "热结积滞",
+        "便秘腹痛",
+        "水肿胀满"
+      ],
+      "contraindications": [
+        "孕妇",
+        "哺乳期",
+        "月经期",
+        "体虚"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "芦荟",
+      "pinyin": "luhui",
+      "nature": "寒",
+      "taste": "苦",
+      "meridian": "肝、胃、大肠经",
+      "category": "泻下药-攻下药",
+      "dose_range": "2-5g",
+      "functions": "泻下通便，清肝，杀虫",
+      "indications": [
+        "热结便秘",
+        "肝火头痛",
+        "目赤惊风",
+        "虫积腹痛",
+        "疥癣",
+        "痔瘘"
+      ],
+      "contraindications": [
+        "孕妇",
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "蚕沙",
+      "pinyin": "cansha",
+      "nature": "温",
+      "taste": "甘、辛",
+      "meridian": "肝、脾、胃经",
+      "category": "祛风湿药-祛风寒湿药",
+      "dose_range": "5-15g",
+      "functions": "祛风湿，和胃化湿",
+      "indications": [
+        "风湿痹痛",
+        "肢体不遂",
+        "湿疹瘙痒",
+        "吐泻转筋"
+      ],
+      "contraindications": [
+        "血虚失养"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.03
+    },
+    {
+      "name": "伸筋草",
+      "pinyin": "shenjincao",
+      "nature": "温",
+      "taste": "微苦、辛",
+      "meridian": "肝、脾、肾经",
+      "category": "祛风湿药-祛风寒湿药",
+      "dose_range": "3-12g",
+      "functions": "祛风除湿，舒筋活络",
+      "indications": [
+        "关节酸痛",
+        "屈伸不利",
+        "跌打损伤"
+      ],
+      "contraindications": [
+        "孕妇",
+        "出血过多"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "寻骨风",
+      "pinyin": "xungufeng",
+      "nature": "平",
+      "taste": "辛、苦",
+      "meridian": "肝经",
+      "category": "祛风湿药-祛风寒湿药",
+      "dose_range": "9-15g",
+      "functions": "祛风湿，通络止痛",
+      "indications": [
+        "风湿痹痛",
+        "肢体麻木",
+        "筋骨拘挛",
+        "跌打损伤"
+      ],
+      "contraindications": [
+        "阴虚血热"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "桑枝",
+      "pinyin": "sangzhi",
+      "nature": "平",
+      "taste": "微苦",
+      "meridian": "肝经",
+      "category": "祛风湿药-祛风湿热药",
+      "dose_range": "9-15g",
+      "functions": "祛风湿，利关节",
+      "indications": [
+        "风湿热痹",
+        "关节酸痛麻木"
+      ],
+      "contraindications": [
+        "风寒湿痹"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.03
+    },
+    {
+      "name": "豨莶草",
+      "pinyin": "xixiancao",
+      "nature": "寒",
+      "taste": "辛、苦",
+      "meridian": "肝、肾经",
+      "category": "祛风湿药-祛风湿热药",
+      "dose_range": "9-12g",
+      "functions": "祛风湿，利关节，解毒",
+      "indications": [
+        "风湿痹痛",
+        "筋骨无力",
+        "腰膝酸软",
+        "四肢麻痹",
+        "半身不遂",
+        "风疹湿疮"
+      ],
+      "contraindications": [
+        "无风湿热邪"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "臭梧桐",
+      "pinyin": "chouwutong",
+      "nature": "平",
+      "taste": "甘、苦",
+      "meridian": "肝经",
+      "category": "祛风湿药-祛风湿热药",
+      "dose_range": "5-15g",
+      "functions": "祛风湿，通络止痛，平肝降压",
+      "indications": [
+        "风湿痹痛",
+        "半身不遂",
+        "高血压病",
+        "湿疹瘙痒"
+      ],
+      "contraindications": [
+        "低血压"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "雷公藤",
+      "pinyin": "leigongteng",
+      "nature": "寒",
+      "taste": "苦、辛",
+      "meridian": "肝、肾经",
+      "category": "祛风湿药-祛风湿热药",
+      "dose_range": "1-3g",
+      "functions": "祛风除湿，活血通络，消肿止痛，杀虫解毒",
+      "indications": [
+        "风湿痹痛",
+        "疔疮肿毒",
+        "腰带疮",
+        "麻风",
+        "湿疹"
+      ],
+      "contraindications": [
+        "孕妇",
+        "哺乳期",
+        "儿童",
+        "心肝肾功能不全"
+      ],
+      "incompatibility": "有大毒，严格控制剂量",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "老鹳草",
+      "pinyin": "laoguancao",
+      "nature": "平",
+      "taste": "辛、苦",
+      "meridian": "肝、肾、脾经",
+      "category": "祛风湿药-祛风湿热药",
+      "dose_range": "9-15g",
+      "functions": "祛风湿，通经络，止泻痢",
+      "indications": [
+        "风湿痹痛",
+        "麻木拘挛",
+        "筋骨酸痛",
+        "泄泻痢疾"
+      ],
+      "contraindications": [
+        "无"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "千年健",
+      "pinyin": "qiannianjian",
+      "nature": "温",
+      "taste": "苦、辛",
+      "meridian": "肝、肾经",
+      "category": "祛风湿药-祛风湿强筋骨药",
+      "dose_range": "5-9g",
+      "functions": "祛风湿，壮筋骨",
+      "indications": [
+        "风寒湿痹",
+        "腰膝冷痛",
+        "下肢拘挛麻木",
+        "筋骨痿软"
+      ],
+      "contraindications": [
+        "阴虚内热"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.07
+    },
+    {
+      "name": "雪莲花",
+      "pinyin": "xuelianhua",
+      "nature": "温",
+      "taste": "甘、微苦",
+      "meridian": "肝、肾经",
+      "category": "祛风湿药-祛风湿强筋骨药",
+      "dose_range": "3-6g",
+      "functions": "温肾助阳，祛风胜湿，通经活血",
+      "indications": [
+        "风寒湿痹",
+        "腰膝软弱",
+        "阳痿",
+        "月经不调",
+        "崩漏带下"
+      ],
+      "contraindications": [
+        "孕妇",
+        "阴虚火旺"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.5
+    },
+    {
+      "name": "葫芦",
+      "pinyin": "hulu",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "肺、肾经",
+      "category": "利水渗湿药-利水消肿药",
+      "dose_range": "15-30g",
+      "functions": "利水消肿",
+      "indications": [
+        "水肿胀满",
+        "脚气肿痛"
+      ],
+      "contraindications": [
+        "虚寒滑精"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.03
+    },
+    {
+      "name": "枳椇子",
+      "pinyin": "zhijuzi",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "胃经",
+      "category": "利水渗湿药-利水消肿药",
+      "dose_range": "10-15g",
+      "functions": "利水消肿，解酒毒",
+      "indications": [
+        "水肿胀满",
+        "小便不利",
+        "酒醉烦渴"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "滑石",
+      "pinyin": "huashi",
+      "nature": "寒",
+      "taste": "甘、淡",
+      "meridian": "膀胱、肺、胃经",
+      "category": "利水渗湿药-利尿通淋药",
+      "dose_range": "10-20g",
+      "functions": "利尿通淋，清热解暑，祛湿敛疮",
+      "indications": [
+        "热淋石淋",
+        "尿热涩痛",
+        "暑湿烦渴",
+        "湿热水泻",
+        "外治湿疹湿疮"
+      ],
+      "contraindications": [
+        "脾虚气弱",
+        "精滑及热病津伤"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.02
+    },
+    {
+      "name": "通草",
+      "pinyin": "tongcao",
+      "nature": "微寒",
+      "taste": "甘、淡",
+      "meridian": "肺、胃经",
+      "category": "利水渗湿药-利尿通淋药",
+      "dose_range": "3-5g",
+      "functions": "清热利尿，通气下乳",
+      "indications": [
+        "湿热淋证",
+        "水肿尿少",
+        "乳汁不下"
+      ],
+      "contraindications": [
+        "孕妇",
+        "气阴两虚"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "瞿麦",
+      "pinyin": "qumai",
+      "nature": "寒",
+      "taste": "苦",
+      "meridian": "心、小肠经",
+      "category": "利水渗湿药-利尿通淋药",
+      "dose_range": "9-15g",
+      "functions": "利尿通淋，活血通经",
+      "indications": [
+        "热淋血淋",
+        "石淋",
+        "小便不通",
+        "经闭瘀阻"
+      ],
+      "contraindications": [
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "萹蓄",
+      "pinyin": "bianxu",
+      "nature": "微寒",
+      "taste": "苦",
+      "meridian": "膀胱经",
+      "category": "利水渗湿药-利尿通淋药",
+      "dose_range": "9-15g",
+      "functions": "利尿通淋，杀虫，止痒",
+      "indications": [
+        "热淋涩痛",
+        "小便短赤",
+        "虫积腹痛",
+        "皮肤湿疹",
+        "阴痒带下"
+      ],
+      "contraindications": [
+        "脾虚泄泻"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.03
+    },
+    {
+      "name": "地肤子",
+      "pinyin": "difuzi",
+      "nature": "寒",
+      "taste": "辛、苦",
+      "meridian": "肾、膀胱经",
+      "category": "利水渗湿药-利尿通淋药",
+      "dose_range": "9-15g",
+      "functions": "清热利湿，祛风止痒",
+      "indications": [
+        "小便涩痛",
+        "阴痒带下",
+        "风疹",
+        "湿疹",
+        "皮肤瘙痒"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "茵陈",
+      "pinyin": "yinchen",
+      "nature": "微寒",
+      "taste": "苦、辛",
+      "meridian": "脾、胃、肝、胆经",
+      "category": "利水渗湿药-利湿退黄药",
+      "dose_range": "6-15g",
+      "functions": "清利湿热，利胆退黄",
+      "indications": [
+        "黄疸尿少",
+        "湿温暑湿",
+        "湿疮瘙痒"
+      ],
+      "contraindications": [
+        "蓄血发黄",
+        "血虚萎黄"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "金钱草",
+      "pinyin": "jinqiancao",
+      "nature": "微寒",
+      "taste": "甘、咸",
+      "meridian": "肝、胆、肾、膀胱经",
+      "category": "利水渗湿药-利湿退黄药",
+      "dose_range": "15-60g",
+      "functions": "利湿退黄，利尿通淋，解毒消肿",
+      "indications": [
+        "湿热黄疸",
+        "胆胀胁痛",
+        "石淋热淋",
+        "小便涩痛",
+        "痈肿疔疮",
+        "蛇虫咬伤"
+      ],
+      "contraindications": [
+        "脾虚泄泻"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "虎杖",
+      "pinyin": "huzhang",
+      "nature": "微寒",
+      "taste": "微苦",
+      "meridian": "肝、胆、肺经",
+      "category": "利水渗湿药-利湿退黄药",
+      "dose_range": "9-15g",
+      "functions": "利湿退黄，清热解毒，散瘀止痛，止咳化痰",
+      "indications": [
+        "湿热黄疸",
+        "淋浊带下",
+        "痈肿疮毒",
+        "水火烫伤",
+        "经闭癥瘕",
+        "跌打损伤",
+        "肺热咳嗽"
+      ],
+      "contraindications": [
+        "孕妇",
+        "脾虚便溏"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "地耳草",
+      "pinyin": "diercao",
+      "nature": "凉",
+      "taste": "甘、微苦",
+      "meridian": "肝、胆经",
+      "category": "利水渗湿药-利湿退黄药",
+      "dose_range": "15-30g",
+      "functions": "利湿退黄，清热解毒，活血消肿",
+      "indications": [
+        "湿热黄疸",
+        "泻痢",
+        "痈肿疮毒",
+        "乳蛾",
+        "口疮",
+        "跌打损伤"
+      ],
+      "contraindications": [
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "垂盆草",
+      "pinyin": "chuipencao",
+      "nature": "凉",
+      "taste": "甘、淡",
+      "meridian": "肝、胆、小肠经",
+      "category": "利水渗湿药-利湿退黄药",
+      "dose_range": "15-30g",
+      "functions": "利湿退黄，清热解毒",
+      "indications": [
+        "湿热黄疸",
+        "小便不利",
+        "痈肿疮疡",
+        "急慢性肝炎"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "荜澄茄",
+      "pinyin": "bichengqie",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "脾、胃、肾、膀胱经",
+      "category": "温里药",
+      "dose_range": "1.5-3g",
+      "functions": "温中散寒，行气止痛",
+      "indications": [
+        "胃寒呕逆",
+        "脘腹冷痛",
+        "寒疝腹痛",
+        "寒湿小便混浊"
+      ],
+      "contraindications": [
+        "阴虚火旺",
+        "实热证"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "荔枝核",
+      "pinyin": "lizhihe",
+      "nature": "温",
+      "taste": "甘、微苦",
+      "meridian": "肝、肾经",
+      "category": "理气药",
+      "dose_range": "5-10g",
+      "functions": "行气散结，祛寒止痛",
+      "indications": [
+        "寒疝腹痛",
+        "睾丸肿痛",
+        "胃脘痛",
+        "痛经",
+        "产后腹痛"
+      ],
+      "contraindications": [
+        "无寒湿气滞"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "香橼",
+      "pinyin": "xiangyuan",
+      "nature": "温",
+      "taste": "辛、苦、酸",
+      "meridian": "肝、脾、肺经",
+      "category": "理气药",
+      "dose_range": "3-10g",
+      "functions": "疏肝理气，宽中，化痰",
+      "indications": [
+        "肝胃气滞",
+        "胸胁胀痛",
+        "脘腹痞满",
+        "呕吐噫气",
+        "痰多咳嗽"
+      ],
+      "contraindications": [
+        "阴虚血燥",
+        "孕妇气虚"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "玫瑰花",
+      "pinyin": "meiguihua",
+      "nature": "温",
+      "taste": "甘、微苦",
+      "meridian": "肝、脾经",
+      "category": "理气药",
+      "dose_range": "3-6g",
+      "functions": "行气解郁，和血，止痛",
+      "indications": [
+        "肝胃气痛",
+        "食少呕恶",
+        "月经不调",
+        "经前乳房胀痛",
+        "跌打伤痛"
+      ],
+      "contraindications": [
+        "阴虚火旺",
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.15
+    },
+    {
+      "name": "绿萼梅",
+      "pinyin": "lumei",
+      "nature": "平",
+      "taste": "微酸、涩",
+      "meridian": "肝、胃、肺经",
+      "category": "理气药",
+      "dose_range": "3-5g",
+      "functions": "疏肝解郁，和中，化痰",
+      "indications": [
+        "肝胃气痛",
+        "郁闷心烦",
+        "梅核气",
+        "食欲不振"
+      ],
+      "contraindications": [
+        "无"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.12
+    },
+    {
+      "name": "南瓜子",
+      "pinyin": "nangua zi",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "胃、大肠经",
+      "category": "驱虫药",
+      "dose_range": "60-120g",
+      "functions": "驱虫",
+      "indications": [
+        "绦虫病",
+        "蛔虫病",
+        "血吸虫病"
+      ],
+      "contraindications": [
+        "无"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.02
+    },
+    {
+      "name": "鹤草芽",
+      "pinyin": "hecaoya",
+      "nature": "凉",
+      "taste": "苦、涩",
+      "meridian": "肝、小肠、大肠经",
+      "category": "驱虫药",
+      "dose_range": "30-50g",
+      "functions": "杀虫",
+      "indications": [
+        "绦虫病",
+        "阴道滴虫"
+      ],
+      "contraindications": [
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "芜荑",
+      "pinyin": "wuyi",
+      "nature": "平",
+      "taste": "辛、苦",
+      "meridian": "脾、胃经",
+      "category": "驱虫药",
+      "dose_range": "3-10g",
+      "functions": "杀虫消积",
+      "indications": [
+        "虫积腹痛",
+        "小儿疳积",
+        "疥癣",
+        "恶疮"
+      ],
+      "contraindications": [
+        "脾胃虚弱"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "苎麻根",
+      "pinyin": "zhumagen",
+      "nature": "寒",
+      "taste": "甘",
+      "meridian": "心、肝经",
+      "category": "止血药-凉血止血药",
+      "dose_range": "10-30g",
+      "functions": "凉血止血，安胎，清热解毒",
+      "indications": [
+        "血热出血",
+        "胎动不安",
+        "胎漏下血",
+        "痈肿疮毒",
+        "蛇虫咬伤"
+      ],
+      "contraindications": [
+        "脾胃虚寒",
+        "无实热"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "花蕊石",
+      "pinyin": "huaruishi",
+      "nature": "平",
+      "taste": "酸、涩",
+      "meridian": "肝经",
+      "category": "止血药-化瘀止血药",
+      "dose_range": "4.5-9g",
+      "functions": "化瘀止血",
+      "indications": [
+        "咯血",
+        "吐血",
+        "外伤出血",
+        "跌扑伤痛"
+      ],
+      "contraindications": [
+        "孕妇",
+        "无瘀出血"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "降香",
+      "pinyin": "jiangxiang",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "肝、脾经",
+      "category": "止血药-化瘀止血药",
+      "dose_range": "9-15g",
+      "functions": "化瘀止血，理气止痛",
+      "indications": [
+        "吐血衄血",
+        "外伤出血",
+        "肝郁胁痛",
+        "胸痹刺痛",
+        "跌扑伤痛",
+        "呕吐腹痛"
+      ],
+      "contraindications": [
+        "阴虚火旺",
+        "血热妄行"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.2
+    },
+    {
+      "name": "仙鹤草",
+      "pinyin": "xianhecao",
+      "nature": "平",
+      "taste": "苦、涩",
+      "meridian": "心、肝经",
+      "category": "止血药-收敛止血药",
+      "dose_range": "6-12g",
+      "functions": "收敛止血，截疟，止痢，解毒，补虚",
+      "indications": [
+        "咯血吐血",
+        "崩漏下血",
+        "疟疾",
+        "血痢",
+        "痈肿疮毒",
+        "脱力劳伤"
+      ],
+      "contraindications": [
+        "无"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "紫珠叶",
+      "pinyin": "zizhuye",
+      "nature": "凉",
+      "taste": "苦、涩",
+      "meridian": "肝、肺、胃经",
+      "category": "止血药-收敛止血药",
+      "dose_range": "3-15g",
+      "functions": "凉血收敛止血，清热解毒",
+      "indications": [
+        "咯血",
+        "吐血",
+        "衄血",
+        "便血",
+        "崩漏",
+        "外伤出血",
+        "痈肿疮毒",
+        "毒蛇咬伤"
+      ],
+      "contraindications": [
+        "虚寒出血"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "棕榈炭",
+      "pinyin": "zonglut an",
+      "nature": "平",
+      "taste": "苦、涩",
+      "meridian": "肝、肺、大肠经",
+      "category": "止血药-收敛止血药",
+      "dose_range": "3-9g",
+      "functions": "收敛止血",
+      "indications": [
+        "吐血衄血",
+        "尿血便血",
+        "崩漏下血"
+      ],
+      "contraindications": [
+        "出血兼瘀滞"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "血余炭",
+      "pinyin": "xuyutan",
+      "nature": "平",
+      "taste": "苦",
+      "meridian": "肝、胃经",
+      "category": "止血药-收敛止血药",
+      "dose_range": "5-10g",
+      "functions": "收敛止血，化瘀利尿",
+      "indications": [
+        "吐血衄血",
+        "咳血吐血",
+        "便血尿血",
+        "崩漏下血",
+        "外伤出血",
+        "小便不利"
+      ],
+      "contraindications": [
+        "胃弱者慎服"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "藕节",
+      "pinyin": "oujie",
+      "nature": "平",
+      "taste": "甘、涩",
+      "meridian": "肝、肺、胃经",
+      "category": "止血药-收敛止血药",
+      "dose_range": "9-15g",
+      "functions": "收敛止血，化瘀",
+      "indications": [
+        "吐血",
+        "咯血",
+        "衄血",
+        "尿血",
+        "崩漏"
+      ],
+      "contraindications": [
+        "无"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.03
+    },
+    {
+      "name": "灶心土",
+      "pinyin": "zaoxintu",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "脾、胃经",
+      "category": "止血药-温经止血药",
+      "dose_range": "15-30g",
+      "functions": "温中止血，止呕，止泻",
+      "indications": [
+        "虚寒失血",
+        "呕吐泄泻",
+        "脾虚久痢"
+      ],
+      "contraindications": [
+        "阴虚失血",
+        "热证呕吐"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.02
+    },
+    {
+      "name": "夏天无",
+      "pinyin": "xiatianwu",
+      "nature": "温",
+      "taste": "苦、微辛",
+      "meridian": "肝经",
+      "category": "活血化瘀药-活血止痛药",
+      "dose_range": "6-12g",
+      "functions": "活血止痛，舒筋活络，祛风除湿",
+      "indications": [
+        "中风偏瘫",
+        "头痛",
+        "跌扑损伤",
+        "风湿痹痛",
+        "腰腿疼痛"
+      ],
+      "contraindications": [
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "泽兰",
+      "pinyin": "zelan",
+      "nature": "微温",
+      "taste": "苦、辛",
+      "meridian": "肝、脾经",
+      "category": "活血化瘀药-活血调经药",
+      "dose_range": "6-12g",
+      "functions": "活血调经，祛瘀消痈，利水消肿",
+      "indications": [
+        "月经不调",
+        "经闭痛经",
+        "产后瘀血腹痛",
+        "疮痈肿毒",
+        "水肿腹水"
+      ],
+      "contraindications": [
+        "无瘀血",
+        "血虚"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "王不留行",
+      "pinyin": "wangbuliuxing",
+      "nature": "平",
+      "taste": "苦",
+      "meridian": "肝、胃经",
+      "category": "活血化瘀药-活血调经药",
+      "dose_range": "5-10g",
+      "functions": "活血通经，下乳消肿，利尿通淋",
+      "indications": [
+        "经闭痛经",
+        "乳汁不下",
+        "乳痈肿痛",
+        "淋证涩痛"
+      ],
+      "contraindications": [
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "月季花",
+      "pinyin": "yuejihua",
+      "nature": "温",
+      "taste": "甘",
+      "meridian": "肝经",
+      "category": "活血化瘀药-活血调经药",
+      "dose_range": "2-5g",
+      "functions": "活血调经，疏肝解郁",
+      "indications": [
+        "气滞血瘀",
+        "月经不调",
+        "痛经",
+        "闭经",
+        "胸胁胀痛"
+      ],
+      "contraindications": [
+        "孕妇",
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "自然铜",
+      "pinyin": "zirantong",
+      "nature": "平",
+      "taste": "辛",
+      "meridian": "肝经",
+      "category": "活血化瘀药-活血疗伤药",
+      "dose_range": "3-9g",
+      "functions": "散瘀止痛，续筋接骨",
+      "indications": [
+        "跌扑骨折",
+        "筋伤血瘀",
+        "跌打伤痛"
+      ],
+      "contraindications": [
+        "阴虚火旺",
+        "血虚无瘀"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "苏木",
+      "pinyin": "sumu",
+      "nature": "平",
+      "taste": "甘、咸",
+      "meridian": "心、肝、脾经",
+      "category": "活血化瘀药-活血疗伤药",
+      "dose_range": "3-9g",
+      "functions": "活血祛瘀，消肿止痛",
+      "indications": [
+        "跌打损伤",
+        "骨折筋伤",
+        "瘀滞肿痛",
+        "经闭痛经",
+        "产后瘀阻",
+        "痈疽肿痛"
+      ],
+      "contraindications": [
+        "孕妇",
+        "月经过多"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.07
+    },
+    {
+      "name": "骨碎补",
+      "pinyin": "gusuibu",
+      "nature": "温",
+      "taste": "苦",
+      "meridian": "肝、肾经",
+      "category": "活血化瘀药-活血疗伤药",
+      "dose_range": "3-9g",
+      "functions": "疗伤止痛，补肾强骨",
+      "indications": [
+        "跌扑闪挫",
+        "筋骨折伤",
+        "肾虚腰痛",
+        "耳鸣耳聋",
+        "牙齿松动"
+      ],
+      "contraindications": [
+        "阴虚火旺"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "血竭",
+      "pinyin": "xuejie",
+      "nature": "平",
+      "taste": "甘、咸",
+      "meridian": "心、肝经",
+      "category": "活血化瘀药-活血疗伤药",
+      "dose_range": "1-2g",
+      "functions": "活血定痛，化瘀止血，生肌敛疮",
+      "indications": [
+        "跌打损伤",
+        "心腹瘀痛",
+        "外伤出血",
+        "疮疡不敛"
+      ],
+      "contraindications": [
+        "孕妇",
+        "无瘀血"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.8
+    },
+    {
+      "name": "刘寄奴",
+      "pinyin": "liujinu",
+      "nature": "温",
+      "taste": "辛、苦",
+      "meridian": "心、肝、脾经",
+      "category": "活血化瘀药-活血疗伤药",
+      "dose_range": "3-9g",
+      "functions": "散瘀止痛，疗伤止血，破血通经，消食化积",
+      "indications": [
+        "跌打损伤",
+        "瘀滞肿痛",
+        "外伤出血",
+        "经闭痛经",
+        "产后瘀阻",
+        "食积腹痛"
+      ],
+      "contraindications": [
+        "孕妇",
+        "气血虚弱"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "莪术",
+      "pinyin": "ezhu",
+      "nature": "温",
+      "taste": "辛、苦",
+      "meridian": "肝、脾经",
+      "category": "活血化瘀药-破血消癥药",
+      "dose_range": "6-9g",
+      "functions": "破血行气，消积止痛",
+      "indications": [
+        "癥瘕痞块",
+        "瘀血经闭",
+        "食积胀痛"
+      ],
+      "contraindications": [
+        "孕妇",
+        "月经过多"
+      ],
+      "incompatibility": "含挥发油，不宜久煎",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "虻虫",
+      "pinyin": "mengchong",
+      "nature": "微寒",
+      "taste": "苦",
+      "meridian": "肝经",
+      "category": "活血化瘀药-破血消癥药",
+      "dose_range": "1-1.5g",
+      "functions": "破血逐瘀，消癥散积",
+      "indications": [
+        "癥瘕积聚",
+        "血瘀经闭",
+        "跌打损伤"
+      ],
+      "contraindications": [
+        "孕妇",
+        "体虚无瘀"
+      ],
+      "incompatibility": "恶麻黄（传统说法）",
+      "price_yuan": 0.15
+    },
+    {
+      "name": "斑蝥",
+      "pinyin": "banmao",
+      "nature": "热",
+      "taste": "辛",
+      "meridian": "肝、胃、肾经",
+      "category": "活血化瘀药-破血消癥药",
+      "dose_range": "0.03-0.06g",
+      "functions": "破血消癥，攻毒蚀疮，发泡冷灸",
+      "indications": [
+        "癥瘕",
+        "经闭",
+        "痈疽不溃",
+        "恶疮死肌",
+        "顽癣",
+        "瘰疬",
+        "尖锐湿疣"
+      ],
+      "contraindications": [
+        "孕妇",
+        "体虚",
+        "肝肾功不全"
+      ],
+      "incompatibility": "有大毒，严格控制剂量",
+      "price_yuan": 0.5
+    },
+    {
+      "name": "穿山甲",
+      "pinyin": "chuanshanjia",
+      "nature": "微寒",
+      "taste": "咸",
+      "meridian": "肝、胃经",
+      "category": "活血化瘀药-破血消癥药",
+      "dose_range": "5-10g",
+      "functions": "活血消癥，通经下乳，消肿排脓，搜风通络",
+      "indications": [
+        "癥瘕痞块",
+        "瘀血经闭",
+        "乳汁不通",
+        "痈肿疮毒",
+        "关节痹痛",
+        "麻木拘挛"
+      ],
+      "contraindications": [
+        "孕妇",
+        "痈肿已溃",
+        "气血不足"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 1.5
+    },
+    {
+      "name": "浙贝母",
+      "pinyin": "zhebeimu",
+      "nature": "寒",
+      "taste": "苦",
+      "meridian": "肺、心经",
+      "category": "化痰止咳平喘药-清化热痰药",
+      "dose_range": "5-10g",
+      "functions": "清热化痰止咳，解毒散结消痈",
+      "indications": [
+        "风热咳嗽",
+        "痰热咳嗽",
+        "瘰疬",
+        "瘿瘤",
+        "肺痈",
+        "乳痈",
+        "疮毒"
+      ],
+      "contraindications": [
+        "寒痰湿痰",
+        "脾胃虚寒"
+      ],
+      "incompatibility": "反乌头（十八反）",
+      "price_yuan": 0.12
+    },
+    {
+      "name": "竹沥",
+      "pinyin": "zhuli",
+      "nature": "寒",
+      "taste": "甘",
+      "meridian": "心、肺、肝经",
+      "category": "化痰止咳平喘药-清化热痰药",
+      "dose_range": "30-50g",
+      "functions": "清热滑痰，镇惊开窍",
+      "indications": [
+        "肺热痰壅",
+        "惊风癫痫",
+        "中风痰迷"
+      ],
+      "contraindications": [
+        "寒湿痰",
+        "脾虚便溏"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "黄药子",
+      "pinyin": "huangyaozi",
+      "nature": "平",
+      "taste": "苦",
+      "meridian": "肺、肝经",
+      "category": "化痰止咳平喘药-清化热痰药",
+      "dose_range": "5-15g",
+      "functions": "化痰散结消瘿，清热解毒",
+      "indications": [
+        "瘿瘤",
+        "瘰疬",
+        "疮疡肿毒",
+        "咽喉肿痛",
+        "毒蛇咬伤"
+      ],
+      "contraindications": [
+        "脾胃虚寒",
+        "肝功能不全"
+      ],
+      "incompatibility": "多服久服损肝",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "海蛤壳",
+      "pinyin": "haigeqiao",
+      "nature": "平",
+      "taste": "苦、咸",
+      "meridian": "肺、肾、胃经",
+      "category": "化痰止咳平喘药-清化热痰药",
+      "dose_range": "6-15g",
+      "functions": "清热化痰，软坚散结，制酸止痛",
+      "indications": [
+        "肺热痰稠",
+        "咳嗽气喘",
+        "瘿瘤瘰疬",
+        "胃痛泛酸"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "海浮石",
+      "pinyin": "haifushi",
+      "nature": "寒",
+      "taste": "咸",
+      "meridian": "肺、肾经",
+      "category": "化痰止咳平喘药-清化热痰药",
+      "dose_range": "6-10g",
+      "functions": "清肺化痰，软坚散结，利尿通淋",
+      "indications": [
+        "肺热咳嗽",
+        "痰稠咯痰",
+        "瘿瘤瘰疬",
+        "淋证"
+      ],
+      "contraindications": [
+        "脾胃虚寒"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "瓦楞子",
+      "pinyin": "walengzi",
+      "nature": "平",
+      "taste": "咸",
+      "meridian": "肺、胃、肝经",
+      "category": "化痰止咳平喘药-清化热痰药",
+      "dose_range": "9-15g",
+      "functions": "消痰化瘀，软坚散结，制酸止痛",
+      "indications": [
+        "顽痰胶结",
+        "黏稠难咯",
+        "瘿瘤瘰疬",
+        "癥瘕痞块",
+        "胃痛泛酸"
+      ],
+      "contraindications": [
+        "无痰积"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.03
+    },
+    {
+      "name": "礞石",
+      "pinyin": "mengshi",
+      "nature": "平",
+      "taste": "甘、咸",
+      "meridian": "肺、心、肝经",
+      "category": "化痰止咳平喘药-清化热痰药",
+      "dose_range": "3-6g",
+      "functions": "坠痰下气，平肝镇惊",
+      "indications": [
+        "顽痰胶结",
+        "咳逆喘急",
+        "癫痫发狂",
+        "烦躁胸闷",
+        "惊风抽搐"
+      ],
+      "contraindications": [
+        "孕妇",
+        "脾胃虚弱",
+        "无痰热实邪"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "马兜铃",
+      "pinyin": "madingling",
+      "nature": "微寒",
+      "taste": "苦",
+      "meridian": "肺、大肠经",
+      "category": "化痰止咳平喘药-止咳平喘药",
+      "dose_range": "3-9g",
+      "functions": "清肺降气，止咳平喘，清肠消痔",
+      "indications": [
+        "肺热喘咳",
+        "痰中带血",
+        "肠热痔血",
+        "痔疮肿痛"
+      ],
+      "contraindications": [
+        "虚寒咳喘",
+        "脾虚便溏",
+        "孕妇",
+        "肾功能不全"
+      ],
+      "incompatibility": "含马兜铃酸，肾毒性",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "枇杷叶",
+      "pinyin": "pipaye",
+      "nature": "微寒",
+      "taste": "苦",
+      "meridian": "肺、胃经",
+      "category": "化痰止咳平喘药-止咳平喘药",
+      "dose_range": "6-10g",
+      "functions": "清肺止咳，降逆止呕",
+      "indications": [
+        "肺热咳嗽",
+        "气逆喘急",
+        "胃热呕逆",
+        "烦热口渴"
+      ],
+      "contraindications": [
+        "寒嗽",
+        "胃寒呕逆"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "白果",
+      "pinyin": "baiguo",
+      "nature": "平",
+      "taste": "甘、苦、涩",
+      "meridian": "肺、肾经",
+      "category": "化痰止咳平喘药-止咳平喘药",
+      "dose_range": "5-10g",
+      "functions": "敛肺定喘，止带缩尿",
+      "indications": [
+        "痰多喘咳",
+        "带下白浊",
+        "遗尿尿频"
+      ],
+      "contraindications": [
+        "咳嗽痰稠不利者",
+        "有实邪"
+      ],
+      "incompatibility": "有毒，不宜多用",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "矮地茶",
+      "pinyin": "aidicha",
+      "nature": "平",
+      "taste": "苦、辛",
+      "meridian": "肺、肝经",
+      "category": "化痰止咳平喘药-止咳平喘药",
+      "dose_range": "15-30g",
+      "functions": "化痰止咳，清利湿热，活血化瘀",
+      "indications": [
+        "新久咳嗽",
+        "喘促痰多",
+        "湿热黄疸",
+        "水肿尿少",
+        "跌打损伤",
+        "风湿痹痛"
+      ],
+      "contraindications": [
+        "无"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "洋金花",
+      "pinyin": "yangjinhua",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "肺、肝经",
+      "category": "化痰止咳平喘药-止咳平喘药",
+      "dose_range": "0.3-0.6g",
+      "functions": "平喘止咳，解痉定痛",
+      "indications": [
+        "哮喘咳嗽",
+        "脘腹冷痛",
+        "风湿痹痛",
+        "小儿慢惊",
+        "外科麻醉"
+      ],
+      "contraindications": [
+        "孕妇",
+        "外感及痰热咳喘",
+        "青光眼",
+        "高血压",
+        "心脏病"
+      ],
+      "incompatibility": "有大毒，严格控制剂量",
+      "price_yuan": 0.15
+    },
+    {
+      "name": "琥珀",
+      "pinyin": "hupo",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "心、肝、膀胱经",
+      "category": "安神药-重镇安神药",
+      "dose_range": "1.5-3g",
+      "functions": "镇惊安神，活血散瘀，利尿通淋",
+      "indications": [
+        "心神不宁",
+        "心悸失眠",
+        "惊风癫痫",
+        "血滞经闭",
+        "癥瘕疼痛",
+        "淋证癃闭"
+      ],
+      "contraindications": [
+        "阴虚内热",
+        "无瘀滞"
+      ],
+      "incompatibility": "不入煎剂",
+      "price_yuan": 0.5
+    },
+    {
+      "name": "珍珠母",
+      "pinyin": "zhenzhumu",
+      "nature": "寒",
+      "taste": "咸",
+      "meridian": "肝、心经",
+      "category": "平肝息风药-平抑肝阳药",
+      "dose_range": "10-25g",
+      "functions": "平肝潜阳，安神定惊，明目退翳",
+      "indications": [
+        "头痛眩晕",
+        "惊悸失眠",
+        "目赤翳障",
+        "视物昏花"
+      ],
+      "contraindications": [
+        "脾胃虚寒",
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "罗布麻",
+      "pinyin": "luobuma",
+      "nature": "凉",
+      "taste": "甘、苦",
+      "meridian": "肝经",
+      "category": "平肝息风药-平抑肝阳药",
+      "dose_range": "6-12g",
+      "functions": "平肝安神，清热利水",
+      "indications": [
+        "肝阳眩晕",
+        "心悸失眠",
+        "浮肿尿少",
+        "高血压病"
+      ],
+      "contraindications": [
+        "脾虚慢惊"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "羚羊角",
+      "pinyin": "lingyangjiao",
+      "nature": "寒",
+      "taste": "咸",
+      "meridian": "肝、心经",
+      "category": "平肝息风药-息风止痉药",
+      "dose_range": "1-3g",
+      "functions": "平肝息风，清肝明目，散血解毒",
+      "indications": [
+        "肝风内动",
+        "惊痫抽搐",
+        "妊娠子痫",
+        "高热痉厥",
+        "癫痫发狂",
+        "头痛眩晕",
+        "目赤翳障",
+        "温毒发斑",
+        "痈肿疮毒"
+      ],
+      "contraindications": [
+        "脾虚慢惊"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 2
+    },
+    {
+      "name": "牛黄",
+      "pinyin": "niuhuang",
+      "nature": "凉",
+      "taste": "甘",
+      "meridian": "心、肝经",
+      "category": "平肝息风药-息风止痉药",
+      "dose_range": "0.15-0.35g",
+      "functions": "清心，豁痰，开窍，凉肝，息风，解毒",
+      "indications": [
+        "热病神昏",
+        "中风痰迷",
+        "惊痫抽搐",
+        "癫痫发狂",
+        "咽喉肿痛",
+        "口舌生疮",
+        "痈肿疔疮"
+      ],
+      "contraindications": [
+        "孕妇",
+        "非实热证"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 5
+    },
+    {
+      "name": "珍珠",
+      "pinyin": "zhenzhu",
+      "nature": "寒",
+      "taste": "甘、咸",
+      "meridian": "心、肝经",
+      "category": "平肝息风药-息风止痉药",
+      "dose_range": "0.1-0.3g",
+      "functions": "安神定惊，明目消翳，解毒生肌，润肤祛斑",
+      "indications": [
+        "惊悸失眠",
+        "惊风癫痫",
+        "目赤翳障",
+        "疮疡不敛",
+        "皮肤色斑"
+      ],
+      "contraindications": [
+        "无实热"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 1.5
+    },
+    {
+      "name": "麝香",
+      "pinyin": "shexiang",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "心、脾经",
+      "category": "开窍药",
+      "dose_range": "0.03-0.1g",
+      "functions": "开窍醒神，活血通经，消肿止痛",
+      "indications": [
+        "热病神昏",
+        "中风痰厥",
+        "气郁暴厥",
+        "中恶昏迷",
+        "经闭癥瘕",
+        "胸痹心痛",
+        "心腹暴痛",
+        "跌打损伤",
+        "痹痛麻木",
+        "痈肿瘰疬",
+        "咽喉肿痛"
+      ],
+      "contraindications": [
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 5
+    },
+    {
+      "name": "冰片",
+      "pinyin": "bingpian",
+      "nature": "微寒",
+      "taste": "辛、苦",
+      "meridian": "心、脾、肺经",
+      "category": "开窍药",
+      "dose_range": "0.15-0.3g",
+      "functions": "开窍醒神，清热止痛",
+      "indications": [
+        "热病神昏",
+        "惊厥",
+        "目赤肿痛",
+        "口舌生疮",
+        "咽喉肿痛",
+        "耳道流脓",
+        "疮疡肿痛",
+        "久溃不敛"
+      ],
+      "contraindications": [
+        "孕妇",
+        "气血虚"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.8
+    },
+    {
+      "name": "苏合香",
+      "pinyin": "suhexiang",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "心、脾经",
+      "category": "开窍药",
+      "dose_range": "0.3-1g",
+      "functions": "开窍，辟秽，止痛",
+      "indications": [
+        "中风痰厥",
+        "猝然昏倒",
+        "胸腹冷痛",
+        "惊痫"
+      ],
+      "contraindications": [
+        "阴虚多火",
+        "气虚"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 1.2
+    },
+    {
+      "name": "石菖蒲",
+      "pinyin": "shichangpu",
+      "nature": "温",
+      "taste": "辛、苦",
+      "meridian": "心、胃经",
+      "category": "开窍药",
+      "dose_range": "3-10g",
+      "functions": "开窍豁痰，醒神益智，化湿开胃",
+      "indications": [
+        "神昏癫痫",
+        "健忘失眠",
+        "耳鸣耳聋",
+        "湿阻中焦",
+        "脘痞不饥",
+        "噤口下痢"
+      ],
+      "contraindications": [
+        "阴虚阳亢",
+        "汗多"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "蟾酥",
+      "pinyin": "chansu",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "心经",
+      "category": "开窍药",
+      "dose_range": "0.015-0.03g",
+      "functions": "解毒，止痛，开窍醒神",
+      "indications": [
+        "痈疽疔疮",
+        "咽喉肿痛",
+        "中暑神昏",
+        "腹痛吐泻"
+      ],
+      "contraindications": [
+        "孕妇"
+      ],
+      "incompatibility": "有毒，不宜多服久服",
+      "price_yuan": 1.5
+    },
+    {
+      "name": "刺五加",
+      "pinyin": "ciwujia",
+      "nature": "温",
+      "taste": "辛、微苦",
+      "meridian": "脾、肾、心经",
+      "category": "补虚药-补气药",
+      "dose_range": "9-27g",
+      "functions": "益气健脾，补肾安神",
+      "indications": [
+        "脾肾阳虚",
+        "体虚乏力",
+        "食欲不振",
+        "腰膝酸痛",
+        "失眠多梦"
+      ],
+      "contraindications": [
+        "阴虚火旺"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "绞股蓝",
+      "pinyin": "jiaogulan",
+      "nature": "凉",
+      "taste": "甘、苦",
+      "meridian": "脾、肺经",
+      "category": "补虚药-补气药",
+      "dose_range": "10-20g",
+      "functions": "益气健脾，化痰止咳，清热解毒",
+      "indications": [
+        "脾虚证",
+        "脾胃气虚",
+        "倦怠食少",
+        "肺虚咳嗽",
+        "肿瘤放疗化疗后"
+      ],
+      "contraindications": [
+        "虚寒证"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "红景天",
+      "pinyin": "hongjingtian",
+      "nature": "平",
+      "taste": "甘、苦",
+      "meridian": "肺、心经",
+      "category": "补虚药-补气药",
+      "dose_range": "3-6g",
+      "functions": "益气活血，通脉平喘",
+      "indications": [
+        "气虚血瘀",
+        "胸痹心痛",
+        "中风偏瘫",
+        "倦怠气喘"
+      ],
+      "contraindications": [
+        "无"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.2
+    },
+    {
+      "name": "沙棘",
+      "pinyin": "shaji",
+      "nature": "温",
+      "taste": "酸、涩",
+      "meridian": "脾、胃、肺、心经",
+      "category": "补虚药-补气药",
+      "dose_range": "3-10g",
+      "functions": "健脾消食，止咳祛痰，活血散瘀",
+      "indications": [
+        "脾虚食少",
+        "食积腹痛",
+        "咳嗽痰多",
+        "胸痹心痛",
+        "瘀血经闭",
+        "跌扑瘀肿"
+      ],
+      "contraindications": [
+        "无"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "南沙参",
+      "pinyin": "nanshashen",
+      "nature": "微寒",
+      "taste": "甘",
+      "meridian": "肺、胃经",
+      "category": "补虚药-补阴药",
+      "dose_range": "9-15g",
+      "functions": "养阴清肺，益胃生津，化痰，益气",
+      "indications": [
+        "肺热燥咳",
+        "阴虚劳嗽",
+        "干咳痰黏",
+        "胃阴不足",
+        "食少呕吐",
+        "气阴不足",
+        "烦热口干"
+      ],
+      "contraindications": [
+        "风寒咳嗽",
+        "寒饮喘咳",
+        "脾胃虚寒"
+      ],
+      "incompatibility": "反藜芦（十八反）",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "桑椹",
+      "pinyin": "sangshen",
+      "nature": "寒",
+      "taste": "甘、酸",
+      "meridian": "心、肝、肾经",
+      "category": "补虚药-补阴药",
+      "dose_range": "9-15g",
+      "functions": "滋阴补血，生津润燥",
+      "indications": [
+        "肝肾阴虚",
+        "眩晕耳鸣",
+        "心悸失眠",
+        "须发早白",
+        "津伤口渴",
+        "内热消渴",
+        "肠燥便秘"
+      ],
+      "contraindications": [
+        "脾胃虚寒",
+        "大便溏泄"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "黑芝麻",
+      "pinyin": "heizhima",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "肝、肾、大肠经",
+      "category": "补虚药-补阴药",
+      "dose_range": "9-15g",
+      "functions": "补肝肾，益精血，润肠燥",
+      "indications": [
+        "精血亏虚",
+        "头晕眼花",
+        "耳鸣耳聋",
+        "须发早白",
+        "病后脱发",
+        "肠燥便秘"
+      ],
+      "contraindications": [
+        "便溏"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "紫河车",
+      "pinyin": "ziheche",
+      "nature": "温",
+      "taste": "甘、咸",
+      "meridian": "心、肺、肾经",
+      "category": "补虚药-补阳药",
+      "dose_range": "2-3g",
+      "functions": "温肾补精，益气养血",
+      "indications": [
+        "虚劳羸瘦",
+        "阳痿遗精",
+        "不孕少乳",
+        "久咳虚喘",
+        "骨蒸劳嗽",
+        "面色萎黄",
+        "食少气短"
+      ],
+      "contraindications": [
+        "阴虚火旺",
+        "外感实邪"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 1
+    },
+    {
+      "name": "仙茅",
+      "pinyin": "xianmao",
+      "nature": "热",
+      "taste": "辛",
+      "meridian": "肾、肝经",
+      "category": "补虚药-补阳药",
+      "dose_range": "3-10g",
+      "functions": "补肾阳，强筋骨，祛寒湿",
+      "indications": [
+        "阳痿精冷",
+        "筋骨痿软",
+        "腰膝冷痛",
+        "阳虚冷泻"
+      ],
+      "contraindications": [
+        "阴虚火旺"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "沙苑子",
+      "pinyin": "shayuanzi",
+      "nature": "温",
+      "taste": "甘",
+      "meridian": "肝、肾经",
+      "category": "补虚药-补阳药",
+      "dose_range": "9-15g",
+      "functions": "补肾助阳，固精缩尿，养肝明目",
+      "indications": [
+        "肾虚腰痛",
+        "遗精早泄",
+        "遗尿尿频",
+        "白浊带下",
+        "眩晕目暗"
+      ],
+      "contraindications": [
+        "阴虚火旺",
+        "小便不利"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "核桃仁",
+      "pinyin": "hetaoren",
+      "nature": "温",
+      "taste": "甘",
+      "meridian": "肾、肺、大肠经",
+      "category": "补虚药-补阳药",
+      "dose_range": "6-9g",
+      "functions": "补肾，温肺，润肠",
+      "indications": [
+        "肾阳不足",
+        "腰膝酸软",
+        "阳痿遗精",
+        "虚寒喘嗽",
+        "肠燥便秘"
+      ],
+      "contraindications": [
+        "阴虚火旺",
+        "痰热咳嗽",
+        "便溏"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "冬虫夏草",
+      "pinyin": "dongchongxiacao",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "肺、肾经",
+      "category": "补虚药-补阳药",
+      "dose_range": "3-9g",
+      "functions": "补肾益肺，止血化痰",
+      "indications": [
+        "肾虚精亏",
+        "阳痿遗精",
+        "腰膝酸痛",
+        "久咳虚喘",
+        "劳嗽痰血",
+        "病后体虚不复"
+      ],
+      "contraindications": [
+        "有表邪"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 5
+    },
+    {
+      "name": "麻黄根",
+      "pinyin": "mahuanggen",
+      "nature": "平",
+      "taste": "甘、涩",
+      "meridian": "心、肺经",
+      "category": "收涩药-固表止汗药",
+      "dose_range": "3-9g",
+      "functions": "固表止汗",
+      "indications": [
+        "自汗",
+        "盗汗"
+      ],
+      "contraindications": [
+        "表邪未解"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "浮小麦",
+      "pinyin": "fuxiaomai",
+      "nature": "凉",
+      "taste": "甘",
+      "meridian": "心",
+      "category": "收涩药-固表止汗药",
+      "dose_range": "6-12g",
+      "functions": "益气，除热，止汗",
+      "indications": [
+        "自汗",
+        "盗汗",
+        "骨蒸劳热"
+      ],
+      "contraindications": [
+        "无汗而烦躁"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.02
+    },
+    {
+      "name": "糯稻根须",
+      "pinyin": "nuodaogenxu",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "心、肝经",
+      "category": "收涩药-固表止汗药",
+      "dose_range": "30-60g",
+      "functions": "止汗退热，益胃生津",
+      "indications": [
+        "自汗",
+        "盗汗",
+        "虚热不退",
+        "骨蒸潮热"
+      ],
+      "contraindications": [
+        "无"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.02
+    },
+    {
+      "name": "罂粟壳",
+      "pinyin": "yingsuqiao",
+      "nature": "平",
+      "taste": "酸、涩",
+      "meridian": "肺、大肠、肾经",
+      "category": "收涩药-敛肺涩肠药",
+      "dose_range": "3-6g",
+      "functions": "敛肺，涩肠，止痛",
+      "indications": [
+        "肺虚久咳",
+        "久泻久痢",
+        "脘腹疼痛",
+        "脱肛便血"
+      ],
+      "contraindications": [
+        "孕妇",
+        "儿童",
+        "咳嗽初起",
+        "痢疾初起"
+      ],
+      "incompatibility": "有成瘾性，不宜久服",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "石榴皮",
+      "pinyin": "shiliupi",
+      "nature": "温",
+      "taste": "酸、涩",
+      "meridian": "大肠",
+      "category": "收涩药-敛肺涩肠药",
+      "dose_range": "3-9g",
+      "functions": "涩肠止泻，止血，驱虫",
+      "indications": [
+        "久泻",
+        "久痢",
+        "便血",
+        "脱肛",
+        "崩漏",
+        "白带",
+        "虫积腹痛"
+      ],
+      "contraindications": [
+        "泻痢初起",
+        "邪气盛"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "禹余粮",
+      "pinyin": "yuyuliang",
+      "nature": "微寒",
+      "taste": "甘、涩",
+      "meridian": "胃、大肠经",
+      "category": "收涩药-敛肺涩肠药",
+      "dose_range": "9-15g",
+      "functions": "涩肠止泻，收敛止血",
+      "indications": [
+        "久泻久痢",
+        "便血崩漏",
+        "带下清稀"
+      ],
+      "contraindications": [
+        "孕妇",
+        "实证",
+        "湿热泻痢"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "海螵蛸",
+      "pinyin": "haipiaoxiao",
+      "nature": "温",
+      "taste": "咸、涩",
+      "meridian": "脾、肾经",
+      "category": "收涩药-固精缩尿止带药",
+      "dose_range": "5-9g",
+      "functions": "收敛止血，涩精止带，制酸止痛，收湿敛疮",
+      "indications": [
+        "吐血衄血",
+        "崩漏便血",
+        "外伤出血",
+        "遗精滑精",
+        "赤白带下",
+        "胃痛吐酸",
+        "湿疮湿疹",
+        "溃疡不敛"
+      ],
+      "contraindications": [
+        "阴虚多热",
+        "便秘"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06
+    },
+    {
+      "name": "常山",
+      "pinyin": "changshan",
+      "nature": "寒",
+      "taste": "苦、辛",
+      "meridian": "肺、心、肝经",
+      "category": "涌吐药",
+      "dose_range": "5-9g",
+      "functions": "涌吐痰涎，截疟",
+      "indications": [
+        "痰饮停聚",
+        "胸膈痞塞",
+        "疟疾"
+      ],
+      "contraindications": [
+        "孕妇",
+        "体虚"
+      ],
+      "incompatibility": "忌葱（传统说法）",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "瓜蒂",
+      "pinyin": "guadi",
+      "nature": "寒",
+      "taste": "苦",
+      "meridian": "胃经",
+      "category": "涌吐药",
+      "dose_range": "2.5-5g",
+      "functions": "涌吐痰食，祛湿退黄",
+      "indications": [
+        "痰热郁积",
+        "宿食停滞",
+        "食物中毒",
+        "湿热黄疸"
+      ],
+      "contraindications": [
+        "体虚",
+        "吐血咯血",
+        "孕妇"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "胆矾",
+      "pinyin": "danfan",
+      "nature": "寒",
+      "taste": "酸、辛",
+      "meridian": "肝、胆经",
+      "category": "涌吐药",
+      "dose_range": "0.3-0.6g",
+      "functions": "涌吐痰涎，解毒收湿，祛腐蚀疮",
+      "indications": [
+        "风痰壅塞",
+        "喉痹癫痫",
+        "误食毒物",
+        "口舌生疮",
+        "牙疳",
+        "疮疡不溃"
+      ],
+      "contraindications": [
+        "体虚"
+      ],
+      "incompatibility": "有毒，不宜多服久服",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "雄黄",
+      "pinyin": "xionghuang",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "肝、大肠经",
+      "category": "攻毒杀虫止痒药",
+      "dose_range": "0.05-0.1g",
+      "functions": "解毒杀虫，燥湿祛痰，截疟",
+      "indications": [
+        "痈肿疔疮",
+        "蛇虫咬伤",
+        "虫积腹痛",
+        "惊痫",
+        "疟疾"
+      ],
+      "contraindications": [
+        "孕妇",
+        "阴亏血虚"
+      ],
+      "incompatibility": "煅烧后有剧毒，忌火煅",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "硫黄",
+      "pinyin": "liuhuang",
+      "nature": "热",
+      "taste": "酸",
+      "meridian": "肾、大肠经",
+      "category": "攻毒杀虫止痒药",
+      "dose_range": "1.5-3g",
+      "functions": "外用解毒杀虫疗疮，内服补火助阳通便",
+      "indications": [
+        "外治疥癣湿疹",
+        "阴疽疮疡",
+        "内服阳痿足冷",
+        "虚喘冷哮",
+        "虚寒便秘"
+      ],
+      "contraindications": [
+        "孕妇",
+        "阴虚火旺"
+      ],
+      "incompatibility": "畏朴硝（十九畏）",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "白矾",
+      "pinyin": "baifan",
+      "nature": "寒",
+      "taste": "酸、涩",
+      "meridian": "肺、脾、肝、大肠经",
+      "category": "攻毒杀虫止痒药",
+      "dose_range": "0.6-1.5g",
+      "functions": "外用解毒杀虫，燥湿止痒；内服止血止泻，祛除风痰",
+      "indications": [
+        "外用湿疹瘙痒",
+        "疮疡疥癣",
+        "脱肛子宫脱垂",
+        "内服便血吐血",
+        "久泻久痢",
+        "癫痫发狂"
+      ],
+      "contraindications": [
+        "体虚",
+        "无湿热"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.03
+    },
+    {
+      "name": "蛇床子",
+      "pinyin": "shechuangzi",
+      "nature": "温",
+      "taste": "辛、苦",
+      "meridian": "肾经",
+      "category": "攻毒杀虫止痒药",
+      "dose_range": "3-10g",
+      "functions": "燥湿祛风，杀虫止痒，温肾壮阳",
+      "indications": [
+        "阴痒带下",
+        "湿疹瘙痒",
+        "湿痹腰痛",
+        "肾虚阳痿",
+        "宫冷不孕"
+      ],
+      "contraindications": [
+        "下焦湿热",
+        "相火易动",
+        "精关不固"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "土荆皮",
+      "pinyin": "tujingpi",
+      "nature": "温",
+      "taste": "辛",
+      "meridian": "肺、脾经",
+      "category": "攻毒杀虫止痒药",
+      "dose_range": "外用、适量",
+      "functions": "杀虫，止痒",
+      "indications": [
+        "疥癣瘙痒",
+        "湿疹",
+        "癞痢头"
+      ],
+      "contraindications": [
+        "孕妇",
+        "体虚"
+      ],
+      "incompatibility": "有毒，只供外用",
+      "price_yuan": 0.04
+    },
+    {
+      "name": "蜂房",
+      "pinyin": "fengfang",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "胃经",
+      "category": "攻毒杀虫止痒药",
+      "dose_range": "3-5g",
+      "functions": "攻毒杀虫，祛风止痛",
+      "indications": [
+        "疮疡肿毒",
+        "乳痈瘰疬",
+        "顽癣瘙痒",
+        "风湿痹痛",
+        "牙痛"
+      ],
+      "contraindications": [
+        "气血虚",
+        "痈疽已溃"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "樟脑",
+      "pinyin": "zhangnao",
+      "nature": "热",
+      "taste": "辛",
+      "meridian": "心",
+      "category": "攻毒杀虫止痒药",
+      "dose_range": "0.1-0.2g",
+      "functions": "除湿杀虫，温散止痛，开窍辟秽",
+      "indications": [
+        "疥癣瘙痒",
+        "湿疮溃烂",
+        "跌打伤痛",
+        "牙痛",
+        "痧胀腹痛",
+        "吐泻神昏"
+      ],
+      "contraindications": [
+        "孕妇",
+        "气虚"
+      ],
+      "incompatibility": "有毒，控制剂量",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "升药",
+      "pinyin": "shengyao",
+      "nature": "热",
+      "taste": "辛",
+      "meridian": "肺、脾经",
+      "category": "拔毒化腐生肌药",
+      "dose_range": "外用、适量",
+      "functions": "拔毒，去腐",
+      "indications": [
+        "痈疽溃后",
+        "脓出不畅",
+        "腐肉不去",
+        "新肉难生",
+        "疮口坚硬"
+      ],
+      "contraindications": [
+        "孕妇",
+        "腐肉已净",
+        "脓水已尽"
+      ],
+      "incompatibility": "有大毒，只供外用",
+      "price_yuan": 0.2
+    },
+    {
+      "name": "轻粉",
+      "pinyin": "qingfen",
+      "nature": "寒",
+      "taste": "辛",
+      "meridian": "大肠、小肠经",
+      "category": "拔毒化腐生肌药",
+      "dose_range": "0.1-0.2g",
+      "functions": "外用杀虫，攻毒，敛疮；内服祛痰消积，逐水通便",
+      "indications": [
+        "外用疮疡溃烂",
+        "疥癣瘙痒",
+        "湿疹",
+        "内服水肿鼓胀",
+        "二便不利"
+      ],
+      "contraindications": [
+        "孕妇",
+        "体虚"
+      ],
+      "incompatibility": "有毒，控制剂量，忌火煅",
+      "price_yuan": 0.15
+    },
+    {
+      "name": "砒石",
+      "pinyin": "pishi",
+      "nature": "大热",
+      "taste": "辛",
+      "meridian": "肺、肝经",
+      "category": "拔毒化腐生肌药",
+      "dose_range": "0.002-0.004g",
+      "functions": "外用攻毒杀虫，蚀疮去腐；内服劫痰平喘，攻毒抑癌",
+      "indications": [
+        "外用溃疡腐肉不脱",
+        "疥癣瘰疬",
+        "痔疮",
+        "内服寒痰哮喘",
+        "疟疾"
+      ],
+      "contraindications": [
+        "孕妇",
+        "体虚",
+        "肝肾功能不全"
+      ],
+      "incompatibility": "有大毒，严格控制剂量",
+      "price_yuan": 0.5
+    },
+    {
+      "name": "铅丹",
+      "pinyin": "qiandan",
+      "nature": "微寒",
+      "taste": "辛",
+      "meridian": "心、肝经",
+      "category": "拔毒化腐生肌药",
+      "dose_range": "0.3-0.6g",
+      "functions": "外用拔毒生肌，杀虫止痒；内服坠痰镇惊，攻毒截疟",
+      "indications": [
+        "外用疮疡溃烂",
+        "湿疹瘙痒",
+        "内服惊痫癫狂",
+        "疟疾"
+      ],
+      "contraindications": [
+        "孕妇",
+        "体虚"
+      ],
+      "incompatibility": "有毒，不宜久服",
+      "price_yuan": 0.08
+    },
+    {
+      "name": "炉甘石",
+      "pinyin": "luganshi",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "肝、胃经",
+      "category": "拔毒化腐生肌药",
+      "dose_range": "外用、适量",
+      "functions": "解毒明目退翳，收湿止痒敛疮",
+      "indications": [
+        "目赤肿痛",
+        "睑弦赤烂",
+        "翳膜遮睛",
+        "翼状胬肉",
+        "溃疡不敛",
+        "脓水淋漓",
+        "湿疮瘙痒"
+      ],
+      "contraindications": [
+        "只供外用"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "硼砂",
+      "pinyin": "pengsha",
+      "nature": "凉",
+      "taste": "甘、咸",
+      "meridian": "肺、胃经",
+      "category": "拔毒化腐生肌药",
+      "dose_range": "1.5-3g",
+      "functions": "外用清热解毒，内服清肺化痰",
+      "indications": [
+        "外用咽喉肿痛",
+        "口舌生疮",
+        "目赤翳障",
+        "内服痰热咳嗽"
+      ],
+      "contraindications": [
+        "体虚",
+        "无痰热"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05
     }
   ]
 }

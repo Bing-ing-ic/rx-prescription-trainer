@@ -1,6 +1,6 @@
 {
   "version": "2026.11.04-anat",
-  "note": "解剖学教学题库，含识别选择(identify)、配对(match)、问答临床推理(qa)三类",
+  "note": "解剖学教学题库，含识别选择(identify)、配对(match)、问答临床推理(qa)三类；已合并旧版 anatomy.json 80 道 MCQ 与 10 病例的 30 道小题（legacy-* 前缀）",
   "questions": [
     {
       "id": "id-pterion",
@@ -760,6 +760,1876 @@
       "explanation": "甲状腺手术须保护喉上神经和喉返神经。上极血管（甲状腺上动脉）应紧贴腺体结扎，因喉上神经外支与动脉伴行至环甲肌，远离结扎易损伤致音调降低；下极血管（甲状腺下动脉）应远离腺体结扎，因喉返神经在腺体后方与动脉交叉，紧贴下极结扎易损伤致声音嘶哑，双侧损伤可致呼吸困难窒息。此外应仔细辨认并保留侧叶后面的两对甲状旁腺，以免术后低钙性手足抽搐。",
       "exam_point": "甲状腺手术神经保护",
       "type": "qa"
+    },
+    {
+      "id": "legacy-q001",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "下列哪块骨属于面颅骨？",
+      "options": [
+        "额骨",
+        "顶骨",
+        "上颌骨",
+        "枕骨"
+      ],
+      "answer": 2,
+      "explanation": "上颌骨属于面颅骨；额骨、顶骨、枕骨属于脑颅骨。脑颅骨共8块：额骨、筛骨、蝶骨、枕骨、2顶骨、2颞骨。",
+      "exam_point": "相关结构: maxilla",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q002",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "翼点由下列哪组骨汇合而成？",
+      "options": [
+        "额骨、顶骨、颞骨、蝶骨",
+        "额骨、顶骨、枕骨、颞骨",
+        "额骨、筛骨、蝶骨、颞骨",
+        "顶骨、颞骨、枕骨、蝶骨"
+      ],
+      "answer": 0,
+      "explanation": "翼点是额骨、顶骨、颞骨和蝶骨大翼四骨会合处，呈H形，骨质薄弱，内面有脑膜中动脉前支通过。",
+      "exam_point": "相关结构: cranium",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q003",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "计数肋骨的重要骨性标志是：",
+      "options": [
+        "锁骨",
+        "胸骨角",
+        "剑突",
+        "肋弓"
+      ],
+      "answer": 1,
+      "explanation": "胸骨角平对第2肋软骨，是计数肋骨和肋间隙的重要标志。",
+      "exam_point": "相关结构: sternum",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q004",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "肱骨中段骨折最易损伤的神经是：",
+      "options": [
+        "正中神经",
+        "尺神经",
+        "桡神经",
+        "肌皮神经"
+      ],
+      "answer": 2,
+      "explanation": "桡神经沿肱骨中段桡神经沟走行，肱骨中段骨折易损伤桡神经，出现垂腕。",
+      "exam_point": "相关结构: humerus",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q005",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "腰椎穿刺常选的部位是：",
+      "options": [
+        "第1-2腰椎间隙",
+        "第3-4腰椎间隙",
+        "第12胸椎与第1腰椎间",
+        "第7-8胸椎间隙"
+      ],
+      "answer": 1,
+      "explanation": "成人脊髓下端平第1腰椎下缘，腰穿选L3-L4或L4-L5间隙，此处为马尾漂浮的终池，安全。",
+      "exam_point": "相关结构: vertebra",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q006",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "关于椎间盘的描述，错误的是：",
+      "options": [
+        "由中央髓核和周围纤维环构成",
+        "共23个",
+        "胸段最厚最灵活",
+        "后外侧薄弱易突出"
+      ],
+      "answer": 2,
+      "explanation": "椎间盘颈部和腰部最厚、活动度最大，并非胸段；腰椎间盘突出最好发于L4-5、L5-S1。",
+      "exam_point": "相关结构: intervertebral",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q007",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "膝关节中防止胫骨前移的韧带是：",
+      "options": [
+        "胫侧副韧带",
+        "腓侧副韧带",
+        "前交叉韧带",
+        "后交叉韧带"
+      ],
+      "answer": 2,
+      "explanation": "前交叉韧带起自胫骨髁间隆起前方，止于股骨外侧髁内面，伸膝时紧张，防止胫骨前移。",
+      "exam_point": "相关结构: knee",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q008",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "桡骨下端(Colles)骨折的典型畸形是：",
+      "options": [
+        "方肩",
+        "银叉畸形",
+        "爪形手",
+        "猿手"
+      ],
+      "answer": 1,
+      "explanation": "Colles骨折远折段向桡侧、背侧移位，侧面呈银叉畸形，正面呈枪刺畸形。",
+      "exam_point": "相关结构: radius",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q009",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "肩关节脱位常见的方向是：",
+      "options": [
+        "前脱位",
+        "后脱位",
+        "上脱位",
+        "中心脱位"
+      ],
+      "answer": 0,
+      "explanation": "肩关节囊下壁薄弱，前脱位最常见，肱骨头脱向喙突下，呈方肩畸形，可伴腋神经损伤。",
+      "exam_point": "相关结构: shoulder",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q010",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "骨髓穿刺常选的骨性标志不包括：",
+      "options": [
+        "髂嵴",
+        "胸骨",
+        "腰椎棘突",
+        "股骨颈"
+      ],
+      "answer": 3,
+      "explanation": "临床骨髓穿刺常选髂前/髂后上棘、胸骨、腰椎棘突；股骨颈不是穿刺部位。",
+      "exam_point": "相关结构: hipbone",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q011",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "膈的食管裂孔平对：",
+      "options": [
+        "第8胸椎",
+        "第10胸椎",
+        "第12胸椎",
+        "第11胸椎"
+      ],
+      "answer": 1,
+      "explanation": "膈有三个裂孔：T8腔静脉孔、T10食管裂孔（食管、迷走神经）、T12主动脉裂孔（主动脉、胸导管）。",
+      "exam_point": "相关结构: diaphragm",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q012",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "三角肌的主要作用和神经支配是：",
+      "options": [
+        "内收肩关节，腋神经",
+        "外展肩关节，腋神经",
+        "屈肘关节，肌皮神经",
+        "伸肘关节，桡神经"
+      ],
+      "answer": 1,
+      "explanation": "三角肌主要外展肩关节，受腋神经支配；腋神经损伤致三角肌萎缩、方肩。",
+      "exam_point": "相关结构: deltoid",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q013",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "属于臂后群肌、受桡神经支配的是：",
+      "options": [
+        "肱二头肌",
+        "肱肌",
+        "肱三头肌",
+        "喙肱肌"
+      ],
+      "answer": 2,
+      "explanation": "肱三头肌位于臂后群，伸肘，受桡神经支配；其余为臂前群，受肌皮神经支配。",
+      "exam_point": "相关结构: triceps",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q014",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "桡骨头半脱位(牵拉肘)好发于：",
+      "options": [
+        "5岁以下幼儿",
+        "青少年",
+        "中年人",
+        "老年人"
+      ],
+      "answer": 0,
+      "explanation": "5岁以下幼儿桡骨头发育不全、环状韧带松弛，前臂被牵拉后桡骨头自环状韧带滑出，致半脱位。",
+      "exam_point": "相关结构: radius",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q015",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "关于颞下颌关节的叙述，错误的是：",
+      "options": [
+        "由下颌头与颞骨下颌窝、关节结节构成",
+        "关节囊内有关节盘",
+        "两侧必须联合运动",
+        "关节囊前壁厚而坚韧"
+      ],
+      "answer": 3,
+      "explanation": "颞下颌关节囊前壁薄弱，张口过大时下颌头滑至关节结节前方不能回退，致前脱位（不能闭口）。",
+      "exam_point": "相关结构: tmj",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q016",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "肘后三角(鹰嘴与内外上髁)等腰关系改变提示：",
+      "options": [
+        "肱骨髁上骨折",
+        "肘关节后脱位",
+        "桡骨头半脱位",
+        "尺骨鹰嘴骨折"
+      ],
+      "answer": 1,
+      "explanation": "正常屈肘时鹰嘴与肱骨内、外上髁呈等腰三角形；肘关节后脱位时三角关系改变，而肱骨髁上骨折时关系正常。",
+      "exam_point": "相关结构: elbow",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q017",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "髋关节后脱位的典型畸形是：",
+      "options": [
+        "患肢缩短、外展外旋",
+        "患肢缩短、内收内旋",
+        "患肢变长、外旋",
+        "患肢缩短、外旋90度"
+      ],
+      "answer": 1,
+      "explanation": "髋关节后脱位时患肢缩短、髋关节呈屈曲、内收、内旋畸形；前脱位则患肢外展外旋。",
+      "exam_point": "相关结构: hip",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q018",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "关于膝关节半月板的描述正确的是：",
+      "options": [
+        "内侧半月板较小呈O形",
+        "外侧半月板较大呈C形",
+        "内侧半月板与胫侧副韧带紧密相连",
+        "半月板血供丰富易修复"
+      ],
+      "answer": 2,
+      "explanation": "内侧半月板大而呈C形，与胫侧副韧带相连，损伤机会多；外侧半月板小而呈O形。",
+      "exam_point": "相关结构: knee",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q019",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "维持人体直立姿势最主要的背肌是：",
+      "options": [
+        "斜方肌",
+        "背阔肌",
+        "竖脊肌",
+        "菱形肌"
+      ],
+      "answer": 2,
+      "explanation": "竖脊肌(骶棘肌)纵列于脊柱两侧，一侧收缩使脊柱侧屈，两侧收缩使脊柱后伸，是维持直立的重要肌。",
+      "exam_point": "相关结构: trapezius",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q020",
+      "system": "locomotor",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "腹股沟管浅环(皮下环)是哪个结构的缺口：",
+      "options": [
+        "腹横筋膜",
+        "腹外斜肌腱膜",
+        "腹内斜肌",
+        "腹横肌"
+      ],
+      "answer": 1,
+      "explanation": "腹股沟管前壁为腹外斜肌腱膜，其在耻骨结节外上方的三角形缺口即浅环(皮下环)。",
+      "exam_point": "相关结构: rectusab",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q021",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "McBurney点是下列哪个器官的体表投影？",
+      "options": [
+        "胆囊",
+        "阑尾",
+        "胃",
+        "十二指肠"
+      ],
+      "answer": 1,
+      "explanation": "McBurney点位于脐与右髂前上棘连线中、外1/3交界处，是阑尾根部的体表投影。",
+      "exam_point": "相关结构: appendix",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q022",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "胆囊底的体表投影(Murphy点)位于：",
+      "options": [
+        "剑突下",
+        "右锁骨中线与右肋弓交点",
+        "左锁骨中线",
+        "脐水平线"
+      ],
+      "answer": 1,
+      "explanation": "胆囊底体表投影在右锁骨中线与右肋弓交点(右腹直肌外缘与肋弓交角)，胆囊炎此处压痛。",
+      "exam_point": "相关结构: gallbladder",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q023",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "食管的第二处狭窄位于：",
+      "options": [
+        "起始处",
+        "与左主支气管交叉处",
+        "穿膈处",
+        "贲门处"
+      ],
+      "answer": 1,
+      "explanation": "食管三狭窄：①咽食管交界(C6) ②与左主支气管交叉处(T4-5) ③穿膈食管裂孔处(T10)。",
+      "exam_point": "相关结构: esophagus",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q024",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "输尿管的三个狭窄不包括：",
+      "options": [
+        "肾盂输尿管移行处",
+        "跨越髂血管处",
+        "穿膀胱壁处",
+        "输尿管盆部中段"
+      ],
+      "answer": 3,
+      "explanation": "输尿管三狭窄为：起始部、跨越髂血管处、壁内部，是结石易嵌顿处。",
+      "exam_point": "相关结构: ureter",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q025",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "手术中寻找阑尾最可靠的标志是：",
+      "options": [
+        "右髂窝盲肠",
+        "结肠带汇聚处",
+        "回肠末端",
+        "回盲襞"
+      ],
+      "answer": 1,
+      "explanation": "三条结肠带汇聚于阑尾根部，术中沿结肠带向下追踪是寻找阑尾的可靠方法。",
+      "exam_point": "相关结构: appendix",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q026",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "十二指肠大乳头位于：",
+      "options": [
+        "上部",
+        "降部后内侧壁",
+        "水平部",
+        "升部"
+      ],
+      "answer": 1,
+      "explanation": "十二指肠降部后内侧壁有十二指肠大乳头，是胆总管和胰管的共同开口处，距中切牙约75cm。",
+      "exam_point": "相关结构: duodenum",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q027",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "声带之间的裂隙(喉腔最狭窄处)是：",
+      "options": [
+        "前庭裂",
+        "喉口",
+        "声门裂",
+        "喉中间腔"
+      ],
+      "answer": 2,
+      "explanation": "声门裂位于两侧声襞之间，是喉腔最狭窄处；小儿喉腔狭小，炎症时易致喉水肿窒息。",
+      "exam_point": "相关结构: larynx",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q028",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "正常肝在右肋弓下的位置是：",
+      "options": [
+        "可触及1横指",
+        "不应触及",
+        "可触及2横指",
+        "平肋下3cm"
+      ],
+      "answer": 1,
+      "explanation": "正常成人肝下缘不超出右肋弓，剑突下约3cm可及；肋下触及多提示肝大。",
+      "exam_point": "相关结构: liver",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q029",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "出入肝门的结构不包括：",
+      "options": [
+        "肝左右管",
+        "肝固有动脉",
+        "门静脉",
+        "肝静脉"
+      ],
+      "answer": 3,
+      "explanation": "第一肝门有肝左右管、肝固有动脉、门静脉、神经和淋巴管出入；肝静脉在第二肝门注入下腔静脉。",
+      "exam_point": "相关结构: liver",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q030",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "男性尿道可分为：",
+      "options": [
+        "前列腺部、膜部、海绵体部",
+        "尿道内口、膜部、外口",
+        "前列腺部、尿道球部、舟状窝",
+        "壁内部、前列腺部、阴茎部"
+      ],
+      "answer": 0,
+      "explanation": "男性尿道分前列腺部、膜部、海绵体部三部；膜部穿尿生殖膈，位置固定。",
+      "exam_point": "相关结构: urethra",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q031",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "输卵管受精的部位通常在：",
+      "options": [
+        "子宫部",
+        "峡部",
+        "壶腹部",
+        "漏斗部"
+      ],
+      "answer": 2,
+      "explanation": "输卵管壶腹部粗长弯曲，是卵子正常受精部位；输卵管妊娠(宫外孕)也多发生于此。",
+      "exam_point": "相关结构: uterinetube",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q032",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "手术中辨认幽门的标志是：",
+      "options": [
+        "胃网膜右静脉",
+        "幽门前静脉",
+        "胃左动脉",
+        "胃短血管"
+      ],
+      "answer": 1,
+      "explanation": "幽门前静脉(Mayo静脉)位于幽门和十二指肠交界前面，是手术中确认幽门的标志。",
+      "exam_point": "相关结构: stomach",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q033",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "胸膜腔穿刺抽液常选部位是：",
+      "options": [
+        "锁骨中线第2肋间",
+        "肩胛线或腋后线第8-9肋间",
+        "胸骨旁第5肋间",
+        "腋前线第3肋间"
+      ],
+      "answer": 1,
+      "explanation": "胸腔积液时常选肩胛线或腋后线第8-9肋间(肋膈隐窝最低处)，沿下位肋骨上缘进针。",
+      "exam_point": "相关结构: pleura",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q034",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "右主支气管的特点是：",
+      "options": [
+        "细、长、倾斜",
+        "短、粗、陡直",
+        "细、短、水平",
+        "与左主支气管等长"
+      ],
+      "answer": 1,
+      "explanation": "右主支气管短粗而走向陡直，气管异物多坠入右主支气管。",
+      "exam_point": "相关结构: bronchus",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q035",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "关于腹股沟管的描述，正确的是：",
+      "options": [
+        "内口为浅环",
+        "前壁为腹横筋膜",
+        "男性有精索通过",
+        "后壁为腹外斜肌腱膜"
+      ],
+      "answer": 2,
+      "explanation": "腹股沟管内男性有精索、女性有子宫圆韧带通过；内口为深环(腹横筋膜)，前壁为腹外斜肌腱膜。",
+      "exam_point": "相关结构: rectusab",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q036",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "胆总管和胰管共同开口于：",
+      "options": [
+        "十二指肠上部",
+        "十二指肠降部大乳头",
+        "十二指肠水平部",
+        "十二指肠升部"
+      ],
+      "answer": 1,
+      "explanation": "胆总管与胰管汇合形成肝胰壶腹(Vater壶腹)，开口于十二指肠降部后内侧壁的大乳头。",
+      "exam_point": "相关结构: duodenum",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q037",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "产科经阴道后穹窿穿刺是因为直肠子宫陷凹：",
+      "options": [
+        "位置最高",
+        "为女性腹膜腔最低位",
+        "与膀胱相邻",
+        "距体表最近"
+      ],
+      "answer": 1,
+      "explanation": "直肠子宫陷凹是女性站立/半卧位时腹膜腔最低部位，积血积液积聚于此，可经阴道后穹窿穿刺诊断或引流。",
+      "exam_point": "相关结构: vagina",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q038",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "关于肾被膜由内向外的顺序正确的是：",
+      "options": [
+        "肾筋膜→脂肪囊→纤维囊",
+        "纤维囊→脂肪囊→肾筋膜",
+        "脂肪囊→纤维囊→肾筋膜",
+        "纤维囊→肾筋膜→脂肪囊"
+      ],
+      "answer": 1,
+      "explanation": "肾被膜自内向外为纤维囊、脂肪囊(肾床)、肾筋膜(Gerota筋膜)；肾囊封闭即注入脂肪囊。",
+      "exam_point": "相关结构: renalcapsule",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q039",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "子宫峡部在妊娠末期形成：",
+      "options": [
+        "子宫体",
+        "子宫下段",
+        "子宫颈外口",
+        "子宫底"
+      ],
+      "answer": 1,
+      "explanation": "非孕时子宫峡部仅1cm，妊娠末期伸展变长形成子宫下段，是剖宫产切口的常用部位。",
+      "exam_point": "相关结构: uterus",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q040",
+      "system": "visceral",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "肺下缘在锁骨中线上平对：",
+      "options": [
+        "第6肋",
+        "第8肋",
+        "第10肋",
+        "第12肋"
+      ],
+      "answer": 0,
+      "explanation": "肺下界在锁骨中线平第6肋、腋中线第8肋、肩胛线第10肋；胸膜下界比肺下界低约2个肋。",
+      "exam_point": "相关结构: lung",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q041",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "摸脉(桡动脉)的位置在：",
+      "options": [
+        "腕掌侧横纹桡侧、桡骨茎突内侧",
+        "肘窝中央",
+        "上臂内侧",
+        "腕背正中"
+      ],
+      "answer": 0,
+      "explanation": "桡动脉在腕部桡侧、桡骨茎突内侧位置表浅，是临床触诊脉搏的部位。",
+      "exam_point": "相关结构: radial",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q042",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "测量血压时听诊的动脉是：",
+      "options": [
+        "桡动脉",
+        "肱动脉",
+        "股动脉",
+        "颈动脉"
+      ],
+      "answer": 1,
+      "explanation": "测血压时将听诊器置于肘窝肱二头肌腱内侧的肱动脉上，听柯氏音。",
+      "exam_point": "相关结构: brachial",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q043",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "心尖搏动的体表位置在：",
+      "options": [
+        "左侧第4肋间锁骨中线",
+        "左侧第5肋间锁骨中线内侧",
+        "胸骨左缘第2肋间",
+        "剑突下"
+      ],
+      "answer": 1,
+      "explanation": "正常心尖搏动位于左侧第5肋间锁骨中线内侧约0.5-1cm，由左心室构成。",
+      "exam_point": "相关结构: leftventricle",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q044",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "主动脉弓上发出的分支不包括：",
+      "options": [
+        "头臂干",
+        "左颈总动脉",
+        "左锁骨下动脉",
+        "右颈总动脉"
+      ],
+      "answer": 3,
+      "explanation": "主动脉弓上自右前向左后发出头臂干、左颈总动脉、左锁骨下动脉三大分支。",
+      "exam_point": "相关结构: aorta",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q045",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "二尖瓣位于：",
+      "options": [
+        "右房室口",
+        "左房室口",
+        "肺动脉口",
+        "主动脉口"
+      ],
+      "answer": 1,
+      "explanation": "二尖瓣位于左房室口；三尖瓣在右房室口，主动脉瓣、肺动脉瓣为半月瓣。",
+      "exam_point": "相关结构: leftatrium",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q046",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "冠状动脉粥样硬化最常累及：",
+      "options": [
+        "右冠状动脉",
+        "左冠状动脉前室间支(前降支)",
+        "旋支",
+        "后室间支"
+      ],
+      "answer": 1,
+      "explanation": "左冠状动脉前室间支(前降支)供应左室前壁、室间隔前2/3，是冠脉粥样硬化最好发、最易闭塞的血管。",
+      "exam_point": "相关结构: coronary",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q047",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "大隐静脉注入：",
+      "options": [
+        "腘静脉",
+        "股静脉",
+        "髂外静脉",
+        "股深静脉"
+      ],
+      "answer": 1,
+      "explanation": "大隐静脉经内踝前方沿小腿大腿内侧上行，于耻骨结节外下方穿隐静脉裂孔(卵圆窝)注入股静脉。",
+      "exam_point": "相关结构: saphenous",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q048",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "下列关于肝门静脉的叙述错误的是：",
+      "options": [
+        "由肠系膜上静脉和脾静脉汇合而成",
+        "两端均为毛细血管",
+        "有丰富的静脉瓣",
+        "收集腹腔不成对脏器(肝外)静脉血"
+      ],
+      "answer": 2,
+      "explanation": "肝门静脉及其属支一般无静脉瓣，故门脉高压时血液可经吻合支分流形成侧支循环。",
+      "exam_point": "相关结构: portal",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q049",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "心包腔穿刺常用的进针部位是：",
+      "options": [
+        "胸骨右缘第5肋间",
+        "左侧剑肋角(剑突与左肋弓夹角)",
+        "锁骨中线第2肋间",
+        "肩胛线第8肋间"
+      ],
+      "answer": 1,
+      "explanation": "心包穿刺常选左侧剑肋角或心尖部(左侧第5肋间心浊音界内侧)，进针需避免损伤胸膜、肺和冠状动脉。",
+      "exam_point": "相关结构: pericardium",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q050",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "胸导管注入：",
+      "options": [
+        "右静脉角",
+        "左静脉角",
+        "上腔静脉",
+        "奇静脉"
+      ],
+      "answer": 1,
+      "explanation": "胸导管起自乳糜池，穿膈主动脉裂孔上行，最后注入左静脉角，收集下半身及左上半身淋巴。",
+      "exam_point": "相关结构: thoracicduct",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q051",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "右心室入口和出口分别是：",
+      "options": [
+        "左房室口、主动脉口",
+        "右房室口、肺动脉口",
+        "肺静脉口、主动脉口",
+        "上腔静脉口、肺动脉口"
+      ],
+      "answer": 1,
+      "explanation": "右心室入口为右房室口(三尖瓣)，出口为肺动脉口(肺动脉瓣)。",
+      "exam_point": "相关结构: rightventricle",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q052",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "关于室间隔缺损最好发的部位是：",
+      "options": [
+        "室间隔肌部",
+        "室间隔膜部",
+        "房间隔卵圆窝",
+        "室间隔嵴"
+      ],
+      "answer": 1,
+      "explanation": "室间隔膜部面积小、缺乏肌组织，是先天性室间隔缺损的最好发部位。",
+      "exam_point": "相关结构: rightventricle",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q053",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "门脉高压时不会出现：",
+      "options": [
+        "食管静脉丛曲张",
+        "直肠静脉丛曲张",
+        "脐周静脉网曲张",
+        "颈静脉怒张"
+      ],
+      "answer": 3,
+      "explanation": "门脉高压时门腔吻合支开放致食管胃底静脉曲张、痔、脐周海蛇头征；颈静脉怒张见于上腔静脉回流受阻/右心衰。",
+      "exam_point": "相关结构: portal",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q054",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "下列哪项不是锁骨下静脉穿刺的并发症：",
+      "options": [
+        "气胸",
+        "血胸",
+        "空气栓塞",
+        "膈神经损伤致膈肌麻痹"
+      ],
+      "answer": 3,
+      "explanation": "锁骨下静脉穿刺常见并发症为气胸、血胸、空气栓塞、误穿锁骨下动脉、血栓形成；一般不损伤膈神经。",
+      "exam_point": "相关结构: subclavianv",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q055",
+      "system": "vascular",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "二尖瓣听诊区位于：",
+      "options": [
+        "胸骨右缘第2肋间",
+        "胸骨左缘第2肋间",
+        "心尖部(左侧第5肋间锁骨中线内侧)",
+        "胸骨左缘第3、4肋间"
+      ],
+      "answer": 2,
+      "explanation": "二尖瓣听诊区在心尖搏动处；主动脉瓣区在胸骨右缘第2肋间，肺动脉瓣区在胸骨左缘第2肋间。",
+      "exam_point": "相关结构: valves",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q056",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "成人脊髓下端一般平对：",
+      "options": [
+        "第12胸椎",
+        "第1腰椎下缘",
+        "第3腰椎",
+        "第5腰椎"
+      ],
+      "answer": 1,
+      "explanation": "成人脊髓下端约平第1腰椎体下缘，新生儿平第3腰椎，故腰穿选L3以下。",
+      "exam_point": "相关结构: spinalcord",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q057",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "管理瞳孔对光反射的脑神经是：",
+      "options": [
+        "视神经、动眼神经",
+        "滑车神经、三叉神经",
+        "展神经、面神经",
+        "动眼神经、三叉神经"
+      ],
+      "answer": 0,
+      "explanation": "对光反射：光线→视神经(II)传入→中脑顶盖前区→动眼神经副交感纤维(III)传出→瞳孔括约肌收缩。",
+      "exam_point": "相关结构: oculomotor",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q058",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "一侧面神经(周围性)损伤可出现：",
+      "options": [
+        "对侧鼻唇沟变浅",
+        "患侧额纹消失、不能闭眼、口角歪向健侧",
+        "伸舌偏向患侧",
+        "患侧瞳孔散大"
+      ],
+      "answer": 1,
+      "explanation": "周围性面瘫(如Bell麻痹)患侧全部面肌瘫痪：额纹消失、闭眼不全、鼻唇沟变浅、口角歪向健侧。",
+      "exam_point": "相关结构: facial",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q059",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "肱骨内上髁后方(肘管)受损可致：",
+      "options": [
+        "正中神经损伤",
+        "尺神经损伤",
+        "桡神经损伤",
+        "肌皮神经损伤"
+      ],
+      "answer": 1,
+      "explanation": "尺神经经肱骨内上髁后方尺神经沟(肘管)下行，受压或骨折致爪形手、手内侧缘感觉障碍。",
+      "exam_point": "相关结构: ulnar",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q060",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "下列属于混合性脑神经的是：",
+      "options": [
+        "嗅神经",
+        "视神经",
+        "三叉神经",
+        "舌下神经"
+      ],
+      "answer": 2,
+      "explanation": "三叉神经(V)为最粗大的混合性脑神经，含感觉纤维和支配咀嚼肌的运动纤维。",
+      "exam_point": "相关结构: trigeminal",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q061",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "内囊出血出现三偏综合征不包括：",
+      "options": [
+        "对侧偏瘫",
+        "对侧偏身感觉障碍",
+        "同向性偏盲",
+        "同侧偏盲"
+      ],
+      "answer": 3,
+      "explanation": "内囊出血损及皮质脊髓束、丘脑皮质束、视辐射，致对侧偏瘫、对侧偏身感觉障碍、双眼对侧同向性偏盲。",
+      "exam_point": "相关结构: cerebrum",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q062",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "腰椎穿刺时，最后穿过的结构是：",
+      "options": [
+        "棘上韧带",
+        "棘间韧带",
+        "黄韧带",
+        "硬脊膜和蛛网膜"
+      ],
+      "answer": 3,
+      "explanation": "腰穿依次穿经皮肤→皮下→棘上韧带→棘间韧带→黄韧带→硬脊膜→蛛网膜，进入蛛网膜下腔。",
+      "exam_point": "相关结构: spinalcord",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q063",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "甲状腺手术中最易损伤、致声音嘶哑的神经是：",
+      "options": [
+        "喉上神经内支",
+        "喉上神经外支",
+        "喉返神经",
+        "颈交感干"
+      ],
+      "answer": 2,
+      "explanation": "喉返神经紧贴甲状腺侧叶后面入喉，甲状腺次全切时易损伤，单侧致声音嘶哑，双侧致呼吸困难。",
+      "exam_point": "相关结构: vagus",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q064",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "出现垂腕畸形，最可能损伤：",
+      "options": [
+        "正中神经",
+        "尺神经",
+        "桡神经",
+        "腋神经"
+      ],
+      "answer": 2,
+      "explanation": "桡神经损伤后前臂伸肌瘫痪，腕关节不能背伸，呈垂腕畸形，见于肱骨中段骨折或压迫。",
+      "exam_point": "相关结构: radial",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q065",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "下列哪条神经经卵圆孔出颅：",
+      "options": [
+        "眼神经(V1)",
+        "上颌神经(V2)",
+        "下颌神经(V3)",
+        "眼神经经眶上裂"
+      ],
+      "answer": 2,
+      "explanation": "三叉神经三支：V1眼神经经眶上裂、V2上颌神经经圆孔、V3下颌神经经卵圆孔出颅。",
+      "exam_point": "相关结构: trigeminal",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q066",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "迷走神经不支配下列哪个器官：",
+      "options": [
+        "喉",
+        "心",
+        "横结肠左曲以上消化管",
+        "膀胱逼尿肌"
+      ],
+      "answer": 3,
+      "explanation": "迷走神经(X)支配喉、心、胸腹腔脏器至结肠左曲；结肠左曲以下及盆腔脏器由盆内脏神经(S2-4副交感)支配。",
+      "exam_point": "相关结构: vagus",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q067",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "臂丛的组成是：",
+      "options": [
+        "C1-C4前支",
+        "C5-C8和T1前支大部分",
+        "C7-T1",
+        "T1-T12前支"
+      ],
+      "answer": 1,
+      "explanation": "臂丛由第5-8颈神经前支和第1胸神经前支大部分组成，经斜角肌间隙、锁骨后方入腋窝。",
+      "exam_point": "相关结构: brachialplexus",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q068",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "脑脊液产生于：",
+      "options": [
+        "硬脑膜窦",
+        "蛛网膜粒",
+        "各脑室脉络丛",
+        "软膜"
+      ],
+      "answer": 2,
+      "explanation": "脑脊液主要由脑室脉络丛产生，其中侧脑室脉络丛产生最多，经室间孔、中脑水管循环。",
+      "exam_point": "相关结构: ventricle",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q069",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "出现猿手(鱼际萎缩、桡侧三指半感觉障碍)提示：",
+      "options": [
+        "尺神经损伤",
+        "正中神经损伤",
+        "桡神经损伤",
+        "肌皮神经损伤"
+      ],
+      "answer": 1,
+      "explanation": "正中神经在腕管内受压(腕管综合征)，致鱼际肌萎缩(猿手)、桡侧三指半掌面感觉障碍。",
+      "exam_point": "相关结构: median",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q070",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "颞叶钩回疝早期瞳孔改变是：",
+      "options": [
+        "患侧瞳孔缩小→散大",
+        "双侧瞳孔缩小",
+        "双侧瞳孔散大",
+        "患侧瞳孔立即散大固定"
+      ],
+      "answer": 0,
+      "explanation": "钩回疝压迫同侧动眼神经，早期刺激副交感纤维致患侧瞳孔短暂缩小，继而麻痹散大、对光反射消失。",
+      "exam_point": "相关结构: oculomotor",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q071",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "坐骨神经出盆腔的部位是：",
+      "options": [
+        "梨状肌上孔",
+        "梨状肌下孔",
+        "闭孔",
+        "坐骨小孔"
+      ],
+      "answer": 1,
+      "explanation": "坐骨神经经梨状肌下孔出盆腔，在臀大肌深面下行；臀部注射应选外上象限以免损伤。",
+      "exam_point": "相关结构: sciatic",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q072",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "腓骨颈骨折易损伤：",
+      "options": [
+        "胫神经",
+        "腓总神经",
+        "股神经",
+        "闭孔神经"
+      ],
+      "answer": 1,
+      "explanation": "腓总神经绕腓骨颈位置表浅，骨折或石膏压迫可致足下垂、内翻畸形(跨阈步态)。",
+      "exam_point": "相关结构: commonperoneal",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q073",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "交叉性瘫痪(同侧脑神经麻痹+对侧肢体偏瘫)病变部位在：",
+      "options": [
+        "大脑皮质",
+        "内囊",
+        "脑干",
+        "脊髓"
+      ],
+      "answer": 2,
+      "explanation": "脑干病变损伤同侧脑神经核及未交叉的皮质脊髓束，出现病灶侧脑神经周围性瘫和对侧肢体中枢性瘫(交叉瘫)。",
+      "exam_point": "相关结构: brainstem",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q074",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "视交叉中央部受压(垂体瘤)可致：",
+      "options": [
+        "双眼全盲",
+        "双颞侧偏盲",
+        "双鼻侧偏盲",
+        "左眼全盲"
+      ],
+      "answer": 1,
+      "explanation": "视交叉处双眼鼻侧视网膜纤维交叉，中央受压致双眼颞侧视野偏盲(双颞侧偏盲)。",
+      "exam_point": "相关结构: optic",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q075",
+      "system": "nervous",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "舌前2/3味觉障碍可能损伤：",
+      "options": [
+        "舌神经(鼓索加入)",
+        "舌下神经",
+        "舌咽神经",
+        "三叉神经"
+      ],
+      "answer": 0,
+      "explanation": "面神经在鼓索中携带舌前2/3味觉纤维并加入舌神经；面神经管内损伤可致同侧舌前2/3味觉丧失。",
+      "exam_point": "相关结构: facial",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q076",
+      "system": "endocrine",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "人体最大的内分泌腺是：",
+      "options": [
+        "垂体",
+        "甲状腺",
+        "肾上腺",
+        "松果体"
+      ],
+      "answer": 1,
+      "explanation": "甲状腺是人体内最大的独立内分泌腺，呈H形位于颈前部、喉和气管两侧。",
+      "exam_point": "相关结构: thyroid",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q077",
+      "system": "endocrine",
+      "subsystem": "基础概念",
+      "difficulty": "初级",
+      "prompt": "垂体位于：",
+      "options": [
+        "颅前窝筛板",
+        "颅中窝垂体窝(蝶鞍)",
+        "颅后窝枕骨大孔",
+        "翼点深面"
+      ],
+      "answer": 1,
+      "explanation": "垂体位于颅中窝蝶鞍中央的垂体窝内，借漏斗连于下丘脑，上方紧邻视交叉。",
+      "exam_point": "相关结构: pituitary",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q078",
+      "system": "endocrine",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "甲状腺手术中，为避免损伤喉上神经外支，结扎甲状腺上动脉应：",
+      "options": [
+        "远离腺体上极",
+        "紧贴腺体上极",
+        "在气管旁结扎",
+        "不必特殊处理"
+      ],
+      "answer": 1,
+      "explanation": "喉上神经外支伴甲状腺上动脉行至近腺体上极处分开，故结扎上动脉应紧贴腺体以避免损伤外支(致环甲肌瘫痪、音调降低)。",
+      "exam_point": "相关结构: thyroid",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q079",
+      "system": "endocrine",
+      "subsystem": "基础概念",
+      "difficulty": "中级",
+      "prompt": "甲状旁腺的功能是调节：",
+      "options": [
+        "血糖",
+        "钙磷代谢",
+        "水盐代谢",
+        "基础代谢"
+      ],
+      "answer": 1,
+      "explanation": "甲状旁腺分泌甲状旁腺激素，升高血钙、降低血磷；手术误切致低钙血症、手足搐搦。",
+      "exam_point": "相关结构: parathyroid",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-q080",
+      "system": "endocrine",
+      "subsystem": "基础概念",
+      "difficulty": "高级",
+      "prompt": "成人垂体生长激素分泌过多可致：",
+      "options": [
+        "巨人症",
+        "肢端肥大症",
+        "呆小症",
+        "黏液性水肿"
+      ],
+      "answer": 1,
+      "explanation": "成年前骨骺未闭合时GH过多致巨人症；成年后骨骺已闭合，GH过多致肢端肥大症。",
+      "exam_point": "相关结构: pituitary",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc001-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【硬膜外血肿——翼点骨折】翼点由哪几块骨汇合而成？",
+      "options": [
+        "额骨、顶骨、颞骨、蝶骨",
+        "额骨、顶骨、枕骨、颞骨",
+        "额骨、筛骨、蝶骨、颞骨",
+        "顶骨、颞骨、枕骨、蝶骨"
+      ],
+      "answer": 0,
+      "explanation": "翼点是额骨、顶骨、颞骨和蝶骨大翼四骨汇合处。",
+      "exam_point": "硬膜外血肿——翼点骨折",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc001-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【硬膜外血肿——翼点骨折】患者右侧瞳孔散大提示什么？",
+      "options": [
+        "动眼神经受压",
+        "视神经损伤",
+        "交感神经损伤",
+        "面神经损伤"
+      ],
+      "answer": 0,
+      "explanation": "颞叶钩回疝压迫同侧动眼神经(副交感纤维)，早期短暂缩小后散大、对光反射消失。",
+      "exam_point": "硬膜外血肿——翼点骨折",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc001-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【硬膜外血肿——翼点骨折】硬膜外血肿在CT上的典型形态是：",
+      "options": [
+        "新月形",
+        "梭形(双凸镜形)",
+        "不规则形",
+        "球形"
+      ],
+      "answer": 1,
+      "explanation": "硬膜外血肿受硬脑膜与颅骨粘连限制，呈梭形/双凸形；硬膜下血肿呈新月形。",
+      "exam_point": "硬膜外血肿——翼点骨折",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc002-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【锁骨下静脉穿刺置管】锁骨下静脉后方紧邻的结构是：",
+      "options": [
+        "颈总动脉",
+        "肺尖与胸膜顶",
+        "胸导管",
+        "喉返神经"
+      ],
+      "answer": 1,
+      "explanation": "锁骨下静脉后方紧邻肺尖和胸膜顶，穿刺过深可致气胸、血胸。",
+      "exam_point": "锁骨下静脉穿刺置管",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc002-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【锁骨下静脉穿刺置管】锁骨下静脉与下列哪条静脉汇合成头臂静脉？",
+      "options": [
+        "颈外静脉",
+        "颈内静脉",
+        "奇静脉",
+        "锁骨下动脉"
+      ],
+      "answer": 1,
+      "explanation": "锁骨下静脉与颈内静脉在胸锁关节后方汇合成头臂静脉。",
+      "exam_point": "锁骨下静脉穿刺置管",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc002-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【锁骨下静脉穿刺置管】下列哪项不是该操作常见并发症？",
+      "options": [
+        "气胸",
+        "血胸",
+        "空气栓塞",
+        "膈神经损伤致膈肌瘫痪"
+      ],
+      "answer": 3,
+      "explanation": "常见并发症为气胸、血胸、空气栓塞、误穿锁骨下动脉、导管血栓；一般不损伤膈神经。",
+      "exam_point": "锁骨下静脉穿刺置管",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc003-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【心包穿刺术】心包积液出现奇脉、颈静脉怒张、心音遥远合称：",
+      "options": [
+        "Musset征",
+        "Beck三联征",
+        "Traube征",
+        "Quincke征"
+      ],
+      "answer": 1,
+      "explanation": "Beck三联征为血压下降/奇脉、颈静脉怒张、心音遥远，提示心包填塞。",
+      "exam_point": "心包穿刺术",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc003-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【心包穿刺术】剑肋角心包穿刺进针方向应为：",
+      "options": [
+        "垂直向后",
+        "向后上方指向脊柱方向",
+        "向下指向膀胱",
+        "向外侧指向腋窝"
+      ],
+      "answer": 1,
+      "explanation": "经左剑肋角进针，针与腹壁成30-45°，向后上指向脊柱方向，进入心包前下窦。",
+      "exam_point": "心包穿刺术",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc003-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【心包穿刺术】穿刺时应避免损伤的血管是：",
+      "options": [
+        "冠状动脉",
+        "肠系膜上动脉",
+        "肾动脉",
+        "锁骨下动脉"
+      ],
+      "answer": 0,
+      "explanation": "穿刺过深可刺破心肌或冠状动脉，引起心包积血加重填塞。",
+      "exam_point": "心包穿刺术",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc004-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【诊断性腹腔穿刺定位】诊断性腹穿常用穿刺点是：",
+      "options": [
+        "脐正中",
+        "脐与左髂前上棘连线中、外1/3交点",
+        "剑突下",
+        "耻骨联合上1横指"
+      ],
+      "answer": 1,
+      "explanation": "常选脐与髂前上棘连线中、外1/3交点，避开腹壁下动脉。",
+      "exam_point": "诊断性腹腔穿刺定位",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc004-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【诊断性腹腔穿刺定位】腹壁下动脉的体表投影是：",
+      "options": [
+        "腹股沟韧带中、内1/3交点与脐的连线",
+        "耻骨结节与脐连线",
+        "肋弓最低点与脐连线",
+        "髂前上棘与脐连线"
+      ],
+      "answer": 0,
+      "explanation": "腹壁下动脉自腹股沟韧带中、内1/3交点斜向内上至脐，是直疝与斜疝的分界标志。",
+      "exam_point": "诊断性腹腔穿刺定位",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc004-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【诊断性腹腔穿刺定位】腹腔穿刺抽出不凝血提示：",
+      "options": [
+        "误穿入血管",
+        "实质脏器破裂出血",
+        "空腔脏器穿孔",
+        "膀胱破裂"
+      ],
+      "answer": 1,
+      "explanation": "腹膜的脱纤维作用使腹腔内出血不凝固，抽出不凝血提示实质脏器破裂、腹腔内出血。",
+      "exam_point": "诊断性腹腔穿刺定位",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc005-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【阑尾切除术切口】手术中寻找阑尾最可靠的标志是：",
+      "options": [
+        "回肠末端",
+        "盲肠后三条结肠带汇聚处",
+        "肠系膜下动脉",
+        "右输尿管"
+      ],
+      "answer": 1,
+      "explanation": "三条结肠带汇聚于阑尾根部，沿结肠带向下追踪是寻找阑尾的可靠方法。",
+      "exam_point": "阑尾切除术切口",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc005-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【阑尾切除术切口】麦氏切口经过腹前外侧肌层时正确的操作是：",
+      "options": [
+        "横断腹内斜肌和腹横肌",
+        "钝性分开腹内斜肌和腹横肌纤维",
+        "切断腹直肌",
+        "切开腹直肌前鞘后纵断肌肉"
+      ],
+      "answer": 1,
+      "explanation": "麦氏切口按肌纤维方向钝性分开腹内斜肌和腹横肌，不切断肌肉，损伤小。",
+      "exam_point": "阑尾切除术切口",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc005-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【阑尾切除术切口】阑尾动脉来源于：",
+      "options": [
+        "肠系膜上动脉",
+        "肠系膜下动脉",
+        "回结肠动脉",
+        "右结肠动脉"
+      ],
+      "answer": 2,
+      "explanation": "阑尾动脉是回结肠动脉的分支，为终末动脉，血供单一，阑尾炎症时易坏死穿孔。",
+      "exam_point": "阑尾切除术切口",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc006-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【腹股沟管与腹股沟疝】鉴别腹股沟斜疝与直疝最有意义的解剖标志是：",
+      "options": [
+        "腹股沟韧带",
+        "腹壁下动脉",
+        "腹直肌",
+        "耻骨结节"
+      ],
+      "answer": 1,
+      "explanation": "斜疝疝囊颈位于腹壁下动脉外侧，直疝位于其内侧，术中以此鉴别。",
+      "exam_point": "腹股沟管与腹股沟疝",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc006-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【腹股沟管与腹股沟疝】腹股沟管前壁主要由何结构构成：",
+      "options": [
+        "腹横筋膜",
+        "腹外斜肌腱膜",
+        "腹股沟镰",
+        "联合腱"
+      ],
+      "answer": 1,
+      "explanation": "腹股沟管前壁主要为腹外斜肌腱膜，外侧1/3尚有腹内斜肌起始部加强。",
+      "exam_point": "腹股沟管与腹股沟疝",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc006-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【腹股沟管与腹股沟疝】压迫深环后包块不再突出，提示：",
+      "options": [
+        "直疝",
+        "斜疝",
+        "股疝",
+        "切口疝"
+      ],
+      "answer": 1,
+      "explanation": "深环位于腹股沟韧带中点上方1.5cm，压迫后斜疝不再突出；直疝因自Hesselbach三角突出仍可出现。",
+      "exam_point": "腹股沟管与腹股沟疝",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc007-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "初级",
+      "prompt": "【肘正中静脉穿刺】肘窝内由外向内排列的结构正确的是：",
+      "options": [
+        "肱动脉、肱二头肌腱、正中神经",
+        "肱二头肌腱、肱动脉、正中神经",
+        "正中神经、肱动脉、肱二头肌腱",
+        "肱二头肌腱、正中神经、肱动脉"
+      ],
+      "answer": 1,
+      "explanation": "肘窝内容由外向内为肱二头肌腱、肱动脉、正中神经。",
+      "exam_point": "肘正中静脉穿刺",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc007-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "初级",
+      "prompt": "【肘正中静脉穿刺】肘正中静脉连接的是：",
+      "options": [
+        "头静脉和贵要静脉",
+        "贵要静脉和腋静脉",
+        "头静脉和锁骨下静脉",
+        "小隐静脉和大隐静脉"
+      ],
+      "answer": 0,
+      "explanation": "肘正中静脉位于肘窝，连接外侧头静脉与内侧贵要静脉。",
+      "exam_point": "肘正中静脉穿刺",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc007-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "初级",
+      "prompt": "【肘正中静脉穿刺】经肘正中静脉放置起搏电极时，导管最终应进入：",
+      "options": [
+        "右心房/右心室",
+        "左心房",
+        "主动脉",
+        "冠状窦"
+      ],
+      "answer": 0,
+      "explanation": "经外周静脉途径，导管依次经腋/锁骨下静脉→头臂静脉→上腔静脉→右心房→右心室。",
+      "exam_point": "肘正中静脉穿刺",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc008-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【腰椎穿刺定位】确定L4棘突的体表标志是：",
+      "options": [
+        "两侧髂嵴最高点连线",
+        "两侧肩胛下角连线",
+        "两侧肋弓最低点连线",
+        "脐水平线"
+      ],
+      "answer": 0,
+      "explanation": "两侧髂嵴最高点连线约平第4腰椎棘突，是腰穿定位标志。",
+      "exam_point": "腰椎穿刺定位",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc008-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【腰椎穿刺定位】腰穿经过黄韧带后再穿破哪层结构进入蛛网膜下腔：",
+      "options": [
+        "硬脊膜",
+        "硬脊膜+蛛网膜",
+        "软脊膜",
+        "后纵韧带"
+      ],
+      "answer": 1,
+      "explanation": "穿过黄韧带后再依次穿过硬脊膜和蛛网膜(两者紧贴)才有第二次突破感，进入终池。",
+      "exam_point": "腰椎穿刺定位",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc008-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【腰椎穿刺定位】成人腰穿不宜在L1以上进针是因为：",
+      "options": [
+        "此处无脑脊液",
+        "易损伤脊髓",
+        "韧带太坚韧",
+        "会损伤马尾"
+      ],
+      "answer": 1,
+      "explanation": "成人脊髓下端平L1下缘，L1以上穿刺可能刺伤脊髓；L2以下为马尾终池，安全。",
+      "exam_point": "腰椎穿刺定位",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc009-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【腓总神经损伤——足下垂】腓总神经绕经哪一骨面位置表浅而易受损：",
+      "options": [
+        "股骨内侧髁",
+        "腓骨颈",
+        "胫骨粗隆",
+        "内踝"
+      ],
+      "answer": 1,
+      "explanation": "腓总神经绕腓骨颈处紧贴骨面、位置表浅，骨折或压迫最易损伤。",
+      "exam_point": "腓总神经损伤——足下垂",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc009-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【腓总神经损伤——足下垂】腓总神经损伤后的典型畸形是：",
+      "options": [
+        "爪形手",
+        "足下垂、内翻(马蹄内翻)",
+        "猿手",
+        "方肩"
+      ],
+      "answer": 1,
+      "explanation": "小腿前群(背屈)和外侧群(外翻)肌瘫痪，而屈踝和内翻肌占优势，致足下垂、内翻，呈跨阈步态。",
+      "exam_point": "腓总神经损伤——足下垂",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc009-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "中级",
+      "prompt": "【腓总神经损伤——足下垂】腓深神经支配的主要肌是：",
+      "options": [
+        "小腿三头肌",
+        "胫骨前肌等小腿前群肌",
+        "腓骨长、短肌",
+        "股四头肌"
+      ],
+      "answer": 1,
+      "explanation": "腓深神经支配小腿前群肌(胫骨前肌、趾长伸肌等)，主司足背屈和伸趾。",
+      "exam_point": "腓总神经损伤——足下垂",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc010-sub1",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【腋窝淋巴结清扫与翼状肩】术后出现翼状肩提示损伤了：",
+      "options": [
+        "胸背神经",
+        "胸长神经",
+        "腋神经",
+        "肋间臂神经"
+      ],
+      "answer": 1,
+      "explanation": "胸长神经支配前锯肌，损伤后前锯肌不能紧贴胸壁，肩胛骨内侧缘翘起形成翼状肩，推墙时明显。",
+      "exam_point": "腋窝淋巴结清扫与翼状肩",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc010-sub2",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【腋窝淋巴结清扫与翼状肩】胸背神经支配的肌肉是：",
+      "options": [
+        "胸大肌",
+        "前锯肌",
+        "背阔肌",
+        "斜方肌"
+      ],
+      "answer": 2,
+      "explanation": "胸背神经伴肩胛下血管下行，支配背阔肌；损伤后上肢内收、内旋力量减弱。",
+      "exam_point": "腋窝淋巴结清扫与翼状肩",
+      "type": "identify"
+    },
+    {
+      "id": "legacy-cc010-sub3",
+      "system": "regional_headneck",
+      "subsystem": "临床病例小题",
+      "difficulty": "高级",
+      "prompt": "【腋窝淋巴结清扫与翼状肩】乳腺癌淋巴转移最早常至：",
+      "options": [
+        "肺门淋巴结",
+        "腋窝淋巴结",
+        "腹股沟淋巴结",
+        "纵隔淋巴结"
+      ],
+      "answer": 1,
+      "explanation": "乳房外侧部淋巴主要回流至腋窝淋巴结，是乳腺癌最早、最常见的转移部位。",
+      "exam_point": "腋窝淋巴结清扫与翼状肩",
+      "type": "identify"
     }
   ]
 }

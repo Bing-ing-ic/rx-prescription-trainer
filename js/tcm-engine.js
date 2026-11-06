@@ -1,7 +1,7 @@
 /* =====================================================================
  * tcm-engine.js  中医汉方规则引擎
  *  - 内置十八反、十九畏、辨证/治法/选方匹配、君臣佐使、剂量规范
- *  - 同时尝试加载 data/tcm-rules.json 作为扩展规则
+ *  - 同时加载 data/tcm-rules.json 作为扩展规则（type-based 可执行）
  *  - 暴露 window.TCMEngine
  * ===================================================================== */
 (function (global) {
@@ -9,10 +9,11 @@
 
   // ---- 十八反（药材名归一化后匹配；同方中出现双方即 error）----
   // 歌诀：本草明言十八反，半蒌贝蔹及攻乌，藻戟遂芫俱战草，诸参辛芍叛藜芦
+  // T-3 修复：'北沙参苦参' 拆分为 '北沙参'、'苦参' 两个独立条目
   const SHIBAFAN_PAIRS = [
-    { a: ['川乌','草乌','附子','乌头','天雄'], b: ['半夏','法半夏','姜半夏','清半夏','水半夏','瓜蒌','瓜蒌皮','瓜蒌仁','天花粉','贝母','川贝母','浙贝母','伊贝母','白蔹','白及'], title: '乌头反半夏、瓜蒌、贝母、白蔹、白及' },
+    { a: ['川乌','草乌','附子','乌头','天雄','制川乌','制草乌'], b: ['半夏','法半夏','姜半夏','清半夏','水半夏','瓜蒌','瓜蒌皮','瓜蒌仁','天花粉','贝母','川贝母','浙贝母','伊贝母','白蔹','白及'], title: '乌头反半夏、瓜蒌、贝母、白蔹、白及' },
     { a: ['甘草','炙甘草'], b: ['海藻','京大戟','甘遂','芫花'], title: '甘草反海藻、大戟、甘遂、芫花' },
-    { a: ['藜芦'], b: ['人参','红参','西洋参','党参','丹参','玄参','南沙参','北沙参苦参','细辛','赤芍','白芍'], title: '藜芦反诸参、细辛、芍药' }
+    { a: ['藜芦'], b: ['人参','红参','西洋参','党参','丹参','玄参','南沙参','北沙参','苦参','细辛','赤芍','白芍'], title: '藜芦反诸参、细辛、芍药' }
   ];
 
   // ---- 十九畏（相畏；一般 warn，剧毒药对升 error）----
@@ -26,61 +27,174 @@
     { a: ['巴豆','巴豆霜'], b: ['牵牛子','黑丑','白丑'], title: '巴豆畏牵牛' },
     { a: ['丁香','公丁香','母丁香'], b: ['郁金','广郁金'], title: '丁香畏郁金' },
     { a: ['牙硝','芒硝'], b: ['三棱','京三棱'], title: '牙硝畏三棱' },
-    { a: ['川乌','草乌','附子'], b: ['犀角','水牛角'], title: '川乌/草乌畏犀角（现以水牛角代）' },
+    { a: ['川乌','草乌','附子','制川乌','制草乌'], b: ['犀角','水牛角'], title: '川乌/草乌畏犀角（现以水牛角代）' },
     { a: ['人参','红参','西洋参','党参'], b: ['五灵脂'], title: '人参畏五灵脂' },
     { a: ['肉桂','官桂','桂枝'], b: ['赤石脂','白石脂'], title: '官桂畏赤石脂' }
   ];
 
   // ---- 剂量安全阈值（g）：超出给 warn，剧毒超量给 error ----
+  // T-5/E-03 修复：川乌/草乌/制川乌/制草乌统一为 3g（药典 1.5-3g 上限）
   const DOSE_LIMITS = {
     '附子': { max: 15, note: '附子常规3-15g，宜先煎30-60分钟，过量易中毒' },
-    '川乌': { max: 6, note: '川乌有毒，一般1.5-3g，宜先煎久煎' },
-    '草乌': { max: 3, note: '草乌有毒，一般1.5-3g' },
-    '细辛': { max: 3, note: '细辛"不过钱"，汤剂可用至3-6g，散剂不超过3g' },
+    '川乌': { max: 3, note: '川乌有毒，1.5-3g，宜先煎久煎；内服须用制川乌' },
+    '草乌': { max: 3, note: '草乌有毒，1.5-3g，宜先煎久煎；内服须用制草乌' },
+    '制川乌': { max: 3, note: '制川乌1.5-3g，宜先煎久煎30-60分钟' },
+    '制草乌': { max: 3, note: '制草乌1.5-3g，宜先煎久煎30-60分钟' },
+    '细辛': { max: 3, note: '细辛"不过钱"，汤剂可用至3g，散剂不超过3g' },
     '麻黄': { max: 10, note: '麻黄发汗力强，常用2-10g' },
     '甘遂': { max: 1.5, note: '甘遂有毒，入丸散0.5-1.5g' },
     '大戟': { max: 3, note: '京大戟1.5-3g' },
     '芫花': { max: 3, note: '芫花1.5-3g' },
     '商陆': { max: 9, note: '商陆3-9g' },
     '马钱子': { max: 0.6, note: '马钱子0.3-0.6g，入丸散' },
-    '朱砂': { max: 0.5, note: '朱砂0.1-0.5g，入丸散，不宜火煅' },
+    '朱砂': { max: 0.5, note: '朱砂0.1-0.5g，只入丸散，不入煎剂；忌火煅' },
     '苦杏仁': { max: 10, note: '苦杏仁有小毒，5-10g' }
   };
 
+  // ---- T-4 修复：药名规范化别名表 ----
+  // 炮制品/别名 → 处方通用名（仅用于十八反/十九畏/剂量表的命中映射）
+  // 严禁子串包含；白附子 ≠ 附子，法半夏 → 半夏（十八反 b 列已列法半夏，此处仅做兜底）
+  const HERB_ALIAS = {
+    '炙甘草': '甘草',
+    '法半夏': '半夏',
+    '姜半夏': '半夏',
+    '清半夏': '半夏',
+    '水半夏': '半夏',
+    '半夏曲': '半夏',
+    '苦杏仁': '杏仁',
+    '杏仁': '苦杏仁',
+    '苏叶': '紫苏叶',
+    '元参': '玄参',
+    '乌元参': '玄参',
+    '忍冬花': '金银花',
+    '双花': '金银花',
+    '板蓝根': '大青叶', // 非十八反药，仅规范化
+    '橘红': '陈皮',
+    '紅花': '红花',
+    '淮山药': '山药',
+    '怀山药': '山药',
+    '杭白芍': '白芍',
+    '川白芍': '白芍',
+    '细生地': '生地黄',
+    '大生地': '生地黄',
+    '熟地': '熟地黄'
+  };
+
+  // 剂型后缀（处方文本中可能出现的后缀，规范化时剥离）
+  // 注意：不能包含"膏"（会误伤"石膏"）、"片"（会误伤"冰片"）、"花"等常见药名字尾
+  // 仅保留明确不会出现在药名末尾的剂型词
+  const DOSAGE_FORM_SUFFIX = /(汤|散|丸|丹|饮|颗粒|胶囊|合剂|口服液|煎)$/;
+
+  // 脚注关键词（prep 字段中可能出现的先煎/后下等标注）
+  const DECOCTION_FIRST_KEY = /先煎|久煎|先入|另煎先/;
+  const DECOCTION_LATER_KEY = /后下|后入|临煎|薄荷后下/;
+  const DECOCTION_WRAP_KEY = /包煎|布包|纱布包/;
+  const DECOCTION_MELT_KEY = /烊化|烊|蒸化|溶化兑/;
+  const DECOCTION_SEPARATE_KEY = /另煎|另炖|另蒸|另煎兑/;
+  const DECOCTION_POWDER_KEY = /冲服|研末冲|吞服|入丸散|不入煎/;
+
   let extraRules = [];
+  let herbsMeta = {}; // 药名 → {min, max, range, usage}
 
   async function load() {
     try {
       const r = await fetch('data/tcm-rules.json');
       if (r.ok) {
         const j = await r.json();
-        extraRules = j.rules || j || [];
+        // 兼容：原 rules 数组（trigger/group schema）与 executable_rules 数组并存
+        const exec = j.executable_rules || [];
+        const legacy = j.rules || j || [];
+        // 合并：优先使用带 type 字段的可执行规则
+        extraRules = exec.concat(legacy.filter(x => x && x.type));
       }
     } catch (e) { /* 数据未就绪时降级为内置规则 */ }
+
+    // 同时加载 tcm-herbs.json 建 dose_range 映射，供 dose_range_check 使用
+    try {
+      const hr = await fetch('data/tcm-herbs.json');
+      if (hr.ok) {
+        const hj = await hr.json();
+        const arr = (hj && hj.herbs) || (Array.isArray(hj) ? hj : []);
+        herbsMeta = buildHerbsMeta(arr);
+      }
+    } catch (e) { /* 静默降级 */ }
+  }
+
+  function buildHerbsMeta(arr) {
+    const m = {};
+    (arr || []).forEach(h => {
+      if (!h || !h.name) return;
+      const name = norm(h.name);
+      if (!name) return;
+      let min = null, max = null;
+      if (typeof h.min_dose === 'number') min = h.min_dose;
+      if (typeof h.max_dose === 'number') max = h.max_dose;
+      // 解析 dose_range 字符串如 "0.1-0.5g" / "3-9g" / "10-15g"
+      if ((min === null || max === null) && typeof h.dose_range === 'string') {
+        const mt = h.dose_range.match(/([0-9]+(?:\.[0-9]+)?)\s*[-–~～]\s*([0-9]+(?:\.[0-9]+)?)/);
+        if (mt) {
+          if (min === null) min = parseFloat(mt[1]);
+          if (max === null) max = parseFloat(mt[2]);
+        }
+      }
+      m[name] = { min, max, range: h.dose_range || '', usage: h.usage || '', contra: h.contraindications || [] };
+    });
+    return m;
   }
 
   function norm(s) { return (s || '').replace(/\s/g, '').trim(); }
+
+  // T-4 修复：规范化药名——剥离剂量数字、单位、脚注、剂型后缀
+  function normalizeHerbName(raw) {
+    if (!raw) return '';
+    let s = String(raw);
+    // 去掉剂量部分：如 "朱砂 0.1-0.5g（研末冲服，不入煎剂）" → "朱砂"
+    s = s.split(/[0-9]/)[0];
+    // 去掉括号及其中的脚注说明
+    s = s.replace(/[（(].*?[）)]/g, '');
+    // 去掉剂型后缀
+    s = s.replace(DOSAGE_FORM_SUFFIX, '');
+    s = norm(s);
+    // 别名映射
+    if (HERB_ALIAS[s]) s = HERB_ALIAS[s];
+    return s;
+  }
 
   function herbNamesSet(herbs) {
     const set = new Set();
     (herbs || []).forEach(h => {
       if (!h) return;
-      const n = norm(h.name);
+      // 支持两种入参：字符串 "药名" 或对象 {name, dose, role, prep}
+      const rawName = typeof h === 'string' ? h : h.name;
+      const n = normalizeHerbName(rawName);
       if (n) set.add(n);
     });
     return set;
   }
 
-  function matchAny(names, target) {
-    return names.some(n => target === n || target.indexOf(n) >= 0 || n.indexOf(target) >= 0);
+  // T-4 修复：精确匹配——禁止子串包含
+  // names: 处方中药名集合（已规范化）；target: 十八反/十九畏表中的药名
+  function matchAny(names, targetList) {
+    return targetList.find(t => names.has(t));
   }
 
-  // ctx: { case, zhengInput, faZhengInput, formulaCode, formulaName, herbs: [{name,dose,role,prep}] }
+  // ctx: { case, zhengInput, faZhengInput, formulaCode, formulaName,
+  //        herbs: [{name,dose,role,prep}],
+  //        patient?: {pregnant?:boolean, age?:number, gender?:string},
+  //        herbsMeta?: {name:{min,max,range,usage}} }
   function check(ctx) {
     const hits = [];
     const c = ctx.case || {};
     const herbs = ctx.herbs || [];
     const names = herbNamesSet(herbs);
+
+    // 患者妊娠状态：优先 ctx.patient，其次 ctx.case.pregnant / ctx.case.patient?.pregnant
+    const patient = ctx.patient || c.patient || {};
+    const isPregnant = !!(patient.pregnant || c.pregnant || (c.patient && c.patient.pregnant));
+    const patientAge = patient.age || c.age || null;
+
+    // 合并 herbsMeta（外部传入优先）
+    const meta = Object.assign({}, herbsMeta, ctx.herbsMeta || {});
 
     // 1) 辨证
     const zheng = norm(ctx.zhengInput);
@@ -131,20 +245,20 @@
       hits.push(mk('TCM-FM-02', 'FORMULA', error('未选择方剂'), '应在辨证立法后选择对应方剂。'));
     }
 
-    // 4) 十八反
+    // 4) 十八反（T-4：精确匹配）
     SHIBAFAN_PAIRS.forEach(p => {
-      const hitA = p.a.find(n => matchAny([n], [...names]));
-      const hitB = p.b.find(n => matchAny([n], [...names]));
+      const hitA = matchAny(names, p.a);
+      const hitB = matchAny(names, p.b);
       if (hitA && hitB) {
         hits.push(mk('TCM-FB-' + p.a[0], 'INCOMPAT', error('十八反：' + p.title),
           '方中同时出现“' + hitA + '”与“' + hitB + '”，属十八反配伍禁忌，原则上禁止同方。'));
       }
     });
 
-    // 5) 十九畏
+    // 5) 十九畏（T-4：精确匹配）
     SHIJIUWEI_PAIRS.forEach(p => {
-      const hitA = p.a.find(n => matchAny([n], [...names]));
-      const hitB = p.b.find(n => matchAny([n], [...names]));
+      const hitA = matchAny(names, p.a);
+      const hitB = matchAny(names, p.b);
       if (hitA && hitB) {
         hits.push(mk('TCM-WW-' + p.a[0], 'INCOMPAT', warn('十九畏：' + p.title),
           '方中同时出现“' + hitA + '”与“' + hitB + '”，属十九畏，临床一般避免同方；如确需同用须医师签名并向患者说明。'));
@@ -161,21 +275,18 @@
       hits.push(mk('TCM-JZ-02', 'STRUCT', error('处方为空'), '请在所选方基础上加入中药，或自行组方。'));
     }
 
-    // 7) 剂量超限
+    // 7) 内置剂量超限（精确匹配）
     herbs.forEach(h => {
       if (!h || !h.name) return;
-      const n = norm(h.name);
+      const n = normalizeHerbName(h.name);
       const dose = parseFloat(h.dose);
       if (isNaN(dose)) return;
-      // 精确命中或包含
-      for (const key in DOSE_LIMITS) {
-        if (n === key || n.indexOf(key) >= 0 || key.indexOf(n) >= 0) {
-          const lim = DOSE_LIMITS[key];
-          if (dose > lim.max) {
-            hits.push(mk('TCM-DS-' + key, 'DOSAGE', error(key + '剂量过大'),
-              key + '用' + dose + 'g，超过常规上限' + lim.max + 'g。' + lim.note));
-          }
-          break;
+      // 精确命中（不再用 indexOf 双向包含，避免白附子误判为附子）
+      if (DOSE_LIMITS[n]) {
+        const lim = DOSE_LIMITS[n];
+        if (dose > lim.max) {
+          hits.push(mk('TCM-DS-' + n, 'DOSAGE', error(n + '剂量过大'),
+            n + '用' + dose + 'g，超过常规上限' + lim.max + 'g。' + lim.note));
         }
       }
       if (dose > 30) {
@@ -187,20 +298,191 @@
       }
     });
 
-    // 8) 扩展规则（外部 JSON 声明的检查，按 herb_pair / zheng / formula 类型）
+    // 8) 扩展规则（T-5：type-based 分发）
     (extraRules || []).forEach(r => {
       try {
-        if (r.type === 'herb_pair' && r.a && r.b) {
-          const hitA = r.a.find(n => names.has(n));
-          const hitB = r.b.find(n => names.has(n));
-          if (hitA && hitB) {
-            hits.push(mk(r.id || 'TCM-EX', r.group || 'CUSTOM',
-              r.severity === 'warn' ? warn(r.title || '配伍禁忌') : error(r.title || '配伍禁忌'),
-              r.message || ('方中出现 ' + hitA + ' 与 ' + hitB),
-              r.suggestion || '', r.basis || ''));
+        if (!r || !r.type) return;
+        switch (r.type) {
+          case 'herb_pair': {
+            if (!r.a || !r.b) break;
+            const hitA = r.a.find(n => names.has(n));
+            const hitB = r.b.find(n => names.has(n));
+            if (hitA && hitB) {
+              hits.push(mk(r.id || 'TCM-EX', r.group || 'CUSTOM',
+                r.severity === 'warn' ? warn(r.title || '配伍禁忌') : error(r.title || '配伍禁忌'),
+                r.message || ('方中出现 ' + hitA + ' 与 ' + hitB),
+                r.suggestion || '', r.basis || ''));
+            }
+            break;
           }
+          case 'pregnancy_ban': {
+            if (!isPregnant) break;
+            (r.herbs || []).forEach(h => {
+              if (names.has(h)) {
+                hits.push(mk(r.id || 'TCM-PREG-BAN', r.group || 'SPECIAL_POP',
+                  error(r.title || '孕妇禁用该药'),
+                  '患者为孕妇，方中使用妊娠禁用药“' + h + '”，可致堕胎或胎儿畸形，必须撤除。',
+                  r.suggestion || '请改用安全的同类药物。', r.basis || ''));
+              }
+            });
+            break;
+          }
+          case 'pregnancy_caution': {
+            if (!isPregnant) break;
+            (r.herbs || []).forEach(h => {
+              if (names.has(h)) {
+                hits.push(mk(r.id || 'TCM-PREG-CAU', r.group || 'SPECIAL_POP',
+                  warn(r.title || '孕妇慎用该药'),
+                  '患者为孕妇，方中使用妊娠慎用药“' + h + '”，须权衡利弊，减量或避免使用。',
+                  r.suggestion || '如需使用应小剂量短期，并告知患者。', r.basis || ''));
+              }
+            });
+            break;
+          }
+          case 'decoction_first': {
+            herbs.forEach(h => {
+              const n = normalizeHerbName(h.name);
+              if ((r.herbs || []).indexOf(n) >= 0) {
+                const prep = norm(h.prep || '');
+                if (!DECOCTION_FIRST_KEY.test(prep)) {
+                  hits.push(mk(r.id || 'TCM-USG-XJ', r.group || 'USAGE',
+                    warn(r.title || '该药宜先煎'),
+                    '方中“' + n + '”属矿物/贝壳/有毒药，应先煎30-60分钟（有毒药须久煎减毒），未标注脚注。',
+                    r.suggestion || '请在该味药右上角标注"先煎"。', r.basis || ''));
+                }
+              }
+            });
+            break;
+          }
+          case 'decoction_later': {
+            herbs.forEach(h => {
+              const n = normalizeHerbName(h.name);
+              if ((r.herbs || []).indexOf(n) >= 0) {
+                const prep = norm(h.prep || '');
+                if (!DECOCTION_LATER_KEY.test(prep)) {
+                  hits.push(mk(r.id || 'TCM-USG-HX', r.group || 'USAGE',
+                    warn(r.title || '芳香药宜后下'),
+                    '方中“' + n + '”含挥发油，久煎有效成分散失，应在煎成前5-10分钟放入，未标注脚注。',
+                    r.suggestion || '请标注"后下"。', r.basis || ''));
+                }
+              }
+            });
+            break;
+          }
+          case 'decoction_wrap': {
+            herbs.forEach(h => {
+              const n = normalizeHerbName(h.name);
+              if ((r.herbs || []).indexOf(n) >= 0) {
+                const prep = norm(h.prep || '');
+                if (!DECOCTION_WRAP_KEY.test(prep)) {
+                  hits.push(mk(r.id || 'TCM-USG-BJ', r.group || 'USAGE',
+                    warn(r.title || '该药宜包煎'),
+                    '方中“' + n + '”为粉末/绒毛/细小种子，易混浊药液或刺激咽喉，应纱布包煎。',
+                    r.suggestion || '请标注"包煎"。', r.basis || ''));
+                }
+              }
+            });
+            break;
+          }
+          case 'decoction_melt': {
+            herbs.forEach(h => {
+              const n = normalizeHerbName(h.name);
+              if ((r.herbs || []).indexOf(n) >= 0) {
+                const prep = norm(h.prep || '');
+                if (!DECOCTION_MELT_KEY.test(prep)) {
+                  hits.push(mk(r.id || 'TCM-USG-YH', r.group || 'USAGE',
+                    warn(r.title || '胶类药宜烊化'),
+                    '方中“' + n + '”为胶类药，入煎易粘锅粘他药，应单独蒸化后兑入药汁。',
+                    r.suggestion || '请标注"烊化"。', r.basis || ''));
+                }
+              }
+            });
+            break;
+          }
+          case 'decoction_separate': {
+            herbs.forEach(h => {
+              const n = normalizeHerbName(h.name);
+              if ((r.herbs || []).indexOf(n) >= 0) {
+                const prep = norm(h.prep || '');
+                if (!DECOCTION_SEPARATE_KEY.test(prep) && !DECOCTION_POWDER_KEY.test(prep)) {
+                  hits.push(mk(r.id || 'TCM-USG-LJ', r.group || 'USAGE',
+                    warn(r.title || '贵重药宜另煎'),
+                    '方中“' + n + '”为贵重细料药，另炖取汁兑服可避免有效成分被他药吸附。',
+                    r.suggestion || '请标注"另煎兑服"。', r.basis || ''));
+                }
+              }
+            });
+            break;
+          }
+          case 'dose_strict': {
+            // 剧毒药剂量硬上限（r.limits: {药名: maxG}）
+            const limits = r.limits || {};
+            herbs.forEach(h => {
+              const n = normalizeHerbName(h.name);
+              const dose = parseFloat(h.dose);
+              if (isNaN(dose)) return;
+              if (typeof limits[n] === 'number' && dose > limits[n]) {
+                hits.push(mk(r.id || 'TCM-DOSE-STRICT', r.group || 'DOSAGE',
+                  error(r.title || '有毒药剂量超限'),
+                  n + '用' + dose + 'g，超过药典上限' + limits[n] + 'g。' + (r.note || '须严格按《药典》剂量。'),
+                  r.suggestion || '请先煎久煎，并在医师指导下使用。', r.basis || ''));
+              }
+            });
+            break;
+          }
+          case 'dose_range_check': {
+            // 对照 tcm-herbs.json dose_range 逐项检查
+            herbs.forEach(h => {
+              const n = normalizeHerbName(h.name);
+              const dose = parseFloat(h.dose);
+              if (isNaN(dose)) return;
+              const m = meta[n];
+              if (!m || m.max === null || m.max === undefined) return;
+              // 朱砂特殊：不入煎剂，若 prep 未标冲服/入丸散则 error
+              if (n === '朱砂' && !DECOCTION_POWDER_KEY.test(norm(h.prep || ''))) {
+                hits.push(mk(r.id || 'TCM-DOSE-ZS', 'DOSAGE',
+                  error('朱砂不得入煎剂'),
+                  '朱砂含硫化汞，入煎则析出水银致汞中毒；必须研末冲服或入丸散。',
+                  '请改"研末冲服 0.1-0.5g"，或改用朱砂安神丸成药。',
+                  '《中国药典》2025版：朱砂0.1-0.5g，多入丸散服，不宜入煎剂。'));
+                return;
+              }
+              if (dose > m.max) {
+                hits.push(mk(r.id || 'TCM-DRANGE-' + n, r.group || 'DOSAGE',
+                  error(n + '剂量超《药典》上限'),
+                  n + '用' + dose + 'g，《药典》范围为' + (m.range || m.max + 'g') + '。',
+                  r.suggestion || '请核对《药典》剂量。', r.basis || ''));
+              } else if (m.max > 0 && dose >= m.max * 0.9) {
+                hits.push(mk(r.id || 'TCM-DRANGE-W-' + n, r.group || 'DOSAGE',
+                  warn(n + '剂量接近上限'),
+                  n + '用' + dose + 'g，已达《药典》上限' + m.max + 'g 的90%以上，请复核。',
+                  r.suggestion || '', r.basis || ''));
+              }
+            });
+            break;
+          }
+          case 'junchen_complete': {
+            // TCM-FMT-01：君臣佐使结构完整（部分方可合并佐使）
+            if (herbs.length === 0) break;
+            const roles = new Set(herbs.map(h => norm(h.role)).filter(Boolean));
+            const missing = [];
+            if (!roles.has('君')) missing.push('君');
+            if (!roles.has('臣')) missing.push('臣');
+            if (!roles.has('佐') && !roles.has('佐使')) missing.push('佐');
+            if (!roles.has('使') && !roles.has('佐使')) missing.push('使');
+            if (missing.length > 0) {
+              hits.push(mk(r.id || 'TCM-JZ-COMPLETE', r.group || 'STRUCT',
+                warn(r.title || '君臣佐使结构不完整'),
+                '方中缺少：' + missing.join('、') + '。方剂应分清君臣佐使。',
+                r.suggestion || '请为每味药标注 role（君/臣/佐/使）。', r.basis || ''));
+            }
+            break;
+          }
+          default:
+            // 不识别的 type 静默跳过（保留医学文档价值）
+            break;
         }
-      } catch (e) {}
+      } catch (e) { /* 单条规则异常不影响整体 */ }
     });
 
     return hits;
@@ -227,8 +509,8 @@
       if (h.group === 'ZHENG') dimMap.zheng.push(h);
       else if (h.group === 'FAZHENG') dimMap.fazheng.push(h);
       else if (h.group === 'FORMULA' || h.group === 'STRUCT') dimMap.formula.push(h);
-      else if (h.group === 'INCOMPAT' || h.group === 'CUSTOM') dimMap.compat.push(h);
-      else if (h.group === 'DOSAGE') dimMap.dosage.push(h);
+      else if (h.group === 'INCOMPAT' || h.group === 'CUSTOM' || h.group === 'SPECIAL_POP') dimMap.compat.push(h);
+      else if (h.group === 'DOSAGE' || h.group === 'USAGE') dimMap.dosage.push(h);
       else dimMap.formula.push(h);
     });
     const dimResult = {};
@@ -249,5 +531,14 @@
     };
   }
 
-  global.TCMEngine = { load, check, score, DIMS, SHIBAFAN_PAIRS, SHIJIUWEI_PAIRS };
-})(window);
+  global.TCMEngine = {
+    load, check, score, DIMS,
+    SHIBAFAN_PAIRS, SHIJIUWEI_PAIRS, DOSE_LIMITS,
+    normalizeHerbName, herbNamesSet,
+    buildHerbsMeta,
+    get extraRules() { return extraRules; },
+    set extraRules(v) { extraRules = v || []; },
+    get herbsMeta() { return herbsMeta; },
+    set herbsMeta(v) { herbsMeta = v || {}; }
+  };
+})(typeof window !== 'undefined' ? window : globalThis);

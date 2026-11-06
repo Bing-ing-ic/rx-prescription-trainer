@@ -40,6 +40,8 @@
         "合谷",
         "太冲"
       ],
+      "main_points": ["阳白", "颊车", "地仓", "翳风", "合谷"],
+      "adjuvant_points": ["四白", "太冲"],
       "reference_method": "针刺平补平泻；急性期弱刺激，恢复期可透刺（地仓透颊车）",
       "contraindications": [
         "早期刺激量宜轻",
@@ -189,6 +191,8 @@
         "心俞",
         "脾俞"
       ],
+      "main_points": ["照海", "申脉", "神门", "安眠"],
+      "adjuvant_points": ["四神聪", "三阴交", "百会", "心俞", "脾俞"],
       "reference_method": "针刺补法或平补平泻；睡前1-2小时治疗为佳",
       "contraindications": [
         "酒后不宜针刺",
@@ -284,6 +288,8 @@
         "悬钟",
         "丘墟"
       ],
+      "main_points": ["肾俞", "大肠俞", "腰夹脊", "委中", "阿是穴"],
+      "adjuvant_points": ["腰阳关", "命门", "环跳", "阳陵泉", "悬钟", "丘墟"],
       "reference_method": "针刺平补平泻；腰夹脊直刺1-1.5寸；可加电针",
       "contraindications": [
         "中央型突出伴马尾综合征需外科处理",
@@ -330,6 +336,8 @@
         "外关",
         "曲池"
       ],
+      "main_points": ["颈夹脊", "天柱", "风池", "后溪", "列缺"],
+      "adjuvant_points": ["大椎", "合谷", "外关", "曲池"],
       "reference_method": "针刺平补平泻；可加电针、温针灸",
       "contraindications": [
         "脊髓型颈椎病慎手法",
@@ -556,6 +564,8 @@
         "太冲",
         "梁丘"
       ],
+      "main_points": ["中脘", "足三里", "内关", "公孙"],
+      "adjuvant_points": ["太冲", "梁丘"],
       "reference_method": "针刺平补平泻；寒证加灸",
       "contraindications": [
         "消化道穿孔、大出血禁用"
@@ -686,6 +696,8 @@
         "十七椎",
         "太冲"
       ],
+      "main_points": ["三阴交", "中极", "次髎", "地机"],
+      "adjuvant_points": ["关元", "十七椎", "太冲"],
       "reference_method": "经前5-7天开始针刺；平补平泻或加灸",
       "contraindications": [
         "孕妇禁针三阴交、合谷、昆仑、至阴",

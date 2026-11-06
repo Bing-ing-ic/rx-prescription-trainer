@@ -7937,9 +7937,9 @@
       "abx_level": "none",
       "pharmacology_class": "维生素B12类",
       "dose_range_json": {
-        "single_min_mg": 500,
-        "single_max_mg": 500,
-        "daily_max_mg": 1500,
+        "single_min_mg": 0.5,
+        "single_max_mg": 0.5,
+        "daily_max_mg": 1.5,
         "default_freq": "tid",
         "default_duration_days": 30
       },

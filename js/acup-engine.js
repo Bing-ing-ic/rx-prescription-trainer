@@ -93,13 +93,42 @@
       }
     });
 
-    // 5) 主穴匹配：case.reference_points 中应至少有一个被选中
-    const refMain = (c.reference_points || c.main_points || []).map(p => (typeof p === 'string' ? p : p.name));
-    if (refMain.length > 0) {
-      const hit = refMain.find(p => names.has(p));
-      if (!hit) {
-        hits.push(mk('ACU-MN-01', 'POINTS', warn('未选中参考主穴'),
-          '参考主穴包括：' + refMain.join('、') + '。请结合经脉循行与主治重新选穴。'));
+    // 5) 主穴匹配：区分"必选主穴"与"配穴"
+    //    - 病例标注 main_points：必选主穴命中 < 80% 判 error（处方无纲）
+    //    - 病例标注 adjuvant_points：配穴命中 < 30% 判 warn
+    //    - 病例未标注分组（向后兼容）：reference_points 中至少命中 1 个即不报警
+    const mainPts = (c.main_points || []).map(p => (typeof p === 'string' ? p : p.name));
+    const adjPts = (c.adjuvant_points || []).map(p => (typeof p === 'string' ? p : p.name));
+    if (mainPts.length > 0) {
+      const mainHits = mainPts.filter(p => names.has(p));
+      const mainRatio = mainHits.length / mainPts.length;
+      if (mainRatio < 0.8) {
+        const missing = mainPts.filter(p => !names.has(p));
+        hits.push(mk('ACU-MN-01', 'POINTS', error('必选主穴命中不足（' + mainHits.length + '/' + mainPts.length + '）'),
+          '必选主穴应至少命中 80%。已命中：' + (mainHits.join('、') || '无') +
+          '；缺失：' + missing.join('、') +
+          '。局部主穴+循经远端主穴构成处方骨架，缺一不可。',
+          '必选主穴：' + mainPts.join('、')));
+      }
+      if (adjPts.length > 0) {
+        const adjHits = adjPts.filter(p => names.has(p));
+        const adjRatio = adjHits.length / adjPts.length;
+        if (adjRatio < 0.3) {
+          hits.push(mk('ACU-MN-02', 'POINTS', warn('配穴选取不足（' + adjHits.length + '/' + adjPts.length + '）'),
+            '配穴建议命中 ≥30%。可选配穴：' + adjPts.join('、') +
+            '。配穴随证加减，可增强主穴疗效。',
+            '参考配穴：' + adjPts.join('、')));
+        }
+      }
+    } else {
+      // 向后兼容：未标注 main_points 的病例，保留"至少命中 1 个参考穴"的宽松规则
+      const refMain = (c.reference_points || []).map(p => (typeof p === 'string' ? p : p.name));
+      if (refMain.length > 0) {
+        const hit = refMain.find(p => names.has(p));
+        if (!hit) {
+          hits.push(mk('ACU-MN-01', 'POINTS', warn('未选中参考主穴'),
+            '参考主穴包括：' + refMain.join('、') + '。请结合经脉循行与主治重新选穴。'));
+        }
       }
     }
 

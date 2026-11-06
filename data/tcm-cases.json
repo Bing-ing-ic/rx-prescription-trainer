@@ -492,6 +492,12 @@
       "name": "便秘-血虚便秘证",
       "difficulty": "中级",
       "syndrome_type": "气血津液辨证",
+      "patient": {
+        "gender": "女",
+        "age_range": [26, 38],
+        "pregnant": false,
+        "note": "产后失血女性，非妊娠期"
+      },
       "symptom_pool": {
         "chief_complaint": [
           "大便干结，面色无华，头晕心悸反复2月"
@@ -535,6 +541,12 @@
       "name": "不寐-心火偏亢证",
       "difficulty": "中级",
       "syndrome_type": "脏腑辨证",
+      "patient": {
+        "gender": "女",
+        "age_range": [25, 34],
+        "pregnant": true,
+        "note": "妊娠6个月女性，心烦失眠；处方禁用朱砂等妊娠禁用药，须改用养血安神之品"
+      },
       "symptom_pool": {
         "chief_complaint": [
           "心烦不寐，口干舌燥，小便短赤反复1周"
@@ -767,6 +779,12 @@
       "name": "眩晕-气血亏虚证",
       "difficulty": "中级",
       "syndrome_type": "气血津液辨证",
+      "patient": {
+        "gender": "女",
+        "age_range": [28, 45],
+        "pregnant": false,
+        "note": "育龄女性，月经量多致气血两虚；非妊娠期"
+      },
       "symptom_pool": {
         "chief_complaint": [
           "眩晕动则加剧，劳累即发，面色光白，神疲懒言反复1月"

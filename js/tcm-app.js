@@ -23,12 +23,22 @@
   const GIVEN_F = ['芳','娜','敏','静','艳','娟','霞','燕'];
 
   function pickPatient(c) {
-    const genders = c && c.gender ? [c.gender] : ['男','女'];
+    // P2-2：优先使用病例自带的 patient 字段（gender/age_range/pregnant）
+    const cp = (c && c.patient) || {};
+    const genders = (cp.gender ? [cp.gender] : (c && c.gender ? [c.gender] : ['男','女']));
     const gender = genders[Math.floor(Math.random() * genders.length)];
     const sn = SURNAMES[Math.floor(Math.random() * SURNAMES.length)];
     const gn = gender === '男' ? GIVEN_M[Math.floor(Math.random()*GIVEN_M.length)] : GIVEN_F[Math.floor(Math.random()*GIVEN_F.length)];
-    const age = (c && c.age_range) ? Math.floor(c.age_range[0] + Math.random()*(c.age_range[1]-c.age_range[0])) : Math.floor(25 + Math.random()*45);
-    return { name: sn + gn, gender, age };
+    const ar = cp.age_range || (c && c.age_range);
+    const age = ar ? Math.floor(ar[0] + Math.random()*(ar[1]-ar[0])) : Math.floor(25 + Math.random()*45);
+    const patient = { name: sn + gn, gender, age };
+    // P2-2：病例标注 pregnant=true 时（女性），自动置位，学员打开妊娠病例即触发妊娠规则
+    if (typeof cp.pregnant === 'boolean' && gender !== '男') {
+      patient.pregnant = cp.pregnant;
+    } else if (typeof c.pregnant === 'boolean' && gender !== '男') {
+      patient.pregnant = c.pregnant;
+    }
+    return patient;
   }
 
   // ---------- 数据加载 ----------
@@ -190,12 +200,18 @@
     $('tcm-p-date').textContent = new Date().toLocaleDateString();
     $('tcm-rx-no').textContent = 'TCM-' + Date.now().toString().slice(-6);
     // P1-3：妊娠状态复选框——男性患者禁用；女性默认未勾选（学员可勾选模拟妊娠病例）
+    // P2-2：若病例自带 patient.pregnant=true（如妊娠恶阻/妊娠失眠教学病例），自动勾选
     const pregBox = $('tcm-pregnant-flag');
     if (pregBox) {
-      pregBox.checked = false;
       pregBox.disabled = (p.gender === '男');
+      pregBox.checked = !pregBox.disabled && !!p.pregnant;
       const pregHint = $('tcm-pregnant-hint');
-      if (pregHint) pregHint.style.display = (p.gender === '男') ? 'none' : '';
+      if (pregHint) {
+        pregHint.style.display = (p.gender === '男') ? 'none' : '';
+        if (p.pregnant && pregHint.textContent.indexOf('本病例预设') < 0) {
+          pregHint.textContent = '本病例预设为妊娠期患者，妊娠禁忌药规则已自动生效';
+        }
+      }
     }
     // 默认载入参考方（按 code 匹配）
     S.items = [];

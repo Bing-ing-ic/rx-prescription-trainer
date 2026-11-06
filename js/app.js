@@ -32,7 +32,8 @@
     labCatFilter: '全部',  // 选择器类别筛选
     // ---- 手术指征评估（与处方/检验并列的第三种处置文书） ----
     surgeryCases: {},      // disease.code -> surgery case（来自 data/surgeries.json）
-    surgeryOrder: { decision: null, timing: null, procedure_id: null }
+    surgeryOrder: { decision: null, timing: null, procedure_id: null },
+    dxAliases: {},         // P2-1 诊断别名归一化：{别名: 规范病名}（来自 data/diagnosis-aliases.json）
   };
 
   // ---------- DOM ----------
@@ -171,6 +172,13 @@
       loadLabData();
       // 异步加载手术指征教学库（失败不阻断主流程）
       loadSurgeryData();
+      // P2-1 异步加载诊断别名归一化表（失败时降级为原模糊匹配）
+      fetch('data/diagnosis-aliases.json').then(r => r.ok ? r.json() : null).then(a => {
+        if (a && typeof a === 'object') {
+          // 剔除 _comment/_version 等元字段
+          Object.keys(a).forEach(k => { if (!k.startsWith('_')) S.dxAliases[k] = a[k]; });
+        }
+      }).catch(() => { /* 别名表加载失败时静默降级 */ });
     } catch (e) {
       alert('数据加载失败：' + e.message + '\n请用 python -m http.server 或双击 index.html 后通过 http:// 打开。');
     }
@@ -630,12 +638,36 @@
     return false;
   }
 
+  // P2-1 诊断别名归一化：把用户输入的别名/俗称/英文缩写映射到规范病名。
+  // 仅做 trim 后精确匹配（不做子串），命中返回规范病名数组（可能多个）；未命中返回空数组。
+  function dxAliasTargets(kw) {
+    if (!kw || !S.dxAliases) return [];
+    const k = String(kw).trim();
+    if (!k) return [];
+    const out = [];
+    // 1) 精确匹配（含大小写不敏感，如 DKA/dka、T2DM/t2dm）
+    Object.keys(S.dxAliases).forEach(alias => {
+      if (alias === k || alias.toLowerCase() === k.toLowerCase()) {
+        const canon = S.dxAliases[alias];
+        if (canon && !out.includes(canon)) out.push(canon);
+      }
+    });
+    // 2) 若输入串本身就是规范病名（带括号后缀），也直接命中
+    if (S.diseases && S.diseases.some(d => d.name === k) && !out.includes(k)) out.push(k);
+    return out;
+  }
+
   // 诊断输入实时提示：匹配到的病名列表（键盘上下键选择，回车确认）
   function onDiagInput() {
     const kw = $('diag-input').value.trim();
     const box = $('diag-suggest');
     if (!kw || !S.diseases) { box.classList.add('hidden'); box.innerHTML=''; S.diagMatches=[]; return; }
-    const matched = S.diseases.filter(d => matchDisease(d.name, kw) || (d.icd10||'').toLowerCase().indexOf(kw.toLowerCase()) >= 0);
+    let matched = S.diseases.filter(d => matchDisease(d.name, kw) || (d.icd10||'').toLowerCase().indexOf(kw.toLowerCase()) >= 0);
+    // P2-1 别名归一化：把 "腰突"/"DKA"/"上感" 等别名映射到规范病名后补进建议列表
+    dxAliasTargets(kw).forEach(canon => {
+      const d = S.diseases.find(x => x.name === canon);
+      if (d && !matched.includes(d)) matched.push(d);
+    });
     S.diagMatches = matched;
     S.diagSel = matched.length ? 0 : -1;
     if (!matched.length) { box.classList.add('hidden'); box.innerHTML=''; return; }
@@ -661,7 +693,12 @@
     const parts = val.split(/[,，]/);
     const lastKw = parts[parts.length-1].trim();
     if (!lastKw) { box.classList.add('hidden'); box.innerHTML=''; S.secDiagMatches=[]; return; }
-    const matched = S.diseases.filter(d => matchDisease(d.name, lastKw) || (d.icd10||'').toLowerCase().indexOf(lastKw.toLowerCase()) >= 0);
+    let matched = S.diseases.filter(d => matchDisease(d.name, lastKw) || (d.icd10||'').toLowerCase().indexOf(lastKw.toLowerCase()) >= 0);
+    // P2-1 别名归一化（次要诊断同样支持）
+    dxAliasTargets(lastKw).forEach(canon => {
+      const d = S.diseases.find(x => x.name === canon);
+      if (d && !matched.includes(d)) matched.push(d);
+    });
     S.secDiagMatches = matched;
     S.secDiagSel = matched.length ? 0 : -1;
     if (!matched.length) { box.classList.add('hidden'); box.innerHTML=''; return; }
@@ -739,8 +776,9 @@
     if (!v) { fb.innerHTML = '<span class="diag-err">请输入诊断。</span>'; scrollFb(); return; }
 
     const dx = S.disease;
-    // 命中主病名（支持中文名/ICD-10/拼音首拼）
-    if (matchDisease(dx.name, v) || dx.icd10 === v) {
+    // 命中主病名（支持中文名/ICD-10/拼音首拼/P2-1别名归一化）
+    const aliasHit = dxAliasTargets(v).includes(dx.name);
+    if (matchDisease(dx.name, v) || dx.icd10 === v || aliasHit) {
       S.diagnosisOk = true;
       fb.innerHTML = `<span class="diag-ok">✅ 正确诊断：${dx.name}（ICD-10: ${dx.icd10}）</span>`;
       $('rx-type-row').classList.remove('hidden');
@@ -751,8 +789,10 @@
       scrollFb();
       return;
     }
-    // 命中鉴别
-    const diff = (dx.differential||[]).find(d => matchDisease(d, v));
+    // 命中鉴别（含 P2-1 别名归一化）
+    const diffCandidates = (dx.differential||[]).slice();
+    dxAliasTargets(v).forEach(c => { if (!diffCandidates.includes(c)) diffCandidates.push(c); });
+    const diff = diffCandidates.find(d => matchDisease(d, v) || d === v);
     if (diff) {
       fb.innerHTML = `<span class="diag-warn">⚠️ 「${diff}」是重要鉴别诊断，需进一步检查排除，但不是本病例主诊断。</span>`;
       scrollFb();

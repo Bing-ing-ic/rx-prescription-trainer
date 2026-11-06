@@ -481,6 +481,66 @@
             }
             break;
           }
+          case 'elderly_caution': {
+            // P2-3：老年（>=65岁）慎用峻汗峻下/有毒药
+            const lim = r.limits || {};
+            const ageThr = typeof lim.age_threshold === 'number' ? lim.age_threshold : 65;
+            const age = typeof patientAge === 'number' ? patientAge : null;
+            if (age === null || age < ageThr) break;
+            const harsh = lim.harsh_herbs || [];
+            const toxic = lim.toxic_herbs || [];
+            herbs.forEach(h => {
+              const n = normalizeHerbName(h.name);
+              if (harsh.indexOf(n) >= 0) {
+                hits.push(mk(r.id || 'TCM-ELDERLY', r.group || 'SPECIAL_POP',
+                  warn(r.title || '老年慎用峻下药'),
+                  '患者' + age + '岁（老年），方中使用峻下/峻汗药“' + n + '”，易耗伤正气；老年患者应减量或配伍扶正药。',
+                  r.suggestion || '请减量使用，或配伍黄芪、党参等扶正药；中病即止。', r.basis || ''));
+              } else if (toxic.indexOf(n) >= 0) {
+                hits.push(mk(r.id || 'TCM-ELDERLY-TOXIC', r.group || 'SPECIAL_POP',
+                  warn(r.title || '老年慎用有毒药'),
+                  '患者' + age + '岁（老年），肝肾功能减退，方中使用有毒药“' + n + '”，易蓄积中毒；须严格减量并监测。',
+                  r.suggestion || '请从小剂量起始，中病即止，监测肝肾功能。', r.basis || ''));
+              }
+            });
+            break;
+          }
+          case 'pediatric_dose': {
+            // P2-3：小儿（<=12岁）禁用药与剂量折算
+            const lim = r.limits || {};
+            const ageThr = typeof lim.age_threshold === 'number' ? lim.age_threshold : 12;
+            const age = typeof patientAge === 'number' ? patientAge : null;
+            if (age === null || age > ageThr) break;
+            const forbidden = lim.forbidden_herbs || [];
+            const caution = lim.caution_herbs || [];
+            const frac = (lim.dose_fraction && lim.dose_fraction.length === 2) ? lim.dose_fraction : [0.33, 0.5];
+            herbs.forEach(h => {
+              const n = normalizeHerbName(h.name);
+              const dose = parseFloat(h.dose);
+              if (forbidden.indexOf(n) >= 0) {
+                // 朱砂/雄黄/马钱子/生乌头等剧毒药小儿原则上禁用
+                hits.push(mk(r.id || 'TCM-PED-BAN', r.group || 'SPECIAL_POP',
+                  error(r.title || '小儿禁用药'),
+                  '患者' + age + '岁（小儿），方中使用“' + n + '”，该药为小儿禁用药，可致蓄积中毒或神经系统损害，必须撤除。',
+                  r.suggestion || '请改用安全的同类药物；如确需使用须在儿科医师指导下严格折算。', r.basis || ''));
+              } else if (caution.indexOf(n) >= 0 && !isNaN(dose)) {
+                // 有毒药小儿剂量应折算为成人量的 1/3-1/2
+                const adultMax = (DOSE_LIMITS[n] && DOSE_LIMITS[n].max) || (meta[n] && meta[n].max) || null;
+                if (adultMax && dose > adultMax * frac[1]) {
+                  hits.push(mk(r.id || 'TCM-PED-DOSE', r.group || 'SPECIAL_POP',
+                    error(r.title || '小儿有毒药超量'),
+                    '患者' + age + '岁（小儿），“' + n + '”用' + dose + 'g，超过小儿折算上限（成人量' + adultMax + 'g 的' + Math.round(frac[1]*100) + '%≈' + (adultMax*frac[1]).toFixed(1) + 'g）。',
+                    r.suggestion || '小儿剂量应按成人量的1/3-1/2折算；新生儿1/6，婴儿1/3，幼儿1/2，学龄儿童2/3。', r.basis || ''));
+                } else if (adultMax && dose > adultMax * frac[0]) {
+                  hits.push(mk(r.id || 'TCM-PED-DOSE-W', r.group || 'SPECIAL_POP',
+                    warn(r.title || '小儿剂量偏大'),
+                    '患者' + age + '岁（小儿），“' + n + '”用' + dose + 'g，已接近小儿折算上限（成人量' + adultMax + 'g 的1/3≈' + (adultMax*frac[0]).toFixed(1) + 'g），请复核。',
+                    r.suggestion || '请按年龄折算：新生儿1/6，婴儿1/3，幼儿1/2，学龄儿童2/3。', r.basis || ''));
+                }
+              }
+            });
+            break;
+          }
           default:
             // 不识别的 type 静默跳过（保留医学文档价值）
             break;

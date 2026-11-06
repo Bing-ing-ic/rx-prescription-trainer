@@ -2630,6 +2630,40 @@
       "explanation": "乳房外侧部淋巴主要回流至腋窝淋巴结，是乳腺癌最早、最常见的转移部位。",
       "exam_point": "腋窝淋巴结清扫与翼状肩",
       "type": "identify"
+    },
+    {
+      "id": "id-sinoatrial-node-artery",
+      "system": "circulatory",
+      "subsystem": "心",
+      "difficulty": "中级",
+      "prompt": "窦房结的血液供应主要来自：",
+      "options": [
+        "右冠状动脉窦房结支",
+        "左前降支",
+        "左旋支",
+        "对角支"
+      ],
+      "answer": 0,
+      "explanation": "窦房结动脉约60%起自右冠状动脉窦房结支，约40%起自左冠状动脉旋支；窦房结血供不足是病态窦房结综合征的解剖学基础。",
+      "exam_point": "窦房结动脉60%来自右冠脉",
+      "type": "identify"
+    },
+    {
+      "id": "id-carpal-tunnel-nerve",
+      "system": "regional_limbs",
+      "subsystem": "上肢",
+      "difficulty": "初级",
+      "prompt": "腕管综合征受压的神经是：",
+      "options": [
+        "正中神经",
+        "尺神经",
+        "桡神经",
+        "肌皮神经"
+      ],
+      "answer": 0,
+      "explanation": "正中神经经腕管入手掌，长期受压致桡侧3.1指麻木、大鱼际萎缩（猿手畸形）；尺神经经尺神经管（Guyon管）受压致爪形手。",
+      "exam_point": "腕管综合征→正中神经受压",
+      "type": "identify"
     }
   ]
 }

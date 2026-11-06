@@ -601,9 +601,11 @@
     const allRx2 = [ctx.normal_rx, ctx.iv_rx].filter(r => r && r.items && Array.isArray(r.items));
     const allDrugs2 = [];
     allRx2.forEach(rx => rx.items.forEach(it => { if (it && it.drug) allDrugs2.push(it.drug); }));
+    // 合并症文本（P2-2：如 T2DM 合并高血压，患者 comorbidities 含"高血压"时，ACEI/CCB 仍属医保合理用药）
+    const comorbsTxt = (Array.isArray(patient.comorbidities) ? patient.comorbidities.join(' ') : (patient.comorbidities||'')) + ' ' + (patient.note||'');
     // 降压药 vs 无高血压诊断
     const hasAntihypertensive = allDrugs2.some(d => /氨氯地平|硝苯地平|美托洛尔|缬沙坦|厄贝沙坦|卡托普利|依那普利|氯沙坦/.test(d.generic_name||''));
-    const hasHypertensionDx = /高血压|冠心病|心绞痛|TIA|短暂性脑缺血/.test(dxName);
+    const hasHypertensionDx = /高血压|冠心病|心绞痛|TIA|短暂性脑缺血/.test(dxName) || /高血压|冠心病|心绞痛/.test(comorbsTxt);
     if (hasAntihypertensive && !hasHypertensionDx) {
       hits.push(hit(R['YN-02'], 'error',
         `开具了降压/心血管药物，但诊断「${disease.name}」不在高血压/冠心病适应症范围内，医保基金不予支付。`,
@@ -611,7 +613,7 @@
     }
     // 降糖药 vs 无糖尿病诊断
     const hasAntidiabetic = allDrugs2.some(d => /二甲双胍|格列美脲|格列齐特|胰岛素|阿卡波糖|西格列汀/.test(d.generic_name||''));
-    const hasDiabetesDx = /糖尿病/.test(dxName);
+    const hasDiabetesDx = /糖尿病/.test(dxName) || /糖尿病/.test(comorbsTxt);
     if (hasAntidiabetic && !hasDiabetesDx) {
       hits.push(hit(R['YN-02'], 'error',
         `开具了降糖药物，但诊断「${disease.name}」不在糖尿病适应症范围内，医保基金不予支付。`,

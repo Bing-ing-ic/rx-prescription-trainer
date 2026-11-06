@@ -301,6 +301,16 @@
       "severity": "warn",
       "basis": "刺伤动脉可致血肿、出血不止",
       "weight_hint": "safety"
+    },
+    {
+      "rule_id": "ACUP-SAFE-09",
+      "group": "SAFETY",
+      "title": "扳法/踩跷法脊柱手术禁忌",
+      "trigger": "spinal_manipulation_contraindication",
+      "logic": "扳法绝对禁忌：寰枢关节半脱位、颈椎管狭窄、腰椎管狭窄、骨折未愈合、严重骨质疏松、脊柱肿瘤、脊柱结核、脊髓型颈椎病。踩跷法绝对禁忌：中央型腰椎间盘突出（马尾综合征风险）、马尾综合征、脊柱肿瘤、严重骨质疏松；此类病例暴力扳动或踩踏可致脊髓损伤、截瘫",
+      "severity": "error",
+      "basis": "寰枢半脱位扳动可致延髓损伤；椎管狭窄扳动可致脊髓压迫；中央型腰突踩踏可诱发马尾综合征致大小便障碍",
+      "weight_hint": "safety"
     }
   ]
 }

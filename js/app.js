@@ -29,13 +29,16 @@
     labReportLoaded: false, // 两个 lab JSON 是否加载完成
     // ---- 医生开具的检验检查单（处方笺同纸打印） ----
     labOrders: [],         // [{code,name,abbr,category,subcategory,unit,ref_range,clinical_significance}]
-    labCatFilter: '全部'   // 选择器类别筛选
+    labCatFilter: '全部',  // 选择器类别筛选
+    // ---- 手术指征评估（与处方/检验并列的第三种处置文书） ----
+    surgeryCases: {},      // disease.code -> surgery case（来自 data/surgeries.json）
+    surgeryOrder: { decision: null, timing: null, procedure_id: null }
   };
 
   // ---------- DOM ----------
   const $ = id => document.getElementById(id);
   function show(view) {
-    ['view-home','view-rx','view-lab','view-report','view-radar','view-mistakes','view-stats','view-drugs'].forEach(v => $(v).classList.add('hidden'));
+    ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs'].forEach(v => $(v).classList.add('hidden'));
     $(view).classList.remove('hidden');
     window.scrollTo(0,0);
   }
@@ -110,6 +113,8 @@
       renderRadar();
       // 异步加载检验检查报告字典（失败不阻断主流程）
       loadLabData();
+      // 异步加载手术指征教学库（失败不阻断主流程）
+      loadSurgeryData();
     } catch (e) {
       alert('数据加载失败：' + e.message + '\n请用 python -m http.server 或双击 index.html 后通过 http:// 打开。');
     }
@@ -139,6 +144,18 @@
     } catch (e) {
       // 静默降级：数据文件尚未就绪时不阻断主流程
       S.labReportLoaded = true;
+    }
+  }
+
+  // 加载手术指征教学库 surgeries.json（并行流程产出，缺失时静默降级）
+  async function loadSurgeryData() {
+    try {
+      const res = await fetch('data/surgeries.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      if (res && res.cases && typeof res.cases === 'object') {
+        S.surgeryCases = res.cases;
+      }
+    } catch (e) {
+      // 静默降级：数据文件尚未就绪时不阻断主流程
     }
   }
 
@@ -251,7 +268,11 @@
     $('secondary-diag-input').oninput = onSecondaryDiagInput;
     $('secondary-diag-input').onkeydown = onSecondaryDiagKey;
     document.querySelectorAll('.btn-type').forEach(b => {
-      b.addEventListener('click', () => openRx(b.getAttribute('data-type')));
+      // 仅绑定首页类型选择按钮（必须带 data-type）；手术指征按钮走独立 openSurgery 入口；
+      // view-surgery 内的决策卡片虽复用 btn-type 样式但不带 data-type，不绑定 openRx
+      const t = b.getAttribute('data-type');
+      if (!t || t === 'surgery') return;
+      b.addEventListener('click', () => openRx(t));
     });
     $('btn-back-home').onclick = () => show('view-home');
     $('btn-print').onclick = () => window.print();
@@ -262,6 +283,14 @@
     const btnGotoRx = $('btn-goto-rx'); if (btnGotoRx) btnGotoRx.onclick = () => openRx(S.rxType || 'normal');
     const btnLabPrint = $('btn-lab-print'); if (btnLabPrint) btnLabPrint.onclick = () => window.print();
     const btnLabSubmit = $('btn-lab-submit'); if (btnLabSubmit) btnLabSubmit.onclick = submitRx;
+    // 手术指征评估表视图：工具栏按钮
+    const btnSurgBack = $('btn-surgery-back-home'); if (btnSurgBack) btnSurgBack.onclick = () => show('view-home');
+    const btnGotoRxFromSurg = $('btn-goto-rx-from-surgery'); if (btnGotoRxFromSurg) btnGotoRxFromSurg.onclick = () => openRx(S.rxType || 'normal');
+    const btnSurgPrint = $('btn-surgery-print'); if (btnSurgPrint) btnSurgPrint.onclick = () => window.print();
+    const btnSurgSubmit = $('btn-surgery-submit'); if (btnSurgSubmit) btnSurgSubmit.onclick = submitRx;
+    // 手术指征：第一步决策卡片
+    const btnSurgCons = $('surgery-decision-conservative'); if (btnSurgCons) btnSurgCons.onclick = () => selectSurgeryDecision('conservative');
+    const btnSurgSur = $('surgery-decision-surgery'); if (btnSurgSur) btnSurgSur.onclick = () => selectSurgeryDecision('surgery');
     $('btn-report-home').onclick = () => show('view-home');
     $('btn-radar-home').onclick = () => show('view-home');
     $('btn-mistakes-home').onclick = () => show('view-home');
@@ -400,6 +429,7 @@
     S.restrictedConfirmed = false;
     S.overLimitWarned = false;
     S.ivOverLimitWarned = false;
+    S.surgeryOrder = { decision: null, timing: null, procedure_id: null };
 
     // 生成合成患者：年龄/性别/费别根据疾病匹配
     const elderlyDiseases = ['HTN-I10','CHD-I25','TIA-G45','COPD-J44','DM-E11','HYPOTHY-E03','POSTAPP-Z48','POSTHERNIA-Z48','HLP-E78','OP-M81','ISCHEMIC-I63','HF-I50','AF-I48','BPH-N40'];
@@ -816,6 +846,118 @@
         '<div style="position:fixed;top:0;left:0;right:0;background:red;color:white;padding:12px;z-index:99999;font-size:14px;font-family:monospace;">' +
         '❌ openLab错误: ' + e.message + '<br><br>' + (e.stack||'').slice(0,500) + '</div>');
     }
+  }
+
+  // ---------- 打开手术指征评估表（与处方/检验并列的第三种处置文书） ----------
+  function currentSurgeryCase() {
+    return (S.disease && S.surgeryCases) ? (S.surgeryCases[S.disease.code] || null) : null;
+  }
+
+  function openSurgery() {
+    try {
+      if (!S.disease || !S.patient) { alert('病例数据未就绪，请先点"开始新病例"'); return; }
+      const sc = currentSurgeryCase();
+      if (!sc) { alert('本病例暂不支持手术指征判断'); return; }
+      // 评估编号
+      if ($('surgery-no')) {
+        $('surgery-no').textContent = 'SUR-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + String(Math.floor(Math.random()*900000+100000));
+      }
+      // 前记（复用患者/诊断，不新建数据源）
+      if ($('so-name')) $('so-name').textContent = S.patient.name;
+      if ($('so-gender')) $('so-gender').textContent = S.patient.gender;
+      if ($('so-age')) $('so-age').textContent = S.patient.age;
+      if ($('so-mz')) $('so-mz').textContent = S.patient.mz;
+      if ($('so-dx')) $('so-dx').textContent = S.disease.name;
+      if ($('so-date')) $('so-date').textContent = new Date().toISOString().slice(0,10);
+      // 不清空 S.surgeryOrder：医生可能在手术表/处方/检验单视图间来回切换
+      renderSurgeryInfo(sc);
+      renderSurgeryDecision();
+      syncSurgeryDecisionUI();
+      show('view-surgery');
+    } catch(e) {
+      document.body.insertAdjacentHTML('afterbegin',
+        '<div style="position:fixed;top:0;left:0;right:0;background:red;color:white;padding:12px;z-index:99999;font-size:14px;font-family:monospace;">' +
+        '❌ openSurgery错误: ' + e.message + '<br><br>' + (e.stack||'').slice(0,500) + '</div>');
+    }
+  }
+
+  // 本病种适应症/禁忌症只读展示
+  function renderSurgeryInfo(sc) {
+    const box = $('surgery-info');
+    if (!box) return;
+    const indi = sc.indications || [];
+    const contra = sc.contraindications || [];
+    box.innerHTML =
+      '<div style="border:1px solid #bbf7d0;background:#f0fdf4;border-radius:6px;padding:10px;">' +
+        '<div style="font-weight:600;color:#15803d;margin-bottom:6px;">✅ 手术适应症</div>' +
+        '<ul style="margin:0;padding-left:18px;color:#166534;font-size:13px;">' +
+        (indi.length ? indi.map(t=>'<li>'+t+'</li>').join('') : '<li>—</li>') +
+        '</ul></div>' +
+      '<div style="border:1px solid #fecaca;background:#fef2f2;border-radius:6px;padding:10px;">' +
+        '<div style="font-weight:600;color:#b91c1c;margin-bottom:6px;">⛔ 手术禁忌症</div>' +
+        '<ul style="margin:0;padding-left:18px;color:#991b1b;font-size:13px;">' +
+        (contra.length ? contra.map(t=>'<li>'+t+'</li>').join('') : '<li>无明确禁忌</li>') +
+        '</ul></div>';
+  }
+
+  // 渲染时机/术式可点选按钮（单选卡片）
+  function renderSurgeryDecision() {
+    const sc = currentSurgeryCase();
+    if (!sc) return;
+    const tBox = $('surgery-timing-options');
+    if (tBox) {
+      tBox.innerHTML = '';
+      (sc.timing_options || []).forEach(opt => {
+        const b = document.createElement('button');
+        b.className = 'btn';
+        b.style.textAlign = 'left';
+        b.dataset.timingId = opt.id;
+        b.innerHTML = '<b>' + opt.label + '</b>';
+        b.onclick = () => { S.surgeryOrder.timing = opt.id; syncSurgeryDecisionUI(); };
+        tBox.appendChild(b);
+      });
+    }
+    const pBox = $('surgery-proc-options');
+    if (pBox) {
+      pBox.innerHTML = '';
+      (sc.procedure_options || []).forEach(opt => {
+        const b = document.createElement('button');
+        b.className = 'btn';
+        b.style.textAlign = 'left';
+        b.dataset.procId = opt.id;
+        b.innerHTML = '<b>' + opt.name + '</b>' + (opt.note ? '<div style="font-size:12px;color:#64748b;font-weight:normal;margin-top:2px;">' + opt.note + '</div>' : '');
+        b.onclick = () => { S.surgeryOrder.procedure_id = opt.id; syncSurgeryDecisionUI(); };
+        pBox.appendChild(b);
+      });
+    }
+  }
+
+  // 第一步决策切换：选手术→显示时机/术式区；选保守→隐藏并清空二级选择
+  function selectSurgeryDecision(decision) {
+    S.surgeryOrder.decision = decision;
+    if (decision !== 'surgery') {
+      S.surgeryOrder.timing = null;
+      S.surgeryOrder.procedure_id = null;
+    }
+    syncSurgeryDecisionUI();
+  }
+
+  // 统一刷新决策卡片高亮与分区显隐
+  function syncSurgeryDecisionUI() {
+    const d = S.surgeryOrder.decision;
+    const cBtn = $('surgery-decision-conservative');
+    const sBtn = $('surgery-decision-surgery');
+    if (cBtn) cBtn.classList.toggle('btn-primary', d === 'conservative');
+    if (sBtn) sBtn.classList.toggle('btn-primary', d === 'surgery');
+    const showSub = d === 'surgery';
+    const tRow = $('surgery-timing-row'); if (tRow) tRow.classList.toggle('hidden', !showSub);
+    const pRow = $('surgery-proc-row'); if (pRow) pRow.classList.toggle('hidden', !showSub);
+    document.querySelectorAll('#surgery-timing-options .btn').forEach(b => {
+      b.classList.toggle('btn-primary', b.dataset.timingId === S.surgeryOrder.timing);
+    });
+    document.querySelectorAll('#surgery-proc-options .btn').forEach(b => {
+      b.classList.toggle('btn-primary', b.dataset.procId === S.surgeryOrder.procedure_id);
+    });
   }
 
   // ---------- 药品列表渲染（非输液通道） ----------
@@ -1806,12 +1948,17 @@
   // ---------- 提交 ----------
   function submitRx() {
     try {
-    // 硬阻断：药品与检验单都为空时，无任何可点评内容
+    // 硬阻断：药品、检验单、手术指征决策三者都为空时，无任何可点评内容
     const hasDrugs = (S.normalItems && S.normalItems.length > 0) ||
                      (S.ivGroups && S.ivGroups.some(g => g.solvent || g.drugs.length > 0));
     const hasLab = (S.labOrders && S.labOrders.length > 0);
-    if (!hasDrugs && !hasLab) {
-      return alert('请至少开具处方药品或检验检查项目后再提交点评。');
+    const hasSurgery = !!(S.surgeryOrder && S.surgeryOrder.decision && currentSurgeryCase());
+    if (!hasDrugs && !hasLab && !hasSurgery) {
+      return alert('请至少开具处方药品、检验检查项目，或完成手术指征决策后再提交点评。');
+    }
+    // 若本病种支持手术指征判断但医生未做任何决策，提示补全
+    if (currentSurgeryCase() && !S.surgeryOrder.decision) {
+      return alert('本病种需先在「手术指征评估表」中完成治疗决策（保守治疗 / 手术治疗），再提交点评。');
     }
 
     // 硬阻断：每组必须有溶媒+药
@@ -1908,7 +2055,15 @@
       disease_lab_map: S.diseaseLabMap,
       rulesMeta: S.rules,
       compatData: S.compat,
-      restricted_confirmed: S.restrictedConfirmed
+      restricted_confirmed: S.restrictedConfirmed,
+      // 手术指征决策（与处方/检验并列；未做决策时为 null，规则引擎自动跳过）
+      surgery_rx: hasSurgery ? {
+        decision: S.surgeryOrder.decision,
+        timing: S.surgeryOrder.timing,
+        procedure_id: S.surgeryOrder.procedure_id,
+        eval_no: ($('surgery-no') ? $('surgery-no').textContent : '') || ''
+      } : null,
+      surgeryCase: currentSurgeryCase()
     };
     S.lastVisitCtx = ctx;
     const hits = window.RxRuleEngine.run(ctx);
@@ -2164,8 +2319,8 @@
       `<div class="history-item">${new Date(h.t).toLocaleString()} · 总分 <b>${h.total}</b></div>`
     ).join('') : '<div class="muted">暂无历史。完成至少一次处方后将在此显示。</div>';
 
-    // 平均八维
-    const avg = {format:0,match:0,dose:0,route:0,compat:0,special:0,ess:0,abx:0};
+    // 平均多维
+    const avg = {format:0,match:0,dose:0,route:0,compat:0,special:0,ess:0,abx:0,surgery:0};
     if (arr.length) arr.forEach(h=>{ Object.keys(avg).forEach(k=>avg[k]+= (h.radar?.[k]||0)); });
     if (arr.length) Object.keys(avg).forEach(k=>avg[k]/=arr.length);
     else Object.keys(avg).forEach(k=>avg[k]=50);
@@ -2234,6 +2389,7 @@
   // 暴露到全局供 inline onclick 调用
   window.__openRx = openRx;
   window.__openLab = openLab;
+  window.__openSurgery = openSurgery;
   window.__newCase = newCase;
   window.__checkDiag = checkDiagnosis;
 

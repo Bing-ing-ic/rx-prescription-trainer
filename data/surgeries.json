@@ -1,0 +1,405 @@
+{
+  "version": "2026.11.06",
+  "note": "手术指征判断教学库。key 为 disease.code，与 diseases.json 一一对应。standard.decision: surgery=应手术 / conservative=应保守；timing: emergency/urgent/elective/none；procedure_id 对应 procedure_options 内 id。",
+  "cases": {
+    "APP-K35": {
+      "disease_code": "APP-K35",
+      "department": "普外科",
+      "difficulty": "中级",
+      "standard": {
+        "decision": "surgery",
+        "timing": "emergency",
+        "procedure_id": "lap_appendectomy",
+        "conservative_ok": false
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊手术（立即/6小时内）"},
+        {"id": "urgent",    "label": "限期手术（24-48小时内）"},
+        {"id": "elective",  "label": "择期手术（炎症控制后）"},
+        {"id": "none",      "label": "暂不手术，保守治疗"}
+      ],
+      "procedure_options": [
+        {"id": "lap_appendectomy",  "name": "腹腔镜阑尾切除术",       "note": "首选，创伤小、恢复快、切口感染率低"},
+        {"id": "open_appendectomy", "name": "开腹阑尾切除术",         "note": "穿孔、腹腔粘连重或腹腔镜条件受限时考虑"},
+        {"id": "conservative_abx",  "name": "保守治疗（禁食+抗生素+补液）", "note": "仅用于不能耐受手术或已形成周围脓肿且病情稳定者"}
+      ],
+      "indications": [
+        "转移性右下腹痛伴麦氏点固定压痛、反跳痛",
+        "WBC及中性粒细胞、CRP显著升高",
+        "超声或CT提示阑尾增粗（直径≥6mm）、壁增厚、周围渗出",
+        "发病在72小时以内、无禁忌证"
+      ],
+      "contraindications": [
+        "严重心肺功能不全、不能耐受麻醉与气腹",
+        "已形成阑尾周围脓肿且病情平稳、可先保守后择期手术",
+        "弥漫性腹膜炎合并感染性休克需先复苏而非立即手术"
+      ],
+      "teaching_points": [
+        "急性阑尾炎一经确诊应早期手术，延误可致阑尾穿孔、弥漫性腹膜炎",
+        "腹腔镜阑尾切除术为首选术式，穿孔或粘连严重时可中转开腹",
+        "阑尾周围脓肿一般先禁食、抗感染、补液治疗，待炎症控制后3个月再择期手术"
+      ]
+    },
+
+    "CHOLE-K81": {
+      "disease_code": "CHOLE-K81",
+      "department": "普外科",
+      "difficulty": "中级",
+      "standard": {
+        "decision": "surgery",
+        "timing": "urgent",
+        "procedure_id": "lap_cholecystectomy",
+        "conservative_ok": false
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊手术（立即/6小时内）"},
+        {"id": "urgent",    "label": "早期手术（发病72小时内，本院24-48小时内）"},
+        {"id": "elective",  "label": "择期手术（炎症控制后6-8周）"},
+        {"id": "none",      "label": "暂不手术，保守治疗"}
+      ],
+      "procedure_options": [
+        {"id": "lap_cholecystectomy", "name": "腹腔镜胆囊切除术（LC）",   "note": "急性胆囊炎早期手术首选"},
+        {"id": "open_cholecystectomy","name": "开腹胆囊切除术",           "note": "Mirizzi综合征、胆囊坏疽穿孔、腹腔镜困难时"},
+        {"id": "percutaneous_cholecystostomy", "name": "经皮经肝胆囊穿刺造瘘（PTGBD）", "note": "高龄、危重、不能耐受麻醉者的过渡引流"},
+        {"id": "conservative_abx",    "name": "保守治疗（禁食+解痉+抗感染+补液）", "note": "仅作为术前准备或不能手术者"}
+      ],
+      "indications": [
+        "右上腹持续疼痛伴Murphy征阳性、右肩背放射痛",
+        "发热、WBC及CRP升高",
+        "超声提示胆囊增大、壁弥漫增厚（≥3mm）、双边征、胆囊结石",
+        "发病72小时以内、无绝对禁忌证"
+      ],
+      "contraindications": [
+        "严重心肺功能不全、不能耐受全麻与气腹",
+        "凝血功能障碍未纠正",
+        "Mirizzi综合征、胆囊肠道内瘘等需转开腹"
+      ],
+      "teaching_points": [
+        "急性胆囊炎发病72小时内首选早期腹腔镜胆囊切除术，并不增加手术难度与并发症",
+        "高龄、危重、合并多脏器功能不全不能耐受手术者，可先行PTGBD引流过渡，待病情稳定后择期切除",
+        "保守治疗仅作为术前准备或手术禁忌者的过渡，不建议作为最终治疗，复发率高"
+      ]
+    },
+
+    "STONE-K80": {
+      "disease_code": "STONE-K80",
+      "department": "普外科",
+      "difficulty": "初级",
+      "standard": {
+        "decision": "surgery",
+        "timing": "elective",
+        "procedure_id": "lap_cholecystectomy",
+        "conservative_ok": false
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊手术"},
+        {"id": "urgent",    "label": "限期手术（1周内）"},
+        {"id": "elective",  "label": "择期手术（症状控制后门诊安排）"},
+        {"id": "none",      "label": "暂不手术，随访观察"}
+      ],
+      "procedure_options": [
+        {"id": "lap_cholecystectomy", "name": "腹腔镜胆囊切除术（LC）", "note": "有症状胆囊结石的金标准术式"},
+        {"id": "open_cholecystectomy","name": "开腹胆囊切除术",       "note": "腹腔镜困难或术中发现粘连严重时"},
+        {"id": "eswl_pao",            "name": "体外震波碎石+口服溶石", "note": "已少用，复发率高，不推荐作为常规"},
+        {"id": "watchful_waiting",    "name": "随访观察（不手术）",     "note": "仅适用于无症状静止性结石"}
+      ],
+      "indications": [
+        "反复右上腹绞痛、饱餐或油腻饮食后诱发",
+        "既往急性胆囊炎发作史",
+        "超声提示胆囊结石伴胆囊壁增厚（≥3mm）或胆囊收缩功能差",
+        "合并糖尿病、胆囊息肉≥10mm、瓷化胆囊等恶变高危因素"
+      ],
+      "contraindications": [
+        "无症状的静止性胆囊结石（不需预防性切除）",
+        "严重全身情况不能耐受麻醉手术",
+        "凝血功能障碍未纠正"
+      ],
+      "teaching_points": [
+        "有症状的胆囊结石伴慢性胆囊炎首选择期腹腔镜胆囊切除术，反复发作可致胆源性胰腺炎、胆总管结石",
+        "无症状静止性结石不需预防性手术，定期超声随访即可",
+        "保胆取石因复发率高、胆囊癌风险被忽略，不作为主流推荐"
+      ]
+    },
+
+    "HERNIA-K40": {
+      "disease_code": "HERNIA-K40",
+      "department": "普外科",
+      "difficulty": "初级",
+      "standard": {
+        "decision": "surgery",
+        "timing": "elective",
+        "procedure_id": "mesh_hernioplasty",
+        "conservative_ok": false
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊手术（嵌顿/绞顿6小时内）"},
+        {"id": "urgent",    "label": "限期手术（1-2周内）"},
+        {"id": "elective",  "label": "择期手术（门诊安排）"},
+        {"id": "none",      "label": "暂不手术，疝带保守"}
+      ],
+      "procedure_options": [
+        {"id": "mesh_hernioplasty", "name": "无张力疝修补术（平片/Lichtenstein或网塞）", "note": "成人可复性腹股沟疝首选，复发率低"},
+        {"id": "lap_TEP_TAPP",      "name": "腹腔镜经腹/完全腹膜外疝修补（TEP/TAPP）", "note": "双侧疝、复发疝、美观要求高者"},
+        {"id": "bassini",           "name": "Bassini组织缝合修补", "note": "无补片条件或感染切口时"},
+        {"id": "hernia_belt",       "name": "疝带压迫保守治疗",   "note": "仅用于1岁以下婴幼儿或年老体衰不能耐受手术者"}
+      ],
+      "indications": [
+        "站立/咳嗽时腹股沟可复性包块，平卧可回纳",
+        "包块逐渐增大、影响生活或出现坠胀疼痛",
+        "成人腹股沟疝一经确诊（1岁以上自愈可能性小）",
+        "女性股疝、既往嵌顿史者应尽早手术"
+      ],
+      "contraindications": [
+        "1岁以下婴幼儿（可观察，部分自愈）",
+        "年老体弱、合并严重心肺功能不全不能耐受手术",
+        "腹压未控制的慢性咳嗽、大量腹水、前列腺增生致尿潴留（应先纠正）",
+        "切口局部感染"
+      ],
+      "teaching_points": [
+        "成人腹股沟疝不能自愈，择期无张力修补是标准治疗，拖延有嵌顿、绞窄风险",
+        "嵌顿疝超过6小时、疑肠管坏死应急诊手术，术中根据肠管活力决定是否肠切除",
+        "术前应控制慢性咳嗽、便秘、前列腺增生等腹压增高因素，降低术后复发"
+      ]
+    },
+
+    "FRACTURE-S52": {
+      "disease_code": "FRACTURE-S52",
+      "department": "骨科",
+      "difficulty": "中级",
+      "standard": {
+        "decision": "conservative",
+        "timing": "none",
+        "procedure_id": "closed_reduction_cast",
+        "conservative_ok": true
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊切开复位内固定"},
+        {"id": "urgent",    "label": "限期手术（1周内消肿后）"},
+        {"id": "elective",  "label": "择期手术"},
+        {"id": "none",      "label": "暂不手术，闭合复位+石膏/夹板外固定"}
+      ],
+      "procedure_options": [
+        {"id": "closed_reduction_cast", "name": "闭合复位+石膏/夹板外固定", "note": "无移位或手法复位后稳定的Colles骨折首选"},
+        {"id": "external_fixator",     "name": "外固定支架固定",         "note": "严重粉碎、开放骨折、软组织条件差"},
+        {"id": "ORP_plating",           "name": "切开复位钢板内固定（ORIF）", "note": "手法复位失败、关节内移位、背侧成角丢失、不稳定骨折"},
+        {"id": "conservative_early_mob", "name": "保守治疗+早期功能锻炼", "note": "老年低能量无移位骨折可早期活动"}
+      ],
+      "indications": [
+        "跌倒手掌撑地后腕部疼痛、餐叉样畸形",
+        "X线示桡骨远端骨折，背侧移位（Colles）或掌侧移位（Smith）",
+        "无明显移位或手法复位后对位对线良好、关节面台阶<2mm"
+      ],
+      "contraindications": [
+        "不稳定粉碎骨折、关节面台阶≥2mm、复位后再次移位者——应手术而非长期石膏",
+        "开放性骨折需急诊清创+固定",
+        "合并血管神经损伤需急诊探查"
+      ],
+      "teaching_points": [
+        "大多数桡骨远端低能量骨折可通过闭合复位+石膏/夹板保守治疗获得良好功能",
+        "手术适应证：复位失败、关节内移位≥2mm、不稳定骨折、合并血管神经肌腱损伤",
+        "复位后需掌屈尺偏位石膏固定2周，随后改为功能位，并定期复查X线防止再移位"
+      ]
+    },
+
+    "THYROID-E04": {
+      "disease_code": "THYROID-E04",
+      "department": "甲状腺乳腺外科/普外科",
+      "difficulty": "高级",
+      "standard": {
+        "decision": "surgery",
+        "timing": "elective",
+        "procedure_id": "FNA_first",
+        "conservative_ok": false
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊手术"},
+        {"id": "urgent",    "label": "限期手术（2周内）"},
+        {"id": "elective",  "label": "择期手术（穿刺病理回报后安排）"},
+        {"id": "none",      "label": "暂不手术，随访观察"}
+      ],
+      "procedure_options": [
+        {"id": "FNA_first",            "name": "超声引导下细针穿刺活检（FNA）后决定", "note": "TI-RADS 4a结节首选诊断步骤，再根据Bethesda结果决定是否手术"},
+        {"id": "lobectomy",             "name": "甲状腺腺叶+峡部切除术",               "note": "FNA提示恶性或可疑恶性（Bethesda V/VI）的单侧结节"},
+        {"id": "total_thyroidectomy",    "name": "甲状腺全切术",                       "note": "双侧癌、淋巴结转移、远处转移高危者"},
+        {"id": "US_followup",           "name": "超声随访（每6-12个月）",              "note": "TI-RADS 3类或Bethesda II良性小结节"}
+      ],
+      "indications": [
+        "超声提示TI-RADS 4a及以上结节",
+        "结节直径≥1.5cm（4a）或短期内增大、形态不规则、微钙化、边界不清",
+        "FNA Bethesda V（可疑恶性）或VI（恶性）",
+        "合并声带麻痹、颈部淋巴结可疑转移"
+      ],
+      "contraindications": [
+        "凝血功能障碍未纠正、不能耐受全麻",
+        "TI-RADS 3类以下、直径<1cm且无高危超声特征——应随访而非直接手术",
+        "严重心肺功能不全"
+      ],
+      "teaching_points": [
+        "TI-RADS 4a结节不应直接手术，应先行超声引导下FNA穿刺活检，根据Bethesda细胞学结果分层处理",
+        "Bethesda VI（恶性）或V（可疑恶性）行腺叶+峡部切除；可疑/不明意义者可重复FNA或分子检测",
+        "甲状腺癌预后好，术前需评估声带活动度、颈部淋巴结及降钙素（排除髓样癌）"
+      ]
+    },
+
+    "BREAST-C50": {
+      "disease_code": "BREAST-C50",
+      "department": "甲状腺乳腺外科",
+      "difficulty": "高级",
+      "standard": {
+        "decision": "surgery",
+        "timing": "urgent",
+        "procedure_id": "breast_conserving_surgery",
+        "conservative_ok": false
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊手术"},
+        {"id": "urgent",    "label": "限期手术（活检确诊后1-2周内）"},
+        {"id": "elective",  "label": "择期手术（新辅助化疗后）"},
+        {"id": "none",      "label": "暂不手术，单纯放化疗"}
+      ],
+      "procedure_options": [
+        {"id": "breast_conserving_surgery", "name": "保乳手术+前哨淋巴结活检+术后全乳放疗", "note": "早期、肿瘤≤3cm、乳房比例合适、切缘可阴性者首选"},
+        {"id": "modified_radical_masectomy", "name": "乳腺癌改良根治术",                "note": "肿瘤大、多中心病灶、保乳禁忌或患者选择切除"},
+        {"id": "neoadjuvant_then_surgery",  "name": "新辅助化疗后再手术",              "note": "局部晚期、三阴性/HER2+、拟降期保乳者"},
+        {"id": "endocrine_alone",           "name": "仅内分泌/靶向治疗不手术",        "note": "仅用于IV期姑息或不能耐受手术者"}
+      ],
+      "indications": [
+        "穿刺活检证实乳腺癌（浸润性导管癌/小叶癌等）",
+        "临床分期I-II期、可手术切除",
+        "钼靶/超声/MRI提示单发或多灶病变、无远处转移",
+        "患者知情同意、心肺功能可耐受手术"
+      ],
+      "contraindications": [
+        "IV期广泛远处转移（骨、肺、肝、脑）且无并发症——以全身治疗为主",
+        "严重全身衰竭、不能耐受麻醉手术",
+        "保乳禁忌：多中心病灶、切缘反复阳性、妊娠中晚期放疗禁忌"
+      ],
+      "teaching_points": [
+        "乳腺癌以手术为主综合治疗；早期患者保乳手术+放疗与改良根治术长期生存率相当，生活质量更好",
+        "术前需完善乳腺超声、钼靶、MRI、腋窝淋巴结评估及全身分期（胸部CT、腹部超声/CT、骨扫描或PET-CT）",
+        "局部晚期、三阴性或HER2阳性患者可先行新辅助化疗/靶向治疗降期，再手术"
+      ]
+    },
+
+    "PERF-K25": {
+      "disease_code": "PERF-K25",
+      "department": "普外科",
+      "difficulty": "高级",
+      "standard": {
+        "decision": "surgery",
+        "timing": "emergency",
+        "procedure_id": "lap_omental_patch",
+        "conservative_ok": false
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊手术（立即/6小时内）"},
+        {"id": "urgent",    "label": "限期手术（24小时内）"},
+        {"id": "elective",  "label": "择期手术（穿孔愈合后）"},
+        {"id": "none",      "label": "暂不手术，禁食+胃肠减压+PPI保守"}
+      ],
+      "procedure_options": [
+        {"id": "lap_omental_patch", "name": "腹腔镜胃溃疡穿孔修补+腹腔冲洗（大网膜 patch）", "note": "患者一般情况可、发病时间短、穿孔小者首选"},
+        {"id": "open_patch",        "name": "开腹穿孔修补+腹腔冲洗",                       "note": "腹腔镜困难、穿孔大、脓稠或休克者"},
+        {"id": "definitive_ulcer_surgery", "name": "彻底性溃疡手术（胃大部切除）",         "note": "穿孔大、瘢痕性幽门梗阻、疑恶性者"},
+        {"id": "conservative_pp",   "name": "保守治疗（禁食+胃肠减压+PPI+抗感染）",       "note": "严格选择：空腹穿孔、症状轻、腹膜炎局限、病情稳定者，需密切观察"}
+      ],
+      "indications": [
+        "突发上腹刀割样剧痛并迅速蔓延至全腹",
+        "板状腹、全腹压痛反跳痛、肝浊音界缩小或消失",
+        "立位腹平片或CT示膈下游离气体",
+        "既往溃疡病史或服用NSAIDs/阿司匹林史"
+      ],
+      "contraindications": [
+        "发病已超过24小时、腹膜炎局限、一般情况极差不能耐受任何麻醉手术者，可严密监护下保守（属例外）",
+        "尚未明确诊断、需先鉴别（如急性胰腺炎、心梗）"
+      ],
+      "teaching_points": [
+        "胃十二指肠溃疡穿孔伴弥漫性腹膜炎应急诊手术，首选腹腔镜穿孔修补+腹腔冲洗",
+        "保守治疗仅适用于空腹、小穿孔、腹膜炎局限且病情稳定的患者，一旦加重立即手术",
+        "术后需规范PPI足疗程治疗、根除幽门螺杆菌、停用NSAIDs，并复查胃镜排除胃癌"
+      ]
+    },
+
+    "ILEUS-K56": {
+      "disease_code": "ILEUS-K56",
+      "department": "普外科",
+      "difficulty": "高级",
+      "standard": {
+        "decision": "surgery",
+        "timing": "urgent",
+        "procedure_id": "exploratory_laparotomy",
+        "conservative_ok": false
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊手术（疑绞顿/肠坏死立即）"},
+        {"id": "urgent",    "label": "限期手术（保守观察24-48小时无效后）"},
+        {"id": "elective",  "label": "择期手术"},
+        {"id": "none",      "label": "暂不手术，禁食+胃肠减压+补液"}
+      ],
+      "procedure_options": [
+        {"id": "exploratory_laparotomy", "name": "急诊剖腹/腹腔镜探查+松解/肠切除", "note": "绞窄性肠梗阻或保守无效者"},
+        {"id": "laparoscopic_lysis",    "name": "腹腔镜粘连松解术",                "note": "既往腹部手术史、单纯粘连性肠梗阻、情况稳定者"},
+        {"id": "conservative_decomp",   "name": "保守治疗（禁食+胃肠减压+灌肠+补液）", "note": "单纯性、麻痹性、早期粘连性肠梗阻可先观察"},
+        {"id": "stent_dilation",        "name": "肠道支架/内镜下减压",             "note": "肿瘤性梗阻过渡或不能耐受手术者"}
+      ],
+      "indications": [
+        "痛、吐、胀、闭（腹痛、呕吐、腹胀、停止排气排便）",
+        "肠型、蠕动波、肠鸣音亢进或金属音",
+        "立位腹平片/CT示多个气液平面、扩张肠袢",
+        "保守治疗24-48小时无缓解，或出现腹膜刺激征、发热、酸中毒、血性腹水等绞窄征象"
+      ],
+      "contraindications": [
+        "麻痹性肠梗阻（术后/腹膜炎/低钾）——以治疗原发病为主，不急于手术",
+        "单纯性早期粘连性肠梗阻、症状轻、无血运障碍——可先保守观察",
+        "一般情况极差不能耐受手术者"
+      ],
+      "teaching_points": [
+        "机械性肠梗阻先禁食、胃肠减压、补液、纠正水电解质紊乱；观察期不宜超过24-48小时",
+        "一旦疑诊绞窄性肠梗阻（持续剧烈腹痛、腹膜刺激征、发热、WBC升高、代谢性酸中毒、血性腹水）应急诊手术",
+        "术中根据肠管活力决定是否行肠切除吻合；恶性肿瘤梗阻可支架过渡或一期切除"
+      ]
+    },
+
+    "VARICOSE-I83": {
+      "disease_code": "VARICOSE-I83",
+      "department": "血管外科/普外科",
+      "difficulty": "中级",
+      "standard": {
+        "decision": "conservative",
+        "timing": "none",
+        "procedure_id": "compression_first",
+        "conservative_ok": true
+      },
+      "timing_options": [
+        {"id": "emergency", "label": "急诊手术"},
+        {"id": "urgent",    "label": "限期手术"},
+        {"id": "elective",  "label": "择期手术（症状加重后）"},
+        {"id": "none",      "label": "暂不手术，压力治疗+生活方式干预"}
+      ],
+      "procedure_options": [
+        {"id": "compression_first", "name": "压力治疗（医用二级弹力袜）+抬高患肢+避免久站", "note": "CEAP C2级无并发症者首选"},
+        {"id": "EVLA",              "name": "腔内激光/射频消融（EVLA/RFA）",          "note": "隐股静脉反流、症状明显者微创首选"},
+        {"id": "high_ligation",     "name": "大隐静脉高位结扎+剥脱术",                "note": "传统术式，曲张范围广或微创条件不具备者"},
+        {"id": "foam_sclerotherapy","name": "泡沫硬化剂注射治疗",                     "note": "属支静脉曲张、术后残留或复发"},
+        {"id": "no_treatment",      "name": "观察（无症状C1/C2）",                   "note": "无临床症状、患者不愿干预者"}
+      ],
+      "indications": [
+        "下肢浅静脉迂曲扩张、久站后酸胀沉重",
+        "CEAP分级C3及以上（水肿、皮肤改变）、C4色素沉着/湿疹、C5愈合溃疡、C6活动溃疡",
+        "血栓性浅静脉炎反复发作者",
+        "超声证实隐股/隐腘静脉反流且症状影响生活"
+      ],
+      "contraindications": [
+        "深静脉血栓形成（DVT）致下肢回流障碍——禁忌浅静脉手术",
+        "动静脉畸形、髂静脉压迫综合征未处理者",
+        "妊娠期、哺乳期静脉曲张（多数产后缓解）",
+        "严重动脉供血不足"
+      ],
+      "teaching_points": [
+        "CEAP C2级无症状或症状轻微者首选压力治疗+生活方式干预，不应直接手术",
+        "出现水肿、皮肤营养改变、溃疡或严重症状时再考虑腔内热消融（EVLA/RFA）或高位结扎剥脱",
+        "术前必须行下肢静脉彩超评估深静脉通畅情况，深静脉血栓为手术禁忌"
+      ]
+    }
+  }
+}

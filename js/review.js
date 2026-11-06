@@ -18,6 +18,7 @@
     { key: 'abx',        name: '抗菌药物分级管理',          weight: 5,  groups: ['ABX'] },
     { key: 'insurance',  name: '医保/基药/集采经济性',        weight: 2,  groups: ['INSURANCE'] },
     { key: 'lab',       name: '检验检查适宜性',              weight: 5,  groups: ['LAB'] },
+    { key: 'surgery',   name: '手术指征判断',                weight: 15, groups: ['SURGERY'] },
   ];
 
   function classifyHit(h) {
@@ -38,7 +39,9 @@
     const rxHas = (rx) => rx && Array.isArray(rx.items) &&
       rx.items.some(it => it && it.drug && it.drug.dosage_form !== 'solvent');
     const hasLab = ctx.lab_rx && Array.isArray(ctx.lab_rx.items) && ctx.lab_rx.items.length > 0;
-    return rxHas(ctx.normal_rx) || rxHas(ctx.iv_rx) || hasLab;
+    // 纯手术指征决策（未开药/未开检验）也算有效就诊，不判空处方
+    const hasSurgery = !!(ctx.surgery_rx && ctx.surgery_rx.decision);
+    return rxHas(ctx.normal_rx) || rxHas(ctx.iv_rx) || hasLab || hasSurgery;
   }
 
   function score(hits, ctx) {
@@ -103,7 +106,8 @@
     { key: 'compat',   name: '配伍识别' },
     { key: 'special',  name: '特殊人群关注' },
     { key: 'ess',      name: '基药集采甲类使用' },
-    { key: 'abx',      name: '抗菌药物合理使用' }
+    { key: 'abx',      name: '抗菌药物合理使用' },
+    { key: 'surgery',  name: '手术决策' }
   ];
 
   function mapReviewToRadar(review) {
@@ -117,7 +121,8 @@
       compat:  (safe('compat_sv').score + safe('compat_int').score) / (safe('compat_sv').weight + safe('compat_int').weight) * 100,
       special: safe('special_pop').score / safe('special_pop').weight * 100,
       ess:     safe('insurance').score / safe('insurance').weight * 100,
-      abx:     safe('abx').score / safe('abx').weight * 100
+      abx:     safe('abx').score / safe('abx').weight * 100,
+      surgery: safe('surgery').score / safe('surgery').weight * 100
     };
   }
 

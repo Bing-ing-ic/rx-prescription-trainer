@@ -1053,6 +1053,198 @@
         "status": "abnormal",
         "note": "支原体肺炎典型影像"
       }
+    ],
+    "CHOLE-K81": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "14.8",
+        "status": "high",
+        "note": "白细胞及中性粒升高"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "65",
+        "status": "high",
+        "note": "CRP升高"
+      },
+      {
+        "exam_code": "BIO-ALT",
+        "result": "42",
+        "status": "normal",
+        "note": "转氨酶正常，需警惕Mirizzi综合征"
+      },
+      {
+        "exam_code": "IMG-ABDOM-US",
+        "result": "胆囊增大约9×4cm，壁弥漫增厚约4mm，双边征，腔内可见结石影",
+        "status": "abnormal",
+        "note": "急性胆囊炎典型超声"
+      }
+    ],
+    "STONE-K80": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "7.2",
+        "status": "normal",
+        "note": "白细胞正常"
+      },
+      {
+        "exam_code": "BIO-ALT",
+        "result": "35",
+        "status": "normal",
+        "note": "肝功能正常"
+      },
+      {
+        "exam_code": "IMG-ABDOM-US",
+        "result": "胆囊大小正常，壁毛糙增厚约3mm，腔内多发强回声团伴声影，最大约1.2cm",
+        "status": "abnormal",
+        "note": "胆囊结石伴慢性胆囊炎"
+      }
+    ],
+    "HERNIA-K40": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "6.8",
+        "status": "normal",
+        "note": "血常规正常"
+      },
+      {
+        "exam_code": "CBC-HGB",
+        "result": "145",
+        "status": "normal",
+        "note": "血红蛋白正常"
+      },
+      {
+        "exam_code": "IMG-ABDOM-US",
+        "result": "腹股沟区腹壁缺损约2cm，经腹股沟管突出可复性包块，内容物为肠管样回声",
+        "status": "abnormal",
+        "note": "腹股沟疝超声"
+      }
+    ],
+    "FRACTURE-S52": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "8.5",
+        "status": "normal",
+        "note": "创伤后轻度升高可接受"
+      },
+      {
+        "exam_code": "BIO-CR",
+        "result": "75",
+        "status": "normal",
+        "note": "肌酐正常，术前评估"
+      },
+      {
+        "exam_code": "IMG-XRAY-WRIST",
+        "result": "桡骨远端距关节面3cm以内横形骨折，远折端向桡背侧移位，呈Colles骨折表现，关节面尚平整",
+        "status": "abnormal",
+        "note": "桡骨远端Colles骨折"
+      }
+    ],
+    "THYROID-E04": [
+      {
+        "exam_code": "BIO-TSH",
+        "result": "2.1",
+        "status": "normal",
+        "note": "甲状腺功能正常"
+      },
+      {
+        "exam_code": "TUMOR-TG",
+        "result": "22",
+        "status": "normal",
+        "note": "甲状腺球蛋白正常范围"
+      },
+      {
+        "exam_code": "IMG-THYROID-US",
+        "result": "甲状腺右叶低回声结节1.2×0.8cm，边界欠清，形态不规则，内见微钙化，TI-RADS 4a类",
+        "status": "abnormal",
+        "note": "可疑恶性结节，建议FNA"
+      }
+    ],
+    "BREAST-C50": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "6.5",
+        "status": "normal",
+        "note": "血常规正常"
+      },
+      {
+        "exam_code": "IMG-MAMMO",
+        "result": "右乳外上象限不规则高密度肿块，边缘毛刺，伴多形性微钙化，BI-RADS 5类",
+        "status": "abnormal",
+        "note": "乳腺癌钼靶表现"
+      },
+      {
+        "exam_code": "IMG-BREAST-US",
+        "result": "右乳低回声肿块2.0×1.5cm，纵横比>1，边界不清，后方回声衰减，腋下淋巴结结构异常",
+        "status": "abnormal",
+        "note": "乳腺超声恶性征象"
+      }
+    ],
+    "PERF-K25": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "16.2",
+        "status": "high",
+        "note": "白细胞显著升高"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "95",
+        "status": "high",
+        "note": "CRP显著升高"
+      },
+      {
+        "exam_code": "BIO-AMYLASE",
+        "result": "280",
+        "status": "high",
+        "note": "血淀粉酶可轻度升高，需与胰腺炎鉴别"
+      },
+      {
+        "exam_code": "IMG-XRAY-ABDOM",
+        "result": "立位腹平片可见双侧膈下游离气体，肠管轻度胀气",
+        "status": "abnormal",
+        "note": "消化道穿孔典型表现"
+      }
+    ],
+    "ILEUS-K56": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "12.5",
+        "status": "high",
+        "note": "白细胞升高"
+      },
+      {
+        "exam_code": "BIO-K",
+        "result": "3.1",
+        "status": "low",
+        "note": "低钾，需纠正"
+      },
+      {
+        "exam_code": "IMG-XRAY-ABDOM",
+        "result": "腹中部可见多个扩张肠袢及阶梯状气液平面，结肠未见胀气",
+        "status": "abnormal",
+        "note": "机械性小肠梗阻典型X线"
+      }
+    ],
+    "VARICOSE-I83": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "6.5",
+        "status": "normal",
+        "note": "血常规正常"
+      },
+      {
+        "exam_code": "BIO-PLT",
+        "result": "210",
+        "status": "normal",
+        "note": "血小板正常"
+      },
+      {
+        "exam_code": "IMG-LOWER-VEIN-DUPLEX",
+        "result": "大隐静脉隐股瓣膜反流，深静脉通畅未见血栓，浅静脉迂曲扩张",
+        "status": "abnormal",
+        "note": "大隐静脉反流、深静脉通畅"
+      }
     ]
   }
 }

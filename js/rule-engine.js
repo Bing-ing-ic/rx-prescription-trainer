@@ -786,6 +786,54 @@
       }
     }
 
+    // ====================== 12. 手术指征判断（SURGERY） ======================
+    // ctx.surgery_rx = {decision, timing, procedure_id}；ctx.surgeryCase 为 surgeries.json 对应病例。
+    // 未做手术决策（纯处方/纯检验就诊）时整组跳过，不扣分。
+    const surgeryRx = ctx.surgery_rx;
+    const surgeryCase = ctx.surgeryCase;
+    if (surgeryRx && surgeryRx.decision && surgeryCase) {
+      const std = surgeryCase.standard || {};
+      const dxNameS = disease.name || '';
+      const tLabel = id => (surgeryCase.timing_options || []).find(t => t.id === id)?.label || id || '';
+      const pLabel = id => (surgeryCase.procedure_options || []).find(p => p.id === id)?.name || id || '';
+
+      // SUR-01：有手术指征却选保守（延误治疗）
+      if (std.decision === 'surgery' && surgeryRx.decision === 'conservative') {
+        hits.push(hit(R['SUR-01'], 'error',
+          `「${dxNameS}」具有明确手术指征，你选择了保守治疗，可能延误病情（穿孔/坏死/感染扩散等风险）。`,
+          `本病种一经确诊应及时手术干预；仅在患者存在明确禁忌症不能耐受手术时方可保守，并须在病历中说明理由。`));
+      }
+      // SUR-02：无手术指征却选手术（过度医疗）
+      else if (std.decision === 'conservative' && surgeryRx.decision === 'surgery') {
+        hits.push(hit(R['SUR-02'], 'error',
+          `「${dxNameS}」适宜保守治疗，你选择了手术治疗，存在过度医疗指征。`,
+          `本例应先行保守治疗并随访；确有手术指征须有充分影像学/病情依据并经上级医师会诊。`));
+      }
+      // 决策方向正确 → 正向通过提示
+      else if (std.decision === surgeryRx.decision) {
+        hits.push(pass(R['SUR-01'],
+          `手术指征决策与本病种标准一致（${std.decision === 'surgery' ? '拟手术治疗' : '保守治疗'}）。`));
+      }
+
+      // 以下仅在医生选择手术时进一步核对时机与术式
+      if (std.decision === 'surgery' && surgeryRx.decision === 'surgery') {
+        // SUR-03：手术时机选择错误
+        if (surgeryRx.timing && surgeryRx.timing !== std.timing) {
+          hits.push(hit(R['SUR-03'], 'warn',
+            `手术时机选择欠妥：你选「${tLabel(surgeryRx.timing)}」，本病种宜「${tLabel(std.timing)}」。`,
+            `按病情紧急程度定时机：急腹症/穿孔/大出血应急诊手术，限期病变完善检查后24-48小时内手术，择期病变可待炎症控制后手术。`));
+        }
+        // SUR-04：术式选择不当（未选首选术式）
+        if (surgeryRx.procedure_id && surgeryRx.procedure_id !== std.procedure_id) {
+          hits.push(hit(R['SUR-04'], 'warn',
+            `术式与首选方案不一致：你选「${pLabel(surgeryRx.procedure_id)}」，本病种首选「${pLabel(std.procedure_id)}」。`,
+            `首选术式通常创伤小、恢复快；改变术式须有术中发现或患者个体化依据（如穿孔、严重粘连）。`));
+        }
+        // SUR-05（禁忌症仍安排手术）：本病种 contraindications 为一般性禁忌宣教，
+        // 具体患者是否真的存在禁忌由 SUR-01/SUR-02 决策方向覆盖；此处不重复扣分，避免对正确答案误报。
+      }
+    }
+
     return hits;
   }
 

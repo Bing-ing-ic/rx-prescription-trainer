@@ -391,6 +391,56 @@
       "severity": "pass",
       "basis": "《病历书写基本规范》：异常检验指标应复查并追踪；《处方管理办法》第十四条：医师应根据诊断与病情需要开具相应检查。",
       "weight_hint": "lab"
+    },
+    {
+      "rule_id": "SUR-01",
+      "group": "SURGERY",
+      "title": "具有手术指征却选择保守治疗（延误治疗）",
+      "trigger": "surgeryCase.standard.decision=\"surgery\" 但医生提交 decision=\"conservative\" 或 timing=\"none\"",
+      "logic": "对照 surgeries.json[disease.code].standard；若应手术而医生选保守，判 error",
+      "severity": "error",
+      "basis": "《外科学》诊疗规范：具有明确手术适应证的疾病（急性阑尾炎、急性胆囊炎、溃疡穿孔、绞窄性肠梗阻、可手术乳腺癌等）应及时手术，延误可致穿孔、坏死、感染扩散、肿瘤进展。",
+      "weight_hint": "surgery"
+    },
+    {
+      "rule_id": "SUR-02",
+      "group": "SURGERY",
+      "title": "不应手术却选择手术（过度医疗）",
+      "trigger": "surgeryCase.standard.decision=\"conservative\" 但医生提交 decision=\"surgery\"",
+      "logic": "对照 surgeries.json[disease.code].standard；若应保守（如CEAP C2静脉曲张、稳定桡骨远端骨折、无症状结石）而医生选手术，判 error",
+      "severity": "error",
+      "basis": "临床诊疗基本原则：严格掌握手术适应证，避免过度医疗；无症状或轻症疾病首选保守/随访，手术存在创伤、麻醉及并发症风险。",
+      "weight_hint": "surgery"
+    },
+    {
+      "rule_id": "SUR-03",
+      "group": "SURGERY",
+      "title": "手术时机选择错误",
+      "trigger": "surgeryCase.standard.timing 与医生提交 timing 不一致（emergency/urgent/elective/none）",
+      "logic": "应急诊（emergency）却选择期（elective），或应择期却选急诊，判 warn；错把 none 选为手术时机一并提示",
+      "severity": "warn",
+      "basis": "外科学治疗原则：急诊手术（如穿孔、嵌顿、坏疽）须在6小时内；限期手术（如恶性肿瘤、急性胆囊炎早期）在数日至2周内；择期手术可在完善准备后安排；时机错误可致并发症或不必要的紧急风险。",
+      "weight_hint": "surgery"
+    },
+    {
+      "rule_id": "SUR-04",
+      "group": "SURGERY",
+      "title": "首选术式选择不当",
+      "trigger": "surgeryCase.standard.procedure_id 与医生提交 procedure_id 不一致",
+      "logic": "未选择本病种首选术式（如急性阑尾炎未选腹腔镜阑尾切除、乳腺癌早期未选保乳或合理术式），判 warn；选择明显禁忌术式升级为 error",
+      "severity": "warn",
+      "basis": "各外科疾病诊疗指南：腹腔镜阑尾切除、早期腹腔镜胆囊切除、保乳手术+放疗、FNA先行等为当前循证首选术式；术式选择应结合患者具体情况并符合指南。",
+      "weight_hint": "surgery"
+    },
+    {
+      "rule_id": "SUR-05",
+      "group": "SURGERY",
+      "title": "存在手术禁忌证仍安排手术",
+      "trigger": "医生提交 decision=\"surgery\"，但患者存在 surgeries.json[disease.code].contraindications 所列禁忌证",
+      "logic": "若术中发现严重心肺功能不全、不能耐受麻醉、深静脉血栓、未纠正凝血障碍等禁忌证仍安排手术，判 error",
+      "severity": "error",
+      "basis": "麻醉与手术风险评估规范：术前必须评估全身情况，存在绝对禁忌证者应先纠正或改用替代治疗，不得勉强手术。",
+      "weight_hint": "surgery"
     }
   ]
 }

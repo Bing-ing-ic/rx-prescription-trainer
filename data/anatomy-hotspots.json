@@ -12,6 +12,8 @@
     "endocrine":   "img/anat-endocrine.jpg",
     "immune":       "img/anat-immune.jpg",
     "muscular":     "img/anat-muscular.jpg",
+    "integumentary":"img/anat-integumentary.jpg",
+    "sensory":      "img/anat-sensory.jpg",
     "regional_headneck": "img/anat-regional-headneck.jpg",
     "regional_thorax":  "img/anat-regional-thorax.jpg",
     "regional_abdomen":  "img/anat-regional-abdomen.jpg",

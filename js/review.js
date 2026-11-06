@@ -31,25 +31,27 @@
     return 'format';
   }
 
-  // 判断 visit_ctx 中是否存在任何治疗性药品（排除溶媒）
-  function hasAnyTherapeuticDrug(ctx) {
+  // 判断 visit_ctx 中是否存在任何治疗性药品（排除溶媒）或检验检查项目
+  // 并列开具模型：只开检验检查单（无药品）也是有效就诊，不应判空处方 0 分
+  function hasAnyOrder(ctx) {
     if (!ctx) return false;
     const rxHas = (rx) => rx && Array.isArray(rx.items) &&
       rx.items.some(it => it && it.drug && it.drug.dosage_form !== 'solvent');
-    return rxHas(ctx.normal_rx) || rxHas(ctx.iv_rx);
+    const hasLab = ctx.lab_rx && Array.isArray(ctx.lab_rx.items) && ctx.lab_rx.items.length > 0;
+    return rxHas(ctx.normal_rx) || rxHas(ctx.iv_rx) || hasLab;
   }
 
   function score(hits, ctx) {
     hits = Array.isArray(hits) ? hits.filter(Boolean) : [];
 
-    // ===== 空处方拦截（P0）：两张处方均无任何药品 → 直接判不合格，0分 =====
-    if (!hasAnyTherapeuticDrug(ctx)) {
+    // ===== 空就诊拦截（P0）：既无药品也无检验检查项目 → 直接判不合格，0分 =====
+    if (!hasAnyOrder(ctx)) {
       const emptyHit = {
-        rule_id: 'FMT-EMPTY', group: 'FORMAT', title: '空处方（未开具任何药品）',
+        rule_id: 'FMT-EMPTY', group: 'FORMAT', title: '空就诊（未开具药品或检验检查项目）',
         severity: 'error',
-        message: '处方未开具任何治疗药品（连对症/支持用药都没有），属严重不合格处方，不得提交。',
-        basis: '《处方管理办法》第十四条：医师应当根据诊断开具处方；无药品处方无临床意义。',
-        suggestion: '根据临床诊断，至少开具一种适宜药品（首选推荐用药），或明确告知患者无需用药并记录在案。'
+        message: '本次就诊既未开具任何治疗药品，也未开具任何检验检查项目，无临床处置内容，不得提交点评。',
+        basis: '《处方管理办法》第十四条：医师应当根据诊断开具处方；无任何处置的就诊无临床意义。',
+        suggestion: '根据临床诊断，至少开具一种适宜药品或必要的检验检查项目。'
       };
       const dimResult = {};
       DIMS.forEach(d => { dimResult[d.key] = { name: d.name, weight: d.weight, hits: [emptyHit], deduction: d.weight, score: 0, verdict: 'error' }; });

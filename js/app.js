@@ -35,7 +35,7 @@
   // ---------- DOM ----------
   const $ = id => document.getElementById(id);
   function show(view) {
-    ['view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs'].forEach(v => $(v).classList.add('hidden'));
+    ['view-home','view-rx','view-lab','view-report','view-radar','view-mistakes','view-stats','view-drugs'].forEach(v => $(v).classList.add('hidden'));
     $(view).classList.remove('hidden');
     window.scrollTo(0,0);
   }
@@ -256,6 +256,12 @@
     $('btn-back-home').onclick = () => show('view-home');
     $('btn-print').onclick = () => window.print();
     $('btn-submit').onclick = submitRx;
+    // 检验检查单视图：工具栏按钮
+    const btnGotoLab = $('btn-goto-lab'); if (btnGotoLab) btnGotoLab.onclick = openLab;
+    const btnLabBack = $('btn-lab-back-home'); if (btnLabBack) btnLabBack.onclick = () => show('view-home');
+    const btnGotoRx = $('btn-goto-rx'); if (btnGotoRx) btnGotoRx.onclick = () => openRx(S.rxType || 'normal');
+    const btnLabPrint = $('btn-lab-print'); if (btnLabPrint) btnLabPrint.onclick = () => window.print();
+    const btnLabSubmit = $('btn-lab-submit'); if (btnLabSubmit) btnLabSubmit.onclick = submitRx;
     $('btn-report-home').onclick = () => show('view-home');
     $('btn-radar-home').onclick = () => show('view-home');
     $('btn-mistakes-home').onclick = () => show('view-home');
@@ -776,28 +782,39 @@
       $('rx-body-iv').classList.add('hidden');
       document.querySelectorAll('.iv-only').forEach(e=>e.classList.add('hidden'));
     }
-    // 重置检验检查单（每次打开处方笺清空上一次选择）
-    S.labOrders = [];
-    S.labCatFilter = '全部';
-    const ls = $('lab-search'); if (ls) ls.value = '';
-    document.querySelectorAll('#lab-cat-chips .lab-chip').forEach((b, i) => {
-      b.classList.toggle('active', i === 0);
-    });
-    // 检验申请单前记（复用处方前记患者信息）
-    if ($('lo-name')) $('lo-name').textContent = S.patient.name;
-    if ($('lo-gender')) $('lo-gender').textContent = S.patient.gender;
-    if ($('lo-age')) $('lo-age').textContent = S.patient.age;
-    if ($('lo-mz')) $('lo-mz').textContent = S.patient.mz;
-    if ($('lo-dx')) $('lo-dx').textContent = S.disease.name;
-    if ($('lo-date')) $('lo-date').textContent = new Date().toISOString().slice(0, 10);
-
+    // 注意：此处不清空 S.labOrders —— 处方与检验单并列开具，双向跳转时保留双方数据
     renderDrugList(); renderIvDrugList(); renderNormalItems(); renderIvGroups();
-    renderLabOrderPaper(); renderLabExamList();
     show('view-rx');
     } catch(e) {
       document.body.insertAdjacentHTML('afterbegin',
         '<div style="position:fixed;top:0;left:0;right:0;background:red;color:white;padding:12px;z-index:99999;font-size:14px;font-family:monospace;">' +
         '❌ openRx错误: ' + e.message + '<br><br>' + (e.stack||'').slice(0,500) + '</div>');
+    }
+  }
+
+  // ---------- 打开检验检查申请单（独立医疗文书，与处方并列） ----------
+  function openLab() {
+    try {
+      if (!S.disease || !S.patient) { alert('病例数据未就绪，请先点"开始新病例"'); return; }
+      // 申请编号
+      if ($('lab-no')) {
+        $('lab-no').textContent = 'LAB-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + String(Math.floor(Math.random()*900000+100000));
+      }
+      // 前记（复用患者/诊断，不新建数据源）
+      if ($('lo-name')) $('lo-name').textContent = S.patient.name;
+      if ($('lo-gender')) $('lo-gender').textContent = S.patient.gender;
+      if ($('lo-age')) $('lo-age').textContent = S.patient.age;
+      if ($('lo-mz')) $('lo-mz').textContent = S.patient.mz;
+      if ($('lo-dx')) $('lo-dx').textContent = S.disease.name;
+      if ($('lo-date')) $('lo-date').textContent = new Date().toISOString().slice(0,10);
+      // 不清空 S.labOrders：医生可能在检验单视图与处方视图间来回切换
+      renderLabOrderPaper();
+      renderLabExamList();
+      show('view-lab');
+    } catch(e) {
+      document.body.insertAdjacentHTML('afterbegin',
+        '<div style="position:fixed;top:0;left:0;right:0;background:red;color:white;padding:12px;z-index:99999;font-size:14px;font-family:monospace;">' +
+        '❌ openLab错误: ' + e.message + '<br><br>' + (e.stack||'').slice(0,500) + '</div>');
     }
   }
 
@@ -1710,6 +1727,14 @@
   // ---------- 提交 ----------
   function submitRx() {
     try {
+    // 硬阻断：药品与检验单都为空时，无任何可点评内容
+    const hasDrugs = (S.normalItems && S.normalItems.length > 0) ||
+                     (S.ivGroups && S.ivGroups.some(g => g.solvent || g.drugs.length > 0));
+    const hasLab = (S.labOrders && S.labOrders.length > 0);
+    if (!hasDrugs && !hasLab) {
+      return alert('请至少开具处方药品或检验检查项目后再提交点评。');
+    }
+
     // 硬阻断：每组必须有溶媒+药
     if (S.rxType === 'iv') {
       const groupsOk = S.ivGroups.every(g => g.solvent && g.drugs.length > 0);
@@ -1787,7 +1812,7 @@
     } : (S.rxType === 'iv' ? { rx_id: 'NORMAL-PLACEHOLDER', items: [], duration_days: 0 } : null);
 
     const labCtx = {
-      rx_id: $('rx-no').textContent,
+      rx_id: ($('lab-no') ? $('lab-no').textContent : '') || $('rx-no').textContent,
       items: S.labOrders.map(o => ({
         exam_code: o.code, name: o.name, abbr: o.abbr || '',
         category: o.category || '', subcategory: o.subcategory || '',
@@ -2129,6 +2154,7 @@
 
   // 暴露到全局供 inline onclick 调用
   window.__openRx = openRx;
+  window.__openLab = openLab;
   window.__newCase = newCase;
   window.__checkDiag = checkDiagnosis;
 

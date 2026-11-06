@@ -385,10 +385,10 @@
     {
       "rule_id": "LAB-03",
       "group": "LAB",
-      "title": "应检未检（异常指标未复核）",
-      "trigger": "本病种 diseaseLabMap 中存在 status=abnormal/high/low 的异常项，但学生一项检验检查都没开",
-      "logic": "异常指标存在且 lab_rx.items.length === 0 → warn",
-      "severity": "warn",
+      "title": "未开具检验检查项目（中性提示）",
+      "trigger": "lab_rx.items.length === 0",
+      "logic": "并列开具模型下医生有权只开药不开检验；未开检验时输出 pass 级中性提示，不扣分。若本病例存在异常指标，提示后续复查追踪。",
+      "severity": "pass",
       "basis": "《病历书写基本规范》：异常检验指标应复查并追踪；《处方管理办法》第十四条：医师应根据诊断与病情需要开具相应检查。",
       "weight_hint": "lab"
     }

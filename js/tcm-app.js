@@ -189,6 +189,14 @@
     $('tcm-p-fazheng').textContent = fz;
     $('tcm-p-date').textContent = new Date().toLocaleDateString();
     $('tcm-rx-no').textContent = 'TCM-' + Date.now().toString().slice(-6);
+    // P1-3：妊娠状态复选框——男性患者禁用；女性默认未勾选（学员可勾选模拟妊娠病例）
+    const pregBox = $('tcm-pregnant-flag');
+    if (pregBox) {
+      pregBox.checked = false;
+      pregBox.disabled = (p.gender === '男');
+      const pregHint = $('tcm-pregnant-hint');
+      if (pregHint) pregHint.style.display = (p.gender === '男') ? 'none' : '';
+    }
     // 默认载入参考方（按 code 匹配）
     S.items = [];
     S.selectedFormula = null;
@@ -239,8 +247,14 @@
     const comp = fm.composition || [];
     comp.forEach(c => {
       const exist = S.items.find(it => it.name === c.herb);
-      if (exist) { exist.dose = c.dose; exist.role = c.role; }
-      else S.items.push({ name: c.herb, dose: c.dose, role: c.role, prep: '' });
+      if (exist) {
+        exist.dose = c.dose;
+        exist.role = c.role;
+        // P1-2：方剂 composition 中的 prep（如制川乌"先煎久煎"）带入处方
+        if (c.prep && !exist.prep) exist.prep = c.prep;
+      } else {
+        S.items.push({ name: c.herb, dose: c.dose, role: c.role, prep: c.prep || '' });
+      }
     });
     // 显示方解
     const detail = $('tcm-formula-detail');
@@ -313,11 +327,28 @@
     if (S.items.length === 0) { alert('处方为空，请先选方或加味。'); return; }
     const zhengInput = ($('tcm-zheng-input').value || '').trim();
     const faZhengInput = ($('tcm-fazheng-input').value || S.case.treatment_principle || '').trim();
+
+    // P1-3：把患者上下文（性别/年龄/妊娠状态）传给规则引擎，
+    // 使 pregnancy_ban / pregnancy_caution / 老年 / 小儿 等特殊人群规则在真实 UI 跑批时触发。
+    const p = S.patient || {};
+    const pregBox = $('tcm-pregnant-flag');
+    let pregnant = false;
+    if (pregBox && !pregBox.disabled) {
+      pregnant = !!pregBox.checked;
+    }
+    const patientCtx = {
+      name: p.name || '',
+      gender: p.gender || '',
+      age: typeof p.age === 'number' ? p.age : parseInt(p.age, 10) || null,
+      pregnant: pregnant && p.gender !== '男'
+    };
+
     const hits = window.TCMEngine.check({
       case: S.case, zhengInput, faZhengInput,
       formulaName: S.selectedFormula ? S.selectedFormula.name : '',
       formulaCode: S.selectedFormula ? S.selectedFormula.code : '',
-      herbs: S.items
+      herbs: S.items,
+      patient: patientCtx
     });
     const review = window.TCMEngine.score(hits);
     renderReport(review, hits, { zhengInput, faZhengInput });

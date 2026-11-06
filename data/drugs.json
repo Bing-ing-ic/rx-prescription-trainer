@@ -149,7 +149,16 @@
       "manufacturer": "珠海联邦制药",
       "pinyin": "amxljn",
       "pinyin_code": "AMXLJN",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "pediatric_dose": {
+        "basis": "per_day",
+        "mg_per_kg_min": 20,
+        "mg_per_kg_max": 40,
+        "doses_per_day": 3,
+        "interval": "q8h",
+        "max_single_mg": 500,
+        "note": "阿莫西林 20-40 mg/kg/天，分 3 次 q8h；新生儿/早产儿需减量。"
+      }
     },
     {
       "generic_name": "布洛芬缓释胶囊",
@@ -413,7 +422,31 @@
       "manufacturer": "博福-益普生",
       "pinyin": "mtss",
       "pinyin_code": "MTSS",
-      "reference_status": "core"
+      "reference_status": "core",
+      "pediatric_dose": {
+        "basis": "age_banded",
+        "age_bands": [
+          {
+            "max_age": 1,
+            "per_day_sachets": 1,
+            "doses": 3
+          },
+          {
+            "min_age": 1,
+            "max_age": 2,
+            "per_day_sachets_lo": 1,
+            "per_day_sachets_hi": 2,
+            "doses": 3
+          },
+          {
+            "min_age": 2,
+            "per_day_sachets_lo": 2,
+            "per_day_sachets_hi": 3,
+            "doses": 3
+          }
+        ],
+        "note": "<1 岁 1 袋/天；1-2 岁 1-2 袋/天；>2 岁 2-3 袋/天，均分 3 次。"
+      }
     },
     {
       "generic_name": "口服补液盐III",
@@ -2337,7 +2370,16 @@
       "reference_status": "core",
       "aliases": [
         "对乙酰氨基酚"
-      ]
+      ],
+      "pediatric_dose": {
+        "basis": "per_dose",
+        "mg_per_kg_min": 10,
+        "mg_per_kg_max": 15,
+        "interval": "q4-6h",
+        "max_single_mg": 600,
+        "daily_mg_per_kg_max": 60,
+        "note": "对乙酰氨基酚 10-15 mg/kg/次，q4-6h，每日不超过 60 mg/kg；单次最大 600 mg。"
+      }
     },
     {
       "generic_name": "瑞舒伐他汀钙片",
@@ -3386,7 +3428,16 @@
       ],
       "pinyin": "blfhxy",
       "pinyin_code": "BLFHXY",
-      "reference_status": "core"
+      "reference_status": "core",
+      "pediatric_dose": {
+        "basis": "per_dose",
+        "mg_per_kg_min": 5,
+        "mg_per_kg_max": 10,
+        "interval": "q6-8h",
+        "max_single_mg": 400,
+        "daily_mg_per_kg_max": 40,
+        "note": "布洛芬 5-10 mg/kg/次，q6-8h，每日不超过 40 mg/kg；6 个月以下婴儿慎用。"
+      }
     },
     {
       "generic_name": "川贝枇杷膏",
@@ -3580,7 +3631,15 @@
       "pinyin": "zsyamxlnklwsj",
       "is_tcm_injection": false,
       "pinyin_code": "ZSYAMXLNKLWSJ",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "pediatric_dose": {
+        "basis": "per_day",
+        "mg_per_kg_min": 30,
+        "mg_per_kg_max": 60,
+        "doses_per_day": 3,
+        "interval": "q8h",
+        "note": "阿莫西林克拉维酸钾 30-60 mg/kg/天（按阿莫西林计），分 3 次。"
+      }
     },
     {
       "generic_name": "注射用奥美拉唑钠",
@@ -4075,7 +4134,14 @@
       "manufacturer": "诺和诺德",
       "pinyin": "ptdszsy",
       "pinyin_code": "PTDSZSY",
-      "reference_status": "core"
+      "reference_status": "core",
+      "pediatric_dose": {
+        "basis": "per_hour",
+        "unit_per_kg_min": 0.05,
+        "unit_per_kg_max": 0.1,
+        "interval": "持续静滴",
+        "note": "糖尿病酮症酸中毒：普通胰岛素 0.05-0.1 U/kg/h 静脉泵入；血糖降至 13.9 mmol/L 后改含糖液+胰岛素。"
+      }
     },
     {
       "generic_name": "达格列净片",
@@ -4311,7 +4377,16 @@
       ],
       "pinyin": "aqmsghxj",
       "pinyin_code": "AQMSGHXJ",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "pediatric_dose": {
+        "basis": "per_day",
+        "mg_per_kg_min": 10,
+        "mg_per_kg_max": 12,
+        "doses_per_day": 1,
+        "interval": "qd",
+        "max_single_mg": 500,
+        "note": "阿奇霉素 10 mg/kg/天 qd，连用 3 天；或第 1 天 10 mg/kg，第 2-5 天 5 mg/kg。"
+      }
     },
     {
       "generic_name": "多西环素片",
@@ -4512,7 +4587,15 @@
       "special_warnings_json": [],
       "pinyin": "zsyaqms",
       "pinyin_code": "ZSYAQMS",
-      "reference_status": "core"
+      "reference_status": "core",
+      "pediatric_dose": {
+        "basis": "per_day",
+        "mg_per_kg_min": 10,
+        "mg_per_kg_max": 10,
+        "doses_per_day": 1,
+        "interval": "qd",
+        "note": "儿童静脉阿奇霉素 10 mg/kg/天 qd，单次最大 500 mg，滴注时间≥60 min。"
+      }
     },
     {
       "generic_name": "注射用克林霉素磷酸酯",
@@ -4900,7 +4983,15 @@
       "pinyin": "tbkl",
       "pinyin_code": "TBKL",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "pediatric_dose": {
+        "basis": "per_day",
+        "mg_per_kg_min": 20,
+        "mg_per_kg_max": 40,
+        "doses_per_day": 3,
+        "interval": "q8h",
+        "note": "头孢克洛 20-40 mg/kg/天，分 3 次；每日最大 1 g。"
+      }
     },
     {
       "generic_name": "头孢曲松",
@@ -5128,7 +5219,15 @@
       "manufacturer": "葛兰素史克",
       "pinyin": "sdmwhxrr",
       "pinyin_code": "SDMWHXRR",
-      "reference_status": "core"
+      "reference_status": "core",
+      "pediatric_dose": {
+        "basis": "per_dose",
+        "mg_per_kg_min": 0.1,
+        "mg_per_kg_max": 0.3,
+        "interval": "q20min×3后q1-4h",
+        "max_single_mg": 5,
+        "note": "沙丁胺醇雾化 0.1-0.3 mg/kg/次（单次最大 5 mg），按病情 q20min 至 q4h。"
+      }
     },
     {
       "generic_name": "氨茶碱",
@@ -5170,7 +5269,14 @@
       "is_solvent": false,
       "allowed_solvents_json": [],
       "skin_test_required": false,
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "pediatric_dose": {
+        "basis": "fixed_dose",
+        "per_dose_mg_min": 0.5,
+        "per_dose_mg_max": 1,
+        "interval": "bid",
+        "note": "布地奈德雾化混悬液 0.5-1 mg/次 bid；<4 岁起始 0.5 mg bid。"
+      }
     },
     {
       "generic_name": "丙酸氟替卡松",
@@ -6999,7 +7105,19 @@
       "manufacturer": "",
       "pinyin": "zsyjpnlhpsn",
       "pinyin_code": "ZSYJPNLHPSN",
-      "reference_status": "core"
+      "reference_status": "core",
+      "pediatric_dose": {
+        "basis": "per_dose",
+        "mg_per_kg_min": 1,
+        "mg_per_kg_max": 2,
+        "interval": "q6-12h",
+        "severe": {
+          "mg_per_kg_min": 10,
+          "mg_per_kg_max": 20,
+          "note": "哮喘持续状态/感染性休克 10-20 mg/kg/天（单次最大 1 g）"
+        },
+        "note": "一般抗炎 1-2 mg/kg/次 q6-12h；重症 10-20 mg/kg/天。"
+      }
     },
     {
       "generic_name": "华法林钠片",

@@ -43,6 +43,62 @@
     window.scrollTo(0,0);
   }
 
+  // ---------- P1-3 患者信息表单同步 ----------
+  // 把 S.patient 的字段同步到表单；表单改动回写到 S.patient，最终进入 ctx.patient
+  function syncPatientForm() {
+    if (!S.patient) return;
+    const ageEl = $('pi-age'), wtEl = $('pi-weight'), genderEl = $('pi-gender'),
+          pregEl = $('pi-pregnant'), algEl = $('pi-allergies');
+    if (ageEl) ageEl.value = S.patient.age != null ? S.patient.age : '';
+    if (wtEl) wtEl.value = S.patient.weight != null ? S.patient.weight : '';
+    if (genderEl) genderEl.value = S.patient.gender || '男';
+    if (pregEl) pregEl.checked = !!S.patient.pregnant;
+    if (algEl) algEl.value = S.patient.allergies || '';
+    // 合并症 checkbox
+    document.querySelectorAll('#pi-comorbidities input[type=checkbox]').forEach(cb => {
+      cb.checked = (S.patient.comorbidities || []).includes(cb.value);
+    });
+  }
+  function readPatientForm() {
+    if (!S.patient) return;
+    const ageEl = $('pi-age'), wtEl = $('pi-weight'), genderEl = $('pi-gender'),
+          pregEl = $('pi-pregnant'), algEl = $('pi-allergies');
+    if (ageEl && ageEl.value !== '') S.patient.age = parseFloat(ageEl.value);
+    if (wtEl && wtEl.value !== '') S.patient.weight = parseFloat(wtEl.value);
+    if (genderEl) S.patient.gender = genderEl.value;
+    if (pregEl) S.patient.pregnant = pregEl.checked;
+    if (algEl) S.patient.allergies = algEl.value.trim();
+    S.patient.comorbidities = Array.from(document.querySelectorAll('#pi-comorbidities input[type=checkbox]:checked')).map(cb => cb.value);
+    // 同步到处方前记显示
+    if ($('p-age')) $('p-age').textContent = S.patient.age;
+    if ($('p-weight')) $('p-weight').textContent = S.patient.weight;
+    if ($('p-gender')) $('p-gender').textContent = S.patient.gender;
+    if ($('case-meta')) {
+      $('case-meta').textContent = `${S.patient.name}，${S.patient.gender}，实足 ${S.patient.age} 岁，体重 ${S.patient.weight} kg，门诊号 ${S.patient.mz}`;
+    }
+  }
+  // 展开/收起
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = $('patient-info-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const body = $('patient-info-body');
+        const arrow = $('patient-info-arrow');
+        if (!body) return;
+        const open = body.style.display === 'none';
+        body.style.display = open ? 'block' : 'none';
+        if (arrow) arrow.textContent = open ? '点击收起 ▲' : '点击展开 ▼';
+      });
+    }
+    // 表单改动实时回写
+    ['pi-age','pi-weight','pi-gender','pi-pregnant','pi-allergies'].forEach(id => {
+      const el = $(id);
+      if (el) el.addEventListener('change', readPatientForm);
+    });
+    const cbBox = $('pi-comorbidities');
+    if (cbBox) cbBox.addEventListener('change', readPatientForm);
+  });
+
   // 药品通用名 → 拼音首字母（用于首拼模糊搜索）
   const DRUG_PINYIN = {
     '苯磺酸氨氯地平片': 'bhsalcdp',
@@ -483,6 +539,13 @@
     const vs = sp.volume_status;
     $('case-volume').innerHTML =
       `<b>容量状态：</b>皮肤弹性=${vs.skin_turgor}；黏膜=${vs.mucosa}；尿量=${vs.urine}；吐泻=${vs.diarrhea_vomit_freq}；进食=${vs.oral_intake}`;
+
+    // P1-3：重置并预填患者信息表单（过敏史/合并症/妊娠）
+    S.patient.allergies = '';
+    S.patient.comorbidities = [];
+    S.patient.pregnant = false;
+    syncPatientForm();
+
     $('case-card').classList.remove('hidden');
     $('diag-input').value = '';
     $('diag-feedback').innerHTML = '';
@@ -749,6 +812,7 @@
   function openRx(type) {
     try {
     if (!S.disease || !S.patient) { alert('病例数据未就绪，请先点"开始新病例"'); return; }
+    readPatientForm();  // P1-3：进入处方前读取最新患者信息
     S.rxType = type;
     // 前记
     $('p-name').textContent = S.patient.name;
@@ -2046,6 +2110,9 @@
       }))
     };
 
+    // P1-3：提交前读取患者信息表单（体重/年龄/性别/妊娠/过敏史/合并症）
+    readPatientForm();
+
     const ctx = {
       disease: S.disease,
       patient: S.patient,
@@ -2055,6 +2122,7 @@
       disease_lab_map: S.diseaseLabMap,
       rulesMeta: S.rules,
       compatData: S.compat,
+      drugDb: S.drugs,
       restricted_confirmed: S.restrictedConfirmed,
       // 手术指征决策（与处方/检验并列；未做决策时为 null，规则引擎自动跳过）
       surgery_rx: hasSurgery ? {

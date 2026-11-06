@@ -441,6 +441,76 @@
       "severity": "error",
       "basis": "麻醉与手术风险评估规范：术前必须评估全身情况，存在绝对禁忌证者应先纠正或改用替代治疗，不得勉强手术。",
       "weight_hint": "surgery"
+    },
+    {
+      "rule_id": "DOSAGE-WT",
+      "group": "DOSAGE",
+      "title": "儿童按体重 mg/kg 剂量核算",
+      "trigger": "patient.weight 存在且药品 drugs.json 条目含 pediatric_dose，按 mg/kg 核算单次或日剂量",
+      "logic": "对儿童患者：解析 single_dose 为 mg（或 U），除以体重 kg，与 pediatric_dose.mg_per_kg_min/max 比较；超上限→error，接近上限→warn；basis=per_day 时按 单次×日次数 算日 mg/kg；同时校验 max_single_mg 封顶；fixed_dose 按固定单次剂量区间；per_hour（胰岛素）按 U/kg/h 核算。",
+      "severity": "error",
+      "basis": "《中国国家处方集（儿童版）》；药品说明书【儿童用药】项；mg/kg 剂量换算是儿科处方核心。",
+      "weight_hint": "dosage"
+    },
+    {
+      "rule_id": "ALLERGY-01",
+      "group": "SPECIAL_POP",
+      "title": "处方含患者既往过敏药物",
+      "trigger": "patient.allergies 文本中包含处方药品通用名或其类别的关键词（如青霉素/阿莫西林/头孢）",
+      "logic": "将患者自述过敏史按关键词拆分（通用名、大类如青霉素/头孢/磺胺/NSAIDs），若处方中药品通用名或别名命中过敏关键词→error；青霉素过敏同时提示避免β-内酰胺交叉过敏。",
+      "severity": "error",
+      "basis": "《处方管理办法》第六条：处方应注明过敏史；《青霉素皮肤试验专家共识》：青霉素过敏者禁用青霉素类。",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "COMORBID-01",
+      "group": "SPECIAL_POP",
+      "title": "G6PD 缺乏症患者用药禁忌（蚕豆病）",
+      "trigger": "patient.comorbidities 含 G6PD缺乏，且处方含伯氨喹/磺胺类/呋喃类/蚕豆制品",
+      "logic": "G6PD 缺乏患者使用氧化性药物可致急性溶血；命中伯氨喹/磺胺/呋喃妥因/蚕豆→error。",
+      "severity": "error",
+      "basis": "《G6PD 缺乏症新生儿筛查与临床诊治专家共识》。",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "COMORBID-02",
+      "group": "SPECIAL_POP",
+      "title": "青光眼患者使用抗胆碱能药物",
+      "trigger": "patient.comorbidities 含青光眼，且处方含阿托品/山莨菪碱/东莨菪碱/托吡卡胺/苯海拉明等抗胆碱药",
+      "logic": "抗胆碱药升高眼内压，可诱发闭角型青光眼急性发作→error。",
+      "severity": "error",
+      "basis": "《青光眼诊疗指南》：闭角型青光眼禁用抗胆碱药。",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "COMORBID-03",
+      "group": "SPECIAL_POP",
+      "title": "前列腺增生患者使用抗胆碱/α-激动药",
+      "trigger": "patient.comorbidities 含前列腺增生，且处方含阿托品/山莨菪碱/麻黄碱/伪麻黄碱/苯海拉明",
+      "logic": "抗胆碱药与α受体激动药松弛膀胱颈/收缩尿道括约肌，可致急性尿潴留→warn（提示风险并建议替代）。",
+      "severity": "warn",
+      "basis": "《良性前列腺增生诊疗指南》：慎用抗胆碱药与减充血剂。",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "COMORBID-04",
+      "group": "SPECIAL_POP",
+      "title": "妊娠患者用药禁忌（与 SPEC-02 联动）",
+      "trigger": "patient.pregnant=true 且处方含已知妊娠禁忌药（ACEI/ARB/他汀/喹诺酮/四环素/华法林/异维A酸/甲氨蝶呤等）",
+      "logic": "孕妇禁用药物清单硬匹配；命中→error。",
+      "severity": "error",
+      "basis": "《妊娠和哺乳期用药指南》；FDA 妊娠分级 D/X 类药物。",
+      "weight_hint": "special_pop"
+    },
+    {
+      "rule_id": "ECON-01",
+      "group": "INSURANCE",
+      "title": "经济性提示（同通用名贵价药 vs 集采便宜药）",
+      "trigger": "处方中药品 jtc_batch 为空/非集采，但同 pharmacology_class 存在集采品种，或单剂价格显著高于同类中位价",
+      "logic": "仅提示不扣分（pass 级或 warn）：若选了非集采贵价药而同类有集采中标品种，提示可考虑集采仿制药以降低患者负担。",
+      "severity": "warn",
+      "basis": "《国家组织药品集中采购和使用试点方案》：优先选用集采中选药品。",
+      "weight_hint": "insurance"
     }
   ]
 }

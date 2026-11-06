@@ -834,6 +834,199 @@
       }
     }
 
+    // ====================== 13. 儿童体重 mg/kg 剂量核算（DOSAGE-WT） ======================
+    // 仅当患者有体重且药品有 pediatric_dose 时触发；避免对成人无体重患者误报。
+    const patientWeight = parseFloat(patient.weight);
+    const hasWeight = !isNaN(patientWeight) && patientWeight > 0 && patientWeight < 200;
+    if (hasWeight) {
+      ['normal_rx','iv_rx'].forEach(k => {
+        const rx = ctx[k]; if (!rx || !Array.isArray(rx.items)) return;
+        therapeuticItems(rx).forEach(it => {
+          const pd = it.drug.pediatric_dose;
+          if (!pd) return;
+          const g = it.drug.generic_name;
+          // 解析单次剂量（mg 或 U）
+          const doseStr = it.single_dose || '';
+          // 胰岛素类用 U
+          if (pd.basis === 'per_hour' && /胰岛素/.test(g)) {
+            const m = String(doseStr).match(/([\d.]+)\s*(U|IU|u)/i);
+            if (!m) return;
+            const uPerHr = parseFloat(m[1]);
+            const perKg = uPerHr / patientWeight;
+            if (perKg > pd.unit_per_kg_max * 1.5) {
+              hits.push(hit(R['DOSAGE-WT'], 'error',
+                `「${g}」按 ${uPerHr} U/h 给予，患者 ${patientWeight}kg 折合 ${perKg.toFixed(3)} U/kg/h，超过儿童/DKA 推荐 ${pd.unit_per_kg_min}-${pd.unit_per_kg_max} U/kg/h 上限。`,
+                `按 0.05-0.1 U/kg/h 静脉泵入，每小时复测血糖与血钾。`));
+            } else if (perKg > pd.unit_per_kg_max) {
+              hits.push(hit(R['DOSAGE-WT'], 'warn',
+                `「${g}」折合 ${perKg.toFixed(3)} U/kg/h，略高于推荐上限 ${pd.unit_per_kg_max} U/kg/h。`,
+                `复核胰岛素泵速与血糖下降速率（每小时 3.9-6.1 mmol/L）。`));
+            }
+            return;
+          }
+          const v = parseDoseMg(doseStr);
+          if (v == null) return;
+          // fixed_dose：布地奈德雾化等，按固定单次剂量区间
+          if (pd.basis === 'fixed_dose') {
+            if (v > pd.per_dose_mg_max) {
+              hits.push(hit(R['DOSAGE-WT'], 'warn',
+                `「${g}」单次 ${v}mg 超过儿童常用单次 ${pd.per_dose_mg_min}-${pd.per_dose_mg_max}mg 上限。`,
+                `建议 ${pd.per_dose_mg_min}-${pd.per_dose_mg_max}mg/次 ${pd.interval||''}。`));
+            }
+            return;
+          }
+          if (pd.basis === 'age_banded') {
+            // 蒙脱石散：按年龄分档，不按体重核算，跳过重量计算但提示
+            return;
+          }
+          // per_dose：单次 mg/kg
+          if (pd.basis === 'per_dose') {
+            const perKg = v / patientWeight;
+            const cap = pd.max_single_mg;
+            if (cap && v > cap) {
+              hits.push(hit(R['DOSAGE-WT'], 'error',
+                `「${g}」单次 ${v}mg 超过单次封顶 ${cap}mg（${pd.note||''}）。`,
+                `下调至单次 ≤${cap}mg。`));
+            } else if (perKg > pd.mg_per_kg_max * 1.5) {
+              hits.push(hit(R['DOSAGE-WT'], 'error',
+                `「${g}」单次 ${v}mg / ${patientWeight}kg = ${perKg.toFixed(1)} mg/kg，超过儿童推荐 ${pd.mg_per_kg_min}-${pd.mg_per_kg_max} mg/kg/次 1.5 倍。`,
+                `按 ${pd.mg_per_kg_max} mg/kg/次 折算，约 ${Math.round(pd.mg_per_kg_max*patientWeight)}mg/次 ${pd.interval||''}。`));
+            } else if (perKg > pd.mg_per_kg_max) {
+              hits.push(hit(R['DOSAGE-WT'], 'warn',
+                `「${g}」折合 ${perKg.toFixed(1)} mg/kg/次，略高于推荐上限 ${pd.mg_per_kg_max} mg/kg。`,
+                `复核剂量：${pd.note||''}`));
+            } else if (perKg < pd.mg_per_kg_min * 0.5) {
+              hits.push(hit(R['DOSAGE-WT'], 'warn',
+                `「${g}」折合 ${perKg.toFixed(1)} mg/kg/次，低于推荐下限 ${pd.mg_per_kg_min} mg/kg 的一半，可能剂量不足。`,
+                `建议 ${pd.mg_per_kg_min}-${pd.mg_per_kg_max} mg/kg/次。`));
+            }
+            return;
+          }
+          // per_day：日剂量 = 单次 × 日次数；与 mg_per_kg_min/max 比较
+          if (pd.basis === 'per_day') {
+            const freqPerDay = ({'qd':1,'bid':2,'tid':3,'qid':4,'q8h':3,'q12h':2,'qn':1,'st':1,'prn':1,'q6h':4,'q12h':2})[it.frequency] || pd.doses_per_day || 3;
+            const dailyMg = v * freqPerDay;
+            const perKgPerDay = dailyMg / patientWeight;
+            if (perKgPerDay > pd.mg_per_kg_max * 1.5) {
+              hits.push(hit(R['DOSAGE-WT'], 'error',
+                `「${g}」日剂量 ${dailyMg}mg / ${patientWeight}kg = ${perKgPerDay.toFixed(1)} mg/kg/天，超过儿童推荐 ${pd.mg_per_kg_min}-${pd.mg_per_kg_max} mg/kg/天 1.5 倍。`,
+                `按 ${pd.mg_per_kg_max} mg/kg/天 分 ${pd.doses_per_day||freqPerDay} 次，约 ${Math.round(pd.mg_per_kg_max*patientWeight/freqPerDay)}mg/次。`));
+            } else if (perKgPerDay > pd.mg_per_kg_max) {
+              hits.push(hit(R['DOSAGE-WT'], 'warn',
+                `「${g}」日剂量折合 ${perKgPerDay.toFixed(1)} mg/kg/天，略高于推荐上限 ${pd.mg_per_kg_max} mg/kg/天。`,
+                `复核：${pd.note||''}`));
+            }
+            return;
+          }
+        });
+      });
+    }
+
+    // ====================== 14. 过敏史 / 合并症 / 妊娠 ======================
+    // ALLERGY-01：患者过敏史关键词匹配处方药品
+    const allergyRaw = (patient.allergies || patient.allergy || '').toString().trim();
+    if (allergyRaw) {
+      // 拆关键词：按逗号/顿号/分号/空格切分；同时识别大类
+      const allergyKeywords = allergyRaw.split(/[,，、;；\s]+/).map(s => s.trim()).filter(Boolean);
+      // 大类扩展：青霉素类过敏 → 阿莫西林/氨苄西林/哌拉西林/头孢类（提示交叉）
+      const betaLactamAllergy = allergyKeywords.some(k => /青霉素|阿莫西林|氨苄|哌拉西林|β内酰胺|内酰胺/.test(k));
+      const sulfonamideAllergy = allergyKeywords.some(k => /磺胺|复方新诺明|柳氮/.test(k));
+      const nsaidAllergy = allergyKeywords.some(k => /NSAID|非甾体|布洛芬|双氯芬酸|阿司匹林|对乙酰氨基酚/.test(k));
+      allDrugs2.forEach(d => {
+        const name = d.generic_name || '';
+        // 1) 精确命中通用名
+        const hitKw = allergyKeywords.find(k => k && (name.includes(k) || k.includes(name)));
+        if (hitKw) {
+          hits.push(hit(R['ALLERGY-01'], 'error',
+            `患者既往药物过敏史：${allergyRaw}；本次处方「${name}」命中过敏关键词「${hitKw}」。`,
+            `立即停用该药，更换为非交叉过敏替代药；必要时行皮试。`));
+          return;
+        }
+        // 2) 青霉素类过敏 → 任何青霉素/头孢类（教学提示交叉过敏）
+        if (betaLactamAllergy && /阿莫西林|氨苄|哌拉西林|青霉素|苯唑西林|氯唑西林/.test(name)) {
+          hits.push(hit(R['ALLERGY-01'], 'error',
+            `患者自述青霉素类过敏，本次处方「${name}」同属青霉素类，禁用。`,
+            `更换为大环内酯类/呼吸喹诺酮（成人）等非β-内酰胺类替代。`));
+        }
+        // 3) 磺胺过敏 → 磺胺类
+        if (sulfonamideAllergy && /磺胺|复方磺胺|柳氮|塞来昔布|格列/.test(name)) {
+          hits.push(hit(R['ALLERGY-01'], 'error',
+            `患者自述磺胺类过敏，本次处方「${name}」含磺胺结构。`,
+            `更换为非磺胺类替代。`));
+        }
+        // 4) NSAID 过敏 → 同类 NSAID
+        if (nsaidAllergy && /布洛芬|双氯芬酸|萘普生|塞来昔布|美洛昔康|阿司匹林|洛索洛芬/.test(name)) {
+          hits.push(hit(R['ALLERGY-01'], 'error',
+            `患者自述 NSAID/解热镇痛药过敏，本次处方「${name}」同类。`,
+            `如需镇痛考虑对乙酰氨基酚（若未过敏）或阿片类。`));
+        }
+      });
+    }
+
+    // COMORBID-01~04：合并症禁忌
+    const comorbs = Array.isArray(patient.comorbidities) ? patient.comorbidities :
+                    (patient.comorbidities ? patient.comorbidities.toString().split(/[,，、;；]+/).map(s=>s.trim()).filter(Boolean) : []);
+    const hasCom = (k) => comorbs.some(c => c.includes(k));
+    if (comorbs.length) {
+      // COMORBID-01 G6PD 缺乏
+      if (hasCom('G6PD') || hasCom('蚕豆')) {
+        const g6pdDrugs = allDrugs2.filter(d => /伯氨喹|磺胺|呋喃妥因|呋喃唑酮|蚕豆|萘啶酸|维生素K3|维生素K4/.test(d.generic_name||''));
+        g6pdDrugs.forEach(d => {
+          hits.push(hit(R['COMORBID-01'], 'error',
+            `患者 G6PD 缺乏（蚕豆病），「${d.generic_name}」为氧化性药物，可诱发急性溶血。`,
+            `禁用；感染时选用青霉素/头孢类等非氧化性抗菌药。`));
+        });
+      }
+      // COMORBID-02 青光眼
+      if (hasCom('青光眼')) {
+        const glaucomDrugs = allDrugs2.filter(d => /阿托品|山莨菪碱|东莨菪碱|托吡卡胺|苯海拉明|异丙嗪|麻黄碱|伪麻黄碱|复方甘草/.test(d.generic_name||''));
+        glaucomDrugs.forEach(d => {
+          hits.push(hit(R['COMORBID-02'], 'error',
+            `患者青光眼，「${d.generic_name}」具抗胆碱作用，可升高眼压诱发闭角型青光眼急性发作。`,
+            `更换为无抗胆碱作用替代药；如需解痉用选择性平滑肌松弛药。`));
+        });
+      }
+      // COMORBID-03 前列腺增生
+      if (hasCom('前列腺')) {
+        const bphDrugs = allDrugs2.filter(d => /阿托品|山莨菪碱|东莨菪碱|苯海拉明|异丙嗪|麻黄碱|伪麻黄碱|氯苯那敏|抗组胺/.test(d.generic_name||''));
+        bphDrugs.forEach(d => {
+          hits.push(hit(R['COMORBID-03'], 'warn',
+            `患者前列腺增生，「${d.generic_name}」具抗胆碱/减充血作用，可能致急性尿潴留。`,
+            `如必须使用需监测排尿；优先选用无抗胆碱副作用替代药。`));
+        });
+      }
+    }
+    // COMORBID-04 妊娠禁忌（独立判断：patient.pregnant=true 或 comorbidities 含妊娠）
+    const isPregnant = patient.pregnant === true || patient.pregnancy === true ||
+                       comorbs.some(c => /妊娠|孕/.test(c)) || /孕妇|妊娠/.test(patient.note||'');
+    if (isPregnant) {
+      const pregRe = /卡托普利|依那普利|贝那普利|缬沙坦|厄贝沙坦|氯沙坦|替米沙坦|阿托伐他汀|瑞舒伐他汀|辛伐他汀|左氧氟沙星|环丙沙星|莫西沙星|四环素|多西环素|米诺环素|华法林|异维A酸|甲氨蝶呤|利巴韦林|雌激素|孕激素|口服避孕药/;
+      allDrugs2.forEach(d => {
+        if (pregRe.test(d.generic_name||'')) {
+          hits.push(hit(R['COMORBID-04'], 'error',
+            `患者妊娠状态，「${d.generic_name}」为妊娠禁忌/D-X 类药物，可致胎儿畸形或流产。`,
+            `更换为妊娠安全级别高（B/C 类）替代药；用药需产科医师会诊。`));
+        }
+      });
+    }
+
+    // ====================== 15. 经济性提示（ECON-01，仅 warn 不扣分） ======================
+    // 规则：若处方中某药 jtc_batch 为空，且同 pharmacology_class 存在集采品种，则提示
+    try {
+      const classHasJtc = {};
+      (ctx.drugDb || []).forEach(d => {
+        if (d && d.pharmacology_class && d.jtc_batch) classHasJtc[d.pharmacology_class] = true;
+      });
+      allDrugs2.forEach(d => {
+        if (!d || !d.pharmacology_class) return;
+        if (!d.jtc_batch && classHasJtc[d.pharmacology_class]) {
+          hits.push(hit(R['ECON-01'], 'warn',
+            `「${d.generic_name}」（${d.spec||''}）未列入国家/地方集采中选目录，同类药理分类（${d.pharmacology_class}）已有集采品种，价格更低。`,
+            `在疗效相当前提下，优先选用集采中选药品以降低患者负担。`));
+        }
+      });
+    } catch (e) { /* drugDb 未注入时静默跳过 */ }
+
     return hits;
   }
 

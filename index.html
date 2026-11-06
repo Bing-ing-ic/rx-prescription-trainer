@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261106lab3">
+<link rel="stylesheet" href="css/rx.min.css?v=20261106lab4">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -333,7 +333,7 @@
       <div class="lab-order-sign">
         <span>申请医师: ____________</span>
         <span>申请日期: ____________</span>
-        <span class="no-print" style="color:#94a3b8;">（结果列打印后手填或检验系统回填）</span>
+        <span class="no-print" style="color:#94a3b8;">（结果由系统按本病种模拟生成，供诊疗推演使用；点击结果可看解读）</span>
       </div>
     </div>
 
@@ -1117,6 +1117,17 @@
   </div>
 </div>
 
+<!-- 检验结果解读弹窗 -->
+<div class="modal-mask hidden" id="modal-lab-result">
+  <div class="modal" style="max-width:520px;">
+    <h3>🔬 检验结果解读</h3>
+    <div id="modal-lab-result-body"></div>
+    <div class="modal-actions" style="margin-top:14px;">
+      <button class="btn btn-primary" onclick="document.getElementById('modal-lab-result').classList.add('hidden')">关闭</button>
+    </div>
+  </div>
+</div>
+
 <footer class="foot-note">
   本系统为教学训练平台，所有患者均为合成假名；所有处方不得用于真实诊疗。
 </footer>
@@ -1175,7 +1186,7 @@
   }, true);
 })();
 </script>
-<script src="js/rule-engine.min.js?v=20261106lab3"></script>
+<script src="js/rule-engine.min.js?v=20261106lab4"></script>
 <script>
 // 网站访问统计（百度统计已在页面底部加载）
 (function() {
@@ -1197,8 +1208,8 @@
   document.body.appendChild(a);
 })();
 </script>
-<script src="js/review.min.js?v=20261106lab3"></script>
-<script src="js/app.min.js?v=20261106lab3"></script>
+<script src="js/review.min.js?v=20261106lab4"></script>
+<script src="js/app.min.js?v=20261106lab4"></script>
 <script src="js/tcm-engine.min.js?v=20261104fix1"></script>
 <script src="js/acup-engine.min.js?v=20261104fix1"></script>
 <script src="js/tcm-app.min.js?v=20261105ui1"></script>

@@ -863,15 +863,56 @@
     return new Set(S.labOrders.map(o => o.code));
   }
 
+  // 模拟检验结果：优先取本病种 diseaseLabMap 里的给定结果；
+  // 不在映射里的项目，按 ref_range 合成一个临床正常结果。
+  function simulateLabResult(exam) {
+    // 1) 本病种映射里有该项目 → 直接用给定的 result/status/note
+    if (S.disease && S.disease.code && S.diseaseLabMap) {
+      const rows = S.diseaseLabMap[S.disease.code];
+      if (Array.isArray(rows)) {
+        const hit = rows.find(r => r.exam_code === exam.code);
+        if (hit) {
+          return {
+            result: String(hit.result == null ? '' : hit.result),
+            status: hit.status || 'normal',
+            note: hit.note || ''
+          };
+        }
+      }
+    }
+    // 2) 合成正常结果
+    const ref = (exam.ref_range || '').trim();
+    // 取第一段（；;。。分隔）"low-high" 数值对；
+    // 若 high 后面紧跟中文（如"次/分"），说明是描述句而非纯数值参考范围，按描述处理。
+    const firstSeg = ref.split(/[；;。]/)[0].trim();
+    const m = firstSeg.match(/(\d+(?:\.\d+)?)\s*[-–~]\s*(\d+(?:\.\d+)?)/);
+    if (m) {
+      const after = firstSeg.slice(m.index + m[0].length).trim();
+      const followedByChinese = /^[一-龥]/.test(after);
+      if (!followedByChinese) {
+        const lo = parseFloat(m[1]), hi = parseFloat(m[2]);
+        const decimals = (m[1].indexOf('.') >= 0 || m[2].indexOf('.') >= 0)
+          ? Math.max(m[1].split('.')[1]?.length || 0, m[2].split('.')[1]?.length || 0)
+          : 0;
+        const mid = ((lo + hi) / 2).toFixed(decimals);
+        return { result: mid + (exam.unit ? ' ' + exam.unit : ''), status: 'normal', note: '本例未见异常' };
+      }
+    }
+    // 描述型（影像/心电图/内镜等）：ref_range 本身就是正常表现描述，直接采用
+    return { result: ref || '未见明显异常', status: 'normal', note: '本例未见异常' };
+  }
+
   function addLabOrder(code) {
     const exam = S.labExamDict[code];
     if (!exam) return;
     if (labOrderCodes().has(code)) return; // 防重复（规则 LAB-01 兜底）
+    const sim = simulateLabResult(exam);
     S.labOrders.push({
       code: exam.code, name: exam.name, abbr: exam.abbr || '',
       category: exam.category || '', subcategory: exam.subcategory || '',
       unit: exam.unit || '', ref_range: exam.ref_range || '—',
-      clinical_significance: exam.clinical_significance || ''
+      clinical_significance: exam.clinical_significance || '',
+      result: sim.result, status: sim.status, note: sim.note
     });
     renderLabOrderPaper();
     renderLabExamList();
@@ -900,19 +941,57 @@
     S.labOrders.forEach((o, i) => {
       const tr = document.createElement('tr');
       const abbr = o.abbr ? ` <span style="color:#0f4c81;font-size:12px;">(${o.abbr})</span>` : '';
+      // 结果列：按 status 着色，异常加箭头，可点击看解读
+      const st = o.status || 'normal';
+      let resultHtml = '';
+      if (st === 'high') resultHtml = `<span class="lab-abnormal">${o.result} ↑</span>`;
+      else if (st === 'low') resultHtml = `<span class="lab-abnormal">${o.result} ↓</span>`;
+      else if (st === 'abnormal') resultHtml = `<span class="lab-abnormal">${o.result} ⚠</span>`;
+      else resultHtml = `<span class="lab-normal-val">${o.result}</span>`;
       tr.innerHTML =
         `<td>${i + 1}</td>` +
         `<td style="text-align:left;font-weight:600;color:#1e293b;">${o.name}${abbr}</td>` +
         `<td>${o.subcategory || o.category || ''}</td>` +
         `<td style="font-size:12px;color:#64748b;">${o.ref_range || '—'}</td>` +
-        `<td class="lab-result-cell">　</td>` +
+        `<td class="lab-result-cell" data-idx="${i}" title="点击查看解读">${resultHtml}</td>` +
         `<td>${o.unit || ''}</td>` +
         `<td class="no-print"><button class="lab-order-remove" data-idx="${i}">移除</button></td>`;
       tbody.appendChild(tr);
     });
     tbody.querySelectorAll('.lab-order-remove').forEach(btn => {
-      btn.addEventListener('click', () => removeLabOrder(parseInt(btn.getAttribute('data-idx'), 10)));
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        removeLabOrder(parseInt(btn.getAttribute('data-idx'), 10));
+      });
     });
+    tbody.querySelectorAll('.lab-result-cell').forEach(cell => {
+      cell.addEventListener('click', () => openLabResultModal(parseInt(cell.getAttribute('data-idx'), 10)));
+    });
+  }
+
+  // 结果解读弹窗
+  function openLabResultModal(idx) {
+    const o = S.labOrders[idx];
+    if (!o) return;
+    const box = $('modal-lab-result-body');
+    if (!box) return;
+    const st = o.status || 'normal';
+    const stColor = (st === 'normal') ? '#15803d' : '#dc2626';
+    const stLabel = (st === 'high') ? '↑ 升高' : (st === 'low') ? '↓ 降低' : (st === 'abnormal') ? '⚠ 异常' : '正常';
+    box.innerHTML =
+      `<div style="margin-bottom:10px;">
+         <b style="font-size:16px;color:#1e293b;">${o.name}</b>
+         ${o.abbr ? `<span style="color:#0f4c81;margin-left:6px;font-size:13px;">(${o.abbr})</span>` : ''}
+         <span style="float:right;color:${stColor};font-weight:600;">${stLabel}</span>
+       </div>
+       <div style="background:#f8fafc;padding:10px 12px;border-radius:6px;margin:8px 0;">
+         <div style="font-size:12px;color:#64748b;">检验结果</div>
+         <div style="font-size:18px;font-weight:700;color:${stColor};">${o.result}</div>
+       </div>
+       <div style="font-size:13px;color:#475569;margin:6px 0;"><b>参考范围：</b>${o.ref_range || '—'}${o.unit ? '（' + o.unit + '）' : ''}</div>
+       <div style="font-size:13px;color:#475569;margin:6px 0;"><b>本例解读：</b>${o.note || '本例未见异常'}</div>
+       ${o.clinical_significance ? `<div style="font-size:13px;color:#475569;margin:6px 0;line-height:1.6;"><b>临床意义：</b>${o.clinical_significance}</div>` : ''}`;
+    $('modal-lab-result').classList.remove('hidden');
   }
 
   // 渲染选择器：搜索 + 类别筛选 + 本病例建议 chips + 分组列表

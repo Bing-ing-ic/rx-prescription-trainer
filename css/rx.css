@@ -1694,7 +1694,11 @@ input, select, textarea { font-family: inherit; }
 .lab-order-meta b { font-weight: 600; color: #1e293b; }
 .lab-order-table { margin-bottom: 6px; }
 .lab-order-table td.text-left, .lab-order-table th.text-left { text-align: left; }
-.lab-order-table .lab-result-cell { color: #94a3b8; font-size: 12px; }
+.lab-order-table .lab-result-cell { color: #1e293b; font-size: 13px; cursor: pointer; }
+.lab-order-table .lab-result-cell:hover { background: #f0f7ff; }
+.lab-result-cell .lab-abnormal { color: #dc2626; font-weight: 700; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+.lab-result-cell .lab-normal-val { color: #1e293b; font-weight: 500; }
+.lab-order-paper, #lab-paper { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
 .lab-order-empty {
   text-align: center; color: #94a3b8; font-size: 12.5px;
   padding: 14px 0 10px; border: 1px dashed #cbd5e1; border-radius: 6px;

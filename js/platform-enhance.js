@@ -704,9 +704,20 @@
     '足少阳胆经': 'img/meridians/GB-gallbladder.jpg',
     '足厥阴肝经': 'img/meridians/LR-liver.jpg',
     '任脉': 'img/meridians/RN-ren.jpg',
-    '督脉': 'img/meridians/GV-du.jpg'
+    '督脉': 'img/meridians/GV-du.jpg',
+    '经外奇穴': 'img/meridians/EX-extra-points.jpg'
   };
   var FALLBACK_IMG = 'img/acup-meridian-chart.jpg';
+
+  // 常用穴位定位特写图（code -> 局部解剖特写）
+  var POINT_CLOSEUP_IMG = {
+    'LI-04': 'img/meridians/EX-point-hegu.jpg',
+    'ST-36': 'img/meridians/EX-point-zusanli.jpg',
+    'PC-06': 'img/meridians/EX-point-neiguan.jpg',
+    'SP-06': 'img/meridians/EX-point-sanyinjiao.jpg',
+    'RN-04': 'img/meridians/EX-point-guanyuan.jpg',
+    'KI-01': 'img/meridians/EX-point-yongquan.jpg'
+  };
 
   function hookMeridianMap() {
     var sel = $('acup-map-meridian');
@@ -735,6 +746,40 @@
     sel.addEventListener('change', apply);
     // 初始应用一次
     apply();
+  }
+
+  // 点击穴位卡片时，在详情弹窗顶部注入该穴的局部解剖定位特写图
+  function hookPointCloseup() {
+    // 注入特写图样式（避免改动压缩版 css）
+    if (!document.getElementById('ap-closeup-style')) {
+      var st = document.createElement('style');
+      st.id = 'ap-closeup-style';
+      st.textContent =
+        '.ap-closeup{display:block;max-width:100%;max-height:340px;width:auto;height:auto;' +
+        'margin:0 auto 12px;border-radius:8px;border:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,.08);}';
+      document.head.appendChild(st);
+    }
+    document.addEventListener('click', function (e) {
+      var card = e.target.closest('.acup-map-point-card');
+      if (!card) return;
+      var code = card.getAttribute('data-code');
+      var src = code && POINT_CLOSEUP_IMG[code];
+      if (!src) return;
+      // 等待 acup-app.min.js 把弹窗内容渲染好
+      setTimeout(function () {
+        var body = $('ap-body');
+        if (!body) return;
+        var old = body.querySelector('.ap-closeup');
+        if (old) old.remove();
+        var img = document.createElement('img');
+        img.src = src;
+        img.className = 'ap-closeup';
+        img.alt = '穴位定位特写';
+        img.loading = 'lazy';
+        img.onerror = function () { img.remove(); };
+        body.insertBefore(img, body.firstChild);
+      }, 30);
+    }, true);
   }
 
   /* =====================================================================
@@ -813,6 +858,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     qrInit();
     hookNavigation();
+    hookPointCloseup();
     // 经络图可能在 acup-app.js 之后才初始化好 select，延迟轮询
     var tries = 0;
     var timer = setInterval(function () {

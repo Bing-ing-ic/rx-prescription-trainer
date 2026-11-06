@@ -21,7 +21,12 @@
     ivFields: { iv_reason:'', iv_reason_note:'' },  // 全局指征（整个处方级别）
     restrictedConfirmed: false,
     lastReview: null,
-    lastVisitCtx: null
+    lastVisitCtx: null,
+    // ---- 检验检查报告（临床诊断支撑） ----
+    labExams: [],          // 检验项目字典数组
+    labExamDict: {},       // code -> exam 对象
+    diseaseLabMap: {},     // disease.code -> [{exam_code,result,status,note}]
+    labReportLoaded: false // 两个 lab JSON 是否加载完成
   };
 
   // ---------- DOM ----------
@@ -100,9 +105,129 @@
       S.compat = c;
       bindNav();
       renderRadar();
+      // 异步加载检验检查报告字典（失败不阻断主流程）
+      loadLabData();
     } catch (e) {
       alert('数据加载失败：' + e.message + '\n请用 python -m http.server 或双击 index.html 后通过 http:// 打开。');
     }
+  }
+
+  // 加载检验检查报告相关 JSON（lab-exams.json / disease-lab-map.json）
+  // 这两个文件可能由并行流程异步创建，加载失败时静默降级，不影响处方主流程
+  async function loadLabData() {
+    try {
+      const [examRes, mapRes] = await Promise.all([
+        fetch('data/lab-exams.json').then(r => r.ok ? r.json() : null).catch(() => null),
+        fetch('data/disease-lab-map.json').then(r => r.ok ? r.json() : null).catch(() => null)
+      ]);
+      if (examRes && Array.isArray(examRes.exams)) {
+        S.labExams = examRes.exams;
+        S.labExamDict = {};
+        examRes.exams.forEach(e => { if (e && e.code) S.labExamDict[e.code] = e; });
+      }
+      if (mapRes && mapRes.mappings && typeof mapRes.mappings === 'object') {
+        S.diseaseLabMap = mapRes.mappings;
+      }
+      S.labReportLoaded = true;
+      // 如果当前已有确诊病例且面板已显示，自动补渲染
+      if (S.diagnosisOk && S.disease && !$('lab-report-row').classList.contains('hidden')) {
+        loadLabReport();
+      }
+    } catch (e) {
+      // 静默降级：数据文件尚未就绪时不阻断主流程
+      S.labReportLoaded = true;
+    }
+  }
+
+  // 渲染当前疾病的检验检查报告到 #lab-report-body
+  function loadLabReport() {
+    const body = $('lab-report-body');
+    if (!body) return;
+    if (!S.labReportLoaded) {
+      body.innerHTML = '<div style="color:#64748b;font-size:13px;padding:8px;">⏳ 检验报告加载中...</div>';
+      return;
+    }
+    if (!S.disease || !S.disease.code) {
+      body.innerHTML = '<div style="color:#64748b;font-size:13px;padding:8px;">本病例无特殊检验检查</div>';
+      return;
+    }
+    const rows = S.diseaseLabMap[S.disease.code];
+    if (!rows || !rows.length) {
+      body.innerHTML = '<div style="color:#64748b;font-size:13px;padding:8px;">本病例无特殊检验检查</div>';
+      return;
+    }
+
+    // 按 category 分组（检验科 / 影像科 / 功能检查）
+    const groups = {};
+    rows.forEach((r, idx) => {
+      const exam = S.labExamDict[r.exam_code] || {};
+      const cat = exam.category || '检验科';
+      if (!groups[cat]) groups[cat] = [];
+      groups[cat].push(Object.assign({ _idx: idx, _exam: exam }, r));
+    });
+
+    const statusBadge = (st) => {
+      if (st === 'high') return '<span class="lab-abnormal">↑ 升高</span>';
+      if (st === 'low') return '<span class="lab-abnormal">↓ 降低</span>';
+      if (st === 'abnormal') return '<span class="lab-abnormal">⚠ 异常</span>';
+      return '<span class="lab-normal">正常</span>';
+    };
+    const resultClass = (st) => (st === 'normal') ? 'lab-normal' : 'lab-abnormal';
+    const resultArrow = (st, val) => {
+      if (st === 'high') return val + ' ↑';
+      if (st === 'low') return val + ' ↓';
+      if (st === 'abnormal') return val + ' ⚠';
+      return val;
+    };
+
+    let html = '';
+    Object.keys(groups).forEach(cat => {
+      html += `<div class="lab-category-title">${cat}</div>`;
+      html += '<table class="rx-table lab-table"><thead><tr>' +
+        '<th style="width:32%;">项目</th>' +
+        '<th style="width:18%;">结果</th>' +
+        '<th style="width:14%;">单位</th>' +
+        '<th style="width:22%;">参考范围</th>' +
+        '<th style="width:14%;">状态</th>' +
+        '</tr></thead><tbody>';
+      groups[cat].forEach(r => {
+        const ex = r._exam;
+        const name = ex.name || r.exam_code;
+        const abbr = ex.abbr ? `（${ex.abbr}）` : '';
+        const unit = ex.unit || r.unit || '';
+        const refRange = ex.ref_range || r.ref_range || '—';
+        const sig = ex.clinical_significance || '';
+        const note = r.note || '';
+        const hasDetail = sig || note;
+        const detailId = `lab-detail-${cat.replace(/\W/g,'')}-${r._idx}`;
+        html += `<tr class="lab-row" data-detail="${detailId}" style="cursor:${hasDetail?'pointer':'default'};">`;
+        html += `<td style="text-align:left;">${name}${abbr}</td>`;
+        html += `<td class="${resultClass(r.status)}">${resultArrow(r.status, r.result)}</td>`;
+        html += `<td>${unit}</td>`;
+        html += `<td style="color:#64748b;font-size:12px;">${refRange}</td>`;
+        html += `<td>${statusBadge(r.status)}</td>`;
+        html += '</tr>';
+        if (hasDetail) {
+          html += `<tr id="${detailId}" class="lab-detail-row hidden"><td colspan="5" style="text-align:left;background:#f8fafc;">`;
+          html += '<div class="lab-meaning">';
+          if (sig) html += `<div><b>临床意义：</b>${sig}</div>`;
+          if (note) html += `<div style="margin-top:4px;"><b>本例解读：</b>${note}</div>`;
+          html += '</div></td></tr>';
+        }
+      });
+      html += '</tbody></table>';
+    });
+    body.innerHTML = html;
+
+    // 绑定行点击展开/收起
+    body.querySelectorAll('.lab-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const detailId = row.getAttribute('data-detail');
+        if (!detailId) return;
+        const d = document.getElementById(detailId);
+        if (d) d.classList.toggle('hidden');
+      });
+    });
   }
 
   function bindNav() {
@@ -142,6 +267,20 @@
 
     $('drug-search').oninput = renderDrugList;
     $('iv-drug-search').oninput = renderIvDrugList;
+
+    // 检验检查报告面板：点击 header 展开/收起
+    const labHeader = document.querySelector('#lab-report-row .lab-report-header');
+    if (labHeader) {
+      labHeader.addEventListener('click', () => {
+        const body = $('lab-report-body');
+        const tg = $('lab-report-toggle');
+        if (!body) return;
+        const willShow = body.classList.contains('hidden');
+        body.classList.toggle('hidden');
+        if (tg) tg.textContent = willShow ? '收起 ▲' : '点击展开 ▼';
+      });
+    }
+
     // 键盘方向键+回车选择药品
     bindKbNav('drug-search', 'drug-list', () => S.kbOralItems, () => S.kbOralSel,
       i => S.kbOralSel = i, i => addNormalItem(S.kbOralItems[i]));
@@ -300,6 +439,14 @@
     $('diag-suggest').innerHTML = '';
     S.diagWrongCount = 0;
     $('rx-type-row').classList.add('hidden');
+    // 重置检验检查报告面板
+    $('lab-report-row').classList.add('hidden');
+    $('lab-report-body').innerHTML = '';
+    // 同时收起面板，恢复 toggle 文字
+    const lb = $('lab-report-body');
+    if (lb) lb.classList.add('hidden');
+    const tg = $('lab-report-toggle');
+    if (tg) tg.textContent = '点击展开 ▼';
     show('view-home');
   }
 
@@ -484,6 +631,9 @@
       fb.innerHTML = `<span class="diag-ok">✅ 正确诊断：${dx.name}（ICD-10: ${dx.icd10}）</span>`;
       $('rx-type-row').classList.remove('hidden');
       $('secondary-diag-row').classList.remove('hidden');
+      // 显示检验检查报告面板
+      $('lab-report-row').classList.remove('hidden');
+      loadLabReport();
       scrollFb();
       return;
     }

@@ -1,0 +1,1058 @@
+{
+  "version": "2026.11.06-r1",
+  "note": "每个疾病病例在确诊时应展示的检验检查结果",
+  "mappings": {
+    "HTN-I10": [
+      {
+        "exam_code": "BIO-CREA",
+        "result": "76",
+        "status": "normal",
+        "note": "肾功能正常，无高血压肾损害"
+      },
+      {
+        "exam_code": "BIO-LDL",
+        "result": "3.8",
+        "status": "high",
+        "note": "低密度脂蛋白升高，需他汀干预"
+      },
+      {
+        "exam_code": "ECG-12LEAD",
+        "result": "窦性心律，左室高电压",
+        "status": "normal",
+        "note": "长期高血压所致心肌改变，未见ST-T缺血改变"
+      },
+      {
+        "exam_code": "IMG-ABDOM-US",
+        "result": "双肾大小形态正常，实质回声均匀",
+        "status": "normal",
+        "note": "排除肾动脉狭窄及肾实质性高血压"
+      }
+    ],
+    "CHD-I25": [
+      {
+        "exam_code": "ECG-12LEAD",
+        "result": "窦性心律，V4-V6导联ST段水平型压低0.05mV，T波低平",
+        "status": "abnormal",
+        "note": "心绞痛发作时缺血性ST-T改变，缓解期可正常"
+      },
+      {
+        "exam_code": "IMM-CTNI",
+        "result": "0.02",
+        "status": "normal",
+        "note": "肌钙蛋白正常，排除急性心肌梗死"
+      },
+      {
+        "exam_code": "IMM-CKMB",
+        "result": "12",
+        "status": "normal",
+        "note": "心肌酶正常，符合稳定型心绞痛"
+      },
+      {
+        "exam_code": "BIO-LDL",
+        "result": "3.9",
+        "status": "high",
+        "note": "冠心病患者LDL-C目标应<1.8 mmol/L"
+      },
+      {
+        "exam_code": "IMG-ECHO",
+        "result": "左室壁厚度正常，静息状态下室壁运动协调，EF 62%",
+        "status": "normal",
+        "note": "无室壁瘤及节段性运动异常"
+      }
+    ],
+    "TIA-G45": [
+      {
+        "exam_code": "IMG-HEAD-CT",
+        "result": "脑实质未见出血及低密度灶，中线居中",
+        "status": "normal",
+        "note": "排除脑出血及新发梗死"
+      },
+      {
+        "exam_code": "COAG-DDIM",
+        "result": "0.28",
+        "status": "normal",
+        "note": "D-二聚体正常，不支持栓塞性疾病"
+      },
+      {
+        "exam_code": "BIO-LDL",
+        "result": "3.6",
+        "status": "high",
+        "note": "颈动脉粥样硬化危险因素，需强化降脂"
+      },
+      {
+        "exam_code": "ECG-12LEAD",
+        "result": "窦性心律，未见房颤",
+        "status": "normal",
+        "note": "排除心源性栓塞来源"
+      }
+    ],
+    "URI-J00": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "6.2",
+        "status": "normal",
+        "note": "白细胞正常，符合病毒性上感"
+      },
+      {
+        "exam_code": "CBC-NEUTP",
+        "result": "55",
+        "status": "normal",
+        "note": "中性比例不高，不支持细菌感染"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "5",
+        "status": "normal",
+        "note": "CRP正常，无需抗生素"
+      },
+      {
+        "exam_code": "IMG-CHEST-XR",
+        "result": "双肺纹理清晰，未见斑片影",
+        "status": "normal",
+        "note": "排除下呼吸道感染"
+      }
+    ],
+    "AB-BRONCH-J20": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "11.5",
+        "status": "high",
+        "note": "白细胞轻度升高，细菌感染可能"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "22",
+        "status": "high",
+        "note": "CRP轻中度升高"
+      },
+      {
+        "exam_code": "IMG-CHEST-XR",
+        "result": "双肺纹理增粗紊乱，未见实质渗出",
+        "status": "abnormal",
+        "note": "符合急性支气管炎表现，无肺炎"
+      }
+    ],
+    "COPD-J44": [
+      {
+        "exam_code": "FUNC-PFT",
+        "result": "FEV1/FVC 62%，FEV1占预计值75%",
+        "status": "abnormal",
+        "note": "不可逆气流受限，符合GOLD II级"
+      },
+      {
+        "exam_code": "IMG-CHEST-XR",
+        "result": "双肺透亮度增高，膈面低平，肺纹理纤细",
+        "status": "abnormal",
+        "note": "肺气肿征象"
+      },
+      {
+        "exam_code": "CBC-HGB",
+        "result": "168",
+        "status": "normal",
+        "note": "无明显继发性红细胞增多"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "4",
+        "status": "normal",
+        "note": "稳定期无急性加重"
+      }
+    ],
+    "CAP-J18": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "14.8",
+        "status": "high",
+        "note": "白细胞升高，中性85%"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "86",
+        "status": "high",
+        "note": "CRP显著升高"
+      },
+      {
+        "exam_code": "INF-PCT",
+        "result": "0.25",
+        "status": "high",
+        "note": "PCT轻度升高，细菌性肺炎"
+      },
+      {
+        "exam_code": "IMG-CHEST-XR",
+        "result": "右肺下叶斑片状实变影，边界模糊",
+        "status": "abnormal",
+        "note": "右下肺社区获得性肺炎典型影像"
+      }
+    ],
+    "DM-E11": [
+      {
+        "exam_code": "BIO-FBG",
+        "result": "11.2",
+        "status": "high",
+        "note": "空腹血糖显著升高"
+      },
+      {
+        "exam_code": "BIO-HBA1C",
+        "result": "9.2",
+        "status": "high",
+        "note": "近3月血糖控制差，目标<7.0%"
+      },
+      {
+        "exam_code": "UA-GLU",
+        "result": "++",
+        "status": "abnormal",
+        "note": "尿糖阳性，肾糖阈以下"
+      },
+      {
+        "exam_code": "UA-KET",
+        "result": "阴性",
+        "status": "normal",
+        "note": "尚无酮症"
+      },
+      {
+        "exam_code": "BIO-CREA",
+        "result": "72",
+        "status": "normal",
+        "note": "暂未出现糖尿病肾病"
+      }
+    ],
+    "HYPERTHY-E05": [
+      {
+        "exam_code": "IMM-TSH",
+        "result": "0.02",
+        "status": "low",
+        "note": "TSH显著抑制"
+      },
+      {
+        "exam_code": "IMM-FT3",
+        "result": "12.5",
+        "status": "high",
+        "note": "FT3升高"
+      },
+      {
+        "exam_code": "IMM-FT4",
+        "result": "28.6",
+        "status": "high",
+        "note": "FT4升高，符合Graves病"
+      },
+      {
+        "exam_code": "IMG-THYROID-US",
+        "result": "甲状腺弥漫性增大，实质回声减低不均，血流丰富呈'火海征'",
+        "status": "abnormal",
+        "note": "Graves病典型超声表现"
+      }
+    ],
+    "HYPOTHY-E03": [
+      {
+        "exam_code": "IMM-TSH",
+        "result": "18.6",
+        "status": "high",
+        "note": "TSH显著升高"
+      },
+      {
+        "exam_code": "IMM-FT4",
+        "result": "9.2",
+        "status": "low",
+        "note": "FT4降低，原发性甲减"
+      },
+      {
+        "exam_code": "IMM-FT3",
+        "result": "3.0",
+        "status": "normal",
+        "note": "FT3可正常，早期甲减"
+      }
+    ],
+    "GASTRITIS-K29": [
+      {
+        "exam_code": "FUNC-GASTRO",
+        "result": "胃窦黏膜充血水肿，散在片状红斑，未见溃疡及出血",
+        "status": "abnormal",
+        "note": "急性胃炎内镜表现"
+      },
+      {
+        "exam_code": "CBC-HGB",
+        "result": "135",
+        "status": "normal",
+        "note": "无贫血"
+      },
+      {
+        "exam_code": "BIO-ALT",
+        "result": "22",
+        "status": "normal",
+        "note": "肝功能正常"
+      }
+    ],
+    "FD-K30": [
+      {
+        "exam_code": "FUNC-GASTRO",
+        "result": "食管胃十二指肠黏膜光滑，未见糜烂溃疡及占位",
+        "status": "normal",
+        "note": "排除器质性疾病，支持功能性消化不良"
+      },
+      {
+        "exam_code": "CBC-HGB",
+        "result": "138",
+        "status": "normal",
+        "note": "无贫血"
+      },
+      {
+        "exam_code": "BIO-AMY",
+        "result": "68",
+        "status": "normal",
+        "note": "排除胰腺疾病"
+      }
+    ],
+    "AGE-A09": [
+      {
+        "exam_code": "ST-WBC",
+        "result": "0-2",
+        "status": "normal",
+        "note": "便白细胞偶见，符合非侵袭性腹泻"
+      },
+      {
+        "exam_code": "ELE-K",
+        "result": "3.1",
+        "status": "low",
+        "note": "呕吐腹泻致低钾"
+      },
+      {
+        "exam_code": "UA-SG",
+        "result": "1.028",
+        "status": "high",
+        "note": "尿比重升高提示容量不足"
+      },
+      {
+        "exam_code": "ELE-NA",
+        "result": "136",
+        "status": "normal",
+        "note": "血钠尚正常"
+      }
+    ],
+    "POSTAPP-Z48": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "7.8",
+        "status": "normal",
+        "note": "术后血常规恢复正常"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "6",
+        "status": "normal",
+        "note": "无残余感染"
+      },
+      {
+        "exam_code": "IMG-ABDOM-US",
+        "result": "右下腹阑尾区未见包块及积液",
+        "status": "normal",
+        "note": "术后恢复良好"
+      }
+    ],
+    "POSTHERNIA-Z48": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "6.5",
+        "status": "normal",
+        "note": "术后血象正常"
+      },
+      {
+        "exam_code": "CBC-HGB",
+        "result": "140",
+        "status": "normal",
+        "note": "无贫血"
+      },
+      {
+        "exam_code": "UA-PRO",
+        "result": "阴性",
+        "status": "normal",
+        "note": "尿常规正常"
+      }
+    ],
+    "APP-K35": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "15.6",
+        "status": "high",
+        "note": "白细胞及中性粒显著升高"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "78",
+        "status": "high",
+        "note": "CRP显著升高"
+      },
+      {
+        "exam_code": "IMG-ABDOM-US",
+        "result": "右下腹阑尾增粗，直径约9mm，壁增厚，周围少量渗出",
+        "status": "abnormal",
+        "note": "急性阑尾炎典型超声"
+      }
+    ],
+    "COLITIS-K52": [
+      {
+        "exam_code": "ST-APPEAR",
+        "result": "黏液脓血便",
+        "status": "abnormal",
+        "note": "典型菌痢外观"
+      },
+      {
+        "exam_code": "ST-WBC",
+        "result": "+++",
+        "status": "abnormal",
+        "note": "便白细胞满视野"
+      },
+      {
+        "exam_code": "ST-RBC",
+        "result": "++",
+        "status": "abnormal",
+        "note": "便红细胞阳性"
+      },
+      {
+        "exam_code": "CBC-WBC",
+        "result": "13.2",
+        "status": "high",
+        "note": "白细胞升高"
+      }
+    ],
+    "ASTHMA-J45": [
+      {
+        "exam_code": "FUNC-PFT",
+        "result": "FEV1/FVC 65%，支气管舒张试验FEV1改善率18%",
+        "status": "abnormal",
+        "note": "可逆性气流受限，哮喘确诊"
+      },
+      {
+        "exam_code": "IMG-CHEST-XR",
+        "result": "双肺透亮度增高，呈过度充气征，无实质浸润",
+        "status": "abnormal",
+        "note": "哮喘急性发作期表现"
+      },
+      {
+        "exam_code": "CBC-WBC",
+        "result": "8.5",
+        "status": "normal",
+        "note": "无感染征象"
+      }
+    ],
+    "MIGRAINE-G43": [
+      {
+        "exam_code": "IMG-HEAD-CT",
+        "result": "脑实质未见异常密度影，脑室脑沟正常",
+        "status": "normal",
+        "note": "排除颅内占位及出血"
+      },
+      {
+        "exam_code": "CBC-WBC",
+        "result": "6.8",
+        "status": "normal",
+        "note": "血象正常"
+      },
+      {
+        "exam_code": "ELE-MG",
+        "result": "0.92",
+        "status": "normal",
+        "note": "血镁正常，排除电解质紊乱所致头痛"
+      }
+    ],
+    "ANEMIA-D64": [
+      {
+        "exam_code": "CBC-HGB",
+        "result": "82",
+        "status": "low",
+        "note": "中度贫血"
+      },
+      {
+        "exam_code": "CBC-MCV",
+        "result": "70",
+        "status": "low",
+        "note": "小细胞低色素"
+      },
+      {
+        "exam_code": "CBC-MCH",
+        "result": "22",
+        "status": "low",
+        "note": "MCH降低，符合缺铁性贫血"
+      },
+      {
+        "exam_code": "CBC-MCHC",
+        "result": "290",
+        "status": "low",
+        "note": "MCHC降低"
+      }
+    ],
+    "UTI-N39": [
+      {
+        "exam_code": "UA-LEU",
+        "result": "+++",
+        "status": "abnormal",
+        "note": "尿白细胞强阳性"
+      },
+      {
+        "exam_code": "UA-NIT",
+        "result": "阳性",
+        "status": "abnormal",
+        "note": "亚硝酸盐阳性提示革兰阴性菌"
+      },
+      {
+        "exam_code": "UA-BLD",
+        "result": "+",
+        "status": "abnormal",
+        "note": "尿潜血阳性"
+      },
+      {
+        "exam_code": "CBC-WBC",
+        "result": "9.8",
+        "status": "normal",
+        "note": "下尿路感染血象可正常"
+      }
+    ],
+    "GASTRITIS-BLEED-K92": [
+      {
+        "exam_code": "ST-OB",
+        "result": "阳性",
+        "status": "abnormal",
+        "note": "便潜血阳性，消化道出血"
+      },
+      {
+        "exam_code": "CBC-HGB",
+        "result": "95",
+        "status": "low",
+        "note": "失血后贫血"
+      },
+      {
+        "exam_code": "FUNC-GASTRO",
+        "result": "胃体多发点片状糜烂及出血斑，未见活动性喷血",
+        "status": "abnormal",
+        "note": "急性胃黏膜病变"
+      }
+    ],
+    "URTICARIA-L50": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "7.5",
+        "status": "normal",
+        "note": "血象正常"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "3",
+        "status": "normal",
+        "note": "无感染"
+      },
+      {
+        "exam_code": "CBC-EOSP",
+        "result": "9.8",
+        "status": "high",
+        "note": "嗜酸性粒细胞比例升高，支持过敏性疾病"
+      }
+    ],
+    "KETOSIS-E11": [
+      {
+        "exam_code": "BIO-FBG",
+        "result": "22.5",
+        "status": "high",
+        "note": "血糖显著升高"
+      },
+      {
+        "exam_code": "UA-KET",
+        "result": "+++",
+        "status": "abnormal",
+        "note": "尿酮强阳性，糖尿病酮症"
+      },
+      {
+        "exam_code": "UA-GLU",
+        "result": "++++",
+        "status": "abnormal",
+        "note": "尿糖强阳性"
+      },
+      {
+        "exam_code": "ELE-K",
+        "result": "3.0",
+        "status": "low",
+        "note": "渗透性利尿致低钾"
+      }
+    ],
+    "SPRAIN-S93": [
+      {
+        "exam_code": "IMG-ANKLE-XR",
+        "result": "踝穴关系正常，诸骨皮质连续，未见骨折线；外踝软组织肿胀",
+        "status": "normal",
+        "note": "排除骨折，符合韧带损伤"
+      },
+      {
+        "exam_code": "CBC-WBC",
+        "result": "7.2",
+        "status": "normal",
+        "note": "外伤后血象正常"
+      },
+      {
+        "exam_code": "CBC-PLT",
+        "result": "220",
+        "status": "normal",
+        "note": "血小板正常，无出血倾向"
+      }
+    ],
+    "PANCREATITIS-K85": [
+      {
+        "exam_code": "BIO-AMY",
+        "result": "486",
+        "status": "high",
+        "note": "血淀粉酶>正常3倍，急性胰腺炎"
+      },
+      {
+        "exam_code": "BIO-LIP",
+        "result": "320",
+        "status": "high",
+        "note": "脂肪酶升高更具特异性"
+      },
+      {
+        "exam_code": "IMG-ABDOM-US",
+        "result": "胰腺弥漫性肿大，实质回声减低，胰周少量渗出",
+        "status": "abnormal",
+        "note": "急性水肿型胰腺炎"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "58",
+        "status": "high",
+        "note": "CRP升高"
+      }
+    ],
+    "GERD-K21": [
+      {
+        "exam_code": "FUNC-GASTRO",
+        "result": "食管下段黏膜条状充血糜烂（LA-B级），齿状线上移",
+        "status": "abnormal",
+        "note": "反流性食管炎"
+      },
+      {
+        "exam_code": "BIO-ALT",
+        "result": "18",
+        "status": "normal",
+        "note": "肝功能正常"
+      },
+      {
+        "exam_code": "ST-OB",
+        "result": "阴性",
+        "status": "normal",
+        "note": "无消化道出血"
+      }
+    ],
+    "UC-K51": [
+      {
+        "exam_code": "ST-OB",
+        "result": "阳性",
+        "status": "abnormal",
+        "note": "便潜血阳性"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "35",
+        "status": "high",
+        "note": "炎症活动期"
+      },
+      {
+        "exam_code": "BIO-ALB",
+        "result": "36",
+        "status": "low",
+        "note": "白蛋白轻度下降，慢性消耗"
+      }
+    ],
+    "HLP-E78": [
+      {
+        "exam_code": "BIO-TC",
+        "result": "7.2",
+        "status": "high",
+        "note": "总胆固醇显著升高"
+      },
+      {
+        "exam_code": "BIO-LDL",
+        "result": "4.6",
+        "status": "high",
+        "note": "低密度脂蛋白显著升高"
+      },
+      {
+        "exam_code": "BIO-TG",
+        "result": "1.5",
+        "status": "normal",
+        "note": "甘油三酯正常，以高胆固醇为主"
+      },
+      {
+        "exam_code": "BIO-HDL",
+        "result": "0.9",
+        "status": "low",
+        "note": "HDL偏低"
+      }
+    ],
+    "AF-I48": [
+      {
+        "exam_code": "ECG-12LEAD",
+        "result": "P波消失，代之以f波，RR间期绝对不齐，心室率98次/分",
+        "status": "abnormal",
+        "note": "心房颤动典型心电图"
+      },
+      {
+        "exam_code": "IMG-ECHO",
+        "result": "左房内径39mm稍增大，室壁运动协调，EF 58%",
+        "status": "abnormal",
+        "note": "房颤致左房增大"
+      },
+      {
+        "exam_code": "IMM-TSH",
+        "result": "2.1",
+        "status": "normal",
+        "note": "排除甲亢性房颤"
+      }
+    ],
+    "HF-I50": [
+      {
+        "exam_code": "IMM-BNP",
+        "result": "486",
+        "status": "high",
+        "note": "BNP升高，支持心衰"
+      },
+      {
+        "exam_code": "IMG-ECHO",
+        "result": "左室扩大，LVEF 42%，室壁运动普遍减弱",
+        "status": "abnormal",
+        "note": "收缩性心力衰竭"
+      },
+      {
+        "exam_code": "IMG-CHEST-XR",
+        "result": "心影增大，肺淤血，肋膈角少量积液",
+        "status": "abnormal",
+        "note": "肺淤血表现"
+      },
+      {
+        "exam_code": "ELE-K",
+        "result": "4.1",
+        "status": "normal",
+        "note": "电解质正常"
+      }
+    ],
+    "GOUT-M10": [
+      {
+        "exam_code": "BIO-UA",
+        "result": "568",
+        "status": "high",
+        "note": "血尿酸显著升高"
+      },
+      {
+        "exam_code": "IMG-ANKLE-XR",
+        "result": "关节骨质未见破坏，软组织肿胀",
+        "status": "abnormal",
+        "note": "急性发作期X线多无穿凿样改变"
+      },
+      {
+        "exam_code": "CBC-WBC",
+        "result": "9.5",
+        "status": "normal",
+        "note": "白细胞可轻度升高"
+      }
+    ],
+    "OP-M81": [
+      {
+        "exam_code": "FUNC-BMD",
+        "result": "L1-L4 T值 -2.8",
+        "status": "abnormal",
+        "note": "T值≤-2.5，确诊骨质疏松"
+      },
+      {
+        "exam_code": "ELE-CA",
+        "result": "2.30",
+        "status": "normal",
+        "note": "血钙正常"
+      },
+      {
+        "exam_code": "BIO-ALP",
+        "result": "78",
+        "status": "normal",
+        "note": "骨转换指标正常范围"
+      }
+    ],
+    "ISCHEMIC-I63": [
+      {
+        "exam_code": "IMG-HEAD-MRI",
+        "result": "右侧基底节区陈旧性腔隙性脑软化灶，DWI未见新发弥散受限",
+        "status": "abnormal",
+        "note": "恢复期，无新发梗死"
+      },
+      {
+        "exam_code": "COAG-DDIM",
+        "result": "0.32",
+        "status": "normal",
+        "note": "D-二聚体正常"
+      },
+      {
+        "exam_code": "BIO-LDL",
+        "result": "2.4",
+        "status": "high",
+        "note": "脑梗死后需LDL<1.8，尚未达标"
+      },
+      {
+        "exam_code": "ECG-12LEAD",
+        "result": "窦性心律，正常心电图",
+        "status": "normal",
+        "note": "无房颤"
+      }
+    ],
+    "BELL-G51": [
+      {
+        "exam_code": "IMG-HEAD-CT",
+        "result": "颅内未见出血及占位，脑干小脑形态正常",
+        "status": "normal",
+        "note": "排除中枢性面瘫"
+      },
+      {
+        "exam_code": "CBC-WBC",
+        "result": "6.9",
+        "status": "normal",
+        "note": "血象正常"
+      },
+      {
+        "exam_code": "BIO-FBG",
+        "result": "5.4",
+        "status": "normal",
+        "note": "血糖正常，糖尿病是贝尔麻痹危险因素需排除"
+      }
+    ],
+    "HZ-B02": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "6.5",
+        "status": "normal",
+        "note": "病毒感染血象正常"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "8",
+        "status": "normal",
+        "note": "CRP轻度或正常"
+      },
+      {
+        "exam_code": "BIO-FBG",
+        "result": "5.6",
+        "status": "normal",
+        "note": "血糖正常，糖尿病是带状疱疹易感/重症因素"
+      }
+    ],
+    "ECZEMA-L30": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "7.0",
+        "status": "normal",
+        "note": "血象正常"
+      },
+      {
+        "exam_code": "CBC-EOSP",
+        "result": "10.5",
+        "status": "high",
+        "note": "嗜酸性粒细胞升高，支持过敏性炎症"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "2",
+        "status": "normal",
+        "note": "无感染"
+      }
+    ],
+    "BPH-N40": [
+      {
+        "exam_code": "IMG-URINE-US",
+        "result": "前列腺增大，约48g，回声不均；残余尿约60mL",
+        "status": "abnormal",
+        "note": "前列腺增生伴残余尿增多"
+      },
+      {
+        "exam_code": "IMM-PSA",
+        "result": "3.2",
+        "status": "normal",
+        "note": "PSA正常范围，暂不考虑前列腺癌"
+      },
+      {
+        "exam_code": "UA-BLD",
+        "result": "阴性",
+        "status": "normal",
+        "note": "无血尿"
+      }
+    ],
+    "STONE-N20": [
+      {
+        "exam_code": "UA-BLD",
+        "result": "+++",
+        "status": "abnormal",
+        "note": "肉眼/镜下血尿"
+      },
+      {
+        "exam_code": "IMG-URINE-US",
+        "result": "右输尿管上段扩张，右肾集合系统分离25mm，输尿管内见强光团伴声影（约8mm）",
+        "status": "abnormal",
+        "note": "右输尿管结石伴右肾积水"
+      },
+      {
+        "exam_code": "CBC-WBC",
+        "result": "8.2",
+        "status": "normal",
+        "note": "无感染时血象正常"
+      }
+    ],
+    "PID-N73": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "13.5",
+        "status": "high",
+        "note": "白细胞及中性粒升高"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "68",
+        "status": "high",
+        "note": "CRP升高"
+      },
+      {
+        "exam_code": "IMG-GYN-US",
+        "result": "子宫直肠陷凹少量积液，附件区回声不均",
+        "status": "abnormal",
+        "note": "盆腔炎性渗出"
+      }
+    ],
+    "URI-J00-PED": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "7.5",
+        "status": "normal",
+        "note": "儿童正常范围5-12×10⁹/L，病毒感染"
+      },
+      {
+        "exam_code": "CBC-NEUTP",
+        "result": "45",
+        "status": "normal",
+        "note": "儿童淋巴为主，中性比例不高"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "4",
+        "status": "normal",
+        "note": "CRP正常，无需抗生素"
+      },
+      {
+        "exam_code": "IMG-CHEST-XR",
+        "result": "双肺纹理清晰，未见斑片影",
+        "status": "normal",
+        "note": "排除肺炎"
+      }
+    ],
+    "DIADEM-A09-PED": [
+      {
+        "exam_code": "ST-WBC",
+        "result": "0-1",
+        "status": "normal",
+        "note": "小儿秋季腹泻多为轮状病毒，便白细胞少"
+      },
+      {
+        "exam_code": "ELE-K",
+        "result": "3.3",
+        "status": "low",
+        "note": "腹泻致低钾"
+      },
+      {
+        "exam_code": "UA-SG",
+        "result": "1.025",
+        "status": "high",
+        "note": "尿比重偏高提示轻度脱水"
+      },
+      {
+        "exam_code": "ELE-NA",
+        "result": "138",
+        "status": "normal",
+        "note": "等渗性脱水"
+      }
+    ],
+    "CERV-M50": [
+      {
+        "exam_code": "IMG-CSPINE-MRI",
+        "result": "C5/6椎间盘向右后突出，右侧神经根受压，颈髓未见异常信号",
+        "status": "abnormal",
+        "note": "神经根型颈椎病"
+      },
+      {
+        "exam_code": "IMG-CSPINE-XR",
+        "result": "颈椎生理曲度变直，C5/6椎间隙狭窄，椎体后缘骨赘形成",
+        "status": "abnormal",
+        "note": "退行性改变"
+      },
+      {
+        "exam_code": "ELE-CA",
+        "result": "2.35",
+        "status": "normal",
+        "note": "血钙正常，排除颈肩痛内分泌因素"
+      }
+    ],
+    "LUMB-M51": [
+      {
+        "exam_code": "IMG-LSPINE-MRI",
+        "result": "L4/5椎间盘向左后突出，硬膜囊受压，左侧神经根受压",
+        "status": "abnormal",
+        "note": "L4/5椎间盘突出症"
+      },
+      {
+        "exam_code": "IMG-LSPINE-XR",
+        "result": "腰椎生理曲度变直，L4/5椎间隙狭窄",
+        "status": "abnormal",
+        "note": "退行性变"
+      },
+      {
+        "exam_code": "BIO-CREA",
+        "result": "68",
+        "status": "normal",
+        "note": "肾功能正常，NSAIDs使用前基线评估"
+      }
+    ],
+    "CBRONCH-J20": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "12.8",
+        "status": "high",
+        "note": "慢支急性发作合并细菌感染"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "35",
+        "status": "high",
+        "note": "CRP升高"
+      },
+      {
+        "exam_code": "IMG-CHEST-XR",
+        "result": "双肺纹理增粗紊乱，两下肺明显，未见实质渗出",
+        "status": "abnormal",
+        "note": "慢支急性发作，无肺炎"
+      }
+    ],
+    "MP-J15": [
+      {
+        "exam_code": "CBC-WBC",
+        "result": "8.5",
+        "status": "normal",
+        "note": "白细胞多正常或轻度升高"
+      },
+      {
+        "exam_code": "INF-CRP",
+        "result": "45",
+        "status": "high",
+        "note": "CRP中度升高"
+      },
+      {
+        "exam_code": "IMM-MPIGM",
+        "result": "阳性",
+        "status": "abnormal",
+        "note": "支原体IgM阳性"
+      },
+      {
+        "exam_code": "IMG-CHEST-CT",
+        "result": "右肺下叶斑片磨玻璃影及小叶中心结节，呈支气管肺炎表现",
+        "status": "abnormal",
+        "note": "支原体肺炎典型影像"
+      }
+    ]
+  }
+}

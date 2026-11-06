@@ -1659,3 +1659,20 @@ input, select, textarea { font-family: inherit; }
   /* P1：移动端热区触控目标 ≥28px */
   .anat-hotspot { width: 32px; height: 32px; }
 }
+
+/* ============ 检验检查报告（临床诊断支撑） ============ */
+.lab-table { font-size: 12.5px; margin-bottom: 8px; }
+.lab-table th, .lab-table td { padding: 6px 8px; }
+.lab-category-title {
+  font-size: 13px; font-weight: 600; color: #475569;
+  margin: 10px 0 6px; padding-bottom: 4px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.lab-abnormal { color: #dc2626; font-weight: 600; }
+.lab-normal { color: #166534; }
+.lab-meaning {
+  background: #f8fafc; padding: 6px 10px; border-radius: 4px;
+  margin-top: 4px; font-size: 12px; color: #64748b; line-height: 1.6;
+}
+.lab-row:hover { background: #f1f5f9; }
+.lab-detail-row td { padding: 4px 8px !important; }

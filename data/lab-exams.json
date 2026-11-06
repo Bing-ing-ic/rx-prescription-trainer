@@ -1,0 +1,896 @@
+{
+  "version": "2026.11.06-r1",
+  "note": "检验检查项目字典，供西医处方推演平台使用",
+  "exams": [
+    {
+      "code": "CBC-WBC",
+      "name": "白细胞计数",
+      "abbr": "WBC",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "×10⁹/L",
+      "ref_range": "成人 4.0-10.0；儿童 5.0-12.0；新生儿 15.0-20.0",
+      "clinical_significance": "升高见于细菌感染、炎症、应激、白血病；降低见于病毒感染、再生障碍性贫血、化疗后"
+    },
+    {
+      "code": "CBC-NEUTP",
+      "name": "中性粒细胞百分比",
+      "abbr": "NEUT%",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "%",
+      "ref_range": "成人 50-70",
+      "clinical_significance": "升高见于急性细菌感染、化脓性炎症；降低见于病毒感染、自身免疫病"
+    },
+    {
+      "code": "CBC-NEUTN",
+      "name": "中性粒细胞计数",
+      "abbr": "NEUT#",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "×10⁹/L",
+      "ref_range": "成人 2.0-7.0",
+      "clinical_significance": "升高提示急性化脓性感染；降低见于粒细胞缺乏症"
+    },
+    {
+      "code": "CBC-LYMPHP",
+      "name": "淋巴细胞百分比",
+      "abbr": "LYMPH%",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "%",
+      "ref_range": "成人 20-40",
+      "clinical_significance": "升高见于病毒感染、淋巴细胞性白血病；降低见于免疫缺陷、激素使用后"
+    },
+    {
+      "code": "CBC-LYMPHN",
+      "name": "淋巴细胞计数",
+      "abbr": "LYMPH#",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "×10⁹/L",
+      "ref_range": "成人 0.8-4.0",
+      "clinical_significance": "病毒感染时绝对值升高；免疫缺陷时降低"
+    },
+    {
+      "code": "CBC-EOSP",
+      "name": "嗜酸性粒细胞百分比",
+      "abbr": "EOS%",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "%",
+      "ref_range": "0.4-8.0",
+      "clinical_significance": "升高见于过敏性疾病（荨麻疹、哮喘、湿疹）、寄生虫感染、嗜酸性粒细胞增多症"
+    },
+    {
+      "code": "CBC-RBC",
+      "name": "红细胞计数",
+      "abbr": "RBC",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "×10¹²/L",
+      "ref_range": "男 4.3-5.8；女 3.8-5.1",
+      "clinical_significance": "降低见于各类贫血；升高见于真性红细胞增多症、脱水、慢性缺氧"
+    },
+    {
+      "code": "CBC-HGB",
+      "name": "血红蛋白",
+      "abbr": "Hb",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "g/L",
+      "ref_range": "男 130-175；女 115-150；儿童 120-140",
+      "clinical_significance": "降低诊断贫血及其分度；升高见于红细胞增多症、严重脱水"
+    },
+    {
+      "code": "CBC-HCT",
+      "name": "红细胞压积",
+      "abbr": "HCT",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "%",
+      "ref_range": "男 40-50；女 35-45",
+      "clinical_significance": "反映血液浓缩程度；脱水时升高，贫血时降低"
+    },
+    {
+      "code": "CBC-MCV",
+      "name": "平均红细胞体积",
+      "abbr": "MCV",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "fL",
+      "ref_range": "82-100",
+      "clinical_significance": "小细胞<80提示缺铁/地中海贫血；大细胞>100提示巨幼贫、维生素B12缺乏"
+    },
+    {
+      "code": "CBC-MCH",
+      "name": "平均红细胞血红蛋白量",
+      "abbr": "MCH",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "pg",
+      "ref_range": "27-34",
+      "clinical_significance": "小细胞低色素性贫血时降低"
+    },
+    {
+      "code": "CBC-MCHC",
+      "name": "平均红细胞血红蛋白浓度",
+      "abbr": "MCHC",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "g/L",
+      "ref_range": "316-354",
+      "clinical_significance": "降低见于缺铁性贫血、珠蛋白生成障碍性贫血"
+    },
+    {
+      "code": "CBC-PLT",
+      "name": "血小板计数",
+      "abbr": "PLT",
+      "category": "检验科",
+      "subcategory": "血常规",
+      "unit": "×10⁹/L",
+      "ref_range": "125-350",
+      "clinical_significance": "升高见于感染后、脾切除后、原发性血小板增多症；降低见于ITP、DIC、化疗后"
+    },
+    {
+      "code": "INF-CRP",
+      "name": "C反应蛋白",
+      "abbr": "CRP",
+      "category": "检验科",
+      "subcategory": "炎症指标",
+      "unit": "mg/L",
+      "ref_range": "<10",
+      "clinical_significance": "细菌感染、组织损伤、风湿活动时升高；病毒感染多正常或轻度升高"
+    },
+    {
+      "code": "INF-PCT",
+      "name": "降钙素原",
+      "abbr": "PCT",
+      "category": "检验科",
+      "subcategory": "炎症指标",
+      "unit": "ng/mL",
+      "ref_range": "<0.05",
+      "clinical_significance": "全身性细菌感染/脓毒症时显著升高；病毒感染和局部感染多不升高"
+    },
+    {
+      "code": "IMM-MPIGM",
+      "name": "肺炎支原体IgM抗体",
+      "abbr": "MP-IgM",
+      "category": "检验科",
+      "subcategory": "微生物抗体",
+      "unit": "定性",
+      "ref_range": "阴性",
+      "clinical_significance": "阳性提示近期肺炎支原体急性感染"
+    },
+    {
+      "code": "IMM-PPD",
+      "name": "结核菌素试验",
+      "abbr": "PPD",
+      "category": "检验科",
+      "subcategory": "微生物抗体",
+      "unit": "mm",
+      "ref_range": "阴性<5mm；阳性≥5mm；强阳性≥15mm或伴水疱",
+      "clinical_significance": "阳性提示结核感染或卡介苗接种后；强阳性支持活动性结核"
+    },
+    {
+      "code": "UA-PRO",
+      "name": "尿蛋白",
+      "abbr": "PRO",
+      "category": "检验科",
+      "subcategory": "尿常规",
+      "unit": "定性",
+      "ref_range": "阴性",
+      "clinical_significance": "阳性见于肾小球肾炎、肾病综合征、糖尿病肾病、高血压肾损害"
+    },
+    {
+      "code": "UA-GLU",
+      "name": "尿糖",
+      "abbr": "GLU",
+      "category": "检验科",
+      "subcategory": "尿常规",
+      "unit": "定性",
+      "ref_range": "阴性",
+      "clinical_significance": "阳性提示血糖超过肾糖阈（糖尿病）或肾性糖尿"
+    },
+    {
+      "code": "UA-BLD",
+      "name": "尿潜血",
+      "abbr": "BLD",
+      "category": "检验科",
+      "subcategory": "尿常规",
+      "unit": "定性",
+      "ref_range": "阴性",
+      "clinical_significance": "阳性见于泌尿系结石、感染、肿瘤、肾炎"
+    },
+    {
+      "code": "UA-LEU",
+      "name": "尿白细胞",
+      "abbr": "LEU",
+      "category": "检验科",
+      "subcategory": "尿常规",
+      "unit": "定性",
+      "ref_range": "阴性",
+      "clinical_significance": "阳性提示泌尿系感染"
+    },
+    {
+      "code": "UA-KET",
+      "name": "尿酮体",
+      "abbr": "KET",
+      "category": "检验科",
+      "subcategory": "尿常规",
+      "unit": "定性",
+      "ref_range": "阴性",
+      "clinical_significance": "阳性见于糖尿病酮症、长期饥饿、剧烈呕吐腹泻"
+    },
+    {
+      "code": "UA-NIT",
+      "name": "尿亚硝酸盐",
+      "abbr": "NIT",
+      "category": "检验科",
+      "subcategory": "尿常规",
+      "unit": "定性",
+      "ref_range": "阴性",
+      "clinical_significance": "阳性提示大肠埃希菌等革兰阴性菌泌尿系感染"
+    },
+    {
+      "code": "UA-SG",
+      "name": "尿比重",
+      "abbr": "SG",
+      "category": "检验科",
+      "subcategory": "尿常规",
+      "unit": "",
+      "ref_range": "1.003-1.030",
+      "clinical_significance": "升高见于脱水、糖尿病；降低见于尿崩症、慢性肾衰"
+    },
+    {
+      "code": "UA-PH",
+      "name": "尿酸碱度",
+      "abbr": "pH",
+      "category": "检验科",
+      "subcategory": "尿常规",
+      "unit": "",
+      "ref_range": "4.5-8.0（平均6.0）",
+      "clinical_significance": "酸中毒、痛风、糖尿病时降低；碱中毒、泌尿系感染时升高"
+    },
+    {
+      "code": "ST-APPEAR",
+      "name": "大便外观",
+      "abbr": "",
+      "category": "检验科",
+      "subcategory": "便常规",
+      "unit": "",
+      "ref_range": "黄色成形软便",
+      "clinical_significance": "黏液脓血便见于菌痢、溃疡性结肠炎；柏油样便见于上消化道出血"
+    },
+    {
+      "code": "ST-WBC",
+      "name": "便镜检白细胞",
+      "abbr": "WBC",
+      "category": "检验科",
+      "subcategory": "便常规",
+      "unit": "/HP",
+      "ref_range": "0-偶见",
+      "clinical_significance": "增多见于细菌性痢疾、肠炎、溃疡性结肠炎活动期"
+    },
+    {
+      "code": "ST-RBC",
+      "name": "便镜检红细胞",
+      "abbr": "RBC",
+      "category": "检验科",
+      "subcategory": "便常规",
+      "unit": "/HP",
+      "ref_range": "0",
+      "clinical_significance": "增多见于下消化道出血、炎症性肠病、肿瘤、痔疮"
+    },
+    {
+      "code": "ST-OB",
+      "name": "便潜血试验",
+      "abbr": "OB",
+      "category": "检验科",
+      "subcategory": "便常规",
+      "unit": "定性",
+      "ref_range": "阴性",
+      "clinical_significance": "阳性提示消化道少量出血（>5mL），需排查胃/结肠癌、溃疡"
+    },
+    {
+      "code": "BIO-ALT",
+      "name": "丙氨酸氨基转移酶",
+      "abbr": "ALT",
+      "category": "检验科",
+      "subcategory": "肝功能",
+      "unit": "U/L",
+      "ref_range": "9-50",
+      "clinical_significance": "肝细胞损伤敏感指标；升高见于病毒性肝炎、药物性肝损、脂肪肝"
+    },
+    {
+      "code": "BIO-AST",
+      "name": "天门冬氨酸氨基转移酶",
+      "abbr": "AST",
+      "category": "检验科",
+      "subcategory": "肝功能",
+      "unit": "U/L",
+      "ref_range": "15-40",
+      "clinical_significance": "升高见于肝细胞损伤、心肌梗死、肌肉损伤"
+    },
+    {
+      "code": "BIO-TBIL",
+      "name": "总胆红素",
+      "abbr": "TBIL",
+      "category": "检验科",
+      "subcategory": "肝功能",
+      "unit": "μmol/L",
+      "ref_range": "3.4-20.5",
+      "clinical_significance": "升高见于黄疸（肝细胞性/梗阻性/溶血性）"
+    },
+    {
+      "code": "BIO-DBIL",
+      "name": "直接胆红素",
+      "abbr": "DBIL",
+      "category": "检验科",
+      "subcategory": "肝功能",
+      "unit": "μmol/L",
+      "ref_range": "0-6.8",
+      "clinical_significance": "升高见于梗阻性黄疸、肝细胞性黄疸"
+    },
+    {
+      "code": "BIO-ALB",
+      "name": "白蛋白",
+      "abbr": "ALB",
+      "category": "检验科",
+      "subcategory": "肝功能",
+      "unit": "g/L",
+      "ref_range": "40-55",
+      "clinical_significance": "降低见于肝硬化、肾病综合征、营养不良、慢性消耗性疾病"
+    },
+    {
+      "code": "BIO-ALP",
+      "name": "碱性磷酸酶",
+      "abbr": "ALP",
+      "category": "检验科",
+      "subcategory": "肝功能",
+      "unit": "U/L",
+      "ref_range": "45-125",
+      "clinical_significance": "升高见于胆道梗阻、骨病、佝偻病"
+    },
+    {
+      "code": "BIO-GGT",
+      "name": "γ-谷氨酰转肽酶",
+      "abbr": "GGT",
+      "category": "检验科",
+      "subcategory": "肝功能",
+      "unit": "U/L",
+      "ref_range": "10-60",
+      "clinical_significance": "升高见于酒精性肝病、胆道梗阻、药物性肝损"
+    },
+    {
+      "code": "BIO-CREA",
+      "name": "肌酐",
+      "abbr": "CREA",
+      "category": "检验科",
+      "subcategory": "肾功能",
+      "unit": "μmol/L",
+      "ref_range": "男 57-97；女 41-73",
+      "clinical_significance": "升高提示肾功能不全；肌肉发达者可生理性偏高"
+    },
+    {
+      "code": "BIO-BUN",
+      "name": "尿素氮",
+      "abbr": "BUN",
+      "category": "检验科",
+      "subcategory": "肾功能",
+      "unit": "mmol/L",
+      "ref_range": "3.2-8.2",
+      "clinical_significance": "升高见于肾前性（脱水/高蛋白）、肾性、肾后性梗阻"
+    },
+    {
+      "code": "BIO-EGFR",
+      "name": "估算肾小球滤过率",
+      "abbr": "eGFR",
+      "category": "检验科",
+      "subcategory": "肾功能",
+      "unit": "mL/min/1.73m²",
+      "ref_range": ">90",
+      "clinical_significance": "60-90为肾功能轻度下降；<60提示慢性肾脏病"
+    },
+    {
+      "code": "BIO-UA",
+      "name": "尿酸",
+      "abbr": "UA",
+      "category": "检验科",
+      "subcategory": "肾功能",
+      "unit": "μmol/L",
+      "ref_range": "男 208-428；女 155-357",
+      "clinical_significance": "升高见于痛风、高尿酸血症、肾功能不全、代谢综合征"
+    },
+    {
+      "code": "BIO-AMY",
+      "name": "血淀粉酶",
+      "abbr": "AMY",
+      "category": "检验科",
+      "subcategory": "胰腺酶",
+      "unit": "U/L",
+      "ref_range": "35-135",
+      "clinical_significance": "急性胰腺炎时显著升高（>正常3倍）；腮腺炎也可升高"
+    },
+    {
+      "code": "BIO-LIP",
+      "name": "血脂肪酶",
+      "abbr": "LIP",
+      "category": "检验科",
+      "subcategory": "胰腺酶",
+      "unit": "U/L",
+      "ref_range": "0-60",
+      "clinical_significance": "急性胰腺炎时升高，持续时间长，特异性优于淀粉酶"
+    },
+    {
+      "code": "BIO-FBG",
+      "name": "空腹血糖",
+      "abbr": "FBG",
+      "category": "检验科",
+      "subcategory": "血糖",
+      "unit": "mmol/L",
+      "ref_range": "3.9-6.1",
+      "clinical_significance": "≥7.0诊断糖尿病；6.1-7.0为空腹血糖受损"
+    },
+    {
+      "code": "BIO-HBA1C",
+      "name": "糖化血红蛋白",
+      "abbr": "HbA1c",
+      "category": "检验科",
+      "subcategory": "血糖",
+      "unit": "%",
+      "ref_range": "4.0-6.0",
+      "clinical_significance": "反映近2-3月平均血糖；≥6.5%诊断糖尿病；糖尿病控制目标<7.0%"
+    },
+    {
+      "code": "BIO-TC",
+      "name": "总胆固醇",
+      "abbr": "TC",
+      "category": "检验科",
+      "subcategory": "血脂",
+      "unit": "mmol/L",
+      "ref_range": "<5.2",
+      "clinical_significance": "升高为动脉粥样硬化危险因素"
+    },
+    {
+      "code": "BIO-TG",
+      "name": "甘油三酯",
+      "abbr": "TG",
+      "category": "检验科",
+      "subcategory": "血脂",
+      "unit": "mmol/L",
+      "ref_range": "<1.7",
+      "clinical_significance": "升高见于高甘油三酯血症、代谢综合征；>5.6诱发急性胰腺炎"
+    },
+    {
+      "code": "BIO-LDL",
+      "name": "低密度脂蛋白胆固醇",
+      "abbr": "LDL-C",
+      "category": "检验科",
+      "subcategory": "血脂",
+      "unit": "mmol/L",
+      "ref_range": "理想<2.6；合适<3.4",
+      "clinical_significance": "动脉粥样硬化核心危险因素；冠心病患者目标<1.8"
+    },
+    {
+      "code": "BIO-HDL",
+      "name": "高密度脂蛋白胆固醇",
+      "abbr": "HDL-C",
+      "category": "检验科",
+      "subcategory": "血脂",
+      "unit": "mmol/L",
+      "ref_range": ">1.0",
+      "clinical_significance": "为保护性因素；降低与冠心病风险正相关"
+    },
+    {
+      "code": "ELE-K",
+      "name": "血钾",
+      "abbr": "K⁺",
+      "category": "检验科",
+      "subcategory": "电解质",
+      "unit": "mmol/L",
+      "ref_range": "3.5-5.3",
+      "clinical_significance": "升高见于肾衰、酸中毒；降低见于腹泻、呕吐、利尿剂使用，可致心律失常"
+    },
+    {
+      "code": "ELE-NA",
+      "name": "血钠",
+      "abbr": "Na⁺",
+      "category": "检验科",
+      "subcategory": "电解质",
+      "unit": "mmol/L",
+      "ref_range": "137-147",
+      "clinical_significance": "降低见于低渗性脱水、SIADH；升高见于高渗性脱水"
+    },
+    {
+      "code": "ELE-CL",
+      "name": "血氯",
+      "abbr": "Cl⁻",
+      "category": "检验科",
+      "subcategory": "电解质",
+      "unit": "mmol/L",
+      "ref_range": "99-110",
+      "clinical_significance": "呕吐致低氯性碱中毒；腹泻致高氯性酸中毒"
+    },
+    {
+      "code": "ELE-CA",
+      "name": "血钙",
+      "abbr": "Ca²⁺",
+      "category": "检验科",
+      "subcategory": "电解质",
+      "unit": "mmol/L",
+      "ref_range": "2.11-2.52",
+      "clinical_significance": "降低见于维生素D缺乏、甲旁减、肾衰；升高见于甲旁亢、肿瘤骨转移"
+    },
+    {
+      "code": "ELE-MG",
+      "name": "血镁",
+      "abbr": "Mg²⁺",
+      "category": "检验科",
+      "subcategory": "电解质",
+      "unit": "mmol/L",
+      "ref_range": "0.75-1.02",
+      "clinical_significance": "降低见于腹泻、利尿剂、酒精中毒；可致心律失常、抽搐"
+    },
+    {
+      "code": "COAG-PT",
+      "name": "凝血酶原时间",
+      "abbr": "PT",
+      "category": "检验科",
+      "subcategory": "凝血功能",
+      "unit": "秒",
+      "ref_range": "11.0-13.5（对照±3s）",
+      "clinical_significance": "延长见于肝病、维生素K缺乏、华法林使用"
+    },
+    {
+      "code": "COAG-APTT",
+      "name": "活化部分凝血活酶时间",
+      "abbr": "APTT",
+      "category": "检验科",
+      "subcategory": "凝血功能",
+      "unit": "秒",
+      "ref_range": "28.0-42.0",
+      "clinical_significance": "延长见于血友病、肝素治疗、DIC"
+    },
+    {
+      "code": "COAG-INR",
+      "name": "国际标准化比值",
+      "abbr": "INR",
+      "category": "检验科",
+      "subcategory": "凝血功能",
+      "unit": "",
+      "ref_range": "0.8-1.2",
+      "clinical_significance": "华法林抗凝监测指标；瓣膜置换目标2.0-3.0"
+    },
+    {
+      "code": "COAG-FIB",
+      "name": "纤维蛋白原",
+      "abbr": "FIB",
+      "category": "检验科",
+      "subcategory": "凝血功能",
+      "unit": "g/L",
+      "ref_range": "2.0-4.0",
+      "clinical_significance": "降低见于DIC、重症肝病；升高见于感染、血栓倾向"
+    },
+    {
+      "code": "COAG-DDIM",
+      "name": "D-二聚体",
+      "abbr": "D-Dimer",
+      "category": "检验科",
+      "subcategory": "凝血功能",
+      "unit": "mg/L FEU",
+      "ref_range": "<0.5",
+      "clinical_significance": "升高见于深静脉血栓、肺栓塞、DIC、术后；阴性可基本排除急性VTE"
+    },
+    {
+      "code": "IMM-CTNI",
+      "name": "心肌肌钙蛋白I",
+      "abbr": "cTnI",
+      "category": "检验科",
+      "subcategory": "心肌标志物",
+      "unit": "ng/mL",
+      "ref_range": "<0.04",
+      "clinical_significance": "升高提示心肌细胞损伤（急性心梗、心肌炎、严重心衰），特异性高"
+    },
+    {
+      "code": "IMM-CKMB",
+      "name": "肌酸激酶同工酶",
+      "abbr": "CK-MB",
+      "category": "检验科",
+      "subcategory": "心肌标志物",
+      "unit": "U/L",
+      "ref_range": "<25",
+      "clinical_significance": "急性心梗后4-6h升高，24h达峰；也见于骨骼肌损伤"
+    },
+    {
+      "code": "IMM-BNP",
+      "name": "B型尿钠肽",
+      "abbr": "BNP",
+      "category": "检验科",
+      "subcategory": "心肌标志物",
+      "unit": "pg/mL",
+      "ref_range": "<100",
+      "clinical_significance": "升高提示心力衰竭；>400高度支持心衰呼吸困难"
+    },
+    {
+      "code": "IMM-TSH",
+      "name": "促甲状腺激素",
+      "abbr": "TSH",
+      "category": "检验科",
+      "subcategory": "甲状腺功能",
+      "unit": "mIU/L",
+      "ref_range": "0.27-4.20",
+      "clinical_significance": "原发性甲亢时降低；原发性甲减时升高，为最敏感指标"
+    },
+    {
+      "code": "IMM-FT3",
+      "name": "游离三碘甲状腺原氨酸",
+      "abbr": "FT3",
+      "category": "检验科",
+      "subcategory": "甲状腺功能",
+      "unit": "pmol/L",
+      "ref_range": "3.1-6.8",
+      "clinical_significance": "甲亢时升高；诊断T3型甲亢"
+    },
+    {
+      "code": "IMM-FT4",
+      "name": "游离甲状腺素",
+      "abbr": "FT4",
+      "category": "检验科",
+      "subcategory": "甲状腺功能",
+      "unit": "pmol/L",
+      "ref_range": "12.0-22.0",
+      "clinical_significance": "甲亢升高、甲减降低"
+    },
+    {
+      "code": "IMM-HBSAG",
+      "name": "乙肝表面抗原",
+      "abbr": "HBsAg",
+      "category": "检验科",
+      "subcategory": "感染免疫",
+      "unit": "定性",
+      "ref_range": "阴性",
+      "clinical_significance": "阳性提示乙型肝炎病毒感染（现症感染）"
+    },
+    {
+      "code": "IMM-AFP",
+      "name": "甲胎蛋白",
+      "abbr": "AFP",
+      "category": "检验科",
+      "subcategory": "肿瘤标志物",
+      "unit": "ng/mL",
+      "ref_range": "<7.0",
+      "clinical_significance": "升高见于原发性肝癌、生殖细胞肿瘤；妊娠可生理性升高"
+    },
+    {
+      "code": "IMM-CEA",
+      "name": "癌胚抗原",
+      "abbr": "CEA",
+      "category": "检验科",
+      "subcategory": "肿瘤标志物",
+      "unit": "ng/mL",
+      "ref_range": "<5.0",
+      "clinical_significance": "升高见于结直肠癌、胃癌、肺癌；吸烟者可轻度升高"
+    },
+    {
+      "code": "IMM-CA199",
+      "name": "糖类抗原19-9",
+      "abbr": "CA19-9",
+      "category": "检验科",
+      "subcategory": "肿瘤标志物",
+      "unit": "U/mL",
+      "ref_range": "<37",
+      "clinical_significance": "升高见于胰腺癌、胆管癌、消化道肿瘤"
+    },
+    {
+      "code": "IMM-PSA",
+      "name": "前列腺特异性抗原",
+      "abbr": "PSA",
+      "category": "检验科",
+      "subcategory": "肿瘤标志物",
+      "unit": "ng/mL",
+      "ref_range": "<4.0",
+      "clinical_significance": "升高见于前列腺癌、前列腺增生、前列腺炎"
+    },
+    {
+      "code": "IMG-CHEST-XR",
+      "name": "胸部正位X线片",
+      "abbr": "胸片",
+      "category": "影像学",
+      "subcategory": "X线",
+      "unit": "",
+      "ref_range": "双肺纹理清晰，心影大小形态正常，肋膈角锐利",
+      "clinical_significance": "用于肺炎、COPD、胸腔积液、心衰肺水肿、骨折等初筛"
+    },
+    {
+      "code": "IMG-CSPINE-XR",
+      "name": "颈椎正侧位X线",
+      "abbr": "颈椎片",
+      "category": "影像学",
+      "subcategory": "X线",
+      "unit": "",
+      "ref_range": "椎体序列整齐，骨质结构完整，椎间隙均匀",
+      "clinical_significance": "评估颈椎骨质增生、椎间隙狭窄、颈椎不稳"
+    },
+    {
+      "code": "IMG-LSPINE-XR",
+      "name": "腰椎正侧位X线",
+      "abbr": "腰椎片",
+      "category": "影像学",
+      "subcategory": "X线",
+      "unit": "",
+      "ref_range": "腰椎生理曲度存在，椎体及椎间隙未见异常",
+      "clinical_significance": "评估腰椎骨质增生、椎间隙狭窄、椎体压缩骨折、滑脱"
+    },
+    {
+      "code": "IMG-ANKLE-XR",
+      "name": "踝关节正侧位X线",
+      "abbr": "踝片",
+      "category": "影像学",
+      "subcategory": "X线",
+      "unit": "",
+      "ref_range": "踝穴关系正常，诸骨皮质连续，未见骨折线",
+      "clinical_significance": "排除踝关节骨折、脱位；软组织肿胀提示韧带损伤"
+    },
+    {
+      "code": "IMG-HEAD-CT",
+      "name": "头颅CT平扫",
+      "abbr": "头颅CT",
+      "category": "影像学",
+      "subcategory": "CT",
+      "unit": "",
+      "ref_range": "脑实质密度均匀，脑室脑沟形态正常，中线结构居中",
+      "clinical_significance": "快速排查脑出血、脑梗死急性期、占位、外伤"
+    },
+    {
+      "code": "IMG-CHEST-CT",
+      "name": "胸部CT平扫",
+      "abbr": "胸部CT",
+      "category": "影像学",
+      "subcategory": "CT",
+      "unit": "",
+      "ref_range": "双肺野清晰，支气管血管束走行自然，纵隔淋巴结无肿大",
+      "clinical_significance": "诊断肺炎、肺癌、肺栓塞、间质性肺病敏感性远高于胸片"
+    },
+    {
+      "code": "IMG-ABDOM-CT",
+      "name": "腹部CT平扫",
+      "abbr": "腹部CT",
+      "category": "影像学",
+      "subcategory": "CT",
+      "unit": "",
+      "ref_range": "肝胰脾肾大小形态正常，实质密度均匀，腹腔无游离积液",
+      "clinical_significance": "用于胰腺炎、阑尾炎、肝胆胰脾占位、急腹症评估"
+    },
+    {
+      "code": "IMG-LSPINE-CT",
+      "name": "腰椎CT",
+      "abbr": "腰椎CT",
+      "category": "影像学",
+      "subcategory": "CT",
+      "unit": "",
+      "ref_range": "骨性椎管无狭窄，椎间盘形态正常",
+      "clinical_significance": "评估骨性结构、椎间盘突出、椎管狭窄"
+    },
+    {
+      "code": "IMG-HEAD-MRI",
+      "name": "头颅MRI+DWI",
+      "abbr": "头颅MRI",
+      "category": "影像学",
+      "subcategory": "磁共振",
+      "unit": "",
+      "ref_range": "各序列脑实质信号均匀，DWI未见弥散受限高信号",
+      "clinical_significance": "诊断急性脑梗死（DWI）、脱髓鞘、脑肿瘤、后颅窝病变优于CT"
+    },
+    {
+      "code": "IMG-CSPINE-MRI",
+      "name": "颈椎MRI",
+      "abbr": "颈椎MRI",
+      "category": "影像学",
+      "subcategory": "磁共振",
+      "unit": "",
+      "ref_range": "颈椎间盘信号正常，无突出，颈髓形态信号正常",
+      "clinical_significance": "评估颈椎间盘突出、脊髓受压、神经根病变"
+    },
+    {
+      "code": "IMG-LSPINE-MRI",
+      "name": "腰椎MRI",
+      "abbr": "腰椎MRI",
+      "category": "影像学",
+      "subcategory": "磁共振",
+      "unit": "",
+      "ref_range": "腰椎间盘信号正常，无突出，马尾神经形态正常",
+      "clinical_significance": "评估腰椎间盘突出、椎管狭窄、马尾综合征"
+    },
+    {
+      "code": "IMG-ABDOM-US",
+      "name": "腹部B超",
+      "abbr": "腹部超声",
+      "category": "影像学",
+      "subcategory": "超声",
+      "unit": "",
+      "ref_range": "肝胆胰脾双肾大小形态正常，实质回声均匀，未见占位",
+      "clinical_significance": "筛查肝胆胰脾肾结石、占位、腹水；无创、可重复"
+    },
+    {
+      "code": "IMG-THYROID-US",
+      "name": "甲状腺B超",
+      "abbr": "甲状腺超声",
+      "category": "影像学",
+      "subcategory": "超声",
+      "unit": "",
+      "ref_range": "甲状腺大小形态正常，包膜完整，实质回声均匀",
+      "clinical_significance": "评估甲状腺结节、弥漫性病变（甲亢/甲减/桥本病）"
+    },
+    {
+      "code": "IMG-URINE-US",
+      "name": "泌尿系B超",
+      "abbr": "泌尿系超声",
+      "category": "影像学",
+      "subcategory": "超声",
+      "unit": "",
+      "ref_range": "双肾输尿管膀胱前列腺大小形态正常，未见结石及占位",
+      "clinical_significance": "诊断泌尿系结石、肾积水、前列腺增生、膀胱残余尿"
+    },
+    {
+      "code": "IMG-ECHO",
+      "name": "心脏彩超",
+      "abbr": "心超",
+      "category": "影像学",
+      "subcategory": "超声",
+      "unit": "",
+      "ref_range": "各房室大小正常，室壁运动协调，EF≥55%，瓣膜形态正常",
+      "clinical_significance": "评估心功能（EF值）、瓣膜病、心肌病、先心病"
+    },
+    {
+      "code": "IMG-GYN-US",
+      "name": "妇科B超",
+      "abbr": "妇科超声",
+      "category": "影像学",
+      "subcategory": "超声",
+      "unit": "",
+      "ref_range": "子宫附件大小形态正常，盆腔无积液",
+      "clinical_significance": "诊断盆腔炎、卵巢囊肿、子宫肌瘤、异位妊娠"
+    },
+    {
+      "code": "ECG-12LEAD",
+      "name": "十二导联心电图",
+      "abbr": "ECG",
+      "category": "功能检查",
+      "subcategory": "心电图",
+      "unit": "",
+      "ref_range": "窦性心律，心率60-100次/分，各导联ST-T无异常偏移",
+      "clinical_significance": "诊断心律失常、心肌缺血/梗死、房室肥大、电解质紊乱"
+    },
+    {
+      "code": "FUNC-PFT",
+      "name": "肺功能检查",
+      "abbr": "PFT",
+      "category": "功能检查",
+      "subcategory": "呼吸功能",
+      "unit": "",
+      "ref_range": "FEV1/FVC≥70%，FEV1占预计值≥80%",
+      "clinical_significance": "诊断COPD（FEV1/FVC<70%）、支气管哮喘（可逆性气流受限）"
+    },
+    {
+      "code": "FUNC-GASTRO",
+      "name": "电子胃镜",
+      "abbr": "胃镜",
+      "category": "功能检查",
+      "subcategory": "内镜",
+      "unit": "",
+      "ref_range": "食管胃十二指肠黏膜光滑，色泽正常，未见溃疡及糜烂",
+      "clinical_significance": "直接观察上消化道黏膜，诊断食管炎、胃炎、溃疡、肿瘤并取活检"
+    },
+    {
+      "code": "FUNC-BMD",
+      "name": "双能X线骨密度测定",
+      "abbr": "DEXA",
+      "category": "功能检查",
+      "subcategory": "骨代谢",
+      "unit": "",
+      "ref_range": "T值≥-1.0",
+      "clinical_significance": "T值≤-2.5诊断骨质疏松；-2.5<T<-1.0为骨量减少"
+    }
+  ]
+}

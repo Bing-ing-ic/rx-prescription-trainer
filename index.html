@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261105qk1">
+<link rel="stylesheet" href="css/rx.min.css?v=20261106lab1">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -168,6 +168,15 @@
             <input id="secondary-diag-input" type="text" placeholder="例如：高血压2级，2型糖尿病">
           </div>
           <div id="secondary-diag-suggest" class="diag-suggest hidden"></div>
+        </div>
+
+        <!-- 检验检查报告（诊断确认后显示，作为临床诊断支撑） -->
+        <div id="lab-report-row" class="hidden" style="margin-top:14px;padding-top:14px;border-top:1px dashed #e2e8f0;">
+          <div class="lab-report-header" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+            <label style="font-size:14px;font-weight:600;color:#334155;">📋 检验检查报告（临床诊断支撑）</label>
+            <span id="lab-report-toggle" style="font-size:12px;color:#3b82f6;">点击展开 ▼</span>
+          </div>
+          <div id="lab-report-body" class="hidden" style="margin-top:10px;"></div>
         </div>
       </div>
 
@@ -1120,7 +1129,7 @@
 })();
 </script>
 <script src="js/review.min.js?v=20261104fix1"></script>
-<script src="js/app.min.js?v=20261104fix1"></script>
+<script src="js/app.min.js?v=20261106lab1"></script>
 <script src="js/tcm-engine.min.js?v=20261104fix1"></script>
 <script src="js/acup-engine.min.js?v=20261104fix1"></script>
 <script src="js/tcm-app.min.js?v=20261105ui1"></script>

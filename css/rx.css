@@ -527,6 +527,23 @@ input, select, textarea { font-family: inherit; }
   .rx-foot { border-top: 2px double #000 !important; }
   .chip { display: none !important; }
   .mfr { display: none !important; }
+
+  /* P5-2 双通道打印：屏幕上口服/输液靠 .hidden 切换，打印时两个 rx-body 都强制显示，
+     使口服药与输液药同一张处方纸输出；picker/iv-reason-bar 已带 .no-print 自动隐藏。 */
+  #rx-body-normal, #rx-body-iv { display: block !important; }
+  #rx-body-iv { margin-top: 18px; padding-top: 14px; border-top: 2px dashed #000; }
+  #rx-body-normal::before {
+    content: "【口服 / 肌注处方】";
+    display: block; font-weight: 700; font-size: 12pt; color: #000;
+    margin-bottom: 8px; letter-spacing: 2px;
+  }
+  #rx-body-iv::before {
+    content: "【静脉输液处方】";
+    display: block; font-weight: 700; font-size: 12pt; color: #000;
+    margin-bottom: 8px; letter-spacing: 2px;
+  }
+  /* 打印双渠道时，输液专用签名栏（调配/核对药师）一并显示 */
+  .iv-only { display: inline !important; }
 }
 
 /* ========== 诊断提示 ========== */

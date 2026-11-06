@@ -177,6 +177,9 @@
             <label style="font-size:12px;color:#64748b;display:flex;align-items:center;gap:6px;padding-top:20px;">
               <input id="pi-pregnant" type="checkbox" style="margin:0;"> 妊娠中
             </label>
+            <label style="font-size:12px;color:#64748b;display:flex;align-items:center;gap:6px;padding-top:20px;grid-column:span 2;" title="慢性病长期用药复诊患者勾选；未勾选视为首次就诊/病情未控制，长处方将被 DUR-01 拦截">
+              <input id="pi-long-term-stable" type="checkbox" style="margin:0;"> 病情稳定（慢性病长期用药复诊，可开4-12周长处方）
+            </label>
           </div>
           <div style="margin-top:10px;">
             <label style="font-size:12px;color:#64748b;">药物过敏史（多个用逗号分隔，如：青霉素,磺胺）
@@ -1244,9 +1247,9 @@
           <div id="pitfall-hint" style="margin-top:6px;color:#374151;line-height:1.6;"></div>
         </div>
 
-        <!-- 答题阶段 -->
+        <!-- 答题阶段：P5-3 自由输入诊断 + 关键词模糊匹配 -->
         <div id="pitfall-ask" style="margin-top:18px;">
-          <p style="font-weight:600;color:#1e293b;margin-bottom:10px;">你认为的初步诊断是？</p>
+          <p style="font-weight:600;color:#1e293b;margin-bottom:10px;">你认为的初步诊断是？（请自由输入，支持关键词模糊匹配）</p>
           <div id="pitfall-choices" style="display:flex;flex-direction:column;gap:10px;"></div>
         </div>
 

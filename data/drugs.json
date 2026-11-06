@@ -1492,7 +1492,7 @@
         "0.9%氯化钠注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "不能与含钙溶液配伍"
       ],
@@ -1566,7 +1566,7 @@
         "0.9%氯化钠注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "双硫仑样反应",
         "可引起凝血功能障碍",
@@ -3592,7 +3592,7 @@
         "0.9%氯化钠注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [],
       "pinyin": "zsytbtd",
       "is_tcm_injection": false,
@@ -4481,7 +4481,7 @@
         "0.9%氯化钠注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [],
       "pinyin": "zsytbzln",
       "pinyin_code": "ZSYTBZLN",
@@ -4514,7 +4514,7 @@
         "0.9%氯化钠注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [],
       "pinyin": "zsytblm",
       "pinyin_code": "ZSYTBLM",
@@ -5001,7 +5001,7 @@
       "pharmacology_class": "第三代头孢菌素",
       "abx_level": "restricted",
       "price_yuan": 48,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "dose_range_json": {
         "single_min_mg": 1000,
         "single_max_mg": 2000,

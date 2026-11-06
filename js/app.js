@@ -56,12 +56,13 @@
   function syncPatientForm() {
     if (!S.patient) return;
     const ageEl = $('pi-age'), wtEl = $('pi-weight'), genderEl = $('pi-gender'),
-          pregEl = $('pi-pregnant'), algEl = $('pi-allergies');
+          pregEl = $('pi-pregnant'), algEl = $('pi-allergies'), ltsEl = $('pi-long-term-stable');
     if (ageEl) ageEl.value = S.patient.age != null ? S.patient.age : '';
     if (wtEl) wtEl.value = S.patient.weight != null ? S.patient.weight : '';
     if (genderEl) genderEl.value = S.patient.gender || '男';
     if (pregEl) pregEl.checked = !!S.patient.pregnant;
     if (algEl) algEl.value = S.patient.allergies || '';
+    if (ltsEl) ltsEl.checked = !!S.patient.long_term_stable;
     // 合并症 checkbox
     document.querySelectorAll('#pi-comorbidities input[type=checkbox]').forEach(cb => {
       cb.checked = (S.patient.comorbidities || []).includes(cb.value);
@@ -70,12 +71,13 @@
   function readPatientForm() {
     if (!S.patient) return;
     const ageEl = $('pi-age'), wtEl = $('pi-weight'), genderEl = $('pi-gender'),
-          pregEl = $('pi-pregnant'), algEl = $('pi-allergies');
+          pregEl = $('pi-pregnant'), algEl = $('pi-allergies'), ltsEl = $('pi-long-term-stable');
     if (ageEl && ageEl.value !== '') S.patient.age = parseFloat(ageEl.value);
     if (wtEl && wtEl.value !== '') S.patient.weight = parseFloat(wtEl.value);
     if (genderEl) S.patient.gender = genderEl.value;
     if (pregEl) S.patient.pregnant = pregEl.checked;
     if (algEl) S.patient.allergies = algEl.value.trim();
+    if (ltsEl) S.patient.long_term_stable = ltsEl.checked;
     S.patient.comorbidities = Array.from(document.querySelectorAll('#pi-comorbidities input[type=checkbox]:checked')).map(cb => cb.value);
     // 同步到处方前记显示
     if ($('p-age')) $('p-age').textContent = S.patient.age;
@@ -99,7 +101,7 @@
       });
     }
     // 表单改动实时回写
-    ['pi-age','pi-weight','pi-gender','pi-pregnant','pi-allergies'].forEach(id => {
+    ['pi-age','pi-weight','pi-gender','pi-pregnant','pi-allergies','pi-long-term-stable'].forEach(id => {
       const el = $(id);
       if (el) el.addEventListener('change', readPatientForm);
     });
@@ -2619,24 +2621,87 @@
     $('pitfall-result').classList.add('hidden');
     $('pitfall-nav').style.display = 'none';
 
-    // 两个选项：错误诊断 vs 正确诊断，随机顺序
-    const choices = [
-      { key: 'wrong', text: p.wrong_diagnosis, isCorrect: false },
-      { key: 'correct', text: p.correct_diagnosis, isCorrect: true }
-    ];
-    if (Math.random() < 0.5) choices.reverse();
+    // P5-3 自由输入诊断：渲染输入框 + 提交按钮（支持回车提交）
     const box = $('pitfall-choices');
     box.innerHTML = '';
-    choices.forEach(c => {
-      const btn = document.createElement('button');
-      btn.className = 'btn';
-      btn.style.cssText = 'text-align:left;padding:12px 14px;font-size:14px;line-height:1.5;background:#fff;border:1px solid #cbd5e1;';
-      btn.textContent = c.text;
-      btn.onmouseenter = () => btn.style.borderColor = '#3b82f6';
-      btn.onmouseleave = () => btn.style.borderColor = '#cbd5e1';
-      btn.onclick = () => answerPitfall(c.isCorrect, c.text);
-      box.appendChild(btn);
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'pitfall-input';
+    input.placeholder = '输入你的初步诊断，如：消化性溃疡穿孔 / 主动脉夹层 / AECOPD…';
+    input.style.cssText = 'padding:10px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:14px;width:100%;box-sizing:border-box;';
+    const submitBtn = document.createElement('button');
+    submitBtn.className = 'btn btn-primary';
+    submitBtn.textContent = '✅ 提交诊断';
+    submitBtn.style.cssText = 'align-self:flex-start;';
+    const hint = document.createElement('div');
+    hint.style.cssText = 'font-size:12px;color:#94a3b8;line-height:1.6;';
+    hint.textContent = '提示：支持关键词模糊匹配。例如正确诊断为"消化性溃疡穿孔（十二指肠溃疡穿孔）"，输入"溃疡穿孔"或"穿孔"均可判对。';
+    box.appendChild(input);
+    box.appendChild(submitBtn);
+    box.appendChild(hint);
+    setTimeout(() => input.focus(), 50);
+    submitBtn.onclick = () => submitPitfallAnswer();
+    input.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); submitPitfallAnswer(); } };
+  }
+
+  // P5-3 诊断输入模糊匹配：归一化后，用候选关键词子串包含判断
+  function normalizeDiagText(s) {
+    return String(s || '').trim().toLowerCase()
+      .replace(/[\s,，。.、；;：:！!？?（）()\[\]【\]"'’‘'~～\-—_/\\]+/g, '');
+  }
+  function pitfallMatchUserInput(userInput, p) {
+    const ui = normalizeDiagText(userInput);
+    if (ui.length < 2) return false;
+    const correct = p.correct_diagnosis || '';
+    const cands = new Set();
+    // 1) 去除括号后的主诊断
+    const main = correct.toLowerCase()
+      .replace(/（[^）]*）/g, '').replace(/\([^)]*\)/g, '')
+      .replace(/[\s,，。.、；;：:！!？?（）()\[\]【】"'’‘'~～\-—_/\\]+/g, '');
+    if (main.length >= 3) cands.add(main);
+    // 2) 括号内别名（如 "十二指肠溃疡穿孔"、"Stanford A型"、"AECOPD"）
+    const parenRe = /[（(]([^）)]+)[）)]/g;
+    let m;
+    while ((m = parenRe.exec(correct)) !== null) {
+      const inner = normalizeDiagText(m[1]);
+      if (inner.length >= 2) cands.add(inner);
+    }
+    // 3) 去掉部位/急慢性前缀后的核心词
+    const core = main.replace(/^(急性|慢性|急|慢|原发性|继发性|自发性|外伤性|右侧?|左侧?|双侧|老年|儿童|中年)/, '');
+    if (core.length >= 3) cands.add(core);
+    // 4) 内置别名表：常见缩写/口语病名（按陷阱病种命中后启用）
+    const aliasTable = [
+      { hit: ['消化性溃疡穿孔', '十二指肠溃疡穿孔'], aliases: ['溃疡穿孔', '穿孔', '十二指肠穿孔', '胃穿孔', '板状腹'] },
+      { hit: ['主动脉夹层', 'stanford'],           aliases: ['夹层', '主动脉夹层', 'stanford', '双上肢血压差'] },
+      { hit: ['慢性阻塞性肺疾病'],                  aliases: ['慢阻肺', 'copd', 'aecopd', '阻塞性肺疾病', '肺气肿'] },
+      { hit: ['化脓性关节炎'],                      aliases: ['化脓性关节炎', '关节化脓', '金葡菌', '金黄色葡萄球菌'] },
+      { hit: ['蛛网膜下腔出血'],                    aliases: ['蛛网膜下出血', 'sah', '蛛网膜下', '蛛网膜', '雷击样头痛'] },
+    ];
+    const lowerCorrect = correct.toLowerCase();
+    aliasTable.forEach(row => {
+      if (row.hit.some(k => lowerCorrect.includes(k.toLowerCase()))) {
+        row.aliases.forEach(a => cands.add(normalizeDiagText(a)));
+      }
     });
+    // 5) 子串包含：学生输入包含任一候选即判对
+    for (const c of cands) {
+      if (c.length >= 2 && ui.includes(c)) return true;
+    }
+    return false;
+  }
+
+  // P5-3 提交学生自由输入的诊断
+  function submitPitfallAnswer() {
+    const p = S.pitfalls[S.pitfallIdx];
+    if (!p) return;
+    const input = $('pitfall-input');
+    const val = input ? input.value.trim() : '';
+    if (!val) {
+      if (input) { input.focus(); input.style.borderColor = '#dc2626'; }
+      return;
+    }
+    const isCorrect = pitfallMatchUserInput(val, p);
+    answerPitfall(isCorrect, val);
   }
 
   function answerPitfall(chosenCorrect, chosenText) {
@@ -2654,12 +2719,18 @@
     let html = '';
     if (chosenCorrect) {
       html += `<div style="padding:12px;background:#dcfce7;border-left:4px solid #16a34a;border-radius:6px;margin-bottom:12px;">
-        <b style="color:#166534;">✅ 判断正确！</b>正确诊断为：<b>${p.correct_diagnosis}</b>。
+        <b style="color:#166534;">✅ 判断正确！</b>你输入的「${chosenText}」与正确诊断一致：<b>${p.correct_diagnosis}</b>。
       </div>`;
     } else {
+      // P5-3 判断学生是否正好落入常见陷阱（输入≈错误诊断）
+      const ui = normalizeDiagText(chosenText);
+      const wrongCore = normalizeDiagText(p.wrong_diagnosis).replace(/^(急性|慢性|急|慢|原发性|继发性)/, '');
+      const fellForTrap = ui.length >= 2 && (wrongCore.includes(ui) || (ui.length >= 3 && ui.includes(wrongCore)));
+      const trapNote = fellForTrap
+        ? `<div style="margin-top:6px;font-size:13px;color:#7f1d1d;">⚠️ 你正好落入了本病例的经典陷阱——把它误判成了「<b>${p.wrong_diagnosis}</b>」。这正是临床最容易混淆的诊断，请仔细阅读下面的鉴别要点。</div>`
+        : `<div style="margin-top:6px;font-size:13px;color:#7f1d1d;">你输入的「${chosenText}」不是本例正确诊断。临床最容易误判为「${p.wrong_diagnosis}」，而真正的正确诊断是：<b>${p.correct_diagnosis}</b>。</div>`;
       html += `<div style="padding:12px;background:#fee2e2;border-left:4px solid #dc2626;border-radius:6px;margin-bottom:12px;">
-        <b style="color:#991b1b;">❌ 判断错误！</b>你选了「${chosenText}」，但正确诊断是：<b>${p.correct_diagnosis}</b>。
-        <div style="margin-top:6px;font-size:13px;color:#7f1d1d;">这正是临床最容易混淆的陷阱，请仔细阅读下面的鉴别要点。</div>
+        <b style="color:#991b1b;">❌ 判断错误！</b>${trapNote}
       </div>`;
     }
     html += `<div style="margin:10px 0;">

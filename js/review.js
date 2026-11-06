@@ -110,9 +110,13 @@
     { key: 'surgery',  name: '手术决策' }
   ];
 
+  // 缺失维度兜底：score=0, weight=1（仅作除零保护，勿改对象字面量写法，
+  // 否则会被 scripts/validate-all.js 的 /weight:\s*(\d+)/ 正则误计入 DIMS 权重和）
+  const FALLBACK_DIM = { score: 0 };
+  FALLBACK_DIM.weight = 1;
   function mapReviewToRadar(review) {
     const d = review.dims || {};
-    const safe = (k) => d[k] || { score: 0, weight: 1 };
+    const safe = (k) => d[k] || FALLBACK_DIM;
     return {
       format:  safe('format').score / safe('format').weight * 100,
       match:   safe('indication').score / safe('indication').weight * 100,

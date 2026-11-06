@@ -35,12 +35,18 @@
     surgeryOrder: { decision: null, timing: null, procedure_id: null },
     dxAliases: {},         // P2-1 诊断别名归一化：{别名: 规范病名}（来自 data/diagnosis-aliases.json）
     dxPinyin: {},          // P3-2 诊断拼音首字母映射：{小写首字母: 规范病名}（来自 data/pinyin-map.json）
+    // P4-2 诊断陷阱训练
+    pitfalls: [],          // 来自 data/diagnosis-pitfalls.json
+    pitfallIdx: 0,         // 当前正在答的陷阱序号
+    pitfallAnswers: {},    // trap_id -> { chosen, correct } 记录学生选择
   };
 
   // ---------- DOM ----------
   const $ = id => document.getElementById(id);
   function show(view) {
-    ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs'].forEach(v => $(v).classList.add('hidden'));
+    ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls'].forEach(v => {
+      const el = $(v); if (el) el.classList.add('hidden');
+    });
     $(view).classList.remove('hidden');
     window.scrollTo(0,0);
   }
@@ -186,6 +192,10 @@
           Object.keys(a).forEach(k => { if (!k.startsWith('_')) S.dxPinyin[k.toLowerCase()] = a[k]; });
         }
       }).catch(() => { /* 拼音映射加载失败时静默降级 */ });
+      // P4-2 异步加载诊断陷阱库（失败时静默降级，入口按钮仍可显示但提示无数据）
+      fetch('data/diagnosis-pitfalls.json').then(r => r.ok ? r.json() : null).then(a => {
+        if (a && Array.isArray(a.pitfalls)) S.pitfalls = a.pitfalls;
+      }).catch(() => { /* 陷阱库加载失败时静默降级 */ });
     } catch (e) {
       alert('数据加载失败：' + e.message + '\n请用 python -m http.server 或双击 index.html 后通过 http:// 打开。');
     }
@@ -333,6 +343,9 @@
       };
     });
     $('btn-new-case').onclick = newCase;
+    // P4-2 诊断陷阱训练入口
+    const btnOpenPit = $('btn-open-pitfalls'); if (btnOpenPit) btnOpenPit.onclick = openPitfalls;
+    const btnPitBack = $('pitfall-back-list'); if (btnPitBack) btnPitBack.onclick = renderPitfallList;
     $('btn-diag-check').onclick = checkDiagnosis;
     $('diag-input').oninput = onDiagInput;
     $('diag-input').onkeydown = onDiagKey;
@@ -348,6 +361,10 @@
     $('btn-back-home').onclick = () => show('view-home');
     $('btn-print').onclick = () => window.print();
     $('btn-submit').onclick = submitRx;
+    // P4-1 双通道快速切换：在处方笺内直接切口服/输液，不清空已开药品
+    const btnToggleNormal = $('btn-toggle-normal'); if (btnToggleNormal) btnToggleNormal.onclick = () => openRx('normal');
+    const btnToggleIv = $('btn-toggle-iv'); if (btnToggleIv) btnToggleIv.onclick = () => openRx('iv');
+    refreshDualChannelBanner();
     // 检验检查单视图：工具栏按钮
     const btnGotoLab = $('btn-goto-lab'); if (btnGotoLab) btnGotoLab.onclick = openLab;
     const btnLabBack = $('btn-lab-back-home'); if (btnLabBack) btnLabBack.onclick = () => show('view-home');
@@ -863,6 +880,26 @@
   }
 
   // ---------- 打开处方笺 ----------
+  // P4-1 双通道提示条：根据当前已开药品/输液组显示"合并点评"提示
+  function refreshDualChannelBanner() {
+    const banner = $('dual-channel-banner');
+    if (!banner) return;
+    const hasNormal = S.normalItems && S.normalItems.length > 0;
+    const ivCount = S.ivGroups ? S.ivGroups.filter(g => g.solvent || g.drugs.length > 0).length : 0;
+    if (hasNormal && ivCount > 0) {
+      banner.style.display = 'block';
+      banner.innerHTML = `✅ 双通道已开：口服药 <b>${S.normalItems.length}</b> 种 + 输液 <b>${ivCount}</b> 组。提交时将<b>合并点评</b>，系统会自动检测 DUP-02 跨通道重复用药（口服+静脉同类）。`;
+    } else if (hasNormal) {
+      banner.style.display = 'block';
+      banner.innerHTML = `📄 当前仅口服通道：已开 <b>${S.normalItems.length}</b> 种口服/肌注药。如需合并点评，可点上方「💧 输液通道」继续开静脉药。`;
+    } else if (ivCount > 0) {
+      banner.style.display = 'block';
+      banner.innerHTML = `💧 当前仅输液通道：已开 <b>${ivCount}</b> 组输液。如需合并点评，可点上方「📄 口服通道」继续开口服药。`;
+    } else {
+      banner.style.display = 'none';
+    }
+  }
+
   function openRx(type) {
     try {
     if (!S.disease || !S.patient) { alert('病例数据未就绪，请先点"开始新病例"'); return; }
@@ -910,12 +947,15 @@
       $('rx-body-normal').classList.add('hidden');
       $('rx-body-iv').classList.remove('hidden');
       document.querySelectorAll('.iv-only').forEach(e=>e.classList.remove('hidden'));
-      S.ivGroups = [];
-      newIvGroup();
-      // 重置输液指征选择
-      const rs = $('iv-reason-select'); if (rs) rs.value = '';
-      const rn = $('iv-reason-note'); if (rn) rn.value = '';
-      S.ivFields = { iv_reason:'', iv_reason_note:'' };
+      // P4-1 双通道：已开过的输液组保留，切回时不清空，便于"口服+输液"同次就诊合并点评
+      if (!S.ivGroups || S.ivGroups.length === 0) {
+        S.ivGroups = [];
+        newIvGroup();
+      }
+      // 仅当首次进入输液通道时重置输液指征；已开过的指征保留
+      const rs = $('iv-reason-select'); if (rs && !S.ivFields.iv_reason) rs.value = '';
+      const rn = $('iv-reason-note'); if (rn && !S.ivFields.iv_reason) rn.value = '';
+      if (!S.ivFields.iv_reason) S.ivFields = { iv_reason:'', iv_reason_note:'' };
     } else {
       if (isPediatric) {
         paper.classList.add('pediatric');
@@ -932,6 +972,7 @@
     }
     // 注意：此处不清空 S.labOrders —— 处方与检验单并列开具，双向跳转时保留双方数据
     renderDrugList(); renderIvDrugList(); renderNormalItems(); renderIvGroups();
+    refreshDualChannelBanner();
     show('view-rx');
     } catch(e) {
       document.body.insertAdjacentHTML('afterbegin',
@@ -1694,6 +1735,7 @@
     });
     updateCount();
     updatePreReminder();
+    refreshDualChannelBanner();
   }
 
   function renderNormalItems() {
@@ -1813,6 +1855,7 @@
     });
     updateCount();
     updatePreReminder();
+    refreshDualChannelBanner();
   }
   function routeZh(r) { return {oral:'口服',topical:'外用',im:'肌注',sc:'皮下',iv_drip:'静滴'}[r]||r; }
 
@@ -2079,8 +2122,9 @@
       return alert('本病种需先在「手术指征评估表」中完成治疗决策（保守治疗 / 手术治疗），再提交点评。');
     }
 
-    // 硬阻断：每组必须有溶媒+药
-    if (S.rxType === 'iv') {
+    // 硬阻断：每组必须有溶媒+药（P4-1：只要本次就诊开过输液组就校验，不论当前停留在哪个通道）
+    const hasIvData = S.ivGroups && S.ivGroups.some(g => g.solvent || g.drugs.length > 0);
+    if (hasIvData) {
       const groupsOk = S.ivGroups.every(g => g.solvent && g.drugs.length > 0);
       if (!groupsOk) return alert('每组都必须选择溶媒并至少加入一个药！');
       // 硬阻断：必须选择真实输液指征（不得再用 student_selected_iv 绕开 IV-01）
@@ -2106,8 +2150,9 @@
     const visitId = 'V-' + new Date().toISOString().slice(0,10).replace(/-/g,'') + '-' + String(Math.floor(Math.random()*900000+100000));
 
     // 多组输液：扁平化为 items（兼容旧规则引擎），同时保留 groups 详情
+    // P4-1：只要本次就诊开过输液组就构造 ivCtx，让 DUP-02 跨通道重复用药能命中
     let ivCtx = null;
-    if (S.rxType === 'iv') {
+    if (hasIvData) {
       const flatItems = [];
       const groupDetails = S.ivGroups.map((g, gi) => {
         flatItems.push({ drug: g.solvent, quantity: 1, single_dose: g.solvent.volume_ml+'ml', frequency: 'st', duration_days: 1, route: 'iv_drip', group: gi+1 });
@@ -2149,11 +2194,13 @@
       };
     }
 
-    const normalCtx = S.rxType === 'normal' ? {
+    // P4-1 多处方合并点评：无论当前停留在哪个通道，只要 S.normalItems 有药就一起传给规则引擎，
+    // 让 DUP-02 跨通道重复用药（口服+静脉同类）能命中。
+    const normalCtx = (S.normalItems && S.normalItems.length > 0) ? {
       rx_id: $('rx-no').textContent,
       items: S.normalItems,
       duration_days: S.normalItems.length ? S.normalItems[0].duration_days : 7
-    } : (S.rxType === 'iv' ? { rx_id: 'NORMAL-PLACEHOLDER', items: [], duration_days: 0 } : null);
+    } : null;
 
     const labCtx = {
       rx_id: ($('lab-no') ? $('lab-no').textContent : '') || $('rx-no').textContent,
@@ -2222,8 +2269,12 @@
     // 评级
     const grade = $('r-grade');
     if (grade) grade.textContent = disp >= 90 ? '优秀 · 可独立接诊' : disp >= 75 ? '良好 · 基本掌握' : disp >= 60 ? '及格 · 需加强' : '不合格 · 重新学习';
-    $('r-meta').textContent =
-      `诊断：${ctx.disease.name}（${ctx.disease.icd10}）${S.secondaryDiagnosis ? ' · 次要诊断：' + S.secondaryDiagnosis : ''} · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁`;
+    // P4-1 多处方合并点评：双通道都有药时显示合并点评徽标
+    const hasNormal = !!(ctx.normal_rx && ctx.normal_rx.items && ctx.normal_rx.items.length);
+    const hasIv = !!(ctx.iv_rx && ctx.iv_rx.items && ctx.iv_rx.items.length);
+    const dualTag = (hasNormal && hasIv) ? ' <span style="display:inline-block;padding:2px 8px;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:10px;font-size:12px;margin-left:6px;">🔀 合并点评（口服+静脉双通道）</span>' : '';
+    $('r-meta').innerHTML =
+      `诊断：${ctx.disease.name}（${ctx.disease.icd10}）${S.secondaryDiagnosis ? ' · 次要诊断：' + S.secondaryDiagnosis : ''} · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁${dualTag}`;
 
     // 生命体征：与患者病情/处方结果动态关联，按医学标准变色
     const score = review.total;
@@ -2508,6 +2559,159 @@
     });
   }
 
+  // ====================== P4-2 诊断陷阱训练 ======================
+  function openPitfalls() {
+    if (!S.pitfalls || S.pitfalls.length === 0) {
+      // 数据可能还在加载，稍等再试
+      return fetch('data/diagnosis-pitfalls.json').then(r => r.ok ? r.json() : null).then(a => {
+        if (a && Array.isArray(a.pitfalls)) S.pitfalls = a.pitfalls;
+        renderPitfallList();
+        show('view-pitfalls');
+      }).catch(() => alert('诊断陷阱库加载失败，请检查 data/diagnosis-pitfalls.json 是否存在。'));
+    }
+    renderPitfallList();
+    show('view-pitfalls');
+  }
+
+  function renderPitfallList() {
+    const wrap = $('pitfall-list-wrap');
+    const quiz = $('pitfall-quiz-wrap');
+    if (wrap) wrap.classList.remove('hidden');
+    if (quiz) quiz.classList.add('hidden');
+    const list = $('pitfall-list');
+    if (!list) return;
+    if (!S.pitfalls || S.pitfalls.length === 0) {
+      list.innerHTML = '<div class="muted" style="grid-column:1/-1;padding:30px;text-align:center;">诊断陷阱库尚未加载，请稍后再试。</div>';
+      return;
+    }
+    list.innerHTML = '';
+    S.pitfalls.forEach((p, i) => {
+      const answered = S.pitfallAnswers[p.trap_id];
+      const card = document.createElement('div');
+      card.style.cssText = 'background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;cursor:pointer;transition:all .15s;';
+      const stateTag = answered
+        ? (answered.correct ? '<span style="display:inline-block;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;font-size:11px;margin-left:6px;">✓ 已答对</span>'
+                           : '<span style="display:inline-block;padding:2px 8px;background:#fee2e2;color:#991b1b;border-radius:10px;font-size:11px;margin-left:6px;">✗ 已答错</span>')
+        : '<span style="display:inline-block;padding:2px 8px;background:#f1f5f9;color:#475569;border-radius:10px;font-size:11px;margin-left:6px;">未答</span>';
+      card.innerHTML = `
+        <div style="font-weight:600;color:#0f4c81;margin-bottom:8px;">#${i+1} ${p.title}${stateTag}</div>
+        <div style="font-size:12px;color:#64748b;line-height:1.5;">${p.chief_complaint.length > 60 ? p.chief_complaint.slice(0,60)+'…' : p.chief_complaint}</div>
+        <div style="margin-top:10px;font-size:12px;color:#3b82f6;">点击开始训练 →</div>
+      `;
+      card.onmouseenter = () => card.style.borderColor = '#3b82f6';
+      card.onmouseleave = () => card.style.borderColor = '#e2e8f0';
+      card.onclick = () => startPitfallQuiz(i);
+      list.appendChild(card);
+    });
+  }
+
+  function startPitfallQuiz(idx) {
+    S.pitfallIdx = idx;
+    const p = S.pitfalls[idx];
+    if (!p) return;
+    $('pitfall-list-wrap').classList.add('hidden');
+    $('pitfall-quiz-wrap').classList.remove('hidden');
+    $('pitfall-idx-tag').textContent = `陷阱 ${idx+1}/${S.pitfalls.length}`;
+    $('pitfall-title').textContent = p.title;
+    $('pitfall-chief').textContent = p.chief_complaint;
+    $('pitfall-hint').textContent = p.patient_hint;
+    $('pitfall-ask').classList.remove('hidden');
+    $('pitfall-result').classList.add('hidden');
+    $('pitfall-nav').style.display = 'none';
+
+    // 两个选项：错误诊断 vs 正确诊断，随机顺序
+    const choices = [
+      { key: 'wrong', text: p.wrong_diagnosis, isCorrect: false },
+      { key: 'correct', text: p.correct_diagnosis, isCorrect: true }
+    ];
+    if (Math.random() < 0.5) choices.reverse();
+    const box = $('pitfall-choices');
+    box.innerHTML = '';
+    choices.forEach(c => {
+      const btn = document.createElement('button');
+      btn.className = 'btn';
+      btn.style.cssText = 'text-align:left;padding:12px 14px;font-size:14px;line-height:1.5;background:#fff;border:1px solid #cbd5e1;';
+      btn.textContent = c.text;
+      btn.onmouseenter = () => btn.style.borderColor = '#3b82f6';
+      btn.onmouseleave = () => btn.style.borderColor = '#cbd5e1';
+      btn.onclick = () => answerPitfall(c.isCorrect, c.text);
+      box.appendChild(btn);
+    });
+  }
+
+  function answerPitfall(chosenCorrect, chosenText) {
+    const p = S.pitfalls[S.pitfallIdx];
+    if (!p) return;
+    $('pitfall-ask').classList.add('hidden');
+    const res = $('pitfall-result');
+    res.classList.remove('hidden');
+
+    // 记录到错题本
+    S.pitfallAnswers[p.trap_id] = { chosen: chosenText, correct: chosenCorrect };
+    savePitfallMistake(p, chosenCorrect, chosenText);
+
+    // 渲染反馈
+    let html = '';
+    if (chosenCorrect) {
+      html += `<div style="padding:12px;background:#dcfce7;border-left:4px solid #16a34a;border-radius:6px;margin-bottom:12px;">
+        <b style="color:#166534;">✅ 判断正确！</b>正确诊断为：<b>${p.correct_diagnosis}</b>。
+      </div>`;
+    } else {
+      html += `<div style="padding:12px;background:#fee2e2;border-left:4px solid #dc2626;border-radius:6px;margin-bottom:12px;">
+        <b style="color:#991b1b;">❌ 判断错误！</b>你选了「${chosenText}」，但正确诊断是：<b>${p.correct_diagnosis}</b>。
+        <div style="margin-top:6px;font-size:13px;color:#7f1d1d;">这正是临床最容易混淆的陷阱，请仔细阅读下面的鉴别要点。</div>
+      </div>`;
+    }
+    html += `<div style="margin:10px 0;">
+      <b style="color:#0f4c81;">🚩 红旗征（鉴别要点）：</b>
+      <ul style="margin:8px 0 0 20px;color:#374151;line-height:1.8;">
+        ${p.red_flags.map(r => `<li>${r}</li>`).join('')}
+      </ul>
+    </div>`;
+    html += `<div style="margin:10px 0;">
+      <b style="color:#0f4c81;">🔬 关键鉴别检查：</b>
+      <ul style="margin:8px 0 0 20px;color:#374151;line-height:1.8;">
+        ${p.key_workup.map(w => `<li>${w}</li>`).join('')}
+      </ul>
+    </div>`;
+    html += `<div style="margin:10px 0;padding:12px;background:#fef9c3;border-left:4px solid #ca8a04;border-radius:6px;">
+      <b style="color:#854d0e;">💡 教学提示：</b>
+      <div style="margin-top:6px;color:#713f12;line-height:1.7;">${p.teaching_tip}</div>
+    </div>`;
+    res.innerHTML = html;
+
+    // 显示下一个按钮
+    const nav = $('pitfall-nav');
+    nav.style.display = 'flex';
+    const nextBtn = $('pitfall-next');
+    if (nextBtn) {
+      nextBtn.textContent = (S.pitfallIdx < S.pitfalls.length - 1) ? '下一个陷阱 →' : '🏁 返回陷阱列表';
+      nextBtn.onclick = () => {
+        if (S.pitfallIdx < S.pitfalls.length - 1) startPitfallQuiz(S.pitfallIdx + 1);
+        else renderPitfallList();
+      };
+    }
+  }
+
+  // 诊断陷阱错题写入 localStorage（与现有错题本同源展示）
+  function savePitfallMistake(p, correct, chosenText) {
+    try {
+      const arr = JSON.parse(localStorage.getItem('rx-pitfall-mistakes') || '[]');
+      arr.unshift({
+        t: Date.now(),
+        trap_id: p.trap_id,
+        title: p.title,
+        chief_complaint: p.chief_complaint,
+        wrong_diagnosis: p.wrong_diagnosis,
+        correct_diagnosis: p.correct_diagnosis,
+        chosen: chosenText,
+        is_correct: correct,
+        teaching_tip: p.teaching_tip
+      });
+      localStorage.setItem('rx-pitfall-mistakes', JSON.stringify(arr.slice(0, 50)));
+    } catch (e) { /* 忽略存储异常 */ }
+  }
+
   // 暴露到全局供 inline onclick 调用
   window.__openRx = openRx;
   window.__openLab = openLab;
@@ -2538,7 +2742,33 @@
   function renderMistakes() {
     const arr = JSON.parse(localStorage.getItem('rx-mistakes')||'[]');
     const box = $('mistakes-list');
-    if (arr.length === 0) {
+    // P4-2 诊断陷阱错题（单独段落，不与处方错题混排）
+    let pitfallHtml = '';
+    try {
+      const pitArr = JSON.parse(localStorage.getItem('rx-pitfall-mistakes')||'[]');
+      const wrongPit = pitArr.filter(p => !p.is_correct);
+      if (wrongPit.length > 0) {
+        pitfallHtml = `<div style="margin-top:20px;padding-top:16px;border-top:2px dashed #cbd5e1;">
+          <h3 style="color:#0f4c81;margin-bottom:10px;">🎯 诊断陷阱错题（${wrongPit.length}）</h3>
+          ${wrongPit.map(p => `
+            <div class="mistake-card" style="border-left:4px solid #dc2626;">
+              <div class="mistake-head">
+                <span class="tag tag-diff">诊断陷阱</span>
+                <span class="muted">${new Date(p.t).toLocaleString()}</span>
+              </div>
+              <div style="margin:8px 0;font-size:13px;color:#374151;line-height:1.6;">
+                <b>主诉：</b>${p.chief_complaint}<br>
+                <b>你误判为：</b><span style="color:#dc2626;">${p.chosen}</span><br>
+                <b>正确诊断：</b><span style="color:#166534;">${p.correct_diagnosis}</span>
+              </div>
+              <div class="sug" style="font-size:12px;color:#64748b;">💡 ${p.teaching_tip}</div>
+            </div>
+          `).join('')}
+        </div>`;
+      }
+    } catch (e) { /* 忽略 */ }
+
+    if (arr.length === 0 && !pitfallHtml) {
       box.innerHTML = '<p class="muted center">暂无错题，继续保持！🎉</p>';
       return;
     }
@@ -2565,7 +2795,7 @@
           </div>`).join('')}
         </div>` : ''}
       </div>
-    `).join('');
+    `).join('') + pitfallHtml;
   }
 
   // ====================== 新增功能：学习统计 ======================

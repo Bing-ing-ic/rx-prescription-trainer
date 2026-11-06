@@ -131,6 +131,7 @@
       <h1>医学生处方推演训练平台</h1>
       <p class="hero-sub">随机病例 · 双通道处方 · 规则引擎实时点评 · 云南医保事前提醒</p>
       <button id="btn-new-case" class="hero-btn">🎲 随机开始新病例</button>
+      <button id="btn-open-pitfalls" class="hero-btn hero-btn-ghost" style="margin-left:10px;">🎯 诊断陷阱训练</button>
       <div class="difficulty-row no-print">
         <span class="diff-label">难度筛选：</span>
         <label><input type="radio" name="diff-filter" value="all" checked> 全部</label>
@@ -249,10 +250,15 @@
       <button class="btn" id="btn-back-home">← 返回首页</button>
       <span id="rx-toolbar-title" class="toolbar-title">处方笺</span>
       <span class="spacer"></span>
+      <button class="btn" id="btn-toggle-normal" title="切换到口服/肌注处方">📄 口服通道</button>
+      <button class="btn" id="btn-toggle-iv" title="切换到静脉输液处方">💧 输液通道</button>
       <button class="btn" id="btn-goto-lab">📋 去开检验检查单</button>
       <button class="btn" id="btn-print">🖨 打印 / 存PDF</button>
       <button class="btn btn-primary" id="btn-submit">✅ 提交点评</button>
     </div>
+
+    <!-- P4-1 双通道合并点评提示条（根据当前数据动态显示） -->
+    <div id="dual-channel-banner" class="no-print" style="display:none;margin:8px 12px;padding:8px 12px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:6px;font-size:13px;color:#065f46;"></div>
 
     <div class="rx-paper" id="rx-paper">
       <div class="rx-corner" id="rx-corner">门诊处方</div>
@@ -1205,6 +1211,55 @@
       </div>
     </div>
   </div>
+
+  <!-- ============ P4-2: 诊断陷阱训练 ============ -->
+  <section class="view hidden" id="view-pitfalls">
+    <div class="report-head">
+      <button class="btn" data-goto="home">← 返回首页</button>
+      <h2>🎯 诊断陷阱训练</h2>
+      <p class="muted">模拟临床常见的"先看错诊断再纠正"思维训练：展示主诉与患者线索，请判断正确诊断，再查看红旗征与鉴别要点。答错自动记入错题本。</p>
+    </div>
+
+    <!-- 阶段1：陷阱列表 -->
+    <div id="pitfall-list-wrap">
+      <div id="pitfall-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;padding:8px 4px;"></div>
+    </div>
+
+    <!-- 阶段2：答题卡片 -->
+    <div id="pitfall-quiz-wrap" class="hidden" style="max-width:880px;margin:0 auto;">
+      <button class="btn no-print" id="pitfall-back-list" style="margin-bottom:12px;">← 返回陷阱列表</button>
+      <div class="case-card" style="padding:20px;">
+        <div class="case-card-head">
+          <span class="tag" id="pitfall-idx-tag">陷阱 1/5</span>
+          <span class="case-title" id="pitfall-title">-</span>
+        </div>
+
+        <div style="margin:14px 0;padding:12px;background:#fef2f2;border-left:4px solid #dc2626;border-radius:6px;">
+          <b style="color:#991b1b;">🩺 主诉：</b>
+          <div id="pitfall-chief" style="margin-top:6px;color:#374151;line-height:1.6;"></div>
+        </div>
+
+        <div style="margin:10px 0;padding:12px;background:#f0f9ff;border-left:4px solid #0284c7;border-radius:6px;">
+          <b style="color:#075985;">🔍 患者线索（查体/辅检）：</b>
+          <div id="pitfall-hint" style="margin-top:6px;color:#374151;line-height:1.6;"></div>
+        </div>
+
+        <!-- 答题阶段 -->
+        <div id="pitfall-ask" style="margin-top:18px;">
+          <p style="font-weight:600;color:#1e293b;margin-bottom:10px;">你认为的初步诊断是？</p>
+          <div id="pitfall-choices" style="display:flex;flex-direction:column;gap:10px;"></div>
+        </div>
+
+        <!-- 反馈阶段 -->
+        <div id="pitfall-result" class="hidden" style="margin-top:18px;"></div>
+
+        <!-- 导航按钮 -->
+        <div class="no-print" id="pitfall-nav" style="display:none;margin-top:18px;display:flex;gap:10px;justify-content:flex-end;">
+          <button class="btn" id="pitfall-next">下一个陷阱 →</button>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 

@@ -785,7 +785,7 @@
   // 通用视图切换（只切换显示，不触发业务渲染）
   function showViewOnly(id) {
     var ids = [
-      'view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs',
+      'view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls',
       'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
       'view-acup-home','view-acup-map','view-acup-case','view-acup-rx','view-acup-report',
       'view-anat-home','view-anat-atlas','view-anat-system','view-anat-detail','view-anat-quiz','view-anat-cases',

@@ -55,6 +55,7 @@
       ],
       "special_population_note": "老年患者首选CCB，注意体位性低血压",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -111,6 +112,7 @@
       ],
       "special_population_note": "老年患者注意出血风险",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -166,6 +168,7 @@
       ],
       "special_population_note": "建议收入卒中单元，门诊仅做二级预防处方",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -318,6 +321,7 @@
       ],
       "special_population_note": "稳定期以吸入制剂为主，门诊不常规输液",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -428,6 +432,7 @@
       ],
       "special_population_note": "造影前后48小时停用二甲双胍",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -481,6 +486,7 @@
       ],
       "special_population_note": "用药后每周复查血常规",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -533,6 +539,7 @@
       ],
       "special_population_note": "老年患者从小剂量起始",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -1434,6 +1441,7 @@
       ],
       "special_population_note": "老年患者长期用PPI注意骨质疏松和维生素B12缺乏",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -1487,6 +1495,7 @@
       ],
       "special_population_note": "活动期需评估营养状况，严重者需住院静脉用药",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -1538,6 +1547,7 @@
       ],
       "special_population_note": "他汀类夜间服用效果佳，定期监测肝功能和肌酶",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -1591,6 +1601,7 @@
       ],
       "special_population_note": "需评估CHA2DS2-VASc评分决定抗凝策略",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -1647,6 +1658,7 @@
       ],
       "special_population_note": "老年患者注意监测电解质和肾功能，避免过度利尿",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -1750,6 +1762,7 @@
       ],
       "special_population_note": "阿仑膦酸钠需晨起空腹用200ml白水送服，服药后保持直立30分钟",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -1804,6 +1817,7 @@
       ],
       "special_population_note": "需评估吞咽功能，防误吸；老年患者注意跌倒预防",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -1959,6 +1973,7 @@
       ],
       "special_population_note": "面部及皮肤皱褶处慎用强效激素，避免长期大面积使用",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {
@@ -2011,6 +2026,7 @@
       ],
       "special_population_note": "坦索罗辛首次睡前服用，注意体位性低血压",
       "chronic": true,
+      "long_term_required": true,
       "max_long_rx_days": 84
     },
     {

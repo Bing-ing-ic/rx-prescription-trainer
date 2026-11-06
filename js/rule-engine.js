@@ -128,7 +128,8 @@
     }
 
     // ====================== 1. 格式类 ======================
-    // FMT-01 每张处方≤5种药品（含溶媒）：>5种 直接 error（已与原 FMT-01-EXT 合并，删除矛盾分级）
+    // FMT-01 每张处方≤5种药品（含溶媒）：>5种 直接 error（法定上限）
+    // FMT-01-EXT 教学分级叠加：6种 warn 提醒精简，>=7种 error 提示严重超标
     ['normal_rx','iv_rx'].forEach(k => {
       const rx = ctx[k];
       if (!rx) return;
@@ -137,6 +138,17 @@
         hits.push(hit(R['FMT-01'], 'error',
           `当前处方共 ${n} 种药品（含溶媒），超过每张处方≤5种的法定上限。`,
           `删减至≤5种；确需超过须注明理由并经上级医师审核签字。`));
+        if (R['FMT-01-EXT']) {
+          if (n === 6) {
+            hits.push(hit(R['FMT-01-EXT'], 'warn',
+              `当前处方共 ${n} 种药品，已偏多，建议精简至≤5种。`,
+              `复核是否有同类或辅助用药可剔除；避免无指征联用。`));
+          } else if (n >= 7) {
+            hits.push(hit(R['FMT-01-EXT'], 'error',
+              `当前处方共 ${n} 种药品，严重超过≤5种的法定上限。`,
+              `必须大幅精简；必要时分方开具或请上级医师会诊。`));
+          }
+        }
       }
     });
 
@@ -270,8 +282,13 @@
     // ====================== 4. 疗程 ======================
     // DUR-01 疗程上限（P3-1 慢性病长处方适配：依据《长期处方管理规范（试行）》国卫办医发〔2021〕17号，
     //   诊断明确、用药稳定的慢性病可开具 4-12 周长处方，不按普通处方7日上限告警）
+    // P4-3 长处方前置校验：需长期稳定用药的慢性病病种（disease.long_term_required=true），
+    //   若患者无 long_term_stable:true 标记（首次就诊/病情未控制），即使慢性病也 warn，
+    //   提示先开 7 天观察、待方案稳定后再续长处方。
     const dx = ctx.disease || {};
     const isChronic = dx.chronic === true;
+    const needLongTermStable = dx.long_term_required === true;
+    const patientLongTermStable = !!(patient && patient.long_term_stable === true);
     const maxLongDays = Number(dx.max_long_rx_days) || 84; // 12周=84天
     ['normal_rx','iv_rx'].forEach(k => {
       const rx = ctx[k]; if (!rx) return;
@@ -280,6 +297,13 @@
         if (isNaN(d)) return;
         if (k !== 'normal_rx') return;
         if (isChronic && d >= 28) {
+          // P4-3 患者画像校验：需要长期稳定用药的慢性病，未标记 long_term_stable 不允许直接开长处方
+          if (needLongTermStable && !patientLongTermStable) {
+            hits.push(hit(R['DUR-01'], 'warn',
+              `慢性病「${dx.name || ''}」需长期稳定用药，但患者未标记 long_term_stable（首次就诊或病情未控制），不建议直接开 ${d} 天长处方。`,
+              `先开 7 天观察疗效与耐受性，待方案稳定后再续长处方（≤12周）。`));
+            return;
+          }
           // 慢性病长处方分支：28-84天不 warn，仅记录 pass 级"长处方"提示
           if (d <= maxLongDays) {
             hits.push(pass(R['DUR-01'],

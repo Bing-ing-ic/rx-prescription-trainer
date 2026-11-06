@@ -865,7 +865,7 @@
         "0.9%氯化钠注射液 250ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "青霉素过敏慎用",
         "用药期间及停药1周内禁酒",

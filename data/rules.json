@@ -13,6 +13,16 @@
       "weight_hint": "format"
     },
     {
+      "rule_id": "FMT-01-EXT",
+      "group": "FORMAT",
+      "title": "药品数量分级警示（教学扩展）",
+      "trigger": "items.length == 6 或 >= 7",
+      "logic": "在法定 FMT-01 error 基础上叠加教学分级：6种 warn 提醒精简，>=7种 error 提示严重超标",
+      "severity": "warn",
+      "basis": "教学扩展：提示处方精简思路，与法定 FMT-01 并行不悖。",
+      "weight_hint": "format"
+    },
+    {
       "rule_id": "FMT-02",
       "group": "FORMAT",
       "title": "必须使用药品通用名",

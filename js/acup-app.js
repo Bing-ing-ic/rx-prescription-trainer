@@ -9,7 +9,9 @@
     cases: [], points: [],
     case: null, patient: null,
     zhengOk: false,
-    items: []   // [{name, meridian, method, retainMin, moxa}]
+    items: [],   // [{name, meridian, method, retainMin, moxa}]
+    tuinaTechniques: [],   // tuina.json 全部手法
+    selectedTechniques: [] // 学生在处方中勾选的推拿手法名
   };
 
   const SURNAMES = ['张','李','王','赵','刘','陈','杨','黄','周','吴'];
@@ -29,17 +31,20 @@
   }
   async function boot() {
     try {
-      const [cj, pj, rj] = await Promise.all([
+      const [cj, pj, rj, tj] = await Promise.all([
         loadJSON('data/acup-cases.json').catch(() => null),
         loadJSON('data/acup-points.json').catch(() => null),
-        loadJSON('data/acup-rules.json').catch(() => null)
+        loadJSON('data/acup-rules.json').catch(() => null),
+        loadJSON('data/tuina.json').catch(() => null)
       ]);
       S.cases = (cj && cj.cases) || (Array.isArray(cj) ? cj : []);
       S.points = (pj && pj.points) || (Array.isArray(pj) ? pj : []);
       if (rj && rj.rules) window.ACUPENGINE.extraRules = rj.rules;
+      S.tuinaTechniques = (tj && tj.techniques) || (Array.isArray(tj) ? tj : []);
       if (S.cases.length === 0) { const t = $('acup-data-tip'); if (t) t.classList.remove('hidden'); }
       renderMeridianFilter();
       renderPointList('');
+      renderTuinaPicker();
       initMap();
     } catch (e) { console.warn('Acup data load failed:', e); }
   }
@@ -63,7 +68,7 @@
     if (pool.length === 0) pool = S.cases;
     S.case = pool[Math.floor(Math.random() * pool.length)];
     S.patient = pickPatient(S.case);
-    S.zhengOk = false; S.items = [];
+    S.zhengOk = false; S.items = []; S.selectedTechniques = [];
     renderCase();
     showView('view-acup-case');
   }
@@ -117,12 +122,14 @@
     $('acup-rx-no').textContent = 'ACU-' + Date.now().toString().slice(-6);
     // 默认载入参考主穴
     S.items = [];
+    S.selectedTechniques = [];
     (S.case.reference_points || []).forEach(n => {
       const pt = S.points.find(x => x.name === n);
       S.items.push({ name: n, meridian: pt ? pt.meridian : '', method: '平补平泻', retainMin: 20, moxa: '' });
     });
     renderItems();
     renderPointList('');
+    renderTuinaPicker();
     showView('view-acup-rx');
   }
 
@@ -193,13 +200,103 @@
     });
   }
 
+  // 在处方页动态注入"配合推拿手法"选择区（不改动 index.html）
+  function renderTuinaPicker() {
+    // 找到穴位表格，在其后插入/刷新手法区
+    const anchor = document.querySelector('#acup-items');
+    if (!anchor) return;
+    const tbl = anchor.closest('table');
+    if (!tbl) return;
+    let host = $('acup-tuina-section');
+    if (!host) {
+      host = document.createElement('div');
+      host.id = 'acup-tuina-section';
+      host.style.cssText = 'margin:14px 0;padding:10px 12px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:8px;';
+      tbl.parentNode.insertBefore(host, tbl.nextSibling);
+    }
+    if (S.tuinaTechniques.length === 0) {
+      host.innerHTML = '<div style="font-size:12px;color:#94a3b8;">推拿手法数据未加载</div>';
+      return;
+    }
+    // 按 category 分组
+    const groups = {};
+    S.tuinaTechniques.forEach(t => {
+      const cat = t.category || '其他';
+      (groups[cat] = groups[cat] || []).push(t);
+    });
+    const catOrder = ['松解类手法','温通类手法','挤压类手法','叩击类手法','运动关节类手法','小儿推拿'];
+    const cats = Object.keys(groups).sort((a, b) => {
+      const ia = catOrder.indexOf(a), ib = catOrder.indexOf(b);
+      return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+    });
+    host.innerHTML = `
+      <div style="font-size:13px;font-weight:600;color:#334155;margin-bottom:6px;">
+        ▎配合推拿手法（可选；用于触发推拿禁忌规则，如踩跷法/扳法）
+      </div>
+      <div id="acup-tuina-count" style="font-size:12px;color:#64748b;margin-bottom:8px;">已选 0 项</div>
+      ${cats.map(cat => `
+        <div style="margin-bottom:6px;">
+          <div style="font-size:11px;color:#94a3b8;margin-bottom:3px;">${cat}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;">
+            ${groups[cat].map(t => {
+              const on = S.selectedTechniques.indexOf(t.name) >= 0;
+              return `<button type="button" class="tn-chip" data-tn="${t.name}" style="
+                padding:3px 10px;font-size:12px;border-radius:14px;cursor:pointer;
+                border:1px solid ${on ? '#0ea5e9' : '#cbd5e1'};
+                background:${on ? '#e0f2fe' : '#fff'};
+                color:${on ? '#0369a1' : '#475569'};">${t.name}</button>`;
+            }).join('')}
+          </div>
+        </div>
+      `).join('')}
+    `;
+    host.querySelectorAll('.tn-chip').forEach(btn => {
+      btn.onclick = () => {
+        const name = btn.getAttribute('data-tn');
+        const i = S.selectedTechniques.indexOf(name);
+        if (i >= 0) S.selectedTechniques.splice(i, 1);
+        else S.selectedTechniques.push(name);
+        const cnt = $('acup-tuina-count');
+        if (cnt) cnt.textContent = '已选 ' + S.selectedTechniques.length + ' 项';
+        // 仅刷新按钮视觉，避免重建 DOM 丢滚动
+        const on = S.selectedTechniques.indexOf(name) >= 0;
+        btn.style.borderColor = on ? '#0ea5e9' : '#cbd5e1';
+        btn.style.background = on ? '#e0f2fe' : '#fff';
+        btn.style.color = on ? '#0369a1' : '#475569';
+      };
+    });
+  }
+
+  // 把 TuinaEngine 的 hit 规整为 AcupEngine hit 的形状（renderReport 需要 title/suggestion/group）
+  function normalizeTuinaHits(tuinaHits) {
+    return (tuinaHits || []).map(h => ({
+      rule_id: h.rule_id,
+      group: 'SAFETY',           // 推拿禁忌归到"安全禁忌"维度扣分
+      title: h.rule_id.indexOf('ERR') >= 0 ? '推拿禁忌（error）' : '推拿警示（warn）',
+      severity: h.severity,
+      message: h.message,
+      suggestion: h.basis || '',
+      basis: h.basis || ''
+    }));
+  }
+
   function submit() {
     if (!S.zhengOk) { alert('请先确认辨证。'); return; }
     if (S.items.length === 0) { alert('请至少选择一个穴位。'); return; }
     const zhengInput = ($('acup-zheng-input').value || '').trim();
-    const hits = window.ACUPENGINE.check({
+    const acupRes = window.ACUPENGINE.check({
       case: S.case, zhengInput, points: S.items, patient: S.patient
-    }).hits;
+    });
+    // P4-1：追加推拿禁忌规则检查（TuinaEngine）
+    const tuinaRes = (typeof window.TuinaEngine !== 'undefined' && window.TuinaEngine)
+      ? window.TuinaEngine.check({
+          case: S.case,
+          selectedTechniques: S.selectedTechniques || [],
+          patient: { age: S.patient.age, pregnant: !!S.patient.isPregnant }
+        })
+      : { hits: [] };
+    const tuinaHits = normalizeTuinaHits(tuinaRes.hits);
+    const hits = acupRes.hits.concat(tuinaHits);
     const review = window.ACUPENGINE.score(hits);
     renderReport(review, hits, zhengInput);
     saveHistory(review, hits);

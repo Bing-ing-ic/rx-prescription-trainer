@@ -10,7 +10,11 @@
       "logic": "统计处方内所有药品项（含溶媒）数量，>5 判 error",
       "severity": "error",
       "basis": "《处方管理办法》第十九条：每张处方不得超过5种药品。",
-      "weight_hint": "format"
+      "weight_hint": "format",
+      "lesson_point": "每张处方不得超过5种药品（含溶媒）",
+      "correct_practice": "精简处方，删除非必需药物，必要时分方开具",
+      "reference_guide": "《处方管理办法》第十九条",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "FMT-01-EXT",
@@ -20,7 +24,11 @@
       "logic": "在法定 FMT-01 error 基础上叠加教学分级：6种 warn 提醒精简，>=7种 error 提示严重超标",
       "severity": "warn",
       "basis": "教学扩展：提示处方精简思路，与法定 FMT-01 并行不悖。",
-      "weight_hint": "format"
+      "weight_hint": "format",
+      "lesson_point": "药品数达6种提示精简，≥7种严重超标",
+      "correct_practice": "按治疗优先级精简至5种以内，必要时多科分方",
+      "reference_guide": "教学扩展（基于《处方管理办法》第十九条）",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "FMT-02",
@@ -30,7 +38,11 @@
       "logic": "若 item.generic_name 为空而仅 brand_name，判 error",
       "severity": "error",
       "basis": "《处方管理办法》第十七条：医师开具处方应当使用经药品监督管理部门批准并公布的药品通用名称。",
-      "weight_hint": "format"
+      "weight_hint": "format",
+      "lesson_point": "处方必须使用药品通用名称",
+      "correct_practice": "改用药品通用名开具，不使用商品名",
+      "reference_guide": "《处方管理办法》第十七条",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "FMT-03",
@@ -40,7 +52,11 @@
       "logic": "正则匹配模糊用法字样，命中判 error",
       "severity": "error",
       "basis": "《处方管理办法》第六条：处方应当字迹清楚，不得随意涂改；用法用量应当明确。",
-      "weight_hint": "format"
+      "weight_hint": "format",
+      "lesson_point": "禁止\"遵医嘱/自用/照说明\"等模糊用法",
+      "correct_practice": "明确写出每次剂量、每日次数与给药途径",
+      "reference_guide": "《处方管理办法》第六条",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "FMT-04",
@@ -50,7 +66,11 @@
       "logic": "剂量单位须为 mg/g/ml/U/IU 等法定单位",
       "severity": "warn",
       "basis": "《处方管理办法》第七条：药品剂量与数量用阿拉伯数字书写，剂量使用法定剂量单位。",
-      "weight_hint": "format"
+      "weight_hint": "format",
+      "lesson_point": "剂量须使用 mg/g/ml/U 等法定公制单位",
+      "correct_practice": "将\"片/粒/支\"换算为法定剂量单位书写",
+      "reference_guide": "《处方管理办法》第七条",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "FMT-05",
@@ -60,7 +80,11 @@
       "logic": "前记字段非空校验，缺失判 error",
       "severity": "error",
       "basis": "《处方管理办法》第五条：处方前记包括医疗机构、患者姓名、性别、年龄、门诊/住院号、科别、临床诊断、开具日期等。",
-      "weight_hint": "format"
+      "weight_hint": "format",
+      "lesson_point": "处方前记（姓名/性别/年龄/诊断/科别/日期）须完整",
+      "correct_practice": "补齐患者基本信息与临床诊断后再提交",
+      "reference_guide": "《处方管理办法》第五条",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "FMT-06",
@@ -70,7 +94,11 @@
       "logic": "输液处方编号须以 IV- 开头，格式 科室代码-YYYYMMDD-6位流水号",
       "severity": "warn",
       "basis": "本院《处方编号管理规定》：输液处方编号以 IV- 前缀区分。",
-      "weight_hint": "format"
+      "weight_hint": "format",
+      "lesson_point": "输液处方编号须以 IV- 开头",
+      "correct_practice": "按 科室代码-YYYYMMDD-6位流水号 重编",
+      "reference_guide": "本院《处方编号管理规定》",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "IND-01",
@@ -80,7 +108,11 @@
       "logic": "对照 diseases.first_line_oral / second_line_iv 数组；若所选药既不在一线也不在二线，判 error",
       "severity": "error",
       "basis": "《处方管理办法》第十四条：医师应当根据医疗、预防、保健需要，按照诊疗规范、药品说明书中的药品适应证、药理作用、用法、用量、禁忌、不良反应和注意事项等开具处方。",
-      "weight_hint": "indication"
+      "weight_hint": "indication",
+      "lesson_point": "所选药品必须与临床诊断相匹配",
+      "correct_practice": "对照本病种一线/二线推荐方案选药",
+      "reference_guide": "《处方管理办法》第十四条",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "IND-02",
@@ -90,7 +122,11 @@
       "logic": "若药物属于相关治疗大类但未在一线/二线推荐，判 warn",
       "severity": "warn",
       "basis": "《医师法》第二十九条：超说明书用药应当循证并经伦理审批。",
-      "weight_hint": "indication"
+      "weight_hint": "indication",
+      "lesson_point": "超说明书用药须有循证依据并审批",
+      "correct_practice": "改为说明书内适应症药物，或走超说明书审批流程",
+      "reference_guide": "《医师法》第二十九条",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "IND-03",
@@ -100,7 +136,11 @@
       "logic": "乙类药品须核对医保限定支付，演示场景下对二线静脉药触发提示",
       "severity": "warn",
       "basis": "《国家基本医疗保险、工伤保险和生育保险药品目录（2025年）》乙类限定支付范围。",
-      "weight_hint": "insurance"
+      "weight_hint": "insurance",
+      "lesson_point": "乙类药品须符合医保限定支付范围",
+      "correct_practice": "核对医保限定适应症，不符者改甲类/自费方案",
+      "reference_guide": "《国家医保药品目录（2025年）》乙类限定支付范围",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "DOSE-01",
@@ -110,7 +150,11 @@
       "logic": "按药品 dose_range_json 上下限校验，超出判 error；接近上限判 warn",
       "severity": "error",
       "basis": "药品说明书【用法用量】项。",
-      "weight_hint": "dosage"
+      "weight_hint": "dosage",
+      "lesson_point": "单次剂量不得超出说明书规定范围",
+      "correct_practice": "按说明书 single_min~single_max 调整并复核",
+      "reference_guide": "药品说明书【用法用量】",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "DOSE-02",
@@ -120,7 +164,11 @@
       "logic": "若患者有肝肾功能不全且药品需调整剂量，判 warn",
       "severity": "warn",
       "basis": "《肾功能不全患者用药指南》。",
-      "weight_hint": "dosage"
+      "weight_hint": "dosage",
+      "lesson_point": "肝肾功能不全需按 eGFR 调整剂量",
+      "correct_practice": "根据肝肾功能减退程度减量或延长间隔",
+      "reference_guide": "《肾功能不全患者用药指南》；药品说明书",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "DUR-01",
@@ -130,7 +178,11 @@
       "logic": "普通处方≤7日，急诊处方≤3日，静脉输液门诊≤1日且无医务科审批；超量判 warn",
       "severity": "warn",
       "basis": "《处方管理办法》第十九条：处方一般不得超过7日用量；急诊处方一般不得超过3日用量。",
-      "weight_hint": "dosage"
+      "weight_hint": "dosage",
+      "lesson_point": "普通处方≤7日量、急诊≤3日量",
+      "correct_practice": "按病种开具合理疗程，慢性病另办长期处方",
+      "reference_guide": "《处方管理办法》第十九条",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "DUP-01",
@@ -140,7 +192,11 @@
       "logic": "按 pharmacology_class 分组计数，>1 判 warn",
       "severity": "warn",
       "basis": "《医院处方点评管理规范》：重复用药属于不适宜处方。",
-      "weight_hint": "compat"
+      "weight_hint": "compat",
+      "lesson_point": "同处方不得重复开具同类药理作用药物",
+      "correct_practice": "同类药物只保留一种，避免叠加",
+      "reference_guide": "《医院处方点评管理规范》（不适宜处方）",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "DUP-02",
@@ -150,7 +206,11 @@
       "logic": "跨非输液/输液两张处方按 visit_id 合并检查：口服头孢+静滴头孢、口服PPI+静滴PPI 等同类重复无理由判 warn；有 sequential_therapy 理由则 pass",
       "severity": "warn",
       "basis": "《抗菌药物临床应用指导原则》：序贯治疗需有明确转换指征，避免无意义同类叠加。",
-      "weight_hint": "compat"
+      "weight_hint": "compat",
+      "lesson_point": "口服+静脉同类药需有明确序贯理由",
+      "correct_practice": "有转换指征再序贯，否则保留一种给药途径",
+      "reference_guide": "《抗菌药物临床应用指导原则》序贯治疗节",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "INT-01",
@@ -160,7 +220,11 @@
       "logic": "二价阳离子螯合喹诺酮显著降低吸收，须间隔2小时以上；同处方判 error",
       "severity": "error",
       "basis": "左氧氟沙星说明书【药物相互作用】：含镁/铝抗酸药、硫糖铝、金属阳离子可减少本品吸收。",
-      "weight_hint": "compat"
+      "weight_hint": "compat",
+      "lesson_point": "喹诺酮与二价阳离子螯合显著降低吸收",
+      "correct_practice": "抗酸/铁/铋剂与喹诺酮间隔≥2小时，或换药",
+      "reference_guide": "左氧氟沙星说明书【药物相互作用】",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "INT-02",
@@ -170,7 +234,11 @@
       "logic": "高钾血症风险，需监测血钾；演示场景判 warn",
       "severity": "warn",
       "basis": "《中国高血压防治指南2024》：ACEI/ARB 与保钾利尿剂联用须监测血钾。",
-      "weight_hint": "compat"
+      "weight_hint": "compat",
+      "lesson_point": "ACEI/ARB+保钾利尿剂可致高钾血症",
+      "correct_practice": "联用时监测血钾，必要时换利尿剂",
+      "reference_guide": "《中国高血压防治指南2024》",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "POP-01",
@@ -180,7 +248,11 @@
       "logic": "18岁以下禁用喹诺酮类（软骨损伤），判 error",
       "severity": "error",
       "basis": "《抗菌药物临床应用指导原则》：18岁以下未成年患者避免使用喹诺酮类。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "18岁以下禁用喹诺酮（软骨损伤）",
+      "correct_practice": "儿童改用β内酰胺类或大环内酯类",
+      "reference_guide": "《抗菌药物临床应用指导原则（2015版）》",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "POP-02",
@@ -190,7 +262,11 @@
       "logic": "老年患者心衰风险，慢速少量；判 warn",
       "severity": "warn",
       "basis": "《老年人静脉输液专家共识》：老年人输液速度宜≤60ml/h，单次入量≤500ml。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "老年人输液过快/过量可诱发心衰",
+      "correct_practice": "滴速≤60ml/h，单次入量≤500ml",
+      "reference_guide": "《老年人静脉输液安全专家共识》",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "ABX-01",
@@ -200,7 +276,11 @@
       "logic": "特殊使用级抗菌药不得在门诊直接使用，须住院+高级职称会诊；判 error",
       "severity": "error",
       "basis": "《抗菌药物临床应用分级管理目录（2024版）》：特殊使用级抗菌药不得在门诊使用，抢救生命垂危患者除外。",
-      "weight_hint": "abx"
+      "weight_hint": "abx",
+      "lesson_point": "特殊使用级抗菌药不得门诊使用",
+      "correct_practice": "转住院，经抗感染会诊+高级职称审批",
+      "reference_guide": "《抗菌药物临床应用分级管理目录（2024版）》",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "ABX-02",
@@ -210,7 +290,11 @@
       "logic": "模拟弹窗要求学生点\"确认中级以上职称已审核\"；学生未确认则撤回该药，确认后 pass",
       "severity": "warn",
       "basis": "《抗菌药物临床应用分级管理》：限制使用级抗菌药物应由中级以上医师开具。",
-      "weight_hint": "abx"
+      "weight_hint": "abx",
+      "lesson_point": "限制使用级抗菌药须中级以上职称开具",
+      "correct_practice": "由主治医师及以上审核确认后使用",
+      "reference_guide": "《抗菌药物临床应用分级管理办法》",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "TCM-01",
@@ -220,7 +304,11 @@
       "logic": "若未来录入饮片，需校验乌头反半夏、甘草反甘遂等十八反十九畏；当前种子无饮片，恒 pass",
       "severity": "pass",
       "basis": "《中国药典》十八反十九畏歌诀。",
-      "weight_hint": "compat"
+      "weight_hint": "compat",
+      "lesson_point": "十八反十九畏属配伍禁忌（占位规则）",
+      "correct_practice": "未来录入饮片时须校验相反相畏组合",
+      "reference_guide": "《中国药典》十八反十九畏歌诀",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "IV-01",
@@ -230,7 +318,11 @@
       "logic": "若 iv_reason 仅为 fever（发热）/other_without_note/患者要求 → error；若 iv_reason 为 severe_dehydration 或 no_oral_alternative 等有客观证据项 → 降为 warn 并要求补充证据",
       "severity": "error",
       "basis": "《关于做好医疗机构静脉输液安全管理工作的通知》：能口服不肌注，能肌注不输液。",
-      "weight_hint": "iv_reason"
+      "weight_hint": "iv_reason",
+      "lesson_point": "能口服不肌注，能肌注不输液",
+      "correct_practice": "有客观脱水/不能口服证据方可输液",
+      "reference_guide": "《关于做好医疗机构静脉输液安全管理工作的通知》",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "IV-02",
@@ -240,7 +332,11 @@
       "logic": "同适应症有口服等效一线方案，学生选静脉但 iv_reason 不充分 → warn",
       "severity": "warn",
       "basis": "WHO 合理用药原则：优先口服给药。",
-      "weight_hint": "iv_reason"
+      "weight_hint": "iv_reason",
+      "lesson_point": "有口服等效一线药时不应无理由输液",
+      "correct_practice": "优先口服；确需静脉须注明客观依据",
+      "reference_guide": "WHO 合理用药原则（优先口服）",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "IV-03",
@@ -250,7 +346,11 @@
       "logic": "任一必填项缺失 → error",
       "severity": "error",
       "basis": "本院《静脉输液知情同意与记录规范》：专项字段必须完整填写。",
-      "weight_hint": "iv_reason"
+      "weight_hint": "iv_reason",
+      "lesson_point": "输液专项字段（指征/溶媒/浓度/滴速）须完整",
+      "correct_practice": "补齐 iv_reason/solvent/浓度/滴速/时长",
+      "reference_guide": "本院《静脉输液知情同意与记录规范》",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "IV-04",
@@ -260,7 +360,11 @@
       "logic": "特殊人群超说明书滴速上限 → error；普通成人超上限 → warn",
       "severity": "error",
       "basis": "《静脉治疗护理技术操作规范 WS/T 433》：老年/儿童/心肺肾功能不全者应减速。",
-      "weight_hint": "iv_reason"
+      "weight_hint": "iv_reason",
+      "lesson_point": "特殊人群须按说明书下调滴速上限",
+      "correct_practice": "老年/儿童/心肺肾功能不全者减速并监护",
+      "reference_guide": "《静脉治疗护理技术操作规范 WS/T 433》",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "IV-05",
@@ -270,7 +374,11 @@
       "logic": "普通感冒/轻症高血压复诊/功能性消化不良/术后复诊等门诊限输清单内疾病，开静脉药 → error",
       "severity": "error",
       "basis": "《医疗机构门诊静脉输液负面清单（2025版）》：普通感冒、轻症胃肠炎无脱水、单纯高血压复诊、轻微关节痛等原则上不输液。",
-      "weight_hint": "iv_reason"
+      "weight_hint": "iv_reason",
+      "lesson_point": "门诊负面清单疾病不得无指征输液",
+      "correct_practice": "改口服对症治疗+健康宣教，必要时复诊",
+      "reference_guide": "《医疗机构门诊静脉输液负面清单（2025版）》",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "IV-06",
@@ -280,7 +388,11 @@
       "logic": "查 compat.json 中 solvent_drug 记录：incompatible → error；caution → warn；未登记 → warn",
       "severity": "error",
       "basis": "药品说明书【用法用量】溶媒项；《静脉用药集中调配操作规程》。",
-      "weight_hint": "compat"
+      "weight_hint": "compat",
+      "lesson_point": "溶媒须在药品说明书允许范围内",
+      "correct_practice": "按说明书选择指定溶媒与体积",
+      "reference_guide": "药品说明书；《静脉用药集中调配操作规程》",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "IV-07",
@@ -290,7 +402,11 @@
       "logic": "中药注射剂同瓶混加任何其他治疗药物 → error",
       "severity": "error",
       "basis": "国家药监局关于中药注射剂安全性问题的通报：严禁混合配伍，单独输注。",
-      "weight_hint": "compat"
+      "weight_hint": "compat",
+      "lesson_point": "中药注射剂严禁与其他药同瓶混输",
+      "correct_practice": "单独配制单独输注，前后冲管",
+      "reference_guide": "国家药监局中药注射剂安全性通报",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "IV-08",
@@ -300,7 +416,11 @@
       "logic": "需皮试药品未填皮试结果或阳性仍使用 → error",
       "severity": "error",
       "basis": "《青霉素皮肤试验专家共识》：青霉素类及部分头孢类用药前必须皮试。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "需皮试药品未皮试或阳性仍用=禁忌",
+      "correct_practice": "先皮试，阴性方可使用；阳性换用其他类药",
+      "reference_guide": "《青霉素皮肤试验专家共识》",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "IV-09",
@@ -310,7 +430,11 @@
       "logic": "门诊静脉输液原则上≤1日量，超过须医务科审批；超量 → warn",
       "severity": "warn",
       "basis": "《处方管理办法》+《门诊输液管理规定》：门诊输液一般当日单次使用。",
-      "weight_hint": "iv_reason"
+      "weight_hint": "iv_reason",
+      "lesson_point": "门诊输液原则上≤1日量",
+      "correct_practice": "超1日量须医务科审批，否则改为当日量",
+      "reference_guide": "《处方管理办法》+《门诊输液管理规定》",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "YN-01",
@@ -320,7 +444,11 @@
       "logic": "如男性诊断妇科疾病、女性诊断前列腺疾病 → error",
       "severity": "error",
       "basis": "云南省医保局第七批智能监管两库规则（2026.10）：诊断与患者性别不符（378条知识点）。依据ICD-10医保2.0版性别限定。",
-      "weight_hint": "indication"
+      "weight_hint": "indication",
+      "lesson_point": "诊断必须与患者性别相符",
+      "correct_practice": "核对诊断与性别，撤销不符诊断/处方",
+      "reference_guide": "ICD-10 医保2.0版性别限定（云南两库规则）",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "YN-02",
@@ -330,7 +458,11 @@
       "logic": "如降压药用于普通感冒、降糖药用于无糖尿病诊断 → error",
       "severity": "error",
       "basis": "云南省医保局第七批智能监管两库规则（2026.10）：药品限适应症（784个药品，111条知识点）。依据2025版国家医保药品目录。",
-      "weight_hint": "indication"
+      "weight_hint": "indication",
+      "lesson_point": "医保限适应症药品须在限定诊断内使用",
+      "correct_practice": "核对医保限定支付诊断，不符者改药",
+      "reference_guide": "2025版国家医保药品目录；云南医保两库规则",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "SPEC-01",
@@ -340,7 +472,11 @@
       "logic": "老年患者（≥65岁）起始剂量减半；儿童按体重mg/kg换算；肝肾功能不全者按eGFR调整。未调整 → warn，严重超量 → error",
       "severity": "warn",
       "basis": "《中国老年人潜在不适当用药目录（2024版）》；《儿童药理学》剂量换算原则；药品说明书【特殊人群用药】项。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "老年/儿童/肝肾不全须按体重或eGFR调量",
+      "correct_practice": "起始减量，按 kg 或 eGFR 核算",
+      "reference_guide": "《中国老年人潜在不适当用药目录（2024版）》",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "SPEC-02",
@@ -350,7 +486,11 @@
       "logic": "对照疾病 contraindications 与患者基础疾病：如孕妇用ACEI/ARB、青光眼用山莨菪碱、消化性溃疡用NSAIDs → error",
       "severity": "error",
       "basis": "药品说明书【禁忌】项；《处方管理办法》第十四条：医师应当按照药品说明书开具处方。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "药品禁忌证与患者基础疾病冲突时禁用",
+      "correct_practice": "立即停药，选择无禁忌的替代方案",
+      "reference_guide": "药品说明书【禁忌】项；《处方管理办法》第十四条",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "INTER-01",
@@ -360,7 +500,11 @@
       "logic": "如SSRI+MAOI（5-羟色胺综合征）、ACEI+保钾利尿剂（高钾血症）、华法林+NSAIDs（出血风险）、他汀+红霉素（横纹肌溶解）→ error",
       "severity": "error",
       "basis": "《McGraw-Hill药物相互作用手册》；药品说明书【药物相互作用】项。",
-      "weight_hint": "compat"
+      "weight_hint": "compat",
+      "lesson_point": "已知严重不良相互作用组合不得联用",
+      "correct_practice": "撤掉其中一种，必要时换药并监测",
+      "reference_guide": "《McGraw-Hill 药物相互作用手册》；药品说明书",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "DD-01",
@@ -370,7 +514,11 @@
       "logic": "按输液组分组后，检查同瓶内任意两药是否命中 compat.json drug_drug 表：incompatible → error，caution → warn；不同组（不同瓶）不算同瓶混合",
       "severity": "error",
       "basis": "《静脉用药集中调配操作规程》：两种药液混合前必须确认理化相容；国家 adverse 配伍通报（如头孢+VC 同瓶降解）。",
-      "weight_hint": "compat"
+      "weight_hint": "compat",
+      "lesson_point": "同一瓶内不得加入配伍禁忌的两种药",
+      "correct_practice": "分瓶输注，不同组分别配制",
+      "reference_guide": "《静脉用药集中调配操作规程》",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "LAB-01",
@@ -380,7 +528,11 @@
       "logic": "按 exam_code 统计次数，>1 判 error",
       "severity": "error",
       "basis": "《医学检验项目临床应用原则》：同一申请单内同一检验项目不得重复开具；复查应在后续就诊或病程中另行申请。",
-      "weight_hint": "lab"
+      "weight_hint": "lab",
+      "lesson_point": "同一申请单内同一检验项目不得重复开",
+      "correct_practice": "删除重复申请项，复查另行开具",
+      "reference_guide": "《医学检验项目临床应用原则》",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "LAB-02",
@@ -390,7 +542,11 @@
       "logic": "对照 diseaseLabMap[disease.code] 的 exam_code 白名单；未命中且非鉴别诊断需要 → warn",
       "severity": "warn",
       "basis": "《医学检验项目临床应用原则》：检验项目应与临床诊断相适应，避免无指征检查；过度检查既增加患者负担也浪费医保资源。",
-      "weight_hint": "lab"
+      "weight_hint": "lab",
+      "lesson_point": "检验项目应与临床诊断相适应",
+      "correct_practice": "仅开本病种需要的检查，避免过度检查",
+      "reference_guide": "《医学检验项目临床应用原则》",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "LAB-03",
@@ -400,7 +556,11 @@
       "logic": "并列开具模型下医生有权只开药不开检验；未开检验时输出 pass 级中性提示，不扣分。若本病例存在异常指标，提示后续复查追踪。",
       "severity": "pass",
       "basis": "《病历书写基本规范》：异常检验指标应复查并追踪；《处方管理办法》第十四条：医师应根据诊断与病情需要开具相应检查。",
-      "weight_hint": "lab"
+      "weight_hint": "lab",
+      "lesson_point": "未开检验时提示后续复查追踪",
+      "correct_practice": "有异常指标时后续就诊复查追踪",
+      "reference_guide": "《病历书写基本规范》",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "SUR-01",
@@ -410,7 +570,11 @@
       "logic": "对照 surgeries.json[disease.code].standard；若应手术而医生选保守，判 error",
       "severity": "error",
       "basis": "《外科学》诊疗规范：具有明确手术适应证的疾病（急性阑尾炎、急性胆囊炎、溃疡穿孔、绞窄性肠梗阻、可手术乳腺癌等）应及时手术，延误可致穿孔、坏死、感染扩散、肿瘤进展。",
-      "weight_hint": "surgery"
+      "weight_hint": "surgery",
+      "lesson_point": "有明确手术指征却保守治疗会延误病情",
+      "correct_practice": "及时手术，避免穿孔/坏死/感染扩散",
+      "reference_guide": "《外科学》诊疗规范（急腹症章节）",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "SUR-02",
@@ -420,7 +584,11 @@
       "logic": "对照 surgeries.json[disease.code].standard；若应保守（如CEAP C2静脉曲张、稳定桡骨远端骨折、无症状结石）而医生选手术，判 error",
       "severity": "error",
       "basis": "临床诊疗基本原则：严格掌握手术适应证，避免过度医疗；无症状或轻症疾病首选保守/随访，手术存在创伤、麻醉及并发症风险。",
-      "weight_hint": "surgery"
+      "weight_hint": "surgery",
+      "lesson_point": "不应手术却手术属于过度医疗",
+      "correct_practice": "轻症/无症状首选保守或随访，避免不必要创伤",
+      "reference_guide": "临床诊疗基本原则（严格掌握手术适应证）",
+      "severity_level_hint": "major"
     },
     {
       "rule_id": "SUR-03",
@@ -430,7 +598,11 @@
       "logic": "应急诊（emergency）却选择期（elective），或应择期却选急诊，判 warn；错把 none 选为手术时机一并提示",
       "severity": "warn",
       "basis": "外科学治疗原则：急诊手术（如穿孔、嵌顿、坏疽）须在6小时内；限期手术（如恶性肿瘤、急性胆囊炎早期）在数日至2周内；择期手术可在完善准备后安排；时机错误可致并发症或不必要的紧急风险。",
-      "weight_hint": "surgery"
+      "weight_hint": "surgery",
+      "lesson_point": "手术时机（急诊/限期/择期）须与病情匹配",
+      "correct_practice": "急诊6小时内、限期数日至2周、择期完善准备",
+      "reference_guide": "外科学治疗原则",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "SUR-04",
@@ -440,7 +612,11 @@
       "logic": "未选择本病种首选术式（如急性阑尾炎未选腹腔镜阑尾切除、乳腺癌早期未选保乳或合理术式），判 warn；选择明显禁忌术式升级为 error",
       "severity": "warn",
       "basis": "各外科疾病诊疗指南：腹腔镜阑尾切除、早期腹腔镜胆囊切除、保乳手术+放疗、FNA先行等为当前循证首选术式；术式选择应结合患者具体情况并符合指南。",
-      "weight_hint": "surgery"
+      "weight_hint": "surgery",
+      "lesson_point": "首选术式应符合当前循证指南",
+      "correct_practice": "选择本病种首选术式（如腹腔镜阑尾切除、保乳术）",
+      "reference_guide": "各外科疾病诊疗指南",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "SUR-05",
@@ -450,7 +626,11 @@
       "logic": "若术中发现严重心肺功能不全、不能耐受麻醉、深静脉血栓、未纠正凝血障碍等禁忌证仍安排手术，判 error",
       "severity": "error",
       "basis": "麻醉与手术风险评估规范：术前必须评估全身情况，存在绝对禁忌证者应先纠正或改用替代治疗，不得勉强手术。",
-      "weight_hint": "surgery"
+      "weight_hint": "surgery",
+      "lesson_point": "存在绝对手术禁忌证不得勉强手术",
+      "correct_practice": "先纠正心肺/凝血问题，或改用替代治疗",
+      "reference_guide": "麻醉与手术风险评估规范",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "DOSAGE-WT",
@@ -460,7 +640,11 @@
       "logic": "对儿童患者：解析 single_dose 为 mg（或 U），除以体重 kg，与 pediatric_dose.mg_per_kg_min/max 比较；超上限→error，接近上限→warn；basis=per_day 时按 单次×日次数 算日 mg/kg；同时校验 max_single_mg 封顶；fixed_dose 按固定单次剂量区间；per_hour（胰岛素）按 U/kg/h 核算。",
       "severity": "error",
       "basis": "《中国国家处方集（儿童版）》；药品说明书【儿童用药】项；mg/kg 剂量换算是儿科处方核心。",
-      "weight_hint": "dosage"
+      "weight_hint": "dosage",
+      "lesson_point": "儿童按 mg/kg 核算单次与日剂量",
+      "correct_practice": "按体重 mg/kg 区间核算，超上限立即减量",
+      "reference_guide": "《中国国家处方集（儿童版）》；药品说明书",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "ALLERGY-01",
@@ -470,7 +654,11 @@
       "logic": "将患者自述过敏史按关键词拆分（通用名、大类如青霉素/头孢/磺胺/NSAIDs），若处方中药品通用名或别名命中过敏关键词→error；青霉素过敏同时提示避免β-内酰胺交叉过敏。",
       "severity": "error",
       "basis": "《处方管理办法》第六条：处方应注明过敏史；《青霉素皮肤试验专家共识》：青霉素过敏者禁用青霉素类。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "处方不得含患者既往过敏药物",
+      "correct_practice": "立即停用，按过敏史选择替代药，警惕交叉过敏",
+      "reference_guide": "《处方管理办法》第六条；青霉素皮试专家共识",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "COMORBID-01",
@@ -480,7 +668,11 @@
       "logic": "G6PD 缺乏患者使用氧化性药物可致急性溶血；命中伯氨喹/磺胺/呋喃妥因/蚕豆→error。",
       "severity": "error",
       "basis": "《G6PD 缺乏症新生儿筛查与临床诊治专家共识》。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "G6PD缺乏者用氧化性药可致急性溶血",
+      "correct_practice": "禁用伯氨喹/磺胺/呋喃类/蚕豆，改替代药",
+      "reference_guide": "《G6PD缺乏症新生儿筛查与临床诊治专家共识》",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "COMORBID-02",
@@ -490,7 +682,11 @@
       "logic": "抗胆碱药升高眼内压，可诱发闭角型青光眼急性发作→error。",
       "severity": "error",
       "basis": "《青光眼诊疗指南》：闭角型青光眼禁用抗胆碱药。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "青光眼患者禁用抗胆碱能药",
+      "correct_practice": "停用阿托品/山莨菪碱等，换用其他解痉药",
+      "reference_guide": "《青光眼诊疗指南》",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "COMORBID-03",
@@ -500,7 +696,11 @@
       "logic": "抗胆碱药与α受体激动药松弛膀胱颈/收缩尿道括约肌，可致急性尿潴留→warn（提示风险并建议替代）。",
       "severity": "warn",
       "basis": "《良性前列腺增生诊疗指南》：慎用抗胆碱药与减充血剂。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "前列腺增生者慎用抗胆碱/减充血剂",
+      "correct_practice": "换用对膀胱颈影响小的药物，必要时监测排尿",
+      "reference_guide": "《良性前列腺增生诊疗指南》",
+      "severity_level_hint": "minor"
     },
     {
       "rule_id": "COMORBID-04",
@@ -510,7 +710,11 @@
       "logic": "孕妇禁用药物清单硬匹配；命中→error。",
       "severity": "error",
       "basis": "《妊娠和哺乳期用药指南》；FDA 妊娠分级 D/X 类药物。",
-      "weight_hint": "special_pop"
+      "weight_hint": "special_pop",
+      "lesson_point": "孕妇禁用 FDA D/X 类致畸药物",
+      "correct_practice": "立即停用，妊娠安全分级内选药",
+      "reference_guide": "《妊娠和哺乳期用药指南》；FDA妊娠分级",
+      "severity_level_hint": "critical"
     },
     {
       "rule_id": "ECON-01",
@@ -520,7 +724,11 @@
       "logic": "仅提示不扣分（pass 级或 warn）：若选了非集采贵价药而同类有集采中标品种，提示可考虑集采仿制药以降低患者负担。",
       "severity": "warn",
       "basis": "《国家组织药品集中采购和使用试点方案》：优先选用集采中选药品。",
-      "weight_hint": "insurance"
+      "weight_hint": "insurance",
+      "lesson_point": "同类有集采中选药时优先选择以减负",
+      "correct_practice": "改用同通用名集采中选品种",
+      "reference_guide": "《国家组织药品集中采购和使用试点方案》",
+      "severity_level_hint": "minor"
     }
   ]
 }

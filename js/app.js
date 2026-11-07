@@ -2363,24 +2363,56 @@
       }
     }
 
-    // 维度卡片
+    // 维度卡片（含进度条：宽度=score/weight*100%，颜色按 verdict）
     const grid = $('dim-grid');
     grid.innerHTML = '';
     Object.values(review.dims).forEach(d => {
       const div = document.createElement('div');
       div.className = 'dim-card ' + d.verdict;
+      const pct = Math.max(0, Math.min(100, (d.weight > 0 ? (d.score / d.weight) * 100 : 0)));
       div.innerHTML = `<div class="dim-name">${d.name}（${d.weight}%）</div>
         <div class="dim-score">${d.score.toFixed(1)} / ${d.weight}</div>
-        <div class="muted">命中 ${d.hits.length} 条</div>`;
+        <div class="muted">命中 ${d.hits.length} 条</div>
+        <div class="dim-bar"><div class="dim-bar-fill ${d.verdict}" style="width:${pct.toFixed(0)}%"></div></div>`;
       grid.appendChild(div);
     });
 
-    // 命中统计
-    const errN = hits.filter(h=>h.severity==='error').length;
-    const warnN = hits.filter(h=>h.severity==='warn').length;
-    const passN = hits.filter(h=>h.severity==='pass').length;
-    const cE = $('cnt-err'); if (cE) cE.textContent = errN;
-    const cW = $('cnt-warn'); if (cW) cW.textContent = warnN;
+    // 顶部 headline 横幅（critical>0 红底白字，否则蓝底）
+    const headlineEl = $('r-headline');
+    if (headlineEl) {
+      headlineEl.classList.remove('hidden', 'critical', 'info');
+      if (review.summary && review.summary.headline) {
+        const critN = (review.groups && Array.isArray(review.groups.critical) ? review.groups.critical.length : (review.criticalCount || 0));
+        headlineEl.classList.add(critN > 0 ? 'critical' : 'info');
+        headlineEl.textContent = review.summary.headline;
+      } else {
+        headlineEl.classList.add('hidden');
+      }
+    }
+
+    // 改进建议卡片（summary.next_steps）
+    const nsBox = $('r-nextsteps');
+    if (nsBox) {
+      const steps = (review.summary && Array.isArray(review.summary.next_steps)) ? review.summary.next_steps : [];
+      if (steps.length) {
+        nsBox.innerHTML = `<div class="nextsteps-title">🎯 改进建议</div><ol>${steps.map(s => `<li>${s}</li>`).join('')}</ol>`;
+      } else {
+        nsBox.innerHTML = '';
+      }
+    }
+
+    // 命中统计（三级：critical/major/minor；兼容旧 cnt-err/cnt-warn/cnt-pass id）
+    // cnt-err 显示 critical+major 总数，cnt-warn 显示 minor，cnt-pass 显示 pass
+    const groups = review.groups || {};
+    const critList = Array.isArray(groups.critical) ? groups.critical : [];
+    const majorList = Array.isArray(groups.major) ? groups.major : [];
+    const minorList = Array.isArray(groups.minor) ? groups.minor : [];
+    const critN = critList.length;
+    const majorN = majorList.length;
+    const minorN = minorList.length;
+    const passN = hits.filter(h => h.severity === 'pass').length;
+    const cE = $('cnt-err'); if (cE) cE.textContent = critN + majorN;
+    const cW = $('cnt-warn'); if (cW) cW.textContent = minorN;
     const cP = $('cnt-pass'); if (cP) cP.textContent = passN;
 
     // 命中列表
@@ -2406,17 +2438,53 @@
       hl.before(tipDiv);
     }
 
-    // 命中列表
-    hits.filter(h=>h.severity!=='pass').forEach(h => {
-      const div = document.createElement('div');
-      div.className = 'hit-item ' + h.severity;
-      div.innerHTML = `<span class="rule-id">[${h.rule_id}]</span><b>${h.title}</b>
+    // 兼容旧数据：若 review.groups 不存在，从 hits 按 severity 推导分组
+    function legacyGroup() {
+      const out = { critical: [], major: [], minor: [] };
+      hits.filter(h => h.severity !== 'pass').forEach(h => {
+        const lvl = h.severity_level || (h.severity === 'error' ? 'major' : 'minor');
+        if (lvl === 'critical') out.critical.push(h);
+        else if (lvl === 'major') out.major.push(h);
+        else out.minor.push(h);
+      });
+      return out;
+    }
+    const grouped = (critN + majorN + minorN > 0) ? { critical: critList, major: majorList, minor: minorList } : legacyGroup();
+
+    function renderHitCard(h) {
+      const lvl = h.severity_level || (h.severity === 'error' ? 'major' : (h.severity === 'warn' ? 'minor' : 'pass'));
+      const affected = Array.isArray(h.affected_items) && h.affected_items.length
+        ? `<div class="affected-items">涉及药品：${h.affected_items.join('、')}</div>` : '';
+      const correct = h.correct_practice
+        ? `<div class="correct-practice">✓ 正确做法：${h.correct_practice}</div>` : '';
+      const ref = h.reference_guide
+        ? `<div class="ref-guide">📖 出处：${h.reference_guide}</div>` : '';
+      const lesson = h.lesson_point
+        ? `<div class="lesson-point">💬 ${h.lesson_point}</div>` : '';
+      const legacySuggest = h.suggestion
+        ? `<div class="sug">💡 建议：${h.suggestion}</div>` : '';
+      return `<div class="hit-item ${lvl}">
+        <span class="rule-id">[${h.rule_id}]</span><b>${h.title}</b>
         <div>${h.message}</div>
-        <div class="basis">📖 依据：${h.basis}</div>
-        ${h.suggestion?`<div class="sug">💡 建议：${h.suggestion}</div>`:''}`;
-      hl.appendChild(div);
-    });
-    if (errN===0 && warnN===0) {
+        ${affected}
+        ${lesson}
+        ${correct}
+        ${ref || `<div class="basis">📖 依据：${h.basis || ''}</div>`}
+        ${legacySuggest}
+      </div>`;
+    }
+
+    function renderGroup(title, cls, list) {
+      if (!list.length) return '';
+      return `<div class="hit-group-title ${cls}">${title}（${list.length}）</div>` + list.map(renderHitCard).join('');
+    }
+
+    if (grouped.critical.length || grouped.major.length || grouped.minor.length) {
+      hl.innerHTML =
+        renderGroup('🔴 严重错误（critical）', 'g-critical', grouped.critical) +
+        renderGroup('🟠 一般错误（major）', 'g-major', grouped.major) +
+        renderGroup('🟡 提示（minor）', 'g-minor', grouped.minor);
+    } else {
       hl.innerHTML = '<div style="text-align:center;padding:20px;color:#16a34a">✅ 未发现错误和警告，处方规范！</div>';
     }
 
@@ -2467,16 +2535,30 @@
       'SPEC-02': { t: '用药前核对禁忌症', b: '开具前须核对过敏史、禁忌症（如青霉素过敏忌头孢、饮酒后忌头孢、哮喘患者慎用β阻滞剂）。' },
       'IV-04': { t: '输液速度个体化', b: '成人常规滴速40-60滴/分；年老、心肺功能差者放慢；含钾溶液滴速≤20mmol/h，严禁静脉推注。' }
     };
+    // 知识点卡片：优先从 hit.related_topic 驱动，KNOWLEDGE_TIPS[rule_id] 兜底
     const tipSet = [];
     const seenTip = new Set();
-    hits.filter(h => h.severity !== 'pass').forEach(h => {
-      const tip = KNOWLEDGE_TIPS[h.rule_id];
+    const allHitsForTips = [].concat(grouped.critical, grouped.major, grouped.minor);
+    allHitsForTips.forEach(h => {
+      // related_topic 优先（与 KNOWLEDGE_TIPS 的 key 对齐）
+      let tip = h.related_topic ? KNOWLEDGE_TIPS[h.related_topic] : null;
+      if (!tip) tip = KNOWLEDGE_TIPS[h.rule_id];
       if (tip && !seenTip.has(tip.t)) { seenTip.add(tip.t); tipSet.push(tip); }
     });
     if (tipSet.length === 0) {
       tipSet.push({ t: '本次处方规范', b: '未命中错误/警告规则。继续保持：诊断-用药相符、剂量疗程适宜、特殊人群与配伍均已核对。' });
     }
-    $('tips-box').innerHTML = tipSet.map(t =>
+
+    // 重点关注：summary.top_issues（红色警示卡片，插在知识点卡片前）
+    let topIssuesHtml = '';
+    if (review.summary && Array.isArray(review.summary.top_issues) && review.summary.top_issues.length) {
+      topIssuesHtml = `<div class="top-issues-box">
+        <div class="top-issues-title">⚠️ 重点关注</div>
+        <ul>${review.summary.top_issues.map(t => `<li>${t}</li>`).join('')}</ul>
+      </div>`;
+    }
+
+    $('tips-box').innerHTML = topIssuesHtml + tipSet.map(t =>
       `<div class="knowledge-card"><div class="knowledge-title">📖 ${t.t}</div><div class="knowledge-body">${t.b}</div></div>`
     ).join('');
   }

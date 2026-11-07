@@ -10,8 +10,69 @@
 
   // ---------- 工具 ----------
   function byId(list, id) { return list.find(r => r.rule_id === id); }
-  function hit(rule, severity, message, suggestion) {
+
+  // ------------------------------------------------------------------
+  // 三级严重度推断（与 review.js 保持一致）
+  //  error→major，warn→minor，pass→pass；下列 rule_id 的 error 升级 critical
+  //  （禁忌证/超极量/特殊使用级/无指征输液/中药注射剂同瓶）
+  // ------------------------------------------------------------------
+  const CRITICAL_RULE_IDS = {
+    'POP-01':1, 'SPEC-02':1, 'COMORBID-04':1, 'ALLERGY-01':1,
+    'COMORBID-01':1, 'COMORBID-02':1, 'IV-08':1,
+    'ABX-01':1, 'IV-05':1, 'IV-07':1, 'IV-01':1,
+    'DOSE-01':1, 'DOSAGE-WT':1, 'SUR-05':1
+  };
+  const MAJOR_ON_WARN_RULE_IDS = { 'DUP-01':1, 'DUP-02':1 };
+
+  function resolveLevel(ruleId, severity, explicitLevel) {
+    // 旧 severity=pass 的中性提示不参与扣分，一律保持 pass
+    if (severity === 'pass') return 'pass';
+    if (explicitLevel === 'critical' || explicitLevel === 'major' ||
+        explicitLevel === 'minor') return explicitLevel;
+    if (explicitLevel === 'pass') return 'pass';
+    if (severity === 'error') {
+      if (CRITICAL_RULE_IDS[ruleId]) return 'critical';
+      return 'major';
+    }
+    if (MAJOR_ON_WARN_RULE_IDS[ruleId]) return 'major';
+    return 'minor';
+  }
+
+  // ------------------------------------------------------------------
+  // 高频规则教学文案兜底：rule_id -> 教学四件套
+  // （rulesMeta/rules.json 未提供 lesson_point 等字段时使用；提供了则优先用 rulesMeta）
+  // ------------------------------------------------------------------
+  const TEACHING_FALLBACK = {
+    'POP-01':   { lesson_point:'18岁以下禁用喹诺酮，可致负重关节软骨损伤', correct_practice:'儿童改用β内酰胺类或大环内酯类，避免使用喹诺酮类', reference_guide:'《抗菌药物临床应用指导原则（2015版）》', related_topic:'QUINOLONE_PEDIATRIC' },
+    'POP-02':   { lesson_point:'老年人输液过快/过量可诱发心衰', correct_practice:'滴速≤60ml/h，单次入量≤500ml，必要时减液体量', reference_guide:'《老年人静脉输液安全专家共识》', related_topic:'ELDERLY_IV' },
+    'ABX-01':   { lesson_point:'特殊使用级抗菌药不得在门诊直接使用', correct_practice:'转入住院，经抗感染会诊并由高级职称医师审批后使用', reference_guide:'《抗菌药物临床应用分级管理目录（2024版）》', related_topic:'ABX_LEVEL' },
+    'ABX-02':   { lesson_point:'限制使用级抗菌药须中级以上职称开具', correct_practice:'由主治医师及以上审核确认后方可使用', reference_guide:'《抗菌药物临床应用分级管理办法》', related_topic:'ABX_LEVEL' },
+    'IV-01':    { lesson_point:'能口服不肌注，能肌注不输液', correct_practice:'有客观脱水/不能口服证据方可输液，否则改口服方案', reference_guide:'《关于做好医疗机构静脉输液安全管理工作的通知》', related_topic:'IV_INDICATION' },
+    'IV-02':    { lesson_point:'有口服等效一线药时不应无理由选择静脉', correct_practice:'优先口服给药；确需静脉应注明 no_oral_alternative 等依据', reference_guide:'WHO 合理用药原则（优先口服）', related_topic:'IV_INDICATION' },
+    'IV-05':    { lesson_point:'普通感冒/轻症胃肠炎等门诊负面清单疾病不得输液', correct_practice:'改为口服对症治疗+健康宣教，必要时复诊', reference_guide:'《医疗机构门诊静脉输液负面清单（2025版）》', related_topic:'IV_INDICATION' },
+    'IV-06':    { lesson_point:'溶媒必须在药品说明书允许范围内', correct_practice:'按说明书选择 0.9%NaCl/5%GS 及规定体积，不随意替换', reference_guide:'药品说明书【用法用量】溶媒项；《静脉用药集中调配操作规程》', related_topic:'SOLVENT_COMPAT' },
+    'IV-07':    { lesson_point:'中药注射剂严禁与其他药物同瓶混合输注', correct_practice:'中药注射剂单独配制、单独输注，前后冲管', reference_guide:'国家药监局中药注射剂安全性通报', related_topic:'TCM_INJECTION' },
+    'IV-04':    { lesson_point:'老年/儿童/心肺肾功能不全者须减速滴注', correct_practice:'按药品 drip_speed_max 下调滴速，必要时心电监护', reference_guide:'《静脉治疗护理技术操作规范 WS/T 433》', related_topic:'ELDERLY_IV' },
+    'INT-01':   { lesson_point:'喹诺酮与含钙/铝/铁/铋剂螯合显著降低吸收', correct_practice:'抗酸/铁剂与喹诺酮间隔≥2小时服用，或换用其他抗菌药', reference_guide:'左氧氟沙星说明书【药物相互作用】', related_topic:'DRUG_INTERACTION' },
+    'DUP-01':   { lesson_point:'同一张处方不得重复开具同类药理作用药物', correct_practice:'同类药物只保留一种，避免叠加剂量与不良反应', reference_guide:'《医院处方点评管理规范》（不适宜处方）', related_topic:'DUPLICATE_THERAPY' },
+    'IND-01':   { lesson_point:'所选药品必须与临床诊断相匹配', correct_practice:'对照本病种一线/二线推荐方案选药，诊断与用药一致', reference_guide:'《处方管理办法》第十四条', related_topic:'INDICATION_MATCH' },
+    'DOSE-01':  { lesson_point:'单次剂量不得超出说明书规定范围', correct_practice:'按说明书 single_min~single_max 调整单次剂量并复核', reference_guide:'药品说明书【用法用量】', related_topic:'DOSAGE_SAFETY' },
+    'DUR-01':   { lesson_point:'普通处方≤7日量、急诊≤3日量', correct_practice:'按病种与病情开具合理疗程，慢性病另办长期处方', reference_guide:'《处方管理办法》第十九条', related_topic:'DURATION' },
+    'FMT-01':   { lesson_point:'每张处方不得超过5种药品（含溶媒）', correct_practice:'精简处方，删除非必需药物，必要时分方开具', reference_guide:'《处方管理办法》第十九条', related_topic:'PRESCRIPTION_FORMAT' },
+    'FMT-05':   { lesson_point:'处方前记（姓名/性别/年龄/诊断/科别/日期）须完整', correct_practice:'补齐患者基本信息与临床诊断后再提交', reference_guide:'《处方管理办法》第五条', related_topic:'PRESCRIPTION_FORMAT' },
+    'YN-01':    { lesson_point:'诊断必须与患者性别相符', correct_practice:'核对诊断与性别，撤销不符诊断或修正处方', reference_guide:'ICD-10 医保2.0版性别限定（云南医保两库规则）', related_topic:'INSURANCE_SCOPE' },
+    'SPEC-01':  { lesson_point:'老年/儿童/肝肾功能不全须按体重或eGFR调整剂量', correct_practice:'起始减量、按kg或eGFR核算，必要时监测血药浓度', reference_guide:'《中国老年人潜在不适当用药目录（2024版）》；药品说明书【特殊人群】', related_topic:'SPECIAL_POP' },
+    'SPEC-02':  { lesson_point:'药品禁忌证与患者基础疾病冲突时禁用', correct_practice:'立即停药，选择无禁忌的替代治疗方案', reference_guide:'药品说明书【禁忌】项；《处方管理办法》第十四条', related_topic:'CONTRAINDICATION' }
+  };
+
+  // hit() 工厂：输出旧字段（rule_id/group/title/severity/message/basis/suggestion）+ 新字段
+  // opts: { affected_items:[], aggregated_count, lesson_point, correct_practice,
+  //         reference_guide, related_topic, severity_level }
+  function hit(rule, severity, message, suggestion, opts) {
     rule = rule || { rule_id: 'UNKNOWN', group: 'FORMAT', title: '未知规则', basis: '' };
+    opts = opts || {};
+    const fb = TEACHING_FALLBACK[rule.rule_id] || {};
+    const affected = Array.isArray(opts.affected_items) ? opts.affected_items.slice() : [];
     return {
       rule_id: rule.rule_id,
       group: rule.group,
@@ -19,7 +80,15 @@
       severity: severity,
       message: message,
       basis: rule.basis,
-      suggestion: suggestion || ''
+      suggestion: suggestion || '',
+      // ---- 新增字段 ----
+      severity_level: resolveLevel(rule.rule_id, severity, opts.severity_level || rule.severity_level_hint),
+      lesson_point:    opts.lesson_point    || rule.lesson_point    || fb.lesson_point    || '',
+      correct_practice: opts.correct_practice|| rule.correct_practice|| fb.correct_practice|| '',
+      reference_guide: opts.reference_guide || rule.reference_guide || fb.reference_guide || rule.basis || '',
+      related_topic:   opts.related_topic   || rule.related_topic   || fb.related_topic   || '',
+      affected_items:  affected,
+      aggregated_count: opts.aggregated_count || affected.length || 1
     };
   }
   function pass(rule, msg) { return hit(rule, 'pass', msg || '通过', ''); }

@@ -1823,3 +1823,138 @@ input, select, textarea { font-family: inherit; }
   .lab-order-table th:last-child, .lab-order-table td:last-child { display: none !important; }
   .lab-order-empty { border: 1px solid #000 !important; }
 }
+/* ===== 点评报告改版（2026-11-07）：headline / 维度进度条 / 三级命中 / 改进建议 ===== */
+.report-headline {
+  margin: 12px 24px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+}
+.report-headline.hidden { display: none; }
+.report-headline.critical {
+  background: #dc2626;
+  color: #fff;
+  border: 1px solid #b91c1c;
+}
+.report-headline.info {
+  background: #2563eb;
+  color: #fff;
+  border: 1px solid #1d4ed8;
+}
+
+/* 维度卡片进度条 */
+.dim-card .dim-bar {
+  margin-top: 8px;
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.dim-card .dim-bar-fill {
+  height: 6px;
+  border-radius: 3px;
+  transition: width .4s ease;
+}
+.dim-card .dim-bar-fill.error { background: #dc2626; }
+.dim-card .dim-bar-fill.warn  { background: #f59e0b; }
+.dim-card .dim-bar-fill.pass  { background: #16a34a; }
+
+/* 命中分组标题 */
+.hit-group-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 12px 0 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.hit-group-title.g-critical { color: #b91c1c; background: #fef2f2; border-left: 3px solid #dc2626; }
+.hit-group-title.g-major    { color: #b45309; background: #fffbeb; border-left: 3px solid #f59e0b; }
+.hit-group-title.g-minor    { color: #854d0e; background: #fefce8; border-left: 3px solid #facc15; }
+
+/* 命中条目三级左边框 */
+.hit-item.critical { border-left: 4px solid #dc2626; background: #fef2f2; padding: 10px 12px; }
+.hit-item.major    { border-left: 4px solid #f59e0b; }
+.hit-item.minor    { border-left: 4px solid #facc15; }
+
+/* 命中条目内的教学元素 */
+.affected-items {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #1e40af;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+.correct-practice {
+  margin-top: 6px;
+  padding: 8px 10px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #166534;
+  line-height: 1.5;
+}
+.ref-guide {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+.lesson-point {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #374151;
+  font-style: italic;
+}
+
+/* 改进建议卡片 */
+.nextsteps-box {
+  margin: 12px 0;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+.nextsteps-box:empty { display: none; }
+.nextsteps-box .nextsteps-title {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #111827;
+}
+.nextsteps-box ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* 重点关注警示卡片 */
+.top-issues-box {
+  margin: 12px 0;
+  padding: 12px 14px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+}
+.top-issues-box:empty { display: none; }
+.top-issues-box .top-issues-title {
+  font-weight: 700;
+  color: #b91c1c;
+  margin-bottom: 6px;
+}
+.top-issues-box ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #7f1d1d;
+  font-size: 13px;
+  line-height: 1.6;
+}

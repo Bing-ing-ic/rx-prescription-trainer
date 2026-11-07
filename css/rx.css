@@ -1958,3 +1958,30 @@ input, select, textarea { font-family: inherit; }
   font-size: 13px;
   line-height: 1.6;
 }
+
+/* ========== 原研药高亮（2026-11-07） ========== */
+/* 原研药徽章：金色，区别于医保甲(绿)/乙(蓝)/基(紫)/集(橙) */
+.chip-originator {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  margin-left: 4px;
+  vertical-align: middle;
+  box-shadow: 0 1px 2px rgba(217,119,6,.3);
+}
+/* 原研药卡片：淡金底色 + 金色左边框，不影响 kb-highlight/disabled 状态 */
+.drug-item.originator {
+  background: linear-gradient(90deg, #fffbeb 0%, #ffffff 60%);
+  border-left: 3px solid #f59e0b;
+}
+.drug-item.originator.kb-highlight {
+  background: linear-gradient(90deg, #fef3c7 0%, #ffffff 60%);
+  border-left: 3px solid #d97706;
+}
+.drug-item.originator .mfr {
+  color: #b45309 !important;
+}

@@ -1139,11 +1139,12 @@
     list.innerHTML = '';
     items.forEach((d, i) => {
       const div = document.createElement('div');
-      div.className = 'drug-item' + (i === S.kbOralSel ? ' kb-highlight' : '');
+      const isOrig = isOriginatorDrug(d);
+      div.className = 'drug-item' + (isOrig ? ' originator' : '') + (i === S.kbOralSel ? ' kb-highlight' : '');
       div.dataset.kbIndex = i;
       div.innerHTML = `
         <div>
-          <b>${d.generic_name}</b> <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
+          <b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
           <div class="mfr" style="font-size:11px;color:#94a3b8">🏭 ${d.manufacturer||'国产'}</div>
           ${abxChip(d.abx_level)}
           ${controlledChip(d)}
@@ -1415,6 +1416,23 @@
     if (c === 'psychotropic_1') return '<span class="chip chip-narcotic">精一</span>';
     if (c === 'psychotropic_2') return '<span class="chip chip-psycho2">精二</span>';
     return '';
+  }
+  // 原研药识别：外资原研药企名单（进口/合资原研，区别于国产仿制药）
+  const ORIGINATOR_KEYWORDS = [
+    '辉瑞','阿斯利康','拜耳','诺华','罗氏','默沙东','默克','葛兰素史克','GSK','赛诺菲',
+    '礼来','诺和诺德','勃林格殷格翰','武田','卫材','吉利德','雅培','强生','杨森','西安杨森',
+    '灵北','大冢','第一三共','安斯泰来','艾伯维','施维雅','优时比','住友','安万特',
+    '百时美','BMS','默克雪兰诺'
+  ];
+  function isOriginatorDrug(d) {
+    if (!d) return false;
+    const m = d.manufacturer || '';
+    if (!m) return false;
+    return ORIGINATOR_KEYWORDS.some(k => m.indexOf(k) >= 0);
+  }
+  function originatorChip(d) {
+    if (!isOriginatorDrug(d)) return '';
+    return '<span class="chip chip-originator" title="原研药（进口/合资原研，非国产仿制药）">原研</span>';
   }
   function mzChip(c) {
     if (c==='甲') return '<span class="chip chip-mz-a">医保甲</span>';
@@ -1752,7 +1770,7 @@
     tb.innerHTML = '';
     S.normalItems.forEach((it, i) => {
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${i+1}</td><td>${it.drug.generic_name}</td><td>${it.drug.spec}</td>
+      tr.innerHTML = `<td>${i+1}</td><td>${it.drug.generic_name}${isOriginatorDrug(it.drug)?' <span class="chip chip-originator" title="原研药">原研</span>':''}</td><td>${it.drug.spec}</td>
         <td><input class="n-qty" type="number" value="${it.quantity}" style="width:60px;min-width:50px"></td>
         <td><input class="n-dose" type="text" value="${it.single_dose}" style="width:90px"></td>
         <td>${routeZh(it.route)}</td>
@@ -2032,10 +2050,11 @@
     items.forEach((d, i) => {
       const isSolvent = d.dosage_form === 'solvent';
       const disabled = S.kbIvDisabled[i];
+      const isOrig = isOriginatorDrug(d);
       const div = document.createElement('div');
-      div.className = 'drug-item' + (disabled?' disabled':'') + (i === S.kbIvSel ? ' kb-highlight' : '');
+      div.className = 'drug-item' + (isOrig ? ' originator' : '') + (disabled?' disabled':'') + (i === S.kbIvSel ? ' kb-highlight' : '');
       div.dataset.kbIndex = i;
-      div.innerHTML = `<div><b>${d.generic_name}</b> <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
+      div.innerHTML = `<div><b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
         <div class="mfr" style="font-size:11px;color:#94a3b8">🏭 ${d.manufacturer||'国产'}</div>
         ${isSolvent ? '<span class="chip" style="background:#7f8c8d;color:#fff">溶媒</span>' : ''}
         ${abxChip(d.abx_level)}

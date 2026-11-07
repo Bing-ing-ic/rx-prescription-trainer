@@ -20031,6 +20031,47 @@
       "pinyin_code": "XLS",
       "reference_status": "已核对",
       "aliases": []
+    },
+    {
+      "generic_name": "布地奈德福莫特罗吸入剂",
+      "brand_name": "信必可都保",
+      "dosage_form": "吸入剂",
+      "spec": "160μg/4.5μg×60吸",
+      "unit": "支",
+      "medical_insurance_class": "医保乙类",
+      "essential_medicine": true,
+      "jtc_batch": false,
+      "otc_class": "处方药",
+      "abx_level": null,
+      "pharmacology_class": "呼吸系统用药/糖皮质激素+β2受体激动剂复方",
+      "dose_range_json": {
+        "adult_min": 1,
+        "adult_max": 2,
+        "unit": "吸/次",
+        "freq": "bid",
+        "note": "每次1-2吸，每日2次，吸入后漱口"
+      },
+      "liver_renal_note": "肝肾功能不全无需调整剂量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": 0,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "吸入后必须漱口，防止口腔念珠菌感染",
+        "不可突然停药，需逐渐减量"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 185.5,
+      "manufacturer": "阿斯利康",
+      "pinyin": "budinaidefumoteluo",
+      "pinyin_code": "BDN FMTL",
+      "reference_status": "临床常用",
+      "aliases": [
+        "布地奈德福莫特罗",
+        "信必可",
+        "布地奈德/福莫特罗"
+      ]
     }
   ]
 }

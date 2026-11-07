@@ -1,6 +1,6 @@
 {
-  "version": "2026.11.06-expand-400plus",
-  "note": "药品库扩充版：在原267条基础上新增145条，覆盖口服西药、中成药、注射液、粉针剂、中药注射剂",
+  "version": "2026.11.07-import-expanded",
+  "note": "药品库扩充版：在原572条基础上新增87条进口原研药/自费药，覆盖心血管、呼吸、消化、内分泌、神经精神、抗肿瘤、抗感染7个科室方向，含生物制剂、靶向药、特殊使用级抗菌药",
   "drugs": [
     {
       "generic_name": "苯磺酸氨氯地平片",
@@ -2779,7 +2779,7 @@
       "manufacturer": "日本住友制药",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
-      "jtc_batch": true,
+      "jtc_batch": "",
       "abx_level": "special",
       "controlled": false,
       "adult": {
@@ -2789,7 +2789,36 @@
       },
       "pinyin": "zsymlpn",
       "pharmacology_class": "碳青霉烯类",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "brand_name": "美平",
+      "unit": "支",
+      "otc_class": "处方药",
+      "liver_renal_note": "肾功能不全需根据肌酐清除率调整剂量",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 100,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "与丙戊酸联用可降低后者血药浓度",
+        "中枢神经系统感染慎用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "aliases": [
+        "美罗培南",
+        "美平",
+        "Meropenem"
+      ],
+      "dose_range_json": {
+        "single_min_mg": 500,
+        "single_max_mg": 1000,
+        "daily_max_mg": 3000,
+        "default_freq": "q8h",
+        "default_duration_days": 7
+      }
     },
     {
       "generic_name": "注射用克林霉素",
@@ -20038,7 +20067,7 @@
       "dosage_form": "吸入剂",
       "spec": "160μg/4.5μg×60吸",
       "unit": "支",
-      "medical_insurance_class": "医保乙类",
+      "medical_insurance_class": "乙",
       "essential_medicine": true,
       "jtc_batch": false,
       "otc_class": "处方药",
@@ -20071,6 +20100,3710 @@
         "布地奈德福莫特罗",
         "信必可",
         "布地奈德/福莫特罗"
+      ]
+    },
+    {
+      "generic_name": "替格瑞洛片",
+      "brand_name": "倍林达",
+      "dosage_form": "oral",
+      "spec": "90mg×14片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗血小板药/P2Y12受体拮抗剂",
+      "dose_range_json": {
+        "single_min_mg": 45,
+        "single_max_mg": 180,
+        "daily_max_mg": 180,
+        "default_freq": "bid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肝功能不全禁用；肾功能不全一般无需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "出血风险",
+        "与阿司匹林联用需注意",
+        "禁止与强CYP3A4抑制剂合用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 105,
+      "manufacturer": "阿斯利康",
+      "pinyin": "tgllp",
+      "pinyin_code": "TGLP",
+      "reference_status": "expanded",
+      "aliases": [
+        "替格瑞洛",
+        "倍林达"
+      ]
+    },
+    {
+      "generic_name": "盐酸伊伐布雷定片",
+      "brand_name": "可兰特",
+      "dosage_form": "oral",
+      "spec": "5mg×14片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗心绞痛药/If通道抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 2.5,
+        "single_max_mg": 7.5,
+        "daily_max_mg": 15,
+        "default_freq": "bid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "重度肝功能不全禁用；肌酐清除率<15ml/min不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "心率<60次/分禁用",
+        "监测心率",
+        "避免与QT延长药合用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 148,
+      "manufacturer": "施维雅",
+      "pinyin": "ysylblp",
+      "pinyin_code": "YSYBLP",
+      "reference_status": "expanded",
+      "aliases": [
+        "伊伐布雷定",
+        "可兰特"
+      ]
+    },
+    {
+      "generic_name": "依诺肝素钠注射液",
+      "brand_name": "克赛",
+      "dosage_form": "sc",
+      "spec": "0.4ml:4000AXaIU×2支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗凝药/低分子肝素",
+      "dose_range_json": {
+        "single_min_mg": 20,
+        "single_max_mg": 80,
+        "daily_max_mg": 80,
+        "default_freq": "qd",
+        "default_duration_days": 10
+      },
+      "liver_renal_note": "肌酐清除率<30ml/min需减量；禁用于鞘内硬膜外麻醉",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "皮下注射，避开脐周",
+        "监测抗Xa因子",
+        "禁与其他NSAIDs合用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 62,
+      "manufacturer": "赛诺菲",
+      "pinyin": "ynmsnzsy",
+      "pinyin_code": "YNMSNZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "依诺肝素",
+        "克赛"
+      ]
+    },
+    {
+      "generic_name": "那屈肝素钙注射液",
+      "brand_name": "速碧林",
+      "dosage_form": "sc",
+      "spec": "0.4ml:4100AXaIU×2支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗凝药/低分子肝素",
+      "dose_range_json": {
+        "single_min_mg": 20,
+        "single_max_mg": 80,
+        "daily_max_mg": 80,
+        "default_freq": "qd",
+        "default_duration_days": 10
+      },
+      "liver_renal_note": "严重肾功能不全需减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "皮下注射",
+        "出血风险",
+        "监测血小板"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 56,
+      "manufacturer": "赛诺菲",
+      "pinyin": "nqgsgzsy",
+      "pinyin_code": "NQGSGZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "那屈肝素",
+        "速碧林"
+      ]
+    },
+    {
+      "generic_name": "培哚普利叔丁胺片",
+      "brand_name": "雅施达",
+      "dosage_form": "oral",
+      "spec": "4mg×30片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "肾素-血管紧张素系统抑制药/ACEI",
+      "dose_range_json": {
+        "single_min_mg": 2,
+        "single_max_mg": 8,
+        "daily_max_mg": 8,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肾功能不全需监测；肾动脉狭窄禁用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "干咳副作用",
+        "高钾血症",
+        "妊娠中晚期禁用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 42,
+      "manufacturer": "施维雅",
+      "pinyin": "pdlsdap",
+      "pinyin_code": "PDLSDAP",
+      "reference_status": "expanded",
+      "aliases": [
+        "培哚普利",
+        "雅施达"
+      ]
+    },
+    {
+      "generic_name": "厄贝沙坦氢氯噻嗪片",
+      "brand_name": "安博诺",
+      "dosage_form": "oral",
+      "spec": "150mg/12.5mg×7片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降压药/ARB+利尿剂复方",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 2,
+        "daily_max_mg": 2,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肝肾功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "监测血钾",
+        "体位性低血压",
+        "痛风患者慎用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 36,
+      "manufacturer": "赛诺菲",
+      "pinyin": "ebstqlqsp",
+      "pinyin_code": "EBSTQLQSP",
+      "reference_status": "expanded",
+      "aliases": [
+        "厄贝沙坦氢氯噻嗪",
+        "安博诺"
+      ]
+    },
+    {
+      "generic_name": "盐酸乌拉地尔注射液",
+      "brand_name": "亚宁定",
+      "dosage_form": "iv_drip",
+      "spec": "25mg:5ml×5支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降压药/α1受体阻滞剂",
+      "dose_range_json": {
+        "single_min_mg": 12.5,
+        "single_max_mg": 50,
+        "daily_max_mg": 200,
+        "default_freq": "iv",
+        "default_duration_days": 3
+      },
+      "liver_renal_note": "肝功能不全慎用",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 100,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "静脉给药需监测血压",
+        "不可与碱性液配伍"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 26,
+      "manufacturer": "泰姆勒",
+      "pinyin": "yswldezsy",
+      "pinyin_code": "YSWLDEZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "乌拉地尔",
+        "亚宁定"
+      ]
+    },
+    {
+      "generic_name": "左西孟旦注射液",
+      "brand_name": "喜迈定",
+      "dosage_form": "iv_drip",
+      "spec": "12.5mg:5ml",
+      "unit": "支",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "正性肌力药/钙增敏剂",
+      "dose_range_json": {
+        "single_min_mg": 6,
+        "single_max_mg": 12,
+        "daily_max_mg": 12,
+        "default_freq": "iv",
+        "default_duration_days": 1
+      },
+      "liver_renal_note": "严重肝肾功能不全不推荐",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 24,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "禁用于严重低血压",
+        "心动过速",
+        "监测心电图"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 1850,
+      "manufacturer": "OrionPharma",
+      "pinyin": "zxd dzsy",
+      "pinyin_code": "ZXMDZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "左西孟旦",
+        "Simdax"
+      ]
+    },
+    {
+      "generic_name": "磺达肝癸钠注射液",
+      "brand_name": "安卓",
+      "dosage_form": "sc",
+      "spec": "2.5mg:0.5ml×2支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗凝药/Xa因子抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 2.5,
+        "single_max_mg": 7.5,
+        "daily_max_mg": 7.5,
+        "default_freq": "qd",
+        "default_duration_days": 10
+      },
+      "liver_renal_note": "肌酐清除率<20ml/min禁用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "皮下注射",
+        "出血风险",
+        "慎用于老年人"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 128,
+      "manufacturer": "葛兰素史克",
+      "pinyin": "hdggnzsy",
+      "pinyin_code": "HDGGNZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "磺达肝癸",
+        "安卓"
+      ]
+    },
+    {
+      "generic_name": "达肝素钠注射液",
+      "brand_name": "法安明",
+      "dosage_form": "sc",
+      "spec": "5000IU:0.2ml×10支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗凝药/低分子肝素",
+      "dose_range_json": {
+        "single_min_mg": 2500,
+        "single_max_mg": 15000,
+        "daily_max_mg": 18000,
+        "default_freq": "qd",
+        "default_duration_days": 10
+      },
+      "liver_renal_note": "严重肾功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "皮下注射",
+        "出血风险",
+        "监测血小板"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 36,
+      "manufacturer": "辉瑞制药",
+      "pinyin": "dgsnzsy",
+      "pinyin_code": "DGSNZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "达肝素",
+        "法安明"
+      ]
+    },
+    {
+      "generic_name": "艾多沙班片",
+      "brand_name": "里先安",
+      "dosage_form": "oral",
+      "spec": "60mg×7片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗凝药/Xa因子抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 30,
+        "single_max_mg": 60,
+        "daily_max_mg": 60,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肌酐清除率15-50ml/min用30mg；重度肝功能不全不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "出血风险",
+        "不可自行停药",
+        "术前24h停药"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 62,
+      "manufacturer": "第一三共",
+      "pinyin": "adsbp",
+      "pinyin_code": "ADSB",
+      "reference_status": "expanded",
+      "aliases": [
+        "艾多沙班",
+        "里先安"
+      ]
+    },
+    {
+      "generic_name": "注射用阿替普酶",
+      "brand_name": "爱通立",
+      "dosage_form": "iv_drip",
+      "spec": "50mg/支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "溶栓药/重组组织型纤溶酶原激活剂",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 100,
+        "daily_max_mg": 100,
+        "default_freq": "st",
+        "default_duration_days": 1
+      },
+      "liver_renal_note": "严重肝肾功能不全禁用",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "注射用水",
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 120,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "发病3h内使用",
+        "出血风险极高",
+        "不可用于活动性出血患者"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 4580,
+      "manufacturer": "勃林格殷格翰",
+      "pinyin": "zsetp mzsy",
+      "pinyin_code": "ZSATPMZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "阿替普酶",
+        "爱通立",
+        "rtPA"
+      ]
+    },
+    {
+      "generic_name": "乌美溴铵维兰特罗吸入粉雾剂",
+      "brand_name": "欧乐欣",
+      "dosage_form": "inhalation",
+      "spec": "62.5μg/25μg×30吸",
+      "unit": "盒",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "呼吸系统用药/LAMA+LABA复方",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 1,
+        "daily_max_mg": 1,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "每日固定时间吸入",
+        "不可咀嚼",
+        "闭角型青光眼慎用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 258,
+      "manufacturer": "葛兰素史克",
+      "pinyin": "wmxwltlxfwj",
+      "pinyin_code": "WMXWLT",
+      "reference_status": "expanded",
+      "aliases": [
+        "乌美溴铵维兰特罗",
+        "欧乐欣"
+      ]
+    },
+    {
+      "generic_name": "氟替美维吸入粉雾剂",
+      "brand_name": "全再乐",
+      "dosage_form": "inhalation",
+      "spec": "100μg/62.5μg/25μg×30吸",
+      "unit": "盒",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "呼吸系统用药/ICS+LAMA+LABA三联",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 1,
+        "daily_max_mg": 1,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "吸入后漱口",
+        "不可突然停药",
+        "肺炎风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 388,
+      "manufacturer": "葛兰素史克",
+      "pinyin": "jtm vxfwj",
+      "pinyin_code": "JTMVXFJ",
+      "reference_status": "expanded",
+      "aliases": [
+        "氟替美维",
+        "全再乐"
+      ]
+    },
+    {
+      "generic_name": "注射用奥马珠单抗",
+      "brand_name": "茁乐",
+      "dosage_form": "sc",
+      "spec": "150mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "生物制剂/抗IgE单抗",
+      "dose_range_json": {
+        "single_min_mg": 75,
+        "single_max_mg": 600,
+        "daily_max_mg": 600,
+        "default_freq": "q2w",
+        "default_duration_days": 180
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "注射后观察2小时",
+        "过敏反应",
+        "寄生虫感染风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 2850,
+      "manufacturer": "诺华制药",
+      "pinyin": "zsyamz dk",
+      "pinyin_code": "ZSYAMZDK",
+      "reference_status": "expanded",
+      "aliases": [
+        "奥马珠单抗",
+        "茁乐",
+        "Xolair"
+      ]
+    },
+    {
+      "generic_name": "茚达特罗格隆溴铵吸入粉雾剂",
+      "brand_name": "昂润",
+      "dosage_form": "inhalation",
+      "spec": "110μg/50μg×30粒",
+      "unit": "盒",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "呼吸系统用药/LABA+LAMA复方",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 1,
+        "daily_max_mg": 2,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "轻中度肝肾不全无需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "每日固定时间吸入",
+        "心血管疾病慎用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 228,
+      "manufacturer": "诺华制药",
+      "pinyin": "ydtlgxzxrfwj",
+      "pinyin_code": "YDTLGX",
+      "reference_status": "expanded",
+      "aliases": [
+        "茚达特罗格隆溴铵",
+        "昂润",
+        "Ultibro"
+      ]
+    },
+    {
+      "generic_name": "噻托溴铵奥达特罗吸入喷雾剂",
+      "brand_name": "思合华",
+      "dosage_form": "inhalation",
+      "spec": "2.5μg/2.5μg×60揿",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "呼吸系统用药/LAMA+LABA复方",
+      "dose_range_json": {
+        "single_min_mg": 2,
+        "single_max_mg": 2,
+        "daily_max_mg": 4,
+        "default_freq": "bid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肾功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "每日2次",
+        "闭角型青光眼慎用",
+        "尿潴留风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 288,
+      "manufacturer": "勃林格殷格翰",
+      "pinyin": "txat qdtlxpswj",
+      "pinyin_code": "TXATQDTL",
+      "reference_status": "expanded",
+      "aliases": [
+        "噻托溴铵奥达特罗",
+        "思合华"
+      ]
+    },
+    {
+      "generic_name": "复方异丙托溴铵吸入溶液",
+      "brand_name": "可必特",
+      "dosage_form": "inhalation",
+      "spec": "2.5ml×20支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "呼吸系统用药/SAMA+SABA复方",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 2,
+        "daily_max_mg": 4,
+        "default_freq": "qid",
+        "default_duration_days": 7
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "雾化吸入",
+        "心率加快",
+        "前列腺增生慎用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 68,
+      "manufacturer": "勃林格殷格翰",
+      "pinyin": "fyb ybtlxx ryr",
+      "pinyin_code": "FYBYBTLX",
+      "reference_status": "expanded",
+      "aliases": [
+        "复方异丙托溴铵",
+        "可必特"
+      ]
+    },
+    {
+      "generic_name": "异丙托溴铵吸入气雾剂",
+      "brand_name": "爱全乐",
+      "dosage_form": "inhalation",
+      "spec": "20μg×200揿",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "呼吸系统用药/SAMA",
+      "dose_range_json": {
+        "single_min_mg": 2,
+        "single_max_mg": 4,
+        "daily_max_mg": 12,
+        "default_freq": "qid",
+        "default_duration_days": 30
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "雾化后漱口",
+        "青光眼慎用",
+        "前列腺增生慎用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 52,
+      "manufacturer": "勃林格殷格翰",
+      "pinyin": "ybtlxxr qwj",
+      "pinyin_code": "YBTLXXRQWJ",
+      "reference_status": "expanded",
+      "aliases": [
+        "异丙托溴铵",
+        "爱全乐"
+      ]
+    },
+    {
+      "generic_name": "奥沙拉嗪钠胶囊",
+      "brand_name": "帕斯坦",
+      "dosage_form": "oral",
+      "spec": "250mg×40粒",
+      "unit": "粒",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "消化系统用药/水杨酸类抗炎药",
+      "dose_range_json": {
+        "single_min_mg": 500,
+        "single_max_mg": 1000,
+        "daily_max_mg": 4000,
+        "default_freq": "tid",
+        "default_duration_days": 180
+      },
+      "liver_renal_note": "肾功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "妊娠晚期禁用",
+        "与维生素B12合用影响吸收"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 52,
+      "manufacturer": "欧盟制药",
+      "pinyin": "aslzn jn",
+      "pinyin_code": "ASLZNJN",
+      "reference_status": "expanded",
+      "aliases": [
+        "奥沙拉嗪",
+        "帕斯坦"
+      ]
+    },
+    {
+      "generic_name": "注射用英夫利昔单抗",
+      "brand_name": "类克",
+      "dosage_form": "iv_drip",
+      "spec": "100mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "生物制剂/抗TNF-α单抗",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 500,
+        "daily_max_mg": 500,
+        "default_freq": "q8w",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肝损伤禁用",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "输注前需预处理",
+        "结核筛查",
+        "乙肝筛查",
+        "输注反应"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 6100,
+      "manufacturer": "西安杨森",
+      "pinyin": "zyflx sdk",
+      "pinyin_code": "ZYFLXSDK",
+      "reference_status": "expanded",
+      "aliases": [
+        "英夫利昔单抗",
+        "类克",
+        "Remicade"
+      ]
+    },
+    {
+      "generic_name": "阿达木单抗注射液",
+      "brand_name": "修美乐",
+      "dosage_form": "sc",
+      "spec": "40mg:0.4ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "生物制剂/抗TNF-α单抗",
+      "dose_range_json": {
+        "single_min_mg": 20,
+        "single_max_mg": 80,
+        "daily_max_mg": 80,
+        "default_freq": "q2w",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "中重度肝损伤禁用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "皮下注射",
+        "结核筛查",
+        "乙肝筛查",
+        "注射反应"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 1290,
+      "manufacturer": "艾伯维医药",
+      "pinyin": "admdk zsy",
+      "pinyin_code": "ADMDKZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "阿达木单抗",
+        "修美乐",
+        "Humira"
+      ]
+    },
+    {
+      "generic_name": "乌司奴单抗注射液",
+      "brand_name": "喜达诺",
+      "dosage_form": "sc",
+      "spec": "45mg:0.5ml",
+      "unit": "支",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "生物制剂/抗IL-12/23单抗",
+      "dose_range_json": {
+        "single_min_mg": 45,
+        "single_max_mg": 90,
+        "daily_max_mg": 90,
+        "default_freq": "q12w",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "结核筛查",
+        "乙肝筛查",
+        "注射反应"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 29000,
+      "manufacturer": "西安杨森",
+      "pinyin": "wsndk zsy",
+      "pinyin_code": "WSNDKZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "乌司奴单抗",
+        "喜达诺",
+        "Stelara"
+      ]
+    },
+    {
+      "generic_name": "注射用维得利珠单抗",
+      "brand_name": "安吉优",
+      "dosage_form": "iv_drip",
+      "spec": "300mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "生物制剂/抗整合素单抗",
+      "dose_range_json": {
+        "single_min_mg": 300,
+        "single_max_mg": 300,
+        "daily_max_mg": 300,
+        "default_freq": "q8w",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "输注反应",
+        "进行性多灶性白质脑病风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 4980,
+      "manufacturer": "武田药品",
+      "pinyin": "zywdlz dk",
+      "pinyin_code": "ZYWDLZDK",
+      "reference_status": "expanded",
+      "aliases": [
+        "维得利珠单抗",
+        "安吉优",
+        "Entyvio"
+      ]
+    },
+    {
+      "generic_name": "门冬氨酸鸟氨酸注射液",
+      "brand_name": "雅博司",
+      "dosage_form": "iv_drip",
+      "spec": "5g:10ml×5支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "消化系统用药/降血氨药",
+      "dose_range_json": {
+        "single_min_mg": 10,
+        "single_max_mg": 40,
+        "daily_max_mg": 40,
+        "default_freq": "iv",
+        "default_duration_days": 7
+      },
+      "liver_renal_note": "严重肾功能衰竭禁用",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 60,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "滴速不宜过快",
+        "监测血氨"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 62,
+      "manufacturer": "德国Madaus",
+      "pinyin": "mdsansaz zsy",
+      "pinyin_code": "MDSNSAZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "门冬氨酸鸟氨酸",
+        "雅博司"
+      ]
+    },
+    {
+      "generic_name": "利那洛肽胶囊",
+      "brand_name": "令泽舒",
+      "dosage_form": "oral",
+      "spec": "290μg×7粒",
+      "unit": "粒",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "消化系统用药/鸟苷酸环化酶C激动剂",
+      "dose_range_json": {
+        "single_min_mg": 0.29,
+        "single_max_mg": 0.29,
+        "daily_max_mg": 0.29,
+        "default_freq": "qd",
+        "default_duration_days": 30
+      },
+      "liver_renal_note": "肾功能不全无需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "空腹服用",
+        "腹泻常见副作用",
+        "禁用于6岁以下儿童"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 52,
+      "manufacturer": "阿斯利康",
+      "pinyin": "lnj jn",
+      "pinyin_code": "LNJNJ",
+      "reference_status": "expanded",
+      "aliases": [
+        "利那洛肽",
+        "令泽舒",
+        "Linzess"
+      ]
+    },
+    {
+      "generic_name": "沙格列汀片",
+      "brand_name": "安立泽",
+      "dosage_form": "oral",
+      "spec": "5mg×7片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/DPP-4抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 2.5,
+        "single_max_mg": 5,
+        "daily_max_mg": 5,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "中度肾功能不全2.5mg；重度肾不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "胰腺炎风险",
+        "与磺脲类合用需减量"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 56,
+      "manufacturer": "阿斯利康",
+      "pinyin": "sglp",
+      "pinyin_code": "SGLP",
+      "reference_status": "expanded",
+      "aliases": [
+        "沙格列汀",
+        "安立泽"
+      ]
+    },
+    {
+      "generic_name": "利拉鲁肽注射液",
+      "brand_name": "诺和力",
+      "dosage_form": "sc",
+      "spec": "18mg:3ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/GLP-1受体激动剂",
+      "dose_range_json": {
+        "single_min_mg": 0.6,
+        "single_max_mg": 1.8,
+        "daily_max_mg": 1.8,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肾不推荐；甲状腺髓样癌病史禁用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "皮下注射",
+        "恶心呕吐常见",
+        "胰腺炎风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 418,
+      "manufacturer": "诺和诺德",
+      "pinyin": "llgs zsy",
+      "pinyin_code": "LLGSZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "利拉鲁肽",
+        "诺和力",
+        "Victoza"
+      ]
+    },
+    {
+      "generic_name": "度拉糖肽注射液",
+      "brand_name": "度易达",
+      "dosage_form": "sc",
+      "spec": "1.5mg:0.5ml×2支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/GLP-1受体激动剂",
+      "dose_range_json": {
+        "single_min_mg": 0.75,
+        "single_max_mg": 1.5,
+        "daily_max_mg": 1.5,
+        "default_freq": "qw",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肾不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "每周一次",
+        "皮下注射",
+        "恶心呕吐"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 158,
+      "manufacturer": "礼来制药",
+      "pinyin": "dltg zsy",
+      "pinyin_code": "DLTGZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "度拉糖肽",
+        "度易达",
+        "Trulicity"
+      ]
+    },
+    {
+      "generic_name": "唑来膦酸注射液",
+      "brand_name": "密固达",
+      "dosage_form": "iv_drip",
+      "spec": "5mg:100ml",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "骨质疏松治疗药/双膦酸盐",
+      "dose_range_json": {
+        "single_min_mg": 5,
+        "single_max_mg": 5,
+        "daily_max_mg": 5,
+        "default_freq": "qy",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肌酐清除率<35ml/min禁用",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 100,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "输注前水化",
+        "颌骨坏死风险",
+        "一过性发热"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 3380,
+      "manufacturer": "诺华制药",
+      "pinyin": "llsls zsy",
+      "pinyin_code": "LLSLZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "唑来膦酸",
+        "密固达",
+        "Aclasta"
+      ]
+    },
+    {
+      "generic_name": "艾塞那肽注射液",
+      "brand_name": "百泌达",
+      "dosage_form": "sc",
+      "spec": "10μg:0.25ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/GLP-1受体激动剂",
+      "dose_range_json": {
+        "single_min_mg": 5,
+        "single_max_mg": 10,
+        "daily_max_mg": 20,
+        "default_freq": "bid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肾不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "餐前60分钟皮下注射",
+        "恶心呕吐",
+        "胰腺炎风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 158,
+      "manufacturer": "阿斯利康",
+      "pinyin": "asnt zsy",
+      "pinyin_code": "ASNTZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "艾塞那肽",
+        "百泌达",
+        "Byetta"
+      ]
+    },
+    {
+      "generic_name": "卡格列净片",
+      "brand_name": "怡可安",
+      "dosage_form": "oral",
+      "spec": "100mg×10片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/SGLT2抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 300,
+        "daily_max_mg": 300,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "eGFR<45不推荐；重度肝损不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "泌尿生殖道感染",
+        "脱水低血压",
+        "酮症酸中毒"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 62,
+      "manufacturer": "西安杨森",
+      "pinyin": "aglj p",
+      "pinyin_code": "AGLJP",
+      "reference_status": "expanded",
+      "aliases": [
+        "卡格列净",
+        "怡可安",
+        "Invokana"
+      ]
+    },
+    {
+      "generic_name": "维格列汀片",
+      "brand_name": "佳维乐",
+      "dosage_form": "oral",
+      "spec": "50mg×14片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/DPP-4抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 100,
+        "daily_max_mg": 100,
+        "default_freq": "bid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肝功能不全禁用；中度肾不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "监测肝功能",
+        "与磺脲类合用需减量"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 52,
+      "manufacturer": "诺华制药",
+      "pinyin": "wglp",
+      "pinyin_code": "WGLP",
+      "reference_status": "expanded",
+      "aliases": [
+        "维格列汀",
+        "佳维乐",
+        "Galvus"
+      ]
+    },
+    {
+      "generic_name": "地特胰岛素注射液",
+      "brand_name": "诺和平",
+      "dosage_form": "sc",
+      "spec": "300IU:3ml×5支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/长效胰岛素类似物",
+      "dose_range_json": {
+        "single_min_mg": 4,
+        "single_max_mg": 40,
+        "daily_max_mg": 80,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肾功能不全需减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "皮下注射",
+        "低血糖风险",
+        "轮换注射部位"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 72,
+      "manufacturer": "诺和诺德",
+      "pinyin": "dt ydss zsy",
+      "pinyin_code": "DTYDSSZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "地特胰岛素",
+        "诺和平",
+        "Levemir"
+      ]
+    },
+    {
+      "generic_name": "赖脯胰岛素注射液",
+      "brand_name": "优泌乐",
+      "dosage_form": "sc",
+      "spec": "300IU:3ml×5支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/速效胰岛素类似物",
+      "dose_range_json": {
+        "single_min_mg": 2,
+        "single_max_mg": 20,
+        "daily_max_mg": 60,
+        "default_freq": "tid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肾功能不全需减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "餐前即刻注射",
+        "低血糖风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 68,
+      "manufacturer": "礼来制药",
+      "pinyin": "lpy dss zsy",
+      "pinyin_code": "LPYDSSZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "赖脯胰岛素",
+        "优泌乐",
+        "Humalog"
+      ]
+    },
+    {
+      "generic_name": "特立帕肽注射液",
+      "brand_name": "复泰奥",
+      "dosage_form": "sc",
+      "spec": "20μg:80μl×2.4ml",
+      "unit": "支",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "骨质疏松治疗药/重组人PTH",
+      "dose_range_json": {
+        "single_min_mg": 20,
+        "single_max_mg": 20,
+        "daily_max_mg": 20,
+        "default_freq": "qd",
+        "default_duration_days": 720
+      },
+      "liver_renal_note": "严重肾功能不全不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "皮下注射",
+        "疗程不超过24个月",
+        "骨肉瘤风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 5500,
+      "manufacturer": "礼来制药",
+      "pinyin": "tlpt zsy",
+      "pinyin_code": "TLPTSZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "特立帕肽",
+        "复泰奥",
+        "Forteo"
+      ]
+    },
+    {
+      "generic_name": "鲑降钙素注射液",
+      "brand_name": "密盖息",
+      "dosage_form": "im",
+      "spec": "50IU:1ml×5支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "骨质疏松治疗药/降钙素",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 100,
+        "daily_max_mg": 200,
+        "default_freq": "qd",
+        "default_duration_days": 14
+      },
+      "liver_renal_note": "过敏体质慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "过敏反应",
+        "长期使用需监测"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 62,
+      "manufacturer": "诺华制药",
+      "pinyin": "gjgt s zsy",
+      "pinyin_code": "GJGTSSZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "鲑降钙素",
+        "密盖息",
+        "Miacalcic"
+      ]
+    },
+    {
+      "generic_name": "司美格鲁肽注射液",
+      "brand_name": "诺和泰",
+      "dosage_form": "sc",
+      "spec": "1.34mg:3ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/GLP-1受体激动剂",
+      "dose_range_json": {
+        "single_min_mg": 0.25,
+        "single_max_mg": 1,
+        "daily_max_mg": 1,
+        "default_freq": "qw",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肾不推荐；甲状腺髓样癌病史禁用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "每周一次皮下注射",
+        "恶心呕吐",
+        "胰腺炎风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 478,
+      "manufacturer": "诺和诺德",
+      "pinyin": "mgltg zsy",
+      "pinyin_code": "MGLTGZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "司美格鲁肽",
+        "诺和泰",
+        "Ozempic"
+      ]
+    },
+    {
+      "generic_name": "阿格列汀片",
+      "brand_name": "尼欣那",
+      "dosage_form": "oral",
+      "spec": "25mg×10片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/DPP-4抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 12.5,
+        "single_max_mg": 25,
+        "daily_max_mg": 25,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "重度肾功能不全6.25mg",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "胰腺炎风险",
+        "与磺脲类合用需减量"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 52,
+      "manufacturer": "武田药品",
+      "pinyin": "aglt p",
+      "pinyin_code": "AGLTP",
+      "reference_status": "expanded",
+      "aliases": [
+        "阿格列汀",
+        "尼欣那",
+        "Nesina"
+      ]
+    },
+    {
+      "generic_name": "谷赖胰岛素注射液",
+      "brand_name": "艾倍得",
+      "dosage_form": "sc",
+      "spec": "100IU:3ml×5支",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "降糖药/速效胰岛素类似物",
+      "dose_range_json": {
+        "single_min_mg": 2,
+        "single_max_mg": 20,
+        "daily_max_mg": 60,
+        "default_freq": "tid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肾功能不全需减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "餐前即刻注射",
+        "低血糖风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 72,
+      "manufacturer": "赛诺菲",
+      "pinyin": "gla dss zsy",
+      "pinyin_code": "GLADSSZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "谷赖胰岛素",
+        "艾倍得",
+        "Apidra"
+      ]
+    },
+    {
+      "generic_name": "盐酸西那卡塞片",
+      "brand_name": "盖平",
+      "dosage_form": "oral",
+      "spec": "25mg×10片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "内分泌系统用药/钙敏感受体激动剂",
+      "dose_range_json": {
+        "single_min_mg": 25,
+        "single_max_mg": 100,
+        "daily_max_mg": 100,
+        "default_freq": "qd",
+        "default_duration_days": 90
+      },
+      "liver_renal_note": "肝功能不全慎用；透析患者",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "低钙血症",
+        "监测血钙磷",
+        "癫痫发作风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 72,
+      "manufacturer": "麒麟鲲鹏",
+      "pinyin": "ys xns p",
+      "pinyin_code": "YSXNS",
+      "reference_status": "expanded",
+      "aliases": [
+        "西那卡塞",
+        "盖平",
+        "Mimpara"
+      ]
+    },
+    {
+      "generic_name": "盐酸度洛西汀肠溶胶囊",
+      "brand_name": "欣百达",
+      "dosage_form": "oral",
+      "spec": "60mg×14粒",
+      "unit": "粒",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/SNRI类抗抑郁药",
+      "dose_range_json": {
+        "single_min_mg": 30,
+        "single_max_mg": 120,
+        "daily_max_mg": 120,
+        "default_freq": "qd",
+        "default_duration_days": 180
+      },
+      "liver_renal_note": "严重肝功能不全禁用；重度肾功能不全禁用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "不可突然停药",
+        "5-HT综合征风险",
+        "闭角型青光眼禁用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 82,
+      "manufacturer": "礼来制药",
+      "pinyin": "ysdlxt rn jn",
+      "pinyin_code": "YSDLXTRNJN",
+      "reference_status": "expanded",
+      "aliases": [
+        "度洛西汀",
+        "欣百达",
+        "Cymbalta"
+      ]
+    },
+    {
+      "generic_name": "利斯的明透皮贴剂",
+      "brand_name": "艾斯能",
+      "dosage_form": "topical",
+      "spec": "9mg/24h×30贴",
+      "unit": "贴",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/胆碱酯酶抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 4.6,
+        "single_max_mg": 13.3,
+        "daily_max_mg": 13.3,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肝肾功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "每日更换贴敷部位",
+        "胃肠道反应",
+        "心动过缓"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 520,
+      "manufacturer": "诺华制药",
+      "pinyin": "lsdm tptj",
+      "pinyin_code": "LSDMTPTJ",
+      "reference_status": "expanded",
+      "aliases": [
+        "利斯的明",
+        "艾斯能",
+        "Exelon"
+      ]
+    },
+    {
+      "generic_name": "恩他卡朋片",
+      "brand_name": "珂丹",
+      "dosage_form": "oral",
+      "spec": "200mg×30片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/COMT抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 200,
+        "daily_max_mg": 2000,
+        "default_freq": "qid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肝功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "与左旋多巴合用",
+        "尿液变色",
+        "腹泻"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 188,
+      "manufacturer": "诺华制药",
+      "pinyin": "ntkp",
+      "pinyin_code": "NTKP",
+      "reference_status": "expanded",
+      "aliases": [
+        "恩他卡朋",
+        "珂丹",
+        "Comtan"
+      ]
+    },
+    {
+      "generic_name": "盐酸普拉克索片",
+      "brand_name": "森福罗",
+      "dosage_form": "oral",
+      "spec": "0.25mg×30片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/多巴胺受体激动剂",
+      "dose_range_json": {
+        "single_min_mg": 0.125,
+        "single_max_mg": 1.5,
+        "daily_max_mg": 4.5,
+        "default_freq": "tid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肾功能不全需减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "嗜睡",
+        "冲动控制障碍",
+        "体位性低血压"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 128,
+      "manufacturer": "勃林格殷格翰",
+      "pinyin": "ysplkp",
+      "pinyin_code": "YSPLKP",
+      "reference_status": "expanded",
+      "aliases": [
+        "普拉克索",
+        "森福罗",
+        "Mirapex"
+      ]
+    },
+    {
+      "generic_name": "吡贝地尔缓释片",
+      "brand_name": "泰舒达",
+      "dosage_form": "oral",
+      "spec": "50mg×30片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/多巴胺受体激动剂",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 150,
+        "daily_max_mg": 250,
+        "default_freq": "bid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肾功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "嗜睡",
+        "恶心呕吐",
+        "低血压"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 82,
+      "manufacturer": "施维雅",
+      "pinyin": "bde de p",
+      "pinyin_code": "BDEDEP",
+      "reference_status": "expanded",
+      "aliases": [
+        "吡贝地尔",
+        "泰舒达",
+        "Tralille"
+      ]
+    },
+    {
+      "generic_name": "马来酸氟伏沙明片",
+      "brand_name": "兰释",
+      "dosage_form": "oral",
+      "spec": "100mg×15片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/SSRI类抗抑郁药",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 300,
+        "daily_max_mg": 300,
+        "default_freq": "qn",
+        "default_duration_days": 180
+      },
+      "liver_renal_note": "肝功能不全减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "不可突然停药",
+        "5-HT综合征风险",
+        "避免与MAOI合用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 62,
+      "manufacturer": "雅培制药",
+      "pinyin": "mls ffs p",
+      "pinyin_code": "MLSFFSP",
+      "reference_status": "expanded",
+      "aliases": [
+        "氟伏沙明",
+        "兰释",
+        "Luvox"
+      ]
+    },
+    {
+      "generic_name": "阿戈美拉汀片",
+      "brand_name": "维度新",
+      "dosage_form": "oral",
+      "spec": "25mg×14片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/褪黑素受体激动剂",
+      "dose_range_json": {
+        "single_min_mg": 25,
+        "single_max_mg": 50,
+        "daily_max_mg": 50,
+        "default_freq": "qn",
+        "default_duration_days": 180
+      },
+      "liver_renal_note": "肝功能不全禁用；治疗前/3周/6周监测肝功能",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "睡前服用",
+        "监测肝功能",
+        "避免吸烟"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 128,
+      "manufacturer": "施维雅",
+      "pinyin": "agml t p",
+      "pinyin_code": "AGMLTP",
+      "reference_status": "expanded",
+      "aliases": [
+        "阿戈美拉汀",
+        "维度新",
+        "Valdoxan"
+      ]
+    },
+    {
+      "generic_name": "盐酸乙哌立松片",
+      "brand_name": "妙纳",
+      "dosage_form": "oral",
+      "spec": "50mg×20片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/中枢性肌松药",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 100,
+        "daily_max_mg": 150,
+        "default_freq": "tid",
+        "default_duration_days": 14
+      },
+      "liver_renal_note": "肝功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "嗜睡",
+        "服药期间避免驾车",
+        "头晕"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 32,
+      "manufacturer": "卫材药业",
+      "pinyin": "ysy ps p",
+      "pinyin_code": "YSYPSP",
+      "reference_status": "expanded",
+      "aliases": [
+        "乙哌立松",
+        "妙纳",
+        "Myonal"
+      ]
+    },
+    {
+      "generic_name": "巴氯芬片",
+      "brand_name": "力奥来素",
+      "dosage_form": "oral",
+      "spec": "10mg×50片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/中枢性肌松药",
+      "dose_range_json": {
+        "single_min_mg": 5,
+        "single_max_mg": 20,
+        "daily_max_mg": 80,
+        "default_freq": "tid",
+        "default_duration_days": 30
+      },
+      "liver_renal_note": "肾功能不全需减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "不可突然停药",
+        "嗜睡",
+        "癫痫患者慎用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 52,
+      "manufacturer": "诺华制药",
+      "pinyin": "blfp",
+      "pinyin_code": "BLFP",
+      "reference_status": "expanded",
+      "aliases": [
+        "巴氯芬",
+        "力奥来素",
+        "Lioresal"
+      ]
+    },
+    {
+      "generic_name": "帕利哌酮缓释片",
+      "brand_name": "芮达",
+      "dosage_form": "oral",
+      "spec": "3mg×7片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "神经系统用药/非典型抗精神病药",
+      "dose_range_json": {
+        "single_min_mg": 3,
+        "single_max_mg": 12,
+        "daily_max_mg": 12,
+        "default_freq": "qd",
+        "default_duration_days": 180
+      },
+      "liver_renal_note": "中度肾功能不全3mg；重度不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "QT间期延长",
+        "代谢综合征",
+        "体位性低血压"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 188,
+      "manufacturer": "西安杨森",
+      "pinyin": "plpt hs p",
+      "pinyin_code": "PLPTHSP",
+      "reference_status": "expanded",
+      "aliases": [
+        "帕利哌酮",
+        "芮达",
+        "Invega"
+      ]
+    },
+    {
+      "generic_name": "利妥昔单抗注射液",
+      "brand_name": "美罗华",
+      "dosage_form": "iv_drip",
+      "spec": "100mg:10ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/抗CD20单抗",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 500,
+        "daily_max_mg": 1000,
+        "default_freq": "qw",
+        "default_duration_days": 8
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 200,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "输注反应",
+        "乙肝病毒再激活",
+        "进行性多灶性白质脑病"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 2350,
+      "manufacturer": "罗氏制药",
+      "pinyin": "ltxdk zsy",
+      "pinyin_code": "LTXDKZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "利妥昔单抗",
+        "美罗华",
+        "Rituxan"
+      ]
+    },
+    {
+      "generic_name": "曲妥珠单抗注射液",
+      "brand_name": "赫赛汀",
+      "dosage_form": "iv_drip",
+      "spec": "440mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/抗HER2单抗",
+      "dose_range_json": {
+        "single_min_mg": 150,
+        "single_max_mg": 440,
+        "daily_max_mg": 440,
+        "default_freq": "qw",
+        "default_duration_days": 52
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "心脏毒性",
+        "输注反应",
+        "需监测LVEF"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 5500,
+      "manufacturer": "罗氏制药",
+      "pinyin": "qtz dk zsy",
+      "pinyin_code": "QTZDKZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "曲妥珠单抗",
+        "赫赛汀",
+        "Herceptin"
+      ]
+    },
+    {
+      "generic_name": "贝伐珠单抗注射液",
+      "brand_name": "安维汀",
+      "dosage_form": "iv_drip",
+      "spec": "100mg:4ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/抗VEGF单抗",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 500,
+        "daily_max_mg": 1000,
+        "default_freq": "q3w",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肝肾功能不全不推荐",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "出血风险",
+        "高血压",
+        "胃肠穿孔",
+        "术后28天内禁用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 1930,
+      "manufacturer": "罗氏制药",
+      "pinyin": "bfz dk zsy",
+      "pinyin_code": "BFZDKZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "贝伐珠单抗",
+        "安维汀",
+        "Avastin"
+      ]
+    },
+    {
+      "generic_name": "盐酸厄洛替尼片",
+      "brand_name": "特罗凯",
+      "dosage_form": "oral",
+      "spec": "150mg×7片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/EGFR-TKI",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 150,
+        "daily_max_mg": 150,
+        "default_freq": "qd",
+        "default_duration_days": 90
+      },
+      "liver_renal_note": "肝功能不全需减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "皮疹",
+        "间质性肺病",
+        "空腹服用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 1450,
+      "manufacturer": "罗氏制药",
+      "pinyin": "ys alt p",
+      "pinyin_code": "YSALTP",
+      "reference_status": "expanded",
+      "aliases": [
+        "厄洛替尼",
+        "特罗凯",
+        "Tarceva"
+      ]
+    },
+    {
+      "generic_name": "甲苯磺酸索拉非尼片",
+      "brand_name": "多吉美",
+      "dosage_form": "oral",
+      "spec": "200mg×60片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/多靶点TKI",
+      "dose_range_json": {
+        "single_min_mg": 200,
+        "single_max_mg": 400,
+        "daily_max_mg": 800,
+        "default_freq": "bid",
+        "default_duration_days": 90
+      },
+      "liver_renal_note": "中度肝损减量；重度不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "手足综合征",
+        "高血压",
+        "出血风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 9500,
+      "manufacturer": "拜耳医药",
+      "pinyin": "jbh sslfp",
+      "pinyin_code": "JBHSSLP",
+      "reference_status": "expanded",
+      "aliases": [
+        "索拉非尼",
+        "多吉美",
+        "Nexavar"
+      ]
+    },
+    {
+      "generic_name": "注射用硼替佐米",
+      "brand_name": "万珂",
+      "dosage_form": "iv_drip",
+      "spec": "3.5mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/蛋白酶体抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 1.3,
+        "daily_max_mg": 1.3,
+        "default_freq": "bw",
+        "default_duration_days": 8
+      },
+      "liver_renal_note": "肝功能不全减量",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 5,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "周围神经病变",
+        "血小板减少",
+        "带状疱疹风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 11000,
+      "manufacturer": "西安杨森",
+      "pinyin": "zspy zt m",
+      "pinyin_code": "ZSPYZTM",
+      "reference_status": "expanded",
+      "aliases": [
+        "硼替佐米",
+        "万珂",
+        "Velcade"
+      ]
+    },
+    {
+      "generic_name": "多西他赛注射液",
+      "brand_name": "泰索帝",
+      "dosage_form": "iv_drip",
+      "spec": "20mg:0.5ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/紫杉类",
+      "dose_range_json": {
+        "single_min_mg": 60,
+        "single_max_mg": 100,
+        "daily_max_mg": 100,
+        "default_freq": "q3w",
+        "default_duration_days": 9
+      },
+      "liver_renal_note": "肝功能不全需减量",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "过敏反应预处理",
+        "体液潴留",
+        "骨髓抑制"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 158,
+      "manufacturer": "赛诺菲",
+      "pinyin": "dx ts zsy",
+      "pinyin_code": "DXTSZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "多西他赛",
+        "泰索帝",
+        "Taxotere"
+      ]
+    },
+    {
+      "generic_name": "甲磺酸奥希替尼片",
+      "brand_name": "泰瑞沙",
+      "dosage_form": "oral",
+      "spec": "80mg×30片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/EGFR-TKI",
+      "dose_range_json": {
+        "single_min_mg": 40,
+        "single_max_mg": 80,
+        "daily_max_mg": 80,
+        "default_freq": "qd",
+        "default_duration_days": 90
+      },
+      "liver_renal_note": "肝功能不全减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "间质性肺病",
+        "QT间期延长",
+        "心肌病变"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 5580,
+      "manufacturer": "阿斯利康",
+      "pinyin": "jhs axt p",
+      "pinyin_code": "JHSAXTP",
+      "reference_status": "expanded",
+      "aliases": [
+        "奥希替尼",
+        "泰瑞沙",
+        "Tagrisso"
+      ]
+    },
+    {
+      "generic_name": "帕博利珠单抗注射液",
+      "brand_name": "可瑞达",
+      "dosage_form": "iv_drip",
+      "spec": "100mg:4ml",
+      "unit": "支",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/PD-1抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 200,
+        "daily_max_mg": 200,
+        "default_freq": "q3w",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 200,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "免疫相关不良反应",
+        "输注反应",
+        "甲状腺功能异常"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 17500,
+      "manufacturer": "默沙东",
+      "pinyin": "pbl zdk zsy",
+      "pinyin_code": "PBLZDKZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "帕博利珠单抗",
+        "K药",
+        "可瑞达",
+        "Keytruda"
+      ]
+    },
+    {
+      "generic_name": "纳武利尤单抗注射液",
+      "brand_name": "欧狄沃",
+      "dosage_form": "iv_drip",
+      "spec": "100mg:10ml",
+      "unit": "支",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/PD-1抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 240,
+        "daily_max_mg": 240,
+        "default_freq": "q2w",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 200,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "免疫相关不良反应",
+        "输注反应"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 7000,
+      "manufacturer": "百时美施贵宝",
+      "pinyin": "nwlyn dk zsy",
+      "pinyin_code": "NWLYNDKZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "纳武利尤单抗",
+        "O药",
+        "欧狄沃",
+        "Opdivo"
+      ]
+    },
+    {
+      "generic_name": "西妥昔单抗注射液",
+      "brand_name": "爱必妥",
+      "dosage_form": "iv_drip",
+      "spec": "100mg:20ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/抗EGFR单抗",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 500,
+        "daily_max_mg": 500,
+        "default_freq": "qw",
+        "default_duration_days": 12
+      },
+      "liver_renal_note": "肝肾功能不全无需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "严重输注反应",
+        "皮疹",
+        "低镁血症"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 2050,
+      "manufacturer": "默克雪兰诺",
+      "pinyin": "xtx dk zsy",
+      "pinyin_code": "XTXDKZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "西妥昔单抗",
+        "爱必妥",
+        "Erbitux"
+      ]
+    },
+    {
+      "generic_name": "注射用奥沙利铂",
+      "brand_name": "乐沙定",
+      "dosage_form": "iv_drip",
+      "spec": "50mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/铂类",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 200,
+        "daily_max_mg": 200,
+        "default_freq": "q3w",
+        "default_duration_days": 6
+      },
+      "liver_renal_note": "肾功能不全需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "神经毒性（冷诱发）",
+        "不可用NS溶解",
+        "过敏反应"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 208,
+      "manufacturer": "赛诺菲",
+      "pinyin": "zys axlb",
+      "pinyin_code": "ZYSXLB",
+      "reference_status": "expanded",
+      "aliases": [
+        "奥沙利铂",
+        "乐沙定",
+        "Eloxatin"
+      ]
+    },
+    {
+      "generic_name": "注射用紫杉醇",
+      "brand_name": "泰素",
+      "dosage_form": "iv_drip",
+      "spec": "30mg:5ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/紫杉类",
+      "dose_range_json": {
+        "single_min_mg": 135,
+        "single_max_mg": 175,
+        "daily_max_mg": 175,
+        "default_freq": "q3w",
+        "default_duration_days": 6
+      },
+      "liver_renal_note": "肝功能不全需减量",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "过敏反应预处理（激素+抗组胺）",
+        "骨髓抑制",
+        "脱发"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 408,
+      "manufacturer": "百时美施贵宝",
+      "pinyin": "zys zs",
+      "pinyin_code": "ZYSZS",
+      "reference_status": "expanded",
+      "aliases": [
+        "紫杉醇",
+        "泰素",
+        "Taxol"
+      ]
+    },
+    {
+      "generic_name": "注射用盐酸表柔比星",
+      "brand_name": "法玛新",
+      "dosage_form": "iv_drip",
+      "spec": "10mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/蒽环类",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 90,
+        "daily_max_mg": 150,
+        "default_freq": "q3w",
+        "default_duration_days": 6
+      },
+      "liver_renal_note": "肝功能不全需减量",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 200,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "心脏毒性（累积剂量）",
+        "骨髓抑制",
+        "红色尿"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 58,
+      "manufacturer": "辉瑞制药",
+      "pinyin": "zys ysb bx",
+      "pinyin_code": "ZYSYSBBX",
+      "reference_status": "expanded",
+      "aliases": [
+        "表柔比星",
+        "法玛新",
+        "Ellence"
+      ]
+    },
+    {
+      "generic_name": "注射用盐酸吉西他滨",
+      "brand_name": "健择",
+      "dosage_form": "iv_drip",
+      "spec": "0.2g/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/抗代谢类",
+      "dose_range_json": {
+        "single_min_mg": 1000,
+        "single_max_mg": 1250,
+        "daily_max_mg": 1250,
+        "default_freq": "qw",
+        "default_duration_days": 8
+      },
+      "liver_renal_note": "肝肾功能不全需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "骨髓抑制",
+        "输液时间不超过30分钟",
+        "血小板减少"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 158,
+      "manufacturer": "礼来制药",
+      "pinyin": "zys ysj xt b",
+      "pinyin_code": "ZYSJSXTB",
+      "reference_status": "expanded",
+      "aliases": [
+        "吉西他滨",
+        "健择",
+        "Gemzar"
+      ]
+    },
+    {
+      "generic_name": "注射用培美曲塞二钠",
+      "brand_name": "力比泰",
+      "dosage_form": "iv_drip",
+      "spec": "0.5g/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/抗代谢类叶酸拮抗剂",
+      "dose_range_json": {
+        "single_min_mg": 500,
+        "single_max_mg": 500,
+        "daily_max_mg": 500,
+        "default_freq": "q3w",
+        "default_duration_days": 6
+      },
+      "liver_renal_note": "肌酐清除率<45ml/min不推荐",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "必须预处理叶酸+B12",
+        "地塞米松预处理",
+        "骨髓抑制"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 2580,
+      "manufacturer": "礼来制药",
+      "pinyin": "zys pmqs en",
+      "pinyin_code": "ZYSPMQSE",
+      "reference_status": "expanded",
+      "aliases": [
+        "培美曲塞",
+        "力比泰",
+        "Alimta"
+      ]
+    },
+    {
+      "generic_name": "注射用盐酸伊立替康",
+      "brand_name": "开普拓",
+      "dosage_form": "iv_drip",
+      "spec": "100mg:5ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/拓扑异构酶I抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 150,
+        "single_max_mg": 350,
+        "daily_max_mg": 350,
+        "default_freq": "q3w",
+        "default_duration_days": 6
+      },
+      "liver_renal_note": "肝功能不全需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "延迟性腹泻（洛哌丁胺处理）",
+        "乙酰胆碱综合征",
+        "骨髓抑制"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 308,
+      "manufacturer": "辉瑞制药",
+      "pinyin": "zys ysy ltk",
+      "pinyin_code": "ZYSYSLTK",
+      "reference_status": "expanded",
+      "aliases": [
+        "伊立替康",
+        "开普拓",
+        "Campto"
+      ]
+    },
+    {
+      "generic_name": "酒石酸长春瑞滨注射液",
+      "brand_name": "诺维本",
+      "dosage_form": "iv_drip",
+      "spec": "10mg:1ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/长春碱类",
+      "dose_range_json": {
+        "single_min_mg": 25,
+        "single_max_mg": 30,
+        "daily_max_mg": 30,
+        "default_freq": "qw",
+        "default_duration_days": 8
+      },
+      "liver_renal_note": "肝功能不全需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 250,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "静脉刺激（外渗）",
+        "骨髓抑制",
+        "神经毒性"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 158,
+      "manufacturer": "皮尔法伯",
+      "pinyin": "jss cch rb zsy",
+      "pinyin_code": "JSSCCBRBZSY",
+      "reference_status": "expanded",
+      "aliases": [
+        "长春瑞滨",
+        "诺维本",
+        "Navelbine"
+      ]
+    },
+    {
+      "generic_name": "替吉奥胶囊",
+      "brand_name": "爱斯万",
+      "dosage_form": "oral",
+      "spec": "20mg×140粒",
+      "unit": "粒",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/口服氟尿嘧啶类",
+      "dose_range_json": {
+        "single_min_mg": 40,
+        "single_max_mg": 60,
+        "daily_max_mg": 120,
+        "default_freq": "bid",
+        "default_duration_days": 28
+      },
+      "liver_renal_note": "肝肾功能不全需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "骨髓抑制",
+        "胃肠道反应",
+        "色素沉着"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 1280,
+      "manufacturer": "大鹏药品",
+      "pinyin": "jj a jn",
+      "pinyin_code": "JJAJN",
+      "reference_status": "expanded",
+      "aliases": [
+        "替吉奥",
+        "爱斯万",
+        "TS-1"
+      ]
+    },
+    {
+      "generic_name": "苹果酸舒尼替尼胶囊",
+      "brand_name": "索坦",
+      "dosage_form": "oral",
+      "spec": "12.5mg×28粒",
+      "unit": "粒",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/多靶点TKI",
+      "dose_range_json": {
+        "single_min_mg": 12.5,
+        "single_max_mg": 50,
+        "daily_max_mg": 50,
+        "default_freq": "qd",
+        "default_duration_days": 28
+      },
+      "liver_renal_note": "肝功能不全需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "高血压",
+        "手足综合征",
+        "甲状腺功能减退",
+        "心脏毒性"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 4380,
+      "manufacturer": "辉瑞制药",
+      "pinyin": "pgt snt jn",
+      "pinyin_code": "PGTSNTJN",
+      "reference_status": "expanded",
+      "aliases": [
+        "舒尼替尼",
+        "索坦",
+        "Sutent"
+      ]
+    },
+    {
+      "generic_name": "醋酸阿比特龙片",
+      "brand_name": "泽珂",
+      "dosage_form": "oral",
+      "spec": "250mg×120片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/CYP17抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 1000,
+        "single_max_mg": 1000,
+        "daily_max_mg": 1000,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "中度肝损250mg；重度禁用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "必须联合泼尼松",
+        "低钾血症",
+        "高血压",
+        "空腹服用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 15000,
+      "manufacturer": "西安杨森",
+      "pinyin": "cs abt lp",
+      "pinyin_code": "CSABTLP",
+      "reference_status": "expanded",
+      "aliases": [
+        "阿比特龙",
+        "泽珂",
+        "Zytiga"
+      ]
+    },
+    {
+      "generic_name": "恩扎卢胺软胶囊",
+      "brand_name": "安可坦",
+      "dosage_form": "oral",
+      "spec": "40mg×112粒",
+      "unit": "粒",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/雄激素受体拮抗剂",
+      "dose_range_json": {
+        "single_min_mg": 160,
+        "single_max_mg": 160,
+        "daily_max_mg": 160,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "重度肝损慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "癫痫发作风险",
+        "乏力",
+        "跌倒"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 15000,
+      "manufacturer": "辉瑞制药",
+      "pinyin": "ezla nrj jn",
+      "pinyin_code": "EZLANRJJN",
+      "reference_status": "expanded",
+      "aliases": [
+        "恩扎卢胺",
+        "安可坦",
+        "Xtandi"
+      ]
+    },
+    {
+      "generic_name": "奥拉帕利片",
+      "brand_name": "利普卓",
+      "dosage_form": "oral",
+      "spec": "150mg×56片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗肿瘤药/PARP抑制剂",
+      "dose_range_json": {
+        "single_min_mg": 300,
+        "single_max_mg": 300,
+        "daily_max_mg": 600,
+        "default_freq": "bid",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "中度肾功能不全减量",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "骨髓增生异常综合征",
+        "骨髓抑制",
+        "恶心呕吐"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 9464,
+      "manufacturer": "阿斯利康",
+      "pinyin": "alp lp",
+      "pinyin_code": "ALPL",
+      "reference_status": "expanded",
+      "aliases": [
+        "奥拉帕利",
+        "利普卓",
+        "Lynparza"
+      ]
+    },
+    {
+      "generic_name": "注射用替考拉宁",
+      "brand_name": "他格适",
+      "dosage_form": "iv_drip",
+      "spec": "200mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "special",
+      "pharmacology_class": "抗感染药/糖肽类",
+      "dose_range_json": {
+        "single_min_mg": 200,
+        "single_max_mg": 400,
+        "daily_max_mg": 400,
+        "default_freq": "qd",
+        "default_duration_days": 14
+      },
+      "liver_renal_note": "肾功能不全需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 200,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "特殊使用级抗菌药",
+        "耳肾毒性",
+        "监测血药浓度"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 258,
+      "manufacturer": "赛诺菲",
+      "pinyin": "zys tkl n",
+      "pinyin_code": "ZYSTKLN",
+      "reference_status": "expanded",
+      "aliases": [
+        "替考拉宁",
+        "他格适",
+        "Targocid"
+      ]
+    },
+    {
+      "generic_name": "伏立康唑片",
+      "brand_name": "威凡",
+      "dosage_form": "oral",
+      "spec": "200mg×10片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "special",
+      "pharmacology_class": "抗感染药/三唑类抗真菌药",
+      "dose_range_json": {
+        "single_min_mg": 100,
+        "single_max_mg": 200,
+        "daily_max_mg": 400,
+        "default_freq": "bid",
+        "default_duration_days": 28
+      },
+      "liver_renal_note": "肝功能不全需调整；静脉制剂肌酐清除率<50ml/min不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "特殊使用级抗菌药",
+        "视觉异常",
+        "肝毒性",
+        "CYP2C9相互作用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 508,
+      "manufacturer": "辉瑞制药",
+      "pinyin": "lk kz p",
+      "pinyin_code": "LKKZP",
+      "reference_status": "expanded",
+      "aliases": [
+        "伏立康唑",
+        "威凡",
+        "Vfend"
+      ]
+    },
+    {
+      "generic_name": "富马酸丙酚替诺福韦片",
+      "brand_name": "韦立得",
+      "dosage_form": "oral",
+      "spec": "25mg×30片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗感染药/抗乙肝病毒药",
+      "dose_range_json": {
+        "single_min_mg": 25,
+        "single_max_mg": 25,
+        "daily_max_mg": 25,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肾功能不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "不可自行停药",
+        "停药后肝炎加重风险",
+        "骨密度影响"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 548,
+      "manufacturer": "吉利德科学",
+      "pinyin": "fms bn f tnf wp",
+      "pinyin_code": "FMSBFTNFWP",
+      "reference_status": "expanded",
+      "aliases": [
+        "丙酚替诺福韦",
+        "韦立得",
+        "TAF",
+        "Vemlidy"
+      ]
+    },
+    {
+      "generic_name": "注射用米卡芬净钠",
+      "brand_name": "米开民",
+      "dosage_form": "iv_drip",
+      "spec": "50mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "special",
+      "pharmacology_class": "抗感染药/棘白菌素类抗真菌药",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 150,
+        "daily_max_mg": 150,
+        "default_freq": "qd",
+        "default_duration_days": 14
+      },
+      "liver_renal_note": "严重肝功能不全慎用",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 200,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "特殊使用级抗菌药",
+        "不可与血液制品配伍",
+        "肝功能监测"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 608,
+      "manufacturer": "安斯泰来",
+      "pinyin": "zys mkf jn",
+      "pinyin_code": "ZYSMKFJN",
+      "reference_status": "expanded",
+      "aliases": [
+        "米卡芬净",
+        "米开民",
+        "Mycamine"
+      ]
+    },
+    {
+      "generic_name": "泊沙康唑口服混悬液",
+      "brand_name": "诺科飞",
+      "dosage_form": "oral_liquid",
+      "spec": "40mg/ml:105ml",
+      "unit": "瓶",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "special",
+      "pharmacology_class": "抗感染药/三唑类抗真菌药",
+      "dose_range_json": {
+        "single_min_mg": 200,
+        "single_max_mg": 400,
+        "daily_max_mg": 1200,
+        "default_freq": "bid",
+        "default_duration_days": 28
+      },
+      "liver_renal_note": "肝功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "特殊使用级抗菌药",
+        "随餐服用",
+        "QT间期延长"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 2580,
+      "manufacturer": "默沙东",
+      "pinyin": "pskz kf hxy",
+      "pinyin_code": "PSKZKFHXY",
+      "reference_status": "expanded",
+      "aliases": [
+        "泊沙康唑",
+        "诺科飞",
+        "Noxafil"
+      ]
+    },
+    {
+      "generic_name": "盐酸缬更昔洛韦片",
+      "brand_name": "万赛维",
+      "dosage_form": "oral",
+      "spec": "450mg×60片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "special",
+      "pharmacology_class": "抗感染药/抗巨细胞病毒药",
+      "dose_range_json": {
+        "single_min_mg": 900,
+        "single_max_mg": 900,
+        "daily_max_mg": 1800,
+        "default_freq": "bid",
+        "default_duration_days": 28
+      },
+      "liver_renal_note": "肾功能不全需调整",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "特殊使用级",
+        "骨髓抑制",
+        "致畸性",
+        "肾功能监测"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 8000,
+      "manufacturer": "罗氏制药",
+      "pinyin": "ys xgj lp",
+      "pinyin_code": "YSXGJLP",
+      "reference_status": "expanded",
+      "aliases": [
+        "缬更昔洛韦",
+        "万赛维",
+        "Valcyte"
+      ]
+    },
+    {
+      "generic_name": "艾尔巴韦格拉瑞韦片",
+      "brand_name": "择必达",
+      "dosage_form": "oral",
+      "spec": "50mg/100mg×28片",
+      "unit": "片",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗感染药/抗丙肝病毒药",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 1,
+        "daily_max_mg": 1,
+        "default_freq": "qd",
+        "default_duration_days": 12
+      },
+      "liver_renal_note": "严重肝损不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "需查HBV再激活",
+        "不与他汀类合用",
+        "空腹或随餐均可"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 22000,
+      "manufacturer": "默沙东",
+      "pinyin": "aew glr wp",
+      "pinyin_code": "AEWGLRWP",
+      "reference_status": "expanded",
+      "aliases": [
+        "艾尔巴韦格拉瑞韦",
+        "择必达",
+        "Zepatier"
+      ]
+    },
+    {
+      "generic_name": "索磷布韦维帕他韦片",
+      "brand_name": "丙通沙",
+      "dosage_form": "oral",
+      "spec": "400mg/100mg×28片",
+      "unit": "片",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗感染药/抗丙肝病毒药",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 1,
+        "daily_max_mg": 1,
+        "default_freq": "qd",
+        "default_duration_days": 12
+      },
+      "liver_renal_note": "严重肾功能不全慎用",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "需查HBV再激活",
+        "与胺碘酮合用致严重心动过缓",
+        "空腹或随餐均可"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 7000,
+      "manufacturer": "吉利德科学",
+      "pinyin": "lpb wpt wp",
+      "pinyin_code": "LPBWPTWP",
+      "reference_status": "expanded",
+      "aliases": [
+        "索磷布韦维帕他韦",
+        "丙通沙",
+        "Epclusa"
+      ]
+    },
+    {
+      "generic_name": "多替拉韦钠片",
+      "brand_name": "特威凯",
+      "dosage_form": "oral",
+      "spec": "50mg×30片",
+      "unit": "片",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗感染药/抗HIV病毒药",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 50,
+        "daily_max_mg": 50,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肝损不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "不可自行停药",
+        "皮疹",
+        "与多价阳离子螯合"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 1980,
+      "manufacturer": "ViiVHealthcare",
+      "pinyin": "dtlw n p",
+      "pinyin_code": "DTLWNP",
+      "reference_status": "expanded",
+      "aliases": [
+        "多替拉韦",
+        "特威凯",
+        "Tivicay"
+      ]
+    },
+    {
+      "generic_name": "比克恩丙诺片",
+      "brand_name": "必妥维",
+      "dosage_form": "oral",
+      "spec": "30片/盒",
+      "unit": "片",
+      "medical_insurance_class": "自费",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "抗感染药/抗HIV病毒药",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 1,
+        "daily_max_mg": 1,
+        "default_freq": "qd",
+        "default_duration_days": 360
+      },
+      "liver_renal_note": "严重肝肾功能不全不推荐",
+      "is_iv_capable": false,
+      "allowed_solvents_json": [],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "不可自行停药",
+        "空腹或随餐均可",
+        "禁与强效诱导剂合用"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 1125,
+      "manufacturer": "葛兰素史克",
+      "pinyin": "bk enb n p",
+      "pinyin_code": "BKENBNP",
+      "reference_status": "expanded",
+      "aliases": [
+        "比克恩丙诺",
+        "必妥维",
+        "Biktarvy"
+      ]
+    },
+    {
+      "generic_name": "注射用替加环素",
+      "brand_name": "泰阁",
+      "dosage_form": "iv_drip",
+      "spec": "50mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "special",
+      "pharmacology_class": "抗感染药/甘氨酰环素类",
+      "dose_range_json": {
+        "single_min_mg": 50,
+        "single_max_mg": 100,
+        "daily_max_mg": 200,
+        "default_freq": "q12h",
+        "default_duration_days": 14
+      },
+      "liver_renal_note": "肝功能不全需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 200,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "特殊使用级抗菌药",
+        "凝血异常",
+        "胃肠道反应",
+        "不用于泌尿系感染"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 608,
+      "manufacturer": "辉瑞制药",
+      "pinyin": "zys tj s",
+      "pinyin_code": "ZYSTJS",
+      "reference_status": "expanded",
+      "aliases": [
+        "替加环素",
+        "泰阁",
+        "Tigacil"
+      ]
+    },
+    {
+      "generic_name": "注射用达托霉素",
+      "brand_name": "克赛福",
+      "dosage_form": "iv_drip",
+      "spec": "350mg/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "special",
+      "pharmacology_class": "抗感染药/环脂肽类",
+      "dose_range_json": {
+        "single_min_mg": 350,
+        "single_max_mg": 700,
+        "daily_max_mg": 700,
+        "default_freq": "qd",
+        "default_duration_days": 14
+      },
+      "liver_renal_note": "肾功能不全需调整",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液"
+      ],
+      "drip_speed_max_mlh": 200,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "特殊使用级抗菌药",
+        "肌病风险（监测CK）",
+        "不用于肺炎",
+        "嗜酸粒细胞性肺炎"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 708,
+      "manufacturer": "默沙东",
+      "pinyin": "zys dt m s",
+      "pinyin_code": "ZYSDTMS",
+      "reference_status": "expanded",
+      "aliases": [
+        "达托霉素",
+        "克赛福",
+        "Cubicin"
+      ]
+    },
+    {
+      "generic_name": "注射用厄他培南",
+      "brand_name": "怡万之",
+      "dosage_form": "iv_drip",
+      "spec": "1g/瓶",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": "",
+      "otc_class": "处方药",
+      "abx_level": "special",
+      "pharmacology_class": "抗感染药/碳青霉烯类",
+      "dose_range_json": {
+        "single_min_mg": 1,
+        "single_max_mg": 1,
+        "daily_max_mg": 1,
+        "default_freq": "qd",
+        "default_duration_days": 14
+      },
+      "liver_renal_note": "肌酐清除率<30ml/min 0.5g",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液",
+        "5%葡萄糖注射液"
+      ],
+      "drip_speed_max_mlh": 200,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "特殊使用级抗菌药",
+        "丙戊酸水平降低",
+        "抽搐风险"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": false,
+      "price_yuan": 208,
+      "manufacturer": "默沙东",
+      "pinyin": "zys tpn",
+      "pinyin_code": "ZYSTPN",
+      "reference_status": "expanded",
+      "aliases": [
+        "厄他培南",
+        "怡万之",
+        "Invanz"
       ]
     }
   ]

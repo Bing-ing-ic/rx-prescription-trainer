@@ -4,6 +4,22 @@
  *   disease, patient, normal_rx, iv_rx, rulesMeta, compatData
  * }
  * 输出: hits = [{rule_id, group, severity, title, message, basis, suggestion}]
+ *
+ * 升级记录：
+ *  - 2026-11-09：对标《医院处方点评管理规范（2010）》《处方管理办法》
+ *    《抗菌药物临床应用指导原则（2015版）》新增 12 条专业规则：
+ *      NEW-01 无指征联用≥2种抗菌药（COMPAT/major）
+ *      NEW-02 β内酰胺繁殖期杀菌+速效抑菌不合理联用（COMPAT/major）
+ *      NEW-03 复方感冒药叠加单方对乙酰氨基酚（COMPAT/major）
+ *      NEW-04 肾功能不全用肾毒性抗菌药未减量（SPECIAL_POP/critical）
+ *      NEW-05 肝功能不全用肝毒性药（SPECIAL_POP/critical）
+ *      NEW-06 模糊诊断仍开治疗药（FORMAT/minor）
+ *      NEW-07 用法用量/给药途径缺失（FORMAT/minor）
+ *      NEW-08 无指征重点监控辅助用药（INDICATION/major）
+ *      NEW-09 儿童用可待因/异丙嗪/氨基糖苷类（SPECIAL_POP/critical）
+ *      NEW-10 同通用名口服+静脉重复（COMPAT/major）
+ *      NEW-11 孕妇用妊娠禁忌中成药（SPECIAL_POP/critical）
+ *      NEW-12 病毒性疾病无指征用抗菌药（ABX/major）
  * ===================================================================== */
 (function (global) {
   'use strict';
@@ -62,7 +78,20 @@
     'FMT-05':   { lesson_point:'处方前记（姓名/性别/年龄/诊断/科别/日期）须完整', correct_practice:'补齐患者基本信息与临床诊断后再提交', reference_guide:'《处方管理办法》第五条', related_topic:'PRESCRIPTION_FORMAT' },
     'YN-01':    { lesson_point:'诊断必须与患者性别相符', correct_practice:'核对诊断与性别，撤销不符诊断或修正处方', reference_guide:'ICD-10 医保2.0版性别限定（云南医保两库规则）', related_topic:'INSURANCE_SCOPE' },
     'SPEC-01':  { lesson_point:'老年/儿童/肝肾功能不全须按体重或eGFR调整剂量', correct_practice:'起始减量、按kg或eGFR核算，必要时监测血药浓度', reference_guide:'《中国老年人潜在不适当用药目录（2024版）》；药品说明书【特殊人群】', related_topic:'SPECIAL_POP' },
-    'SPEC-02':  { lesson_point:'药品禁忌证与患者基础疾病冲突时禁用', correct_practice:'立即停药，选择无禁忌的替代治疗方案', reference_guide:'药品说明书【禁忌】项；《处方管理办法》第十四条', related_topic:'CONTRAINDICATION' }
+    'SPEC-02':  { lesson_point:'药品禁忌证与患者基础疾病冲突时禁用', correct_practice:'立即停药，选择无禁忌的替代治疗方案', reference_guide:'药品说明书【禁忌】项；《处方管理办法》第十四条', related_topic:'CONTRAINDICATION' },
+    // ---- 2026-11-09 新增 12 条规则的教学四件套兜底 ----
+    'NEW-01':   { lesson_point:'抗菌药联合用药须有明确指征（重症/混合感染/防耐药），普通门诊不随意联用', correct_practice:'能单用不联用；确需联合须在病历中写明指征', reference_guide:'《抗菌药物临床应用指导原则（2015版）》联合治疗节', related_topic:'ABX_COMBINATION' },
+    'NEW-02':   { lesson_point:'β-内酰胺繁殖期杀菌药与四环素/大环内酯速效抑菌药联用可拮抗疗效', correct_practice:'一般情况二选一；明确混合感染需序贯并在病历说明', reference_guide:'《抗菌药物临床应用指导原则（2015版）》药效学相互作用节', related_topic:'ABX_ANTAGONISM' },
+    'NEW-03':   { lesson_point:'复方感冒药多已含对乙酰氨基酚，再叠加单方退热药易致肝损伤', correct_practice:'只选一种退热感冒药，查看成分表避免同类成分重复', reference_guide:'对乙酰氨基酚片说明书；《中国感冒用药专家共识》', related_topic:'DUPLICATE_INGREDIENT' },
+    'NEW-04':   { lesson_point:'肾功能不全用氨基糖苷/万古霉素必须按eGFR减量并监测血药浓度', correct_practice:'按 eGFR 减量或延长间隔；必须使用时监测肾功能与血药浓度', reference_guide:'《抗菌药物临床应用指导原则（2015版）》肾功能减退用药表', related_topic:'RENAL_DOSE' },
+    'NEW-05':   { lesson_point:'肝功能不全避免使用红霉素酯化物/利福平/异烟肼/大剂量对乙酰氨基酚', correct_practice:'选用肝毒性小的替代药；必须使用时监测肝功能', reference_guide:'《抗菌药物临床应用指导原则（2015版）》肝功能减退用药表', related_topic:'HEPATIC_DOSE' },
+    'NEW-06':   { lesson_point:'临床诊断应明确具体，不得以"待查/自感不适"作为治疗性用药依据', correct_practice:'完善病史查体后明确诊断；诊断不明先检查对症', reference_guide:'《处方管理办法》第十九条；《医院处方点评管理规范》', related_topic:'DIAGNOSIS_CLARITY' },
+    'NEW-07':   { lesson_point:'每味药必须写清频次与给药途径', correct_practice:'补全 qd/bid/tid 等频次与 po/iv/im 等给药途径', reference_guide:'《处方管理办法》第六条', related_topic:'PRESCRIPTION_FORMAT' },
+    'NEW-08':   { lesson_point:'脑蛋白水解物/参麦/丹参/血栓通等重点监控辅助用药须严格按适应症使用', correct_practice:'核对说明书适应症与诊断一致性；不符者删除', reference_guide:'国卫办医函〔2019〕558号 第一批国家重点监控合理用药药品目录', related_topic:'MONITORED_DRUGS' },
+    'NEW-09':   { lesson_point:'12岁以下儿童禁用可待因；婴幼儿禁用异丙嗪；慎用氨基糖苷类', correct_practice:'儿童镇咳改用右美沙芬/蜂蜜；抗过敏改用西替利嗪；抗感染避免氨基糖苷', reference_guide:'国家药监局药品说明书修订公告（2018/19、2021/8）', related_topic:'PEDIATRIC_ABX' },
+    'NEW-10':   { lesson_point:'同通用名药不得同时口服+静滴；序贯治疗须有时点转换', correct_practice:'保留一种给药途径；确需序贯在 iv_reason 标注并写明转换时点', reference_guide:'《医院处方点评管理规范》；《抗菌药物临床应用指导原则》序贯疗法', related_topic:'DUPLICATE_ROUTE' },
+    'NEW-11':   { lesson_point:'孕妇禁用破血/峻下/芳香走窜类中药（麝香、红花、三棱、莪术、水蛭等）', correct_practice:'妊娠期用药须中医妇科评估，选用安全替代', reference_guide:'《中国药典》一部妊娠禁忌药；《中药学》妊娠用药禁忌节', related_topic:'PREGNANCY_TCM' },
+    'NEW-12':   { lesson_point:'病毒性感冒/流感不常规使用抗菌药', correct_practice:'对症支持；明确细菌并发症（黄脓涕>10天、肺炎）才用抗菌药', reference_guide:'《抗菌药物临床应用指导原则（2015版）》治疗性应用基本原则', related_topic:'ABX_VIRAL' }
   };
 
   // hit() 工厂：输出旧字段（rule_id/group/title/severity/message/basis/suggestion）+ 新字段
@@ -1282,6 +1311,191 @@
         }
       });
     } catch (e) { /* 静默跳过 */ }
+
+    // ====================== 16. 2026-11-09 新增 12 条三甲点评规则 ======================
+    // 所有新规则包在 try/catch 中：任一规则异常不得影响主流程。
+    try {
+      // ---- 公共识别正则（宁漏勿滥，精准匹配） ----
+      const ABX_NAME_RE = /青霉素|阿莫西林|氨苄西林|哌拉西林|美洛西林|苯唑西林|氯唑西林|头孢氨苄|头孢拉定|头孢呋辛|头孢克洛|头孢克肟|头孢地尼|头孢曲松|头孢他啶|头孢哌酮|头孢唑林|头孢噻肟|亚胺培南|美罗培南|厄他培南|左氧氟沙星|环丙沙星|莫西沙星|诺氟沙星|阿奇霉素|克拉霉素|罗红霉素|红霉素|多西环素|四环素|米诺环素|庆大霉素|阿米卡星|妥布霉素|奈替米星|链霉素|万古霉素|去甲万古霉素|替考拉宁|甲硝唑|替硝唑|奥硝唑|克林霉素|林可霉素|复方磺胺|磺胺甲噁唑|磺胺甲恶唑|磷霉素|呋喃妥因|利福平|异烟肼|吡嗪酰胺|乙胺丁醇/;
+      const BETALACTAM_RE = /青霉素|阿莫西林|氨苄西林|哌拉西林|美洛西林|苯唑西林|氯唑西林|头孢|亚胺培南|美罗培南|厄他培南/;
+      const STATIC_ABX_RE = /四环素|多西环素|米诺环素|红霉素|克拉霉素|阿奇霉素|罗红霉素|林可霉素|克林霉素/;
+      const APAP_COMBO_RE = /感冒灵|氨酚黄那敏|酚麻美敏|复方氨酚|氨酚烷胺|酚咖|氨酚伪麻|美扑伪麻|白加黑|泰诺|快克|感康/;
+      const RENAL_TOXIC_RE = /庆大霉素|阿米卡星|妥布霉素|奈替米星|链霉素|万古霉素|去甲万古霉素|替考拉宁|头孢克肟/;
+      const HEPATO_TOXIC_RE = /依托红霉素|无味红霉素|红霉素酯|利福平|异烟肼|吡嗪酰胺/;
+      const PED_HARD_RE = /可待因|复方磷酸可待因|异丙嗪|庆大霉素|阿米卡星|妥布霉素|奈替米星|链霉素/;
+      const PREG_TCM_RE = /麝香|红花|桃仁|水蛭|虻虫|三棱|莪术|苏木|干漆|王不留行|益母草|川牛膝/;
+      const AUX_MONITOR_RE = /脑蛋白水解物|参麦|丹参|香丹|血栓通|血塞通|醒脑静|神经节苷脂|胞磷胆碱|胞二磷胆碱|小牛血|骨肽|黄芪注射液|丹参酮|红花黄色素|舒血宁|银杏达莫|曲克芦丁/;
+      const FUZZY_DX_RE = /待查|待诊|自感|不舒服|查体|体检/;
+      const VIRAL_DX_RE = /普通感冒|病毒性感冒|流行性感冒|流感/;
+
+      // 合并所有药品（含口服+静脉），与 allDrugs2 等价
+      const allNew = [];
+      [ctx.normal_rx, ctx.iv_rx].forEach(rx => {
+        if (rx && Array.isArray(rx.items)) rx.items.forEach(it => {
+          if (it && it.drug && it.drug.dosage_form !== 'solvent') allNew.push(it);
+        });
+      });
+      const comorbsArr = Array.isArray(patient.comorbidities) ? patient.comorbidities :
+                        (patient.comorbidities ? patient.comorbidities.toString().split(/[,，、;；]+/).map(s=>s.trim()).filter(Boolean) : []);
+      const comorbsTxt = comorbsArr.join(' ') + ' ' + (patient.note || '');
+      const hasRenalDisease = patient.renal_insufficiency === true || /肾衰|尿毒症|透析|肾功能不全|慢性肾|CKD/i.test(comorbsTxt);
+      const hasHepaticDisease = patient.hepatic_insufficiency === true || /肝炎|肝硬化|肝功能不全|肝衰|脂肪肝/.test(comorbsTxt);
+      const isPregnantNow = patient.pregnant === true || patient.pregnancy === true ||
+                            comorbsArr.some(c => /妊娠|孕/.test(c)) || /孕妇|妊娠/.test(patient.note || '');
+
+      // ---- NEW-12 病毒性疾病无指征用抗菌药（先判，便于后续联用规则复用） ----
+      if (VIRAL_DX_RE.test(dxName)) {
+        const viralAbx = allNew.filter(it => ABX_NAME_RE.test(it.drug.generic_name || ''));
+        if (viralAbx.length) {
+          hits.push(hit(R['NEW-12'], 'warn',
+            `诊断「${disease.name}」为病毒性疾病（普通感冒/流感），无指征使用抗菌药「${viralAbx.map(it=>it.drug.generic_name).join('、')}」。`,
+            `病毒性疾病以对症支持为主；出现细菌并发症（黄脓涕>10天、肺炎、中耳炎）方考虑抗菌药。`,
+            { affected_items: viralAbx.map(it => it.drug.generic_name) }));
+        }
+      }
+
+      // ---- NEW-01 无指征联用≥2种抗菌药 ----
+      const abxItems = allNew.filter(it => ABX_NAME_RE.test(it.drug.generic_name || ''));
+      const abxUniqueNames = [...new Set(abxItems.map(it => it.drug.generic_name))];
+      if (abxUniqueNames.length >= 2) {
+        // 例外：混合感染诊断关键词不报错（仅教学提示）
+        const mixedInfection = /阑尾炎|腹膜炎|腹腔感染|胆管炎|败血症|脓毒症|吸入性肺炎|重症肺炎|牙周脓肿|盆腔脓肿/.test(dxName + comorbsTxt);
+        hits.push(hit(R['NEW-01'], mixedInfection ? 'pass' : 'warn',
+          mixedInfection
+            ? `处方联用抗菌药「${abxUniqueNames.join('、')}」，诊断提示混合感染/重症，联合用药指征成立。`
+            : `处方同时使用 ${abxUniqueNames.length} 种抗菌药：${abxUniqueNames.join('、')}；诊断「${disease.name}」未提示重症/混合感染，联合用药指征不充分。`,
+          `单一药物可控制的感染不联用；确需联合（混合感染、重症、防耐药）须在病历写明指征。`,
+          { affected_items: abxUniqueNames.slice() }));
+      }
+
+      // ---- NEW-02 β内酰胺繁殖期杀菌 + 四环素/大环内酯速效抑菌 ----
+      const betaItems = allNew.filter(it => BETALACTAM_RE.test(it.drug.generic_name || ''));
+      const staticItems = allNew.filter(it => STATIC_ABX_RE.test(it.drug.generic_name || ''));
+      if (betaItems.length && staticItems.length) {
+        hits.push(hit(R['NEW-02'], 'warn',
+          `β-内酰胺类「${betaItems.map(it=>it.drug.generic_name).join('、')}」与速效抑菌药「${staticItems.map(it=>it.drug.generic_name).join('、')}」同处方联用，可能产生药效学拮抗。`,
+          `一般情况二选一；如为CAP等明确混合感染需序贯或间隔给药，并在病历说明理由。`,
+          { affected_items: betaItems.map(it=>it.drug.generic_name).concat(staticItems.map(it=>it.drug.generic_name)) }));
+      }
+
+      // ---- NEW-03 复方感冒药叠加单方对乙酰氨基酚 ----
+      const apapSingle = allNew.filter(it => {
+        const n = it.drug.generic_name || '';
+        return /对乙酰氨基酚/.test(n) && !APAP_COMBO_RE.test(n);
+      });
+      const apapCombo = allNew.filter(it => APAP_COMBO_RE.test(it.drug.generic_name || ''));
+      if (apapSingle.length && apapCombo.length) {
+        hits.push(hit(R['NEW-03'], 'warn',
+          `单方对乙酰氨基酚「${apapSingle.map(it=>it.drug.generic_name).join('、')}」与含对乙酰氨基酚的复方感冒药「${apapCombo.map(it=>it.drug.generic_name).join('、')}」叠加，易致日剂量超标、肝损伤。`,
+          `只选用一种退热感冒药；查看复方制剂成分表，避免同类解热镇痛成分重复。`,
+          { affected_items: apapSingle.map(it=>it.drug.generic_name).concat(apapCombo.map(it=>it.drug.generic_name)) }));
+      }
+
+      // ---- NEW-04 肾功能不全用肾毒性抗菌药 ----
+      if (hasRenalDisease) {
+        const renalTox = allNew.filter(it => RENAL_TOXIC_RE.test(it.drug.generic_name || ''));
+        if (renalTox.length) {
+          hits.push(hit(R['NEW-04'], 'error',
+            `患者存在肾功能不全/透析/肾衰，仍使用肾毒性抗菌药「${renalTox.map(it=>it.drug.generic_name).join('、')}」，未按 eGFR 减量提示。`,
+            `按 eGFR 减量或延长给药间隔，必须使用时监测血药浓度与肾功能；优先选肝肾双通道排泄药。`,
+            { affected_items: renalTox.map(it => it.drug.generic_name) }));
+        }
+      }
+
+      // ---- NEW-05 肝功能不全用肝毒性药 ----
+      if (hasHepaticDisease) {
+        const hepTox = allNew.filter(it => HEPATO_TOXIC_RE.test(it.drug.generic_name || ''));
+        // 大剂量对乙酰氨基酚（>500mg/次）在肝功不全时也警示
+        const apapHigh = allNew.filter(it => {
+          const n = it.drug.generic_name || '';
+          if (!/对乙酰氨基酚/.test(n)) return false;
+          const v = parseDoseMg(it.single_dose);
+          return v != null && v > 500;
+        });
+        const allHep = hepTox.concat(apapHigh);
+        if (allHep.length) {
+          hits.push(hit(R['NEW-05'], 'error',
+            `患者存在肝功能不全/肝炎/肝硬化，使用肝毒性药物「${allHep.map(it=>it.drug.generic_name).join('、')}」，可诱发药物性肝损伤。`,
+            `选用肝毒性小的替代药；必须使用时监测 ALT/AST/胆红素。`,
+            { affected_items: allHep.map(it => it.drug.generic_name) }));
+        }
+      }
+
+      // ---- NEW-06 模糊诊断仍开治疗药 ----
+      if (FUZZY_DX_RE.test(dxName) && allNew.length) {
+        hits.push(hit(R['NEW-06'], 'warn',
+          `临床诊断「${disease.name}」为模糊诊断（待查/自感/不适/查体），却开具治疗性药物「${allNew.slice(0,5).map(it=>it.drug.generic_name).join('、')}${allNew.length>5?'等':''}」。`,
+          `完善病史与查体后明确具体诊断；诊断不明时先检查对症，不开具体治疗药。`,
+          { affected_items: allNew.map(it => it.drug.generic_name) }));
+      }
+
+      // ---- NEW-07 用法用量/给药途径缺失 ----
+      allNew.forEach(it => {
+        const g = it.drug.generic_name || '';
+        const freq = it.frequency || it.freq || (it.drug && (it.drug.frequency || it.drug.freq)) || '';
+        const route = it.drug.dosage_form || it.drug.route || '';
+        if (!freq || !route) {
+          hits.push(hit(R['NEW-07'], 'warn',
+            `「${g}」用法信息缺失：${!freq ? '无频次(frequency)' : ''}${(!freq && !route) ? '、' : ''}${!route ? '无给药途径(dosage_form)' : ''}。`,
+            `补全 qd/bid/tid/qid 等频次与 po/iv/im 等给药途径。`,
+            { affected_items: [g] }));
+        }
+      });
+
+      // ---- NEW-08 无指征重点监控辅助用药 ----
+      const auxItems = allNew.filter(it => AUX_MONITOR_RE.test(it.drug.generic_name || ''));
+      if (auxItems.length) {
+        // 诊断是否与该类辅助用药适应症相关（粗略白名单）
+        const auxDxOk = /脑梗死|脑出血|脑卒中|脑外伤|周围神经|冠心病|心绞痛|心肌梗死|脑供血|眩晕|骨折|骨质疏松|肿瘤|肝炎/.test(dxName + comorbsTxt);
+        if (!auxDxOk) {
+          hits.push(hit(R['NEW-08'], 'warn',
+            `处方含国家重点监控辅助用药「${auxItems.map(it=>it.drug.generic_name).join('、')}」，但诊断「${disease.name}」不支持其说明书适应症。`,
+            `严格按说明书适应症使用；不符者删除，改为循证治疗药。`,
+            { affected_items: auxItems.map(it => it.drug.generic_name) }));
+        }
+      }
+
+      // ---- NEW-09 儿童用可待因/异丙嗪/氨基糖苷类 ----
+      if (patient.age != null && patient.age < 12) {
+        const pedBad = allNew.filter(it => PED_HARD_RE.test(it.drug.generic_name || ''));
+        if (pedBad.length) {
+          hits.push(hit(R['NEW-09'], 'error',
+            `患儿 ${patient.age} 岁（<12岁），使用儿童禁忌/慎用药物「${pedBad.map(it=>it.drug.generic_name).join('、')}」（可待因<12禁用；异丙嗪<2禁用；氨基糖苷类具耳肾毒性）。`,
+            `儿童镇咳改用右美沙芬/蜂蜜；抗过敏改用西替利嗪/氯雷他定；抗感染避免氨基糖苷类。`,
+            { affected_items: pedBad.map(it => it.drug.generic_name) }));
+        }
+      }
+
+      // ---- NEW-10 同通用名口服+静脉重复 ----
+      {
+        const oralNames = new Set(oral.map(it => it.drug.generic_name));
+        const ivNames = new Set(ivDrugs.map(it => it.drug.generic_name));
+        const dupNames = [...oralNames].filter(n => ivNames.has(n));
+        if (dupNames.length) {
+          const reason = iv && iv.iv_reason;
+          if (reason !== 'sequential_therapy') {
+            hits.push(hit(R['NEW-10'], 'warn',
+              `同一通用名「${dupNames.join('、')}」在口服组与静脉组同时开具，且 iv_reason 未标注序贯治疗。`,
+              `保留一种给药途径；确需序贯应在 iv_reason 标注并写明转换时点。`,
+              { affected_items: dupNames.slice() }));
+          }
+        }
+      }
+
+      // ---- NEW-11 孕妇用妊娠禁忌中成药 ----
+      if (isPregnantNow) {
+        const pregTcm = allNew.filter(it => PREG_TCM_RE.test(it.drug.generic_name || ''));
+        if (pregTcm.length) {
+          hits.push(hit(R['NEW-11'], 'error',
+            `患者妊娠状态，使用妊娠禁忌中成药成分「${pregTcm.map(it=>it.drug.generic_name).join('、')}」（麝香/红花/三棱/莪术/水蛭等可兴奋子宫、致流产）。`,
+            `立即停用；妊娠期用药须中医妇科评估，选用妊娠安全替代药。`,
+            { affected_items: pregTcm.map(it => it.drug.generic_name) }));
+        }
+      }
+    } catch (e) {
+      // 新规则异常不得影响主流程
+      if (typeof console !== 'undefined') console.warn('[rule-engine] NEW-XX section error:', e && e.message);
+    }
 
     return hits;
   }

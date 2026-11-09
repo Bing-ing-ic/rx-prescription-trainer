@@ -486,7 +486,18 @@
       <button class="btn no-print" id="btn-report-home">← 返回首页</button>
       <div class="score-ring-wrap">
         <svg class="score-ring" viewBox="0 0 120 120">
-          <circle cx="60" cy="60" r="52" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+          <defs>
+            <linearGradient id="rx-grad-good" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#059669"/>
+            </linearGradient>
+            <linearGradient id="rx-grad-mid" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#d97706"/>
+            </linearGradient>
+            <linearGradient id="rx-grad-bad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f87171"/><stop offset="100%" stop-color="#dc2626"/>
+            </linearGradient>
+          </defs>
+          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(226,232,240,.35)" stroke-width="8"/>
           <circle id="score-arc" cx="60" cy="60" r="52" fill="none" stroke="#0f4c81" stroke-width="8"
                   stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"
                   transform="rotate(-90 60 60)"/>
@@ -498,6 +509,7 @@
       </div>
       <div class="report-summary">
         <h2 id="r-grade">优秀</h2>
+        <div id="r-grade-tag" class="grade-tag-wrap"></div>
         <p class="muted" id="r-meta"></p>
       </div>
       <div class="patient-avatar" id="patient-avatar">
@@ -516,9 +528,15 @@
     <div id="r-headline" class="report-headline hidden"></div>
 
     <div class="report-body">
+      <!-- KPI 仪表盘条（玻璃拟态四卡：严重/一般/提示/通过率） -->
+      <div class="kpi-strip" id="kpi-strip"></div>
+
       <div class="dim-grid" id="dim-grid"></div>
 
       <div id="r-nextsteps" class="nextsteps-box"></div>
+
+      <!-- 薄弱点画像 / 学习路径 / 评分自检（可选模块，数据缺失时整体隐藏） -->
+      <div id="r-insights"></div>
 
       <div class="hit-section">
         <div class="hit-section-head">

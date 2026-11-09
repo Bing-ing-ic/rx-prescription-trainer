@@ -1985,3 +1985,153 @@ input, select, textarea { font-family: inherit; }
 .drug-item.originator .mfr {
   color: #b45309 !important;
 }
+
+/* =====================================================================
+   2026-11-09 处方点评报告 · 专业医疗仪表盘升级
+   - Hero 圆环渐变描边 + 辉光 + 数字 count-up
+   - KPI 玻璃拟态四卡（严重/一般/提示/通过率）
+   - 维度卡片 verdict 辉光着色 + 最弱角标 + stagger 入场
+   - 薄弱点画像横条 / 学习路径时间线 / 评分自检折叠框
+   - 命中卡片可展开收起、rule-id 等宽徽章
+   - knowledge_recs 网格卡片；雷达图渐变填充 + 动画
+   - prefers-reduced-motion 降级
+   （仅追加，不改动既有规则）
+   ===================================================================== */
+
+/* 报告页整体淡入 */
+@keyframes viewFade { from { opacity: 0; transform: translateY(8px); } }
+#view-report { animation: viewFade .5s ease; }
+
+/* 合规等级小标签（Hero 区 r-grade 下方） */
+.grade-tag-wrap { margin: 6px 0 2px; }
+.grade-tag {
+  display: inline-block; padding: 2px 12px; border-radius: 11px;
+  font-size: 12px; font-weight: 700; letter-spacing: .5px;
+}
+.grade-tag.gt-pass { background: rgba(74,222,128,.18); color: #bbf7d0; border: 1px solid rgba(74,222,128,.55); }
+.grade-tag.gt-warn { background: rgba(251,191,36,.18); color: #fde68a; border: 1px solid rgba(251,191,36,.55); }
+.grade-tag.gt-bad  { background: rgba(248,113,113,.18); color: #fecaca; border: 1px solid rgba(248,113,113,.55); }
+
+/* KPI 玻璃拟态仪表盘条 */
+.kpi-strip {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px; margin: 16px 0 4px;
+}
+.kpi-card {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(239,248,255,.72));
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(148,197,255,.4);
+  border-radius: 14px; padding: 14px 16px;
+  box-shadow: 0 4px 16px rgba(15,76,129,.08), inset 0 1px 0 rgba(255,255,255,.7);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.kpi-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,76,129,.14); }
+.kpi-card::after {
+  content: ''; position: absolute; top: -34px; right: -34px;
+  width: 96px; height: 96px; border-radius: 50%; filter: blur(28px); opacity: .3;
+}
+.kpi-crit::after { background: #ef4444; }
+.kpi-major::after { background: #f97316; }
+.kpi-minor::after { background: #eab308; }
+.kpi-rate::after { background: #22c55e; }
+.kpi-icon { font-size: 15px; line-height: 1; }
+.kpi-num { font-size: 30px; font-weight: 800; line-height: 1.1; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.kpi-num i { font-style: normal; font-size: 15px; font-weight: 600; opacity: .65; }
+.kpi-label { font-size: 12px; color: #64748b; margin-top: 2px; }
+.kpi-crit .kpi-num { color: #dc2626; }
+.kpi-major .kpi-num { color: #ea580c; }
+.kpi-minor .kpi-num { color: #ca8a04; }
+.kpi-rate .kpi-num { color: #16a34a; }
+
+/* 维度卡片升级：verdict 辉光 + 最弱角标 + 入场 */
+@keyframes dimIn { from { opacity: 0; transform: translateY(12px); } }
+.dim-card { position: relative; animation: dimIn .45s ease backwards; }
+.dim-card.v-critical { border-left: 4px solid #dc2626; box-shadow: 0 2px 12px rgba(220,38,38,.14); }
+.dim-card.v-major    { border-left: 4px solid #ea580c; box-shadow: 0 2px 12px rgba(234,88,12,.12); }
+.dim-card.v-warn     { border-left: 4px solid #ca8a04; box-shadow: 0 2px 12px rgba(202,138,4,.12); }
+.dim-card.v-pass     { border-left: 4px solid #16a34a; box-shadow: 0 2px 12px rgba(22,163,74,.12); }
+.dim-weak-badge {
+  position: absolute; top: 8px; right: 8px;
+  font-size: 10px; font-weight: 700; color: #fff;
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  padding: 2px 8px; border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(239,68,68,.4);
+}
+.dim-score-row { display: flex; align-items: baseline; gap: 5px; margin-top: 6px; }
+.dim-score-row .dim-score { margin-top: 0; }
+.dim-weight { font-size: 12px; color: #94a3b8; }
+.dim-meta { display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8; margin-top: 4px; }
+.dim-card .dim-bar-fill.v-critical { background: linear-gradient(90deg, #dc2626, #f87171); }
+.dim-card .dim-bar-fill.v-major    { background: linear-gradient(90deg, #ea580c, #fb923c); }
+.dim-card .dim-bar-fill.v-warn     { background: linear-gradient(90deg, #ca8a04, #facc15); }
+.dim-card .dim-bar-fill.v-pass     { background: linear-gradient(90deg, #16a34a, #4ade80); }
+
+/* 洞察模块：薄弱点画像 / 学习路径 / 评分自检 */
+#r-insights:empty { display: none; }
+.insight-panel {
+  margin: 12px 0; padding: 16px 18px;
+  background: linear-gradient(135deg, #ffffff, #f0f9ff);
+  border: 1px solid rgba(148,197,255,.45);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(15,76,129,.07);
+}
+.insight-panel-title {
+  font-weight: 700; color: #0f4c81; font-size: 14px; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.weak-bar-row { margin: 9px 0; }
+.weak-bar-head { display: flex; justify-content: space-between; font-size: 12px; color: #334155; margin-bottom: 3px; }
+.weak-bar-track { height: 10px; background: #e2e8f0; border-radius: 5px; overflow: hidden; }
+.weak-bar-fill { height: 100%; border-radius: 5px; transition: width .8s ease; }
+.weak-bar-fill.low { background: linear-gradient(90deg, #dc2626, #f87171); }
+.weak-bar-fill.mid { background: linear-gradient(90deg, #d97706, #fbbf24); }
+.weak-bar-fill.ok  { background: linear-gradient(90deg, #0891b2, #22d3ee); }
+.lp-timeline { position: relative; padding-left: 24px; }
+.lp-timeline::before {
+  content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px;
+  background: linear-gradient(180deg, #22d3ee, #0f4c81);
+}
+.lp-step { position: relative; padding: 4px 0 12px; }
+.lp-step::before {
+  content: ''; position: absolute; left: -21px; top: 8px; width: 12px; height: 12px;
+  border-radius: 50%; background: #fff; border: 3px solid #0891b2;
+  box-shadow: 0 0 8px rgba(34,211,238,.6);
+}
+.lp-step-no { font-size: 11px; font-weight: 800; color: #0891b2; letter-spacing: 1px; }
+.lp-step-text { font-size: 13px; color: #1e293b; line-height: 1.5; }
+.audit-details summary { cursor: pointer; color: #0f4c81; font-weight: 600; font-size: 13px; }
+.audit-details ul { margin: 8px 0 0; padding-left: 18px; font-size: 12px; color: #64748b; line-height: 1.7; }
+
+/* 命中卡片：可展开收起 + 等宽 rule-id */
+.hit-item .hit-head { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+.hit-caret { display: inline-block; color: #94a3b8; font-size: 11px; transition: transform .2s ease; }
+.hit-item:not(.collapsed) .hit-caret { transform: rotate(90deg); }
+.hit-detail { overflow: hidden; max-height: 800px; opacity: 1; transition: max-height .3s ease, opacity .3s ease, margin .3s ease; }
+.hit-item.collapsed .hit-detail { max-height: 0; opacity: 0; margin-top: 0; }
+.hit-item .rule-id {
+  font-family: ui-monospace, "Cascadia Code", Consolas, "Courier New", monospace;
+  letter-spacing: .3px;
+}
+
+/* 关联知识推荐网格 */
+.krec-title-block { font-weight: 700; color: #0f4c81; font-size: 14px; margin: 12px 0 8px; }
+.krec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.krec-card {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 1px solid #bae6fd; border-radius: 10px; padding: 10px 12px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.krec-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(14,165,233,.16); }
+.krec-title { font-weight: 700; color: #075985; font-size: 13px; }
+.krec-body { font-size: 12px; color: #475569; margin-top: 3px; line-height: 1.5; }
+
+/* 雷达 legend 条宽动画 */
+.radar-legend .bar { transition: width .8s ease; }
+
+/* 减少动效降级 */
+@media (prefers-reduced-motion: reduce) {
+  #view-report, .dim-card { animation: none !important; }
+  .dim-bar-fill, .weak-bar-fill, .radar-legend .bar, .hit-detail { transition: none !important; }
+  .kpi-card { transition: none !important; }
+}

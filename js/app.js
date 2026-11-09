@@ -2278,6 +2278,24 @@
     }
   }
 
+  // 2026-11-09 仪表盘升级：动效辅助（prefers-reduced-motion 友好）
+  const prefersReducedMotion = () =>
+    window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 数字 count-up；目标容器内可带 <i>后缀</i>
+  function animateNumber(el, target, dur) {
+    if (!el) return;
+    const suffixHtml = el.querySelector('i') ? el.querySelector('i').outerHTML : '';
+    if (prefersReducedMotion()) { el.innerHTML = target + suffixHtml; return; }
+    dur = dur || 900;
+    const t0 = performance.now();
+    (function tick(now) {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.innerHTML = Math.round(target * eased) + suffixHtml;
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
   function renderReport(review, hits, ctx) {
     ctx = ctx || {};
     ctx.disease = ctx.disease || { name: '未知', icd10: '' };
@@ -2286,17 +2304,28 @@
     hits = Array.isArray(hits) ? hits.filter(Boolean) : [];
     // 评分器各维度权重合计为105，前端按百分制封顶展示（根因见报告，属评分器侧）
     const disp = Math.max(0, Math.min(100, Math.round(review.total)));
-    $('r-score').textContent = disp;
-    // 圆环动画
+    // 圆环 + 数字入场：视图当前隐藏，先复位到满环，待 show() 后延迟播放
+    const scoreEl = $('r-score');
+    if (scoreEl) animateNumber(scoreEl, disp, 1000);
     const arc = $('score-arc');
     if (arc) {
       const C = 326.7;
-      arc.style.strokeDashoffset = C * (1 - disp/100);
-      arc.style.stroke = disp >= 80 ? '#16a34a' : disp >= 60 ? '#f59e0b' : '#dc2626';
+      arc.style.strokeDashoffset = C;
+      arc.style.stroke = disp >= 80 ? 'url(#rx-grad-good)' : disp >= 60 ? 'url(#rx-grad-mid)' : 'url(#rx-grad-bad)';
+      setTimeout(() => { arc.style.strokeDashoffset = C * (1 - disp / 100); }, 90);
     }
     // 评级
     const grade = $('r-grade');
     if (grade) grade.textContent = disp >= 90 ? '优秀 · 可独立接诊' : disp >= 75 ? '良好 · 基本掌握' : disp >= 60 ? '及格 · 需加强' : '不合格 · 重新学习';
+    // 处方合规等级小标签（合格/基本合格/不合格）
+    const gradeTag = $('r-grade-tag');
+    if (gradeTag) {
+      let gv, gcls;
+      if (disp >= 90) { gv = '处方合规 · 合格'; gcls = 'gt-pass'; }
+      else if (disp >= 60) { gv = '处方合规 · 基本合格'; gcls = 'gt-warn'; }
+      else { gv = '处方合规 · 不合格'; gcls = 'gt-bad'; }
+      gradeTag.innerHTML = `<span class="grade-tag ${gcls}">${gv}</span>`;
+    }
     // P4-1 多处方合并点评：双通道都有药时显示合并点评徽标
     const hasNormal = !!(ctx.normal_rx && ctx.normal_rx.items && ctx.normal_rx.items.length);
     const hasIv = !!(ctx.iv_rx && ctx.iv_rx.items && ctx.iv_rx.items.length);
@@ -2355,19 +2384,39 @@
     const vitalRefEl = $('vital-ref');
     if (vitalRefEl) vitalRefEl.style.display = 'none';
 
-    // 维度卡片（含进度条：宽度=score/weight*100%，颜色按 verdict）
+    // 维度卡片（2026-11-09 仪表盘化：verdict 辉光着色 / 扣分展示 / 最弱角标 / stagger 入场）
     const grid = $('dim-grid');
     grid.innerHTML = '';
-    Object.values(review.dims).forEach(d => {
-      const div = document.createElement('div');
-      div.className = 'dim-card ' + d.verdict;
+    const dimEntries = Object.values(review.dims);
+    // 找最弱维度（得分率最低且未满）
+    let weakestIdx = -1, weakestPct = 101;
+    dimEntries.forEach((d, i) => {
+      const pct = d.weight > 0 ? Math.max(0, Math.min(100, d.score / d.weight * 100)) : 0;
+      if (pct < weakestPct) { weakestPct = pct; weakestIdx = i; }
+    });
+    dimEntries.forEach((d, i) => {
       const pct = Math.max(0, Math.min(100, (d.weight > 0 ? (d.score / d.weight) * 100 : 0)));
-      div.innerHTML = `<div class="dim-name">${d.name}（${d.weight}%）</div>
-        <div class="dim-score">${d.score.toFixed(1)} / ${d.weight}</div>
-        <div class="muted">命中 ${d.hits.length} 条</div>
-        <div class="dim-bar"><div class="dim-bar-fill ${d.verdict}" style="width:${pct.toFixed(0)}%"></div></div>`;
+      const ded = (typeof d.deduction === 'number') ? d.deduction : Math.max(0, (d.weight || 0) - (d.score || 0));
+      const v = String(d.verdict || 'pass').toLowerCase();
+      const vcls = (v === 'critical' || v === 'error') ? 'critical'
+        : (v === 'major') ? 'major'
+        : (v === 'warn' || v === 'warning') ? 'warn' : 'pass';
+      const isWeak = (i === weakestIdx && weakestPct < 100);
+      const div = document.createElement('div');
+      div.className = 'dim-card v-' + vcls + (isWeak ? ' dim-weak' : '');
+      div.style.animationDelay = (i * 70) + 'ms';
+      const weakBadge = isWeak ? '<span class="dim-weak-badge">⚠ 最需提升</span>' : '';
+      div.innerHTML = `${weakBadge}
+        <div class="dim-name">${d.name}</div>
+        <div class="dim-score-row"><span class="dim-score">${(d.score || 0).toFixed(1)}</span><span class="dim-weight">/ 权重 ${d.weight}%</span></div>
+        <div class="dim-meta"><span>扣 ${ded.toFixed(1)} 分</span><span>命中 ${(d.hits || []).length} 条</span></div>
+        <div class="dim-bar"><div class="dim-bar-fill v-${vcls}" data-w="${pct.toFixed(0)}" style="width:0%"></div></div>`;
       grid.appendChild(div);
     });
+    // 进度条宽度动画（视图可见后播放）
+    setTimeout(() => {
+      grid.querySelectorAll('.dim-bar-fill').forEach(f => { f.style.width = f.dataset.w + '%'; });
+    }, 120);
 
     // N2：处方费用统计条（口服+静脉双通道累加 price_yuan * quantity）
     (function renderFeeBar() {
@@ -2494,6 +2543,76 @@
     const cW = $('cnt-warn'); if (cW) cW.textContent = minorN;
     const cP = $('cnt-pass'); if (cP) cP.textContent = passN;
 
+    // 2026-11-09 KPI 仪表盘条（玻璃拟态四卡）
+    const kpi = $('kpi-strip');
+    if (kpi) {
+      const totalChecked = critN + majorN + minorN + passN;
+      const rate = totalChecked > 0 ? Math.round(passN / totalChecked * 100) : 100;
+      kpi.innerHTML = `
+        <div class="kpi-card kpi-crit"><div class="kpi-icon">⚠</div><div class="kpi-num" data-count="${critN}">0</div><div class="kpi-label">严重错误</div></div>
+        <div class="kpi-card kpi-major"><div class="kpi-icon">✦</div><div class="kpi-num" data-count="${majorN}">0</div><div class="kpi-label">一般错误</div></div>
+        <div class="kpi-card kpi-minor"><div class="kpi-icon">◆</div><div class="kpi-num" data-count="${minorN}">0</div><div class="kpi-label">提示事项</div></div>
+        <div class="kpi-card kpi-rate"><div class="kpi-icon">✓</div><div class="kpi-num" data-count="${rate}">0<i>%</i></div><div class="kpi-label">规则通过率</div></div>`;
+      kpi.querySelectorAll('.kpi-num').forEach(n => animateNumber(n, parseInt(n.dataset.count, 10) || 0, 900));
+    }
+
+    // 2026-11-09 洞察模块：薄弱点画像 / 学习路径 / 评分自检（全部防御式读取，缺字段优雅降级）
+    (function renderInsights() {
+      const box = $('r-insights');
+      if (!box) return;
+      const sum = review.summary || {};
+      let html = '';
+
+      // 1) 薄弱点画像：横条（score_pct 红→青渐弱）
+      const wp = Array.isArray(sum.weakness_profile) ? sum.weakness_profile : [];
+      if (wp.length) {
+        const rows = wp.map(w => {
+          const name = w.dim || w.name || w.key || '未命名维度';
+          const pct = Math.max(0, Math.min(100, Number(w.score_pct != null ? w.score_pct : (w.pct != null ? w.pct : (w.score != null ? w.score : 0)))));
+          const gap = (typeof w.gap === 'number') ? w.gap : Math.max(0, Math.round(100 - pct));
+          const tier = pct >= 80 ? 'ok' : pct >= 60 ? 'mid' : 'low';
+          return `<div class="weak-bar-row">
+            <div class="weak-bar-head"><span>${name}</span><span>${pct}% · 差 ${gap} 分</span></div>
+            <div class="weak-bar-track"><div class="weak-bar-fill ${tier}" data-w="${pct}%" style="width:0%"></div></div>
+          </div>`;
+        }).join('');
+        html += `<div class="insight-panel">
+          <div class="insight-panel-title">🎯 薄弱点画像</div>${rows}
+        </div>`;
+      }
+
+      // 2) 学习路径：纵向时间线
+      const lp = Array.isArray(sum.learning_path) ? sum.learning_path : [];
+      if (lp.length) {
+        const steps = lp.map((s, i) => {
+          const text = (typeof s === 'string') ? s : (s.text || s.title || s.detail || JSON.stringify(s));
+          return `<div class="lp-step"><div class="lp-step-no">STEP ${i + 1}</div><div class="lp-step-text">${text}</div></div>`;
+        }).join('');
+        html += `<div class="insight-panel">
+          <div class="insight-panel-title">🧭 学习路径建议</div>
+          <div class="lp-timeline">${steps}</div>
+        </div>`;
+      }
+
+      // 3) 评分自检：折叠框（默认收起）
+      const ra = sum.rule_audit || null;
+      const dd = (ra && Array.isArray(ra.double_deductions)) ? ra.double_deductions : [];
+      const notes = (ra && Array.isArray(ra.notes)) ? ra.notes : [];
+      if (dd.length || notes.length) {
+        const items = dd.concat(notes).map(t => `<li>${typeof t === 'string' ? t : (t.text || t.reason || JSON.stringify(t))}</li>`).join('');
+        html += `<div class="insight-panel">
+          <details class="audit-details"><summary>⚙ 评分自检（${dd.length + notes.length} 条说明，点击展开）</summary>
+          <ul>${items}</ul></details>
+        </div>`;
+      }
+
+      box.innerHTML = html;
+      // 薄弱条宽度动画
+      setTimeout(() => {
+        box.querySelectorAll('.weak-bar-fill').forEach(f => { f.style.width = f.dataset.w; });
+      }, 150);
+    })();
+
     // 命中列表
     const hl = $('hit-list');
     hl.innerHTML = '';
@@ -2525,14 +2644,23 @@
         ? `<div class="lesson-point">💬 ${h.lesson_point}</div>` : '';
       const legacySuggest = h.suggestion
         ? `<div class="sug">💡 建议：${h.suggestion}</div>` : '';
-      return `<div class="hit-item ${lvl}">
-        <span class="rule-id">[${h.rule_id}]</span><b>${h.title}</b>
-        <div>${h.message}</div>
-        ${affected}
-        ${lesson}
-        ${correct}
-        ${ref || `<div class="basis">📖 依据：${h.basis || ''}</div>`}
-        ${legacySuggest}
+      // 2026-11-09：卡片可点击展开/收起；默认严重展开、一般/提示收起
+      const rid = h.rule_id || '----';
+      const collapsed = lvl === 'critical' ? '' : ' collapsed';
+      return `<div class="hit-item ${lvl} js-hit${collapsed}">
+        <div class="hit-head" role="button" tabindex="0">
+          <span class="hit-caret">▸</span>
+          <span class="rule-id">${rid}</span>
+          <b class="hit-title">${h.title}</b>
+        </div>
+        <div class="hit-detail">
+          <div>${h.message}</div>
+          ${affected}
+          ${lesson}
+          ${correct}
+          ${ref || `<div class="basis">📖 依据：${h.basis || ''}</div>`}
+          ${legacySuggest}
+        </div>
       </div>`;
     }
 
@@ -2549,6 +2677,16 @@
     } else {
       hl.innerHTML = '<div style="text-align:center;padding:20px;color:#16a34a">✅ 未发现错误和警告，处方规范！</div>';
     }
+    // 卡片展开/收起交互（点击 head 或 Enter/空格）
+    hl.querySelectorAll('.js-hit').forEach(item => {
+      const head = item.querySelector('.hit-head');
+      if (!head) return;
+      const toggle = () => item.classList.toggle('collapsed');
+      head.addEventListener('click', toggle);
+      head.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    });
 
     // 与参考处方差异（真实集合比对：缺首选 / 已命中 / 额外用药）
     const dx = ctx.disease;
@@ -2600,7 +2738,19 @@
       </div>`;
     }
 
-    $('tips-box').innerHTML = topIssuesHtml + tipSet.map(t =>
+    // 2026-11-09：关联知识推荐（summary.knowledge_recs）渲染为网格卡片
+    let krecsHtml = '';
+    const krecs = Array.isArray(review.summary && review.summary.knowledge_recs) ? review.summary.knowledge_recs : [];
+    if (krecs.length) {
+      const cards = krecs.map(k => {
+        const topic = (typeof k === 'string') ? k : (k.topic || k.title || k.name || '知识点');
+        const body = (typeof k === 'string') ? '' : (k.reason || k.desc || k.detail || '');
+        return `<div class="krec-card"><div class="krec-title">📚 ${topic}</div>${body ? `<div class="krec-body">${body}</div>` : ''}</div>`;
+      }).join('');
+      krecsHtml = `<div class="krec-title-block">关联知识推荐</div><div class="krec-grid">${cards}</div>`;
+    }
+
+    $('tips-box').innerHTML = topIssuesHtml + krecsHtml + tipSet.map(t =>
       `<div class="knowledge-card"><div class="knowledge-title">📖 ${t.t}</div><div class="knowledge-body">${t.b}</div></div>`
     ).join('');
   }
@@ -2632,64 +2782,86 @@
     else Object.keys(avg).forEach(k=>avg[k]=50);
 
     drawRadar(avg);
-    // legend
+    // legend（2026-11-09：条宽动画）
     const legend = $('radar-legend');
     legend.innerHTML = window.Reviewer.RADAR_DIMS.map(d=>{
       const v = Math.round(avg[d.key]);
-      return `<div>${d.name} <span class="bar" style="width:${v}px">${v}</span></div>`;
+      return `<div class="radar-legend-row">${d.name} <span class="bar" data-w="${v}px" style="width:0">${v}</span></div>`;
     }).join('');
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      legend.querySelectorAll('.bar').forEach(b => { b.style.width = b.dataset.w; });
+    }));
   }
 
   function drawRadar(avg) {
     const cv = $('radar-canvas');
+    if (!cv) return;
     const ctx = cv.getContext('2d');
     const W = cv.width, H = cv.height, cx = W/2, cy = H/2, R = 180;
-    ctx.clearRect(0,0,W,H);
     const dims = window.Reviewer.RADAR_DIMS;
     const n = dims.length;
     const angle = i => -Math.PI/2 + i*2*Math.PI/n;
 
-    // 网格
-    for (let g=1; g<=4; g++) {
-      ctx.beginPath();
-      for (let i=0;i<=n;i++) {
-        const a = angle(i%n);
-        const r = R*g/4;
-        const x = cx + r*Math.cos(a), y = cy + r*Math.sin(a);
-        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    // 静态网格层
+    function drawGrid() {
+      ctx.clearRect(0,0,W,H);
+      for (let g=1; g<=4; g++) {
+        ctx.beginPath();
+        for (let i=0;i<=n;i++) {
+          const a = angle(i%n);
+          const r = R*g/4;
+          const x = cx + r*Math.cos(a), y = cy + r*Math.sin(a);
+          i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+        }
+        ctx.strokeStyle = '#d8e0ea'; ctx.stroke();
       }
-      ctx.strokeStyle = '#d8e0ea'; ctx.stroke();
+      for (let i=0;i<n;i++) {
+        const a = angle(i);
+        ctx.beginPath(); ctx.moveTo(cx,cy);
+        ctx.lineTo(cx+R*Math.cos(a), cy+R*Math.sin(a));
+        ctx.strokeStyle = '#c8d2e0'; ctx.stroke();
+        // label
+        const lx = cx + (R+26)*Math.cos(a), ly = cy + (R+26)*Math.sin(a);
+        ctx.fillStyle = '#334155'; ctx.font = '12px sans-serif'; ctx.textAlign='center';
+        ctx.fillText(dims[i].name, lx, ly+4);
+      }
     }
-    // 轴线
-    for (let i=0;i<n;i++) {
-      const a = angle(i);
-      ctx.beginPath(); ctx.moveTo(cx,cy);
-      ctx.lineTo(cx+R*Math.cos(a), cy+R*Math.sin(a));
-      ctx.strokeStyle = '#c8d2e0'; ctx.stroke();
-      // label
-      const lx = cx + (R+24)*Math.cos(a), ly = cy + (R+24)*Math.sin(a);
-      ctx.fillStyle = '#334'; ctx.font = '12px sans-serif'; ctx.textAlign='center';
-      ctx.fillText(dims[i].name, lx, ly);
-    }
-    // 数据多边形
-    ctx.beginPath();
-    dims.forEach((d,i)=>{
-      const a = angle(i);
-      const v = Math.max(0, Math.min(100, avg[d.key]))/100;
-      const x = cx + R*v*Math.cos(a), y = cy + R*v*Math.sin(a);
-      i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
-    });
-    ctx.closePath();
-    ctx.fillStyle = 'rgba(26,111,181,.25)'; ctx.fill();
-    ctx.strokeStyle = '#1a6fb5'; ctx.lineWidth = 2; ctx.stroke();
-    // 顶点
-    dims.forEach((d,i)=>{
-      const a = angle(i);
-      const v = Math.max(0, Math.min(100, avg[d.key]))/100;
+    // 数据层：p∈[0,1] 控制生长进度
+    function drawData(p) {
+      drawGrid();
+      const grad = ctx.createRadialGradient(cx,cy,8,cx,cy,R);
+      grad.addColorStop(0, 'rgba(34,211,238,.38)');
+      grad.addColorStop(1, 'rgba(15,76,129,.16)');
       ctx.beginPath();
-      ctx.arc(cx+R*v*Math.cos(a), cy+R*v*Math.sin(a), 4, 0, Math.PI*2);
-      ctx.fillStyle = '#1a6fb5'; ctx.fill();
-    });
+      dims.forEach((d,i)=>{
+        const a = angle(i);
+        const v = Math.max(0, Math.min(100, avg[d.key]))/100 * p;
+        const x = cx + R*v*Math.cos(a), y = cy + R*v*Math.sin(a);
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      });
+      ctx.closePath();
+      ctx.fillStyle = grad; ctx.fill();
+      ctx.strokeStyle = '#0891b2'; ctx.lineWidth = 2.5;
+      ctx.shadowColor = 'rgba(8,145,178,.55)'; ctx.shadowBlur = 10;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+      dims.forEach((d,i)=>{
+        const a = angle(i);
+        const v = Math.max(0, Math.min(100, avg[d.key]))/100 * p;
+        ctx.beginPath();
+        ctx.arc(cx+R*v*Math.cos(a), cy+R*v*Math.sin(a), 4, 0, Math.PI*2);
+        ctx.fillStyle = '#0f4c81'; ctx.fill();
+      });
+    }
+    // 减少动效偏好：直接终帧
+    if (prefersReducedMotion()) { drawData(1); return; }
+    const t0 = performance.now();
+    (function tick(now) {
+      const p = Math.min(1, (now - t0) / 800);
+      const eased = 1 - Math.pow(1 - p, 3);
+      drawData(eased);
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
   }
 
   // ====================== P4-2 诊断陷阱训练 ======================

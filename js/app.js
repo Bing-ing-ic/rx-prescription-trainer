@@ -181,6 +181,10 @@
       loadLabData();
       // 异步加载手术指征教学库（失败不阻断主流程）
       loadSurgeryData();
+      // 参考标准方案库（点评后对照学习）：失败时静默降级，StandardPlan.render 显示"整理中"
+      fetch('data/standard-plans.json').then(r => r.ok ? r.json() : null).then(sp => {
+        if (sp && window.StandardPlan) window.StandardPlan.setPlans(sp);
+      }).catch(() => { /* 标准方案库加载失败时静默降级 */ });
       // P2-1 异步加载诊断别名归一化表（失败时降级为原模糊匹配）
       fetch('data/diagnosis-aliases.json').then(r => r.ok ? r.json() : null).then(a => {
         if (a && typeof a === 'object') {
@@ -2753,6 +2757,12 @@
     $('tips-box').innerHTML = topIssuesHtml + krecsHtml + tipSet.map(t =>
       `<div class="knowledge-card"><div class="knowledge-title">📖 ${t.t}</div><div class="knowledge-body">${t.b}</div></div>`
     ).join('');
+
+    // 参考标准方案（点评后对照学习）：按疾病 code 取指南方案，个性化调整并与用户处方差异对照
+    if (window.StandardPlan) {
+      const spBox = $('r-standard-plan');
+      window.StandardPlan.render(spBox, ctx, review);
+    }
   }
 
   // ---------- 历史 & 雷达 ----------

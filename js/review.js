@@ -114,11 +114,27 @@
     const top_issues = ordered.slice(0, 3).map(h => h.title || h.message || '').filter(Boolean);
 
     let headline;
+    // B3: headline 具体化 —— 从 groups.critical[0].affected_items[0] 取药品名拼入，
+    //     例如："存在1处严重错误：8岁儿童禁用左氧氟沙星片（喹诺酮类软骨损伤）"
+    //     无 affected_items 时回退到规则 title，保持向后兼容。
     if (grouped.critical.length > 0) {
-      headline = '存在' + grouped.critical.length + '处严重错误：' +
-        grouped.critical.slice(0, 2).map(h => h.title || '').join('、');
+      const firstCrit = grouped.critical[0];
+      const drugName = (firstCrit.affected_items && firstCrit.affected_items[0]) || '';
+      let detail;
+      if (drugName) {
+        // 优先用 lesson_point 中的医学解释，否则用 message 截取
+        const reason = firstCrit.lesson_point || firstCrit.message || firstCrit.title || '';
+        detail = `「${drugName}」${reason}`;
+      } else {
+        detail = grouped.critical.slice(0, 2).map(h => h.title || '').join('、');
+      }
+      headline = '存在' + grouped.critical.length + '处严重错误：' + detail;
     } else if (grouped.major.length > 0) {
-      headline = '存在' + grouped.major.length + '处一般错误，建议复核用药方案';
+      const firstMaj = grouped.major[0];
+      const drugName = (firstMaj.affected_items && firstMaj.affected_items[0]) || '';
+      headline = drugName
+        ? '存在' + grouped.major.length + '处一般错误（涉及「' + drugName + '」等），建议复核用药方案'
+        : '存在' + grouped.major.length + '处一般错误，建议复核用药方案';
     } else if (grouped.minor.length > 0) {
       headline = '处方基本合理，存在' + grouped.minor.length + '处细节可优化';
     } else {
@@ -198,7 +214,11 @@
       if (dimResult[k]) dimResult[k].hits.push(h);
     });
 
-    // 4) 扣分：同维度同 rule_id 聚合只扣一次
+    // 4) 扣分：同维度同 rule_id 用 Set 聚合只扣一次
+    //    —— B2 验证（2026-11-09 review-audit）：
+    //       SPEC-01 同时命中两个药品时，循环里 push 两条 hit，但 seenRule Set 仅在第一次加入 rule_id 时累计 ded，
+    //       第二次同 rule_id 直接 `return` 跳过，因此 SPEC-01 在同一维度上只扣一次 weight*0.2（minor），
+    //       不会因命中药品数量叠加扣分。该聚合逻辑已生效，无需修改；此处注释固化语义。
     //    critical 扣 weight*0.8，major 扣 weight*0.5，minor 扣 weight*0.2；维度封顶 weight
     let total = 0;
     DIMS.forEach(d => {
@@ -206,6 +226,7 @@
       const seenRule = new Set();
       let ded = 0;
       r.hits.forEach(h => {
+        // B2: 同维度同 rule_id 聚合只扣一次（anon 用 message 兜底）
         const uid = h.rule_id || ('anon::' + (h.message || ''));
         if (seenRule.has(uid)) return;
         seenRule.add(uid);

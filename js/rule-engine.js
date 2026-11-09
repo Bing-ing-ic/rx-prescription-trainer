@@ -204,18 +204,23 @@
       if (!rx) return;
       const n = totalItems(rx);
       if (n > 5) {
+        // B1: affected_items = 该处方所有药品通用名
+        const rxNames = (rx.items || []).map(it => it && it.drug ? it.drug.generic_name : '').filter(Boolean);
         hits.push(hit(R['FMT-01'], 'error',
           `当前处方共 ${n} 种药品（含溶媒），超过每张处方≤5种的法定上限。`,
-          `删减至≤5种；确需超过须注明理由并经上级医师审核签字。`));
+          `删减至≤5种；确需超过须注明理由并经上级医师审核签字。`,
+          { affected_items: rxNames }));
         if (R['FMT-01-EXT']) {
           if (n === 6) {
             hits.push(hit(R['FMT-01-EXT'], 'warn',
               `当前处方共 ${n} 种药品，已偏多，建议精简至≤5种。`,
-              `复核是否有同类或辅助用药可剔除；避免无指征联用。`));
+              `复核是否有同类或辅助用药可剔除；避免无指征联用。`,
+              { affected_items: rxNames }));
           } else if (n >= 7) {
             hits.push(hit(R['FMT-01-EXT'], 'error',
               `当前处方共 ${n} 种药品，严重超过≤5种的法定上限。`,
-              `必须大幅精简；必要时分方开具或请上级医师会诊。`));
+              `必须大幅精简；必要时分方开具或请上级医师会诊。`,
+              { affected_items: rxNames }));
           }
         }
       }
@@ -227,7 +232,8 @@
       rx.items.forEach(it => {
         if (!it || !it.drug) return;
         if (!it.drug.generic_name) hits.push(hit(R['FMT-02'], 'error',
-          `存在未填通用名的药品（仅商品名）。`, `必须使用药品通用名。`));
+          `存在未填通用名的药品（仅商品名）。`, `必须使用药品通用名。`,
+          { affected_items: [it.drug.trade_name || '未命名药品'] }));
       });
     });
 
@@ -240,7 +246,8 @@
         if (/遵医嘱|自用|照说明|酌量/.test(txt)) {
           hits.push(hit(R['FMT-03'], 'error',
             `药品「${it.drug.generic_name}」用法中出现模糊表述：${txt.trim()}`,
-            `必须写清频次与单次剂量。`));
+            `必须写清频次与单次剂量。`,
+            { affected_items: [it.drug.generic_name] }));
         }
       });
     });
@@ -254,7 +261,8 @@
         if (it.single_dose && !/\d+\s*(mg|g|ml|ug|μg|U|IU)/.test(it.single_dose)) {
           hits.push(hit(R['FMT-04'], 'warn',
             `「${it.drug.generic_name}」单次剂量「${it.single_dose}」未使用法定公制单位。`,
-            `使用 mg/g/ml/μg 等法定单位。`));
+            `使用 mg/g/ml/μg 等法定单位。`,
+            { affected_items: [it.drug.generic_name] }));
         }
       });
     });
@@ -291,17 +299,21 @@
           if (it.drug.medical_insurance_class === '乙') {
             hits.push(hit(R['IND-03'], 'warn',
               `「${g}」为医保乙类药品，须核对其限定支付范围是否覆盖「${disease.name}」。`,
-              `如诊断不在医保限定支付目录，需补充诊断或由患者自费。`));
+              `如诊断不在医保限定支付目录，需补充诊断或由患者自费。`,
+              { affected_items: [g] }));
           }
         } else {
           // IND-01：不在一线/二线推荐 → 超适应症 error
+          // B1: affected_items = 与诊断不匹配的药品通用名
           hits.push(hit(R['IND-01'], 'error',
             `「${g}」不在「${disease.name}」的一线/二线推荐列表中，可能超适应症。`,
-            `核对药品说明书适应症；或更换为推荐用药。`));
+            `核对药品说明书适应症；或更换为推荐用药。`,
+            { affected_items: [g] }));
           // IND-02：超说明书用药提示（与 IND-01 互补，提醒循证/审批）
           hits.push(hit(R['IND-02'], 'warn',
             `「${g}」未列入本病种推荐目录，属超说明书用药，须有循证依据并经审批。`,
-            `超说明书用药应循证并经医院药事管理与药物治疗学委员会审批。`));
+            `超说明书用药应循证并经医院药事管理与药物治疗学委员会审批。`,
+            { affected_items: [g] }));
         }
       });
     });
@@ -319,15 +331,18 @@
             if (v > maxMg * 1.5) {
               hits.push(hit(R['DOSE-01'], 'error',
                 `「${it.drug.generic_name}」单次剂量 ${v}mg 超过说明书上限 ${maxMg}mg（1.5倍）。`,
-                `下调至说明书范围。`));
+                `下调至说明书范围。`,
+                { affected_items: [it.drug.generic_name] }));
             } else if (v > maxMg) {
               hits.push(hit(R['DOSE-01'], 'warn',
                 `「${it.drug.generic_name}」单次剂量 ${v}mg 略超说明书上限 ${maxMg}mg。`,
-                `复核剂量。`));
+                `复核剂量。`,
+                { affected_items: [it.drug.generic_name] }));
             } else if (minMg != null && v < minMg * 0.5) {
               hits.push(hit(R['DOSE-01'], 'warn',
                 `「${it.drug.generic_name}」单次剂量 ${v}mg 低于说明书下限 ${minMg}mg 的一半，可能剂量不足。`,
-                `复核给药剂量。`));
+                `复核给药剂量。`,
+                { affected_items: [it.drug.generic_name] }));
             }
           }
         }
@@ -342,7 +357,8 @@
           if (it.drug.liver_renal_note && /减量|不全|慎用/.test(it.drug.liver_renal_note)) {
             hits.push(hit(R['DOSE-02'], 'warn',
               `患者肝/肾功能不全，「${it.drug.generic_name}」需调整剂量：${it.drug.liver_renal_note}`,
-              `按 eGFR/Child-Pugh 调整剂量。`));
+              `按 eGFR/Child-Pugh 调整剂量。`,
+              { affected_items: [it.drug.generic_name] }));
           }
         });
       });
@@ -370,7 +386,8 @@
           if (needLongTermStable && !patientLongTermStable) {
             hits.push(hit(R['DUR-01'], 'warn',
               `慢性病「${dx.name || ''}」需长期稳定用药，但患者未标记 long_term_stable（首次就诊或病情未控制），不建议直接开 ${d} 天长处方。`,
-              `先开 7 天观察疗效与耐受性，待方案稳定后再续长处方（≤12周）。`));
+              `先开 7 天观察疗效与耐受性，待方案稳定后再续长处方（≤12周）。`,
+              { affected_items: [it.drug.generic_name] }));
             return;
           }
           // 慢性病长处方分支：28-84天不 warn，仅记录 pass 级"长处方"提示
@@ -380,11 +397,13 @@
           } else {
             hits.push(hit(R['DUR-01'], 'warn',
               `慢性病长处方疗程 ${d} 天，超过 ${maxLongDays} 天（${Math.round(maxLongDays/7)} 周）上限。`,
-              `长处方一般≤12周（84天）；超过需上级医师评估并备注。`));
+              `长处方一般≤12周（84天）；超过需上级医师评估并备注。`,
+              { affected_items: [it.drug.generic_name] }));
           }
         } else if (!isChronic && d > 7) {
           hits.push(hit(R['DUR-01'], 'warn',
-            `普通处方疗程 ${d} 天，超过 7 日上限。`, `一般≤7日。`));
+            `普通处方疗程 ${d} 天，超过 7 日上限。`, `一般≤7日。`,
+            { affected_items: [it.drug.generic_name] }));
         }
       });
     });
@@ -401,9 +420,11 @@
       });
       Object.keys(map).forEach(c => {
         if (map[c].length > 1) {
+          // B1: DUP-01 affected_items = 重复的所有药品通用名
           hits.push(hit(R['DUP-01'], 'warn',
             `处方内药理分类「${c}」重复：${map[c].join(' + ')}`,
-            `避免同类重复用药。`));
+            `避免同类重复用药。`,
+            { affected_items: map[c].slice() }));
         }
       });
     });
@@ -419,9 +440,11 @@
         overlap.forEach(c => {
           const oNames = oral.filter(it => it.drug.pharmacology_class === c).map(it => it.drug.generic_name);
           const iNames = ivDrugs.filter(it => it.drug.pharmacology_class === c).map(it => it.drug.generic_name);
+          // B1: DUP-02 affected_items = 跨通道冲突的两组药品
           hits.push(hit(R['DUP-02'], 'warn',
             `同次就诊口服+静脉同类交叉：口服[${oNames.join(',')}] + 静滴[${iNames.join(',')}]，且 iv_reason 未选择"序贯治疗"。`,
-            `如确为序贯治疗，请将 iv_reason 改为"序贯治疗"；否则删除其中一组。`));
+            `如确为序贯治疗，请将 iv_reason 改为"序贯治疗"；否则删除其中一组。`,
+            { affected_items: oNames.concat(iNames) }));
         });
       } else {
         overlap.forEach(c => {
@@ -432,35 +455,54 @@
 
     // INT-01 喹诺酮 + 钙铝抗酸剂（演示：若处方内同时有喹诺酮和"含钙/铝"关键词药）
     const allRx = [...oral, ...ivDrugs];
-    const hasFq = allRx.some(it => isQuinolone(it.drug));
+    const fqItems = allRx.filter(it => isQuinolone(it.drug));
+    const hasFq = fqItems.length > 0;
     if (hasFq) {
       const antacid = allRx.find(it => /钙|铝|镁|铋|铁/.test(it.drug.generic_name || ''));
       if (antacid) {
+        // B1: affected_items = 喹诺酮药 + 抗酸药
         hits.push(hit(R['INT-01'], 'error',
           `喹诺酮类与「${antacid.drug.generic_name}」同处方：二价阳离子螯合显著降低喹诺酮吸收。`,
-          `间隔≥2小时服用，或更换方案。`));
+          `间隔≥2小时服用，或更换方案。`,
+          { affected_items: fqItems.map(it => it.drug.generic_name).concat([antacid.drug.generic_name]) }));
       }
     }
 
     // INT-02 ACEI/ARB + 保钾利尿剂（演示）
-    const hasACEI_ARB_legacy = allRx.some(it => /普利|沙坦/.test(it.drug.generic_name || ''));
-    const hasKspare = allRx.some(it => /螺内酯|氨苯蝶啶|阿米洛利/.test(it.drug.generic_name || ''));
-    if (hasACEI_ARB_legacy && hasKspare) {
+    const aceiArbItems = allRx.filter(it => /普利|沙坦/.test(it.drug.generic_name || ''));
+    const kspareItems = allRx.filter(it => /螺内酯|氨苯蝶啶|阿米洛利/.test(it.drug.generic_name || ''));
+    if (aceiArbItems.length && kspareItems.length) {
+      // B1: affected_items = ACEI/ARB + 保钾利尿剂
       hits.push(hit(R['INT-02'], 'warn',
-        `ACEI/ARB 与保钾利尿剂联用，警惕高钾血症。`, `监测血钾。`));
+        `ACEI/ARB 与保钾利尿剂联用，警惕高钾血症。`, `监测血钾。`,
+        { affected_items: aceiArbItems.map(it => it.drug.generic_name).concat(kspareItems.map(it => it.drug.generic_name)) }));
     }
 
-    // TCM-01 占位
-    hits.push(pass(R['TCM-01'], '本批次未含中药饮片，十八反十九畏规则占位。'));
+    // TCM-01 占位（B4: TCM 规则隔离 — 西医处方无中药时不触发，避免无关 pass 噪声）
+    // 仅当处方中存在中药饮片/中成药/中药注射剂时才输出 TCM 占位提示；西医处方（无中药）时不推送。
+    const tcmAllDrugs = [];
+    [ctx.normal_rx, ctx.iv_rx].forEach(rx => {
+      if (rx && Array.isArray(rx.items)) rx.items.forEach(it => { if (it && it.drug) tcmAllDrugs.push(it.drug); });
+    });
+    const hasTcmInRx = tcmAllDrugs.some(d =>
+      d.is_tcm === true || d.is_tcm_injection === true ||
+      /中药|中成药|饮片|中草药|方剂/.test(d.pharmacology_class || '')
+    );
+    if (hasTcmInRx) {
+      hits.push(pass(R['TCM-01'], '本处方含中药/中成药；十八反十九畏规则待饮片录入后启用。'));
+    }
+    // 西医处方（无任何中药）时不推送 TCM-01，避免在西医处方点评中出现无关 TCM pass 条目。
 
     // ====================== 6. 特殊人群 ======================
     // POP-01 儿童喹诺酮
     if (patient.age < 18) {
       allRx.forEach(it => {
         if (isQuinolone(it.drug)) {
+          // B1: affected_items = 触发规则的喹诺酮药品通用名（如 "左氧氟沙星片"）
           hits.push(hit(R['POP-01'], 'error',
             `患者实足年龄 ${patient.age} 岁（<18），禁用喹诺酮类「${it.drug.generic_name}」。`,
-            `更换为青霉素/头孢类等儿童安全抗菌药。`));
+            `更换为青霉素/头孢类等儿童安全抗菌药。`,
+            { affected_items: [it.drug.generic_name] }));
         }
       });
     }
@@ -470,12 +512,14 @@
       const speed = parseFloat(iv.drip_speed_mlh);
       if (!isNaN(speed) && speed > 60) {
         hits.push(hit(R['POP-02'], 'warn',
-          `老年患者滴速 ${speed}ml/h 偏快（建议≤60ml/h）。`, `减速并监测心肺。`));
+          `老年患者滴速 ${speed}ml/h 偏快（建议≤60ml/h）。`, `减速并监测心肺。`,
+          { affected_items: [] }));
       }
       const tv = parseFloat(iv.total_volume_ml);
       if (!isNaN(tv) && tv > 1000) {
         hits.push(hit(R['POP-02'], 'warn',
-          `老年患者单次输液总量 ${tv}ml 偏大（建议≤500ml）。`, `分次输注或改口服。`));
+          `老年患者单次输液总量 ${tv}ml 偏大（建议≤500ml）。`, `分次输注或改口服。`,
+          { affected_items: [] }));
       }
     }
 
@@ -485,7 +529,8 @@
       if (it.drug.abx_level === 'special') {
         hits.push(hit(R['ABX-01'], 'error',
           `「${it.drug.generic_name}」属特殊使用级抗菌药（${it.drug.abx_level}），门诊不得直接使用。`,
-          `需住院治疗并经高级职称会诊审批；本处方应删除该药。`));
+          `需住院治疗并经高级职称会诊审批；本处方应删除该药。`,
+          { affected_items: [it.drug.generic_name] }));
       }
     });
 
@@ -499,7 +544,8 @@
       restrictedList.forEach(it => {
         hits.push(hit(R['ABX-02'], 'warn',
           `「${it.drug.generic_name}」为限制使用级抗菌药，需中级以上职称确认。`,
-          `请在弹窗中完成模拟确认。`));
+          `请在弹窗中完成模拟确认。`,
+          { affected_items: [it.drug.generic_name] }));
       });
     }
 
@@ -512,11 +558,13 @@
         if (isWeakIvReason(iv.iv_reason)) {
           hits.push(hit(R['IV-01'], 'error',
             `疾病「${disease.name}」通常无需输液（usually_no_iv），且输液指征不充分（${iv.iv_reason || '未填写'}）。`,
-            `请复核：确有脱水/不能进食/重症感染等客观指征？否则建议改口服方案。`));
+            `请复核：确有脱水/不能进食/重症感染等客观指征？否则建议改口服方案。`,
+            { affected_items: (iv.items||[]).filter(it => it.drug && it.drug.dosage_form === 'iv_drip').map(it => it.drug.generic_name) }));
         } else {
           hits.push(hit(R['IV-01'], 'warn',
             `疾病「${disease.name}」通常无需输液，学生选择了静脉通道（指征：${iv.iv_reason}）。`,
-            `请补充客观指征证据；否则建议改口服方案。`));
+            `请补充客观指征证据；否则建议改口服方案。`,
+            { affected_items: (iv.items||[]).filter(it => it.drug && it.drug.dosage_form === 'iv_drip').map(it => it.drug.generic_name) }));
         }
       }
 
@@ -526,7 +574,8 @@
         if (isWeakIvReason(iv.iv_reason)) {
           hits.push(hit(R['IV-02'], 'warn',
             `「${disease.name}」有一线口服方案（${disease.first_line_oral.slice(0,3).join('、')}），却无充分理由选择静脉给药。`,
-            `遵循“能口服不肌注，能肌注不输液”原则；如确需静脉，请补充指征。`));
+            `遵循“能口服不肌注，能肌注不输液”原则；如确需静脉，请补充指征。`,
+            { affected_items: iv.items.filter(it => it.drug && it.drug.dosage_form === 'iv_drip').map(it => it.drug.generic_name) }));
         } else {
           hits.push(pass(R['IV-02'], `有客观输液指征（${iv.iv_reason}），口服替代不适用。`));
         }
@@ -540,7 +589,8 @@
       if (missing.length) {
         hits.push(hit(R['IV-03'], 'error',
           `输液专项字段缺失：${missing.join('、')}`,
-          `补全所有输液专项字段。`));
+          `补全所有输液专项字段。`,
+          { affected_items: [] }));
       } else {
         hits.push(pass(R['IV-03'], '输液专项字段完整。'));
       }
@@ -555,14 +605,16 @@
           const sev = special ? 'error' : 'warn';
           hits.push(hit(R['IV-04'], sev,
             `${special ? '老年/儿童/心肺肾功能不全患者' : '患者'}滴速 ${speed}ml/h 超过「${it.drug.generic_name}」说明书上限 ${max}ml/h。`,
-            `按说明书减速。`));
+            `按说明书减速。`,
+            { affected_items: [it.drug.generic_name] }));
         }
       });
       if (special) {
         const tv = parseFloat(iv.total_volume_ml);
         if (!isNaN(tv) && tv > 1000) {
           hits.push(hit(R['IV-04'], 'warn',
-            `特殊人群单次输液总量 ${tv}ml 偏大（建议≤500ml）。`, `分次或改口服。`));
+            `特殊人群单次输液总量 ${tv}ml 偏大（建议≤500ml）。`, `分次或改口服。`,
+            { affected_items: [] }));
         }
       }
 
@@ -572,7 +624,8 @@
         if (hasIVDrug) {
           hits.push(hit(R['IV-05'], 'error',
             `诊断「${disease.name}」命中《门诊输液负面清单》（普通感冒/轻症高血压复诊/功能性消化不良/术后复诊等），却开具静脉给药。`,
-            `门诊限输：改为口服/外用/随访。`));
+            `门诊限输：改为口服/外用/随访。`,
+            { affected_items: iv.items.filter(it => it.drug && it.drug.dosage_form === 'iv_drip').map(it => it.drug.generic_name) }));
         }
       }
 
@@ -599,7 +652,8 @@
           if (allowed.length && !hitAllowed) {
             hits.push(hit(R['IV-06'], 'error',
               `「${drugName}」说明书允许溶媒为：${allowed.join('、')}；所选溶媒「${solventName}」不在内。`,
-              `更换为说明书指定溶媒。`));
+              `更换为说明书指定溶媒。`,
+              { affected_items: [drugName] }));
             return;
           }
           // 2) 再查 compat.json（按通用名+体积匹配）
@@ -608,11 +662,13 @@
             if (rec.compatibility === 'incompatible') {
               hits.push(hit(R['IV-06'], 'error',
                 `溶媒-药物配伍禁忌：${solventName} + ${drugName}。${rec.note}`,
-                `更换溶媒或药物。`));
+                `更换溶媒或药物。`,
+                { affected_items: [drugName] }));
             } else if (rec.compatibility === 'caution') {
               hits.push(hit(R['IV-06'], 'warn',
                 `溶媒-药物配伍需谨慎：${solventName} + ${drugName}。${rec.note}`,
-                `建议更换为首选溶媒。`));
+                `建议更换为首选溶媒。`,
+                { affected_items: [drugName] }));
             }
           }
         });
@@ -626,7 +682,8 @@
         if (tcm.length && others.length) {
           hits.push(hit(R['IV-07'], 'error',
             `第${gk}组：中药注射剂「${tcm.map(d=>d.drug.generic_name).join('、')}」与其他药物「${others.map(d=>d.drug.generic_name).join('、')}」同瓶混合。`,
-            `中药注射剂必须单独成组、单独输注，严禁混合配伍。`));
+            `中药注射剂必须单独成组、单独输注，严禁混合配伍。`,
+            { affected_items: tcm.map(d=>d.drug.generic_name).concat(others.map(d=>d.drug.generic_name)) }));
         }
       });
 
@@ -644,11 +701,13 @@
             if (rec.compatibility === 'incompatible') {
               hits.push(hit(R['DD-01'], 'error',
                 `同瓶药物配伍禁忌（第${gk}组）：${a} + ${b}。${rec.note}`,
-                `严禁同瓶混合，须分瓶分开输注。`));
+                `严禁同瓶混合，须分瓶分开输注。`,
+                { affected_items: [a, b] }));
             } else if (rec.compatibility === 'caution') {
               hits.push(hit(R['DD-01'], 'warn',
                 `同瓶药物配伍需谨慎（第${gk}组）：${a} + ${b}。${rec.note}`,
-                `建议分瓶输注并加强监测。`));
+                `建议分瓶输注并加强监测。`,
+                { affected_items: [a, b] }));
             }
           }
         }
@@ -661,11 +720,13 @@
         if (result == null || result === '' || result === 'pending') {
           hits.push(hit(R['IV-08'], 'error',
             `「${it.drug.generic_name}」需皮试，但未填写皮试结果。`,
-            `用药前必须完成皮试并记录阴性结果。`));
+            `用药前必须完成皮试并记录阴性结果。`,
+            { affected_items: [it.drug.generic_name] }));
         } else if (result === 'positive' || result === '阳性') {
           hits.push(hit(R['IV-08'], 'error',
             `「${it.drug.generic_name}」皮试阳性，严禁使用。`,
-            `更换为非青霉素/头孢类替代药物。`));
+            `更换为非青霉素/头孢类替代药物。`,
+            { affected_items: [it.drug.generic_name] }));
         } else {
           hits.push(pass(R['IV-08'],
             `「${it.drug.generic_name}」皮试阴性（${result}），可使用。`));
@@ -678,14 +739,16 @@
         if (!isNaN(d) && d > 1) {
           hits.push(hit(R['IV-09'], 'warn',
             `门诊静脉输液疗程 ${d} 天，超过当日单次常规。`,
-            `门诊输液一般≤1日量；超量须医务科审批。`));
+            `门诊输液一般≤1日量；超量须医务科审批。`,
+            { affected_items: [it.drug.generic_name] }));
         }
       });
 
       // 儿童体重必填
       if (patient.age <= 14 && (!patient.weight || patient.weight <= 0)) {
         hits.push(hit(R['IV-04'], 'error',
-          `儿童输液未填写体重。`, `按体重计算剂量与补液量。`));
+          `儿童输液未填写体重。`, `按体重计算剂量与补液量。`,
+          { affected_items: [] }));
       }
     }
 
@@ -697,12 +760,14 @@
     if (patient.gender === '男' && femaleOnlyDx.some(k => dxName.includes(k))) {
       hits.push(hit(R['YN-01'], 'error',
         `诊断「${disease.name}」为女性专属疾病，但患者性别为男。`,
-        `核对患者性别与诊断是否一致，如为鉴别诊断需说明理由。`));
+        `核对患者性别与诊断是否一致，如为鉴别诊断需说明理由。`,
+        { affected_items: [] }));
     }
     if (patient.gender === '女' && maleOnlyDx.some(k => dxName.includes(k))) {
       hits.push(hit(R['YN-01'], 'error',
         `诊断「${disease.name}」为男性专属疾病，但患者性别为女。`,
-        `核对患者性别与诊断是否一致。`));
+        `核对患者性别与诊断是否一致。`,
+        { affected_items: [] }));
     }
 
     // YN-02: 医保限适应症药品超范围支付（简化版：关键治疗药与诊断大类不匹配）
@@ -712,20 +777,24 @@
     // 合并症文本（P2-2：如 T2DM 合并高血压，患者 comorbidities 含"高血压"时，ACEI/CCB 仍属医保合理用药）
     const comorbsTxt = (Array.isArray(patient.comorbidities) ? patient.comorbidities.join(' ') : (patient.comorbidities||'')) + ' ' + (patient.note||'');
     // 降压药 vs 无高血压诊断
-    const hasAntihypertensive = allDrugs2.some(d => /氨氯地平|硝苯地平|美托洛尔|缬沙坦|厄贝沙坦|卡托普利|依那普利|氯沙坦/.test(d.generic_name||''));
+    const antihypertensiveDrugs = allDrugs2.filter(d => /氨氯地平|硝苯地平|美托洛尔|缬沙坦|厄贝沙坦|卡托普利|依那普利|氯沙坦/.test(d.generic_name||''));
+    const hasAntihypertensive = antihypertensiveDrugs.length > 0;
     const hasHypertensionDx = /高血压|冠心病|心绞痛|TIA|短暂性脑缺血/.test(dxName) || /高血压|冠心病|心绞痛/.test(comorbsTxt);
     if (hasAntihypertensive && !hasHypertensionDx) {
       hits.push(hit(R['YN-02'], 'error',
         `开具了降压/心血管药物，但诊断「${disease.name}」不在高血压/冠心病适应症范围内，医保基金不予支付。`,
-        `核对诊断与用药适应症，如为合并症需补充对应诊断。`));
+        `核对诊断与用药适应症，如为合并症需补充对应诊断。`,
+        { affected_items: antihypertensiveDrugs.map(d => d.generic_name) }));
     }
     // 降糖药 vs 无糖尿病诊断
-    const hasAntidiabetic = allDrugs2.some(d => /二甲双胍|格列美脲|格列齐特|胰岛素|阿卡波糖|西格列汀/.test(d.generic_name||''));
+    const antidiabeticDrugs = allDrugs2.filter(d => /二甲双胍|格列美脲|格列齐特|胰岛素|阿卡波糖|西格列汀/.test(d.generic_name||''));
+    const hasAntidiabetic = antidiabeticDrugs.length > 0;
     const hasDiabetesDx = /糖尿病/.test(dxName) || /糖尿病/.test(comorbsTxt);
     if (hasAntidiabetic && !hasDiabetesDx) {
       hits.push(hit(R['YN-02'], 'error',
         `开具了降糖药物，但诊断「${disease.name}」不在糖尿病适应症范围内，医保基金不予支付。`,
-        `核对诊断与用药适应症，如为糖尿病需补充对应诊断。`));
+        `核对诊断与用药适应症，如为糖尿病需补充对应诊断。`,
+        { affected_items: antidiabeticDrugs.map(d => d.generic_name) }));
     }
 
     // ====================== 10. 新增：特殊人群与相互作用增强 ======================
@@ -750,21 +819,24 @@
             if (v != null && v > maxMg * 0.7) {
               hits.push(hit(R['SPEC-01'], 'warn',
                 `${popDesc}「${it.drug.generic_name}」单次剂量 ${v}mg，建议从常规剂量的半量开始滴定（约 ${Math.round(maxMg*0.5)}mg）。`,
-                `老年患者起始剂量宜减半，根据耐受情况逐步调整。`));
+                `老年患者起始剂量宜减半，根据耐受情况逐步调整。`,
+                { affected_items: [it.drug.generic_name] }));
             }
           }
           // 儿童未按体重换算提示
           if (isChild && !patient.weight) {
             hits.push(hit(R['SPEC-01'], 'warn',
               `儿童患者「${it.drug.generic_name}」未填写体重，无法按 mg/kg 换算剂量。`,
-              `请填写患儿体重，按 mg/kg 精确计算单次剂量。`));
+              `请填写患儿体重，按 mg/kg 精确计算单次剂量。`,
+              { affected_items: [it.drug.generic_name] }));
           }
           // 肝肾功能不全提示
           if ((hasRenalIssue || hasLiverIssue) && it.drug.liver_renal_note) {
             if (/减量|不全|慎用|禁用/.test(it.drug.liver_renal_note)) {
               hits.push(hit(R['SPEC-01'], 'warn',
                 `${popDesc}「${it.drug.generic_name}」需调整剂量：${it.drug.liver_renal_note}`,
-                `根据 eGFR/Child-Pugh 分级调整剂量，必要时更换药物。`));
+                `根据 eGFR/Child-Pugh 分级调整剂量，必要时更换药物。`,
+                { affected_items: [it.drug.generic_name] }));
             }
           }
         });
@@ -791,22 +863,26 @@
       if (patientFlags.pregnancy && /孕妇|妊娠|哺乳/.test(warning)) {
         hits.push(hit(R['SPEC-02'], 'error',
           `患者为孕妇/哺乳期，「${drug}」禁忌症：${warning}`,
-          `妊娠期禁用药物，更换为妊娠安全级别更高的替代药。`));
+          `妊娠期禁用药物，更换为妊娠安全级别更高的替代药。`,
+          { affected_items: [drug] }));
       }
       if (patientFlags.glaucoma && /青光眼/.test(warning)) {
         hits.push(hit(R['SPEC-02'], 'error',
           `患者有青光眼，「${drug}」禁忌症：${warning}`,
-          `青光眼禁用抗胆碱能药物，更换替代药。`));
+          `青光眼禁用抗胆碱能药物，更换替代药。`,
+          { affected_items: [drug] }));
       }
       if (patientFlags.pepticUlcer && /消化性溃疡|胃溃疡/.test(warning)) {
         hits.push(hit(R['SPEC-02'], 'warn',
           `患者有消化性溃疡病史，「${drug}」注意：${warning}`,
-          `NSAIDs类药物可诱发消化道出血，建议联用PPI或更换为COX-2选择性抑制剂。`));
+          `NSAIDs类药物可诱发消化道出血，建议联用PPI或更换为COX-2选择性抑制剂。`,
+          { affected_items: [drug] }));
       }
       if (patientFlags.renalArteryStenosis && /肾动脉狭窄/.test(warning)) {
         hits.push(hit(R['SPEC-02'], 'error',
           `患者双侧肾动脉狭窄，「${drug}」禁忌症：${warning}`,
-          `ACEI/ARB类药物在双侧肾动脉狭窄时禁用，更换为CCB类。`));
+          `ACEI/ARB类药物在双侧肾动脉狭窄时禁用，更换为CCB类。`,
+          { affected_items: [drug] }));
       }
     });
 
@@ -815,43 +891,48 @@
     const hasDrug = (name) => drugNames.some(n => n.includes(name));
 
     // SSRI + MAOI（5-羟色胺综合征）
-    const hasSSRI = drugNames.some(n => /氟西汀|帕罗西汀|艾司西酞普兰|舍曲林|氟伏沙明/.test(n));
-    const hasMAOI = drugNames.some(n => /吗氯贝胺|苯乙肼|反苯环丙胺/.test(n));
-    if (hasSSRI && hasMAOI) {
+    const ssriDrugs = drugNames.filter(n => /氟西汀|帕罗西汀|艾司西酞普兰|舍曲林|氟伏沙明/.test(n));
+    const maoiDrugs = drugNames.filter(n => /吗氯贝胺|苯乙肼|反苯环丙胺/.test(n));
+    if (ssriDrugs.length && maoiDrugs.length) {
       hits.push(hit(R['INTER-01'], 'error',
         `SSRI类抗抑郁药与MAOI类单胺氧化酶抑制剂合用，可致5-羟色胺综合征（高热、肌强直、意识障碍）。`,
-        `两类药物禁用合用；停药后需间隔14天方可换用。`));
+        `两类药物禁用合用；停药后需间隔14天方可换用。`,
+        { affected_items: ssriDrugs.concat(maoiDrugs) }));
     }
     // ACEI/ARB + 保钾利尿剂（高钾血症）
-    const hasACEI_ARB = drugNames.some(n => /卡托普利|依那普利|贝那普利|缬沙坦|厄贝沙坦|氯沙坦|替米沙坦/.test(n));
-    const hasKSpareDiuretic = drugNames.some(n => /螺内酯|氨苯蝶啶|阿米洛利/.test(n));
-    if (hasACEI_ARB && hasKSpareDiuretic) {
+    const aceiArbDrugs = drugNames.filter(n => /卡托普利|依那普利|贝那普利|缬沙坦|厄贝沙坦|氯沙坦|替米沙坦/.test(n));
+    const kSpareDrugs = drugNames.filter(n => /螺内酯|氨苯蝶啶|阿米洛利/.test(n));
+    if (aceiArbDrugs.length && kSpareDrugs.length) {
       hits.push(hit(R['INTER-01'], 'error',
         `ACEI/ARB与保钾利尿剂合用，可致严重高钾血症（心律失常风险）。`,
-        `合用时需监测血钾，或更换为噻嗪类利尿剂。`));
+        `合用时需监测血钾，或更换为噻嗪类利尿剂。`,
+        { affected_items: aceiArbDrugs.concat(kSpareDrugs) }));
     }
     // 华法林 + NSAIDs（出血风险）
     const hasWarfarin = hasDrug('华法林');
-    const hasNSAID = drugNames.some(n => /布洛芬|双氯芬酸|萘普生|塞来昔布|美洛昔康|阿司匹林/.test(n));
-    if (hasWarfarin && hasNSAID) {
+    const nsaidDrugs = drugNames.filter(n => /布洛芬|双氯芬酸|萘普生|塞来昔布|美洛昔康|阿司匹林/.test(n));
+    if (hasWarfarin && nsaidDrugs.length) {
       hits.push(hit(R['INTER-01'], 'error',
         `华法林与NSAIDs合用，显著增加消化道出血和颅内出血风险。`,
-        `如需镇痛建议改用对乙酰氨基酚，或联用PPI保护胃黏膜。`));
+        `如需镇痛建议改用对乙酰氨基酚，或联用PPI保护胃黏膜。`,
+        { affected_items: ['华法林'].concat(nsaidDrugs) }));
     }
     // 他汀 + 大环内酯类（横纹肌溶解）
-    const hasStatin = drugNames.some(n => /阿托伐他汀|瑞舒伐他汀|辛伐他汀|普伐他汀/.test(n));
-    const hasMacrolide = drugNames.some(n => /红霉素|克拉霉素|阿奇霉素/.test(n));
-    if (hasStatin && hasMacrolide) {
+    const statinDrugs = drugNames.filter(n => /阿托伐他汀|瑞舒伐他汀|辛伐他汀|普伐他汀/.test(n));
+    const macrolideDrugs = drugNames.filter(n => /红霉素|克拉霉素|阿奇霉素/.test(n));
+    if (statinDrugs.length && macrolideDrugs.length) {
       hits.push(hit(R['INTER-01'], 'error',
         `他汀类与大环内酯类抗生素合用，可显著增加横纹肌溶解风险（CYP3A4抑制）。`,
-        `建议暂停他汀，或更换为头孢类/喹诺酮类抗生素。`));
+        `建议暂停他汀，或更换为头孢类/喹诺酮类抗生素。`,
+        { affected_items: statinDrugs.concat(macrolideDrugs) }));
     }
     // 两种以上中枢抑制药合用（镇静叠加）
     const CNSDepressants = drugNames.filter(n => /阿普唑仑|佐匹克隆|艾司唑仑|地西泮|氯硝西泮|曲马多|奥氮平|利培酮/.test(n));
     if (CNSDepressants.length >= 2) {
       hits.push(hit(R['INTER-01'], 'warn',
         `同时使用多种中枢抑制药（${CNSDepressants.join('、')}），可致过度镇静、呼吸抑制。`,
-        `避免联用两种以上中枢抑制剂；确需合用时需监测呼吸和意识状态。`));
+        `避免联用两种以上中枢抑制剂；确需合用时需监测呼吸和意识状态。`,
+        { affected_items: CNSDepressants.slice() }));
     }
 
     // ====================== 11. 检验检查单（LAB） ======================
@@ -867,7 +948,8 @@
     if (labItems.length === 0) {
       hits.push(hit(R['LAB-03'], 'pass',
         `本次未开具检验检查项目。${hasAbnormalInCase ? '（本病例已有异常指标，如条件允许建议后续复查追踪。）' : ''}`,
-        ''));
+        '',
+        { affected_items: [] }));
     } else {
       // LAB-01 重复开具：同一 exam_code 出现 >1 次
       const codeCount = {};
@@ -883,7 +965,8 @@
         });
         hits.push(hit(R['LAB-01'], 'error',
           `检验检查单存在重复项目：${dupNames.join('、')}（同一项目开具 ${dupCodes.map(c => codeCount[c]).join('、')} 次）。`,
-          `删除重复行；同一申请单内一个检验项目只应开具一次，复查应在病程中另行申请。`));
+          `删除重复行；同一申请单内一个检验项目只应开具一次，复查应在病程中另行申请。`,
+          { affected_items: dupNames.slice() }));
       }
 
       // LAB-02 过度检查/适应症不符：已开项目不在本病种预期 exam_code 列表内
@@ -892,7 +975,8 @@
         const names = offTarget.map(it => it.name + (it.abbr ? `（${it.abbr}）` : ''));
         hits.push(hit(R['LAB-02'], 'warn',
           `开具的检验检查项目「${names.join('、')}」与本病种「${disease.name}」常规评估项目无明显对应关系，存在无指征检查可能。`,
-          `检验项目应与临床诊断相适应；如为鉴别诊断或合并症需要，请在病历中说明理由，否则建议删减。`));
+          `检验项目应与临床诊断相适应；如为鉴别诊断或合并症需要，请在病历中说明理由，否则建议删减。`,
+          { affected_items: names.slice() }));
       }
     }
 
@@ -911,13 +995,15 @@
       if (std.decision === 'surgery' && surgeryRx.decision === 'conservative') {
         hits.push(hit(R['SUR-01'], 'error',
           `「${dxNameS}」具有明确手术指征，你选择了保守治疗，可能延误病情（穿孔/坏死/感染扩散等风险）。`,
-          `本病种一经确诊应及时手术干预；仅在患者存在明确禁忌症不能耐受手术时方可保守，并须在病历中说明理由。`));
+          `本病种一经确诊应及时手术干预；仅在患者存在明确禁忌症不能耐受手术时方可保守，并须在病历中说明理由。`,
+          { affected_items: [] }));
       }
       // SUR-02：无手术指征却选手术（过度医疗）
       else if (std.decision === 'conservative' && surgeryRx.decision === 'surgery') {
         hits.push(hit(R['SUR-02'], 'error',
           `「${dxNameS}」适宜保守治疗，你选择了手术治疗，存在过度医疗指征。`,
-          `本例应先行保守治疗并随访；确有手术指征须有充分影像学/病情依据并经上级医师会诊。`));
+          `本例应先行保守治疗并随访；确有手术指征须有充分影像学/病情依据并经上级医师会诊。`,
+          { affected_items: [] }));
       }
       // 决策方向正确 → 正向通过提示
       else if (std.decision === surgeryRx.decision) {
@@ -931,13 +1017,15 @@
         if (surgeryRx.timing && surgeryRx.timing !== std.timing) {
           hits.push(hit(R['SUR-03'], 'warn',
             `手术时机选择欠妥：你选「${tLabel(surgeryRx.timing)}」，本病种宜「${tLabel(std.timing)}」。`,
-            `按病情紧急程度定时机：急腹症/穿孔/大出血应急诊手术，限期病变完善检查后24-48小时内手术，择期病变可待炎症控制后手术。`));
+            `按病情紧急程度定时机：急腹症/穿孔/大出血应急诊手术，限期病变完善检查后24-48小时内手术，择期病变可待炎症控制后手术。`,
+            { affected_items: [] }));
         }
         // SUR-04：术式选择不当（未选首选术式）
         if (surgeryRx.procedure_id && surgeryRx.procedure_id !== std.procedure_id) {
           hits.push(hit(R['SUR-04'], 'warn',
             `术式与首选方案不一致：你选「${pLabel(surgeryRx.procedure_id)}」，本病种首选「${pLabel(std.procedure_id)}」。`,
-            `首选术式通常创伤小、恢复快；改变术式须有术中发现或患者个体化依据（如穿孔、严重粘连）。`));
+            `首选术式通常创伤小、恢复快；改变术式须有术中发现或患者个体化依据（如穿孔、严重粘连）。`,
+            { affected_items: [] }));
         }
         // SUR-05（禁忌症仍安排手术）：本病种 contraindications 为一般性禁忌宣教，
         // 具体患者是否真的存在禁忌由 SUR-01/SUR-02 决策方向覆盖；此处不重复扣分，避免对正确答案误报。
@@ -966,11 +1054,13 @@
             if (perKg > pd.unit_per_kg_max * 1.5) {
               hits.push(hit(R['DOSAGE-WT'], 'error',
                 `「${g}」按 ${uPerHr} U/h 给予，患者 ${patientWeight}kg 折合 ${perKg.toFixed(3)} U/kg/h，超过儿童/DKA 推荐 ${pd.unit_per_kg_min}-${pd.unit_per_kg_max} U/kg/h 上限。`,
-                `按 0.05-0.1 U/kg/h 静脉泵入，每小时复测血糖与血钾。`));
+                `按 0.05-0.1 U/kg/h 静脉泵入，每小时复测血糖与血钾。`,
+                { affected_items: [g] }));
             } else if (perKg > pd.unit_per_kg_max) {
               hits.push(hit(R['DOSAGE-WT'], 'warn',
                 `「${g}」折合 ${perKg.toFixed(3)} U/kg/h，略高于推荐上限 ${pd.unit_per_kg_max} U/kg/h。`,
-                `复核胰岛素泵速与血糖下降速率（每小时 3.9-6.1 mmol/L）。`));
+                `复核胰岛素泵速与血糖下降速率（每小时 3.9-6.1 mmol/L）。`,
+                { affected_items: [g] }));
             }
             return;
           }
@@ -981,7 +1071,8 @@
             if (v > pd.per_dose_mg_max) {
               hits.push(hit(R['DOSAGE-WT'], 'warn',
                 `「${g}」单次 ${v}mg 超过儿童常用单次 ${pd.per_dose_mg_min}-${pd.per_dose_mg_max}mg 上限。`,
-                `建议 ${pd.per_dose_mg_min}-${pd.per_dose_mg_max}mg/次 ${pd.interval||''}。`));
+                `建议 ${pd.per_dose_mg_min}-${pd.per_dose_mg_max}mg/次 ${pd.interval||''}。`,
+                { affected_items: [g] }));
             }
             return;
           }
@@ -996,19 +1087,23 @@
             if (cap && v > cap) {
               hits.push(hit(R['DOSAGE-WT'], 'error',
                 `「${g}」单次 ${v}mg 超过单次封顶 ${cap}mg（${pd.note||''}）。`,
-                `下调至单次 ≤${cap}mg。`));
+                `下调至单次 ≤${cap}mg。`,
+                { affected_items: [g] }));
             } else if (perKg > pd.mg_per_kg_max * 1.5) {
               hits.push(hit(R['DOSAGE-WT'], 'error',
                 `「${g}」单次 ${v}mg / ${patientWeight}kg = ${perKg.toFixed(1)} mg/kg，超过儿童推荐 ${pd.mg_per_kg_min}-${pd.mg_per_kg_max} mg/kg/次 1.5 倍。`,
-                `按 ${pd.mg_per_kg_max} mg/kg/次 折算，约 ${Math.round(pd.mg_per_kg_max*patientWeight)}mg/次 ${pd.interval||''}。`));
+                `按 ${pd.mg_per_kg_max} mg/kg/次 折算，约 ${Math.round(pd.mg_per_kg_max*patientWeight)}mg/次 ${pd.interval||''}。`,
+                { affected_items: [g] }));
             } else if (perKg > pd.mg_per_kg_max) {
               hits.push(hit(R['DOSAGE-WT'], 'warn',
                 `「${g}」折合 ${perKg.toFixed(1)} mg/kg/次，略高于推荐上限 ${pd.mg_per_kg_max} mg/kg。`,
-                `复核剂量：${pd.note||''}`));
+                `复核剂量：${pd.note||''}`,
+                { affected_items: [g] }));
             } else if (perKg < pd.mg_per_kg_min * 0.5) {
               hits.push(hit(R['DOSAGE-WT'], 'warn',
                 `「${g}」折合 ${perKg.toFixed(1)} mg/kg/次，低于推荐下限 ${pd.mg_per_kg_min} mg/kg 的一半，可能剂量不足。`,
-                `建议 ${pd.mg_per_kg_min}-${pd.mg_per_kg_max} mg/kg/次。`));
+                `建议 ${pd.mg_per_kg_min}-${pd.mg_per_kg_max} mg/kg/次。`,
+                { affected_items: [g] }));
             }
             return;
           }
@@ -1020,11 +1115,13 @@
             if (perKgPerDay > pd.mg_per_kg_max * 1.5) {
               hits.push(hit(R['DOSAGE-WT'], 'error',
                 `「${g}」日剂量 ${dailyMg}mg / ${patientWeight}kg = ${perKgPerDay.toFixed(1)} mg/kg/天，超过儿童推荐 ${pd.mg_per_kg_min}-${pd.mg_per_kg_max} mg/kg/天 1.5 倍。`,
-                `按 ${pd.mg_per_kg_max} mg/kg/天 分 ${pd.doses_per_day||freqPerDay} 次，约 ${Math.round(pd.mg_per_kg_max*patientWeight/freqPerDay)}mg/次。`));
+                `按 ${pd.mg_per_kg_max} mg/kg/天 分 ${pd.doses_per_day||freqPerDay} 次，约 ${Math.round(pd.mg_per_kg_max*patientWeight/freqPerDay)}mg/次。`,
+                { affected_items: [g] }));
             } else if (perKgPerDay > pd.mg_per_kg_max) {
               hits.push(hit(R['DOSAGE-WT'], 'warn',
                 `「${g}」日剂量折合 ${perKgPerDay.toFixed(1)} mg/kg/天，略高于推荐上限 ${pd.mg_per_kg_max} mg/kg/天。`,
-                `复核：${pd.note||''}`));
+                `复核：${pd.note||''}`,
+                { affected_items: [g] }));
             }
             return;
           }
@@ -1049,26 +1146,30 @@
         if (hitKw) {
           hits.push(hit(R['ALLERGY-01'], 'error',
             `患者既往药物过敏史：${allergyRaw}；本次处方「${name}」命中过敏关键词「${hitKw}」。`,
-            `立即停用该药，更换为非交叉过敏替代药；必要时行皮试。`));
+            `立即停用该药，更换为非交叉过敏替代药；必要时行皮试。`,
+            { affected_items: [name] }));
           return;
         }
         // 2) 青霉素类过敏 → 任何青霉素/头孢类（教学提示交叉过敏）
         if (betaLactamAllergy && /阿莫西林|氨苄|哌拉西林|青霉素|苯唑西林|氯唑西林/.test(name)) {
           hits.push(hit(R['ALLERGY-01'], 'error',
             `患者自述青霉素类过敏，本次处方「${name}」同属青霉素类，禁用。`,
-            `更换为大环内酯类/呼吸喹诺酮（成人）等非β-内酰胺类替代。`));
+            `更换为大环内酯类/呼吸喹诺酮（成人）等非β-内酰胺类替代。`,
+            { affected_items: [name] }));
         }
         // 3) 磺胺过敏 → 磺胺类
         if (sulfonamideAllergy && /磺胺|复方磺胺|柳氮|塞来昔布|格列/.test(name)) {
           hits.push(hit(R['ALLERGY-01'], 'error',
             `患者自述磺胺类过敏，本次处方「${name}」含磺胺结构。`,
-            `更换为非磺胺类替代。`));
+            `更换为非磺胺类替代。`,
+            { affected_items: [name] }));
         }
         // 4) NSAID 过敏 → 同类 NSAID
         if (nsaidAllergy && /布洛芬|双氯芬酸|萘普生|塞来昔布|美洛昔康|阿司匹林|洛索洛芬/.test(name)) {
           hits.push(hit(R['ALLERGY-01'], 'error',
             `患者自述 NSAID/解热镇痛药过敏，本次处方「${name}」同类。`,
-            `如需镇痛考虑对乙酰氨基酚（若未过敏）或阿片类。`));
+            `如需镇痛考虑对乙酰氨基酚（若未过敏）或阿片类。`,
+            { affected_items: [name] }));
         }
       });
     }
@@ -1084,7 +1185,8 @@
         g6pdDrugs.forEach(d => {
           hits.push(hit(R['COMORBID-01'], 'error',
             `患者 G6PD 缺乏（蚕豆病），「${d.generic_name}」为氧化性药物，可诱发急性溶血。`,
-            `禁用；感染时选用青霉素/头孢类等非氧化性抗菌药。`));
+            `禁用；感染时选用青霉素/头孢类等非氧化性抗菌药。`,
+            { affected_items: [d.generic_name] }));
         });
       }
       // COMORBID-02 青光眼
@@ -1093,7 +1195,8 @@
         glaucomDrugs.forEach(d => {
           hits.push(hit(R['COMORBID-02'], 'error',
             `患者青光眼，「${d.generic_name}」具抗胆碱作用，可升高眼压诱发闭角型青光眼急性发作。`,
-            `更换为无抗胆碱作用替代药；如需解痉用选择性平滑肌松弛药。`));
+            `更换为无抗胆碱作用替代药；如需解痉用选择性平滑肌松弛药。`,
+            { affected_items: [d.generic_name] }));
         });
       }
       // COMORBID-03 前列腺增生
@@ -1102,7 +1205,8 @@
         bphDrugs.forEach(d => {
           hits.push(hit(R['COMORBID-03'], 'warn',
             `患者前列腺增生，「${d.generic_name}」具抗胆碱/减充血作用，可能致急性尿潴留。`,
-            `如必须使用需监测排尿；优先选用无抗胆碱副作用替代药。`));
+            `如必须使用需监测排尿；优先选用无抗胆碱副作用替代药。`,
+            { affected_items: [d.generic_name] }));
         });
       }
     }
@@ -1115,13 +1219,14 @@
         if (pregRe.test(d.generic_name||'')) {
           hits.push(hit(R['COMORBID-04'], 'error',
             `患者妊娠状态，「${d.generic_name}」为妊娠禁忌/D-X 类药物，可致胎儿畸形或流产。`,
-            `更换为妊娠安全级别高（B/C 类）替代药；用药需产科医师会诊。`));
+            `更换为妊娠安全级别高（B/C 类）替代药；用药需产科医师会诊。`,
+            { affected_items: [d.generic_name] }));
         }
       });
     }
 
-    // ====================== 15. 经济性提示（ECON-01，仅 warn 不扣分） ======================
-    // 规则：若处方中某药 jtc_batch 为空，且同 pharmacology_class 存在集采品种，则提示
+    // ====================== 15. 经济性提示（ECON-01 / INS-02 / INS-03） ======================
+    // ECON-01：同药理分类已有集采品种却开非集采药（warn，minor，仅提示不扣分）
     try {
       const classHasJtc = {};
       (ctx.drugDb || []).forEach(d => {
@@ -1132,10 +1237,51 @@
         if (!d.jtc_batch && classHasJtc[d.pharmacology_class]) {
           hits.push(hit(R['ECON-01'], 'warn',
             `「${d.generic_name}」（${d.spec||''}）未列入国家/地方集采中选目录，同类药理分类（${d.pharmacology_class}）已有集采品种，价格更低。`,
-            `在疗效相当前提下，优先选用集采中选药品以降低患者负担。`));
+            `在疗效相当前提下，优先选用集采中选药品以降低患者负担。`,
+            { affected_items: [d.generic_name] }));
         }
       });
     } catch (e) { /* drugDb 未注入时静默跳过 */ }
+
+    // INS-02（B5 新增）：同通用名有集采中选品种却开非集采药（minor，仅提示不扣分）
+    // 与 ECON-01 区别：ECON-01 按"药理大类"粗粒度提示；INS-02 按"通用名"精确提示——
+    //   即 drugDb 中存在同一 generic_name 的集采中选记录，但本次开的是该通用名的非集采规格。
+    try {
+      const genericHasJtc = {};
+      (ctx.drugDb || []).forEach(d => {
+        if (d && d.generic_name && d.jtc_batch) genericHasJtc[d.generic_name] = true;
+      });
+      allDrugs2.forEach(d => {
+        if (!d || !d.generic_name) return;
+        if (!d.jtc_batch && genericHasJtc[d.generic_name]) {
+          hits.push(hit(R['INS-02'], 'warn',
+            `「${d.generic_name}」同通用名已有国家集采中选品种，本次开具的非集采规格（${d.spec||'规格未注明'}）价格更高。`,
+            `在疗效与安全等效前提下，优先选用同通用名的集采中选规格以降低患者自付。`,
+            { affected_items: [d.generic_name] }));
+        }
+      });
+    } catch (e) { /* drugDb 未注入时静默跳过 */ }
+
+    // INS-03（B5 新增）：开具了自费生物制剂但无医保指征（minor，仅提示不扣分）
+    // 触发：drug.is_self_paid_biologic=true 或 generic_name 命中生物制剂关键词，且诊断不在医保限定支付目录
+    try {
+      const biologicRe = /单抗|注射液.*(英夫利西|阿达木|曲妥珠|利妥昔|贝伐珠|帕博利珠|纳武利尤|西妥昔|乌司奴|司美格鲁肽|利拉鲁肽|特立帕肽|雷帕明)/;
+      allDrugs2.forEach(d => {
+        if (!d || !d.generic_name) return;
+        const isBiologic = d.is_self_paid_biologic === true || d.is_biologic === true ||
+                           biologicRe.test(d.generic_name) || biologicRe.test(d.spec || '');
+        if (!isBiologic) return;
+        // 已显式标注医保指征（医保限定支付目录覆盖本病种）→ 不提示
+        const dxTxt = (disease.name || '') + ' ' + (patient.note || '');
+        const coveredByInsurance = /类风湿|强直性脊柱炎|银屑病|克罗恩|溃疡性结肠炎|肿瘤|白血病|淋巴瘤|糖尿病|骨质疏松|器官移植/.test(dxTxt);
+        if (!coveredByInsurance) {
+          hits.push(hit(R['INS-03'], 'warn',
+            `「${d.generic_name}」属自费生物制剂/高价生物药，本次诊断「${disease.name}」不在其医保限定支付目录内，将全额自费。`,
+            `请与患者充分沟通费用并确认其知情同意；如有医保适应症诊断请补充完整，或改用医保目录内替代方案。`,
+            { affected_items: [d.generic_name] }));
+        }
+      });
+    } catch (e) { /* 静默跳过 */ }
 
     return hits;
   }

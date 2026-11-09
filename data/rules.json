@@ -729,6 +729,34 @@
       "correct_practice": "改用同通用名集采中选品种",
       "reference_guide": "《国家组织药品集中采购和使用试点方案》",
       "severity_level_hint": "minor"
+    },
+    {
+      "rule_id": "INS-02",
+      "group": "INSURANCE",
+      "title": "同通用名有集采中选品种却开非集采药",
+      "trigger": "处方药品 generic_name 在 drugDb 中存在 jtc_batch 非空记录，但本次开具的药品 jtc_batch 为空",
+      "logic": "按通用名精确判断：同通用名已有国家/地方集采中选规格，本次却开了非集采规格，提示优先选用集采规格以降低患者自付。仅 minor 提示不扣分。",
+      "severity": "warn",
+      "basis": "《国家组织药品集中采购和使用试点方案》：优先选用同通用名集采中选药品。",
+      "weight_hint": "insurance",
+      "lesson_point": "同通用名有集采中选品种时应优先选用集采规格",
+      "correct_practice": "在疗效与安全等效前提下，更换为同通用名集采中选规格",
+      "reference_guide": "《国家组织药品集中采购和使用试点方案》（国办发〔2019〕2号）",
+      "severity_level_hint": "minor"
+    },
+    {
+      "rule_id": "INS-03",
+      "group": "INSURANCE",
+      "title": "自费生物制剂无医保指征",
+      "trigger": "处方药品为生物制剂（单抗/重组蛋白等），且诊断不在该药医保限定支付目录覆盖范围内",
+      "logic": "识别生物制剂（generic_name 含\"单抗\"或标注 is_self_paid_biologic）；若诊断不在医保限定支付目录（类风湿/强直/银屑病/克罗恩/肿瘤/糖尿病/骨质疏松/移植等），提示该生物制剂将全额自费，需与患者确认意愿。仅 minor 提示不扣分。",
+      "severity": "warn",
+      "basis": "《基本医疗保险用药管理暂行办法》（国家医保局令第1号）：医保目录内药品按限定支付范围支付。",
+      "weight_hint": "insurance",
+      "lesson_point": "高价生物制剂须在医保限定支付目录内使用，否则患者全额自费",
+      "correct_practice": "与患者充分沟通费用并签署知情同意；如有医保适应症诊断请补充完整，或改用医保目录内替代方案",
+      "reference_guide": "《基本医疗保险用药管理暂行办法》；国家医保药品目录（2024版）协议期谈判药品限定支付范围",
+      "severity_level_hint": "minor"
     }
   ]
 }

@@ -2304,83 +2304,56 @@
     $('r-meta').innerHTML =
       `诊断：${ctx.disease.name}（${ctx.disease.icd10}）${S.secondaryDiagnosis ? ' · 次要诊断：' + S.secondaryDiagnosis : ''} · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁${dualTag}`;
 
-    // 生命体征：与患者病情/处方结果动态关联，按医学标准变色
-    const score = review.total;
+    // 生命体征：仅展示病例真实采集值（ctx.patient.vitals），不再按评分动态推算
     const pv = ctx.patient.vitals || null;
-    // 生命体征颜色判断工具函数
     function setVitalColor(el, level) {
       el.classList.remove('vital-normal','vital-warn','vital-danger','vital-low');
       el.classList.add('vital-' + level);
     }
-    // 根据处方评分动态推算病情严重度（AI参考值）
-    function adjustVitals(base, s) {
-      // 扣分越严重，病情越重：体温升高、心率加快、血压波动
-      let severity = 0;
-      if (s < 40) severity = 3;      // 重度
-      else if (s < 60) severity = 2; // 中度
-      else if (s < 80) severity = 1; // 轻度
-      const temp = (parseFloat(base.temp) || 36.8) + severity * 0.5;
-      const hr = Math.round((parseFloat(base.hr) || 75) + severity * 8);
-      const bpParts = String(base.bp || '120/80').split('/');
-      const sys = Math.round((parseFloat(bpParts[0]) || 120) - severity * 3);
-      const dia = Math.round((parseFloat(bpParts[1]) || 80) - severity * 2);
-      return {
-        temp: temp.toFixed(1),
-        hr: hr,
-        bp: sys + '/' + dia,
-        severity: severity
-      };
-    }
-    if (pv && pv.hr) {
-      const vitals = adjustVitals(pv, score);
-      // 心率
-      $('vital-hr').textContent = vitals.hr + ' bpm';
-      if (vitals.hr >= 60 && vitals.hr <= 100) setVitalColor($('vital-hr'), 'normal');
-      else if (vitals.hr < 60) setVitalColor($('vital-hr'), 'low');
-      else if (vitals.hr <= 120) setVitalColor($('vital-hr'), 'warn');
-      else setVitalColor($('vital-hr'), 'danger');
-      // 体温
-      $('vital-temp').textContent = vitals.temp + ' ℃';
-      if (vitals.temp >= 36.0 && vitals.temp <= 37.2) setVitalColor($('vital-temp'), 'normal');
-      else if (vitals.temp < 36.0) setVitalColor($('vital-temp'), 'low');
-      else if (vitals.temp <= 38.5) setVitalColor($('vital-temp'), 'warn');
-      else setVitalColor($('vital-temp'), 'danger');
-      // 血压
-      $('vital-bp').textContent = vitals.bp + ' mmHg';
-      const bpParts = vitals.bp.split('/');
-      const sys = parseFloat(bpParts[0]);
-      const dia = parseFloat(bpParts[1]);
-      if (sys >= 90 && sys <= 140 && dia >= 60 && dia <= 90) setVitalColor($('vital-bp'), 'normal');
-      else if (sys < 90 || dia < 60) setVitalColor($('vital-bp'), 'low');
-      else if (sys > 160 || dia > 100) setVitalColor($('vital-bp'), 'danger');
-      else setVitalColor($('vital-bp'), 'warn');
-      // 显示参考标注
-      const refEl = $('vital-ref');
-      if (refEl) {
-        if (vitals.severity > 0) {
-          refEl.textContent = '* AI推算值，仅供医学参考';
-          refEl.style.display = 'block';
-        } else {
-          refEl.style.display = 'none';
+    if (pv && (pv.hr || pv.temp || pv.bp)) {
+      const hrEl = $('vital-hr'), tempEl = $('vital-temp'), bpEl = $('vital-bp');
+      if (hrEl) {
+        hrEl.textContent = (pv.hr != null ? pv.hr : '--') + ' bpm';
+        const hr = parseFloat(pv.hr);
+        if (!isNaN(hr)) {
+          if (hr >= 60 && hr <= 100) setVitalColor(hrEl, 'normal');
+          else if (hr < 60) setVitalColor(hrEl, 'low');
+          else if (hr <= 120) setVitalColor(hrEl, 'warn');
+          else setVitalColor(hrEl, 'danger');
+        }
+      }
+      if (tempEl) {
+        tempEl.textContent = (pv.temp != null ? pv.temp : '--') + ' ℃';
+        const t = parseFloat(pv.temp);
+        if (!isNaN(t)) {
+          if (t >= 36.0 && t <= 37.2) setVitalColor(tempEl, 'normal');
+          else if (t < 36.0) setVitalColor(tempEl, 'low');
+          else if (t <= 38.5) setVitalColor(tempEl, 'warn');
+          else setVitalColor(tempEl, 'danger');
+        }
+      }
+      if (bpEl) {
+        bpEl.textContent = (pv.bp || '--') + ' mmHg';
+        const bpParts = String(pv.bp || '').split('/');
+        const sys = parseFloat(bpParts[0]), dia = parseFloat(bpParts[1]);
+        if (!isNaN(sys) && !isNaN(dia)) {
+          if (sys >= 90 && sys <= 140 && dia >= 60 && dia <= 90) setVitalColor(bpEl, 'normal');
+          else if (sys < 90 || dia < 60) setVitalColor(bpEl, 'low');
+          else if (sys > 160 || dia > 100) setVitalColor(bpEl, 'danger');
+          else setVitalColor(bpEl, 'warn');
         }
       }
     } else {
-      $('vital-hr').textContent = '--';
-      $('vital-temp').textContent = '--';
-      $('vital-bp').textContent = '--';
-      $('vital-hr').className = '';
-      $('vital-temp').className = '';
-      $('vital-bp').className = '';
+      ['vital-hr','vital-temp','vital-bp'].forEach(id => {
+        const el = $(id);
+        if (el) { el.textContent = '--'; el.className = ''; }
+      });
     }
-    // 表情：切换护士图片
+    // D2：隐藏护士表情图（专业培训平台不做游戏化表情切换）
     const nurseImg = $('nurse-face');
-    if (nurseImg) {
-      if (score >= 75) {
-        nurseImg.src = 'img/nurse-happy.jpg';
-      } else {
-        nurseImg.src = 'img/nurse-sad.jpg';
-      }
-    }
+    if (nurseImg) nurseImg.style.display = 'none';
+    const vitalRefEl = $('vital-ref');
+    if (vitalRefEl) vitalRefEl.style.display = 'none';
 
     // 维度卡片（含进度条：宽度=score/weight*100%，颜色按 verdict）
     const grid = $('dim-grid');
@@ -2396,29 +2369,116 @@
       grid.appendChild(div);
     });
 
+    // N2：处方费用统计条（口服+静脉双通道累加 price_yuan * quantity）
+    (function renderFeeBar() {
+      const allItems = []
+        .concat((ctx.normal_rx && ctx.normal_rx.items) ? ctx.normal_rx.items : [])
+        .concat((ctx.iv_rx && ctx.iv_rx.items) ? ctx.iv_rx.items : []);
+      let total = 0, insurance = 0, selfPay = 0;
+      allItems.forEach(it => {
+        const drug = it.drug || {};
+        const price = Number(drug.price_yuan) || 0;
+        const qty = Number(it.quantity) || 1;
+        const sub = price * qty;
+        total += sub;
+        const cls = drug.medical_insurance_class || '';
+        if (cls === '甲' || cls === '乙') insurance += sub;
+        else selfPay += sub; // 自费 / 丙类 / 未标注
+      });
+      let feeEl = $('r-fee-bar');
+      if (!feeEl) {
+        feeEl = document.createElement('div');
+        feeEl.id = 'r-fee-bar';
+        grid.insertAdjacentElement('afterend', feeEl);
+      }
+      if (allItems.length === 0) {
+        feeEl.innerHTML = '';
+        return;
+      }
+      feeEl.style.cssText = 'display:flex;flex-wrap:wrap;gap:12px;align-items:center;' +
+        'margin:10px 0 4px;padding:10px 16px;background:#f8fafc;border:1px solid #e2e8f0;' +
+        'border-radius:10px;font-size:14px;color:#0f172a;';
+      feeEl.innerHTML =
+        `<span style="font-weight:600;">💰 本次药品总价</span>` +
+        `<span style="font-size:18px;font-weight:700;color:#0f4c81;">¥${total.toFixed(2)}</span>` +
+        `<span style="color:#64748b;font-size:12px;">（医保内 ¥${insurance.toFixed(2)} / 自费 ¥${selfPay.toFixed(2)}）</span>`;
+    })();
+
     // 顶部 headline 横幅（critical>0 红底白字，否则蓝底）
     const headlineEl = $('r-headline');
     if (headlineEl) {
       headlineEl.classList.remove('hidden', 'critical', 'info');
       if (review.summary && review.summary.headline) {
-        const critN = (review.groups && Array.isArray(review.groups.critical) ? review.groups.critical.length : (review.criticalCount || 0));
-        headlineEl.classList.add(critN > 0 ? 'critical' : 'info');
+        const critN0 = (review.groups && Array.isArray(review.groups.critical) ? review.groups.critical.length : (review.criticalCount || 0));
+        headlineEl.classList.add(critN0 > 0 ? 'critical' : 'info');
         headlineEl.textContent = review.summary.headline;
       } else {
         headlineEl.classList.add('hidden');
       }
     }
 
-    // 改进建议卡片（summary.next_steps）
-    const nsBox = $('r-nextsteps');
-    if (nsBox) {
-      const steps = (review.summary && Array.isArray(review.summary.next_steps)) ? review.summary.next_steps : [];
-      if (steps.length) {
-        nsBox.innerHTML = `<div class="nextsteps-title">🎯 改进建议</div><ol>${steps.map(s => `<li>${s}</li>`).join('')}</ol>`;
-      } else {
-        nsBox.innerHTML = '';
+    // N1：处方总评结论（合格 / 基本合格 / 不合格）
+    (function renderVerdictBar() {
+      const g = review.groups || {};
+      const cn = Array.isArray(g.critical) ? g.critical.length : (review.criticalCount || 0);
+      const mn = Array.isArray(g.major) ? g.major.length : (review.majorCount || 0);
+      const score = review.total || 0;
+      let verdict, color, bg, border;
+      if (score >= 90) { verdict = '✓ 合格'; color = '#166534'; bg = '#dcfce7'; border = '#86efac'; }
+      else if (score >= 60) { verdict = '⚠ 基本合格'; color = '#92400e'; bg = '#fef3c7'; border = '#fcd34d'; }
+      else { verdict = '✗ 不合格'; color = '#991b1b'; bg = '#fee2e2'; border = '#fca5a5'; }
+      const reason = `依据：${cn} 处严重错误 / ${mn} 处一般错误`;
+      let vEl = $('r-verdict');
+      if (!vEl) {
+        vEl = document.createElement('div');
+        vEl.id = 'r-verdict';
+        if (headlineEl && headlineEl.parentNode) headlineEl.insertAdjacentElement('afterend', vEl);
+        else grid.insertAdjacentElement('afterend', vEl);
       }
-    }
+      vEl.style.cssText = `margin:8px 0 4px;padding:10px 16px;background:${bg};` +
+        `border:1px solid ${border};border-radius:10px;display:flex;flex-wrap:wrap;` +
+        `gap:10px;align-items:center;font-size:14px;`;
+      vEl.innerHTML =
+        `<span style="font-weight:600;">本处方判定：</span>` +
+        `<b style="color:${color};font-size:16px;">${verdict}</b>` +
+        `<span style="color:#475569;font-size:12px;">${reason}</span>`;
+    })();
+
+    // N3：个性化改进建议（基于实际命中规则生成，合并 review.summary.next_steps）
+    (function renderNextSteps() {
+      const g = review.groups || {};
+      const allHits = [].concat(g.critical || [], g.major || [], g.minor || [], hits || []);
+      const seen = new Set();
+      const specific = [];
+      const pushUnique = s => { if (s && !seen.has(s)) { seen.add(s); specific.push(s); } };
+      allHits.forEach(h => {
+        if (!h) return;
+        const rid = h.rule_id || '';
+        const affected = Array.isArray(h.affected_items) && h.affected_items.length ? h.affected_items : [];
+        const drugName = affected.length ? affected.join('、') : (h.title || '相关药品');
+        if (rid === 'ALLERGY-01' || rid === 'COMORBID-04' || rid === 'SPEC-02' || rid === 'POP-01') {
+          pushUnique(`立即停用 ${drugName}，换用无禁忌/妊娠安全级替代药（参考正确做法：${h.correct_practice || '药品说明书禁忌项'}）`);
+        } else if (rid === 'IND-01') {
+          pushUnique(`对照《${(ctx.disease && ctx.disease.name) || '本病种'}诊疗指南》复核选药，确保诊断与用药一致`);
+        } else if (rid === 'IV-05' || rid === 'IV-01' || rid === 'IV-02') {
+          pushUnique('改为口服给药或门诊对症治疗，避免无指征静脉输液');
+        } else if (rid === 'DUP-01' || rid === 'DUP-02') {
+          pushUnique(`删除重复药品 ${drugName}，同类药物只保留一种`);
+        } else if (rid === 'DOSE-01') {
+          pushUnique(`按说明书与体重复核 ${drugName} 的单次剂量与日剂量`);
+        } else if (rid === 'DUR-01') {
+          pushUnique('核对处方天数：普通门诊≤7日、急诊≤3日，超量需注明理由');
+        }
+      });
+      const base = (review.summary && Array.isArray(review.summary.next_steps)) ? review.summary.next_steps.slice() : [];
+      const steps = specific.concat(base.filter(s => !seen.has(s)));
+      const nsBox = $('r-nextsteps');
+      if (nsBox) {
+        nsBox.innerHTML = steps.length
+          ? `<div class="nextsteps-title">🎯 改进建议（个性化）</div><ol>${steps.map(s => `<li>${s}</li>`).join('')}</ol>`
+          : '';
+      }
+    })();
 
     // 命中统计（三级：critical/major/minor；兼容旧 cnt-err/cnt-warn/cnt-pass id）
     // cnt-err 显示 critical+major 总数，cnt-warn 显示 minor，cnt-pass 显示 pass
@@ -2438,24 +2498,7 @@
     const hl = $('hit-list');
     hl.innerHTML = '';
 
-    // 次要诊断提示：如果用户填写了次要诊断，提醒是否考虑合并症用药
-    if (S.secondaryDiagnosis) {
-      const tipDiv = document.createElement('div');
-      tipDiv.className = 'diag-warn';
-      tipDiv.style.margin = '12px 0';
-      tipDiv.style.padding = '10px 14px';
-      tipDiv.style.borderRadius = '8px';
-      tipDiv.style.background = '#fffbeb';
-      tipDiv.style.border = '1px solid #fde68a';
-      tipDiv.innerHTML = `
-        <div style="font-weight:600;margin-bottom:4px;">📋 次要诊断用药完整性检查</div>
-        <div style="font-size:13px;color:#92400e;line-height:1.6;">
-          你填写了次要诊断：<b>${S.secondaryDiagnosis}</b><br>
-          请确认处方中是否包含了合并症的常规用药（如高血压需降压药、糖尿病需降糖药），避免遗漏重要合并症治疗。
-        </div>
-      `;
-      hl.before(tipDiv);
-    }
+    // D4 已删除：硬编码"次要诊断用药完整性检查"提示条，应走规则引擎（COMORBID-*）触发
 
     // 兼容旧数据：若 review.groups 不存在，从 hits 按 severity 推导分组
     function legacyGroup() {
@@ -2532,41 +2575,21 @@
     diffHtml += `<div class="muted" style="margin-top:8px">💡 教学要点：${dx.special_population_note || (dx.contraindications||[]).join('；') || '无特殊。'}</div>`;
     $('diff-box').innerHTML = diffHtml;
 
-    // 知识点卡片：按本次命中规则映射医学知识点
-    const KNOWLEDGE_TIPS = {
-      'POP-01': { t: '喹诺酮类为何18岁以下禁用', b: '左氧氟沙星、环丙沙星等喹诺酮类可损伤幼年动物负重关节软骨，可能影响儿童骨骼发育，故18岁以下禁用；儿童细菌感染宜选青霉素/头孢类β-内酰胺类。' },
-      'POP-02': { t: '老年人输液需个体化', b: '老年人常伴心肾功能减退，大量快速静滴可诱发心衰/肺水肿；滴速宜慢，输液量宜控制，用药后注意尿量与体重变化。' },
-      'ABX-01': { t: '特殊使用级抗菌药不得门诊使用', b: '万古霉素、碳青霉烯类等特殊使用级抗菌药须经抗菌药物管理工作组会诊、高级职称医师开具，仅限住院使用；门诊开具备属违规。' },
-      'ABX-02': { t: '抗菌药物分级管理', b: '抗菌药分非限制级/限制级/特殊级：非限制级可常规开具，限制级须中级以上职称，特殊级须高级职称会诊；目的是延缓耐药。' },
-      'IV-01': { t: '门诊输液指征', b: '原则：能口服不肌注，能肌注不静滴。仅在患者禁食、呕吐严重、药物无口服剂型、病情危重等情形下选择静脉给药。' },
-      'IV-02': { t: '口服序贯治疗', b: '感染控制后应及时由静脉转为口服序贯治疗（switch therapy），缩短住院时间、降低导管相关感染与费用。' },
-      'IV-05': { t: '门诊输液负面清单', b: '病毒性上感、轻症胃肠炎、皮肤病等原则上不输液；无指征输液既增加过敏风险，也属医保重点核查违规行为。' },
-      'IV-06': { t: '溶媒选择与配伍', b: 'β-内酰胺类多用0.9%氯化钠；部分药物不宜用葡萄糖（如泮托拉唑需NS）；应按说明书选择溶媒与浓度，避免浑浊沉淀。' },
-      'IV-07': { t: '中药注射剂单独输注', b: '中药注射剂成分复杂，过敏反应发生率高，严禁与其他药物同瓶混合；须单独输注、用前皮试（按说明书）、慢滴并备好抢救措施。' },
-      'INT-01': { t: '喹诺酮与金属离子螯合', b: '喹诺酮类可与钙、铝、镁等抗酸剂/钙片螯合而吸收减少，两者需间隔2小时以上服用。' },
-      'DUP-01': { t: '避免同类药物重复', b: '同一处方不得重复开具药理作用相同的药物（如两种β-内酰胺类联用，除特殊协同方案外），否则剂量叠加、不良反应增加。' },
-      'IND-01': { t: '诊断-用药相符原则', b: '处方药品须与临床诊断相符；无对应诊断开药（如无高血压诊断开氨氯地平）将被医保拒付，并属处方不适宜。' },
-      'DOSE-01': { t: '按说明书与体重计算剂量', b: '单次剂量须在说明书范围内；儿童须按 mg/kg 体重换算，不可照搬成人剂量；老年人及肝肾功能不全者需酌减。' },
-      'DUR-01': { t: '处方用量限制', b: '普通门诊处方一般≤7日量，急诊≤3日量；高血压、糖尿病等慢性病可延长至2周；超量需注明理由。' },
-      'FMT-01': { t: '每张处方≤5种药品', b: '《处方管理办法》规定每张处方不得超过5种药品；超限应评估必要性，避免大包围用药。' },
-      'YN-01': { t: '诊断须与患者性别相符', b: '如前列腺增生、盆腔炎等诊断须与患者性别一致；开具前核对性别，属处方前记合规基本要求。' },
-      'SPEC-01': { t: '特殊人群剂量换算', b: '儿童按体重(mg/kg)或体表面积算剂量；老年人按肌酐清除率调整经肾排泄药物；妊娠哺乳用药需选择妊娠分级适宜者。' },
-      'SPEC-02': { t: '用药前核对禁忌症', b: '开具前须核对过敏史、禁忌症（如青霉素过敏忌头孢、饮酒后忌头孢、哮喘患者慎用β阻滞剂）。' },
-      'IV-04': { t: '输液速度个体化', b: '成人常规滴速40-60滴/分；年老、心肺功能差者放慢；含钾溶液滴速≤20mmol/h，严禁静脉推注。' }
-    };
-    // 知识点卡片：优先从 hit.related_topic 驱动，KNOWLEDGE_TIPS[rule_id] 兜底
+    // D3：已删除前端硬编码 KNOWLEDGE_TIPS 表（24条）。
+    // 知识点卡片仅由命中规则自带的 related_topic 驱动；无 related_topic 则不渲染知识点卡片。
     const tipSet = [];
     const seenTip = new Set();
     const allHitsForTips = [].concat(grouped.critical, grouped.major, grouped.minor);
     allHitsForTips.forEach(h => {
-      // related_topic 优先（与 KNOWLEDGE_TIPS 的 key 对齐）
-      let tip = h.related_topic ? KNOWLEDGE_TIPS[h.related_topic] : null;
-      if (!tip) tip = KNOWLEDGE_TIPS[h.rule_id];
-      if (tip && !seenTip.has(tip.t)) { seenTip.add(tip.t); tipSet.push(tip); }
+      if (!h || !h.related_topic) return;
+      const key = h.related_topic;
+      if (seenTip.has(key)) return;
+      seenTip.add(key);
+      tipSet.push({
+        t: key.replace(/_/g, ' '),
+        b: h.lesson_point || h.correct_practice || h.message || ''
+      });
     });
-    if (tipSet.length === 0) {
-      tipSet.push({ t: '本次处方规范', b: '未命中错误/警告规则。继续保持：诊断-用药相符、剂量疗程适宜、特殊人群与配伍均已核对。' });
-    }
 
     // 重点关注：summary.top_issues（红色警示卡片，插在知识点卡片前）
     let topIssuesHtml = '';

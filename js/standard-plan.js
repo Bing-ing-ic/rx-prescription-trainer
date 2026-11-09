@@ -199,6 +199,47 @@
     const firstRows = (plan.first_line || []).map(drugRowHtml).join('');
     const secondRows = (plan.second_line || []).map(drugRowHtml).join('');
 
+    // 📋 推荐检验检查（对齐 lab-exams/disease-lab-map）
+    const labs = Array.isArray(plan.recommended_labs) ? plan.recommended_labs : [];
+    const labsHtml = labs.length ? `<div class="sp-block">
+        <div class="sp-block-t">🧪 推荐检验检查（${labs.length} 项）</div>
+        <table class="sp-table sp-lab-table">
+          <thead><tr><th>检查项目</th><th>类别</th><th>临床意义</th></tr></thead>
+          <tbody>${labs.map(l => `<tr>
+            <td class="sp-drug-name">${esc(l.name)}</td>
+            <td>${esc(l.category || '')}</td>
+            <td class="sp-note">${esc(l.why || '')}</td>
+          </tr>`).join('')}</tbody>
+        </table>
+      </div>` : '';
+
+    // 🔪 手术指征判断（对齐 surgeries.json；非手术疾病显示保守治疗说明）
+    const si = plan.surgery_indication || null;
+    let surgHtml = '';
+    if (si) {
+      if (si.needed) {
+        const tl = si.timing_label ? `<span class="sp-surg-timing">⏱ ${esc(si.timing_label)}</span>` : '';
+        const proc = si.procedure ? `<span class="sp-surg-proc">首选术式：${esc(si.procedure)}</span>` : '';
+        const inds = (si.indications || []).map(x => `<li>${esc(x)}</li>`).join('');
+        const ctrs = (si.contraindications || []).map(x => `<li>${esc(x)}</li>`).join('');
+        const tps = (si.teaching_points || []).map(x => `<li>${esc(x)}</li>`).join('');
+        surgHtml = `<div class="sp-block sp-surg">
+          <div class="sp-block-t">🔪 手术指征判断</div>
+          <div class="sp-surg-head">${tl} ${proc}${si.department ? `<span class="sp-surg-dept">科室：${esc(si.department)}</span>` : ''}</div>
+          <div class="sp-surg-cols">
+            <div class="sp-surg-box sp-surg-ind"><h4>✅ 手术适应症</h4><ul>${inds}</ul></div>
+            <div class="sp-surg-box sp-surg-ctr"><h4>🚫 手术禁忌症</h4><ul>${ctrs}</ul></div>
+          </div>
+          ${tps ? `<div class="sp-surg-tp">💡 教学要点：<ul>${tps}</ul></div>` : ''}
+        </div>`;
+      } else {
+        surgHtml = `<div class="sp-block sp-surg sp-surg-no">
+          <div class="sp-block-t">🔪 手术指征判断</div>
+          <div class="sp-note">ℹ️ ${esc(si.note || '本病以内科保守治疗为主。')}</div>
+        </div>`;
+      }
+    }
+
     // 对照差异块
     let cmpHtml = '<div class="sp-compare">';
     if (cmp.covered.length) {
@@ -235,6 +276,8 @@
       <div class="sp-overview">${esc(plan.overview || '')}
         ${plan.target ? `<div class="sp-target">🎯 治疗目标：${esc(plan.target)}</div>` : ''}
       </div>
+      ${labsHtml}
+      ${surgHtml}
       <div class="sp-block">
         <div class="sp-block-t">✅ 首选方案（一线）</div>
         <table class="sp-table">

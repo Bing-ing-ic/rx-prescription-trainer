@@ -1,6 +1,6 @@
 {
   "version": "2026.11.09-r1",
-  "note": "医学生处方推演训练平台·参考标准方案库。每个疾病按 code 索引，提供首选/次选药物（通用名·剂量·频次·给药途径·疗程）、辅助治疗、注意事项与禁忌、特殊人群调整、生命体征调整与指南依据。前端 StandardPlan 模块据此与用户处方做对照学习。药品通用名须与 drugs.json 的 generic_name 完全一致。",
+  "note": "医学生处方推演训练平台·参考标准方案库。每个疾病按 code 索引，提供首选/次选药物（通用名·剂量·频次·给药途径·疗程）、辅助治疗、注意事项与禁忌、特殊人群调整、生命体征调整与指南依据。前端 StandardPlan 模块据此与用户处方做对照学习。药品通用名须与 drugs.json 的 generic_name 完全一致。 2026-11-09 增补：recommended_labs（推荐检验检查，对齐 lab-exams/disease-lab-map）与 surgery_indication（手术指征，对齐 surgeries.json）。 2026-11-09 医学专家复核：推荐检验检查病因化、手术指征具体化、修正利伐沙班/PID/哮喘等剂量与方案错误。",
   "plans": {
     "HTN-I10": {
       "disease_code": "HTN-I10",
@@ -64,7 +64,37 @@
         "tachycardia": "静息心率>80次/分且合并冠心病/心衰者，可在CCB基础上加用小剂量β受体阻滞剂"
       },
       "guideline": "《中国高血压防治指南（2024年版）》",
-      "target": "一般患者 <140/90mmHg，可耐受者 <130/80mmHg"
+      "target": "一般患者 <140/90mmHg，可耐受者 <130/80mmHg",
+      "recommended_labs": [
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "高血压基线肾功能评估，亦是ACEI/ARB用药前及用药后监测必备"
+        },
+        {
+          "exam_code": "BIO-LDL",
+          "name": "低密度脂蛋白胆固醇",
+          "category": "血脂",
+          "why": "心血管危险分层及调脂治疗目标值设定依据"
+        },
+        {
+          "exam_code": "ECG-12LEAD",
+          "name": "十二导联心电图",
+          "category": "心电图",
+          "why": "筛查左室肥厚、心肌缺血、心律失常等高血压心脏靶器官损害"
+        },
+        {
+          "exam_code": "IMG-ABDOM-US",
+          "name": "腹部B超",
+          "category": "超声",
+          "why": "初筛肾动脉狭窄、肾上腺占位等继发性高血压病因"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "URI-J00": {
       "disease_code": "URI-J00",
@@ -108,7 +138,37 @@
         "tachycardia": "心率增快多为发热代偿，热退即恢复；持续心动过速需排除肺炎、心肌炎等并发症"
       },
       "guideline": "《普通感冒规范诊治的专家共识（2012）》；急性上呼吸道感染诊疗规范",
-      "target": "对症缓解症状，5-7天自愈；出现高热>3天、脓涕、咳黄痰、气促需复诊排除细菌感染/肺炎"
+      "target": "对症缓解症状，5-7天自愈；出现高热>3天、脓涕、咳黄痰、气促需复诊排除细菌感染/肺炎",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "鉴别病毒性（WBC正常/偏低）与细菌性（WBC及中性粒细胞升高）上感"
+        },
+        {
+          "exam_code": "CBC-NEUTP",
+          "name": "中性粒细胞百分比",
+          "category": "血常规",
+          "why": "中性粒细胞升高支持细菌感染，指导抗菌药合理使用"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "CRP明显升高支持细菌感染，正常或轻度升高多为病毒性"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "高热不退、咳黄脓痰、气促时排查肺炎等下呼吸道并发症"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "普通感冒本身无手术指征；如合并肺炎脓胸、肺脓肿、呼吸衰竭需胸外科/ICU处理"
+      }
     },
     "CAP-J18": {
       "disease_code": "CAP-J18",
@@ -172,7 +232,37 @@
         "tachycardia": "心率持续>100次/分、SpO2<93%、呼吸≥30次/分提示重症，需住院静脉治疗"
       },
       "guideline": "《中国成人社区获得性肺炎诊断和治疗指南（2016年版）》",
-      "target": "体温正常、咳嗽咳痰明显缓解、白细胞/CRP恢复正常，疗程5-7天"
+      "target": "体温正常、咳嗽咳痰明显缓解、白细胞/CRP恢复正常，疗程5-7天",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "评估感染严重程度，细菌性肺炎多升高，病毒/非典型病原体可正常"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "评估肺炎严重度及早期疗效，动态复查指导疗程"
+        },
+        {
+          "exam_code": "INF-PCT",
+          "name": "降钙素原",
+          "category": "炎症指标",
+          "why": "辅助判断细菌性肺炎及脓毒症，指导抗菌药降阶梯与疗程"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "确诊肺炎、明确病变范围，是社区获得性肺炎诊断必备影像"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "肺炎本身以内科抗感染为主；合并脓胸、肺脓肿、呼吸衰竭需胸外科引流/ICU"
+      }
     },
     "CHD-I25": {
       "disease_code": "CHD-I25",
@@ -263,7 +353,49 @@
         "tachycardia": "静息心率>70次/分且有心绞痛发作者，上调β受体阻滞剂剂量至心率达标"
       },
       "guideline": "《稳定性冠心病诊断与治疗指南（2018年）》",
-      "target": "控制心绞痛发作、提高运动耐量，LDL-C<1.8mmol/L，预防心肌梗死与死亡"
+      "target": "控制心绞痛发作、提高运动耐量，LDL-C<1.8mmol/L，预防心肌梗死与死亡",
+      "recommended_labs": [
+        {
+          "exam_code": "ECG-12LEAD",
+          "name": "十二导联心电图",
+          "category": "心电图",
+          "why": "胸痛发作时捕捉缺血性ST-T动态改变，鉴别心律失常、心包炎及主动脉夹层"
+        },
+        {
+          "exam_code": "IMM-CTNI",
+          "name": "心肌肌钙蛋白I",
+          "category": "心肌标志物",
+          "why": "排查急性冠脉综合征(ACS)/急性心梗，鉴别稳定型心绞痛与不稳定型心绞痛"
+        },
+        {
+          "exam_code": "IMM-CKMB",
+          "name": "肌酸激酶同工酶",
+          "category": "心肌标志物",
+          "why": "辅助心肌损伤判断，动态升高支持急性心梗，结合cTnI提高特异性"
+        },
+        {
+          "exam_code": "BIO-LDL",
+          "name": "低密度脂蛋白胆固醇",
+          "category": "血脂",
+          "why": "冠心病二级预防核心靶点，LDL-C目标<1.8mmol/L，指导他汀强度"
+        },
+        {
+          "exam_code": "IMG-ECHO",
+          "name": "心脏彩超",
+          "category": "超声",
+          "why": "评估左室射血分数(LVEF)、节段性室壁运动异常及瓣膜病，排除结构性心脏病"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "评估肾功能，指导造影剂、ACEI/ARB及抗血小板用药安全性"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "稳定型心绞痛以内科治疗为基础；规范药物(抗血小板+他汀+β阻+硝酸酯)后仍反复发作者，冠脉造影示左主干病变或三支/双支严重狭窄需行经皮冠脉介入(PCI)或冠脉旁路移植术(CABG)。"
+      }
     },
     "TIA-G45": {
       "disease_code": "TIA-G45",
@@ -336,7 +468,49 @@
         "tachycardia": "突发心悸伴脉搏不齐提示房颤可能，需心电图/动态心电图明确，明确后改为抗凝而非单纯抗血小板"
       },
       "guideline": "《中国缺血性脑卒中和短暂性脑缺血发作二级预防指南（2022）》",
-      "target": "短期（90天）内阻止进展为脑梗死，控制血压<140/90mmHg、LDL-C<1.8mmol/L"
+      "target": "短期（90天）内阻止进展为脑梗死，控制血压<140/90mmHg、LDL-C<1.8mmol/L",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-HEAD-CT",
+          "name": "头颅CT平扫",
+          "category": "CT",
+          "why": "首诊快速排除脑出血、颅内占位及明显梗死灶，指导抗血小板/抗凝决策"
+        },
+        {
+          "exam_code": "IMG-HEAD-MRI",
+          "name": "头颅MRI+DWI",
+          "category": "磁共振",
+          "why": "DWI序列检出TIA后微小梗死灶，明确是否为症状性缺血并区分新旧病灶"
+        },
+        {
+          "exam_code": "ECG-12LEAD",
+          "name": "十二导联心电图",
+          "category": "心电图",
+          "why": "筛查阵发性房颤等心源性栓塞来源，必要时行动态心电图"
+        },
+        {
+          "exam_code": "BIO-LDL",
+          "name": "低密度脂蛋白胆固醇",
+          "category": "血脂",
+          "why": "强化他汀二级预防靶点，目标<1.8mmol/L"
+        },
+        {
+          "exam_code": "BIO-FBG",
+          "name": "空腹血糖",
+          "category": "血糖",
+          "why": "筛查糖尿病等可干预的血管危险因素"
+        },
+        {
+          "exam_code": "COAG-DDIM",
+          "name": "D-二聚体",
+          "category": "凝血功能",
+          "why": "阴性可基本排除VTE/肺栓塞；明显升高需进一步排查心源性/栓塞来源"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "TIA本身不需开颅手术；颅外颈动脉重度狭窄(70%-99%)伴症状、规范双抗治疗仍发作者，可考虑颈动脉内膜剥脱术(CEA)或颈动脉支架置入(CAS)；明确心源性房颤者转抗凝而非抗血小板。"
+      }
     },
     "DM-E11": {
       "disease_code": "DM-E11",
@@ -418,7 +592,49 @@
         "tachycardia": "心动过速伴出汗饥饿提示低血糖（血糖<3.9mmol/L），立即口服糖水/含糖食物；持续心动过速需排除甲亢、心脏自主神经病变"
       },
       "guideline": "《中国2型糖尿病防治指南（2020年版）》",
-      "target": "HbA1c<7%，空腹血糖4.4-7.0mmol/L、非空腹<10.0mmol/L，预防急慢性并发症"
+      "target": "HbA1c<7%，空腹血糖4.4-7.0mmol/L、非空腹<10.0mmol/L，预防急慢性并发症",
+      "recommended_labs": [
+        {
+          "exam_code": "BIO-FBG",
+          "name": "空腹血糖",
+          "category": "血糖",
+          "why": "诊断与监测空腹血糖，指导口服降糖药及胰岛素剂量调整"
+        },
+        {
+          "exam_code": "BIO-HBA1C",
+          "name": "糖化血红蛋白",
+          "category": "血糖",
+          "why": "反映近2-3月平均血糖，评估长期控制(目标<7%)，指导方案调整"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "估算eGFR，决定二甲双胍/SGLT-2i剂量及禁忌，筛查糖尿病肾病"
+        },
+        {
+          "exam_code": "BIO-LDL",
+          "name": "低密度脂蛋白胆固醇",
+          "category": "血脂",
+          "why": "糖尿病为ASCVD高危，LDL-C目标<2.6(合并ASCVD者<1.8)，指导他汀使用"
+        },
+        {
+          "exam_code": "UA-GLU",
+          "name": "尿糖",
+          "category": "尿常规",
+          "why": "辅助监测尿糖，血糖>肾糖阈时阳性，受肾糖阈影响仅作参考"
+        },
+        {
+          "exam_code": "UA-KET",
+          "name": "尿酮体",
+          "category": "尿常规",
+          "why": "感染、停药、应激等情况下筛查糖尿病酮症"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "糖尿病本身不需手术；出现糖尿病足坏疽、严重下肢缺血需血管外科重建/截肢，增殖性视网膜病变、白内障需眼科手术，合并急性感染(脓肿、坏疽)时外科处理。"
+      }
     },
     "HYPERTHY-E05": {
       "disease_code": "HYPERTHY-E05",
@@ -482,7 +698,49 @@
         "tachycardia": "静息心率>100次/分予β受体阻滞剂控制；心率持续>140次/分、血压下降警惕甲亢性心脏病/危象"
       },
       "guideline": "《中国甲状腺功能亢进症和其他原因所致甲状腺毒症诊治指南（2022年版）》",
-      "target": "症状缓解、FT3/FT4与TSH恢复正常，疗程1.5-2年，避免复发与突眼加重"
+      "target": "症状缓解、FT3/FT4与TSH恢复正常，疗程1.5-2年，避免复发与突眼加重",
+      "recommended_labs": [
+        {
+          "exam_code": "IMM-TSH",
+          "name": "促甲状腺激素",
+          "category": "甲状腺功能",
+          "why": "原发性甲亢最敏感指标，治疗期监测抑制程度并指导甲巯咪唑减量"
+        },
+        {
+          "exam_code": "IMM-FT3",
+          "name": "游离三碘甲状腺原氨酸",
+          "category": "甲状腺功能",
+          "why": "判断甲亢严重程度，诊断T3型甲亢，治疗随访"
+        },
+        {
+          "exam_code": "IMM-FT4",
+          "name": "游离甲状腺素",
+          "category": "甲状腺功能",
+          "why": "评估甲状腺激素分泌水平，指导抗甲状腺药物剂量调整"
+        },
+        {
+          "exam_code": "IMG-THYROID-US",
+          "name": "甲状腺B超",
+          "category": "超声",
+          "why": "鉴别Graves病(弥漫增大、火海征)与结节性甲状腺肿、高功能腺瘤"
+        },
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "甲巯咪唑治疗前基线及用药中定期监测，警惕粒细胞缺乏(咽痛发热立即复查)"
+        },
+        {
+          "exam_code": "BIO-ALT",
+          "name": "丙氨酸氨基转移酶",
+          "category": "肝功能",
+          "why": "抗甲状腺药物肝毒性基线及随访，出现肝酶升高及时调整"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "Graves病首选抗甲状腺药物或放射碘；药物过敏/复发、甲状腺显著肿大压迫胸骨后、合并结节疑恶性者可行甲状腺次全/近全切除术，术前需充分术前准备。"
+      }
     },
     "HYPOTHY-E03": {
       "disease_code": "HYPOTHY-E03",
@@ -537,7 +795,43 @@
         "tachycardia": "用药后出现心率>100次/分、心悸提示替代过量，需减量并复查甲功"
       },
       "guideline": "《甲状腺功能减退症诊疗指南（中国）》",
-      "target": "TSH恢复至0.2-4.2mIU/L、FT4正常，症状缓解，终身维持替代"
+      "target": "TSH恢复至0.2-4.2mIU/L、FT4正常，症状缓解，终身维持替代",
+      "recommended_labs": [
+        {
+          "exam_code": "IMM-TSH",
+          "name": "促甲状腺激素",
+          "category": "甲状腺功能",
+          "why": "原发性甲减最敏感指标，左甲状腺素替代剂量滴定的核心依据(目标0.2-4.2mIU/L)"
+        },
+        {
+          "exam_code": "IMM-FT4",
+          "name": "游离甲状腺素",
+          "category": "甲状腺功能",
+          "why": "确认原发性甲减并监测替代治疗是否充足"
+        },
+        {
+          "exam_code": "IMM-FT3",
+          "name": "游离三碘甲状腺原氨酸",
+          "category": "甲状腺功能",
+          "why": "原发性甲减FT3多正常，用于鉴别中枢性(继发性)甲减"
+        },
+        {
+          "exam_code": "BIO-LDL",
+          "name": "低密度脂蛋白胆固醇",
+          "category": "血脂",
+          "why": "甲减常伴继发性高LDL-C，替代后复查评估是否需加用他汀"
+        },
+        {
+          "exam_code": "IMG-THYROID-US",
+          "name": "甲状腺B超",
+          "category": "超声",
+          "why": "鉴别桥本甲状腺炎(弥漫性回声减低、网格状)与萎缩性甲状腺炎等病因"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "甲减本身不需手术；甲状腺显著肿大压迫气管/食管或合并结节疑恶性时转甲状腺外科评估。"
+      }
     },
     "AF-I48": {
       "disease_code": "AF-I48",
@@ -576,11 +870,11 @@
         },
         {
           "generic_name": "利伐沙班片",
-          "dose": "15mg",
-          "frequency": "bid（前21天），继以20mg qd",
+          "dose": "20mg",
+          "frequency": "qd（与餐同服）",
           "route": "口服",
           "duration": "长期维持",
-          "note": "无需常规监测INR；活动性出血、严重肝肾功能不全禁用；肌酐清除率15-49ml/min用15mg qd",
+          "note": "CrCl 15-49ml/min减为15mg qd；无需常规监测INR；活动性出血、严重肝功能不全禁用",
           "rationale": "新型口服抗凝药（NOAC），华法林替代，颅内出血风险更低"
         }
       ],
@@ -610,7 +904,49 @@
         "tachycardia": "发作时心室率100-140次/分不齐、症状明显，急诊予静脉β受体阻滞剂或胺碘酮控制心室率/复律；伴低血压、胸痛、心衰电复律"
       },
       "guideline": "《心房颤动诊断和治疗中国指南（2023）》",
-      "target": "静息心室率<80次/分、活动后<110次/分；符合指征者规范抗凝，INR 2.0-3.0，预防卒中与心衰"
+      "target": "静息心室率<80次/分、活动后<110次/分；符合指征者规范抗凝，INR 2.0-3.0，预防卒中与心衰",
+      "recommended_labs": [
+        {
+          "exam_code": "ECG-12LEAD",
+          "name": "十二导联心电图",
+          "category": "心电图",
+          "why": "确诊房颤(P波消失、f波、RR绝对不齐)，评估心室率、缺血及传导障碍"
+        },
+        {
+          "exam_code": "IMG-ECHO",
+          "name": "心脏彩超",
+          "category": "超声",
+          "why": "排查瓣膜性房颤、左房大小、LVEF、附壁血栓及其他结构性心脏病"
+        },
+        {
+          "exam_code": "IMM-TSH",
+          "name": "促甲状腺激素",
+          "category": "甲状腺功能",
+          "why": "筛查甲亢为房颤的可逆性病因"
+        },
+        {
+          "exam_code": "COAG-INR",
+          "name": "国际标准化比值",
+          "category": "凝血功能",
+          "why": "华法林抗凝前基线及监测，目标2.0-3.0"
+        },
+        {
+          "exam_code": "IMM-CTNI",
+          "name": "心肌肌钙蛋白I",
+          "category": "心肌标志物",
+          "why": "快速心室率或伴胸痛时排查心肌缺血/心肌炎为房颤诱因"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "估算CrCl，决定利伐沙班等NOAC剂量(CrCl 15-49ml/min需减量)"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "药物控制心室率/症状无效、反复发作的症状性房颤可行导管射频消融；高卒中风险、不能长期规范抗凝者评估左心耳封堵；瓣膜性房颤需外科换瓣并长期华法林抗凝。"
+      }
     },
     "HF-I50": {
       "disease_code": "HF-I50",
@@ -701,7 +1037,49 @@
         "tachycardia": "静息心率>100次/分伴奔马律、啰音增多提示急性失代偿，需静脉利尿、扩血管，及时急诊"
       },
       "guideline": "《中国心力衰竭诊断和治疗指南（2024）》",
-      "target": "症状与淤血缓解、NYHA改善，体重稳定，降低再住院率与死亡率"
+      "target": "症状与淤血缓解、NYHA改善，体重稳定，降低再住院率与死亡率",
+      "recommended_labs": [
+        {
+          "exam_code": "IMM-BNP",
+          "name": "B型尿钠肽",
+          "category": "心肌标志物",
+          "why": "心衰诊断及严重程度评估，>400pg/mL高度支持心衰呼吸困难，随访判断疗效与预后"
+        },
+        {
+          "exam_code": "IMG-ECHO",
+          "name": "心脏彩超",
+          "category": "超声",
+          "why": "测定LVEF(区分HFrEF/HFmrEF/HFpEF)，评估瓣膜病、心肌病，指导GDMT选择"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "观察肺淤血、肺水肿、心影增大，并排查肺部感染为心衰常见诱因"
+        },
+        {
+          "exam_code": "ELE-K",
+          "name": "血钾",
+          "category": "电解质",
+          "why": "ARNI/螺内酯/袢利尿剂治疗中监测血钾，防高钾或低钾诱发心律失常"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "ARNI/ACEI/利尿剂启动后1-2周复查，监测肾功能恶化"
+        },
+        {
+          "exam_code": "ELE-NA",
+          "name": "血钠",
+          "category": "电解质",
+          "why": "低钠血症提示预后不良并指导限水策略"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "终末期心衰(优化GDMT后仍NYHA III-IV、LVEF≤35%、合并束支传导阻滞)需评估心脏再同步化治疗(CRT/CRT-D)与ICD植入；晚期难治性心衰评估左室辅助装置(LVAD)或心脏移植。"
+      }
     },
     "ISCHEMIC-I63": {
       "disease_code": "ISCHEMIC-I63",
@@ -792,7 +1170,49 @@
         "tachycardia": "卧床患者突发气促、心动过速需警惕肺栓塞/坠积性肺炎，及时评估"
       },
       "guideline": "《中国急性缺血性脑卒中诊治指南（2023）》",
-      "target": "神经功能缺损逐步恢复，控制血压、LDL-C<1.8mmol/L、血糖达标，降低卒中复发"
+      "target": "神经功能缺损逐步恢复，控制血压、LDL-C<1.8mmol/L、血糖达标，降低卒中复发",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-HEAD-MRI",
+          "name": "头颅MRI+DWI",
+          "category": "磁共振",
+          "why": "DWI明确梗死部位、范围、新旧，鉴别出血转化及后颅窝病变"
+        },
+        {
+          "exam_code": "ECG-12LEAD",
+          "name": "十二导联心电图",
+          "category": "心电图",
+          "why": "筛查房颤等心源性栓塞来源，评估合并心肌缺血"
+        },
+        {
+          "exam_code": "BIO-LDL",
+          "name": "低密度脂蛋白胆固醇",
+          "category": "血脂",
+          "why": "强化他汀二级预防靶点，目标<1.8mmol/L"
+        },
+        {
+          "exam_code": "BIO-FBG",
+          "name": "空腹血糖",
+          "category": "血糖",
+          "why": "筛查糖尿病等卒中复发危险因素"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "评估肾功能，指导他汀、抗血小板及降压药选择"
+        },
+        {
+          "exam_code": "COAG-DDIM",
+          "name": "D-二聚体",
+          "category": "凝血功能",
+          "why": "长期卧床患者监测DVT/肺栓塞风险"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "大面积小脑梗死压迫脑干/第四脑室需急诊去骨瓣减压+梗死灶切除；恶性大脑中动脉梗死(48h内、严重水肿占位)可行去骨瓣减压；颅外颈动脉重度狭窄者择期CEA/CAS；明确房颤者抗凝。"
+      }
     },
     "BELL-G51": {
       "disease_code": "BELL-G51",
@@ -865,7 +1285,31 @@
         "tachycardia": "一般无直接关联；持续心动过速需排除其他合并疾病"
       },
       "guideline": "《中国特发性面神经麻痹诊治指南》",
-      "target": "72小时内激素±抗病毒，保护角膜，多数1-3个月内面肌功能完全恢复"
+      "target": "72小时内激素±抗病毒，保护角膜，多数1-3个月内面肌功能完全恢复",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-HEAD-CT",
+          "name": "头颅CT平扫",
+          "category": "CT",
+          "why": "出现不典型表现(中枢性面瘫、肢体无力、听力下降、眩晕)时排除卒中/桥小脑角占位"
+        },
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "发病初期鉴别感染性病因(莱姆病、中耳炎、病毒感染)，激素使用前基线"
+        },
+        {
+          "exam_code": "BIO-FBG",
+          "name": "空腹血糖",
+          "category": "血糖",
+          "why": "激素使用前筛查/监测糖尿病，防糖皮质激素诱发高血糖"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "90%以上患者经激素+抗病毒+保护角膜保守治疗1-3个月恢复，不推荐常规面神经减压术；遗留严重面肌痉挛或联带运动者后期可整复。"
+      }
     },
     "MIGRAINE-G43": {
       "disease_code": "MIGRAINE-G43",
@@ -929,7 +1373,31 @@
         "tachycardia": "心悸、头痛伴血压升高需排除嗜铬细胞瘤、甲亢等继发性头痛"
       },
       "guideline": "《中国偏头痛防治指南（2016）》",
-      "target": "急性期快速止痛、恢复功能，每月发作<2-3天，避免药物过度使用"
+      "target": "急性期快速止痛、恢复功能，每月发作<2-3天，避免药物过度使用",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-HEAD-CT",
+          "name": "头颅CT平扫",
+          "category": "CT",
+          "why": "仅在出现红旗征(突发雷击样头痛、神经功能缺损、发热颈强直、50岁后新发、体位性头痛)时排除SAH/占位/出血"
+        },
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "发热伴头痛时排除颅内感染或系统性疾病"
+        },
+        {
+          "exam_code": "ELE-MG",
+          "name": "血镁",
+          "category": "电解质",
+          "why": "反复呕吐者排查低镁/电解质紊乱，部分患者补镁可辅助预防偏头痛"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "偏头痛不需手术；规范预防治疗仍严重致残者可在头痛中心评估神经调控或微血管减压，非常规治疗。"
+      }
     },
     "HLP-E78": {
       "disease_code": "HLP-E78",
@@ -993,7 +1461,49 @@
         "tachycardia": "无直接关联；但心动过速、怕热需排查甲亢（继发性高脂血症常见原因）"
       },
       "guideline": "《中国成人血脂异常防治指南（2023年）》",
-      "target": "按危险分层达标：低中危LDL-C<3.4，高危<2.6，极高危<1.8mmol/L"
+      "target": "按危险分层达标：低中危LDL-C<3.4，高危<2.6，极高危<1.8mmol/L",
+      "recommended_labs": [
+        {
+          "exam_code": "BIO-TC",
+          "name": "总胆固醇",
+          "category": "血脂",
+          "why": "总胆固醇水平，结合LDL-C进行心血管危险分层"
+        },
+        {
+          "exam_code": "BIO-LDL",
+          "name": "低密度脂蛋白胆固醇",
+          "category": "血脂",
+          "why": "核心治疗靶点，按危险分层达标(低中危<3.4/高危<2.6/极高危<1.8mmol/L)"
+        },
+        {
+          "exam_code": "BIO-TG",
+          "name": "甘油三酯",
+          "category": "血脂",
+          "why": "排查高甘油三酯血症，>5.6mmol/L需先警惕急性胰腺炎"
+        },
+        {
+          "exam_code": "BIO-HDL",
+          "name": "高密度脂蛋白胆固醇",
+          "category": "血脂",
+          "why": "保护性血脂成分，降低为独立心血管危险因素"
+        },
+        {
+          "exam_code": "BIO-ALT",
+          "name": "丙氨酸氨基转移酶",
+          "category": "肝功能",
+          "why": "他汀治疗前肝功基线及用药4-6周复查"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "他汀/依折麦布用药前肾功能评估"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "高脂血症本身不需手术；纯合子家族性高胆固醇血症经药物+LDL血浆置换仍不达标者可考虑回肠旁路或肝移植(罕见)。"
+      }
     },
     "GOUT-M10": {
       "disease_code": "GOUT-M10",
@@ -1066,7 +1576,37 @@
         "tachycardia": "疼痛可致反射性心动过速，止痛后多恢复；持续发热心率快需排除感染"
       },
       "guideline": "《中国高尿酸血症与痛风诊疗指南（2019）》",
-      "target": "急性发作24小时内控制炎症疼痛；缓解期长期血尿酸<360μmol/L（有痛风石<300）"
+      "target": "急性发作24小时内控制炎症疼痛；缓解期长期血尿酸<360μmol/L（有痛风石<300）",
+      "recommended_labs": [
+        {
+          "exam_code": "BIO-UA",
+          "name": "尿酸",
+          "category": "肾功能",
+          "why": "急性发作期血尿酸可正常，宜在发作后4-6周复查；确诊高尿酸血症并指导降尿酸治疗，目标<360μmol/L(痛风石<300)"
+        },
+        {
+          "exam_code": "IMG-ANKLE-XR",
+          "name": "踝关节正侧位X线",
+          "category": "X线",
+          "why": "慢性/反复发作期观察第一跖趾关节穿凿样骨缺损、痛风石钙化，鉴别骨关节炎/感染"
+        },
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "急性痛风可轻度升高，显著升高(>15×10^9/L)需与化脓性关节炎鉴别"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "评估肾功能，决定别嘌醇/非布司他/秋水仙碱剂量，排查尿酸盐肾病"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "巨大痛风石影响关节功能、压迫神经、破溃形成窦道不愈或骨质破坏时择期手术切除；急性发作期不手术；合并泌尿系结石梗阻转泌尿外科处理。"
+      }
     },
     "OP-M81": {
       "disease_code": "OP-M81",
@@ -1139,7 +1679,37 @@
         "tachycardia": "无直接关联"
       },
       "guideline": "《原发性骨质疏松症诊疗指南（2022）》",
-      "target": "提高骨密度、缓解骨痛，降低椎体、髋部等脆性骨折风险"
+      "target": "提高骨密度、缓解骨痛，降低椎体、髋部等脆性骨折风险",
+      "recommended_labs": [
+        {
+          "exam_code": "FUNC-BMD",
+          "name": "双能X线骨密度测定",
+          "category": "骨代谢",
+          "why": "DXA测定腰椎/髋部骨密度，T值≤-2.5诊断骨质疏松，治疗后随访疗效"
+        },
+        {
+          "exam_code": "ELE-CA",
+          "name": "血钙",
+          "category": "电解质",
+          "why": "排除继发性甲旁亢/维生素D缺乏；使用双膦酸盐前必须纠正低钙血症"
+        },
+        {
+          "exam_code": "BIO-ALP",
+          "name": "碱性磷酸酶",
+          "category": "肝功能",
+          "why": "骨转换生化指标，升高提示高转换型骨质疏松或骨软化，鉴别Paget病"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "eGFR<35ml/min禁用双膦酸盐，用药前必查"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "椎体压缩骨折疼痛剧烈、药物不缓解行经皮椎体成形(PVP)/后凸成形(PKP)；髋部(股骨颈/粗隆间)骨折急诊手术内固定或人工关节置换；腕部等脆性骨折按创伤骨科原则处理。"
+      }
     },
     "KETOSIS-E11": {
       "disease_code": "KETOSIS-E11",
@@ -1202,7 +1772,55 @@
         "tachycardia": "心率90-110次/分为脱水/酸中毒代偿；心率>120、血压下降提示循环衰竭，加快补液、必要时多巴胺"
       },
       "guideline": "《中国2型糖尿病防治指南（2020年版）》糖尿病酮症酸中毒章节",
-      "target": "补液+小剂量胰岛素+补钾，纠正高血糖、酮症与酸中毒，血糖降至13.9mmol/L后换糖+胰岛素维持，安全过渡至皮下胰岛素"
+      "target": "补液+小剂量胰岛素+补钾，纠正高血糖、酮症与酸中毒，血糖降至13.9mmol/L后换糖+胰岛素维持，安全过渡至皮下胰岛素",
+      "recommended_labs": [
+        {
+          "exam_code": "BIO-FBG",
+          "name": "空腹血糖",
+          "category": "血糖",
+          "why": "DKA诊断血糖标准(多>16.7mmol/L)，每1-2h监测以指导胰岛素泵速"
+        },
+        {
+          "exam_code": "UA-KET",
+          "name": "尿酮体",
+          "category": "尿常规",
+          "why": "尿酮体阳性支持酮症，治疗过程中监测酮体消退"
+        },
+        {
+          "exam_code": "UA-GLU",
+          "name": "尿糖",
+          "category": "尿常规",
+          "why": "辅助监测尿糖，反映肾糖阈以上血糖水平"
+        },
+        {
+          "exam_code": "ELE-K",
+          "name": "血钾",
+          "category": "电解质",
+          "why": "DKA总体缺钾但治疗前血钾可假性正常/升高，胰岛素治疗后快速向细胞内转移，是见尿补钾的核心依据"
+        },
+        {
+          "exam_code": "BIO-ABG",
+          "name": "动脉血气分析",
+          "category": "血气分析",
+          "why": "评估酸中毒严重程度(pH、HCO3-、阴离子间隙)；仅pH<6.9时谨慎补碳酸氢钠"
+        },
+        {
+          "exam_code": "ELE-NA",
+          "name": "血钠",
+          "category": "电解质",
+          "why": "按血糖校正血钠，指导补液种类与张力"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "评估脱水程度及肾前性肾损伤，指导补液速度"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "DKA以内科抢救(静脉补液+小剂量胰岛素+见尿补钾)为主，不需手术；需积极寻找并处理外科诱因(腹腔脓肿、糖尿病足坏疽、胆道感染等)。"
+      }
     },
     "ANEMIA-D64": {
       "disease_code": "ANEMIA-D64",
@@ -1266,7 +1884,49 @@
         "tachycardia": "心率90-110次/分为贫血代偿（Hb低致心排增加）；重度贫血（Hb<60g/L）伴心绞痛、心衰需输血"
       },
       "guideline": "《铁缺乏症和缺铁性贫血诊治和预防的多学科专家共识》",
-      "target": "Hb 2周后开始上升、1-2个月恢复正常，铁蛋白>50μg/L补足贮存铁，并去除病因"
+      "target": "Hb 2周后开始上升、1-2个月恢复正常，铁蛋白>50μg/L补足贮存铁，并去除病因",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "确诊贫血及分度(轻90-110/中60-90/重30-60/<30g/L)，补铁2周后随访网织红与Hb变化"
+        },
+        {
+          "exam_code": "CBC-MCV",
+          "name": "平均红细胞体积",
+          "category": "血常规",
+          "why": "缺铁性贫血为小细胞(MCV<80fL)，与巨幼细胞贫血、地中海贫血鉴别"
+        },
+        {
+          "exam_code": "CBC-MCH",
+          "name": "平均红细胞血红蛋白量",
+          "category": "血常规",
+          "why": "小细胞低色素指标，缺铁性贫血时降低"
+        },
+        {
+          "exam_code": "CBC-MCHC",
+          "name": "平均红细胞血红蛋白浓度",
+          "category": "血常规",
+          "why": "低色素性贫血指标，缺铁时降低"
+        },
+        {
+          "exam_code": "CBC-RBC",
+          "name": "红细胞计数",
+          "category": "血常规",
+          "why": "红细胞计数及形态辅助贫血分类"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "排除慢性肾病性贫血；老年/不明原因缺铁性贫血必查以指导后续病因筛查"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "缺铁性贫血本身不需手术，但关键是查找并去除病因——消化道肿瘤需根治手术、妇科功血/子宫肌瘤需妇科手术；重度贫血(Hb<60g/L)伴心绞痛、心衰需先输血支持。"
+      }
     },
     "THYROID-E04": {
       "disease_code": "THYROID-E04",
@@ -1301,7 +1961,57 @@
         "tachycardia": "心悸、心动过速提示结节合并功能亢进（自主高功能腺瘤），需查甲功"
       },
       "guideline": "《甲状腺结节和分化型甲状腺癌诊治指南（第二版）》",
-      "target": "规范超声/FNA明确良恶性，良性者随访、恶性或可疑者手术，避免过度治疗与漏诊"
+      "target": "规范超声/FNA明确良恶性，良性者随访、恶性或可疑者手术，避免过度治疗与漏诊",
+      "recommended_labs": [
+        {
+          "exam_code": "IMM-TSH",
+          "name": "促甲状腺激素",
+          "category": "甲状腺功能",
+          "why": "筛查甲状腺功能；TSH降低提示可能为高功能腺瘤(恶性风险低)，需核素显像而非直接手术"
+        },
+        {
+          "exam_code": "IMM-FT4",
+          "name": "游离甲状腺素",
+          "category": "甲状腺功能",
+          "why": "TSH异常时确认功能状态"
+        },
+        {
+          "exam_code": "IMM-TG",
+          "name": "甲状腺球蛋白",
+          "category": "免疫/甲功",
+          "why": "分化型甲状腺癌术后随访指标；术前作为参考基线"
+        },
+        {
+          "exam_code": "IMG-THYROID-US",
+          "name": "甲状腺B超",
+          "category": "超声",
+          "why": "高分辨率超声评估TI-RADS分类、大小、微钙化、边界、纵横比及颈部淋巴结"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "conservative",
+        "timing": "elective",
+        "timing_label": "择期手术（穿刺病理回报后安排）",
+        "procedure": "超声引导下细针穿刺活检（FNA）后决定",
+        "department": "甲状腺乳腺外科/普外科",
+        "indications": [
+          "超声提示TI-RADS 4a及以上结节",
+          "结节直径≥1.5cm（4a）或短期内增大、形态不规则、微钙化、边界不清",
+          "FNA Bethesda V（可疑恶性）或VI（恶性）",
+          "合并声带麻痹、颈部淋巴结可疑转移"
+        ],
+        "contraindications": [
+          "凝血功能障碍未纠正、不能耐受全麻",
+          "TI-RADS 3类以下、直径<1cm且无高危超声特征——应随访而非直接手术",
+          "严重心肺功能不全"
+        ],
+        "teaching_points": [
+          "TI-RADS 4a结节不应直接手术，应先行超声引导下FNA穿刺活检，根据Bethesda细胞学结果分层处理",
+          "Bethesda VI（恶性）或V（可疑恶性）行腺叶+峡部切除；可疑/不明意义者可重复FNA或分子检测",
+          "甲状腺癌预后好，术前需评估声带活动度、颈部淋巴结及降钙素（排除髓样癌）"
+        ]
+      }
     },
     "THYROID-ADENOMA-E04": {
       "disease_code": "THYROID-ADENOMA-E04",
@@ -1336,7 +2046,51 @@
         "tachycardia": "术前心动过速需排除功能亢进（毒性腺瘤）并查甲功，未控制甲亢麻醉风险高"
       },
       "guideline": "《甲状腺结节和分化型甲状腺癌诊治指南（第二版）》",
-      "target": "手术完整切除腺瘤并经病理排除恶变，术后甲功正常、无神经/甲状旁腺损伤"
+      "target": "手术完整切除腺瘤并经病理排除恶变，术后甲功正常、无神经/甲状旁腺损伤",
+      "recommended_labs": [
+        {
+          "exam_code": "IMM-TSH",
+          "name": "促甲状腺激素",
+          "category": "甲状腺功能",
+          "why": "排查高功能腺瘤(TSH抑制者需核素显像确认)，术前功能评估"
+        },
+        {
+          "exam_code": "IMM-FT4",
+          "name": "游离甲状腺素",
+          "category": "甲状腺功能",
+          "why": "确认是否合并甲亢(毒性腺瘤)，未控制甲亢麻醉风险高"
+        },
+        {
+          "exam_code": "IMG-THYROID-US",
+          "name": "甲状腺B超",
+          "category": "超声",
+          "why": "评估单发结节包膜、血流、大小及与周围组织关系，鉴别与结节性甲状腺肿"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "elective",
+        "timing_label": "择期手术（门诊安排）",
+        "procedure": "患侧腺叶+峡部切除术+术中冰冻病理",
+        "department": "甲状腺乳腺外科",
+        "indications": [
+          "单发甲状腺结节直径≥2cm，有完整包膜，甲功正常",
+          "结节进行性增大、有压迫症状",
+          "FNA不能完全排除恶性或患者要求手术",
+          "高功能腺瘤合并甲亢"
+        ],
+        "contraindications": [
+          "凝血功能障碍未纠正",
+          "严重心肺功能不全不能耐受全麻",
+          "小而稳定、TI-RADS 3类以下可随访"
+        ],
+        "teaching_points": [
+          "甲状腺腺瘤有10%恶变率及20%合并甲亢风险，原则上行患侧腺叶+峡部切除",
+          "术中常规冰冻病理，若为甲状腺癌按相应范围切除并清扫淋巴结",
+          "术前需评估声带活动度、血钙及甲状旁腺功能"
+        ]
+      }
     },
     "URI-J00-PED": {
       "disease_code": "URI-J00-PED",
@@ -1390,7 +2144,37 @@
         "tachycardia": "心率增快多为发热代偿（体温每升高1℃心率约增10-15次/分），热退恢复；呼吸急促、三凹征、发绀提示肺炎需急诊"
       },
       "guideline": "《中国儿童普通感冒规范诊治专家共识（2013）》",
-      "target": "对症缓解症状、5-7天自愈；出现高热>3天、呼吸急促、精神萎靡、耳痛须复诊"
+      "target": "对症缓解症状、5-7天自愈；出现高热>3天、呼吸急促、精神萎靡、耳痛须复诊",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "发热>3天、脓涕脓痰、精神差时鉴别细菌感染(白细胞及中性粒升高)，普通感冒不常规查"
+        },
+        {
+          "exam_code": "CBC-NEUTP",
+          "name": "中性粒细胞百分比",
+          "category": "血常规",
+          "why": "辅助判断细菌感染倾向"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "细菌感染时明显升高，病毒感染多正常，指导是否使用抗生素"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "仅在呼吸急促、三凹征、发绀、肺实变体征时排除肺炎，普通感冒不常规拍胸片"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "普通感冒为自限性疾病，不需手术；出现急性化脓性中耳炎鼓膜切开、扁桃体周围脓肿切开引流、颈深部感染、肺炎等并发症时转耳鼻喉/外科/呼吸科处理。"
+      }
     },
     "DIADEM-A09-PED": {
       "disease_code": "DIADEM-A09-PED",
@@ -1463,7 +2247,37 @@
         "tachycardia": "心率增快（100-130次/分）、尿少、哭无泪、皮肤弹性差提示脱水加重，加快口服补液，无改善转静脉"
       },
       "guideline": "《中国儿童急性感染性腹泻病诊疗规范（2020年版）》",
-      "target": "口服补液纠正脱水与电解质、继续喂养，5-7天恢复；重度脱水或不能口服者静脉补液"
+      "target": "口服补液纠正脱水与电解质、继续喂养，5-7天恢复；重度脱水或不能口服者静脉补液",
+      "recommended_labs": [
+        {
+          "exam_code": "ST-WBC",
+          "name": "便镜检白细胞",
+          "category": "便常规",
+          "why": "黏液脓血便时鉴别细菌性肠炎/痢疾(白细胞满视野)，病毒性腹泻多正常"
+        },
+        {
+          "exam_code": "ELE-K",
+          "name": "血钾",
+          "category": "电解质",
+          "why": "腹泻呕吐经消化道失钾，是见尿补钾的依据，防低钾致心律失常"
+        },
+        {
+          "exam_code": "UA-SG",
+          "name": "尿比重",
+          "category": "尿常规",
+          "why": "尿比重升高(>1.025)反映脱水程度，监测补液效果"
+        },
+        {
+          "exam_code": "ELE-NA",
+          "name": "血钠",
+          "category": "电解质",
+          "why": "判断脱水性质(低渗/等渗/高渗性)，指导补液张力"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "小儿腹泻本身不需手术；出现肠套叠(阵发性哭闹+果酱样便+腹部包块)首选超声引导下水/空气灌肠复位，复位失败或合并阑尾炎、机械性肠梗阻时外科手术。"
+      }
     },
     "AGE-A09": {
       "disease_code": "AGE-A09",
@@ -1554,7 +2368,37 @@
         "tachycardia": "心率95-110次/分为脱水/呕吐代偿；持续心动过速、尿少、口干加重提示脱水加重，改静脉补液"
       },
       "guideline": "《急性感染性腹泻病诊疗规范（2016年版）》",
-      "target": "口服补液纠正脱水与电解质，合理对症，5-7天自愈；不能耐受口服或重度脱水者静脉补液"
+      "target": "口服补液纠正脱水与电解质，合理对症，5-7天自愈；不能耐受口服或重度脱水者静脉补液",
+      "recommended_labs": [
+        {
+          "exam_code": "ST-WBC",
+          "name": "便镜检白细胞",
+          "category": "便常规",
+          "why": "黏液脓血便时鉴别细菌性痢疾/侵袭性肠炎"
+        },
+        {
+          "exam_code": "ELE-K",
+          "name": "血钾",
+          "category": "电解质",
+          "why": "呕吐腹泻失钾，是口服/静脉补钾的依据"
+        },
+        {
+          "exam_code": "UA-SG",
+          "name": "尿比重",
+          "category": "尿常规",
+          "why": "尿比重升高反映脱水，监测补液后肾功能与容量恢复"
+        },
+        {
+          "exam_code": "ELE-NA",
+          "name": "血钠",
+          "category": "电解质",
+          "why": "判断脱水类型，指导液体选择与补钠"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "急性胃肠炎为自限性，不需手术；出现转移性右下腹痛(阑尾炎)、机械性肠梗阻、中毒性巨结肠、消化道大出血等急腹症时外科介入。"
+      }
     },
     "AB-BRONCH-J20": {
       "disease_code": "AB-BRONCH-J20",
@@ -1617,7 +2461,31 @@
         "tachycardia": "心率增快多与发热脱水相关，热退补液后观察；持续心动过速、气促需排除肺炎"
       },
       "guideline": "《临床诊疗指南·呼吸病学分册》（中华医学会）",
-      "target": "咳嗽咳痰缓解、体温正常，5-7天自愈；3周未愈需进一步检查"
+      "target": "咳嗽咳痰缓解、体温正常，5-7天自愈；3周未愈需进一步检查",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "判断是否合并细菌感染（多数急性支气管炎为病毒性，WBC正常）"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "CRP升高提示细菌感染，是决定是否使用抗菌药的关键依据"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "与肺炎鉴别，排除下呼吸道感染，避免漏诊"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "COPD-J44": {
       "disease_code": "COPD-J44",
@@ -1680,7 +2548,37 @@
         "tachycardia": "静息心率持续增快需警惕缺氧、右心衰竭或茶碱/SABA过量"
       },
       "guideline": "《慢性阻塞性肺疾病诊治指南（2021年修订版）》",
-      "target": "改善活动耐量、减少急性加重次数；FEV1维持、mMRC/CAT评分下降"
+      "target": "改善活动耐量、减少急性加重次数；FEV1维持、mMRC/CAT评分下降",
+      "recommended_labs": [
+        {
+          "exam_code": "FUNC-PFT",
+          "name": "肺功能检查",
+          "category": "呼吸功能",
+          "why": "确诊COPD（FEV1/FVC<70%）及气流受限分级，是诊断金标准"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "鉴别肺炎、气胸、心衰，观察肺过度充气及肺大疱"
+        },
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "筛查慢性缺氧所致继发性红细胞增多症及合并贫血"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "急性加重时判断细菌感染证据，指导抗菌药使用"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "ASTHMA-J45": {
       "disease_code": "ASTHMA-J45",
@@ -1725,6 +2623,15 @@
           "duration": "2-3天",
           "note": "治疗窗窄，监测心率、血药浓度；心律失常者禁用",
           "rationale": "茶碱类，作为SABA效果不佳时的二线舒张支气管药"
+        },
+        {
+          "generic_name": "布地奈德福莫特罗吸入剂",
+          "dose": "1吸（160/4.5μg）",
+          "frequency": "bid",
+          "route": "吸入",
+          "duration": "发作控制后长期规律维持，急性缓解期亦可作为缓解用药（MART方案）",
+          "note": "吸入后漱口防口腔念珠菌感染；为哮喘长期控制首选ICS/LABA，茶碱仅为二线",
+          "rationale": "吸入糖皮质激素联合长效β2激动剂，控制气道炎症并预防复发，为GINA推荐首选控制方案"
         }
       ],
       "adjuvant": [
@@ -1753,7 +2660,31 @@
         "tachycardia": "心率持续>120次/分、奇脉、SpO2<92%提示重度发作，立即升级治疗并住院"
       },
       "guideline": "《支气管哮喘防治指南（2020年版）》",
-      "target": "24小时内喘息缓解、SpO2≥93%、PEF恢复个人最佳值≥80%"
+      "target": "24小时内喘息缓解、SpO2≥93%、PEF恢复个人最佳值≥80%",
+      "recommended_labs": [
+        {
+          "exam_code": "FUNC-PFT",
+          "name": "肺功能检查",
+          "category": "呼吸功能",
+          "why": "急性发作稳定后评估气流受限可逆性，确诊哮喘及严重度分级"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "与肺炎、气胸、心衰、气道异物等鉴别，哮喘发作期常规排查"
+        },
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "合并感染或嗜酸性粒细胞增多时参考，指导是否加用抗菌药"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "CBRONCH-J20": {
       "disease_code": "CBRONCH-J20",
@@ -1826,7 +2757,31 @@
         "tachycardia": "心率增快、SpO2下降提示感染加重/呼衰，需住院"
       },
       "guideline": "《慢性阻塞性肺疾病诊治指南（2021年修订版）》",
-      "target": "痰量减少、黄脓痰转白、气促缓解，5-7天临床控制"
+      "target": "痰量减少、黄脓痰转白、气促缓解，5-7天临床控制",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "判断细菌感染，决定是否使用抗菌药"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "评估感染活动度及疗效，动态监测"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "与肺炎、COPD急性加重、肺结核鉴别"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本身无手术指征；合并肺炎脓胸、肺脓肿需胸外科/ICU"
+      }
     },
     "MP-J15": {
       "disease_code": "MP-J15",
@@ -1899,7 +2854,37 @@
         "tachycardia": "心率快、SpO2<93%、呼吸急促提示重症肺炎，升级静脉治疗"
       },
       "guideline": "《肺炎支原体肺炎诊疗指南（2023年版）》（国家卫生健康委）",
-      "target": "体温正常、咳嗽减轻、影像吸收，疗程通常7-14天"
+      "target": "体温正常、咳嗽减轻、影像吸收，疗程通常7-14天",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "支原体肺炎WBC多正常或轻度升高，与细菌性肺炎鉴别"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "评估支原体肺炎炎症活动度，动态监测疗效"
+        },
+        {
+          "exam_code": "IMM-MPIGM",
+          "name": "肺炎支原体IgM抗体",
+          "category": "微生物抗体",
+          "why": "阳性提示近期肺炎支原体急性感染，是确诊依据"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "支原体肺炎典型间质性改变、斑片影，确诊及评估病变范围"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本身无手术指征；合并重症肺炎、呼吸衰竭、胸腔积液需ICU/胸外科"
+      }
     },
     "GASTRITIS-K29": {
       "disease_code": "GASTRITIS-K29",
@@ -1962,7 +2947,31 @@
         "tachycardia": "心率增快、血压下降需警惕消化道出血/脱水，立即评估"
       },
       "guideline": "《临床诊疗指南·消化病学分册》（中华医学会）",
-      "target": "上腹痛、恶心缓解，恢复正常饮食，3-5天好转"
+      "target": "上腹痛、恶心缓解，恢复正常饮食，3-5天好转",
+      "recommended_labs": [
+        {
+          "exam_code": "FUNC-GASTRO",
+          "name": "电子胃镜",
+          "category": "内镜",
+          "why": "症状持续或伴报警症状（呕血、黑便、贫血）时胃镜明确糜烂/出血并排除溃疡肿瘤"
+        },
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "排查急性胃黏膜病变出血所致贫血"
+        },
+        {
+          "exam_code": "BIO-ALT",
+          "name": "丙氨酸氨基转移酶",
+          "category": "肝功能",
+          "why": "用药前肝功能基线，排除肝胆疾病引起的上腹痛"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "FD-K30": {
       "disease_code": "FD-K30",
@@ -2025,7 +3034,25 @@
         "tachycardia": "心率增快多与焦虑相关；伴报警症状需排查器质性疾病"
       },
       "guideline": "《中国功能性消化不良专家共识意见（2015年）》",
-      "target": "上腹痛/饱胀症状缓解，恢复正常饮食与生活，2-4周评估疗效"
+      "target": "上腹痛/饱胀症状缓解，恢复正常饮食与生活，2-4周评估疗效",
+      "recommended_labs": [
+        {
+          "exam_code": "FUNC-GASTRO",
+          "name": "电子胃镜",
+          "category": "内镜",
+          "why": "排除溃疡、糜烂、肿瘤等器质性疾病，是功能性消化不良诊断前提"
+        },
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "排查贫血等报警症状，排除隐匿性器质性疾病"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "GERD-K21": {
       "disease_code": "GERD-K21",
@@ -2097,7 +3124,31 @@
         "tachycardia": ""
       },
       "guideline": "《2020年中国胃食管反流病专家共识》",
-      "target": "反酸烧心消失、胃镜下食管炎愈合，8周规范治疗后按需维持"
+      "target": "反酸烧心消失、胃镜下食管炎愈合，8周规范治疗后按需维持",
+      "recommended_labs": [
+        {
+          "exam_code": "FUNC-GASTRO",
+          "name": "电子胃镜",
+          "category": "内镜",
+          "why": "确诊反流性食管炎、洛杉矶分级，排除Barrett食管及食管癌"
+        },
+        {
+          "exam_code": "BIO-ALT",
+          "name": "丙氨酸氨基转移酶",
+          "category": "肝功能",
+          "why": "长期PPI用药前肝功能基线"
+        },
+        {
+          "exam_code": "ST-OB",
+          "name": "便潜血试验",
+          "category": "便常规",
+          "why": "报警症状（黑便、贫血）时排查上消化道出血及肿瘤"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "规范PPI治疗8-12周无效、合并食管裂孔疝或反复吸入性肺炎者，可考虑腹腔镜胃底折叠术"
+      }
     },
     "COLITIS-K52": {
       "disease_code": "COLITIS-K52",
@@ -2160,7 +3211,37 @@
         "tachycardia": "心率快、血压下降、尿少提示脱水/休克，立即静脉补液"
       },
       "guideline": "《抗菌药物临床应用指导原则（2015年版）》；感染性腹泻诊疗规范",
-      "target": "体温正常、脓血便及里急后重消失、大便常规正常，3-5天控制"
+      "target": "体温正常、脓血便及里急后重消失、大便常规正常，3-5天控制",
+      "recommended_labs": [
+        {
+          "exam_code": "ST-APPEAR",
+          "name": "大便外观",
+          "category": "便常规",
+          "why": "黏液脓血便为急性菌痢典型表现，与病毒性腹泻、其他侵袭性肠炎鉴别"
+        },
+        {
+          "exam_code": "ST-WBC",
+          "name": "便镜检白细胞",
+          "category": "便常规",
+          "why": "便白细胞增多提示侵袭性细菌感染（志贺菌），与分泌性腹泻鉴别"
+        },
+        {
+          "exam_code": "ST-RBC",
+          "name": "便镜检红细胞",
+          "category": "便常规",
+          "why": "便红细胞提示肠黏膜糜烂出血"
+        },
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "评估感染中毒程度，高热、WBC显著升高警惕中毒性菌痢"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "PANCREATITIS-K85": {
       "disease_code": "PANCREATITIS-K85",
@@ -2233,7 +3314,37 @@
         "tachycardia": "心率快、血压下降、尿量<0.5ml/kg/h提示低血容量/重症，加强复苏并住院"
       },
       "guideline": "《中国急性胰腺炎诊治指南（2019年，沈阳）》",
-      "target": "腹痛缓解、肠鸣音恢复、淀粉酶下降，可逐步恢复低脂饮食"
+      "target": "腹痛缓解、肠鸣音恢复、淀粉酶下降，可逐步恢复低脂饮食",
+      "recommended_labs": [
+        {
+          "exam_code": "BIO-AMY",
+          "name": "血淀粉酶",
+          "category": "胰腺酶",
+          "why": "发病2-12h升高，>正常3倍支持急性胰腺炎，但升高幅度与病情严重度不平行"
+        },
+        {
+          "exam_code": "BIO-LIP",
+          "name": "血脂肪酶",
+          "category": "胰腺酶",
+          "why": "特异性及持续时间优于淀粉酶，是诊断首选酶学指标"
+        },
+        {
+          "exam_code": "IMG-ABDOM-US",
+          "name": "腹部B超",
+          "category": "超声",
+          "why": "筛查胆源性（胆囊结石、胆总管扩张），评估胰周渗出及积液"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "发病48-72h后CRP>150mg/L提示重症急性胰腺炎"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "轻症内科保守为主；重症合并胰腺坏死感染需 step-up 微创引流（参考 surgeries.json PANCREAS-K85），胆源性者恢复后同次住院切除胆囊"
+      }
     },
     "UC-K51": {
       "disease_code": "UC-K51",
@@ -2306,7 +3417,43 @@
         "tachycardia": "心率快、贫血貌、大量血便提示重症，需静脉激素及评估"
       },
       "guideline": "《炎症性肠病诊断与治疗的共识意见（2018年·北京）》",
-      "target": "腹泻脓血便消失、大便次数正常、肠镜黏膜愈合，诱导缓解后长期维持"
+      "target": "腹泻脓血便消失、大便次数正常、肠镜黏膜愈合，诱导缓解后长期维持",
+      "recommended_labs": [
+        {
+          "exam_code": "ST-OB",
+          "name": "便潜血试验",
+          "category": "便常规",
+          "why": "活动期肠黏膜糜烂出血，监测疾病活动度"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "评估UC活动度及治疗疗效，指导激素/5-ASA调整"
+        },
+        {
+          "exam_code": "BIO-ALB",
+          "name": "白蛋白",
+          "category": "肝功能",
+          "why": "蛋白丢失性肠病及慢性消耗致低白蛋白，评估营养状态"
+        },
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "慢性失血及炎症致贫血，反映疾病活动度及营养状态"
+        },
+        {
+          "exam_code": "FUNC-COLONOSCOPY",
+          "name": "结肠镜",
+          "category": "内镜",
+          "why": "确诊UC、评估病变范围及严重度、活检鉴别克罗恩病及结直肠癌变，是诊断与随访核心"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "中毒性巨结肠、肠穿孔、消化道大出血、癌变或内科治疗无效者需外科手术（结直肠切除）"
+      }
     },
     "GASTRITIS-BLEED-K92": {
       "disease_code": "GASTRITIS-BLEED-K92",
@@ -2370,7 +3517,31 @@
         "tachycardia": "心率>100次/分、皮肤湿冷、尿少提示活动性出血，紧急抢救"
       },
       "guideline": "《急性上消化道出血急诊诊治流程专家共识（2020版）》",
-      "target": "呕血黑便停止、血红蛋白稳定、肠鸣音正常，可逐步恢复饮食"
+      "target": "呕血黑便停止、血红蛋白稳定、肠鸣音正常，可逐步恢复饮食",
+      "recommended_labs": [
+        {
+          "exam_code": "ST-OB",
+          "name": "便潜血试验",
+          "category": "便常规",
+          "why": "活动性出血时强阳性，动态观察出血是否停止"
+        },
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "动态监测血红蛋白，评估失血量及输血指征（<70g/L或血流动力学不稳者输血）"
+        },
+        {
+          "exam_code": "FUNC-GASTRO",
+          "name": "电子胃镜",
+          "category": "内镜",
+          "why": "出血24-48h内急诊胃镜明确出血灶并施行内镜下止血，是诊断与治疗核心"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "首选PPI持续抑酸+内镜下止血；内镜止血失败、持续大出血或穿孔需外科手术"
+      }
     },
     "APP-K35": {
       "disease_code": "APP-K35",
@@ -2404,7 +3575,7 @@
           "frequency": "bid",
           "route": "口服",
           "duration": "术后恢复饮食后序贯，一般≤5天",
-          "note": "用于围手术期口服序贯或保守治疗",
+          "note": "仅用于术后恢复饮食后的短程序贯用药，单纯急性阑尾炎不推荐口服抗菌药保守治疗",
           "rationale": "二代头孢口服，序贯治疗"
         },
         {
@@ -2443,7 +3614,51 @@
         "tachycardia": "心率快、血压下降提示穿孔感染性休克，紧急手术抗休克"
       },
       "guideline": "《抗菌药物临床应用指导原则（2015年版）》；急性阑尾炎诊治规范",
-      "target": "急诊手术切除阑尾，围手术期预防切口及腹腔感染，术后7天拆线康复"
+      "target": "急诊手术切除阑尾，围手术期预防切口及腹腔感染，术后7天拆线康复",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "WBC及中性粒细胞升高支持急性阑尾炎，动态观察穿孔/坏疽"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "评估炎症程度，穿孔/坏疽性阑尾炎显著升高"
+        },
+        {
+          "exam_code": "IMG-ABDOM-US",
+          "name": "腹部B超",
+          "category": "超声",
+          "why": "超声见阑尾增粗（直径≥6mm）、壁增厚、周围渗出，是诊断及鉴别诊断首选影像"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "emergency",
+        "timing_label": "急诊手术（立即/6小时内）",
+        "procedure": "腹腔镜阑尾切除术",
+        "department": "普外科",
+        "indications": [
+          "转移性右下腹痛伴麦氏点固定压痛、反跳痛",
+          "WBC及中性粒细胞、CRP显著升高",
+          "超声或CT提示阑尾增粗（直径≥6mm）、壁增厚、周围渗出",
+          "发病在72小时以内、无禁忌证"
+        ],
+        "contraindications": [
+          "严重心肺功能不全、不能耐受麻醉与气腹",
+          "已形成阑尾周围脓肿且病情平稳、可先保守后择期手术",
+          "弥漫性腹膜炎合并感染性休克需先复苏而非立即手术"
+        ],
+        "teaching_points": [
+          "急性阑尾炎一经确诊应早期手术，延误可致阑尾穿孔、弥漫性腹膜炎",
+          "腹腔镜阑尾切除术为首选术式，穿孔或粘连严重时可中转开腹",
+          "阑尾周围脓肿一般先禁食、抗感染、补液治疗，待炎症控制后3个月再择期手术"
+        ]
+      }
     },
     "POSTAPP-Z48": {
       "disease_code": "POSTAPP-Z48",
@@ -2497,7 +3712,31 @@
         "tachycardia": ""
       },
       "guideline": "《加速康复外科中国专家共识》；外科围手术期管理规范",
-      "target": "切口甲级愈合、饮食恢复、无并发症，术后7天左右康复出院"
+      "target": "切口甲级愈合、饮食恢复、无并发症，术后7天左右康复出院",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "术后监测有无切口感染、腹腔感染"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "术后炎症指标动态变化，持续升高不降提示感染"
+        },
+        {
+          "exam_code": "IMG-ABDOM-US",
+          "name": "腹部B超",
+          "category": "超声",
+          "why": "术后发热、腹痛加重时排查腹腔脓肿、积液"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "术后恢复期以观察为主；出现切口感染、肠粘连/肠梗阻、切口疝、阑尾残株炎时外科处理"
+      }
     },
     "POSTHERNIA-Z48": {
       "disease_code": "POSTHERNIA-Z48",
@@ -2551,7 +3790,25 @@
         "tachycardia": ""
       },
       "guideline": "《成人腹股沟疝诊断和治疗指南（2018年版）》",
-      "target": "切口愈合、无阴囊血肿及复发，术后3个月恢复日常活动"
+      "target": "切口愈合、无阴囊血肿及复发，术后3个月恢复日常活动",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "术后监测有无切口感染、补片反应"
+        },
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "评估切口或阴囊血肿所致贫血"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "术后恢复期以观察为主；出现切口感染、疝复发、切口疝、阴囊血肿持续增大时外科处理"
+      }
     },
     "UTI-N39": {
       "disease_code": "UTI-N39",
@@ -2624,7 +3881,37 @@
         "tachycardia": ""
       },
       "guideline": "《尿路感染诊断与治疗中国专家共识（2015版）》",
-      "target": "尿路刺激征消失、尿常规白细胞转阴，短程3-7天治愈"
+      "target": "尿路刺激征消失、尿常规白细胞转阴，短程3-7天治愈",
+      "recommended_labs": [
+        {
+          "exam_code": "UA-LEU",
+          "name": "尿白细胞",
+          "category": "尿常规",
+          "why": "尿白细胞酯酶阳性支持下尿路感染"
+        },
+        {
+          "exam_code": "UA-NIT",
+          "name": "尿亚硝酸盐",
+          "category": "尿常规",
+          "why": "亚硝酸盐阳性提示大肠埃希菌等革兰阴性菌感染"
+        },
+        {
+          "exam_code": "UA-BLD",
+          "name": "尿潜血",
+          "category": "尿常规",
+          "why": "感染致黏膜出血可阳性，亦需与结石、肿瘤鉴别"
+        },
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "发热、腰痛时判断是否合并上尿路感染（肾盂肾炎）"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "急性膀胱炎以口服抗菌药为主；复杂性尿路感染、肾盂肾炎、尿路结石/梗阻、尿潴留需泌尿外科"
+      }
     },
     "URTICARIA-L50": {
       "disease_code": "URTICARIA-L50",
@@ -2696,7 +3983,31 @@
         "tachycardia": "心率快、血压下降、喉头水肿提示过敏性休克，立即肾上腺素抢救"
       },
       "guideline": "《中国荨麻疹诊疗指南（2018版）》",
-      "target": "风团及瘙痒消退、无血管性水肿/休克，症状控制后巩固数天停药"
+      "target": "风团及瘙痒消退、无血管性水肿/休克，症状控制后巩固数天停药",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "合并感染诱因时WBC及中性粒细胞升高"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "感染相关荨麻疹时CRP升高，正常支持单纯过敏反应"
+        },
+        {
+          "exam_code": "CBC-EOSP",
+          "name": "嗜酸性粒细胞百分比",
+          "category": "血常规",
+          "why": "嗜酸性粒细胞升高支持过敏体质及寄生虫诱因"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "ECZEMA-L30": {
       "disease_code": "ECZEMA-L30",
@@ -2768,7 +4079,31 @@
         "tachycardia": ""
       },
       "guideline": "《中国湿疹诊疗指南（2011年）》",
-      "target": "瘙痒控制、皮损变薄消退，长期保湿减少复发"
+      "target": "瘙痒控制、皮损变薄消退，长期保湿减少复发",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "湿疹继发细菌感染（金黄色葡萄球菌）时升高"
+        },
+        {
+          "exam_code": "CBC-EOSP",
+          "name": "嗜酸性粒细胞百分比",
+          "category": "血常规",
+          "why": "嗜酸性粒细胞升高支持过敏体质及湿疹活动"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "继发感染时升高，正常支持单纯过敏性炎症"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "HZ-B02": {
       "disease_code": "HZ-B02",
@@ -2850,7 +4185,19 @@
         "tachycardia": ""
       },
       "guideline": "《带状疱疹中国专家共识（2018年）》",
-      "target": "皮疹干涸结痂、神经痛缓解，72h内抗病毒缩短病程、预防后遗神经痛"
+      "target": "皮疹干涸结痂、神经痛缓解，72h内抗病毒缩短病程、预防后遗神经痛",
+      "recommended_labs": [
+        {
+          "exam_code": "BIO-FBG",
+          "name": "空腹血糖",
+          "category": "血糖",
+          "why": "带状疱疹患者需筛查糖尿病（糖尿病为常见诱因且影响愈合与预后）"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "本病以内科药物/保守治疗为主，通常无需手术；出现并发症或保守治疗无效时再请外科评估。"
+      }
     },
     "BPH-N40": {
       "disease_code": "BPH-N40",
@@ -2914,7 +4261,31 @@
         "tachycardia": ""
       },
       "guideline": "《中国良性前列腺增生症诊疗指南（2021年，海口）》",
-      "target": "下尿路症状（IPSS评分）改善、夜尿减少，不发生急性尿潴留"
+      "target": "下尿路症状（IPSS评分）改善、夜尿减少，不发生急性尿潴留",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-URINE-US",
+          "name": "泌尿系B超",
+          "category": "超声",
+          "why": "测量前列腺体积、膀胱残余尿量，评估有无双肾积水及膀胱结石"
+        },
+        {
+          "exam_code": "IMM-PSA",
+          "name": "前列腺特异性抗原",
+          "category": "肿瘤标志物",
+          "why": "排查前列腺癌；服用非那雄胺者PSA实测值需乘2校正后判读"
+        },
+        {
+          "exam_code": "UA-LEU",
+          "name": "尿白细胞",
+          "category": "尿常规",
+          "why": "排查BPH合并尿路感染（尿潴留继发）"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "药物治疗无效或反复尿潴留、反复感染/血尿、膀胱结石、双肾积水者需泌尿外科手术（TURP等）"
+      }
     },
     "PID-N73": {
       "disease_code": "PID-N73",
@@ -2924,12 +4295,21 @@
       "first_line": [
         {
           "generic_name": "头孢克肟胶囊",
-          "dose": "0.2g",
+          "dose": "0.3g",
+          "frequency": "单次口服（覆盖淋球菌）",
+          "route": "口服",
+          "duration": "单剂；重症或门诊随访困难者改住院静脉方案",
+          "note": "三代头孢口服，覆盖淋球菌及革兰阴性菌；头孢过敏者调整方案",
+          "rationale": "覆盖淋球菌，为PID门诊经验性方案组分"
+        },
+        {
+          "generic_name": "多西环素片",
+          "dose": "0.1g",
           "frequency": "bid",
           "route": "口服",
           "duration": "14天",
-          "note": "覆盖淋球菌及革兰阴性菌；头孢过敏者调整方案",
-          "rationale": "三代头孢口服，覆盖淋球菌等，为门诊方案组分"
+          "note": "覆盖沙眼衣原体；18岁以下及孕妇禁用，哺乳期暂停哺乳",
+          "rationale": "四环素类，覆盖衣原体，是PID标准方案核心组分"
         },
         {
           "generic_name": "甲硝唑片",
@@ -2937,19 +4317,19 @@
           "frequency": "tid",
           "route": "口服",
           "duration": "14天",
-          "note": "覆盖厌氧菌；妊娠早期慎用",
-          "rationale": "抗厌氧菌，与头孢联合覆盖阴道厌氧菌"
+          "note": "覆盖阴道厌氧菌；妊娠早期慎用，用药期间及停药后1周禁酒",
+          "rationale": "抗厌氧菌，与头孢/多西环素联合覆盖阴道菌群"
         }
       ],
       "second_line": [
         {
           "generic_name": "注射用头孢曲松钠",
-          "dose": "2.0g",
+          "dose": "1.0g",
           "frequency": "qd",
           "route": "静脉滴注",
-          "duration": "住院重症，临床好转后改口服总疗程14天",
-          "note": "联合多西环素/阿奇霉素覆盖衣原体",
-          "rationale": "三代头孢静脉，覆盖淋球菌，住院治疗"
+          "duration": "住院重症，临床好转后改口服多西环素+甲硝唑总疗程14天",
+          "note": "覆盖淋球菌；联合多西环素覆盖衣原体",
+          "rationale": "三代头孢静脉，覆盖淋球菌，住院治疗首选"
         },
         {
           "generic_name": "甲硝唑氯化钠注射液",
@@ -2961,13 +4341,13 @@
           "rationale": "静脉抗厌氧菌"
         },
         {
-          "generic_name": "阿奇霉素分散片",
-          "dose": "0.5g",
-          "frequency": "qd",
+          "generic_name": "多西环素片",
+          "dose": "0.1g",
+          "frequency": "bid",
           "route": "口服",
-          "duration": "首剂后改0.25g qd，总疗程与方案一致",
-          "note": "覆盖沙眼衣原体",
-          "rationale": "覆盖衣原体，与头孢联合"
+          "duration": "总疗程14天",
+          "note": "覆盖衣原体；18岁以下及孕妇禁用",
+          "rationale": "与静脉头孢联合覆盖衣原体"
         }
       ],
       "adjuvant": [
@@ -2986,9 +4366,9 @@
         "哺乳期用药需暂停哺乳"
       ],
       "special_pop": {
-        "pediatric": "少女盆腔炎需警惕性传播疾病及生殖道畸形",
+        "pediatric": "少女PID需警惕性传播疾病；18岁以下禁用多西环素及喹诺酮，可选用阿奇霉素+头孢曲松方案",
         "elderly": "老年盆腔炎需与肿瘤、阑尾炎鉴别",
-        "pregnant": "妊娠期PID需住院静脉用药，选用头孢类，禁用喹诺酮"
+        "pregnant": "妊娠期PID需住院静脉用药，选用头孢曲松+阿奇霉素+甲硝唑，禁用多西环素及喹诺酮"
       },
       "vital_adjust": {
         "fever": "高热、腹膜刺激征、脓肿形成提示重症/输卵管卵巢脓肿，住院静脉用药",
@@ -2996,7 +4376,31 @@
         "tachycardia": "心率快、血压下降提示感染性休克，立即抢救"
       },
       "guideline": "《盆腔炎症性疾病诊治规范（2019修订版）》",
-      "target": "下腹痛、发热、宫颈举痛消失，规范14天抗感染，防止输卵管不孕等后遗症"
+      "target": "下腹痛、发热、宫颈举痛消失，规范14天抗感染，防止输卵管不孕等后遗症",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "评估盆腔感染严重程度及输卵管卵巢脓肿形成"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "动态监测疗效及是否形成输卵管卵巢脓肿"
+        },
+        {
+          "exam_code": "IMG-GYN-US",
+          "name": "妇科B超",
+          "category": "超声",
+          "why": "排查输卵管增粗、盆腔积液、输卵管卵巢脓肿，是诊断及随访核心影像"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "输卵管卵巢脓肿药物治疗无效、破裂、反复发作者需手术（脓肿切开引流/患侧附件切除）"
+      }
     },
     "SPRAIN-S93": {
       "disease_code": "SPRAIN-S93",
@@ -3049,7 +4453,19 @@
         "tachycardia": "持续心动过速需排除合并骨折失血或其他损伤"
       },
       "guideline": "《踝关节扭伤诊疗指南（中国运动医学杂志）》；ACSM踝扭伤RICE原则",
-      "target": "1-2周肿痛明显缓解，2-3周恢复行走，3个月内恢复运动"
+      "target": "1-2周肿痛明显缓解，2-3周恢复行走，3个月内恢复运动",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-ANKLE-XR",
+          "name": "踝关节正侧位X线",
+          "category": "X线",
+          "why": "踝正侧位片排除外踝/第五跖骨基底部骨折及脱位；软组织肿胀提示韧带损伤，X线阴性方按扭伤处理"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "Ⅰ度（轻度）扭伤RICE保守即可；距腓前韧带Ⅲ度完全断裂、反复扭伤致慢性踝关节不稳者，需骨科行韧带修补/重建手术。"
+      }
     },
     "CERV-M50": {
       "disease_code": "CERV-M50",
@@ -3111,7 +4527,25 @@
         "tachycardia": "伴心悸、头晕需排除交感型/椎动脉型颈椎病，必要时心内科会诊"
       },
       "guideline": "《颈椎病诊治与康复指南（2010）》；中华医学会骨科分会脊柱学组",
-      "target": "颈肩及上肢放射痛缓解、麻木减轻；保守治疗3个月无效或出现肌萎缩转骨科手术评估"
+      "target": "颈肩及上肢放射痛缓解、麻木减轻；保守治疗3个月无效或出现肌萎缩转骨科手术评估",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-CSPINE-MRI",
+          "name": "颈椎MRI",
+          "category": "磁共振",
+          "why": "明确颈椎间盘突出节段、神经根及脊髓受压程度，鉴别脊髓型颈椎病"
+        },
+        {
+          "exam_code": "IMG-CSPINE-XR",
+          "name": "颈椎正侧位X线",
+          "category": "X线",
+          "why": "正侧位+动力位评估骨质增生、椎间隙狭窄、节段不稳"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "规范保守治疗3个月无效、进行性肌力下降/肌萎缩，或出现脊髓压迫征（行走不稳、踩棉感、大小便障碍）需脊柱外科颈椎手术（前路减压融合/后路减压）。"
+      }
     },
     "LUMB-M51": {
       "disease_code": "LUMB-M51",
@@ -3182,7 +4616,51 @@
         "tachycardia": "剧烈疼痛可致心率增快，镇痛后复查；持续心动过速需排除其他急腹症/主动脉病变"
       },
       "guideline": "《腰椎间盘突出症诊疗指南（中华骨科杂志，2020）》",
-      "target": "腰痛及下肢放射痛缓解、直腿抬高改善；保守6-12周无效或出现马尾综合征转脊柱外科"
+      "target": "腰痛及下肢放射痛缓解、直腿抬高改善；保守6-12周无效或出现马尾综合征转脊柱外科",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-LSPINE-MRI",
+          "name": "腰椎MRI",
+          "category": "磁共振",
+          "why": "明确突出节段、硬膜囊/神经根受压，排除马尾综合征及椎管肿瘤"
+        },
+        {
+          "exam_code": "IMG-LSPINE-XR",
+          "name": "腰椎正侧位X线",
+          "category": "X线",
+          "why": "评估椎间隙狭窄、骨质增生、腰椎滑脱及节段不稳"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "使用甘露醇脱水及NSAIDs前评估肾功能"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "conservative",
+        "timing": "none",
+        "timing_label": "暂不手术，保守治疗",
+        "procedure": "保守治疗（卧床+NSAIDs+理疗+核心肌群锻炼）",
+        "department": "骨科/脊柱外科",
+        "indications": [
+          "正规保守治疗3个月以上无效、症状反复发作",
+          "出现马尾综合征（大小便障碍、鞍区麻木）——急诊手术",
+          "进行性肌力下降（足下垂、垂足）",
+          "剧烈疼痛影响睡眠及生活，影像与体征一致"
+        ],
+        "contraindications": [
+          "初次发作、症状轻、无神经损害者应先保守治疗3个月",
+          "严重心肺功能不全不能耐受手术",
+          "感染、凝血障碍未纠正"
+        ],
+        "teaching_points": [
+          "腰椎间盘突出症80%-90%可经保守治疗缓解；手术指征为保守3个月无效、马尾综合征、进行性肌力下降",
+          "单纯包容性突出首选椎间孔镜（PTED）微创治疗，恢复快、出血少",
+          "马尾综合征是绝对急诊手术指征，拖延可致永久性大小便功能障碍"
+        ]
+      }
     },
     "STONE-N20": {
       "disease_code": "STONE-N20",
@@ -3254,7 +4732,31 @@
         "tachycardia": "剧痛伴心动过速为代偿表现；持续>120次/分、血压下降需警惕感染性休克"
       },
       "guideline": "《中国泌尿外科疾病诊断治疗指南（2022版）·尿石症分册》",
-      "target": "疼痛缓解、结石排出；>0.6cm结石、梗阻积水>2周、合并发热者转泌尿外科碎石/取石"
+      "target": "疼痛缓解、结石排出；>0.6cm结石、梗阻积水>2周、合并发热者转泌尿外科碎石/取石",
+      "recommended_labs": [
+        {
+          "exam_code": "UA-BLD",
+          "name": "尿潜血",
+          "category": "尿常规",
+          "why": "肉眼/镜下血尿支持输尿管结石诊断"
+        },
+        {
+          "exam_code": "IMG-URINE-US",
+          "name": "泌尿系B超",
+          "category": "超声",
+          "why": "明确结石大小、位置、有无肾积水，鉴别梗阻程度"
+        },
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "合并发热时判断是否梗阻性肾盂肾炎（需紧急引流）"
+        }
+      ],
+      "surgery_indication": {
+        "needed": false,
+        "note": "结石>0.6cm、嵌顿致肾积水、肾绞痛反复发作，或合并发热（梗阻性肾盂肾炎）时，转泌尿外科行ESWL/输尿管镜(URL)/经皮肾镜(PCNL)或置双J管引流。"
+      }
     },
     "CHOLE-K81": {
       "disease_code": "CHOLE-K81",
@@ -3268,8 +4770,8 @@
           "dose": "1.5g",
           "frequency": "q8h",
           "route": "静脉滴注",
-          "duration": "术前预防性单剂；术后24h内停药（治疗性用药按感染疗程5-7天）",
-          "note": "切皮前30min给药；头孢过敏可改用克林霉素+氨基糖苷类",
+          "duration": "术前开始治疗性用药，胆囊切除后源控制、术后24h内停药",
+          "note": "二代头孢覆盖肠源性革兰阴性菌；头孢过敏改哌拉西林他唑巴坦；非预防性长疗程",
           "rationale": "二代头孢覆盖肠道杆菌等革兰阴性菌及厌氧菌混合感染，急性胆囊炎经验治疗与围手术期预防"
         },
         {
@@ -3308,7 +4810,69 @@
         "tachycardia": "心率持续>120次/分、血压下降提示感染性休克，先复苏再手术"
       },
       "guideline": "《急性胆囊炎诊疗指南（2018东京指南TG18）》；中华医学会外科学分会胆道外科学组",
-      "target": "确诊后72h内行腹腔镜胆囊切除术；保守治疗者6-8周后择期LC"
+      "target": "确诊后72h内行腹腔镜胆囊切除术；保守治疗者6-8周后择期LC",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "急性胆囊炎WBC及中性粒升高，评估感染严重程度及坏疽风险"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "评估炎症反应程度，显著升高提示胆囊积脓/坏疽"
+        },
+        {
+          "exam_code": "BIO-TBIL",
+          "name": "总胆红素",
+          "category": "肝功能",
+          "why": "判断有无黄疸及胆总管结石梗阻"
+        },
+        {
+          "exam_code": "BIO-ALP",
+          "name": "碱性磷酸酶",
+          "category": "肝功能",
+          "why": "胆道梗阻时明显升高，鉴别梗阻性黄疸"
+        },
+        {
+          "exam_code": "BIO-GGT",
+          "name": "γ-谷氨酰转肽酶",
+          "category": "肝功能",
+          "why": "胆道炎症/梗阻时升高，辅助判断胆道受累"
+        },
+        {
+          "exam_code": "IMG-ABDOM-US",
+          "name": "腹部B超",
+          "category": "超声",
+          "why": "首选影像：胆囊增大、壁弥漫增厚≥3mm、双边征、结石及超声Murphy征阳性"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "urgent",
+        "timing_label": "早期手术（发病72小时内，本院24-48小时内）",
+        "procedure": "腹腔镜胆囊切除术（LC）",
+        "department": "普外科",
+        "indications": [
+          "右上腹持续疼痛伴Murphy征阳性、右肩背放射痛",
+          "发热、WBC及CRP升高",
+          "超声提示胆囊增大、壁弥漫增厚（≥3mm）、双边征、胆囊结石",
+          "发病72小时以内、无绝对禁忌证"
+        ],
+        "contraindications": [
+          "严重心肺功能不全、不能耐受全麻与气腹",
+          "凝血功能障碍未纠正",
+          "Mirizzi综合征、胆囊肠道内瘘等需转开腹"
+        ],
+        "teaching_points": [
+          "急性胆囊炎发病72小时内首选早期腹腔镜胆囊切除术，并不增加手术难度与并发症",
+          "高龄、危重、合并多脏器功能不全不能耐受手术者，可先行PTGBD引流过渡，待病情稳定后择期切除",
+          "保守治疗仅作为术前准备或手术禁忌者的过渡，不建议作为最终治疗，复发率高"
+        ]
+      }
     },
     "STONE-K80": {
       "disease_code": "STONE-K80",
@@ -3361,7 +4925,69 @@
         "hypertension": "择期手术前血压应控制稳定"
       },
       "guideline": "《中国慢性胆囊炎、胆囊结石诊疗指南（2018）》",
-      "target": "有症状者择期腹腔镜胆囊切除；无症状者随访观察"
+      "target": "有症状者择期腹腔镜胆囊切除；无症状者随访观察",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "慢性胆囊炎急性发作时WBC升高，评估有无急性炎症"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "评估炎症活动度"
+        },
+        {
+          "exam_code": "BIO-TBIL",
+          "name": "总胆红素",
+          "category": "肝功能",
+          "why": "排查黄疸及胆总管结石"
+        },
+        {
+          "exam_code": "BIO-ALP",
+          "name": "碱性磷酸酶",
+          "category": "肝功能",
+          "why": "胆道梗阻时升高，鉴别梗阻性黄疸"
+        },
+        {
+          "exam_code": "BIO-GGT",
+          "name": "γ-谷氨酰转肽酶",
+          "category": "肝功能",
+          "why": "胆道疾病时升高，辅助判断胆道受累"
+        },
+        {
+          "exam_code": "IMG-ABDOM-US",
+          "name": "腹部B超",
+          "category": "超声",
+          "why": "确诊胆囊结石、胆囊壁厚度、收缩功能及恶变高危（息肉≥10mm/瓷化胆囊）"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "elective",
+        "timing_label": "择期手术（症状控制后门诊安排）",
+        "procedure": "腹腔镜胆囊切除术（LC）",
+        "department": "普外科",
+        "indications": [
+          "反复右上腹绞痛、饱餐或油腻饮食后诱发",
+          "既往急性胆囊炎发作史",
+          "超声提示胆囊结石伴胆囊壁增厚（≥3mm）或胆囊收缩功能差",
+          "合并糖尿病、胆囊息肉≥10mm、瓷化胆囊等恶变高危因素"
+        ],
+        "contraindications": [
+          "无症状的静止性胆囊结石（不需预防性切除）",
+          "严重全身情况不能耐受麻醉手术",
+          "凝血功能障碍未纠正"
+        ],
+        "teaching_points": [
+          "有症状的胆囊结石伴慢性胆囊炎首选择期腹腔镜胆囊切除术，反复发作可致胆源性胰腺炎、胆总管结石",
+          "无症状静止性结石不需预防性手术，定期超声随访即可",
+          "保胆取石因复发率高、胆囊癌风险被忽略，不作为主流推荐"
+        ]
+      }
     },
     "HERNIA-K40": {
       "disease_code": "HERNIA-K40",
@@ -3395,7 +5021,46 @@
         "hypertension": "围手术期血压控制在160/100mmHg以下"
       },
       "guideline": "《成人腹股沟疝诊断和治疗指南（2018版）》",
-      "target": "择期无张力疝修补术后3个月恢复正常活动；避免复发与嵌顿"
+      "target": "择期无张力疝修补术后3个月恢复正常活动；避免复发与嵌顿",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "术前常规，排除切口/呼吸道感染致择期手术推迟"
+        },
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "术前评估有无贫血"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "elective",
+        "timing_label": "择期手术（门诊安排）",
+        "procedure": "无张力疝修补术（平片/Lichtenstein或网塞）",
+        "department": "普外科",
+        "indications": [
+          "站立/咳嗽时腹股沟可复性包块，平卧可回纳",
+          "包块逐渐增大、影响生活或出现坠胀疼痛",
+          "成人腹股沟疝一经确诊（1岁以上自愈可能性小）",
+          "女性股疝、既往嵌顿史者应尽早手术"
+        ],
+        "contraindications": [
+          "1岁以下婴幼儿（可观察，部分自愈）",
+          "年老体弱、合并严重心肺功能不全不能耐受手术",
+          "腹压未控制的慢性咳嗽、大量腹水、前列腺增生致尿潴留（应先纠正）",
+          "切口局部感染"
+        ],
+        "teaching_points": [
+          "成人腹股沟疝不能自愈，择期无张力修补是标准治疗，拖延有嵌顿、绞窄风险",
+          "嵌顿疝超过6小时、疑肠管坏死应急诊手术，术中根据肠管活力决定是否肠切除",
+          "术前应控制慢性咳嗽、便秘、前列腺增生等腹压增高因素，降低术后复发"
+        ]
+      }
     },
     "FRACTURE-S52": {
       "disease_code": "FRACTURE-S52",
@@ -3448,7 +5113,50 @@
         "tachycardia": "多发伤/开放性骨折失血可致心率增快，需评估失血量"
       },
       "guideline": "《桡骨远端骨折诊治指南（中华骨科杂志）》；AAOS桡骨远端骨折治疗指南",
-      "target": "复位后对线良好、固定4-6周骨折愈合；早期功能锻炼恢复腕关节活动"
+      "target": "复位后对线良好、固定4-6周骨折愈合；早期功能锻炼恢复腕关节活动",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-WRIST-XR",
+          "name": "腕关节X线正侧位",
+          "category": "X线",
+          "why": "确诊桡骨远端骨折类型（Colles/Smith/Barton）、移位方向及关节面台阶"
+        },
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "开放骨折或术前评估有无感染"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "老年患者用药及手术前评估肾功能"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "conservative",
+        "timing": "none",
+        "timing_label": "暂不手术，闭合复位+石膏/夹板外固定",
+        "procedure": "闭合复位+石膏/夹板外固定",
+        "department": "骨科",
+        "indications": [
+          "跌倒手掌撑地后腕部疼痛、餐叉样畸形",
+          "X线示桡骨远端骨折，背侧移位（Colles）或掌侧移位（Smith）",
+          "无明显移位或手法复位后对位对线良好、关节面台阶<2mm"
+        ],
+        "contraindications": [
+          "不稳定粉碎骨折、关节面台阶≥2mm、复位后再次移位者——应手术而非长期石膏",
+          "开放性骨折需急诊清创+固定",
+          "合并血管神经损伤需急诊探查"
+        ],
+        "teaching_points": [
+          "大多数桡骨远端低能量骨折可通过闭合复位+石膏/夹板保守治疗获得良好功能",
+          "手术适应证：复位失败、关节内移位≥2mm、不稳定骨折、合并血管神经肌腱损伤",
+          "复位后需掌屈尺偏位石膏固定2周，随后改为功能位，并定期复查X线防止再移位"
+        ]
+      }
     },
     "BREAST-C50": {
       "disease_code": "BREAST-C50",
@@ -3482,7 +5190,63 @@
         "fever": "术前发热应排除感染后再安排择期手术"
       },
       "guideline": "《中国乳腺癌诊疗指南（CSCO 2024）》；NCCN乳腺癌指南",
-      "target": "早期乳腺癌5年生存率>90%；术后规范辅助治疗和随访"
+      "target": "早期乳腺癌5年生存率>90%；术后规范辅助治疗和随访",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "术前常规"
+        },
+        {
+          "exam_code": "IMG-MAMMO",
+          "name": "乳腺钼靶",
+          "category": "乳腺影像",
+          "why": "评估肿块微钙化、多灶性及BI-RADS分类"
+        },
+        {
+          "exam_code": "IMG-BREAST-US",
+          "name": "乳腺超声",
+          "category": "乳腺影像",
+          "why": "评估肿块囊实性、血流及腋窝淋巴结状态"
+        },
+        {
+          "exam_code": "IMM-CEA",
+          "name": "癌胚抗原",
+          "category": "肿瘤标志物",
+          "why": "乳腺癌术前基线，术后随访复发指标"
+        },
+        {
+          "exam_code": "IMG-CHEST-CT",
+          "name": "胸部CT平扫",
+          "category": "CT",
+          "why": "术前排除肺/纵隔转移，完善分期"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "urgent",
+        "timing_label": "限期手术（活检确诊后1-2周内）",
+        "procedure": "保乳手术+前哨淋巴结活检+术后全乳放疗",
+        "department": "甲状腺乳腺外科",
+        "indications": [
+          "穿刺活检证实乳腺癌（浸润性导管癌/小叶癌等）",
+          "临床分期I-II期、可手术切除",
+          "钼靶/超声/MRI提示单发或多灶病变、无远处转移",
+          "患者知情同意、心肺功能可耐受手术"
+        ],
+        "contraindications": [
+          "IV期广泛远处转移（骨、肺、肝、脑）且无并发症——以全身治疗为主",
+          "严重全身衰竭、不能耐受麻醉手术",
+          "保乳禁忌：多中心病灶、切缘反复阳性、妊娠中晚期放疗禁忌"
+        ],
+        "teaching_points": [
+          "乳腺癌以手术为主综合治疗；早期患者保乳手术+放疗与改良根治术长期生存率相当，生活质量更好",
+          "术前需完善乳腺超声、钼靶、MRI、腋窝淋巴结评估及全身分期（胸部CT、腹部超声/CT、骨扫描或PET-CT）",
+          "局部晚期、三阴性或HER2阳性患者可先行新辅助化疗/靶向治疗降期，再手术"
+        ]
+      }
     },
     "PERF-K25": {
       "disease_code": "PERF-K25",
@@ -3546,7 +5310,56 @@
         "tachycardia": "心率持续>120次/分、血压下降提示感染性休克，快速复苏后急诊手术"
       },
       "guideline": "《急性穿孔诊断与治疗指南（中华消化外科杂志）》",
-      "target": "急诊修补术后腹膜炎控制、溃疡愈合；术后规范PPI+根除Hp，复查胃镜排除恶变"
+      "target": "急诊修补术后腹膜炎控制、溃疡愈合；术后规范PPI+根除Hp，复查胃镜排除恶变",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "弥漫性腹膜炎时WBC及中性粒升高，评估感染程度"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "急诊术前评估肾功能，指导复苏补液"
+        },
+        {
+          "exam_code": "ELE-K",
+          "name": "血钾",
+          "category": "电解质",
+          "why": "禁食、胃肠减压、呕吐后评估低钾等电解质紊乱"
+        },
+        {
+          "exam_code": "IMG-ABDOM-XR",
+          "name": "腹部立位平片",
+          "category": "X线",
+          "why": "立位腹平片见膈下游离气体为穿孔确诊依据，并鉴别肠梗阻"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "emergency",
+        "timing_label": "急诊手术（立即/6小时内）",
+        "procedure": "腹腔镜胃溃疡穿孔修补+腹腔冲洗（大网膜 patch）",
+        "department": "普外科",
+        "indications": [
+          "突发上腹刀割样剧痛并迅速蔓延至全腹",
+          "板状腹、全腹压痛反跳痛、肝浊音界缩小或消失",
+          "立位腹平片或CT示膈下游离气体",
+          "既往溃疡病史或服用NSAIDs/阿司匹林史"
+        ],
+        "contraindications": [
+          "发病已超过24小时、腹膜炎局限、一般情况极差不能耐受任何麻醉手术者，可严密监护下保守（属例外）",
+          "尚未明确诊断、需先鉴别（如急性胰腺炎、心梗）"
+        ],
+        "teaching_points": [
+          "胃十二指肠溃疡穿孔伴弥漫性腹膜炎应急诊手术，首选腹腔镜穿孔修补+腹腔冲洗",
+          "保守治疗仅适用于空腹、小穿孔、腹膜炎局限且病情稳定的患者，一旦加重立即手术",
+          "术后需规范PPI足疗程治疗、根除幽门螺杆菌、停用NSAIDs，并复查胃镜排除胃癌"
+        ]
+      }
     },
     "ILEUS-K56": {
       "disease_code": "ILEUS-K56",
@@ -3556,13 +5369,13 @@
       "first_line": [],
       "second_line": [
         {
-          "generic_name": "注射用头孢呋辛钠",
-          "dose": "1.5g",
+          "generic_name": "注射用头孢唑林钠",
+          "dose": "2g",
           "frequency": "q8h",
           "route": "静脉滴注",
           "duration": "围手术期/疑肠缺血时，术后24-48h停药",
-          "note": "未手术的单纯性肠梗阻不需常规抗生素",
-          "rationale": "肠梗阻手术或疑肠缺血时覆盖革兰阴性菌"
+          "note": "切皮前30min单剂；未手术的单纯性肠梗阻不需常规抗生素",
+          "rationale": "清洁-污染手术围手术期预防用一代头孢，术后24h内停药"
         },
         {
           "generic_name": "甲硝唑注射液",
@@ -3600,7 +5413,57 @@
         "tachycardia": "心率持续>120次/分、血压下降提示肠绞窄休克，急诊手术"
       },
       "guideline": "《中国急性肠梗阻诊疗快速建议指南（2020）》",
-      "target": "保守治疗24-48小时内恢复排气排便；绞窄者急诊手术解除梗阻"
+      "target": "保守治疗24-48小时内恢复排气排便；绞窄者急诊手术解除梗阻",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "升高警惕肠绞窄/肠缺血坏死"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "脱水/肾前性肾功能评估，指导补液"
+        },
+        {
+          "exam_code": "ELE-K",
+          "name": "血钾",
+          "category": "电解质",
+          "why": "呕吐、胃肠减压后低钾低氯，纠正水电紊乱"
+        },
+        {
+          "exam_code": "IMG-ABDOM-XR",
+          "name": "腹部立位平片",
+          "category": "X线",
+          "why": "立位片见多个气液平面、扩张肠袢，明确梗阻并排除穿孔"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "urgent",
+        "timing_label": "限期手术（保守观察24-48小时无效后）",
+        "procedure": "急诊剖腹/腹腔镜探查+松解/肠切除",
+        "department": "普外科",
+        "indications": [
+          "痛、吐、胀、闭（腹痛、呕吐、腹胀、停止排气排便）",
+          "肠型、蠕动波、肠鸣音亢进或金属音",
+          "立位腹平片/CT示多个气液平面、扩张肠袢",
+          "保守治疗24-48小时无缓解，或出现腹膜刺激征、发热、酸中毒、血性腹水等绞窄征象"
+        ],
+        "contraindications": [
+          "麻痹性肠梗阻（术后/腹膜炎/低钾）——以治疗原发病为主，不急于手术",
+          "单纯性早期粘连性肠梗阻、症状轻、无血运障碍——可先保守观察",
+          "一般情况极差不能耐受手术者"
+        ],
+        "teaching_points": [
+          "机械性肠梗阻先禁食、胃肠减压、补液、纠正水电解质紊乱；观察期不宜超过24-48小时",
+          "一旦疑诊绞窄性肠梗阻（持续剧烈腹痛、腹膜刺激征、发热、WBC升高、代谢性酸中毒、血性腹水）应急诊手术",
+          "术中根据肠管活力决定是否行肠切除吻合；恶性肿瘤梗阻可支架过渡或一期切除"
+        ]
+      }
     },
     "VARICOSE-I83": {
       "disease_code": "VARICOSE-I83",
@@ -3642,7 +5505,40 @@
       },
       "vital_adjust": {},
       "guideline": "《慢性下肢静脉疾病诊断与治疗中国专家共识（2019）》",
-      "target": "C2级保守治疗缓解症状；C4-C6手术干预预防溃疡复发"
+      "target": "C2级保守治疗缓解症状；C4-C6手术干预预防溃疡复发",
+      "recommended_labs": [
+        {
+          "exam_code": "IMG-VEIN-DUPLEX",
+          "name": "下肢静脉彩超",
+          "category": "血管超声",
+          "why": "术前必查：确认深静脉通畅、大隐/隐腘静脉反流及穿通静脉功能；深静脉血栓为手术禁忌"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "conservative",
+        "timing": "none",
+        "timing_label": "暂不手术，压力治疗+生活方式干预",
+        "procedure": "压力治疗（医用二级弹力袜）+抬高患肢+避免久站",
+        "department": "血管外科/普外科",
+        "indications": [
+          "下肢浅静脉迂曲扩张、久站后酸胀沉重",
+          "CEAP分级C3及以上（水肿、皮肤改变）、C4色素沉着/湿疹、C5愈合溃疡、C6活动溃疡",
+          "血栓性浅静脉炎反复发作者",
+          "超声证实隐股/隐腘静脉反流且症状影响生活"
+        ],
+        "contraindications": [
+          "深静脉血栓形成（DVT）致下肢回流障碍——禁忌浅静脉手术",
+          "动静脉畸形、髂静脉压迫综合征未处理者",
+          "妊娠期、哺乳期静脉曲张（多数产后缓解）",
+          "严重动脉供血不足"
+        ],
+        "teaching_points": [
+          "CEAP C2级无症状或症状轻微者首选压力治疗+生活方式干预，不应直接手术",
+          "出现水肿、皮肤营养改变、溃疡或严重症状时再考虑腔内热消融（EVLA/RFA）或高位结扎剥脱",
+          "术前必须行下肢静脉彩超评估深静脉通畅情况，深静脉血栓为手术禁忌"
+        ]
+      }
     },
     "PANCREAS-K85": {
       "disease_code": "PANCREAS-K85",
@@ -3707,7 +5603,62 @@
         "tachycardia": "心率持续>120次/分伴少尿提示重症化，需升级复苏"
       },
       "guideline": "《中国急性胰腺炎诊治指南（2022）》；亚特兰大分类修订版",
-      "target": "早期器官功能复苏成功、感染性坏死经Step-up策略控制；降低多器官衰竭病死率"
+      "target": "早期器官功能复苏成功、感染性坏死经Step-up策略控制；降低多器官衰竭病死率",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "持续升高提示感染性坏死"
+        },
+        {
+          "exam_code": "BIO-AMY",
+          "name": "血淀粉酶",
+          "category": "胰腺酶",
+          "why": "血淀粉酶>正常3倍支持急性胰腺炎诊断"
+        },
+        {
+          "exam_code": "BIO-LIP",
+          "name": "血脂肪酶",
+          "category": "胰腺酶",
+          "why": "脂肪酶特异性高、持续时间长，确诊胰腺炎"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "评估肾功能，警惕重症并发AKI及腹腔间隔室综合征"
+        },
+        {
+          "exam_code": "IMG-ABDOM-CT",
+          "name": "腹部CT平扫",
+          "category": "CT",
+          "why": "评估胰腺坏死范围、胰周积液及气泡征（感染性坏死）"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "urgent",
+        "timing_label": "限期手术/介入引流（48-72小时内或感染明确后）",
+        "procedure": "Step-up策略：经皮穿刺引流/内镜腔镜后微创坏死组织清除",
+        "department": "普外科/胰腺外科",
+        "indications": [
+          "CT/穿刺证实胰腺坏死合并感染（持续发热、WBC升高、脓毒血症）",
+          "腹腔间隔室综合征、进行性腹胀压迫肾血管",
+          "肠穿孔、消化道大出血等并发症",
+          "胆源性胰腺炎合并胆囊结石应同次住院切除胆囊"
+        ],
+        "contraindications": [
+          "早期未感染的重症胰腺炎不应早期手术，手术会加重全身炎症反应",
+          "严重多器官功能衰竭不能耐受麻醉手术者"
+        ],
+        "teaching_points": [
+          "重症急性胰腺炎以非手术治疗为基础，早期手术反而增加死亡率",
+          "感染性坏死采用Step-up策略：先经皮/内镜引流，再微创坏死组织清除，比开腹手术并发症少",
+          "胆源性胰腺炎恢复后应同次住院切除胆囊，防止复发"
+        ]
+      }
     },
     "GC-C16": {
       "disease_code": "GC-C16",
@@ -3741,7 +5692,63 @@
         "fever": "术前发热排除感染后再安排手术"
       },
       "guideline": "《中国胃癌诊疗指南（CSCO 2024）》；日本胃癌治疗指南",
-      "target": "II/III期胃癌根治术后5年生存率约50%-70%；规范D2手术+围手术期综合治疗"
+      "target": "II/III期胃癌根治术后5年生存率约50%-70%；规范D2手术+围手术期综合治疗",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "胃癌慢性失血贫血评估及术前营养状态"
+        },
+        {
+          "exam_code": "IMM-CEA",
+          "name": "癌胚抗原",
+          "category": "肿瘤标志物",
+          "why": "胃癌术前基线及术后随访指标"
+        },
+        {
+          "exam_code": "IMM-CA199",
+          "name": "糖类抗原19-9",
+          "category": "肿瘤标志物",
+          "why": "辅助胃癌诊断及随访"
+        },
+        {
+          "exam_code": "FUNC-GASTRO",
+          "name": "电子胃镜",
+          "category": "内镜",
+          "why": "胃镜活检确诊腺癌，明确部位及范围"
+        },
+        {
+          "exam_code": "IMG-ABDOM-CT",
+          "name": "腹部CT平扫",
+          "category": "CT",
+          "why": "术前增强CT评估胃壁浸润(T)、淋巴结(N)、肝转移(M)分期"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "elective",
+        "timing_label": "择期手术（完善分期及新辅助后）",
+        "procedure": "根治性胃大部切除+D2淋巴结清扫（腹腔镜或开腹）",
+        "department": "胃肠外科",
+        "indications": [
+          "胃镜活检证实胃腺癌",
+          "胸腹盆增强CT及EUS评估为cT1b-T4a、N0-3、M0",
+          "患者全身情况可耐受根治手术",
+          "无远处转移、无严重心肺禁忌"
+        ],
+        "contraindications": [
+          "远处转移（肝、腹膜、左锁骨上淋巴结）以全身化疗为主",
+          "严重心肺功能不全不能耐受全麻及胃切除",
+          "严重营养不良未纠正者应先营养支持"
+        ],
+        "teaching_points": [
+          "胃癌以手术为主综合治疗，D2淋巴结清扫是进展期胃癌标准",
+          "局部进展期胃癌推荐新辅助化疗（FLOT/SOX）后再行根治手术",
+          "术前需EUS判断T分期、CT判断N/M分期；早期胃癌可考虑ESD/EMR"
+        ]
+      }
     },
     "COLO-C18": {
       "disease_code": "COLO-C18",
@@ -3775,7 +5782,63 @@
         "fever": "术前发热排除感染后再安排手术"
       },
       "guideline": "《中国结直肠癌诊疗指南（CSCO 2024）》；NCCN结直肠癌指南",
-      "target": "III期结肠癌根治术后5年生存率约50%-70%；规范术后辅助化疗和随访"
+      "target": "III期结肠癌根治术后5年生存率约50%-70%；规范术后辅助化疗和随访",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-HGB",
+          "name": "血红蛋白",
+          "category": "血常规",
+          "why": "慢性失血贫血评估"
+        },
+        {
+          "exam_code": "ST-OB",
+          "name": "便潜血试验",
+          "category": "便常规",
+          "why": "大便潜血阳性提示下消化道出血，需进一步查因"
+        },
+        {
+          "exam_code": "IMM-CEA",
+          "name": "癌胚抗原",
+          "category": "肿瘤标志物",
+          "why": "结肠癌术前基线，术后随访复发核心指标"
+        },
+        {
+          "exam_code": "FUNC-COLONOSCOPY",
+          "name": "结肠镜",
+          "category": "内镜",
+          "why": "肠镜活检确诊腺癌"
+        },
+        {
+          "exam_code": "IMG-ABDOM-CT",
+          "name": "腹部CT平扫",
+          "category": "CT",
+          "why": "术前评估肿瘤局部浸润、淋巴结及肝转移，指导手术方式"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "elective",
+        "timing_label": "择期手术（完善分期后）",
+        "procedure": "腹腔镜/开腹根治性结肠切除+区域淋巴结清扫+I期吻合",
+        "department": "胃肠外科",
+        "indications": [
+          "肠镜活检证实结肠腺癌",
+          "胸腹盆增强CT评估无远处转移或仅可切除的寡转移",
+          "患者全身情况可耐受根治手术",
+          "无穿孔、大出血等急症"
+        ],
+        "contraindications": [
+          "远处广泛转移以全身化疗/靶向/免疫为主",
+          "严重心肺功能不全不能耐受手术",
+          "晚期恶病质"
+        ],
+        "teaching_points": [
+          "可切除结肠癌首选腹腔镜根治性切除+区域淋巴结清扫，5年生存率与开腹相当",
+          "左半结肠癌梗阻可支架过渡后择期I期吻合，避免急诊造口",
+          "II/III期术后辅助化疗（FOLFOX/XELOX）；MSI-H/dMMR晚期患者优先免疫治疗"
+        ]
+      }
     },
     "HEMORRHOID-K64": {
       "disease_code": "HEMORRHOID-K64",
@@ -3826,7 +5889,51 @@
       },
       "vital_adjust": {},
       "guideline": "《痔临床诊治指南（2020版）》",
-      "target": "便血及脱出症状缓解；III-IV期手术治疗后保持大便通畅防复发"
+      "target": "便血及脱出症状缓解；III-IV期手术治疗后保持大便通畅防复发",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "术前常规；肛周感染时升高"
+        },
+        {
+          "exam_code": "ST-OB",
+          "name": "便潜血试验",
+          "category": "便常规",
+          "why": "便血必须先排查结直肠肿瘤，不能见痔即手术"
+        },
+        {
+          "exam_code": "FUNC-ANOSCOPY",
+          "name": "肛门镜",
+          "category": "内镜",
+          "why": "肛门镜直视定位痔核、排除直肠下段肿物"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "elective",
+        "timing_label": "择期手术（门诊安排）",
+        "procedure": "吻合器痔上黏膜环切术（PPH）",
+        "department": "肛肠外科",
+        "indications": [
+          "III-IV期内痔，脱出需用手回纳或不能回纳",
+          "反复便血、影响生活质量，保守治疗无效",
+          "混合痔环状脱出",
+          "血栓性外痔疼痛剧烈者"
+        ],
+        "contraindications": [
+          "I-II期痔首选保守治疗",
+          "妊娠、严重凝血功能障碍、肛周感染急性期",
+          "直肠恶性肿瘤误当痔治疗前需肠镜排除"
+        ],
+        "teaching_points": [
+          "III-IV期混合痔首选PPH或外剥内扎术；术后保持大便通畅、温水坐浴",
+          "便血患者必须先排除直肠肿瘤，不能见痔就手术",
+          "I-II期痔以保守治疗为主，避免过度手术"
+        ]
+      }
     },
     "MASTITIS-O91": {
       "disease_code": "MASTITIS-O91",
@@ -3881,7 +5988,50 @@
         "tachycardia": "心率持续>120次/分、血压下降提示败血症，需住院静脉治疗"
       },
       "guideline": "《哺乳期乳腺炎诊治指南（中华乳腺病杂志）》；ABM Protocol #4",
-      "target": "体温正常、肿块消退、继续成功哺乳；脓肿引流后愈合"
+      "target": "体温正常、肿块消退、继续成功哺乳；脓肿引流后愈合",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "金葡菌感染时WBC升高，评估炎症"
+        },
+        {
+          "exam_code": "INF-CRP",
+          "name": "C反应蛋白",
+          "category": "炎症指标",
+          "why": "判断脓肿形成及抗感染疗效"
+        },
+        {
+          "exam_code": "IMG-BREAST-US",
+          "name": "乳腺超声",
+          "category": "乳腺影像",
+          "why": "鉴别实性乳腺炎 vs 液性脓肿，引导穿刺抽脓/切开"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "urgent",
+        "timing_label": "24小时内切开引流",
+        "procedure": "脓肿切开引流（轮辐状切口/乳晕旁弧形切口）+放置引流",
+        "department": "乳腺外科",
+        "indications": [
+          "乳房红肿热痛伴波动感",
+          "超声提示液性暗区（脓肿形成）",
+          "持续高热、抗生素治疗无效",
+          "穿刺抽出脓液"
+        ],
+        "contraindications": [
+          "未形成脓肿前不应切开，以抗生素+排空乳汁为主",
+          "应与炎性乳腺癌鉴别，后者需活检而非单纯引流"
+        ],
+        "teaching_points": [
+          "哺乳期乳腺炎早期（无脓肿）以抗生素、排空乳汁、局部热敷为主；脓肿形成后及时切开引流",
+          "切口应沿轮辐方向避免损伤乳管，乳晕旁脓肿取弧形切口",
+          "术后可继续哺乳健侧，患侧用吸奶器排空；顽固破溃需排除炎性乳癌"
+        ]
+      }
     },
     "TESTIS-N44": {
       "disease_code": "TESTIS-N44",
@@ -3925,7 +6075,50 @@
         "tachycardia": "剧痛可致心率增快，镇痛后复查"
       },
       "guideline": "《睾丸扭转诊断与治疗指南（中华泌尿外科杂志）》；EAU男科指南",
-      "target": "发病6小时内手术探查、复位固定；超过12小时睾丸存活率<10%"
+      "target": "发病6小时内手术探查、复位固定；超过12小时睾丸存活率<10%",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "与附睾炎鉴别时评估感染"
+        },
+        {
+          "exam_code": "UA-LEU",
+          "name": "尿白细胞",
+          "category": "尿常规",
+          "why": "尿白细胞阳性支持附睾炎，但不能因此延迟急诊探查"
+        },
+        {
+          "exam_code": "IMG-TESTIS-US",
+          "name": "睾丸附睾超声",
+          "category": "泌尿生殖超声",
+          "why": "患侧睾丸血流减少支持扭转；高度怀疑时不等超声结果即手术探查"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "emergency",
+        "timing_label": "急诊探查（立即，6小时黄金窗）",
+        "procedure": "急诊阴囊探查+睾丸复位+双侧睾丸固定术",
+        "department": "泌尿外科",
+        "indications": [
+          "突发睾丸剧痛伴恶心呕吐，夜间或静息时发作",
+          "睾丸位置抬高、横位，Prehn征阴性，提睾反射消失",
+          "彩色多普勒超声提示睾丸血流减少或消失",
+          "青春期男性突发阴囊疼痛"
+        ],
+        "contraindications": [
+          "严禁为等待检查而延迟手术，疑似即应急诊探查",
+          "急性附睾炎应抗生素治疗而非探查（但术前难鉴别时仍需手术）"
+        ],
+        "teaching_points": [
+          "睾丸扭转黄金救治时间为发病6小时，>12小时睾丸存活率显著下降",
+          "高度怀疑扭转即应急诊阴囊探查，不应依赖超声结果延误",
+          "术中血运恢复者行双侧睾丸固定（对侧也易扭转）；已坏死者切除；术后定期复查睾丸体积"
+        ]
+      }
     },
     "INCARCERATED-K40": {
       "disease_code": "INCARCERATED-K40",
@@ -3935,13 +6128,13 @@
       "first_line": [],
       "second_line": [
         {
-          "generic_name": "注射用头孢呋辛钠",
-          "dose": "1.5g",
+          "generic_name": "注射用头孢唑林钠",
+          "dose": "2g",
           "frequency": "切皮前30min单剂；疑肠切除时q8h",
           "route": "静脉滴注",
           "duration": "无肠坏死者术后24h内停；肠切除者用至术后48-72h",
-          "note": "清洁-污染手术预防用药",
-          "rationale": "嵌顿疝可能涉及肠管，需覆盖革兰阴性菌"
+          "note": "切皮前30min单剂；无肠坏死者术后24h内停，肠切除者按治疗性用药",
+          "rationale": "围手术期预防用一代头孢，污染重/肠切除时联合甲硝唑覆盖厌氧菌"
         },
         {
           "generic_name": "甲硝唑注射液",
@@ -3979,7 +6172,56 @@
         "tachycardia": "心率持续>120次/分、血压下降提示肠坏死休克，快速复苏后急诊手术"
       },
       "guideline": "《成人腹股沟疝诊断和治疗指南（2018）》；腹股沟嵌顿疝急诊处理流程",
-      "target": "急诊手术解除嵌顿；合并肠坏死者肠切除，术后择期行无张力修补"
+      "target": "急诊手术解除嵌顿；合并肠坏死者肠切除，术后择期行无张力修补",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "升高提示肠绞窄/肠坏死"
+        },
+        {
+          "exam_code": "BIO-CREA",
+          "name": "肌酐",
+          "category": "肾功能",
+          "why": "术前评估肾功能及脱水程度"
+        },
+        {
+          "exam_code": "ELE-K",
+          "name": "血钾",
+          "category": "电解质",
+          "why": "呕吐、胃肠减压后电解质紊乱评估"
+        },
+        {
+          "exam_code": "IMG-ABDOM-XR",
+          "name": "腹部立位平片",
+          "category": "X线",
+          "why": "立位腹平片评估有无肠梗阻及肠穿孔膈下游离气体"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "emergency",
+        "timing_label": "急诊手术（立即）",
+        "procedure": "急诊疝松解+疝内容物还纳+疝修补（必要时肠切除）",
+        "department": "普外科",
+        "indications": [
+          "腹股沟/股部包块突发不能回纳伴疼痛",
+          "阵发性腹痛、恶心呕吐、停止排气排便",
+          "包块紧张压痛、皮肤发红、发热提示绞窄",
+          "既往可复性疝病史"
+        ],
+        "contraindications": [
+          "嵌顿>12小时、腹膜刺激征、疑肠坏死者禁忌暴力手法复位",
+          "一般情况极差不能耐受麻醉者先复苏"
+        ],
+        "teaching_points": [
+          "嵌顿疝原则上急诊手术，术中根据肠管活力决定是否肠切除吻合",
+          "切口污染重或肠坏死时仅行疝囊高位结扎，不放补片，3-6个月后择期无张力修补",
+          "小儿嵌顿<12小时、无绞窄征象可在严密观察下试行手法复位后择期手术"
+        ]
+      }
     },
     "PNEUMOTHORAX-J93": {
       "disease_code": "PNEUMOTHORAX-J93",
@@ -4015,7 +6257,51 @@
         "hypertension": "张力性气胸可致血压下降、颈静脉怒张"
       },
       "guideline": "《自发性气胸处理中国专家共识（2022）》；BTS气胸指南",
-      "target": "肺完全复张、闭式引流管拔除；复发者VATS手术降低再发率"
+      "target": "肺完全复张、闭式引流管拔除；复发者VATS手术降低再发率",
+      "recommended_labs": [
+        {
+          "exam_code": "CBC-WBC",
+          "name": "白细胞计数",
+          "category": "血常规",
+          "why": "合并感染或继发气胸时评估"
+        },
+        {
+          "exam_code": "BIO-ABG",
+          "name": "动脉血气分析",
+          "category": "血气分析",
+          "why": "评估缺氧及呼吸功能，决定吸氧/闭式引流指征"
+        },
+        {
+          "exam_code": "IMG-CHEST-XR",
+          "name": "胸部正位X线片",
+          "category": "X线",
+          "why": "胸片测量肺压缩比例（>30%引流、<30%观察），鉴别巨大肺大疱"
+        }
+      ],
+      "surgery_indication": {
+        "needed": true,
+        "decision": "surgery",
+        "timing": "urgent",
+        "timing_label": "胸腔闭式引流（24小时内）",
+        "procedure": "胸腔闭式引流（锁骨中线第2肋间或腋中线第4-5肋间）",
+        "department": "胸外科",
+        "indications": [
+          "胸片提示肺压缩>30%",
+          "呼吸困难、胸痛症状明显",
+          "张力性气胸（气管移位、低血压）",
+          "持续漏气或复发"
+        ],
+        "contraindications": [
+          "肺压缩<30%、无症状稳定患者可观察吸氧",
+          "凝血功能障碍未纠正",
+          "胸壁感染区域避开"
+        ],
+        "teaching_points": [
+          "闭合性气胸肺压缩>30%或症状明显者行胸腔闭式引流；<30%无症状可观察吸氧（每日吸收约1.25%）",
+          "张力性气胸须立即粗针穿刺减压，再置管引流",
+          "同侧复发、持续漏气>5天、双侧气胸者应胸腔镜肺大疱切除+胸膜固定"
+        ]
+      }
     }
   }
 }

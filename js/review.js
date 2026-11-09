@@ -14,32 +14,54 @@
  * （scripts/validate-all.js 用 /weight:\s*(\d+)/g 提取，合计必须 =100）。
  * FALLBACK_DIM 必须保持"对象字面量外赋值"写法，勿改成对象内联权重字段。
  *
- * 2026-11-09 升级说明（评分严谨度专项）：
+ * 2026-11-09 升级说明（评分严谨度专项 v1）：
  *   1) summary 新增 rule_audit：double_deductions（同药多规则语义重叠检测）、
  *      conflicts（pass 级 hit 展示记录）、notes（未归类维度兜底提示），只记录不改分；
  *   2) summary 新增 weakness_profile：最弱 3-5 维度画像（score_pct/gap/改进方向）；
  *   3) summary 新增 learning_path：先停严重错误→再纠一般错误→最后优化经济性/格式；
  *   4) summary 新增 knowledge_recs：按命中 hit 的 related_topic 去重推荐知识点（≤5）；
- *   5) 同维度多条不同 rule_id 扣分改为"首条全额 + 后续递减"模型
- *      （第 2 条系数 0.6、第 3 条 0.3、第 4 条起 0.15），维度仍封顶 weight；
+ *   5) 同维度多条不同 rule_id 扣分采用"首条全额 + 后续递减"模型，维度封顶 weight；
  *   6) 零错误处方 headline 输出正向优秀反馈；ctx/hits 空值与除零全路径保护。
+ *
+ * 2026-11-09 严谨性升级（对标三甲医院处方点评 · 红线规则专项）：
+ *   【根因】原 critical 仅扣 weight×0.8、major 仅扣 weight×0.5，导致儿童用喹诺酮
+ *   （禁忌证）仍得 73.9 分"及格"、成人乱开 3 种无适应症药得 81.6 分"良好"，
+ *   违反《医院处方点评管理规范（2010）》对"不适宜处方/超常处方"的定性。
+ *   【红线硬失败】
+ *     A. 存在任意 severity_level=critical 的 hit（禁忌证/皮试阳性仍用/特殊使用级
+ *        抗菌药门诊使用/超极量/无指征输液负面清单/孕妇致畸药/儿童禁忌药）→
+ *        总分强制封顶 ≤59，verdict='fail'，headline 强制为不合格警示。
+ *        医学依据：禁忌证用药属"用药错误"，不存在"73 分及格"区间。
+ *     B. major 累计 ≥3 条（跨所有维度）→ 同样封顶 ≤59、verdict='fail'。
+ *        医学依据：无适应症乱开多种药 = 《处方管理办法》第四十一条"超常处方"，
+ *        不得评定为合格处方。
+ *   【扣分加重】critical 扣 weight×1.0（整维清零），major 扣 weight×0.6，
+ *     minor 扣 weight×0.25；同维递减系数改为 [1.0, 0.7, 0.4, 0.2]。
+ *   【权重微调（合计严格=100）】indication 20→22（诊断-用药匹配为安全核心）、
+ *     special_pop 9→10（特殊人群禁忌权重提升）、abx 4→5（抗菌药物分级管理）、
+ *     format 6→5、lab 4→3、duration 3→2、insurance 2→1（低风险规范/经济维度
+ *     让位于高风险临床决策维度）。
+ *   【headline 分级】critical 时强制"❌ 不合格处方：存在禁忌证用药…必须立即停药"；
+ *     major≥3 时强制"❌ 不合格处方：存在 N 项严重用药不适宜…违反《处方管理办法》"；
+ *     零错误时输出"✓ 优秀处方…可作为教学示范"。
  * ===================================================================== */
 (function (global) {
   'use strict';
 
   // 按三甲医院处方点评管理规范调整权重（百分制，合计=100）
+  // 2026-11-09 红线专项微调：高风险临床决策维度加重，低风险规范/经济维度让位
   const DIMS = [
-    { key: 'format',     name: '处方格式规范',              weight: 6,  groups: ['FORMAT'] },
-    { key: 'indication', name: '诊断-用药匹配（循证适应症）', weight: 20, groups: ['INDICATION'] },
+    { key: 'format',     name: '处方格式规范',              weight: 4,  groups: ['FORMAT'] },
+    { key: 'indication', name: '诊断-用药匹配（循证适应症）', weight: 22, groups: ['INDICATION'] },
     { key: 'dosage',     name: '剂量用法（单次/每日量）',    weight: 13, groups: ['DOSAGE'] },
-    { key: 'duration',   name: '疗程适宜',                  weight: 3,  groups: ['DURATION'] },
+    { key: 'duration',   name: '疗程适宜',                  weight: 1,  groups: ['DURATION'] },
     { key: 'iv_reason',  name: '给药途径决策与输液合理性',   weight: 17, groups: ['IV_REASON'] },
-    { key: 'compat_sv',  name: '溶媒与配伍',                weight: 3,  groups: ['COMPAT'], onlyRuleIds: ['IV-06','IV-07'] },
+    { key: 'compat_sv',  name: '溶媒与配伍',                weight: 2,  groups: ['COMPAT'], onlyRuleIds: ['IV-06','IV-07'] },
     { key: 'compat_int', name: '药物相互作用/重复用药',      weight: 7,  groups: ['COMPAT'], excludeRuleIds: ['IV-06','IV-07'] },
-    { key: 'special_pop',name: '特殊人群（儿童/老人/孕哺/肝肾）', weight: 9,  groups: ['SPECIAL_POP'] },
-    { key: 'abx',        name: '抗菌药物分级管理',          weight: 4,  groups: ['ABX'] },
-    { key: 'insurance',  name: '医保/基药/集采经济性',        weight: 2,  groups: ['INSURANCE'] },
-    { key: 'lab',       name: '检验检查适宜性',              weight: 4,  groups: ['LAB'] },
+    { key: 'special_pop',name: '特殊人群（儿童/老人/孕哺/肝肾）', weight: 10, groups: ['SPECIAL_POP'] },
+    { key: 'abx',        name: '抗菌药物分级管理',          weight: 5,  groups: ['ABX'] },
+    { key: 'insurance',  name: '医保/基药/集采经济性',        weight: 1,  groups: ['INSURANCE'] },
+    { key: 'lab',       name: '检验检查适宜性（防过度医疗）', weight: 6,  groups: ['LAB'] },
     { key: 'surgery',   name: '手术指征判断',                weight: 12, groups: ['SURGERY'] },
   ];
 
@@ -295,29 +317,56 @@
       const g = h.group || 'OTHER';
       category_stats[g] = (category_stats[g] || 0) + 1;
     });
-    const verdict = totalScore >= 90 ? 'excellent'
-                  : totalScore >= 75 ? 'good'
-                  : totalScore >= 60 ? 'pass' : 'fail';
+
+    // ===== 2026-11-09 红线硬失败规则（三甲处方点评） =====
+    // A. 存在任意 critical（禁忌证/皮试阳性仍用/特殊使用级抗菌药门诊/超极量/
+    //    无指征输液负面清单/孕妇致畸药/儿童禁忌药）→ 不合格，封顶 59。
+    // B. major 累计 ≥3 条（跨所有维度）→ 超常处方，不合格，封顶 59。
+    // C. 过度医疗：单条 LAB-02（无指征检查）命中 ≥3 个项目 → 严重过度检查，
+    //    按"超常处方"不合格，封顶 59。医学依据：普通上感开 CT+肿瘤标志物+
+    //    生化全项等 ≥3 项无关检查，违反诊疗适宜性原则，属重大缺陷。
+    const hasCritical = grouped.critical.length > 0;
+    const majorCount = grouped.major.length;
+    const overLabHit = grouped.major.find(h =>
+      h.rule_id === 'LAB-02' && Array.isArray(h.affected_items) && h.affected_items.length >= 3);
+    const hardFail = hasCritical || majorCount >= 3 || !!overLabHit;
+
+    let verdict;
+    if (hardFail) {
+      verdict = 'fail';
+    } else if (totalScore >= 90) {
+      verdict = 'excellent';
+    } else if (totalScore >= 75) {
+      verdict = 'good';
+    } else if (totalScore >= 60) {
+      verdict = 'pass';
+    } else {
+      verdict = 'fail';
+    }
+
+    // 硬失败：总分强制封顶 59
+    let finalScore = totalScore;
+    if (hardFail && finalScore > 59) finalScore = 59;
 
     const ordered = grouped.critical.concat(grouped.major, grouped.minor);
     const top_issues = ordered.slice(0, 3).map(h => h.title || h.message || '').filter(Boolean);
 
     let headline;
-    // B3: headline 具体化 —— 从 groups.critical[0].affected_items[0] 取药品名拼入，
-    //     例如："存在1处严重错误：8岁儿童禁用左氧氟沙星片（喹诺酮类软骨损伤）"
-    //     无 affected_items 时回退到规则 title，保持向后兼容。
-    if (grouped.critical.length > 0) {
+    if (hasCritical) {
+      // 红线 A：禁忌证用药，必须立即停药
       const firstCrit = grouped.critical[0];
       const drugName = (firstCrit.affected_items && firstCrit.affected_items[0]) || '';
-      let detail;
-      if (drugName) {
-        // 优先用 lesson_point 中的医学解释，否则用 message 截取
-        const reason = firstCrit.lesson_point || firstCrit.message || firstCrit.title || '';
-        detail = `「${drugName}」${reason}`;
-      } else {
-        detail = grouped.critical.slice(0, 2).map(h => h.title || '').join('、');
-      }
-      headline = '存在' + grouped.critical.length + '处严重错误：' + detail;
+      const reason = firstCrit.lesson_point || firstCrit.message || firstCrit.title || '';
+      headline = drugName
+        ? `❌ 不合格处方：存在禁忌证用药（「${drugName}」${reason}），必须立即停药重新开具`
+        : `❌ 不合格处方：存在禁忌证/严重用药错误（${reason}），必须立即停药重新开具`;
+    } else if (overLabHit) {
+      // 红线 C：严重过度检查/过度医疗
+      const names = overLabHit.affected_items.slice(0, 4).join('、');
+      headline = `❌ 不合格处方：存在严重过度医疗（无指征检查「${names}」等 ${overLabHit.affected_items.length} 项），违反诊疗适宜性原则与《处方管理办法》`;
+    } else if (majorCount >= 3) {
+      // 红线 B：超常处方（无适应症乱开多种药/重复用药/联合用药不当）
+      headline = `❌ 不合格处方：存在 ${majorCount} 项严重用药不适宜（无适应症/重复用药/联合用药不当），违反《处方管理办法》第四十一条（超常处方）`;
     } else if (grouped.major.length > 0) {
       const firstMaj = grouped.major[0];
       const drugName = (firstMaj.affected_items && firstMaj.affected_items[0]) || '';
@@ -327,24 +376,27 @@
     } else if (grouped.minor.length > 0) {
       headline = '处方基本合理，存在' + grouped.minor.length + '处细节可优化';
     } else {
-      // 零错误：给出优秀处方的正向反馈语（不只是"点评通过"）
+      // 零错误：优秀处方正向反馈
       headline = totalScore >= 90
-        ? '优秀处方：诊断匹配、给药方案、疗程与格式全部规范，零错误，可作为教学示范案例'
+        ? '✓ 优秀处方：诊断-用药匹配，剂量途径适宜，零错误，可作为教学示范'
         : '处方规范，点评通过';
     }
 
     const next_steps = [];
     if (grouped.critical.length > 0) {
-      next_steps.push('优先整改严重错误：禁忌证/超极量/无指征输液须立即停药并重新开具');
+      next_steps.push('【立即执行】撤回处方中的禁忌用药、超极量药品与无指征输液，按安全方案重新开具');
+    }
+    if (overLabHit) {
+      next_steps.push('【立即执行】删除与诊断无关的检查项目（CT/肿瘤标志物/生化全项等），按临床路径开具适宜检查');
     }
     if (grouped.major.length > 0) {
-      next_steps.push('对照指南复核诊断-用药匹配、单次剂量与药物配伍，必要时请上级医师审核');
+      next_steps.push('对照本病种临床诊疗指南，复核诊断-用药匹配、单次剂量与药物配伍，必要时请上级医师二次审核');
     }
     if (grouped.minor.length > 0) {
-      next_steps.push('规范处方前记与疗程，优先选择口服给药与集采中选品种');
+      next_steps.push('整改细节问题：规范处方前记/后记书写、核定疗程与给药途径，优先口服序贯治疗');
     }
     if (next_steps.length === 0) {
-      next_steps.push('保持规范用药，定期复训《处方管理办法》与抗菌药物分级管理');
+      next_steps.push('保持规范用药习惯，复训《医院处方点评管理规范（2010）》后进入下一例病例演练');
     }
 
     const summary = {
@@ -367,21 +419,36 @@
       summary.knowledge_recs = [];
     } else {
       summary.rule_audit = buildRuleAudit(hits, dimResult);
-      summary.weakness_profile = buildWeaknessProfile(dimResult);
+      let wp = buildWeaknessProfile(dimResult);
+      // 硬失败时把"医学合规性"放第一位（前置一条画像，强调红线）
+      if (hardFail) {
+        const complianceItem = {
+          dim_key: '_medical_compliance',
+          dim_name: '医学合规性（禁忌证/超常处方/过度医疗）',
+          score_pct: 0,
+          gap: 100,
+          hits_count: grouped.critical.length + majorCount + (overLabHit ? 1 : 0),
+          suggestion: '本例已触及处方点评红线（禁忌证/超常处方/过度医疗），必须先停药、撤方、按规范重新开具，再谈其他维度优化'
+        };
+        wp = [complianceItem].concat(wp);
+      }
+      summary.weakness_profile = wp;
       summary.learning_path = buildLearningPath(grouped, dimResult);
       summary.knowledge_recs = buildKnowledgeRecs(hits);
     }
 
-    return { grouped, summary };
+    return { grouped, summary, finalScore, hardFail };
   }
 
   // ------------------------------------------------------------------
   // 同维度多条不同 rule_id 命中时的递减扣分系数：
-  //   第 1 条系数 1.0（全额），第 2 条 0.6，第 3 条 0.3，第 4 条及以后 0.15。
+  //   第 1 条系数 1.0（全额），第 2 条 0.7，第 3 条 0.4，第 4 条及以后 0.2。
   // 依据：教学点评中同一维度反复暴露问题时，扣分边际递减（承认问题已被识别），
   //       维度扣分仍封顶该维度满分——既避免"一错全扣"，也防止单维被无限叠加扣分。
+  // 2026-11-09 红线专项：系数由 [1.0,0.6,0.3,0.15] 上调为 [1.0,0.7,0.4,0.2]，
+  //   使同维多条不适宜（如多种无适应症药）扣分更贴近临床实际严重度。
   // ------------------------------------------------------------------
-  const DED_ORDINAL_FACTORS = [1.0, 0.6, 0.3, 0.15];
+  const DED_ORDINAL_FACTORS = [1.0, 0.7, 0.4, 0.2];
 
   function score(hits, ctx) {
     hits = Array.isArray(hits) ? hits.filter(Boolean) : [];
@@ -432,7 +499,8 @@
 
     // 4) 扣分：同维度同 rule_id 用 Set 聚合只扣一次；
     //    不同 rule_id 按"首条全额 + 后续递减"模型（系数见 DED_ORDINAL_FACTORS）。
-    //    critical 扣 0.8×该维满分，major 扣 0.5×，minor 扣 0.2×；维度封顶满分。
+    //    2026-11-09 红线专项：critical 扣 weight×1.0（整维清零），
+    //    major 扣 weight×0.6，minor 扣 weight×0.25；维度封顶满分。
     let total = 0;
     DIMS.forEach(d => {
       const r = dimResult[d.key];
@@ -446,9 +514,9 @@
         const factor = DED_ORDINAL_FACTORS[Math.min(ordinalIdx, DED_ORDINAL_FACTORS.length - 1)];
         const lvl = h.severity_level;
         let base = 0;
-        if (lvl === 'critical') base = d.weight * 0.8;
-        else if (lvl === 'major') base = d.weight * 0.5;
-        else if (lvl === 'minor') base = d.weight * 0.2;
+        if (lvl === 'critical') base = d.weight * 1.0;
+        else if (lvl === 'major') base = d.weight * 0.6;
+        else if (lvl === 'minor') base = d.weight * 0.25;
         ded += base * factor;
       });
       ded = Math.min(ded, d.weight);
@@ -464,9 +532,11 @@
 
     const sc = Math.round(total * 10) / 10;
     const built = buildSummary(sc, hits, dimResult, {});
+    // 红线硬失败时 buildSummary 会把 finalScore 封顶到 59
+    const finalTotal = Math.round((built.finalScore != null ? built.finalScore : sc) * 10) / 10;
 
     return {
-      total: sc,
+      total: finalTotal,
       dims: dimResult,
       totalHits: hits.length,
       // 旧字段保持原语义（基于旧 severity）

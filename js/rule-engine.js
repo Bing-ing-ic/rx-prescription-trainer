@@ -999,13 +999,17 @@
       }
 
       // LAB-02 过度检查/适应症不符：已开项目不在本病种预期 exam_code 列表内
+      // 2026-11-09 严谨性升级：由 warn/minor 升级为 error/major——
+      //   无指征检查属《医院处方点评管理规范》"不适宜处方"，不能只作细节提示；
+      //   显式 severity_level:'major' 覆盖 rules.json 中遗留的 minor hint；
+      //   若 ≥3 项无指征检查，review.js 进一步按"过度医疗=超常处方"硬失败封顶 59。
       const offTarget = labItems.filter(it => it.exam_code && !expectedCodes.has(it.exam_code));
       if (offTarget.length) {
         const names = offTarget.map(it => it.name + (it.abbr ? `（${it.abbr}）` : ''));
-        hits.push(hit(R['LAB-02'], 'warn',
-          `开具的检验检查项目「${names.join('、')}」与本病种「${disease.name}」常规评估项目无明显对应关系，存在无指征检查可能。`,
+        hits.push(hit(R['LAB-02'], 'error',
+          `开具的检验检查项目「${names.join('、')}」与本病种「${disease.name}」常规评估项目无明显对应关系，属无指征/过度检查。`,
           `检验项目应与临床诊断相适应；如为鉴别诊断或合并症需要，请在病历中说明理由，否则建议删减。`,
-          { affected_items: names.slice() }));
+          { affected_items: names.slice(), severity_level: 'major' }));
       }
     }
 

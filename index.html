@@ -874,6 +874,7 @@
       <div class="acup-home-btns no-print">
         <button id="acup-btn-new" class="hero-btn">🎲 随机开始新病例</button>
         <button id="acup-btn-map" class="hero-btn acup-map-btn">🗺️ 经络穴位图</button>
+        <button id="acup-btn-time" class="hero-btn acup-map-btn">⏰ 子午流注 · 按时取穴</button>
       </div>
       <div class="difficulty-row no-print">
         <span class="diff-label">难度筛选：</span>
@@ -920,6 +921,51 @@
         <div id="ap-body"></div>
         <div class="modal-actions">
           <button class="btn btn-primary" id="ap-close">关闭</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 针灸推拿：子午流注 · 按时取穴（时间医学教学） ============ -->
+  <section class="view hidden" id="view-acup-time">
+    <div class="rx-toolbar no-print">
+      <button class="btn" id="acup-time-back">← 返回首页</button>
+      <span class="toolbar-title">⏰ 子午流注 · 按时取穴（针灸时间医学）</span>
+    </div>
+    <div class="acup-time-wrap">
+      <div class="time-intro" id="time-meta"></div>
+
+      <div class="time-shichen-row">
+        <div class="time-shichen-grid" id="time-shichen-grid"></div>
+        <div class="time-detail" id="time-detail"></div>
+      </div>
+
+      <div class="time-panel">
+        <h3>纳子法 · 本经补母泻子</h3>
+        <p class="time-nazi-intro" id="nazi-intro"></p>
+        <div class="time-nazi-table-wrap"><table class="time-nazi-table" id="nazi-table"></table></div>
+        <div class="time-song" id="nazi-song"></div>
+      </div>
+
+      <div class="time-panel">
+        <h3>灵龟八法 · 八脉交会配穴</h3>
+        <p class="time-nazi-intro" id="lg-intro"></p>
+        <div class="time-lg-grid" id="lg-grid"></div>
+      </div>
+
+      <div class="time-panel">
+        <h3>📝 知识测验</h3>
+        <div id="time-quiz"></div>
+        <div id="time-quiz-score" class="time-quiz-score"></div>
+      </div>
+    </div>
+
+    <div class="modal-mask hidden" id="modal-time-point">
+      <div class="modal acup-point-modal">
+        <h3 id="tp-name"></h3>
+        <div id="tp-body"></div>
+        <div class="modal-actions">
+          <button class="btn btn-primary" id="tp-close">关闭</button>
         </div>
       </div>
     </div>
@@ -1420,6 +1466,7 @@
 <script src="js/acup-engine.min.js?v=20261104fix1"></script>
 <script src="js/tcm-app.min.js?v=20261105ui1"></script>
 <script src="js/acup-app.min.js?v=20261105ui1"></script>
+<script src="js/acup-time.min.js?v=20261111time1"></script>
 <script src="js/module-views.min.js?v=20261104fix1"></script>
 <script src="js/anat-app.min.js?v=20261105ui1"></script>
 <script src="js/platform-enhance.js?v=20261106acupmap1"></script>

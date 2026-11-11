@@ -1349,6 +1349,79 @@ input, select, textarea { font-family: inherit; }
 }
 
 /* ============================================================
+ * 子午流注 · 按时取穴（针灸时间医学教学板块）
+ * ============================================================ */
+.acup-time-wrap { max-width: 1100px; margin: 0 auto; }
+.time-intro { background: #fff; border-radius: 12px; padding: 16px 18px; box-shadow: 0 2px 12px rgba(0,0,0,.05); margin-bottom: 16px; }
+.time-meta-title { font-size: 22px; font-weight: 700; color: #1f5c3a; letter-spacing: 1px; }
+.time-meta-sub { font-size: 13px; color: #64748b; margin-top: 4px; }
+.time-meta-note { font-size: 12px; color: #94a3b8; margin-top: 8px; line-height: 1.7; }
+
+.time-shichen-row { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.time-shichen-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; align-content: start; }
+.time-sc-card { border: 1px solid #e2e8f0; background: #fff; border-radius: 10px; padding: 10px; text-align: left; cursor: pointer; transition: all .15s ease; }
+.time-sc-card:hover { border-color: #2f7a4f; background: #ecfdf3; }
+.time-sc-card.active { border-color: #2f7a4f; background: #d1fae5; box-shadow: 0 2px 8px rgba(47,122,79,.15); }
+.time-sc-card.now { outline: 2px solid #f59e0b; outline-offset: -2px; }
+.ts-name { display: block; font-weight: 700; color: #1f5c3a; font-size: 14px; }
+.ts-hour { display: block; font-size: 11px; color: #64748b; margin: 2px 0; }
+.ts-meridian { display: block; font-size: 11px; color: #2f7a4f; }
+
+.time-detail { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.05); position: sticky; top: 12px; }
+.td-head { display: flex; align-items: baseline; gap: 10px; border-bottom: 2px solid #e8f5e9; padding-bottom: 10px; }
+.td-shichen { font-size: 22px; font-weight: 700; color: #1f5c3a; }
+.td-hour { font-size: 13px; color: #64748b; }
+.td-organ { margin-top: 10px; font-size: 14px; color: #334155; }
+.td-organ b { color: #1f5c3a; }
+.td-row { margin-top: 12px; font-size: 13px; line-height: 1.8; color: #334155; }
+.td-label { display: inline-block; min-width: 70px; color: #64748b; font-size: 12px; }
+
+.time-pt-chip { display: inline-block; border: 1px solid #2f7a4f; background: #e8f5e9; color: #065f46; border-radius: 12px; padding: 2px 10px; font-size: 12px; margin: 2px 4px 2px 0; cursor: pointer; }
+.time-pt-chip:hover { background: #d1fae5; }
+.time-pt-chip.missing { border-style: dashed; border-color: #cbd5e1; background: #f8fafc; color: #94a3b8; cursor: default; }
+
+.time-panel { background: #fff; border-radius: 12px; padding: 16px 18px; box-shadow: 0 2px 12px rgba(0,0,0,.05); margin-top: 16px; }
+.time-panel h3 { color: #1f5c3a; font-size: 16px; margin-bottom: 10px; }
+.time-nazi-intro { font-size: 13px; line-height: 1.8; color: #334155; margin-bottom: 12px; }
+.time-nazi-table-wrap { overflow-x: auto; }
+.time-nazi-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.time-nazi-table th { background: #e8f5e9; color: #1f5c3a; padding: 8px 10px; border: 1px solid #c8e6d0; text-align: left; white-space: nowrap; }
+.time-nazi-table td { padding: 8px 10px; border: 1px solid #c8e6d0; }
+.time-nazi-table tbody tr:nth-child(even) { background: #f8fafc; }
+.time-song { margin-top: 12px; background: #f8fafc; border-left: 3px solid #2f7a4f; border-radius: 6px; padding: 10px 12px; font-size: 13px; line-height: 1.9; color: #334155; }
+
+.time-lg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.lg-card { border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 14px; }
+.lg-pair { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.lg-point { text-align: center; flex: 1; }
+.lg-point .time-pt-chip { margin: 0 0 4px; }
+.lg-code { display: block; font-size: 11px; color: #94a3b8; }
+.lg-vessel { display: block; font-size: 11px; color: #2f7a4f; margin-top: 2px; }
+.lg-link { color: #94a3b8; font-size: 12px; }
+.lg-indication { margin-top: 10px; font-weight: 700; color: #1f5c3a; font-size: 13px; }
+.lg-detail { margin-top: 6px; font-size: 12px; line-height: 1.7; }
+
+.quiz-item { margin: 14px 0; padding-top: 12px; border-top: 1px dashed #e2e8f0; }
+.quiz-q { font-weight: 700; color: #1f2937; font-size: 14px; line-height: 1.7; }
+.quiz-opts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.quiz-opt { border: 1px solid #cbd5e1; background: #fff; border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; text-align: left; color: #334155; }
+.quiz-opt:hover { border-color: #2f7a4f; }
+.quiz-opt.correct { background: #d1fae5; border-color: #2f7a4f; color: #065f46; }
+.quiz-opt.wrong { background: #fee2e2; border-color: #b91c1c; color: #b91c1c; }
+.quiz-opt.disabled { cursor: default; }
+.quiz-fb { margin-top: 6px; font-size: 13px; line-height: 1.7; }
+.time-quiz-score { margin-top: 14px; font-size: 14px; color: #1f5c3a; }
+
+@media (max-width: 860px) {
+  .time-shichen-row { grid-template-columns: 1fr; }
+  .time-detail { position: static; }
+  .time-lg-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .time-shichen-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============================================================
  * 模块统计（admin 与 stats 页）
  * ============================================================ */
 .module-stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 14px 0; }

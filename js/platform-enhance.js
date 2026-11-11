@@ -866,7 +866,7 @@
     var ids = [
       'view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls',
       'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
-      'view-acup-home','view-acup-map','view-acup-case','view-acup-rx','view-acup-report',
+      'view-acup-home','view-acup-map','view-acup-case','view-acup-rx','view-acup-report','view-acup-time',
       'view-anat-home','view-anat-atlas','view-anat-system','view-anat-detail','view-anat-quiz','view-anat-cases',
       'view-quickref'
     ];
@@ -882,7 +882,7 @@
   // 视图切换时关闭弹窗
   document.addEventListener('click', function (e) {
     if (e.target.closest('.nav-btn, .module-tab, [data-goto]')) {
-      ['modal-quickref', 'modal-drug-detail', 'modal-acup-point'].forEach(function (id) {
+      ['modal-quickref', 'modal-drug-detail', 'modal-acup-point', 'modal-time-point'].forEach(function (id) {
         var m = $(id); if (m) m.classList.add('hidden');
       });
     }

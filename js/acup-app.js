@@ -52,7 +52,7 @@
   function showView(id) {
     ['view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs',
      'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
-     'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map'].forEach(v => {
+     'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map','view-acup-time'].forEach(v => {
       const el = $(v); if (el) el.classList.add('hidden');
     });
     const el = $(id); if (el) el.classList.remove('hidden');

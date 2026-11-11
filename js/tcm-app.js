@@ -72,7 +72,7 @@
   // ---------- 视图切换（覆盖西医 show） ----------
   const ALL_VIEWS = ['view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs',
     'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
-    'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map',
+    'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map','view-acup-time',
     'view-anat-home','view-anat-system','view-anat-detail','view-anat-quiz','view-anat-cases'];
 
   function showView(id) {

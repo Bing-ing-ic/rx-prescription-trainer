@@ -1411,6 +1411,8 @@ input, select, textarea { font-family: inherit; }
 .quiz-opt.disabled { cursor: default; }
 .quiz-fb { margin-top: 6px; font-size: 13px; line-height: 1.7; }
 .time-quiz-score { margin-top: 14px; font-size: 14px; color: #1f5c3a; }
+#tp-img-wrap { text-align: center; margin: 4px 0 12px; }
+#tp-img { max-width: 100%; max-height: 320px; object-fit: contain; border: 1px solid #e2e8f0; border-radius: 10px; background: #f8fafc; box-shadow: 0 2px 8px rgba(15,23,42,.08); }
 
 @media (max-width: 860px) {
   .time-shichen-row { grid-template-columns: 1fr; }

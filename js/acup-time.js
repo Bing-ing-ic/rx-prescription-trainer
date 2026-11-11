@@ -20,6 +20,39 @@
     return S.points.find(p => p.name === name) || null;
   }
 
+  // 中文经络名 -> img/meridians/ 分经图文件名（与 acup-app.js 保持一致）
+  const MERIDIAN_IMG_MAP = {
+    '手太阴肺经': 'LU-lung', '手阳明大肠经': 'LI-large-intestine',
+    '足阳明胃经': 'ST-stomach', '足太阴脾经': 'SP-spleen',
+    '手少阴心经': 'HT-heart', '手太阳小肠经': 'SI-small-intestine',
+    '足太阳膀胱经': 'BL-bladder', '足少阴肾经': 'KI-kidney',
+    '手厥阴心包经': 'PC-pericardium', '手少阳三焦经': 'TE-sanjiao',
+    '足少阳胆经': 'GB-gallbladder', '足厥阴肝经': 'LR-liver',
+    '任脉': 'RN-ren', '督脉': 'GV-du', '经外奇穴': 'EX-extra-points'
+  };
+  const MERIDIAN_CHART_URL = 'img/acup-meridian-chart.jpg';
+
+  // 穴位定位图四级回退：局部特写 -> 奇穴特写 -> 所属经络分经图 -> 总图
+  function loadPointImage(p) {
+    const img = $('tp-img'), wrap = $('tp-img-wrap');
+    if (!img) return;
+    const py = (p.pinyin || '').toLowerCase();
+    const merStem = p.meridian ? MERIDIAN_IMG_MAP[p.meridian] : null;
+    const chain = [];
+    if (py) chain.push('img/meridians/point-' + py + '.jpg');
+    if (py) chain.push('img/meridians/EX-point-' + py + '.jpg');
+    if (merStem) chain.push('img/meridians/' + merStem + '.jpg');
+    chain.push(MERIDIAN_CHART_URL);
+    let i = 0;
+    (function tryNext() {
+      if (i >= chain.length) { if (wrap) wrap.style.display = 'none'; return; }
+      const src = chain[i++];
+      img.onerror = () => { console.warn('[time] 穴位图回退:', src); tryNext(); };
+      img.onload = () => { if (wrap) wrap.style.display = ''; };
+      img.src = src;
+    })();
+  }
+
   // 本机当前时辰（23-1 子，1-3 丑 …），返回 shichen 索引；无法判定返回 -1
   function currentShichenIndex() {
     const h = new Date().getHours();
@@ -179,15 +212,19 @@
     const p = findPoint(name);
     const mask = $('modal-time-point');
     if (!mask) return;
+    const wrap = $('tp-img-wrap');
     if (!p) {
       $('tp-name').innerHTML = `${name} <small style="font-weight:400;color:#64748b;font-size:13px;">教材标准穴名</small>`;
-      $('tp-body').innerHTML = `<div class="ap-row muted">该穴为纳子法/八脉交会标准穴名，未收录进本平台常用 152 穴库；定位、主治以人卫《针灸学》教材为准。</div>`;
+      if (wrap) wrap.style.display = 'none';
+      $('tp-body').innerHTML = `<div class="ap-row muted">该穴为纳子法/八脉交会标准穴名，未收录进本平台穴位库；定位、主治以人卫《针灸学》教材为准。</div>`;
       mask.classList.remove('hidden');
       return;
     }
     const chips = (Array.isArray(p.indications) ? p.indications : (p.indications ? [p.indications] : []))
       .map(i => `<span class="ap-chip">${i}</span>`).join('');
     $('tp-name').innerHTML = `${p.name} <small style="font-weight:400;color:#64748b;font-size:13px;">${p.code || ''} · ${p.meridian || ''}</small>`;
+    if (wrap) wrap.style.display = '';
+    loadPointImage(p);
     $('tp-body').innerHTML = `
       <div class="ap-row"><span class="ap-label">【定位】</span>${p.location || '-'}</div>
       <div class="ap-row"><span class="ap-label">【类属】</span>${p.category || '-'}　<span class="ap-label">【功用】</span>${p.functions || '-'}</div>

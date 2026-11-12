@@ -1103,8 +1103,8 @@
     },
     {
       "id": "legacy-q021",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "digestive",
+      "subsystem": "消化管",
       "difficulty": "初级",
       "prompt": "McBurney点是下列哪个器官的体表投影？",
       "options": [
@@ -1120,8 +1120,8 @@
     },
     {
       "id": "legacy-q022",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "digestive",
+      "subsystem": "消化腺",
       "difficulty": "初级",
       "prompt": "胆囊底的体表投影(Murphy点)位于：",
       "options": [
@@ -1137,8 +1137,8 @@
     },
     {
       "id": "legacy-q023",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "digestive",
+      "subsystem": "消化管",
       "difficulty": "初级",
       "prompt": "食管的第二处狭窄位于：",
       "options": [
@@ -1154,8 +1154,8 @@
     },
     {
       "id": "legacy-q024",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "urinary",
+      "subsystem": "输尿管",
       "difficulty": "初级",
       "prompt": "输尿管的三个狭窄不包括：",
       "options": [
@@ -1171,8 +1171,8 @@
     },
     {
       "id": "legacy-q025",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "digestive",
+      "subsystem": "消化管",
       "difficulty": "初级",
       "prompt": "手术中寻找阑尾最可靠的标志是：",
       "options": [
@@ -1188,8 +1188,8 @@
     },
     {
       "id": "legacy-q026",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "digestive",
+      "subsystem": "消化管",
       "difficulty": "中级",
       "prompt": "十二指肠大乳头位于：",
       "options": [
@@ -1205,8 +1205,8 @@
     },
     {
       "id": "legacy-q027",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "respiratory",
+      "subsystem": "呼吸道",
       "difficulty": "中级",
       "prompt": "声带之间的裂隙(喉腔最狭窄处)是：",
       "options": [
@@ -1222,8 +1222,8 @@
     },
     {
       "id": "legacy-q028",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "digestive",
+      "subsystem": "消化腺",
       "difficulty": "初级",
       "prompt": "正常肝在右肋弓下的位置是：",
       "options": [
@@ -1239,8 +1239,8 @@
     },
     {
       "id": "legacy-q029",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "digestive",
+      "subsystem": "消化腺",
       "difficulty": "中级",
       "prompt": "出入肝门的结构不包括：",
       "options": [
@@ -1256,8 +1256,8 @@
     },
     {
       "id": "legacy-q030",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "reproductive",
+      "subsystem": "男性",
       "difficulty": "中级",
       "prompt": "男性尿道可分为：",
       "options": [
@@ -1273,8 +1273,8 @@
     },
     {
       "id": "legacy-q031",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "reproductive",
+      "subsystem": "女性",
       "difficulty": "中级",
       "prompt": "输卵管受精的部位通常在：",
       "options": [
@@ -1290,8 +1290,8 @@
     },
     {
       "id": "legacy-q032",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "digestive",
+      "subsystem": "消化管",
       "difficulty": "中级",
       "prompt": "手术中辨认幽门的标志是：",
       "options": [
@@ -1307,8 +1307,8 @@
     },
     {
       "id": "legacy-q033",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "respiratory",
+      "subsystem": "肺",
       "difficulty": "中级",
       "prompt": "胸膜腔穿刺抽液常选部位是：",
       "options": [
@@ -1324,8 +1324,8 @@
     },
     {
       "id": "legacy-q034",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "respiratory",
+      "subsystem": "呼吸道",
       "difficulty": "中级",
       "prompt": "右主支气管的特点是：",
       "options": [
@@ -1341,8 +1341,8 @@
     },
     {
       "id": "legacy-q035",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "locomotor",
+      "subsystem": "肌学",
       "difficulty": "高级",
       "prompt": "关于腹股沟管的描述，正确的是：",
       "options": [
@@ -1358,8 +1358,8 @@
     },
     {
       "id": "legacy-q036",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "digestive",
+      "subsystem": "消化管",
       "difficulty": "高级",
       "prompt": "胆总管和胰管共同开口于：",
       "options": [
@@ -1375,8 +1375,8 @@
     },
     {
       "id": "legacy-q037",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "reproductive",
+      "subsystem": "女性",
       "difficulty": "高级",
       "prompt": "产科经阴道后穹窿穿刺是因为直肠子宫陷凹：",
       "options": [
@@ -1392,8 +1392,8 @@
     },
     {
       "id": "legacy-q038",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "urinary",
+      "subsystem": "肾",
       "difficulty": "高级",
       "prompt": "关于肾被膜由内向外的顺序正确的是：",
       "options": [
@@ -1409,8 +1409,8 @@
     },
     {
       "id": "legacy-q039",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "reproductive",
+      "subsystem": "女性",
       "difficulty": "高级",
       "prompt": "子宫峡部在妊娠末期形成：",
       "options": [
@@ -1426,8 +1426,8 @@
     },
     {
       "id": "legacy-q040",
-      "system": "visceral",
-      "subsystem": "基础概念",
+      "system": "respiratory",
+      "subsystem": "肺",
       "difficulty": "高级",
       "prompt": "肺下缘在锁骨中线上平对：",
       "options": [
@@ -1443,8 +1443,8 @@
     },
     {
       "id": "legacy-q041",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "regional_limbs",
+      "subsystem": "上肢",
       "difficulty": "初级",
       "prompt": "摸脉(桡动脉)的位置在：",
       "options": [
@@ -1460,8 +1460,8 @@
     },
     {
       "id": "legacy-q042",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "regional_limbs",
+      "subsystem": "上肢",
       "difficulty": "初级",
       "prompt": "测量血压时听诊的动脉是：",
       "options": [
@@ -1477,8 +1477,8 @@
     },
     {
       "id": "legacy-q043",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "心",
       "difficulty": "初级",
       "prompt": "心尖搏动的体表位置在：",
       "options": [
@@ -1494,8 +1494,8 @@
     },
     {
       "id": "legacy-q044",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "动脉",
       "difficulty": "初级",
       "prompt": "主动脉弓上发出的分支不包括：",
       "options": [
@@ -1511,8 +1511,8 @@
     },
     {
       "id": "legacy-q045",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "心",
       "difficulty": "初级",
       "prompt": "二尖瓣位于：",
       "options": [
@@ -1528,8 +1528,8 @@
     },
     {
       "id": "legacy-q046",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "动脉",
       "difficulty": "中级",
       "prompt": "冠状动脉粥样硬化最常累及：",
       "options": [
@@ -1545,8 +1545,8 @@
     },
     {
       "id": "legacy-q047",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "regional_limbs",
+      "subsystem": "下肢",
       "difficulty": "中级",
       "prompt": "大隐静脉注入：",
       "options": [
@@ -1562,8 +1562,8 @@
     },
     {
       "id": "legacy-q048",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "静脉",
       "difficulty": "中级",
       "prompt": "下列关于肝门静脉的叙述错误的是：",
       "options": [
@@ -1579,8 +1579,8 @@
     },
     {
       "id": "legacy-q049",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "心",
       "difficulty": "中级",
       "prompt": "心包腔穿刺常用的进针部位是：",
       "options": [
@@ -1596,8 +1596,8 @@
     },
     {
       "id": "legacy-q050",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "淋巴",
       "difficulty": "中级",
       "prompt": "胸导管注入：",
       "options": [
@@ -1613,8 +1613,8 @@
     },
     {
       "id": "legacy-q051",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "心",
       "difficulty": "中级",
       "prompt": "右心室入口和出口分别是：",
       "options": [
@@ -1630,8 +1630,8 @@
     },
     {
       "id": "legacy-q052",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "心",
       "difficulty": "高级",
       "prompt": "关于室间隔缺损最好发的部位是：",
       "options": [
@@ -1647,8 +1647,8 @@
     },
     {
       "id": "legacy-q053",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "静脉",
       "difficulty": "高级",
       "prompt": "门脉高压时不会出现：",
       "options": [
@@ -1664,8 +1664,8 @@
     },
     {
       "id": "legacy-q054",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "静脉",
       "difficulty": "高级",
       "prompt": "下列哪项不是锁骨下静脉穿刺的并发症：",
       "options": [
@@ -1681,8 +1681,8 @@
     },
     {
       "id": "legacy-q055",
-      "system": "vascular",
-      "subsystem": "基础概念",
+      "system": "circulatory",
+      "subsystem": "心",
       "difficulty": "高级",
       "prompt": "二尖瓣听诊区位于：",
       "options": [
@@ -2714,6 +2714,665 @@
       "answer": 0,
       "explanation": "约75%的乳腺淋巴引流至腋淋巴结（胸肌淋巴结沿胸小肌下缘、胸外侧血管排列），是乳腺癌淋巴转移的第一站；乳腺内侧部引流至胸骨旁淋巴结，上部可至锁骨上淋巴结（Virchow淋巴结）。",
       "exam_point": "乳腺癌第一站→腋淋巴结（胸肌组）",
+      "type": "identify"
+    },
+    {
+      "id": "id-immune-thymus",
+      "system": "immune",
+      "subsystem": "中枢淋巴器官",
+      "difficulty": "初级",
+      "prompt": "胸腺位于胸骨柄后方上纵隔前部，其主要淋巴功能是：",
+      "options": [
+        "T淋巴细胞分化成熟的场所",
+        "B淋巴细胞分化成熟的场所",
+        "产生抗体的浆细胞",
+        "回收组织液中的蛋白质"
+      ],
+      "answer": 0,
+      "explanation": "胸腺是中枢淋巴器官，T淋巴细胞在胸腺内分化成熟；B细胞在骨髓成熟。青春期后胸腺逐渐被脂肪组织替代。",
+      "exam_point": "胸腺=上纵隔前部，T细胞成熟场所",
+      "type": "identify"
+    },
+    {
+      "id": "id-immune-spleen",
+      "system": "immune",
+      "subsystem": "周围淋巴器官",
+      "difficulty": "初级",
+      "prompt": "脾在腹后壁的位置是：",
+      "options": [
+        "左季肋区第9～11肋深面，长轴与第10肋一致",
+        "右季肋区肝下方",
+        "脐水平腹腔中部",
+        "盆腔髂窝内"
+      ],
+      "answer": 0,
+      "explanation": "脾位于左季肋区第9～11肋深面，长轴与第10肋一致，正常被肋弓掩盖、不可触及；脾是人体最大的淋巴器官。",
+      "exam_point": "脾=左季肋区9～11肋深面，第10肋长轴",
+      "type": "identify"
+    },
+    {
+      "id": "id-immune-axillary-node",
+      "system": "immune",
+      "subsystem": "周围淋巴器官",
+      "difficulty": "中级",
+      "prompt": "乳腺癌最常首先转移至下列哪组淋巴结？",
+      "options": [
+        "腋淋巴结",
+        "腹股沟浅淋巴结",
+        "肠系膜淋巴结",
+        "颈外侧深淋巴结"
+      ],
+      "answer": 0,
+      "explanation": "乳腺外侧部淋巴主要注入腋淋巴结（外侧群、前群），是乳腺癌淋巴转移的首站；乳房内侧部可经胸廓内淋巴结引流。",
+      "exam_point": "乳腺癌首站淋巴=腋淋巴结",
+      "type": "identify"
+    },
+    {
+      "id": "id-immune-inguinal-node",
+      "system": "immune",
+      "subsystem": "周围淋巴器官",
+      "difficulty": "中级",
+      "prompt": "腹股沟浅淋巴结收集的淋巴不包括：",
+      "options": [
+        "下肢浅部淋巴",
+        "会阴及外生殖器淋巴",
+        "臀区淋巴",
+        "小肠绒毛中央乳糜管淋巴"
+      ],
+      "answer": 3,
+      "explanation": "腹股沟浅淋巴结收集下肢浅部、会阴、外生殖器和臀区淋巴；小肠绒毛中央乳糜管淋巴注入肠系膜淋巴结，经乳糜池、胸导管回流。",
+      "exam_point": "腹股沟浅淋巴结引流范围；乳糜管→肠系膜淋巴结",
+      "type": "identify"
+    },
+    {
+      "id": "m-immune-drainage",
+      "system": "immune",
+      "subsystem": "淋巴管道",
+      "difficulty": "中级",
+      "prompt": "将淋巴回流结构与配对项对应：",
+      "pairs_left": [
+        "胸导管",
+        "右淋巴导管",
+        "小肠绒毛中央乳糜管"
+      ],
+      "pairs_right": [
+        "引流右上1/4，注入右静脉角",
+        "回收小肠脂肪，汇入肠系膜淋巴管",
+        "起自乳糜池，注入左静脉角"
+      ],
+      "answer": [
+        2,
+        0,
+        1
+      ],
+      "explanation": "胸导管起自乳糜池、穿膈主动脉裂孔上行，注入左静脉角，引流下半身及左上半身；右淋巴导管由右颈干、右锁骨下干、右支气管纵隔干合成，注入右静脉角，引流右上1/4；中央乳糜管回收脂肪后汇入肠系膜淋巴管。",
+      "exam_point": "胸导管→左静脉角；右淋巴导管→右静脉角；乳糜管→肠系膜淋巴管",
+      "type": "match"
+    },
+    {
+      "id": "qa-immune-thoracic-duct",
+      "system": "immune",
+      "subsystem": "淋巴管道",
+      "difficulty": "高级",
+      "prompt": "颈根部手术损伤胸导管后，患者出现左侧胸腔积液、乳糜样引流液。请说明胸导管的行程、引流范围及损伤后为何出现乳糜胸。",
+      "answer_points": [
+        "胸导管起自第1腰椎前方的乳糜池",
+        "穿膈主动脉裂孔入胸腔，沿脊柱右前方上行，至T5转向左侧，经颈根部注入左静脉角",
+        "引流下半身及左上半身（左头颈部、左上肢、左半胸）淋巴",
+        "管内为含脂肪乳糜微粒的淋巴，破损后乳糜液漏入纵隔/胸膜腔，形成乳糜胸",
+        "右上1/4淋巴经右淋巴导管回流，故右侧胸导管损伤不致乳糜胸"
+      ],
+      "explanation": "胸导管是全身最大淋巴管道，起自乳糜池，经主动脉裂孔入胸，在左颈根部注入左静脉角，收集下半身和左上半身淋巴。管内淋巴含乳糜微粒，损伤后乳糜外溢积聚于胸膜腔即乳糜胸；右淋巴导管仅引流右上1/4，损伤表现于右侧或局限于颈根部。",
+      "exam_point": "胸导管行程/引流范围；损伤→乳糜胸",
+      "type": "qa"
+    },
+    {
+      "id": "id-musc-pectoralis",
+      "system": "muscular",
+      "subsystem": "胸肌",
+      "difficulty": "初级",
+      "prompt": "胸大肌的主要作用是：",
+      "options": [
+        "使肩关节内收、内旋和前屈",
+        "伸肩关节并后伸上臂",
+        "外展上臂",
+        "屈肘关节"
+      ],
+      "answer": 0,
+      "explanation": "胸大肌起自锁骨内侧半、胸骨和上位肋软骨，止于肱骨大结节嵴，主要使上臂内收、内旋和前屈；由胸内侧、胸外侧神经支配。",
+      "exam_point": "胸大肌=上臂内收内旋前屈",
+      "type": "identify"
+    },
+    {
+      "id": "id-musc-biceps",
+      "system": "muscular",
+      "subsystem": "上肢肌",
+      "difficulty": "初级",
+      "prompt": "肱二头肌的主要作用是：",
+      "options": [
+        "屈肘关节并使前臂旋后",
+        "伸肘关节",
+        "屈腕关节",
+        "内收上臂"
+      ],
+      "answer": 0,
+      "explanation": "肱二头肌长头起自肩胛骨盂上结节、短头起自喙突，止于桡骨粗隆，屈肘并使前臂旋后；由肌皮神经(C5～C6)支配。",
+      "exam_point": "肱二头肌=屈肘+前臂旋后，肌皮神经支配",
+      "type": "identify"
+    },
+    {
+      "id": "id-musc-trapezius",
+      "system": "muscular",
+      "subsystem": "背肌",
+      "difficulty": "中级",
+      "prompt": "支配斜方肌运动的神经是：",
+      "options": [
+        "副神经（CN XI）",
+        "胸背神经",
+        "腋神经",
+        "肩胛背神经"
+      ],
+      "answer": 0,
+      "explanation": "斜方肌由副神经（CN XI）运动纤维支配，C3～C4脊神经司本体感觉；胸背神经支配背阔肌，腋神经支配三角肌和小圆肌。",
+      "exam_point": "斜方肌运动神经=副神经XI",
+      "type": "identify"
+    },
+    {
+      "id": "id-musc-quadriceps",
+      "system": "muscular",
+      "subsystem": "下肢肌",
+      "difficulty": "中级",
+      "prompt": "股四头肌的神经支配是：",
+      "options": [
+        "股神经（L2～L4）",
+        "胫神经",
+        "腓总神经",
+        "闭孔神经"
+      ],
+      "answer": 0,
+      "explanation": "股四头肌（股直肌、股内侧肌、股外侧肌、股中间肌）伸膝关节，股直肌还屈髋；由股神经(L2～L4)支配。",
+      "exam_point": "股四头肌=股神经L2～L4，伸膝",
+      "type": "identify"
+    },
+    {
+      "id": "m-musc-innervation",
+      "system": "muscular",
+      "subsystem": "上肢肌",
+      "difficulty": "中级",
+      "prompt": "将肌肉与运动神经配对：",
+      "pairs_left": [
+        "背阔肌",
+        "肱三头肌",
+        "小腿三头肌",
+        "缝匠肌"
+      ],
+      "pairs_right": [
+        "胸背神经(C6～C8)",
+        "胫神经(S1～S2)",
+        "桡神经(C6～C8)",
+        "股神经(L2～L3)"
+      ],
+      "answer": [
+        0,
+        2,
+        1,
+        3
+      ],
+      "explanation": "背阔肌由胸背神经支配；肱三头肌由桡神经支配；小腿三头肌由胫神经支配；缝匠肌由股神经支配。",
+      "exam_point": "肌肉-神经配对：背阔胸背、肱三桡、小腿三头胫、缝匠股",
+      "type": "match"
+    },
+    {
+      "id": "qa-musc-scalene-gap",
+      "system": "muscular",
+      "subsystem": "颈肌",
+      "difficulty": "高级",
+      "prompt": "锁骨上区受压出现上肢麻木、桡动脉搏动减弱。请说明斜角肌间隙的构成、通过结构及与臂丛、膈神经的毗邻关系。",
+      "answer_points": [
+        "斜角肌间隙由前斜角肌、中斜角肌与第1肋围成",
+        "间隙内通过臂丛(C5～T1)和锁骨下动脉",
+        "锁骨下静脉在前斜角肌前方，不经过间隙",
+        "膈神经(C3～C5)沿前斜角肌前面下行，不进入间隙",
+        "斜角肌肥厚或第1肋畸形可压迫臂丛/锁骨下动脉，致上肢麻木、动脉搏动减弱"
+      ],
+      "explanation": "前、中斜角肌与第1肋之间的斜角肌间隙通过臂丛和锁骨下动脉；锁骨下静脉和膈神经均在前斜角肌前方。间隙狭窄时压迫臂丛和锁骨下动脉，出现上肢感觉运动障碍和远端循环减弱，称前斜角肌综合征/胸出口综合征。",
+      "exam_point": "斜角肌间隙=前中斜角肌+第1肋；臂丛+锁骨下动脉通过；膈神经在前斜角肌前面",
+      "type": "qa"
+    },
+    {
+      "id": "id-skin-epidermis",
+      "system": "integumentary",
+      "subsystem": "皮肤",
+      "difficulty": "初级",
+      "prompt": "关于表皮的血管分布，正确的是：",
+      "options": [
+        "表皮内无血管，营养来自真皮",
+        "表皮含丰富毛细血管网",
+        "表皮由真皮乳头供血",
+        "表皮动脉直接进入角质层"
+      ],
+      "answer": 0,
+      "explanation": "表皮为复层扁平上皮，内无血管，物质代谢由真皮组织液渗透供应；真皮内才有乳头下动脉丛和静脉网。",
+      "exam_point": "表皮无血管，营养来自真皮",
+      "type": "identify"
+    },
+    {
+      "id": "id-skin-layers",
+      "system": "integumentary",
+      "subsystem": "皮肤",
+      "difficulty": "初级",
+      "prompt": "皮肤由下列哪两层构成？",
+      "options": [
+        "表皮和真皮",
+        "表皮和皮下组织",
+        "真皮和皮下组织",
+        "角质层和真皮乳头层"
+      ],
+      "answer": 0,
+      "explanation": "皮肤由表皮（上皮）和真皮（结缔组织）构成；皮下组织（浅筋膜）位于真皮深面，不属于皮肤本体。",
+      "exam_point": "皮肤=表皮+真皮；皮下组织在深面",
+      "type": "identify"
+    },
+    {
+      "id": "id-skin-sweat-gland",
+      "system": "integumentary",
+      "subsystem": "皮肤附属器",
+      "difficulty": "中级",
+      "prompt": "支配小汗腺分泌的神经是：",
+      "options": [
+        "交感神经节后胆碱能纤维",
+        "副交感神经节后纤维",
+        "躯体运动神经",
+        "躯体感觉神经"
+      ],
+      "answer": 0,
+      "explanation": "小汗腺由交感神经节后纤维支配，其递质为乙酰胆碱（交感胆碱能）；立毛肌、皮肤血管同样受交感神经支配。",
+      "exam_point": "汗腺=交感胆碱能节后纤维",
+      "type": "identify"
+    },
+    {
+      "id": "id-skin-arrector",
+      "system": "integumentary",
+      "subsystem": "皮肤附属器",
+      "difficulty": "中级",
+      "prompt": "立毛肌受下列何种神经支配？",
+      "options": [
+        "交感神经",
+        "副交感神经",
+        "面神经",
+        "脊神经前支运动纤维"
+      ],
+      "answer": 0,
+      "explanation": "立毛肌为附着于毛囊一侧的平滑肌，受交感神经支配，寒冷或情绪紧张时收缩出现\"鸡皮疙瘩\"。",
+      "exam_point": "立毛肌=交感神经支配",
+      "type": "identify"
+    },
+    {
+      "id": "qa-skin-burn-depth",
+      "system": "integumentary",
+      "subsystem": "皮肤",
+      "difficulty": "高级",
+      "prompt": "沸水烫伤后，创面大水疱、剧痛、基底潮红；另有一处创面苍白、痛觉迟钝、可见网状栓塞血管。请按皮肤层次判断两处烧伤深度并说明依据。",
+      "answer_points": [
+        "大水疱、剧痛、基底潮红为浅Ⅱ度：伤及真皮乳头层（表皮+真皮浅层）",
+        "痛觉迟钝、苍白、网状栓塞血管为深Ⅱ度：伤及真皮网状层（真皮深层）",
+        "Ⅰ度仅伤及表皮浅层，红斑、无水疱",
+        "Ⅲ度（焦痂）伤及皮肤全层并达皮下组织，创面苍白/焦黑、痛觉消失",
+        "真皮内残存汗腺、毛囊上皮是深Ⅱ度创面自行上皮化的基础"
+      ],
+      "explanation": "浅Ⅱ度达真皮乳头层，水疱大、痛觉明显、基底潮红；深Ⅱ度达真皮网状层，痛觉迟钝、基底苍白并可见栓塞血管网；Ⅰ度仅表皮浅层；Ⅲ度深达全层及皮下。真皮残留的皮肤附属器上皮可使深Ⅱ度创面再上皮化。",
+      "exam_point": "烧伤深度与表皮/真皮层次对应",
+      "type": "qa"
+    },
+    {
+      "id": "id-eye-retinal-artery",
+      "system": "sensory",
+      "subsystem": "视器",
+      "difficulty": "初级",
+      "prompt": "供应视网膜内层的动脉是：",
+      "options": [
+        "视网膜中央动脉（眼动脉分支）",
+        "睫状后短动脉",
+        "脉络膜动脉",
+        "眶下动脉"
+      ],
+      "answer": 0,
+      "explanation": "眼动脉发出视网膜中央动脉，经视神经盘入眼球，供应视网膜内层；睫状后短动脉供应脉络膜和视网膜外层。视网膜中央动脉为终动脉，栓塞可致盲。",
+      "exam_point": "视网膜内层=视网膜中央动脉(眼动脉)",
+      "type": "identify"
+    },
+    {
+      "id": "id-eye-aqueous-flow",
+      "system": "sensory",
+      "subsystem": "视器",
+      "difficulty": "初级",
+      "prompt": "房水回流的正确途径是：",
+      "options": [
+        "后房→瞳孔→前房→虹膜角膜角→小梁网→巩膜静脉窦",
+        "前房→瞳孔→后房→脉络膜",
+        "晶状体→玻璃体→视网膜",
+        "睫状体→玻璃体→黄斑"
+      ],
+      "answer": 0,
+      "explanation": "睫状体产生房水→后房→瞳孔→前房→虹膜角膜角（前房角）→小梁网→巩膜静脉窦→睫状前静脉；回流受阻致眼压升高（青光眼）。",
+      "exam_point": "房水循环途径；阻滞→青光眼",
+      "type": "identify"
+    },
+    {
+      "id": "id-ear-tympani-muscle",
+      "system": "sensory",
+      "subsystem": "前庭蜗器（中耳）",
+      "difficulty": "中级",
+      "prompt": "支配鼓膜张肌的神经是：",
+      "options": [
+        "三叉神经下颌支（V3）",
+        "面神经（VII）",
+        "舌咽神经（IX）",
+        "前庭蜗神经（VIII）"
+      ],
+      "answer": 0,
+      "explanation": "鼓膜张肌由三叉神经下颌支(V3)支配，紧张鼓膜；镫骨肌由面神经(VII)支配，减轻镫骨对内耳的压力；两肌协同保护内耳。",
+      "exam_point": "鼓膜张肌=V3；镫骨肌=面神经VII",
+      "type": "identify"
+    },
+    {
+      "id": "id-inner-ear-receptor",
+      "system": "sensory",
+      "subsystem": "前庭蜗器（内耳）",
+      "difficulty": "中级",
+      "prompt": "听觉感受器位于：",
+      "options": [
+        "螺旋器（Corti器，位于蜗管基底膜）",
+        "壶腹嵴",
+        "椭圆囊斑",
+        "球囊斑"
+      ],
+      "answer": 0,
+      "explanation": "螺旋器位于蜗管基底膜，感受声波听觉；壶腹嵴感受旋转变速运动，椭圆囊斑和球囊斑感受直线变速运动和静止位觉。",
+      "exam_point": "螺旋器=听觉；壶腹嵴=旋转；囊斑=直线变速/位觉",
+      "type": "identify"
+    },
+    {
+      "id": "m-sensory-nerve",
+      "system": "sensory",
+      "subsystem": "视器",
+      "difficulty": "中级",
+      "prompt": "将眼肌/感觉与神经配对：",
+      "pairs_left": [
+        "上斜肌",
+        "上直肌/下直肌/内直肌/下斜肌",
+        "角膜感觉",
+        "瞳孔括约肌"
+      ],
+      "pairs_right": [
+        "动眼神经(III)",
+        "滑车神经(IV)",
+        "三叉神经眼支(V1)",
+        "动眼神经副交感纤维(EW核)"
+      ],
+      "answer": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "explanation": "上斜肌由滑车神经(IV)支配；除上斜肌和外直肌外的眼外肌由动眼神经(III)支配；角膜感觉由三叉神经眼支(V1)管理；瞳孔括约肌由动眼神经副交感纤维支配，缩瞳。",
+      "exam_point": "眼肌神经：上斜肌滑车IV；余眼肌动眼III；角膜V1；括约肌动眼副交感",
+      "type": "match"
+    },
+    {
+      "id": "qa-sensory-glaucoma",
+      "system": "sensory",
+      "subsystem": "视器",
+      "difficulty": "高级",
+      "prompt": "患者眼压升高、眼胀、视野缺损，诊断为青光眼。请用房水循环解剖路径解释眼压升高的解剖学基础，并指出角膜感觉由何神经管理。",
+      "answer_points": [
+        "房水由睫状体产生→后房→瞳孔→前房→虹膜角膜角→小梁网→巩膜静脉窦",
+        "虹膜角膜角狭窄或小梁网/静脉窦回流受阻，房水淤积致眼压升高",
+        "持续高眼压压迫视神经盘，致视神经萎缩和视野缺损",
+        "角膜感觉由三叉神经眼支(V1，睫状长神经)管理",
+        "瞳孔括约肌、睫状肌由动眼神经副交感纤维支配"
+      ],
+      "explanation": "房水经后房、瞳孔、前房，从前房角小梁网汇入巩膜静脉窦；任何环节回流受阻都会使房水潴留、眼压升高，压迫视神经盘造成青光眼。角膜等眼球前部感觉由三叉神经眼支(V1)传导；副交感纤维经动眼神经支配瞳孔括约肌和睫状肌。",
+      "exam_point": "房水循环阻滞→青光眼；角膜感觉=V1",
+      "type": "qa"
+    },
+    {
+      "id": "id-abd-kidney-level",
+      "system": "regional_abdomen",
+      "subsystem": "腹腔脏器",
+      "difficulty": "初级",
+      "prompt": "成人左肾约平：",
+      "options": [
+        "第11胸椎体下缘至第2～3腰椎间盘",
+        "第8胸椎至第1腰椎",
+        "第3腰椎至第5腰椎",
+        "第10胸椎至第12胸椎"
+      ],
+      "answer": 0,
+      "explanation": "左肾平T11下缘至L2～L3间盘，右肾因肝影响比左肾低约半个椎体；第12肋斜过左肾后面中部、右肾后面上部。",
+      "exam_point": "肾位置T11下～L2/L3；右肾略低",
+      "type": "identify"
+    },
+    {
+      "id": "id-abd-pancreas",
+      "system": "regional_abdomen",
+      "subsystem": "腹腔脏器",
+      "difficulty": "中级",
+      "prompt": "胰的位置与毗邻，正确的是：",
+      "options": [
+        "位于胃后方，横卧于第1～2腰椎水平腹后壁",
+        "位于肝下方右季肋区",
+        "位于盆腔骶骨前方",
+        "位于腹腔正中脐平面"
+      ],
+      "answer": 0,
+      "explanation": "胰位于胃后方、第1～2腰椎水平腹后壁腹膜后隙内，分头、颈、体、尾；胰头被十二指肠环抱，胰尾邻脾门；胰管与胆总管汇合成肝胰壶腹开口于十二指肠大乳头。",
+      "exam_point": "胰=胃后方L1～L2腹膜后隙；胰头包于十二指肠",
+      "type": "identify"
+    },
+    {
+      "id": "id-abd-aorta-bifurcation",
+      "system": "regional_abdomen",
+      "subsystem": "腹腔脏器",
+      "difficulty": "中级",
+      "prompt": "腹主动脉分为左、右髂总动脉的水平是：",
+      "options": [
+        "第4腰椎下缘",
+        "第2腰椎下缘",
+        "第1腰椎下缘",
+        "第5骶椎"
+      ],
+      "answer": 0,
+      "explanation": "腹主动脉经膈主动脉裂孔(T12)入腹腔，沿脊柱左前方下行，至第4腰椎下缘分为左、右髂总动脉；此水平为脐左下方，是腹主动脉触诊和压迫止血标志。",
+      "exam_point": "腹主动脉分叉平L4下缘",
+      "type": "identify"
+    },
+    {
+      "id": "id-abd-retroperitoneal",
+      "system": "regional_abdomen",
+      "subsystem": "腹腔脏器",
+      "difficulty": "中级",
+      "prompt": "下列哪组器官均属腹膜后位？",
+      "options": [
+        "肾、肾上腺、输尿管、胰、十二指肠大部",
+        "肝、胃、脾",
+        "阑尾、空肠、回肠",
+        "横结肠、乙状结肠"
+      ],
+      "answer": 0,
+      "explanation": "肾、肾上腺、输尿管腹部、胰、十二指肠降部和水平部、升降结肠大部位于腹膜后隙；肝、胃、脾、空回肠、阑尾为腹膜内位或间位器官。",
+      "exam_point": "腹膜后位器官判断",
+      "type": "identify"
+    },
+    {
+      "id": "qa-abd-retroperitoneum",
+      "system": "regional_abdomen",
+      "subsystem": "腹腔脏器",
+      "difficulty": "高级",
+      "prompt": "腰腹部外伤后腹膜后血肿形成并沿间隙向上、下蔓延。请说明腹膜后隙的边界、内含主要结构，以及肾手术为何可经腹膜后入路而不污染腹腔。",
+      "answer_points": [
+        "腹膜后隙位于腹后壁腹膜壁层与腹内筋膜之间，上达膈、下至骶骨岬",
+        "内含肾、肾上腺、输尿管腹部、腹主动脉、下腔静脉、乳糜池、腰交感干和疏松结缔组织",
+        "前界为腹膜壁层，与腹膜腔相隔；后界为腹后壁肌与骨",
+        "肾等腹膜后位器官手术经腰腹侧腹膜后入路，不切开腹膜，不进入腹膜腔",
+        "疏松结缔组织间隙使血肿、感染可沿其上下蔓延"
+      ],
+      "explanation": "腹膜后隙前借腹膜壁层与腹膜腔分隔，后邻腹后壁；肾、肾上腺、输尿管等位于其内。经腰腹膜后入路显露肾脏时不切开腹膜，故腹腔脏器不暴露、不被污染；因间隙为疏松结缔组织连通，血肿和感染可沿间隙向上至膈下、向下至盆腔蔓延。",
+      "exam_point": "腹膜后隙边界/内容；腹膜后入路不经腹膜腔",
+      "type": "qa"
+    },
+    {
+      "id": "id-thorax-phrenic-root",
+      "system": "regional_thorax",
+      "subsystem": "胸腔脏器",
+      "difficulty": "初级",
+      "prompt": "支配膈运动的膈神经发自：",
+      "options": [
+        "颈丛C3～C5",
+        "臂丛C5～T1",
+        "肋间神经T1～T11",
+        "胸交感干"
+      ],
+      "answer": 0,
+      "explanation": "膈神经(C3～C5)起自颈丛，沿前斜角肌前面下行，经锁骨下动静脉之间入胸，沿心包两侧下降支配膈；记忆为\"3、4、5维持生命\"。",
+      "exam_point": "膈神经=C3～C5颈丛",
+      "type": "identify"
+    },
+    {
+      "id": "id-thorax-intercostal",
+      "system": "regional_thorax",
+      "subsystem": "胸壁",
+      "difficulty": "中级",
+      "prompt": "肋间神经与肋间血管在肋间隙内的走行部位是：",
+      "options": [
+        "肋沟内，与肋间后动、静脉伴行（自上而下：静脉、动脉、神经）",
+        "肋骨上缘外侧",
+        "胸壁最浅层皮下",
+        "胸骨旁肋软骨深面"
+      ],
+      "answer": 0,
+      "explanation": "肋间后血管和肋间神经在肋角附近进入肋沟，自上而下排列为静脉、动脉、神经，贴肋骨下缘走行；胸腔穿刺应沿下位肋骨上缘进针，以避免损伤肋沟内血管神经束。",
+      "exam_point": "肋间血管神经走行肋沟；穿刺沿下位肋骨上缘",
+      "type": "identify"
+    },
+    {
+      "id": "id-thorax-pericardial-nude",
+      "system": "regional_thorax",
+      "subsystem": "胸腔脏器",
+      "difficulty": "中级",
+      "prompt": "心包直接与胸前壁相贴、未被胸膜和肺覆盖的\"心包裸区\"位于：",
+      "options": [
+        "胸骨左缘第4～5肋间隙",
+        "胸骨右缘第2肋间隙",
+        "锁骨中线第2肋间",
+        "肩胛线第8肋间"
+      ],
+      "answer": 0,
+      "explanation": "胸骨左缘第4～5肋间隙处心包未被肋胸膜和肺前缘覆盖，称心包裸区；心包穿刺可经此或剑肋角进针，避开胸膜和肺。",
+      "exam_point": "心包裸区=胸骨左缘4～5肋间",
+      "type": "identify"
+    },
+    {
+      "id": "id-limbs-median-sensory",
+      "system": "regional_limbs",
+      "subsystem": "上肢",
+      "difficulty": "初级",
+      "prompt": "正中神经在手掌面的感觉分布区是：",
+      "options": [
+        "桡侧3个半手指掌面及相应桡侧手掌",
+        "尺侧1个半手指掌面",
+        "手背桡侧半",
+        "手背尺侧半"
+      ],
+      "answer": 0,
+      "explanation": "正中神经感觉支分布于桡侧3.1指掌面及桡侧手掌；尺神经分布尺侧1.5指；桡神经分布手背桡侧半。",
+      "exam_point": "正中神经=桡侧3.1指掌面",
+      "type": "identify"
+    },
+    {
+      "id": "id-limbs-ulnar-deformity",
+      "system": "regional_limbs",
+      "subsystem": "上肢",
+      "difficulty": "中级",
+      "prompt": "尺神经损伤后，手部典型畸形是：",
+      "options": [
+        "爪形手（环、小指掌指关节过伸、指间关节屈曲）",
+        "垂腕",
+        "猿手",
+        "方肩"
+      ],
+      "answer": 0,
+      "explanation": "尺神经支配小鱼际、骨间肌和拇收肌，损伤后环、小指掌指关节过伸、指间关节屈曲，呈爪形手；垂腕为桡神经损伤，猿手为正中神经损伤，方肩为腋神经损伤。",
+      "exam_point": "尺神经损伤→爪形手；桡→垂腕；正中→猿手；腋→方肩",
+      "type": "identify"
+    },
+    {
+      "id": "id-limbs-brachial-cords",
+      "system": "regional_limbs",
+      "subsystem": "上肢",
+      "difficulty": "中级",
+      "prompt": "臂丛三束按其与腋动脉的位置关系命名，正确的是：",
+      "options": [
+        "外侧束、内侧束、后束围绕腋动脉",
+        "前束、后束、侧束",
+        "上束、中束、下束",
+        "内侧束、外侧束、前束"
+      ],
+      "answer": 0,
+      "explanation": "臂丛锁骨下部围绕腋动脉形成外侧束、内侧束和后束；外侧束+内侧束纤维合成正中神经，外侧束发肌皮神经，内侧束发尺神经，后束发桡神经和腋神经。",
+      "exam_point": "臂丛三束=外/内/后束围绕腋动脉",
+      "type": "identify"
+    },
+    {
+      "id": "id-urinary-colic-segment",
+      "system": "urinary",
+      "subsystem": "输尿管",
+      "difficulty": "中级",
+      "prompt": "输尿管绞痛的痛觉主要经下列哪一脊髓节段传入？",
+      "options": [
+        "T11～L2",
+        "S2～S4",
+        "T1～T2",
+        "L5～S1"
+      ],
+      "answer": 0,
+      "explanation": "输尿管痛觉随交感神经传入T11～L2脊髓节段，故肾绞痛沿腰腹部放射至腹股沟、大腿内侧和睾丸/大阴唇；膀胱充盈和盆部感觉经S2～S4盆内脏神经传入。",
+      "exam_point": "输尿管痛觉T11～L2；放射至腹股沟/股内侧",
+      "type": "identify"
+    },
+    {
+      "id": "id-reprod-isthmus",
+      "system": "reproductive",
+      "subsystem": "女性",
+      "difficulty": "初级",
+      "prompt": "妊娠末期伸展变长、形成子宫下段并作为剖宫产常用切口部位的结构是：",
+      "options": [
+        "子宫峡部",
+        "子宫底",
+        "子宫颈阴道部",
+        "子宫阔韧带"
+      ],
+      "answer": 0,
+      "explanation": "非孕子宫峡部仅约1cm，位于子宫体与颈之间；妊娠末期伸展拉长形成子宫下段，剖宫产常取此处切口；子宫峡部黏膜在分娩后形成剖宫产瘢痕。",
+      "exam_point": "子宫峡部→妊娠末期子宫下段",
+      "type": "identify"
+    },
+    {
+      "id": "id-resp-pleura-pain",
+      "system": "respiratory",
+      "subsystem": "肺",
+      "difficulty": "中级",
+      "prompt": "壁胸膜痛觉敏感，其中肋胸膜的感觉神经是：",
+      "options": [
+        "肋间神经",
+        "膈神经",
+        "迷走神经",
+        "交感干"
+      ],
+      "answer": 0,
+      "explanation": "壁胸膜由躯体神经支配：肋胸膜由肋间神经管理，膈胸膜中央部由膈神经管理、周缘由肋间神经管理，纵隔胸膜由膈神经管理；脏胸膜由内脏神经支配，无痛觉。",
+      "exam_point": "壁胸膜躯体神经：肋胸膜=肋间神经；脏胸膜无痛觉",
       "type": "identify"
     }
   ]

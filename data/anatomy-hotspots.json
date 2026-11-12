@@ -80,7 +80,15 @@
       "knee_meniscus": {
         "x": 46,
         "y": 71
-      }
+      },
+      "anterior_longitudinal_ligament": {
+        "x": 50,
+        "y": 34
+      },
+      "posterior_longitudinal_ligament": null,
+      "ligamentum_flavum": null,
+      "interspinous_ligament": null,
+      "supraspinous_ligament": null
     },
     "digestive": {
       "isthmus_fauces": {
@@ -201,7 +209,27 @@
       },
       "compression_points": null,
       "hepatic_portal": null,
-      "thoracic_duct": null
+      "thoracic_duct": null,
+      "sa_node": {
+        "x": 43,
+        "y": 40
+      },
+      "av_node": {
+        "x": 46,
+        "y": 48
+      },
+      "av_bundle": {
+        "x": 48,
+        "y": 52
+      },
+      "purkinje_fibers": {
+        "x": 50,
+        "y": 58
+      },
+      "common_carotid_artery": {
+        "x": 46,
+        "y": 18
+      }
     },
     "nervous": {
       "cortical_localization": {
@@ -251,6 +279,14 @@
       "sciatic_nerve": {
         "x": 45,
         "y": 70
+      },
+      "cranial_nerves_summary": {
+        "x": 48,
+        "y": 20
+      },
+      "phrenic_nerve": {
+        "x": 50,
+        "y": 26
       }
     },
     "urinary": {
@@ -295,7 +331,8 @@
       "vaginal_fornix": {
         "x": 50,
         "y": 75
-      }
+      },
+      "breast_cross_ref": null
     },
     "endocrine": {
       "hypophysis": {
@@ -565,7 +602,9 @@
       "rib_cage": {
         "x": 14,
         "y": 42
-      }
+      },
+      "cooper_ligament": null,
+      "breast_lymphatic_drainage": null
     },
     "regional_abdomen": {
       "liver_abdomen": {
@@ -607,6 +646,10 @@
       "inferior_vena_cava_abdomen": {
         "x": 44,
         "y": 52
+      },
+      "retroperitoneal_space": {
+        "x": 50,
+        "y": 45
       }
     },
     "regional_limbs": {
@@ -641,6 +684,18 @@
       "tibial_nerve": {
         "x": 78,
         "y": 88
+      },
+      "musculocutaneous_nerve": {
+        "x": 30,
+        "y": 40
+      },
+      "median_nerve": {
+        "x": 34,
+        "y": 47
+      },
+      "ulnar_nerve": {
+        "x": 30,
+        "y": 52
       }
     }
   },
@@ -747,6 +802,71 @@
     "lymph_node_inguinal_superficial": "img/atlas/anat-detail-lymph-nodes.jpg",
     "lymph_node_mesenteric": "img/atlas/anat-detail-lymph-nodes.jpg",
     "tonsils": "img/atlas/anat-detail-tonsils-lymphatics.jpg",
-    "lymphatic_vessels": "img/atlas/anat-detail-tonsils-lymphatics.jpg"
+    "lymphatic_vessels": "img/atlas/anat-detail-tonsils-lymphatics.jpg",
+    "thoracic_duct": "img/atlas/anat-detail-thoracic_duct.jpg",
+    "right_lymphatic_duct": "img/atlas/anat-detail-right_lymphatic_duct.jpg",
+    "bone_marrow": "img/atlas/anat-detail-bone_marrow.jpg",
+    "malt": "img/atlas/anat-detail-malt.jpg",
+    "pectoralis_major": "img/atlas/anat-detail-pectoralis_major.jpg",
+    "latissimus_dorsi": "img/atlas/anat-detail-latissimus_dorsi.jpg",
+    "trapezius": "img/atlas/anat-detail-trapezius.jpg",
+    "rectus_abdominis": "img/atlas/anat-detail-rectus_abdominis.jpg",
+    "external_oblique": "img/atlas/anat-detail-external_oblique.jpg",
+    "biceps_brachii": "img/atlas/anat-detail-biceps_brachii.jpg",
+    "triceps_brachii": "img/atlas/anat-detail-triceps_brachii.jpg",
+    "quadriceps_femoris": "img/atlas/anat-detail-quadriceps_femoris.jpg",
+    "triceps_surae": "img/atlas/anat-detail-triceps_surae.jpg",
+    "sartorius": "img/atlas/anat-detail-sartorius.jpg",
+    "piriformis": "img/atlas/anat-detail-piriformis.jpg",
+    "scalene_gap": "img/atlas/anat-detail-scalene_gap.jpg",
+    "epidermis": "img/atlas/anat-detail-epidermis.jpg",
+    "dermis": "img/atlas/anat-detail-dermis.jpg",
+    "subcutaneous_tissue": "img/atlas/anat-detail-subcutaneous_tissue.jpg",
+    "hair": "img/atlas/anat-detail-hair.jpg",
+    "sebaceous_gland": "img/atlas/anat-detail-sebaceous_gland.jpg",
+    "sweat_gland": "img/atlas/anat-detail-sweat_gland.jpg",
+    "refractive_media": "img/atlas/anat-detail-refractive_media.jpg",
+    "aqueous_humor": "img/atlas/anat-detail-aqueous_humor.jpg",
+    "auricle_external_meatus": "img/atlas/anat-detail-auricle_external_meatus.jpg",
+    "tympanic_middle_ear": "img/atlas/anat-detail-tympanic_middle_ear.jpg",
+    "inner_ear_bony": "img/atlas/anat-detail-inner_ear_bony.jpg",
+    "inner_ear_membranous": "img/atlas/anat-detail-inner_ear_membranous.jpg",
+    "olfactory_organ": "img/atlas/anat-detail-olfactory_organ.jpg",
+    "rib_cage": "img/atlas/anat-detail-rib_cage.jpg",
+    "spleen_abdomen": "img/atlas/anat-detail-spleen_abdomen.jpg",
+    "pancreas_abdomen": "img/atlas/anat-detail-pancreas_abdomen.jpg",
+    "small_intestine_abdomen": "img/atlas/anat-detail-small_intestine_abdomen.jpg",
+    "abdominal_aorta": "img/atlas/anat-detail-abdominal_aorta.jpg",
+    "inferior_vena_cava_abdomen": "img/atlas/anat-detail-inferior_vena_cava_abdomen.jpg",
+    "brachial_plexus": "img/atlas/anat-detail-brachial_plexus.jpg",
+    "axillary_artery": "img/atlas/anat-detail-axillary_artery.jpg",
+    "radial_nerve": "img/atlas/anat-detail-radial_nerve.jpg",
+    "femoral_artery": "img/atlas/anat-detail-femoral_artery.jpg",
+    "common_carotid_artery": "img/atlas/anat-detail-common_carotid_artery.jpg",
+    "phrenic_nerve": "img/atlas/anat-detail-phrenic_nerve.jpg",
+    "retroperitoneal_space": "img/atlas/anat-detail-retroperitoneal_space.jpg",
+    "pharynx": "img/atlas/anat-detail-pharynx.jpg",
+    "larynx": "img/atlas/anat-detail-larynx.jpg",
+    "thyroid_gland": "img/atlas/anat-detail-thyroid.jpg",
+    "trachea_cervical": "img/atlas/anat-detail-trachea-bronchi.jpg",
+    "esophagus_cervical": "img/atlas/anat-detail-esophagus.jpg",
+    "trachea_thoracic": "img/atlas/anat-detail-trachea-bronchi.jpg",
+    "aortic_arch": "img/atlas/anat-detail-aorta.jpg",
+    "superior_vena_cava_thorax": "img/atlas/anat-detail-aorta.jpg",
+    "heart_mediastinum": "img/atlas/anat-detail-coronary.jpg",
+    "left_lung": "img/atlas/anat-detail-lung.jpg",
+    "right_lung": "img/atlas/anat-detail-lung.jpg",
+    "main_bronchi_thorax": "img/atlas/anat-detail-trachea-bronchi.jpg",
+    "diaphragm_thorax": "img/atlas/anat-detail-diaphragm.jpg",
+    "liver_abdomen": "img/atlas/anat-detail-liver.jpg",
+    "stomach_abdomen": "img/atlas/anat-detail-stomach.jpg",
+    "left_kidney_abdomen": "img/atlas/anat-detail-kidney.jpg",
+    "right_kidney_abdomen": "img/atlas/anat-detail-kidney.jpg",
+    "colon_abdomen": "img/atlas/anat-detail-colon.jpg",
+    "elbow_joint_limbs": "img/atlas/anat-detail-elbow.jpg",
+    "knee_joint_limbs": "img/atlas/anat-detail-knee-joint.jpg",
+    "tibial_nerve": "img/atlas/anat-detail-knee-joint.jpg",
+    "eyewall": "img/anat-eye.jpg",
+    "pituitary_gland": "img/atlas/anat-detail-brain-base.jpg"
   }
 }

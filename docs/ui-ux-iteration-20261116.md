@@ -118,6 +118,6 @@
 | `package.json` / `package-lock.json` | 新增 devDependency `terser ^5.51.2`（本地压缩工具链；`node_modules/` 已 gitignore） |
 
 ## 五、Git 记录
-- 提交信息：`style(ui): 设计令牌/对比度/一致性/弹窗与导航态优化 20261116`
-- 本地 commit 哈希：**791cb7b**（main，领先 `origin/main` 1 个提交）。
-- push 状态：已执行 `git push origin main`，HTTPS 连接挂起无响应（443 疑似被拦截/鉴权未就绪），未能推送；本地提交完整保留在 `main` 分支，未丢失。remote：`https://github.com/Bing-ing-ic/rx-prescription-trainer.git`。`node_modules/` 已被 `.gitignore` 忽略，未入库。
+- 提交信息：`style(ui): 设计令牌/对比度/一致性/弹窗与导航态优化 20261116`（`791cb7b`）；报告回填 `3ed64a2`。
+- 推送状态：**已推送成功** `b6868d4..3ed64a2  main -> main`（remote：`https://github.com/Bing-ing-ic/rx-prescription-trainer.git`）；push 后由 GitHub Pages Actions 自动发布。
+- `node_modules/` 已被 `.gitignore` 忽略，未入库；`package.json`/`package-lock.json` 保留 terser 本地压缩工具链声明。

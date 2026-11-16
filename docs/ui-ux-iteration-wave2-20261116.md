@@ -130,6 +130,6 @@
 
 ## 六、Git 记录
 - 提交信息：`style(ui): 第二批 UI 优化：选项图标/离板色收敛/空态回退/sticky 测量/令牌收口 20261116`
-- 提交哈希：见本节回填（提交后回填）。
-- 推送状态：见本节回填（443 拦截则本地提交留备忘）。
+- 提交哈希：`a9a1778`（main，15 files changed, 587 insertions(+), 393 deletions(-)）。
+- 推送状态：**已推送成功** `de6e6f1..a9a1778  main -> main`（remote：`https://github.com/Bing-ing-ic/rx-prescription-trainer.git`），无 443 拦截。
 - `node_modules/` 已被 `.gitignore` 忽略，未入库。

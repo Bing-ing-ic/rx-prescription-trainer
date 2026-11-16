@@ -864,7 +864,7 @@
   // 通用视图切换（只切换显示，不触发业务渲染）
   function showViewOnly(id) {
     var ids = [
-      'view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls',
+      'view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls',
       'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
       'view-acup-home','view-acup-map','view-acup-case','view-acup-rx','view-acup-report','view-acup-time',
       'view-anat-home','view-anat-atlas','view-anat-system','view-anat-detail','view-anat-quiz','view-anat-cases',
@@ -887,6 +887,18 @@
       });
     }
   }, true);
+
+  // 弹窗统一关闭委托：点遮罩（非弹窗本体）关闭；Esc 关闭当前可见的第一个弹窗。
+  // 与各弹窗既有的自身遮罩/ESC 处理保持幂等，不做焦点锁定/归还（留后续专项）。
+  document.addEventListener('click', function (e) {
+    var mask = e.target.closest('.modal-mask');
+    if (mask && e.target === mask) mask.classList.add('hidden');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var open = document.querySelector('.modal-mask:not(.hidden)');
+    if (open) open.classList.add('hidden');
+  });
 
   /* ---------- 启动 ---------- */
   document.addEventListener('DOMContentLoaded', function () {

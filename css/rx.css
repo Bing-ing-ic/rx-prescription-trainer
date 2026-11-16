@@ -11,8 +11,83 @@
   /* 过渡 */
   --ease: cubic-bezier(.4, 0, .2, 1);
   --dur: .25s;
+  /* 蓝阶（增量令牌，不替换既有 hex） */
+  --blue-900: #0c3d68;
+  --blue-700: #0f4c81;
+  --blue-600: #1a6fb5;
+  --blue-500: #2c7be5;
+  --blue-100: #dbeafe;
+  --blue-50: #eff6ff;
+  --blue-glow: #38bdf8;
+  /* 灰阶 */
+  --gray-900: #1e293b;
+  --gray-700: #334155;
+  --gray-600: #475569;
+  --gray-500: #64748b;
+  --gray-400: #94a3b8;
+  --gray-300: #cbd5e1;
+  --gray-200: #e2e8f0;
+  --gray-100: #f1f5f9;
+  --gray-50: #f8fafc;
+  --white: #fff;
+  /* 语义色：成功 */
+  --ok-700: #166534;
+  --ok-600: #16a34a;
+  --ok-100: #dcfce7;
+  --ok-50: #f0fdf4;
+  /* 语义色：危险 */
+  --danger-700: #b91c1c;
+  --danger-600: #dc2626;
+  --danger-100: #fee2e2;
+  --danger-50: #fef2f2;
+  /* 语义色：警告 */
+  --warn-700: #92400e;
+  --warn-600: #ca8a04;
+  --warn-100: #fef3c7;
+  --warn-50: #fffbeb;
+  /* 语义色：信息 */
+  --info-700: #1e40af;
+  --info-600: #3b82f6;
+  --info-100: #dbeafe;
+  --info-50: #eff6ff;
+  /* 模块色：中医 / 针灸 / 解剖 */
+  --tcm-700: #6b4423;
+  --tcm-600: #8b5a2b;
+  --tcm-gold: #b8860b;
+  --tcm-50: #fffdf7;
+  --acup-700: #1f5c3a;
+  --acup-600: #2f7a4f;
+  --acup-mint: #4caf7d;
+  --acup-50: #fbfefb;
+  --anat-700: #1565a8;
+  --anat-teal: #0f766e;
+  --anat-teal-deco: #14b8a6;
+  /* 圆角（追加 pill） */
+  --radius-pill: 999px;
+  /* 阴影 */
+  --shadow-xs: 0 1px 3px rgba(15,76,129,.06);
+  --shadow-sm: 0 2px 8px rgba(15,76,129,.08);
+  --shadow-md: 0 4px 16px rgba(15,76,129,.12);
+  --shadow-lg: 0 8px 28px rgba(15,76,129,.18);
+  /* 间距 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  /* 字号 */
+  --text-caption: 11px;
+  --text-sm: 12.5px;
+  --text-base: 14px;
+  --text-md: 15px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 22px;
 }
 * { box-sizing: border-box; }
+/* 全局焦点兜底（模块已有 focus-visible 规则后定义/同特异性优先覆盖） */
+:focus-visible { outline: 2px solid var(--blue-700); outline-offset: 2px; border-radius: var(--radius-sm); }
 html, body {
   margin: 0; padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -40,7 +115,7 @@ input, select, textarea { font-family: inherit; }
 /* ========== 现代首页 Hero ========== */
 .hero-modern {
   position: relative;
-  background: linear-gradient(135deg, #0f4c81 0%, #1a6fb5 50%, #2c7be5 100%);
+  background: linear-gradient(135deg, #0f4c81 0%, #1a6fb5 50%, #1a6fb5 100%);
   border-radius: 16px;
   padding: 30px 40px 24px;
   text-align: center;
@@ -120,6 +195,7 @@ input, select, textarea { font-family: inherit; }
   transition: all .15s;
 }
 .nav-btn:hover { background: #f1f5f9; border-color: #94a3b8; }
+.nav-btn.active { background: var(--blue-700); color: #fff; border-color: var(--blue-900); }
 
 /* ========== 视图切换 ========== */
 .view { max-width: 1100px; margin: 20px auto; padding: 0 20px; }
@@ -153,6 +229,7 @@ input, select, textarea { font-family: inherit; }
   box-shadow: 0 6px 16px rgba(15,76,129,.45), inset 0 1px 0 rgba(255,255,255,.3);
   transform: translateY(-1px);
 }
+.btn:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; transform: none; }
 .btn-primary:disabled { background: #94a3b8; border-color: #94a3b8; cursor: not-allowed; box-shadow: none; transform: none; }
 .btn-lg { padding: 12px 32px; font-size: 16px; border-radius: var(--radius-md); }
 .btn-danger {
@@ -389,7 +466,7 @@ input, select, textarea { font-family: inherit; }
 }
 .hit-badge b { margin-left: 4px; }
 .hit-error { background: linear-gradient(135deg, #fef2f2, #fee2e2); color: #dc2626; box-shadow: 0 2px 8px rgba(220,38,38,.15); }
-.hit-warn { background: linear-gradient(135deg, #fefce8, #fef3c7); color: #ca8a04; box-shadow: 0 2px 8px rgba(202,138,4,.15); }
+.hit-warn { background: linear-gradient(135deg, #fefce8, #fef3c7); color: #92400e; box-shadow: 0 2px 8px rgba(202,138,4,.15); }
 .hit-pass { background: linear-gradient(135deg, #f0fdf4, #dcfce7); color: #16a34a; box-shadow: 0 2px 8px rgba(22,163,74,.15); }
 .score-big { font-size: 36px; color: #0f4c81; margin-left: 12px; font-weight: 800; }
 .dim-grid {
@@ -423,7 +500,7 @@ input, select, textarea { font-family: inherit; }
 }
 .hit-item:hover { transform: translateX(4px); }
 .hit-item.error { border-left-color: #dc2626; background: linear-gradient(90deg, #fef2f2, #fff); }
-.hit-item.warn { border-left-color: #ca8a04; background: linear-gradient(90deg, #fefce8, #fff); }
+.hit-item.warn { border-left-color: #ca8a04; background: linear-gradient(90deg, #fefce8, #fff); color: #92400e; }
 .hit-item.pass { border-left-color: #16a34a; background: linear-gradient(90deg, #f0fdf4, #fff); }
 .hit-item .rule-id {
   font-weight: 800; margin-right: 8px; color: #0f4c81;
@@ -486,14 +563,15 @@ input, select, textarea { font-family: inherit; }
 }
 .modal {
   background: #fff; border-radius: 12px; padding: 24px 28px;
-  max-width: 480px; box-shadow: 0 20px 50px rgba(0,0,0,.2);
+  max-width: 480px; max-height: 88vh; overflow-y: auto; width: calc(100vw - 32px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.2);
 }
 .modal h3 { margin-top: 0; color: #1e293b; }
 .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; }
 
 /* ========== 底部 ========== */
 .foot-note {
-  text-align: center; color: #94a3b8; font-size: 12px; padding: 24px 0;
+  text-align: center; color: #64748b; font-size: 12px; padding: 24px 0;
 }
 
 /* ========== 打印 ========== */
@@ -638,7 +716,7 @@ input, select, textarea { font-family: inherit; }
   padding: 10px 12px; margin: 8px 0; border-radius: 8px; font-size: 13px; line-height: 1.6;
 }
 .mistake-item.error { background: #fef2f2; border-left: 3px solid #dc2626; }
-.mistake-item.warn { background: #fffbeb; border-left: 3px solid #ca8a04; }
+.mistake-item.warn { background: #fffbeb; border-left: 3px solid #ca8a04; color: #92400e; }
 .mistake-item .sug { color: #0f4c81; margin-top: 4px; display: block; }
 
 /* ========== 学习统计样式 ========== */
@@ -1148,7 +1226,7 @@ input, select, textarea { font-family: inherit; }
   border-radius: 4px; margin-top: 8px; color: #7f1d1d;
 }
 .herb-lib-empty {
-  grid-column: 1 / -1; text-align: center; color: #94a3b8; padding: 30px 0; font-size: 13px;
+  grid-column: 1 / -1; text-align: center; color: #64748b; padding: 30px 0; font-size: 13px;
 }
 @media (max-width: 700px) {
   .tcm-herb-lib-box { padding: 14px; }
@@ -1262,7 +1340,7 @@ input, select, textarea { font-family: inherit; }
 /* 经络图卡片 flex 化（mc-name + mc-code 同一行基线） */
 .acup-map-point-card { display: flex; flex-direction: column; gap: 2px; }
 .acup-map-point-card .mc-top { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
-.acup-map-point-card .mc-top .mc-code { float: none; font-size: 10px; color: #94a3b8; }
+.acup-map-point-card .mc-top .mc-code { float: none; font-size: 10px; color: #64748b; }
 .acup-map-point-card.active {
   border-color: #1f5c3a; background: #d1fae5;
   box-shadow: 0 0 0 2px rgba(47,122,79,.2);
@@ -1323,7 +1401,7 @@ input, select, textarea { font-family: inherit; }
 }
 .acup-map-point-card:hover { border-color: #2f7a4f; background: #ecfdf3; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(47,122,79,.12); }
 .acup-map-point-card .mc-name { font-weight: 700; color: #1f5c3a; font-size: 14px; }
-.acup-map-point-card .mc-code { font-size: 10px; color: #94a3b8; float: right; }
+.acup-map-point-card .mc-code { font-size: 10px; color: #64748b; float: right; }
 .acup-map-point-card .mc-meridian { font-size: 11px; color: #2f7a4f; margin-top: 2px; }
 .acup-map-empty { grid-column: 1/-1; padding: 30px; text-align: center; color: #94a3b8; }
 .acup-point-modal { max-width: 600px; }
@@ -1587,7 +1665,7 @@ input, select, textarea { font-family: inherit; }
   background: #eff6ff; border-color: #0f4c81; color: #0f4c81;
   transform: translateY(-1px);
 }
-.atlas-struct-chip .latin { font-size: 11px; color: #94a3b8; font-style: italic; margin-left: 4px; }
+.atlas-struct-chip .latin { font-size: 11px; color: #64748b; font-style: italic; margin-left: 4px; }
 
 .atlas-detail-panel {
   background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
@@ -1744,16 +1822,16 @@ input, select, textarea { font-family: inherit; }
 .acc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; font-size: 14px; }
 .acc-meta { font-size: 12px; }
 
-/* 临床案例详情卡片（openCase 动态生成） */
-.case-card {
+/* 临床案例详情卡片（openCase 动态生成，仅解剖详情卡） */
+.case-card.anat-detail-case {
   background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
   padding: 18px; box-shadow: 0 2px 10px rgba(15,76,129,.06);
 }
-.case-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-.case-title { font-size: 17px; font-weight: 700; color: #1e293b; }
-.case-meta { font-size: 12px; margin-bottom: 10px; }
-.case-body { font-size: 14px; line-height: 1.9; color: #334155; margin-bottom: 14px; }
-.case-body p { margin: 6px 0; }
+.case-card.anat-detail-case .case-card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.case-card.anat-detail-case .case-title { font-size: 17px; font-weight: 700; color: #1e293b; }
+.case-card.anat-detail-case .case-meta { font-size: 12px; margin-bottom: 10px; }
+.case-card.anat-detail-case .case-body { font-size: 14px; line-height: 1.9; color: #334155; margin-bottom: 14px; }
+.case-card.anat-detail-case .case-body p { margin: 6px 0; }
 
 /* 模块统计与错题 badge 的蓝色变体 */
 .module-stat-card.msc-anat .msc-num { color: #0f4c81; }
@@ -1780,7 +1858,7 @@ input, select, textarea { font-family: inherit; }
   .atlas-tab { padding: 6px 12px; font-size: 12px; }
   .atlas-struct-chip { font-size: 12px; padding: 5px 11px; }
   .aq-selfeval { flex-direction: column; align-items: stretch; }
-  .case-card { padding: 14px; }
+  .case-card.anat-detail-case { padding: 14px; }
   /* P1：移动端热区触控目标 ≥28px */
   .anat-hotspot { width: 32px; height: 32px; }
 }
@@ -1882,7 +1960,7 @@ input, select, textarea { font-family: inherit; }
 .lab-exam-item .lab-exam-abbr { color: #0f4c81; font-size: 12px; margin-left: 4px; }
 .lab-exam-item .lab-exam-sub { color: #64748b; font-size: 11.5px; margin-left: 6px; }
 .lab-exam-item .lab-exam-sig {
-  color: #94a3b8; font-size: 11.5px; margin-top: 2px;
+  color: #64748b; font-size: 11.5px; margin-top: 2px;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .lab-exam-item .btn { flex-shrink: 0; }
@@ -2238,7 +2316,7 @@ input, select, textarea { font-family: inherit; }
 .sp-drug-name { font-weight:600; color:#0f4c81; white-space:nowrap; }
 .sp-note { color:#475569; }
 .sp-why { font-size:12px; color:#64748b; margin-top:3px; }
-.sp-no-drug { text-align:center; color:#94a3b8; padding:14px !important; }
+.sp-no-drug { text-align:center; color:#64748b; padding:14px !important; }
 .sp-compare { display:flex; flex-direction:column; gap:6px; margin:10px 0 12px; }
 .sp-cmp { padding:8px 12px; border-radius:10px; font-size:13px; line-height:1.5; }
 .sp-cmp.sp-ok { background:#f0fdf4; border:1px solid #bbf7d0; color:#166534; }
@@ -2272,3 +2350,64 @@ input, select, textarea { font-family: inherit; }
 .sp-surg-tp { margin-top:8px; font-size:12.5px; color:#475569; background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:8px 12px; }
 .sp-surg-tp ul { margin:4px 0 0; padding-left:18px; }
 .sp-surg-no { background:#f8fafc; }
+
+/* ============================================================
+ * platform-enhance.js 动态注入类名样式（2026-11-16 P0-2）
+ * 复用现有卡片/标签观感，不引入外部依赖
+ * ============================================================ */
+/* 统计模块 Tab */
+.stats-module-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.stats-tab {
+  background: #fff; border: 1px solid #cbd5e1; border-radius: var(--radius-md);
+  padding: 8px 13px; font-size: 13px; color: #334155; transition: all .15s;
+}
+.stats-tab:hover { background: var(--gray-100); border-color: var(--gray-400); }
+.stats-tab.active { background: var(--blue-700); color: #fff; border-color: var(--blue-900); }
+
+/* 掌握度指标卡网格 */
+.km-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.km-card {
+  background: #fff; border: 1px solid #cbd5e1; border-radius: var(--radius-lg);
+  padding: 16px 18px; box-shadow: var(--shadow-sm);
+}
+.km-name { font-size: 14px; font-weight: 600; color: #1e293b; margin-bottom: 8px; }
+.km-bar-wrap { background: var(--gray-100); border-radius: var(--radius-pill); height: 8px; width: 100%; overflow: hidden; }
+.km-bar { height: 8px; border-radius: var(--radius-pill); background: var(--blue-600); }
+.km-num { font-size: 12px; color: #64748b; margin-top: 6px; }
+.km-bad { border-left: 3px solid var(--danger-600); }
+.km-warn { border-left: 3px solid var(--warn-600); }
+.km-bad .km-bar { background: var(--danger-600); }
+.km-warn .km-bar { background: var(--warn-600); }
+
+/* 错题筛选栏 */
+.mistakes-filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; align-items: center; }
+.mistakes-filter-bar select {
+  padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: var(--radius-md);
+  font-size: 13px; background: #fff; color: #334155;
+}
+/* 错题操作 */
+.mistake-actions { display: flex; gap: 8px; align-items: flex-end; }
+
+/* 速查模块 */
+.qr-section { margin-top: 16px; }
+.qr-section-title {
+  font-size: 15px; font-weight: 600; color: #1e293b;
+  border-left: 4px solid var(--blue-700); padding: 6px 10px; margin-bottom: 10px;
+}
+.qr-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+.qr-card {
+  background: #fff; border: 1px solid #cbd5e1; border-radius: var(--radius-md);
+  padding: 12px 14px; cursor: pointer; transition: all .15s;
+}
+.qr-card:hover { border-color: var(--blue-600); box-shadow: var(--shadow-sm); }
+.qr-card-name { font-size: 14px; font-weight: 600; color: #1e293b; }
+.qr-card-sub { font-size: 12px; color: #64748b; margin-top: 2px; }
+.qr-card-meta { font-size: 11px; color: #64748b; margin-top: 2px; }
+.qr-detail-table { width: 100%; font-size: 12.5px; border-collapse: collapse; margin: 6px 0; }
+.qr-detail-table th, .qr-detail-table td {
+  border: 1px solid var(--gray-200); padding: 6px 8px; text-align: left; vertical-align: top;
+}
+.qr-detail-table th { background: var(--gray-100); color: #334155; font-weight: 600; }
+.qr-k { color: #475569; background: #f8fafc; width: 120px; vertical-align: top; }
+.qr-exam-list { font-size: 12px; padding-left: 18px; margin: 4px 0; }
+.qr-exam-list li { margin: 4px 0; }

@@ -50,9 +50,10 @@
   }
 
   function showView(id) {
-    ['view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs',
+    ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls','view-quickref',
      'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
-     'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map','view-acup-time'].forEach(v => {
+     'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map','view-acup-time',
+     'view-anat-home','view-anat-system','view-anat-cases','view-anat-detail','view-anat-quiz','view-anat-atlas'].forEach(v => {
       const el = $(v); if (el) el.classList.add('hidden');
     });
     const el = $(id); if (el) el.classList.remove('hidden');
@@ -97,16 +98,16 @@
 
   function checkZheng() {
     const input = ($('acup-zheng-input').value || '').trim();
-    if (!input) { $('acup-zheng-feedback').innerHTML = '<span style="color:#b91c1c;">请输入证型。</span>'; return; }
+    if (!input) { $('acup-zheng-feedback').innerHTML = '<span class="diag-err">请输入证型。</span>'; return; }
     const ref = (S.case.syndrome_differentiation || '').trim();
     const ok = input === ref || (ref && (ref.indexOf(input) >= 0 || input.indexOf(ref) >= 0));
     if (ok) {
       S.zhengOk = true;
-      $('acup-zheng-feedback').innerHTML = `<span style="color:#15803d;">✅ 辨证正确：${ref}</span>`;
+      $('acup-zheng-feedback').innerHTML = `<span class="diag-ok">✅ 辨证正确：${ref}</span>`;
       $('acup-open-row').classList.remove('hidden');
     } else {
       S.zhengOk = false;
-      $('acup-zheng-feedback').innerHTML = `<span style="color:#b91c1c;">❌ 辨证待斟酌。</span>`;
+      $('acup-zheng-feedback').innerHTML = `<span class="diag-err">❌ 辨证待斟酌。</span>`;
     }
   }
 
@@ -174,7 +175,7 @@
   function renderItems() {
     const tb = $('acup-items');
     $('acup-point-count').textContent = '已选 ' + S.items.length + ' 穴';
-    if (S.items.length === 0) { tb.innerHTML = '<tr><td colspan="6" style="color:#94a3b8;padding:14px;">请在上方搜索并选择穴位</td></tr>'; return; }
+    if (S.items.length === 0) { tb.innerHTML = '<tr><td colspan="6" style="color:#64748b;padding:14px;">请在上方搜索并选择穴位</td></tr>'; return; }
     tb.innerHTML = S.items.map((it, i) => `
       <tr>
         <td>${i+1}</td>

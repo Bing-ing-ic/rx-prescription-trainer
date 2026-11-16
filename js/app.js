@@ -44,7 +44,7 @@
   // ---------- DOM ----------
   const $ = id => document.getElementById(id);
   function show(view) {
-    ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls'].forEach(v => {
+    ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls','view-quickref'].forEach(v => {
       const el = $(v); if (el) el.classList.add('hidden');
     });
     $(view).classList.remove('hidden');
@@ -346,6 +346,13 @@
         else if (t === 'radar') { renderRadar(); show('view-radar'); }
         else if (t === 'mistakes') { renderMistakes(); show('view-mistakes'); }
         else if (t === 'stats') { renderStats(); show('view-stats'); }
+        // 顶栏激活态：当前按钮置 active + aria-current，其余 [data-goto] 清除
+        document.querySelectorAll('[data-goto]').forEach(x => {
+          x.classList.remove('active');
+          x.removeAttribute('aria-current');
+        });
+        b.classList.add('active');
+        b.setAttribute('aria-current', 'true');
       };
     });
     $('btn-new-case').onclick = newCase;
@@ -835,7 +842,7 @@
       fb.innerHTML = `<span class="diag-warn">⚠️ 「${diff}」是重要鉴别诊断，需进一步检查排除，但不是本病例主诊断。（已错 ${S.diagWrongCount} 次）</span>`;
       // 鉴别诊断也计入错误次数，三次后自动填入
       if (S.diagWrongCount >= 3) {
-        fb.innerHTML += `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:6px;color:#c0392b;font-size:13px">🔑 已自动填入正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
+        fb.innerHTML += `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:6px;color:#b91c1c;font-size:13px">🔑 已自动填入正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
         $('diag-input').value = dx.name;
         setTimeout(() => checkDiagnosis(), 800);
       }
@@ -873,7 +880,7 @@
       Object.entries(DISEASE_PINYIN).find(([k]) => dx.name.indexOf(k) >= 0)?.[1] || '';
     let reveal = '';
     if (S.diagWrongCount >= 3) {
-      reveal = `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:6px;color:#c0392b;font-size:13px">🔑 已自动填入正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
+      reveal = `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:6px;color:#b91c1c;font-size:13px">🔑 已自动填入正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
       // 自动填入正确诊断
       $('diag-input').value = dx.name;
       // 自动触发确认
@@ -1405,11 +1412,11 @@
   function miChip(d) {
     let html = '';
     const mi = d.medical_insurance_class;
-    if (mi === '甲') html += '<span class="chip" style="background:#27ae60;color:#fff">甲</span>';
-    else if (mi === '乙') html += '<span class="chip" style="background:#2980b9;color:#fff">乙</span>';
-    else if (mi === '丙' || mi === '自费') html += '<span class="chip" style="background:#95a5a6;color:#fff">丙</span>';
-    if (d.essential_medicine) html += '<span class="chip" style="background:#8e44ad;color:#fff">基</span>';
-    if (d.jtc_batch) html += '<span class="chip" style="background:#e67e22;color:#fff">集</span>';
+    if (mi === '甲') html += '<span class="chip" style="background:#166534;color:#fff">甲</span>';
+    else if (mi === '乙') html += '<span class="chip" style="background:#1e40af;color:#fff">乙</span>';
+    else if (mi === '丙' || mi === '自费') html += '<span class="chip" style="background:#64748b;color:#fff">丙</span>';
+    if (d.essential_medicine) html += '<span class="chip" style="background:#3730a3;color:#fff">基</span>';
+    if (d.jtc_batch) html += '<span class="chip" style="background:#b45309;color:#fff">集</span>';
     return html;
   }
   // 麻精药品红色标记（按处方管理办法：麻/精一淡红，精二白）
@@ -1682,7 +1689,7 @@
           <td>静滴</td>
           <td><input class="g-freq" type="text" value="${groupFreq}" style="width:60px"></td>
           <td class="g-qty">${calcQty(g.solvent, g.solvent.volume_ml+'ml')}</td>
-          <td style="color:#999">—</td>
+          <td style="color:#64748b">—</td>
           <td><input class="g-speed-cell" type="number" value="${g.fields.speed||60}" style="width:70px" min="10" max="200"></td>
           <td><button class="btn btn-danger btn-xs" data-act="del-solvent" title="删除溶媒=删除本组">删</button></td>`;
         tr0.querySelector('.g-dose').onchange = e => {
@@ -1719,17 +1726,17 @@
           skinCell = `<td><select class="g-skin" style="width:78px;font-size:12px">`
             + opt('pending','未做') + opt('negative','阴性') + opt('positive','阳性') + `</select></td>`;
         } else {
-          skinCell = `<td style="color:#999">—</td>`;
+          skinCell = `<td style="color:#64748b">—</td>`;
         }
         tr.innerHTML = `<td>${seq}</td><td>💉药物·第${groupNo}组</td>
           <td>${it.drug.generic_name}${it.drug.is_tcm_injection?' <span class="chip chip-abx-special">中药注射剂</span>':''}</td>
           <td>${it.drug.spec}</td>
           <td><input class="g-dose" type="text" value="${it.single_dose}" style="width:90px"></td>
           <td>静滴</td>
-          <td style="color:#999">↧</td>
+          <td style="color:#64748b">↧</td>
           <td class="g-qty">${qty}</td>
           ${skinCell}
-          <td style="color:#999">↧</td>
+          <td style="color:#64748b">↧</td>
           <td><button class="btn btn-danger btn-xs" data-act="del-drug">删</button></td>`;
         tr.querySelector('.g-dose').onchange = e => {
           let v = e.target.value.trim();
@@ -2060,7 +2067,7 @@
       div.dataset.kbIndex = i;
       div.innerHTML = `<div><b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
         <div class="mfr" style="font-size:11px;color:#94a3b8">🏭 ${d.manufacturer||'国产'}</div>
-        ${isSolvent ? '<span class="chip" style="background:#7f8c8d;color:#fff">溶媒</span>' : ''}
+        ${isSolvent ? '<span class="chip" style="background:#64748b;color:#fff">溶媒</span>' : ''}
         ${abxChip(d.abx_level)}
         ${controlledChip(d)}
         ${d.is_tcm_injection?'<span class="chip chip-abx-special">中药注射剂</span>':''}
@@ -2933,6 +2940,7 @@
     $('pitfall-ask').classList.remove('hidden');
     $('pitfall-result').classList.add('hidden');
     $('pitfall-nav').style.display = 'none';
+    $('pitfall-nav').classList.add('hidden');
 
     // P5-3 自由输入诊断：渲染输入框 + 提交按钮（支持回车提交）
     const box = $('pitfall-choices');
@@ -3067,6 +3075,7 @@
     // 显示下一个按钮
     const nav = $('pitfall-nav');
     nav.style.display = 'flex';
+    nav.classList.remove('hidden');
     const nextBtn = $('pitfall-next');
     if (nextBtn) {
       nextBtn.textContent = (S.pitfallIdx < S.pitfalls.length - 1) ? '下一个陷阱 →' : '🏁 返回陷阱列表';

@@ -26,10 +26,10 @@
 
   // ---------- 视图切换（覆盖之前所有模块的 showView） ----------
   const ALL_VIEWS = [
-    'view-home','view-rx','view-report','view-radar','view-mistakes','view-stats','view-drugs',
+    'view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls','view-quickref',
     'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
-    'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map',
-    'view-anat-home','view-anat-system','view-anat-detail','view-anat-quiz','view-anat-cases','view-anat-atlas'
+    'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map','view-acup-time',
+    'view-anat-home','view-anat-system','view-anat-cases','view-anat-detail','view-anat-quiz','view-anat-atlas'
   ];
   function showView(id) {
     ALL_VIEWS.forEach(v => { const el = $(v); if (el) el.classList.add('hidden'); });
@@ -650,7 +650,7 @@
     $('anat-case-list').classList.add('hidden');
     $('anat-case-detail').classList.remove('hidden');
     $('anat-case-detail-body').innerHTML = `
-      <div class="case-card">
+      <div class="case-card anat-detail-case">
         <div class="case-card-head">
           <span class="tag tag-diff">${c.difficulty || '初级'}</span>
           <span class="case-title">${c.title}</span>

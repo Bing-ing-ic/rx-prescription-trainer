@@ -119,4 +119,5 @@
 
 ## 五、Git 记录
 - 提交信息：`style(ui): 设计令牌/对比度/一致性/弹窗与导航态优化 20261116`
-- 本地 commit 哈希、`git push origin main` 结果见本节提交时回填（443 被拦截则保留本地提交并在此注明）。
+- 本地 commit 哈希：**791cb7b**（main，领先 `origin/main` 1 个提交）。
+- push 状态：已执行 `git push origin main`，HTTPS 连接挂起无响应（443 疑似被拦截/鉴权未就绪），未能推送；本地提交完整保留在 `main` 分支，未丢失。remote：`https://github.com/Bing-ing-ic/rx-prescription-trainer.git`。`node_modules/` 已被 `.gitignore` 忽略，未入库。

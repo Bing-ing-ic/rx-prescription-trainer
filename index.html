@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261116ui1">
+<link rel="stylesheet" href="css/rx.min.css?v=20261116ui2">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -141,7 +141,7 @@
       </div>
       <!-- 右侧女医生形象（透明底PNG） -->
       <div class="hero-nurse">
-        <img src="img/nurse-hero.png" alt="女医生形象" width="433" height="1568" fetchpriority="high">
+        <img src="img/nurse-hero.png" alt="" width="433" height="1568" fetchpriority="high" onerror="this.closest('.hero-nurse').style.display='none'">
       </div>
     </div>
 
@@ -670,7 +670,7 @@
         <label><input type="radio" name="tcm-diff" value="高级"> 高级</label>
       </div>
       <div class="hero-nurse tcm-hero-nurse">
-        <img src="img/tcm-doctor-hero.png" alt="老中医形象" loading="lazy" width="1000" height="1374">
+        <img src="img/tcm-doctor-hero.png" alt="" loading="lazy" width="1000" height="1374" onerror="this.closest('.hero-nurse').style.display='none'">
       </div>
     </div>
     <div id="tcm-data-tip" class="tcm-tip hidden">⏳ 中医数据加载中，请稍候…</div>
@@ -885,7 +885,7 @@
       </div>
       <!-- 右侧中医针灸师持针施治形象（透明底PNG） -->
       <div class="hero-nurse acup-hero-nurse">
-        <img src="img/acup-doctor-hero.png" alt="中医针灸师持针施治" loading="lazy" width="1000" height="1422">
+        <img src="img/acup-doctor-hero.png" alt="" loading="lazy" width="1000" height="1422" onerror="this.closest('.hero-nurse').style.display='none'">
       </div>
     </div>
     <div id="acup-data-tip" class="tcm-tip hidden">⏳ 针灸数据加载中，请稍候…</div>
@@ -1462,15 +1462,15 @@
 </script>
 <script src="js/review.min.js?v=20261106surg1"></script>
 <script src="js/standard-plan.min.js?v=20261109sp1"></script>
-<script src="js/app.min.js?v=20261116ui1"></script>
+<script src="js/app.min.js?v=20261116ui2"></script>
 <script src="js/tcm-engine.min.js?v=20261104fix1"></script>
 <script src="js/acup-engine.min.js?v=20261104fix1"></script>
-<script src="js/tcm-app.min.js?v=20261116ui1"></script>
-<script src="js/acup-app.min.js?v=20261116ui1"></script>
+<script src="js/tcm-app.min.js?v=20261116ui2"></script>
+<script src="js/acup-app.min.js?v=20261116ui2"></script>
 <script src="js/acup-time.min.js?v=20261111time1"></script>
 <script src="js/module-views.min.js?v=20261104fix1"></script>
-<script src="js/anat-app.min.js?v=20261116ui1"></script>
-<script src="js/platform-enhance.js?v=20261116ui1"></script>
+<script src="js/anat-app.min.js?v=20261116ui2"></script>
+<script src="js/platform-enhance.js?v=20261116ui2"></script>
 
 <!-- 百度统计 -->
 <script>

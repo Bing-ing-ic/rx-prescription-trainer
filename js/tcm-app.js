@@ -131,7 +131,7 @@
   // ---------- 随机病例 ----------
   function newCase() {
     if (S.cases.length === 0) {
-      alert('中医病例数据尚未就绪，请稍候再试（数据文件由并行任务生成中）。');
+      const tip = $('tcm-data-tip'); if (tip) tip.classList.remove('hidden');
       return;
     }
     const diff = document.querySelector('input[name="tcm-diff"]:checked');

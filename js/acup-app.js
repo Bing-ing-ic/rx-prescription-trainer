@@ -62,7 +62,7 @@
   window.__showView = showView;
 
   function newCase() {
-    if (S.cases.length === 0) { alert('针灸病例数据尚未就绪。'); return; }
+    if (S.cases.length === 0) { const t = $('acup-data-tip'); if (t) t.classList.remove('hidden'); return; }
     const diff = document.querySelector('input[name="acup-diff"]:checked');
     const d = diff ? diff.value : 'all';
     let pool = S.cases; if (d !== 'all') pool = pool.filter(c => c.difficulty === d);
@@ -150,7 +150,7 @@
       (!k || p.name.toLowerCase().indexOf(k) >= 0 || (p.pinyin || '').indexOf(k) >= 0) &&
       (!m || p.meridian === m)
     );
-    if (items.length === 0) { list.innerHTML = '<div style="padding:10px;color:#94a3b8;">无匹配穴位</div>'; return; }
+    if (items.length === 0) { list.innerHTML = '<div style="padding:10px;color:#64748b;">无匹配穴位</div>'; return; }
     list.innerHTML = items.slice(0, 80).map(p => {
       const picked = S.items.some(it => it.name === p.name);
       return `
@@ -216,7 +216,7 @@
       tbl.parentNode.insertBefore(host, tbl.nextSibling);
     }
     if (S.tuinaTechniques.length === 0) {
-      host.innerHTML = '<div style="font-size:12px;color:#94a3b8;">推拿手法数据未加载</div>';
+      host.innerHTML = '<div style="font-size:12px;color:#64748b;">推拿手法数据未加载</div>';
       return;
     }
     // 按 category 分组
@@ -237,15 +237,15 @@
       <div id="acup-tuina-count" style="font-size:12px;color:#64748b;margin-bottom:8px;">已选 0 项</div>
       ${cats.map(cat => `
         <div style="margin-bottom:6px;">
-          <div style="font-size:11px;color:#94a3b8;margin-bottom:3px;">${cat}</div>
+          <div style="font-size:11px;color:#64748b;margin-bottom:3px;">${cat}</div>
           <div style="display:flex;flex-wrap:wrap;gap:5px;">
             ${groups[cat].map(t => {
               const on = S.selectedTechniques.indexOf(t.name) >= 0;
               return `<button type="button" class="tn-chip" data-tn="${t.name}" style="
                 padding:3px 10px;font-size:12px;border-radius:14px;cursor:pointer;
-                border:1px solid ${on ? '#0ea5e9' : '#cbd5e1'};
-                background:${on ? '#e0f2fe' : '#fff'};
-                color:${on ? '#0369a1' : '#475569'};">${t.name}</button>`;
+                border:1px solid ${on ? '#1a6fb5' : '#cbd5e1'};
+                background:${on ? '#dbeafe' : '#fff'};
+                color:${on ? '#1e40af' : '#475569'};">${t.name}</button>`;
             }).join('')}
           </div>
         </div>
@@ -261,9 +261,9 @@
         if (cnt) cnt.textContent = '已选 ' + S.selectedTechniques.length + ' 项';
         // 仅刷新按钮视觉，避免重建 DOM 丢滚动
         const on = S.selectedTechniques.indexOf(name) >= 0;
-        btn.style.borderColor = on ? '#0ea5e9' : '#cbd5e1';
-        btn.style.background = on ? '#e0f2fe' : '#fff';
-        btn.style.color = on ? '#0369a1' : '#475569';
+        btn.style.borderColor = on ? '#1a6fb5' : '#cbd5e1';
+        btn.style.background = on ? '#dbeafe' : '#fff';
+        btn.style.color = on ? '#1e40af' : '#475569';
       };
     });
   }

@@ -48,6 +48,12 @@
       const el = $(v); if (el) el.classList.add('hidden');
     });
     $(view).classList.remove('hidden');
+    // W2-7：进入全局视图时弱化模块 Tab，回到模块视图恢复
+    const tabs = $('module-tabs');
+    if (tabs) {
+      const globalViews = ['view-radar','view-mistakes','view-stats','view-drugs','view-quickref','view-pitfalls'];
+      tabs.classList.toggle('hidden', globalViews.indexOf(view) >= 0);
+    }
     window.scrollTo(0,0);
   }
 
@@ -203,7 +209,18 @@
         if (a && Array.isArray(a.pitfalls)) S.pitfalls = a.pitfalls;
       }).catch(() => { /* 陷阱库加载失败时静默降级 */ });
     } catch (e) {
-      alert('数据加载失败：' + e.message + '\n请用 python -m http.server 或双击 index.html 后通过 http:// 打开。');
+      // W2-4：全局 init 数据加载失败改为页内提示条，不阻断后续渲染（硬阻断校验 alert 保留）
+      const home = $('view-home');
+      if (home) {
+        let tip = home.querySelector('.load-error-tip');
+        if (!tip) {
+          tip = document.createElement('div');
+          tip.className = 'load-error-tip';
+          home.insertBefore(tip, home.firstChild);
+        }
+        tip.textContent = '⚠️ 部分教学数据加载失败，请通过本地 http 服务刷新页面重试。';
+      }
+      console.warn('数据加载失败：', e);
     }
   }
 

@@ -76,17 +76,30 @@ try {
   else bad(`内关 code 错误: ${ng ? ng.code : '未找到'}`);
 } catch (e) { bad('A-1 校验失败: ' + e.message); }
 
-// 5. N-1 膀胱三角 nerve
+// 5. N-1 膀胱三角 nerve（只定位该条目检查其 nerve 字段；
+//    全库其他正常颅神经条目（三叉神经 V1/V2/V3 等）不得参与本条目判定，避免整文件关键词误报）
 console.log('\n[5] N-1 膀胱三角 nerve 字段');
 try {
   const systems = JSON.parse(fs.readFileSync(path.join(DATA, 'anatomy-systems.json'), 'utf8'));
-  const raw = JSON.stringify(systems);
-  if (raw.includes('膀胱三角')) {
-    if (raw.includes('三叉神经')) bad('膀胱三角仍含「三叉神经」错误字样');
-    else ok('已删除「三叉神经」');
-    if (/盆(丛|内脏神经)/.test(raw)) ok('已标注盆丛/盆内脏神经');
-    else bad('未找到盆丛/盆内脏神经描述');
-  } else ok('未找到膀胱三角条目（可能命名不同）');
+  const trigone = [];
+  const walk = obj => {
+    if (!obj) return;
+    if (Array.isArray(obj)) return obj.forEach(walk);
+    if (typeof obj === 'object') {
+      if ((obj.id === 'trigone_bladder' || obj.name === '膀胱三角') && typeof obj.nerve === 'string') trigone.push(obj);
+      Object.values(obj).forEach(walk);
+    }
+  };
+  walk(systems);
+  if (trigone.length === 0) {
+    bad('未找到膀胱三角条目（可能命名不同）');
+  } else {
+    const nerve = trigone[0].nerve;
+    if (nerve.includes('三叉神经')) bad(`膀胱三角 nerve 错误含「三叉神经」: ${nerve.slice(0, 120)}`);
+    else ok('膀胱三角 nerve 未含「三叉神经」');
+    if (/盆(丛|内脏神经)|腹下/.test(nerve)) ok('已标注盆丛/盆内脏神经/腹下神经');
+    else bad('未找到盆丛/盆内脏神经/腹下神经描述');
+  }
 } catch (e) { bad('N-1 校验失败: ' + e.message); }
 
 // 6. N-2 迷走神经 function 重复字

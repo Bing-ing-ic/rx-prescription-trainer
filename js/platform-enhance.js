@@ -119,7 +119,7 @@
       if (list.length) {
         total += list.length;
         sections.push({
-          title: '💊 药品', color: '#1e6091', items: list.map(function (x) {
+          title: '💊 药品', color: '#1a6fb5', items: list.map(function (x) {
             var dr = x.dose_range_json || {};
             return {
               key: 'drug-' + x.generic_name,
@@ -140,7 +140,7 @@
       if (hlist.length) {
         total += hlist.length;
         sections.push({
-          title: '🌿 中药', color: '#5b8c5a', items: hlist.map(function (x) {
+          title: '🌿 中药', color: '#2f7a4f', items: hlist.map(function (x) {
             return {
               key: 'herb-' + x.name,
               name: x.name,
@@ -161,7 +161,7 @@
       if (flist.length) {
         total += flist.length;
         sections.push({
-          title: '📜 方剂', color: '#8b6f3f', items: flist.map(function (x) {
+          title: '📜 方剂', color: '#8b5a2b', items: flist.map(function (x) {
             var herbs = (x.composition || []).map(function (c) { return c.herb; }).join('、');
             return {
               key: 'formula-' + x.name,
@@ -182,7 +182,7 @@
       if (plist.length) {
         total += plist.length;
         sections.push({
-          title: '📍 穴位', color: '#7c5cbf', items: plist.map(function (x) {
+          title: '📍 穴位', color: '#3730a3', items: plist.map(function (x) {
             var ind = Array.isArray(x.indications) ? x.indications.join('、') : (x.indications || '');
             return {
               key: 'point-' + x.code,
@@ -204,10 +204,10 @@
       if (alist.length) {
         total += alist.length;
         sections.push({
-          title: '🫀 解剖结构', color: '#c1432e', items: alist.map(function (x) {
+          title: '🫀 解剖结构', color: '#b91c1c', items: alist.map(function (x) {
             return {
               key: 'anat-' + x.id,
-              name: x.name + (x.latin ? ' <small style="font-weight:400;color:#94a3b8;">' + x.latin + '</small>' : ''),
+              name: x.name + (x.latin ? ' <small style="font-weight:400;color:#64748b;">' + x.latin + '</small>' : ''),
               sub: (x.system || '') + (x.subsystem ? ' · ' + x.subsystem : ''),
               meta: (x.function || '').slice(0, 40),
               payload: { type: 'anat', obj: x }
@@ -834,6 +834,11 @@
       b.addEventListener('click', function () {
         var qr = $('view-quickref');
         if (qr) qr.classList.add('hidden');
+        // W2-7：点模块 Tab 回到模块视图，恢复 Tab 显示
+        if (b.classList.contains('module-tab')) {
+          var tabs = $('module-tabs');
+          if (tabs) tabs.classList.remove('hidden');
+        }
       });
     });
 
@@ -873,6 +878,12 @@
     ids.forEach(function (v) { var el = $(v); if (el) el.classList.add('hidden'); });
     var target = $(id);
     if (target) target.classList.remove('hidden');
+    // W2-7：全局视图隐藏模块 Tab；模块视图恢复
+    var tabs = $('module-tabs');
+    if (tabs) {
+      var globalViews = ['view-radar','view-mistakes','view-stats','view-drugs','view-quickref','view-pitfalls'];
+      tabs.classList.toggle('hidden', globalViews.indexOf(id) >= 0);
+    }
     window.scrollTo(0, 0);
     // 关闭移动菜单
     var nav = $('main-nav');
@@ -901,7 +912,14 @@
   });
 
   /* ---------- 启动 ---------- */
+  // W2-5：实测顶栏高度写入 --topbar-h；resize 重算（≤768px 时 CSS 已将 Tab 置 static）
+  function measureTopbar() {
+    var bar = document.querySelector('.topbar');
+    if (bar) document.documentElement.style.setProperty('--topbar-h', bar.offsetHeight + 'px');
+  }
   document.addEventListener('DOMContentLoaded', function () {
+    measureTopbar();
+    window.addEventListener('resize', measureTopbar);
     qrInit();
     hookNavigation();
     hookPointCloseup();

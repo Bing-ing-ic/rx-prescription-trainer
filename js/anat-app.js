@@ -154,7 +154,7 @@
     const m = (S.tcmMappings && st && S.tcmMappings[st.id]) || null;
     if (!m) return '';
     const meridians = (m.meridians || []).map(x =>
-      `<span class="anat-exam-tag" style="background:rgba(34,139,87,.12);color:#1f7a4d;border:1px solid rgba(34,139,87,.3);">🌿 ${x}</span>`
+      `<span class="anat-exam-tag" style="background:rgba(22,101,52,.12);color:#166534;border:1px solid rgba(22,101,52,.3);">🌿 ${x}</span>`
     ).join(' ');
     const points = (m.acupoints || []).map(p =>
       `<li><b>${p.name}</b> <small class="muted">（${p.code}）</small> — ${p.note || ''}</li>`
@@ -339,7 +339,7 @@
       <div class="atlas-detail-latin">${st.latin || ''}</div>
       <div class="atlas-detail-meta">${atlas.sys ? atlas.sys.name : ''} · ${st.subsystem || ''}</div>
       ${detailImg ? `<div class="atlas-detail-figure">
-        <img src="${detailImg}" alt="${st.name}解剖图" loading="lazy" onclick="window.open('${detailImg}','_blank')" title="点击放大查看">
+        <img src="${detailImg}" alt="${st.name}解剖图" loading="lazy" onclick="window.open('${detailImg}','_blank')" title="点击放大查看" onerror="var f=this.closest('.atlas-detail-figure');if(f){var c=f.querySelector('.atlas-detail-figure-caption');if(c)c.textContent='⚠️ 图片暂缺';}this.style.display='none';">
         <div class="atlas-detail-figure-caption">📷 ${st.name} · 解剖图（点击放大）</div>
       </div>` : ''}
       <div class="anat-detail-section">

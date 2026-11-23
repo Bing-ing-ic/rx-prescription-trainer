@@ -169,59 +169,79 @@
     if (!r.ok) throw new Error(url + ' ' + r.status);
     return r.json();
   }
-  async function boot() {
-    try {
-      const [d, dr, r, c] = await Promise.all([
-        loadJSON('data/diseases.json'),
-        loadJSON('data/drugs.json'),
-        loadJSON('data/rules.json'),
-        loadJSON('data/compat.json')
-      ]);
-      S.diseases = d.diseases;
-      S.drugs = dr.drugs;
-      S.rules = r.rules;
-      S.compat = c;
-      bindNav();
-      renderRadar();
-      // 异步加载检验检查报告字典（失败不阻断主流程）
-      loadLabData();
-      // 异步加载手术指征教学库（失败不阻断主流程）
-      loadSurgeryData();
-      // 参考标准方案库（点评后对照学习）：失败时静默降级，StandardPlan.render 显示"整理中"
-      fetch('data/standard-plans.json').then(r => r.ok ? r.json() : null).then(sp => {
-        if (sp && window.StandardPlan) window.StandardPlan.setPlans(sp);
-      }).catch(() => { /* 标准方案库加载失败时静默降级 */ });
-      // P2-1 异步加载诊断别名归一化表（失败时降级为原模糊匹配）
-      fetch('data/diagnosis-aliases.json').then(r => r.ok ? r.json() : null).then(a => {
-        if (a && typeof a === 'object') {
-          // 剔除 _comment/_version 等元字段
-          Object.keys(a).forEach(k => { if (!k.startsWith('_')) S.dxAliases[k] = a[k]; });
-        }
-      }).catch(() => { /* 别名表加载失败时静默降级 */ });
-      // P3-2 异步加载拼音首字母映射表（失败时静默降级）
-      fetch('data/pinyin-map.json').then(r => r.ok ? r.json() : null).then(a => {
-        if (a && typeof a === 'object') {
-          Object.keys(a).forEach(k => { if (!k.startsWith('_')) S.dxPinyin[k.toLowerCase()] = a[k]; });
-        }
-      }).catch(() => { /* 拼音映射加载失败时静默降级 */ });
-      // P4-2 异步加载诊断陷阱库（失败时静默降级，入口按钮仍可显示但提示无数据）
-      fetch('data/diagnosis-pitfalls.json').then(r => r.ok ? r.json() : null).then(a => {
-        if (a && Array.isArray(a.pitfalls)) S.pitfalls = a.pitfalls;
-      }).catch(() => { /* 陷阱库加载失败时静默降级 */ });
-    } catch (e) {
-      // W2-4：全局 init 数据加载失败改为页内提示条，不阻断后续渲染（硬阻断校验 alert 保留）
-      const home = $('view-home');
-      if (home) {
-        let tip = home.querySelector('.load-error-tip');
-        if (!tip) {
-          tip = document.createElement('div');
-          tip.className = 'load-error-tip';
-          home.insertBefore(tip, home.firstChild);
-        }
-        tip.textContent = '⚠️ 部分教学数据加载失败，请通过本地 http 服务刷新页面重试。';
-      }
-      console.warn('数据加载失败：', e);
+  // 主数据加载失败提示条：failed 为加载失败/结构无效的数据集名称数组；空数组时清除已有提示条
+  function renderLoadErrorTip(failed) {
+    const home = $('view-home');
+    let tip = home && home.querySelector('.load-error-tip');
+    if (!failed.length) {
+      if (tip) tip.remove();
+      return;
     }
+    if (!tip) {
+      tip = document.createElement('div');
+      tip.className = 'load-error-tip';
+      if (home) home.insertBefore(tip, home.firstChild);
+      else document.body.insertBefore(tip, document.body.firstChild);
+    }
+    tip.textContent = '⚠️ 以下教学数据加载失败：' + failed.join('、') + '，请通过本地 http 服务刷新页面重试。';
+  }
+  async function boot() {
+    // P2-07：四个主数据集各自独立容错（allSettled），任一失败不阻断导航绑定与其余数据集加载
+    const [dRes, drRes, rRes, cRes] = await Promise.allSettled([
+      loadJSON('data/diseases.json'),
+      loadJSON('data/drugs.json'),
+      loadJSON('data/rules.json'),
+      loadJSON('data/compat.json')
+    ]);
+    const failed = [];
+    // fulfilled 且结构有效才赋值，否则保持 S 中的默认空值（[] / null）
+    if (dRes.status === 'fulfilled' && dRes.value && Array.isArray(dRes.value.diseases)) {
+      S.diseases = dRes.value.diseases;
+    } else { failed.push('diseases'); }
+    if (drRes.status === 'fulfilled' && drRes.value && Array.isArray(drRes.value.drugs)) {
+      S.drugs = drRes.value.drugs;
+    } else { failed.push('drugs'); }
+    if (rRes.status === 'fulfilled' && rRes.value && Array.isArray(rRes.value.rules)) {
+      S.rules = rRes.value.rules;
+    } else { failed.push('rules'); }
+    if (cRes.status === 'fulfilled' && cRes.value && typeof cRes.value === 'object') {
+      S.compat = cRes.value;
+    } else { failed.push('compat'); }
+
+    // 失败清单上提示条；全部成功时清除已有提示条
+    renderLoadErrorTip(failed);
+
+    // 无论部分成功或全部失败，导航/入口按钮都必须可点；缺数据的模块由各自空态兜底
+    bindNav();
+    // 雷达图仅在主数据有内容时渲染，避免空数组渲染异常
+    if (S.diseases.length || S.drugs.length || S.rules.length || S.compat) {
+      renderRadar();
+    }
+    // 异步加载检验检查报告字典（失败不阻断主流程）
+    loadLabData();
+    // 异步加载手术指征教学库（失败不阻断主流程）
+    loadSurgeryData();
+    // 参考标准方案库（点评后对照学习）：失败时静默降级，StandardPlan.render 显示"整理中"
+    fetch('data/standard-plans.json').then(r => r.ok ? r.json() : null).then(sp => {
+      if (sp && window.StandardPlan) window.StandardPlan.setPlans(sp);
+    }).catch(() => { /* 标准方案库加载失败时静默降级 */ });
+    // P2-1 异步加载诊断别名归一化表（失败时降级为原模糊匹配）
+    fetch('data/diagnosis-aliases.json').then(r => r.ok ? r.json() : null).then(a => {
+      if (a && typeof a === 'object') {
+        // 剔除 _comment/_version 等元字段
+        Object.keys(a).forEach(k => { if (!k.startsWith('_')) S.dxAliases[k] = a[k]; });
+      }
+    }).catch(() => { /* 别名表加载失败时静默降级 */ });
+    // P3-2 异步加载拼音首字母映射表（失败时静默降级）
+    fetch('data/pinyin-map.json').then(r => r.ok ? r.json() : null).then(a => {
+      if (a && typeof a === 'object') {
+        Object.keys(a).forEach(k => { if (!k.startsWith('_')) S.dxPinyin[k.toLowerCase()] = a[k]; });
+      }
+    }).catch(() => { /* 拼音映射加载失败时静默降级 */ });
+    // P4-2 异步加载诊断陷阱库（失败时静默降级，入口按钮仍可显示但提示无数据）
+    fetch('data/diagnosis-pitfalls.json').then(r => r.ok ? r.json() : null).then(a => {
+      if (a && Array.isArray(a.pitfalls)) S.pitfalls = a.pitfalls;
+    }).catch(() => { /* 陷阱库加载失败时静默降级 */ });
   }
 
   // 加载检验检查报告相关 JSON（lab-exams.json / disease-lab-map.json）

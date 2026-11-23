@@ -88,6 +88,15 @@
   // 仅保留明确不会出现在药名末尾的剂型词
   const DOSAGE_FORM_SUFFIX = /(汤|散|丸|丹|饮|颗粒|胶囊|合剂|口服液|煎)$/;
 
+  // 证候-药性启发式关键词（P1-6：防误报，需关键词 + 药味数双条件）
+  const COLD_SYNDROME_KW = ['寒', '畏寒', '怕冷', '便溏', '苔白', '清稀', '肢冷'];
+  const HEAT_SYNDROME_KW = ['热', '口渴', '舌红', '苔黄', '壮热', '面赤'];
+  const DEFICIENCY_KW = ['虚', '虚寒', '脾胃虚', '阴虚', '气虚', '阳虚'];
+  const EXCESS_KW = ['实', '外感', '表证', '实热', '便秘', '积滞'];
+  const HARSH_PURGE_HERBS = ['大黄', '芒硝', '甘遂', '大戟', '京大戟', '芫花', '牵牛子', '巴豆霜'];
+  const GREASY_TONIC_HERBS = ['熟地', '熟地黄', '阿胶', '人参', '红参', '西洋参', '鹿茸', '肉苁蓉', '何首乌', '黄精'];
+  const ORGAN_KW = ['肺', '脾', '胃', '肝', '心', '肾', '胆', '大肠', '膀胱'];
+
   // 脚注关键词（prep 字段中可能出现的先煎/后下等标注）
   const DECOCTION_FIRST_KEY = /先煎|久煎|先入|另煎先/;
   const DECOCTION_LATER_KEY = /后下|后入|临煎|薄荷后下/;
@@ -109,6 +118,8 @@
         const legacy = j.rules || j || [];
         // 合并：优先使用带 type 字段的可执行规则
         extraRules = exec.concat(legacy.filter(x => x && x.type));
+        // 归一 rule_id → id，避免命中记录 rule_id 丢失
+        extraRules.forEach(r => { if (r && !r.id) r.id = r.rule_id; });
       }
     } catch (e) { /* 数据未就绪时降级为内置规则 */ }
 
@@ -140,12 +151,26 @@
           if (max === null) max = parseFloat(mt[2]);
         }
       }
-      m[name] = { min, max, range: h.dose_range || '', usage: h.usage || '', contra: h.contraindications || [] };
+      m[name] = { min, max, range: h.dose_range || '', usage: h.usage || '', contra: h.contraindications || [], nature: h.nature || '', meridian: h.meridian || '' };
     });
     return m;
   }
 
   function norm(s) { return (s || '').replace(/\s/g, '').trim(); }
+
+  // 拼接证型文本：辨证结论 + symptom_pool 各数组，供寒热/虚实/脏腑关键词启发式匹配
+  function syndromeText(c) {
+    const parts = [c.syndrome_differentiation || c.zheng_hou || ''];
+    const sp = c.symptom_pool;
+    if (sp && typeof sp === 'object') {
+      Object.keys(sp).forEach(k => {
+        const v = sp[k];
+        if (Array.isArray(v)) parts.push(v.join(' '));
+        else if (typeof v === 'string') parts.push(v);
+      });
+    }
+    return parts.join(' ');
+  }
 
   // T-4 修复：规范化药名——剥离剂量数字、单位、脚注、剂型后缀
   function normalizeHerbName(raw) {
@@ -305,6 +330,7 @@
     (extraRules || []).forEach(r => {
       try {
         if (!r || !r.type) return;
+        const rid = r.id || r.rule_id || 'TCM-EX';
         switch (r.type) {
           case 'herb_pair': {
             if (!r.a || !r.b) break;
@@ -559,6 +585,139 @@
                   r.suggestion || '请按年龄折算：新生儿1/6，婴儿1/3，幼儿1/2，学龄儿童2/3。', r.basis || ''));
               }
             });
+            break;
+          }
+          case 'herb_count': {
+            // TCM-FMT-02：药味数量偏少/偏多
+            if (herbs.length < 4) {
+              hits.push(mk(rid, r.group || 'FORMAT', warn(r.title || '处方药味数量偏少'),
+                '药味少于4味，君臣佐使难以完备。',
+                r.suggestion || '请复核组方，一般处方药味5-15味。', r.basis || ''));
+            } else if (herbs.length > 20) {
+              hits.push(mk(rid, r.group || 'FORMAT', warn(r.title || '处方药味数量偏多'),
+                '药味超过20味，大方复治须说明依据。',
+                r.suggestion || '请精简药味，或在方解中说明大方复治的依据。', r.basis || ''));
+            }
+            break;
+          }
+          case 'four_diagnosis': {
+            // TCM-FMT-04：主诉/舌象/脉象记录完整；symptom_pool 整体缺失时降级跳过
+            const sp = c.symptom_pool;
+            if (!sp || typeof sp !== 'object') break;
+            const miss = [];
+            ['chief_complaint', 'tongue', 'pulse'].forEach(k => {
+              const v = sp[k];
+              if (!Array.isArray(v) || v.length === 0) miss.push(k);
+            });
+            if (miss.length > 0) {
+              hits.push(mk(rid, r.group || 'FORMAT', error(r.title || '四诊信息缺失'),
+                '四诊信息缺失：主诉/舌象/脉象记录不完整。',
+                r.suggestion || '请补充主诉、舌象、脉象记录，四诊合参后再辨证处方。', r.basis || ''));
+            }
+            break;
+          }
+          case 'herb_name_norm': {
+            // TCM-FMT-05：别名/炮制品俗名 → 药典通用名；目录通用名本身不误报
+            herbs.forEach(h => {
+              if (!h || !h.name) return;
+              const raw = norm(h.name);
+              if (!raw) return;
+              const generic = HERB_ALIAS[raw];
+              if (!generic || generic === raw) return;
+              if (meta[raw]) return; // 目录收录的通用名/炮制品，不作别名提示
+              hits.push(mk(rid, r.group || 'FORMAT', warn(r.title || '药名宜用药典通用名'),
+                '药名宜用药典通用名：' + generic + '（处方写作 ' + raw + '）。',
+                r.suggestion || '请改为药典通用名。', r.basis || ''));
+            });
+            break;
+          }
+          case 'builtin_pair': {
+            // TCM-INCOMPAT-01/02：十八反/十九畏已由内置表覆盖，no-op 不重复命中
+            break;
+          }
+          case 'syndrome_contra_heatcold': {
+            // TCM-INCOMPAT-04：寒证用寒凉药 / 热证用温热药（warn，启发式双条件防误报）
+            const text = syndromeText(c);
+            if (!text) break;
+            const hasCold = COLD_SYNDROME_KW.some(k => text.indexOf(k) >= 0);
+            const hasHeat = HEAT_SYNDROME_KW.some(k => text.indexOf(k) >= 0);
+            let coldCount = 0, warmCount = 0;
+            herbs.forEach(h => {
+              const m = meta[normalizeHerbName(h.name)];
+              if (!m || !m.nature) return;
+              if (m.nature.indexOf('寒') >= 0 || m.nature.indexOf('凉') >= 0) coldCount++;
+              else if (m.nature.indexOf('温') >= 0 || m.nature.indexOf('热') >= 0) warmCount++;
+            });
+            if ((hasCold && coldCount >= 2) || (hasHeat && warmCount >= 2)) {
+              hits.push(mk(rid, r.group || 'INCOMPATIBILITY', warn(r.title || '证候与药性方向疑似不符'),
+                '证候与药性方向疑似不符，请复核。',
+                r.suggestion || '请核对证候寒热与药物四气是否相应：疗寒以热药，疗热以寒药。', r.basis || ''));
+            }
+            break;
+          }
+          case 'syndrome_contra_deficiency_excess': {
+            // TCM-INCOMPAT-05：虚证误用峻下（error）；实证误用壅补（warn，≥2味）
+            const text = syndromeText(c);
+            const isDef = DEFICIENCY_KW.some(k => text.indexOf(k) >= 0);
+            const isExc = EXCESS_KW.some(k => text.indexOf(k) >= 0);
+            if (isDef) {
+              const harsh = herbs.map(h => normalizeHerbName(h.name)).find(n => HARSH_PURGE_HERBS.indexOf(n) >= 0);
+              if (harsh) {
+                hits.push(mk(rid, r.group || 'INCOMPATIBILITY', error(r.title || '虚证误用峻下攻伐'),
+                  '虚证误用峻下攻伐，易伤正气（方中含“' + harsh + '”）。',
+                  r.suggestion || '虚证宜扶正，峻下逐水药应撤除或配伍扶正药。', r.basis || ''));
+              }
+            }
+            if (isExc) {
+              const greasy = herbs.map(h => normalizeHerbName(h.name)).filter(n => GREASY_TONIC_HERBS.indexOf(n) >= 0);
+              if (greasy.length >= 2) {
+                hits.push(mk(rid, r.group || 'INCOMPATIBILITY', warn(r.title || '实证误用滋腻壅补'),
+                  '实证误用滋腻壅补，恐留邪（方中含“' + greasy.slice(0, 3).join('、') + '”等）。',
+                  r.suggestion || '实证宜祛邪，滋腻壅补药应减量或配伍消导之品。', r.basis || ''));
+              }
+            }
+            break;
+          }
+          case 'builtin_syndrome': {
+            // TCM-SYN-01/02/03：治法贴合、选方不符已由内置 TCM-FZ-01 / TCM-FM-01 覆盖，no-op
+            break;
+          }
+          case 'meridian_match': {
+            // TCM-SYN-05：辨证脏腑定位与处方药物归经不符
+            const text = syndromeText(c);
+            const organs = ORGAN_KW.filter(o => text.indexOf(o) >= 0);
+            if (organs.length === 0) break;
+            const meridians = herbs.map(h => (meta[normalizeHerbName(h.name)] || {}).meridian || '');
+            const matched = organs.filter(o => meridians.some(m => m.indexOf(o) >= 0));
+            if (matched.length === 0) {
+              hits.push(mk(rid, r.group || 'SYNDROME', warn(r.title || '归经与辨证定位不符'),
+                '辨证定位在' + organs.join('、') + '经/脏腑，所选药物归经与之不符，请复核引经药。',
+                r.suggestion || '请选配归该脏腑经络的药物或引经报使之品。', r.basis || ''));
+            }
+            break;
+          }
+          case 'junchen_dose_ratio': {
+            // TCM-EFF-02：佐/使药剂量 ≥ 君药剂量 → warn；无君药或剂量缺失不命中
+            const junDoses = herbs.filter(h => norm(h.role) === '君')
+              .map(h => parseFloat(h.dose)).filter(d => !isNaN(d));
+            if (junDoses.length === 0) break;
+            const junMax = Math.max.apply(null, junDoses);
+            const bad = herbs.find(h => {
+              const role = norm(h.role);
+              if (role !== '佐' && role !== '使' && role !== '佐使') return false;
+              const d = parseFloat(h.dose);
+              return !isNaN(d) && d >= junMax;
+            });
+            if (bad) {
+              const badDose = parseFloat(bad.dose);
+              hits.push(mk(rid, r.group || 'EFFICACY', warn(r.title || '君臣剂量比例失衡'),
+                '君药剂量反轻于佐使药，请复核君臣剂量比例（君药 ' + junMax + 'g，“' + normalizeHerbName(bad.name) + '” ' + badDose + 'g）。',
+                r.suggestion || '君药在方中占主导地位，剂量宜重；佐使药剂量宜轻。', r.basis || ''));
+            }
+            break;
+          }
+          case 'builtin_decoction_note': {
+            // TCM-FMT-06：先煎/后下/包煎/烊化/另煎等脚注已由 decoction_* 处理器覆盖，no-op
             break;
           }
           default:

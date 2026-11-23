@@ -862,14 +862,15 @@
       "is_iv_capable": true,
       "allowed_solvents_json": [
         "0.9%氯化钠注射液 100ml",
-        "0.9%氯化钠注射液 250ml"
+        "0.9%氯化钠注射液 250ml",
+        "5%葡萄糖注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
       "skin_test_required": false,
       "special_warnings_json": [
         "青霉素过敏慎用",
         "用药期间及停药1周内禁酒",
-        "只能用0.9%NS，禁用5%GS"
+        "5%葡萄糖可配伍，配制后宜尽快输注；不可与氨基糖苷类在同一容器混合"
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
@@ -1450,12 +1451,17 @@
         "default_freq": "qid",
         "default_duration_days": 7
       },
-      "liver_renal_note": "肾功能不全禁用",
+      "liver_renal_note": "CrCl<60（eGFR<45）禁用",
       "is_iv_capable": false,
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "足月妊娠/临产/临近临产禁用（可致新生儿溶血性贫血）",
+        "1月龄以下新生儿禁用",
+        "G6PD缺乏者慎用（可溶血）",
+        "长期用药需监测肺部、周围神经与肝功能"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.3,
@@ -2567,7 +2573,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": true,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "20mg",
@@ -2588,7 +2594,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": false,
       "jtc_batch": true,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "40mg",
@@ -2613,7 +2619,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": false,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "50mg",
@@ -2634,7 +2640,7 @@
       "medical_insurance_class": "甲",
       "essential_medicine": true,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "0.1g",
@@ -2659,7 +2665,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": false,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "1g",
@@ -2684,7 +2690,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": false,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "5mg",
@@ -2709,7 +2715,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": false,
       "jtc_batch": true,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "30mg",
@@ -2734,7 +2740,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": false,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "20ml",
@@ -2851,7 +2857,7 @@
       "medical_insurance_class": "甲",
       "essential_medicine": false,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "0.2g",
@@ -2872,7 +2878,7 @@
       "medical_insurance_class": "甲",
       "essential_medicine": true,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "10mg",
@@ -2893,7 +2899,7 @@
       "medical_insurance_class": "甲",
       "essential_medicine": true,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "10mg",
@@ -2914,7 +2920,7 @@
       "medical_insurance_class": "甲",
       "essential_medicine": true,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "0.5mg",
@@ -2935,7 +2941,7 @@
       "medical_insurance_class": "甲",
       "essential_medicine": true,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "20mg",
@@ -2956,7 +2962,7 @@
       "medical_insurance_class": "甲",
       "essential_medicine": true,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "pinyin": "glczsy",
       "pharmacology_class": "脱水剂/渗透性利尿剂",
@@ -2992,7 +2998,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": false,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "is_tcm_injection": true,
       "adult": {
@@ -3014,7 +3020,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": false,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "is_tcm_injection": true,
       "adult": {
@@ -3036,7 +3042,7 @@
       "medical_insurance_class": "甲",
       "essential_medicine": false,
       "jtc_batch": false,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "is_tcm_injection": true,
       "adult": {
@@ -3058,7 +3064,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": true,
       "jtc_batch": true,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "75mg",
@@ -3083,7 +3089,7 @@
       "medical_insurance_class": "乙",
       "essential_medicine": false,
       "jtc_batch": true,
-      "abx_level": null,
+      "abx_level": "none",
       "controlled": false,
       "adult": {
         "single_dose": "0.2g",
@@ -3520,13 +3526,13 @@
         "default_freq": "tid",
         "default_duration_days": 3
       },
-      "liver_renal_note": "含酒精",
+      "liver_renal_note": "-",
       "is_iv_capable": false,
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [
-        "含酒精"
+        "含乙醇40%~50%，禁与头孢菌素类、甲硝唑、替硝唑、酮康唑、呋喃唑酮等同用，可致双硫仑样反应（潮红、头痛、心悸、血压下降、呼吸困难）；用药期间及停药后短期内避免上述药物"
       ],
       "pinyin": "hxzqs",
       "pinyin_code": "HXZQS",
@@ -4021,7 +4027,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "急性胆囊炎和胆管炎、胆道阻塞（胆总管/胆囊管）、经常性胆绞痛发作、X线不透光的钙化结石、胆囊功能受损或不显影者禁用",
+        "适用于X线可穿透（钙化阴性）且胆囊收缩功能正常的胆固醇型结石；服药12个月结石未变小应停药",
+        "妊娠/哺乳期慎用，需医生评估"
+      ],
       "pinyin": "xqydsjn",
       "pinyin_code": "XQYDSJN",
       "reference_status": "backup"
@@ -4444,7 +4454,8 @@
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
       "special_warnings_json": [
-        "8岁以下禁用"
+        "8岁以下禁用",
+        "孕妇/哺乳期禁用（不宜应用）：可透过胎盘致胎儿牙齿变色、抑制骨骼发育"
       ],
       "pinyin": "dxhsp",
       "pinyin_code": "DXHSP",
@@ -4656,7 +4667,8 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [
-        "伪膜性肠炎"
+        "伪膜性肠炎",
+        "克林霉素磷酸酯为前药，体内水解为克林霉素；同处方口服克林霉素+注射克林霉素磷酸酯属活性成分叠加，应避免"
       ],
       "pinyin": "zsyklmslsz",
       "pinyin_code": "ZSYKLMSLSZ",
@@ -5738,7 +5750,8 @@
         "硫酸阿米卡星注射液"
       ],
       "special_warnings_json": [
-        "儿童/老人慎用"
+        "具耳毒性、肾毒性",
+        "儿童避免应用；确有指征且无毒性低替代药时，须知情同意、监测血药浓度（TDM）并观察听力与肾功能；老年人及肾功能不全者慎用"
       ]
     },
     {
@@ -5759,7 +5772,7 @@
       "reference_status": "backup",
       "special_warnings_json": [
         "具耳毒性、肾毒性",
-        "儿童、老年人及肾功能不全者慎用"
+        "儿童避免应用；确有指征且无毒性低替代药时，须知情同意、监测血药浓度（TDM）并观察听力与肾功能；老年人及肾功能不全者慎用"
       ]
     },
     {
@@ -10052,7 +10065,7 @@
       "essential_medicine": true,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "第三代口服头孢菌素",
       "dose_range_json": {
         "single_min_mg": 0.1,
@@ -10131,7 +10144,7 @@
       "essential_medicine": true,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "大环内酯类抗生素",
       "dose_range_json": {
         "single_min_mg": 0.25,
@@ -10168,7 +10181,7 @@
       "essential_medicine": true,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "磺胺类复方制剂",
       "dose_range_json": {
         "single_min_mg": 0.96,
@@ -10208,7 +10221,7 @@
       "essential_medicine": false,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "林可酰胺类抗生素",
       "dose_range_json": {
         "single_min_mg": 150,
@@ -10284,7 +10297,7 @@
       "essential_medicine": true,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "大环内酯类抗生素",
       "dose_range_json": {
         "single_min_mg": 0.5,
@@ -10320,7 +10333,7 @@
       "essential_medicine": true,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "第一代口服头孢菌素",
       "dose_range_json": {
         "single_min_mg": 0.25,
@@ -10359,7 +10372,7 @@
       "essential_medicine": true,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "神经氨酸酶抑制剂（抗流感）",
       "dose_range_json": {
         "single_min_mg": 75,
@@ -10473,7 +10486,7 @@
       "essential_medicine": true,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "广谱抗病毒药",
       "dose_range_json": {
         "single_min_mg": 0.15,
@@ -12597,7 +12610,7 @@
       "essential_medicine": true,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "硝基咪唑类抗厌氧菌药",
       "dose_range_json": {
         "single_min_mg": "--",
@@ -12919,7 +12932,7 @@
       "essential_medicine": true,
       "jtc_batch": "",
       "otc_class": "处方药",
-      "abx_level": "non-restricted",
+      "abx_level": "non_restricted",
       "pharmacology_class": "抗疱疹病毒药",
       "dose_range_json": {
         "single_min_mg": 0.25,
@@ -15739,7 +15752,7 @@
       "spec": "228mg×24粒"
     },
     {
-      "dosage_form": "injection",
+      "dosage_form": "iv_drip",
       "unit": "支",
       "medical_insurance_class": "乙",
       "essential_medicine": false,
@@ -18417,7 +18430,7 @@
     {
       "generic_name": "注射用环磷酰胺",
       "brand_name": "恒瑞",
-      "dosage_form": "injection",
+      "dosage_form": "iv_drip",
       "spec": "0.2g×1支",
       "unit": "支",
       "medical_insurance_class": "甲",
@@ -18460,7 +18473,7 @@
     {
       "generic_name": "注射用甲氨蝶呤",
       "brand_name": "辉瑞",
-      "dosage_form": "injection",
+      "dosage_form": "iv_drip",
       "spec": "5mg×5支",
       "unit": "支",
       "medical_insurance_class": "甲",
@@ -20088,14 +20101,14 @@
     {
       "generic_name": "布地奈德福莫特罗吸入剂",
       "brand_name": "信必可都保",
-      "dosage_form": "吸入剂",
+      "dosage_form": "inhalation",
       "spec": "160μg/4.5μg×60吸",
       "unit": "支",
       "medical_insurance_class": "乙",
       "essential_medicine": true,
       "jtc_batch": false,
       "otc_class": "处方药",
-      "abx_level": null,
+      "abx_level": "none",
       "pharmacology_class": "呼吸系统用药/糖皮质激素+β2受体激动剂复方",
       "dose_range_json": {
         "adult_min": 1,
@@ -24130,7 +24143,7 @@
       "brand_name": "培达"
     },
     {
-      "dosage_form": "iv",
+      "dosage_form": "iv_drip",
       "spec": "10μg/2ml",
       "unit": "支",
       "medical_insurance_class": "乙",
@@ -24173,7 +24186,7 @@
       "brand_name": "凯时"
     },
     {
-      "dosage_form": "iv",
+      "dosage_form": "iv_drip",
       "spec": "1mg/支（冻干粉）",
       "unit": "支",
       "medical_insurance_class": "乙",
@@ -25793,7 +25806,8 @@
       "special_warnings_json": [
         "头孢类交叉过敏",
         "凝血功能影响（长期使用）",
-        "艰难梭菌腹泻"
+        "艰难梭菌腹泻",
+        "特殊使用级：须经抗感染/相关专业会诊同意、高级职称医师开具，门诊不得使用；具体级别以本省分级目录为准"
       ],
       "is_solvent": false,
       "is_tcm_injection": false,

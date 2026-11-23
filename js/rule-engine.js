@@ -438,14 +438,29 @@
     });
 
     // ====================== 5. 配伍 / 重复 ======================
+    // 规范子类标签：同一药理子类在数据中可能有不同分类标签（如 他汀类/HMG-CoA还原酶抑制剂），
+    // 归并到同一标签后再判重；取不到标签时回退原 pharmacology_class。宁漏勿滥，不同机制不并组。
+    function canonicalSubclass(d) {
+      const n = d.generic_name || '';
+      const c = d.pharmacology_class || '';
+      const form = d.dosage_form || '';
+      if (/他汀/.test(n) || /HMG-CoA|他汀类/.test(c)) return 'statin';
+      if (/质子泵抑制剂|PPI/.test(c)) return 'ppi';
+      if (/抗组胺/.test(c) && !/肥大细胞/.test(c)) return 'h1_antihistamine';
+      if (/阿昔洛韦|伐昔洛韦|更昔洛韦|缬更昔洛韦|泛昔洛韦/.test(n) && !/ophthalmic|topical/.test(form)) return 'herpes_antiviral';
+      if (/地平/.test(n) && !/尼莫地平|氟桂利嗪|维拉帕米|地尔硫卓|普瑞巴林/.test(n)) return 'dhp_ccb';
+      return null;
+    }
+    const dupKey = d => canonicalSubclass(d) || d.pharmacology_class;
+
     // DUP-01 处方内同类
     ['normal_rx','iv_rx'].forEach(k => {
       const rx = ctx[k]; if (!rx) return;
       const map = {};
       therapeuticItems(rx).forEach(it => {
-        const c = it.drug.pharmacology_class;
-        if (!map[c]) map[c] = [];
-        map[c].push(it.drug.generic_name);
+        const key = dupKey(it.drug);
+        if (!map[key]) map[key] = [];
+        map[key].push(it.drug.generic_name);
       });
       Object.keys(map).forEach(c => {
         if (map[c].length > 1) {
@@ -460,15 +475,15 @@
 
     // DUP-02 跨通道口服+静脉同类
     const { oral, iv: ivDrugs } = collectRoutes(ctx);
-    const oralClasses = new Set(oral.map(it => it.drug.pharmacology_class));
-    const ivClasses = new Set(ivDrugs.map(it => it.drug.pharmacology_class));
+    const oralClasses = new Set(oral.map(it => dupKey(it.drug)));
+    const ivClasses = new Set(ivDrugs.map(it => dupKey(it.drug)));
     const overlap = [...oralClasses].filter(c => ivClasses.has(c));
     if (overlap.length) {
       const reason = iv && iv.iv_reason;
       if (reason !== 'sequential_therapy') {
         overlap.forEach(c => {
-          const oNames = oral.filter(it => it.drug.pharmacology_class === c).map(it => it.drug.generic_name);
-          const iNames = ivDrugs.filter(it => it.drug.pharmacology_class === c).map(it => it.drug.generic_name);
+          const oNames = oral.filter(it => dupKey(it.drug) === c).map(it => it.drug.generic_name);
+          const iNames = ivDrugs.filter(it => dupKey(it.drug) === c).map(it => it.drug.generic_name);
           // B1: DUP-02 affected_items = 跨通道冲突的两组药品
           hits.push(hit(R['DUP-02'], 'warn',
             `同次就诊口服+静脉同类交叉：口服[${oNames.join(',')}] + 静滴[${iNames.join(',')}]，且 iv_reason 未选择"序贯治疗"。`,
@@ -1326,7 +1341,8 @@
       const APAP_COMBO_RE = /感冒灵|氨酚黄那敏|酚麻美敏|复方氨酚|氨酚烷胺|酚咖|氨酚伪麻|美扑伪麻|白加黑|泰诺|快克|感康/;
       const RENAL_TOXIC_RE = /庆大霉素|阿米卡星|妥布霉素|奈替米星|链霉素|万古霉素|去甲万古霉素|替考拉宁|头孢克肟/;
       const HEPATO_TOXIC_RE = /依托红霉素|无味红霉素|红霉素酯|利福平|异烟肼|吡嗪酰胺/;
-      const PED_HARD_RE = /可待因|复方磷酸可待因|异丙嗪|庆大霉素|阿米卡星|妥布霉素|奈替米星|链霉素/;
+      const PED_BAN_RE = /可待因|复方磷酸可待因|异丙嗪/;
+      const PED_AMINO_RE = /庆大霉素|阿米卡星|妥布霉素|奈替米星|链霉素/;
       const PREG_TCM_BAN_RE = /麝香|水蛭|虻虫|三棱|莪术|干漆/;
       const PREG_TCM_CAUTION_RE = /桃仁|红花|益母草|川牛膝|苏木|王不留行/;
       const AUX_MONITOR_RE = /脑蛋白水解物|参麦|丹参|香丹|血栓通|血塞通|醒脑静|神经节苷脂|胞磷胆碱|胞二磷胆碱|小牛血|骨肽|黄芪注射液|丹参酮|红花黄色素|舒血宁|银杏达莫|曲克芦丁/;
@@ -1460,14 +1476,39 @@
         }
       }
 
-      // ---- NEW-09 儿童用可待因/异丙嗪/氨基糖苷类 ----
+      // ---- NEW-09 儿童用药分级：可待因绝对禁用；异丙嗪<2禁用、2-11慎用；氨基糖苷类有指征慎用（非绝对禁忌） ----
       if (patient.age != null && patient.age < 12) {
-        const pedBad = allNew.filter(it => PED_HARD_RE.test(it.drug.generic_name || ''));
-        if (pedBad.length) {
+        const isLocalForm = it => /topical|ophthalmic|external/.test(it.drug.dosage_form || '');
+        const banItems = allNew.filter(it => PED_BAN_RE.test(it.drug.generic_name || ''));
+        const codeine = banItems.filter(it => /可待因/.test(it.drug.generic_name || ''));
+        const prometh = banItems.filter(it => /异丙嗪/.test(it.drug.generic_name || ''));
+        const amino = allNew.filter(it => PED_AMINO_RE.test(it.drug.generic_name || '') && !isLocalForm(it));
+
+        if (codeine.length) {
           hits.push(hit(R['NEW-09'], 'error',
-            `患儿 ${patient.age} 岁（<12岁），使用儿童禁忌/慎用药物「${pedBad.map(it=>it.drug.generic_name).join('、')}」（可待因<12禁用；异丙嗪<2禁用；氨基糖苷类具耳肾毒性）。`,
-            `儿童镇咳改用右美沙芬/蜂蜜；抗过敏改用西替利嗪/氯雷他定；抗感染避免氨基糖苷类。`,
-            { affected_items: pedBad.map(it => it.drug.generic_name) }));
+            `患儿 ${patient.age} 岁（<12岁），使用可待因（含复方磷酸可待因），12岁以下禁用（呼吸抑制风险）：「${codeine.map(it => it.drug.generic_name).join('、')}」。`,
+            `儿童镇咳改用右美沙芬/蜂蜜等非阿片类方案。`,
+            { affected_items: codeine.map(it => it.drug.generic_name) }));
+        }
+        if (prometh.length) {
+          const names = prometh.map(it => it.drug.generic_name).join('、');
+          if (patient.age < 2) {
+            hits.push(hit(R['NEW-09'], 'error',
+              `婴幼儿 ${patient.age} 岁（<2岁）禁用异丙嗪（镇静、呼吸抑制风险）：「${names}」。`,
+              `2岁以下婴幼儿避免使用异丙嗪；抗过敏改用西替利嗪/氯雷他定等二代抗组胺药。`,
+              { affected_items: prometh.map(it => it.drug.generic_name) }));
+          } else {
+            hits.push(hit(R['NEW-09'], 'warn',
+              `患儿 ${patient.age} 岁，慎用异丙嗪（2岁以下禁用）：「${names}」。`,
+              `优先选用西替利嗪/氯雷他定等二代抗组胺药；如确需使用须评估镇静风险。`,
+              { affected_items: prometh.map(it => it.drug.generic_name) }));
+          }
+        }
+        if (amino.length) {
+          hits.push(hit(R['NEW-09'], 'warn',
+            `儿童应避免应用氨基糖苷类「${amino.map(it => it.drug.generic_name).join('、')}」；确有明确指征且无毒性低替代药时，须知情同意、血药浓度监测并监测听力/肾功能。`,
+            `优先选用毒性低的替代抗菌药；确需使用须 TDM 并随访听力、肾功能。`,
+            { affected_items: amino.map(it => it.drug.generic_name) }));
         }
       }
 

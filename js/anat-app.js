@@ -615,6 +615,12 @@
     }
   }
 
+  // 病例 system 英文 id → 中文系统名；S.systems 为空或未匹配时回退原 id
+  function sysName(id) {
+    const s = (S.systems || []).find(x => x.id === id);
+    return s ? s.name : id;
+  }
+
   // ---------- 临床案例 ----------
   function renderCaseList() {
     const box = $('anat-case-list');
@@ -630,7 +636,7 @@
           <span class="tag tag-diff">${c.difficulty || '初级'}</span>
           <b>${c.title}</b>
         </div>
-        <div class="acc-meta muted">${c.system || ''}${c.subsystem ? ' · ' + c.subsystem : ''}</div>
+        <div class="acc-meta muted">${sysName(c.system)}${c.subsystem ? ' · ' + c.subsystem : ''}</div>
       </div>`).join('');
     box.querySelectorAll('.anat-case-card').forEach(el => {
       const activate = () => {
@@ -655,7 +661,7 @@
           <span class="tag tag-diff">${c.difficulty || '初级'}</span>
           <span class="case-title">${c.title}</span>
         </div>
-        <div class="case-meta muted">${c.system || ''}</div>
+        <div class="case-meta muted">${sysName(c.system)}</div>
         <div class="case-body">
           <p><b>【情景】</b>${c.scenario || ''}</p>
           <p><b>【问题】</b>${c.question || ''}</p>

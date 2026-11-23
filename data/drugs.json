@@ -27214,7 +27214,7 @@
         "default_freq": "qd",
         "default_duration_days": null
       },
-      "liver_renal_note": "",
+      "liver_renal_note": "老年人、肝肾功能异常患者及初次使用中药注射剂者慎用并加强监测；儿童、哺乳期妇女尚无安全性/有效性数据（非禁用）",
       "is_iv_capable": false,
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
@@ -27225,7 +27225,7 @@
         "不宜与其他注射液配伍；严禁混合配伍，谨慎联合用药",
         "过敏性休克风险，须在具备抢救条件的医疗机构使用",
         "有出血倾向者及月经过多者慎用；过敏体质慎用",
-        "哺乳期/儿童/老年人/肝肾功能异常条款说明书未单列，无可靠依据，不升级；现行通用名为复方当归注射液（当归、川芎、红花），单方\"当归注射液\"无现行国药准字批文"
+        "儿童、哺乳期妇女尚无支持用于其安全性、有效性的数据（非禁用，以厂家换版说明书为准）；老年人、肝肾功能异常患者及初次使用者慎用并加强监测；现行通用名复方当归注射液（当归、川芎、红花），单方\"当归注射液\"无现行国药准字批文"
       ],
       "is_solvent": false,
       "is_tcm_injection": true,
@@ -27629,18 +27629,19 @@
       "liver_renal_note": "老年人用药无可靠参考文献；肝肾功能异常专项条款说明书未单列，无可靠依据；极少数报道转氨酶升高，停药恢复；哺乳期部分厂家称尚不明确应慎用，以厂家说明书为准",
       "is_iv_capable": true,
       "allowed_solvents_json": [
-        "5%葡萄糖注射液 250-500ml",
-        "0.9%氯化钠注射液 250-500ml"
+        "5%葡萄糖注射液 250-500ml（瑞格/天瑞版；吴中版未标具体容积）",
+        "0.9%氯化钠注射液 250-500ml（瑞格/天瑞版；吴中版未标具体容积）"
       ],
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [
-        "对本品过敏者禁用；孕妇禁用（部分厂家作\"忌用\"）；仅江苏吴中医药版辅料含无水乙醇，对乙醇过敏者禁用；其余厂家辅料不含乙醇，以具体厂家说明书为准",
+        "对本品过敏者禁用；孕妇禁用（吴中版）/忌用（瑞格、天瑞版）；仅江苏吴中医药版辅料含无水乙醇，对乙醇过敏者禁用；其余厂家辅料不含乙醇，以具体厂家说明书为准",
         "禁忌与头孢曲松、头孢拉定、头孢哌酮、庆大霉素、呋塞米配伍；不可与丁香配伍",
         "过敏体质慎用；严重不良反应集中10岁以下儿童，重度感染或婴幼儿遵医嘱",
         "滴速30-40滴/分，初始约10滴/分观察10分钟；过敏性休克风险，初次使用密切观察；体外高浓度有溶血现象，需观察溶血不良反应；剩余药液不可贮藏再用",
-        "厂家剂量口径分叉：吴中按体重10mg/kg；瑞格/天瑞成人或12岁以上一次0.2-0.4g、6个月以上婴幼儿0.1g；均7-10日一疗程，按所持厂家说明书执行；适应证各厂家口径不一，以说明书为准",
-        "注意与已注销的莪术油葡萄糖注射液（复方含糖型）区分"
+        "厂家剂量口径分叉：吴中按体重10mg/kg；瑞格/天瑞成人或12岁以上一次0.2-0.4g、6个月以上婴幼儿0.1g、6个月以下减半；均7-10日一疗程，按所持厂家说明书执行；适应证各厂家口径不一，以说明书为准",
+        "哺乳期厂家分叉：吴中版尚不明确、应慎用；天瑞版尚不明确；老年用药无可靠参考文献；肝肾功能专项条款说明书未单列，无可靠依据",
+        "注意与已注销的莪术油葡萄糖注射液（复方含糖型，2022年第108号公告）区分"
       ],
       "is_solvent": false,
       "is_tcm_injection": true,
@@ -27649,6 +27650,344 @@
       "pinyin": "ezyzsy",
       "pinyin_code": "EZYZSY",
       "reference_status": "backup"
+    },
+    {
+      "generic_name": "疏血通注射液",
+      "brand_name": "友搏",
+      "dosage_form": "iv_drip",
+      "spec": "2ml/支（水蛭、地龙）",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "中药注射剂-活血化瘀",
+      "dose_range_json": {
+        "single_min_ml": 6,
+        "single_max_ml": 6,
+        "daily_max_ml": 6,
+        "default_freq": "qd",
+        "default_duration_days": null
+      },
+      "liver_renal_note": "老人、肝肾功能异常、初次使用者及日剂量超12ml者慎用并加强监测",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "5%葡萄糖注射液 250-500ml",
+        "0.9%氯化钠注射液 250-500ml"
+      ],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "中药注射剂，严禁与其他药品混合配伍，必须单独成组/单独输注",
+        "有过敏史及过敏性疾病史者禁用；无瘀血证者禁用；有出血倾向者禁用；孕妇禁用",
+        "老人、肝肾功能异常、初次使用者及日剂量超12ml者慎用并加强监测；与溶栓药、抗凝药、抗血小板药合并使用须谨慎并加强出血监测",
+        "不良反应含过敏性休克，须在具备抢救条件的医疗机构使用，用药开始30分钟内重点监护；稀释后即配即用",
+        "静滴一次6ml、一日1次；疗程说明书未固定，院内规范一般不超过15天；儿童用药尚不明确（无禁用条款，亦无剂量口径）"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": true,
+      "price_yuan": 35,
+      "manufacturer": "牡丹江友搏药业（Z20010100，独家）",
+      "pinyin": "sxztzsy",
+      "pinyin_code": "SXZTZSY",
+      "reference_status": "已核对"
+    },
+    {
+      "generic_name": "丹红注射液",
+      "brand_name": "步长",
+      "dosage_form": "iv_drip",
+      "spec": "2ml/10ml/20ml（丹参、红花）",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "中药注射剂-活血化瘀",
+      "dose_range_json": {
+        "single_min_ml": 20,
+        "single_max_ml": 40,
+        "daily_max_ml": 40,
+        "default_freq": "qd",
+        "default_duration_days": null
+      },
+      "liver_renal_note": "有肝生化指标异常病例报告；严格按功能主治使用，不超剂量、不长期连续用药",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "5%葡萄糖注射液 100-500ml",
+        "0.9%氯化钠注射液（糖尿病等特殊情况改用）"
+      ],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "中药注射剂，严禁与其他药品混合配伍，必须单独成组/单独输注",
+        "对本品过敏或有严重不良反应病史者禁用；有出血倾向者禁用；孕妇及哺乳期妇女禁用",
+        "有肝生化指标异常病例报告；严格按功能主治使用，不超剂量、不长期连续用药",
+        "不良反应含过敏性休克，须在具备抢救条件的医疗机构使用，用药开始30分钟内重点监护",
+        "医保谈判药品：限二级及以上医疗机构并有明确缺血性心脑血管疾病急性发作证据的重症抢救患者；协议期2025-01-01至2026-12-31，到期须复核支付限定；儿童用药现行说明书无专门条款，留空",
+        "另有肌注2-4ml一日1-2次、静推4ml+50%葡萄糖20ml一日1-2次途径，按说明书执行"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": true,
+      "price_yuan": 45,
+      "manufacturer": "山东丹红制药（MAH）/菏泽步长制药（Z20026866）",
+      "pinyin": "dhzsy",
+      "pinyin_code": "DHZSY",
+      "reference_status": "已核对"
+    },
+    {
+      "generic_name": "舒血宁注射液",
+      "brand_name": "珍宝岛/神威/振东泰盛等",
+      "dosage_form": "iv_drip",
+      "spec": "2ml（总黄酮醇苷1.68mg、银杏内酯0.28mg）/5ml",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "中药注射剂-活血化瘀（银杏叶提取物）",
+      "dose_range_json": {
+        "single_min_ml": 20,
+        "single_max_ml": 20,
+        "daily_max_ml": 20,
+        "default_freq": "qd",
+        "default_duration_days": null
+      },
+      "liver_renal_note": "心力衰竭、严重心脏病、肝肾功能异常、凝血机制或血小板功能障碍、有出血倾向者慎用",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "5%葡萄糖注射液 250-500ml"
+      ],
+      "drip_speed_max_mlh": 40,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "中药注射剂，严禁与其他药品混合配伍，必须单独成组/单独输注；禁止静脉推注",
+        "对本品或含银杏叶（提取物）制剂及所列辅料过敏或有严重不良反应病史者禁用；新生儿、婴幼儿禁用",
+        "孕妇不建议使用（慎用口径，非禁用）；哺乳期慎用；儿童无系统研究资料，不建议儿童使用",
+        "过敏体质、心力衰竭、严重心脏病、肝肾功能异常、凝血机制或血小板功能障碍、有出血倾向、初次使用者慎用；滴速15-30滴/分，开始30分钟监护；与抗凝/抗血小板药联用有颅内出血病例报告，须监测",
+        "已确认不能与氨茶碱、阿昔洛韦、注射用奥美拉唑钠配伍",
+        "辅料含醇厂家差异：珍宝岛版辅料含乙醇、山梨醇；振东版辅料为无水葡萄糖、丙二醇（未列乙醇），以具体厂家说明书为准；肌注2-4ml一日1-2次"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": true,
+      "price_yuan": 12,
+      "manufacturer": "多厂家（黑龙江珍宝岛、神威药业、振东泰盛等）",
+      "pinyin": "sxnzsy",
+      "pinyin_code": "SXNZSY",
+      "reference_status": "已核对"
+    },
+    {
+      "generic_name": "香丹注射液",
+      "brand_name": "丽珠利民/神威四川/正大青春宝等",
+      "dosage_form": "iv_drip",
+      "spec": "2ml/10ml/20ml（丹参、降香；辅料多含聚山梨酯80）",
+      "unit": "支",
+      "medical_insurance_class": "甲",
+      "essential_medicine": false,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "中药注射剂-活血化瘀",
+      "dose_range_json": {
+        "single_min_ml": 10,
+        "single_max_ml": 20,
+        "daily_max_ml": 20,
+        "default_freq": "qd",
+        "default_duration_days": null
+      },
+      "liver_renal_note": "肝肾功能异常、老人、儿童、初次使用者慎用；医保甲乙类别以现行国家目录为准复核",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "5%葡萄糖注射液 250-500ml",
+        "10%葡萄糖注射液 250-500ml",
+        "0.9%氯化钠注射液（部分厂家版本可用）"
+      ],
+      "drip_speed_max_mlh": 40,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "中药注射剂，严禁与其他药品混合配伍，必须单独成组/单独输注；部分厂家版本禁止静脉推注",
+        "对本品或含丹参、降香制剂过敏/有严重不良反应史者禁用；含聚山梨酯80品种对PS80类过敏者禁用；孕妇及哺乳期妇女禁用",
+        "老人、儿童、肝肾功能异常、初次使用者慎用；过敏体质慎用；缓慢滴注15-30滴/分，用药开始30分钟监护",
+        "与盐酸左氧氟沙星注射液存在配伍禁忌；旧版另列不宜与抗癌药、细胞色素C、止血药、抗酸药、阿托品、维生素B1/B6、麻黄碱联用",
+        "部分版本1个疗程不宜大于2周；肌注一次2ml一日1-2次"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": true,
+      "price_yuan": 5,
+      "manufacturer": "多厂家（丽珠集团利民制药厂、神威药业(四川)、正大青春宝等）",
+      "pinyin": "xdzsy",
+      "pinyin_code": "XDZSY",
+      "reference_status": "已核对"
+    },
+    {
+      "generic_name": "红花注射液",
+      "brand_name": "华润三九/亚宝/神威等",
+      "dosage_form": "iv_drip",
+      "spec": "5ml/10ml/20ml（红花单方）",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "中药注射剂-活血化瘀",
+      "dose_range_json": {
+        "single_min_ml": 5,
+        "single_max_ml": 20,
+        "daily_max_ml": 20,
+        "default_freq": "qd",
+        "default_duration_days": 14
+      },
+      "liver_renal_note": "青光眼患者慎用（部分版本）；首次用药宜慢速滴注",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "5%葡萄糖注射液 250-500ml",
+        "10%葡萄糖注射液 250-500ml"
+      ],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "中药注射剂，严禁与其他药品混合配伍，必须单独成组/单独输注",
+        "对本品或含红花制剂过敏/有严重不良反应史者禁用；凝血功能不正常及有眼底出血的糖尿病患者禁用；孕妇、哺乳期妇女及儿童禁用（国食药监注〔2012〕243号修订要求）",
+        "青光眼患者慎用（部分版本）；首次用药慢速滴注；不良反应含过敏性休克，须在抢救条件机构使用",
+        "疗程：脑血管病静滴一次15ml，15-20次一疗程；冠心病静滴一次5-20ml，10-14次一疗程，疗程间隔7-10日；脉管炎肌注2.5-5ml一日1-2次"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": true,
+      "price_yuan": 10,
+      "manufacturer": "多厂家（华润三九、亚宝药业、神威药业、通化谷红等）",
+      "pinyin": "hhzsy",
+      "pinyin_code": "HHZSY",
+      "reference_status": "已核对"
+    },
+    {
+      "generic_name": "灯盏花素注射液",
+      "brand_name": "生物谷等",
+      "dosage_form": "iv_drip",
+      "spec": "2ml:5mg / 5ml:20mg（灯盏花素单方）",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "中药注射剂-活血化瘀",
+      "dose_range_json": {
+        "single_min_mg": 10,
+        "single_max_mg": 20,
+        "daily_max_mg": 20,
+        "default_freq": "qd",
+        "default_duration_days": 14
+      },
+      "liver_renal_note": "肝肾功能异常、凝血机制/血小板功能障碍、老人、哺乳期妇女慎用；儿童无系统研究资料，不建议使用",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液 250ml",
+        "5%葡萄糖注射液（不得使用pH<4.2的溶液稀释）"
+      ],
+      "drip_speed_max_mlh": 40,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "中药注射剂，严禁与其他药品混合配伍，必须单独成组/单独输注；禁止静脉推注",
+        "对本品或含灯盏花素制剂及辅料过敏/有严重不良反应史者禁用；脑出血急性期或有出血倾向者禁用；新生儿、婴幼儿禁用；孕妇禁用（2013年总局办公厅修订通知）",
+        "过敏体质、肝肾功能异常、凝血机制/血小板功能障碍、老人、哺乳期妇女慎用；儿童无系统研究资料，不建议使用；滴速15-30滴/分，开始30分钟监护；与抗凝/抗血小板药联用加强出血监测",
+        "与注射用阿莫西林、硫普罗宁、肌苷、阿昔洛韦、更昔洛韦、氨茶碱、呋塞米、丹参酮ⅡA磺酸钠、丹参川芎嗪存在配伍禁忌",
+        "疗程专家共识7-14天，水针说明书未固定；与\"注射用灯盏花素\"粉针为不同剂型，勿混录；肌注一次5mg一日2次"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": true,
+      "price_yuan": 15,
+      "manufacturer": "云南生物谷药业等",
+      "pinyin": "dzhhszsy",
+      "pinyin_code": "DZHHSZSY",
+      "reference_status": "已核对"
+    },
+    {
+      "generic_name": "注射用血塞通（冻干）",
+      "brand_name": "昆药/珍宝岛等",
+      "dosage_form": "iv_drip",
+      "spec": "100mg/200mg/400mg/支（三七总皂苷冻干粉针）",
+      "unit": "支",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "中药注射剂-活血化瘀（三七总皂苷）",
+      "dose_range_json": {
+        "single_min_mg": 200,
+        "single_max_mg": 400,
+        "daily_max_mg": 400,
+        "default_freq": "qd",
+        "default_duration_days": 15
+      },
+      "liver_renal_note": "出血倾向者慎用；过敏体质、肝肾功能异常、初次使用者、老人慎用并加强监测；医保甲乙类别入库前对照现行国家目录复核",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "5%葡萄糖注射液 250-500ml",
+        "10%葡萄糖注射液 250-500ml",
+        "0.9%氯化钠注射液（糖尿病患者替代）"
+      ],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": false,
+      "special_warnings_json": [
+        "中药注射剂，严禁与其他药品混合配伍，必须单独成组/单独输注",
+        "人参和三七过敏者禁用；对本品过敏者禁用；出血性疾病急性期禁用；儿童禁用；孕妇慎用（非禁用）；月经期妇女慎用",
+        "出血倾向者慎用；过敏体质、肝肾功能异常、初次使用者、老人慎用并加强监测；用药期间勿从事驾驶及高空作业；开始30分钟监护，警惕过敏性休克",
+        "15天为一疗程，停药1-3天后可进行第二疗程，连续给药不超过15天；与在册\"血塞通注射液\"水针为不同剂型",
+        "部分厂家旧说明书列酒精高度过敏者禁用，含醇/酒精过敏禁忌以具体厂家说明书为准；静推一次200mg用25%-50%葡萄糖40-60ml稀释"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": true,
+      "price_yuan": 30,
+      "manufacturer": "昆药集团、哈尔滨珍宝、黑龙江珍宝岛等（2024年中成药集采中选）",
+      "pinyin": "zsy-xstd",
+      "pinyin_code": "ZSYXSTD",
+      "reference_status": "已核对"
+    },
+    {
+      "generic_name": "注射用黄芪多糖",
+      "brand_name": "伯恩（赛诺）",
+      "dosage_form": "iv_drip",
+      "spec": "250mg/瓶（黄芪多糖单方粉针）",
+      "unit": "瓶",
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "jtc_batch": null,
+      "otc_class": "处方药",
+      "abx_level": "none",
+      "pharmacology_class": "中药注射剂-肿瘤辅助用药",
+      "dose_range_json": {
+        "single_min_mg": 250,
+        "single_max_mg": 250,
+        "daily_max_mg": 250,
+        "default_freq": "qd",
+        "default_duration_days": 21
+      },
+      "liver_renal_note": "过敏体质者慎用；老年人等特殊人群及初次使用者慎用并加强监护",
+      "is_iv_capable": true,
+      "allowed_solvents_json": [
+        "0.9%氯化钠注射液 500ml（NS 10ml复溶后转入）",
+        "5%葡萄糖注射液 500ml",
+        "10%葡萄糖注射液 500ml"
+      ],
+      "drip_speed_max_mlh": null,
+      "skin_test_required": true,
+      "special_warnings_json": [
+        "强制皮试：以0.9%氯化钠注射液配0.05%皮试液，前臂屈侧皮内注射0.1ml，20分钟判读；皮试阴性方可用药；皮试液室温放置不超过8小时；皮试阳性者禁用",
+        "对本品及所含成份过敏或有严重不良反应史者禁用；孕妇禁用；儿童、哺乳期妇女尚无临床研究数据及使用报道",
+        "过敏体质者慎用；老年人等特殊人群及初次使用者慎用并加强监测；单独输注、严禁混合配伍，开始30分钟监护，配制后立即使用",
+        "一次250mg、一日1次；免疫力低下患者用药21天，其他症状患者用药7天；滴注时间不少于2.5小时；肿瘤辅助用药，医保谈判限定：二级及以上医疗机构肿瘤患者，单次住院最多支付14天"
+      ],
+      "is_solvent": false,
+      "is_tcm_injection": true,
+      "price_yuan": 120,
+      "manufacturer": "天津赛诺制药（Z20040086，独家）",
+      "pinyin": "zsy-hqdt",
+      "pinyin_code": "ZSYHQDT",
+      "reference_status": "已核对"
     }
   ]
 }

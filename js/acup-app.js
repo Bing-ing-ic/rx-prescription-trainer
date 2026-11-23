@@ -216,7 +216,7 @@
       tbl.parentNode.insertBefore(host, tbl.nextSibling);
     }
     if (S.tuinaTechniques.length === 0) {
-      host.innerHTML = '<div style="font-size:12px;color:#64748b;">推拿手法数据未加载</div>';
+      host.innerHTML = '<div style="font-size:var(--text-12);color:#64748b;">推拿手法数据未加载</div>';
       return;
     }
     // 按 category 分组
@@ -231,18 +231,18 @@
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
     });
     host.innerHTML = `
-      <div style="font-size:13px;font-weight:600;color:#334155;margin-bottom:6px;">
+      <div style="font-size:var(--text-13);font-weight:600;color:#334155;margin-bottom:6px;">
         ▎配合推拿手法（可选；用于触发推拿禁忌规则，如踩跷法/扳法）
       </div>
-      <div id="acup-tuina-count" style="font-size:12px;color:#64748b;margin-bottom:8px;">已选 0 项</div>
+      <div id="acup-tuina-count" style="font-size:var(--text-12);color:#64748b;margin-bottom:8px;">已选 0 项</div>
       ${cats.map(cat => `
         <div style="margin-bottom:6px;">
-          <div style="font-size:11px;color:#64748b;margin-bottom:3px;">${cat}</div>
+          <div style="font-size:var(--text-caption);color:#64748b;margin-bottom:3px;">${cat}</div>
           <div style="display:flex;flex-wrap:wrap;gap:5px;">
             ${groups[cat].map(t => {
               const on = S.selectedTechniques.indexOf(t.name) >= 0;
               return `<button type="button" class="tn-chip" data-tn="${t.name}" style="
-                padding:3px 10px;font-size:12px;border-radius:14px;cursor:pointer;
+                padding:3px 10px;font-size:var(--text-12);border-radius:14px;cursor:pointer;
                 border:1px solid ${on ? '#1a6fb5' : '#cbd5e1'};
                 background:${on ? '#dbeafe' : '#fff'};
                 color:${on ? '#1e40af' : '#475569'};">${t.name}</button>`;
@@ -333,7 +333,7 @@
           ${h.suggestion ? `<span class="sug">💡 ${h.suggestion}</span>` : ''}
         </div>`).join('');
     $('acup-diff-box').innerHTML = `
-      <div style="font-size:13px;line-height:1.9;">
+      <div style="font-size:var(--text-13);line-height:1.9;">
         <p><b>参考证型：</b>${S.case.syndrome_differentiation || '-'}　<b>你辨证：</b>${zhengInput || '-'}</p>
         <p><b>参考治法：</b>${S.case.treatment_principle || '-'}</p>
         <p><b>参考主穴：</b>${(S.case.reference_points || []).join('、') || '-'}</p>
@@ -511,7 +511,7 @@
     document.querySelectorAll('.acup-map-point-card.active').forEach(el => el.classList.remove('active'));
     const card = document.querySelector(`.acup-map-point-card[data-code="${p.code}"]`);
     if (card) card.classList.add('active');
-    $('ap-name').innerHTML = `${p.name} <small style="font-weight:400;color:#64748b;font-size:13px;">${p.code||''} · ${p.meridian||''}</small>`;
+    $('ap-name').innerHTML = `${p.name} <small style="font-weight:400;color:#64748b;font-size:var(--text-13);">${p.code||''} · ${p.meridian||''}</small>`;
     const chips = (Array.isArray(p.indications) ? p.indications : (p.indications ? [p.indications] : []))
       .map(i => `<span class="ap-chip">${i}</span>`).join('');
     $('ap-body').innerHTML = `

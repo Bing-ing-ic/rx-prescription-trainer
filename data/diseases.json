@@ -54,7 +54,11 @@
       "special_population_note": "老年患者首选CCB，注意体位性低血压",
       "chronic": true,
       "long_term_required": true,
-      "max_long_rx_days": 84
+      "max_long_rx_days": 84,
+      "second_line_oral": [
+        "卡托普利片",
+        "依那普利片"
+      ]
     },
     {
       "code": "CHD-I25",
@@ -374,7 +378,11 @@
         "青霉素过敏慎用头孢",
         "饮酒后禁用头孢"
       ],
-      "special_population_note": "CURB-65≥2建议住院；门诊可序贯口服"
+      "special_population_note": "CURB-65≥2建议住院；门诊可序贯口服",
+      "second_line_oral": [
+        "头孢呋辛酯片",
+        "阿奇霉素分散片"
+      ]
     },
     {
       "code": "DM-E11",
@@ -1913,7 +1921,10 @@
         "肾功能不全慎用阿昔洛韦",
         "孕妇慎用伐昔洛韦"
       ],
-      "special_population_note": "老年患者易遗留后遗神经痛，发病72小时内启动抗病毒效果最佳"
+      "special_population_note": "老年患者易遗留后遗神经痛，发病72小时内启动抗病毒效果最佳",
+      "second_line_oral": [
+        "阿昔洛韦片"
+      ]
     },
     {
       "code": "ECZEMA-L30",

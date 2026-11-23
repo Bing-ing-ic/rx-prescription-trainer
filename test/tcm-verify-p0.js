@@ -44,10 +44,13 @@ check('T-1.7 朱砂安神丸朱砂标冲服/入丸/不入煎',
 const cases = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/tcm-cases.json'), 'utf8'));
 const caseArr = cases.cases || cases;
 const tcm013 = caseArr.find(c => c.code === 'TCM-013');
-const zsInCase = tcm013 && tcm013.reference_herbs.find(h => /^朱砂/.test(h));
-check('T-1.8 TCM-013 朱砂标剂量与冲服',
-  zsInCase && /0\.[1-5]/.test(zsInCase) && /(冲服|不入煎|丸散)/.test(zsInCase),
-  'ref=' + zsInCase);
+// T-1.8 规则性校验：凡病例 reference_herbs 引用朱砂，必须标注 0.1-0.5g 与冲服/不入煎用法
+// （历史注记：TCM-013 为酸枣仁汤证，组成不含朱砂；原断言误将其当作朱砂安神丸病例，
+//   属测试目标错配，HEAD 基线即失败。当前无病例引用朱砂，规则保留供后续新增病例校验。）
+const zhushaInCases = caseArr.flatMap(c => (c.reference_herbs || []).filter(h => /^朱砂/.test(h)));
+const zhushaCaseBad = zhushaInCases.filter(h => !(/0\.[1-5]/.test(h) && /(冲服|不入煎|丸散)/.test(h)));
+check('T-1.8 病例引用朱砂须标剂量与冲服/不入煎', zhushaInCases.length === 0 || zhushaCaseBad.length === 0,
+  '含朱砂病例=' + zhushaInCases.length + ' 不合规=' + zhushaCaseBad.length);
 
 console.log('\n=== T-2 理中丸君药 ===');
 const lzw = fmArr.find(f => f.code === 'LZW');

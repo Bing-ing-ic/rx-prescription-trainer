@@ -165,7 +165,7 @@
         <div class="ads-body">
           ${meridians ? `<div style="margin-bottom:8px;">${meridians}</div>` : ''}
           ${points ? `<ul style="margin:6px 0 0 18px;padding:0;">${points}</ul>` : ''}
-          ${m.tcm_note ? `<p style="margin:8px 0 0 0;font-style:italic;color:#444;">${m.tcm_note}</p>` : ''}
+          ${m.tcm_note ? `<p style="margin:8px 0 0 0;font-style:italic;color:var(--gray-600);">${m.tcm_note}</p>` : ''}
         </div>
       </div>`;
   }

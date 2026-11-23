@@ -4544,7 +4544,7 @@
         "宜后下或研末冲服"
       ],
       "incompatibility": "无",
-      "price_yuan": 3.0
+      "price_yuan": 3
     },
     {
       "name": "檀香",
@@ -5493,7 +5493,7 @@
         "血虚生风者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 1.0
+      "price_yuan": 1
     },
     {
       "name": "蜈蚣",
@@ -5790,7 +5790,7 @@
         "入煎宜先煎"
       ],
       "incompatibility": "恶理石，畏矾石",
-      "price_yuan": 1.0
+      "price_yuan": 1
     },
     {
       "name": "鹿茸",
@@ -5821,7 +5821,7 @@
         "宜研末冲服"
       ],
       "incompatibility": "无",
-      "price_yuan": 8.0
+      "price_yuan": 8
     },
     {
       "name": "巴戟天",
@@ -9295,6 +9295,435 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.05
+    },
+    {
+      "name": "马钱子",
+      "pinyin": "maqianzi",
+      "nature": "温",
+      "taste": "苦；有大毒",
+      "meridian": "肝、脾经",
+      "category": "通络止痛/消肿散结药",
+      "dose_range": "0.3-0.6g，入丸散",
+      "functions": "通络止痛，散结消肿",
+      "indications": [
+        "风湿顽痹",
+        "麻木瘫痪",
+        "跌打损伤",
+        "痈疽肿痛",
+        "骨折瘀痛"
+      ],
+      "contraindications": [
+        "孕妇禁用",
+        "不宜生用、多服久服",
+        "内服须用制马钱子",
+        "中毒可致强直性惊厥"
+      ],
+      "incompatibility": "不可与炮制不当的生品同用",
+      "price_yuan": 0.15
+    },
+    {
+      "name": "砒霜",
+      "pinyin": "pishuang",
+      "nature": "大热",
+      "taste": "辛；有大毒",
+      "meridian": "肺、肝经",
+      "category": "拔毒杀虫药（现代基本不用）",
+      "dose_range": "外用适量；内服禁用",
+      "functions": "劫痰截疟，杀虫蚀疮",
+      "indications": [
+        "外用恶疮瘰疬"
+      ],
+      "contraindications": [
+        "孕妇禁用",
+        "肝肾功能不全者禁用",
+        "严禁内服"
+      ],
+      "incompatibility": "畏绿豆、绿茶等解毒物",
+      "price_yuan": 0
+    },
+    {
+      "name": "密陀僧",
+      "pinyin": "mituoseng",
+      "nature": "平",
+      "taste": "咸、辛；有毒",
+      "meridian": "肝、脾经",
+      "category": "燥湿杀虫药",
+      "dose_range": "外用适量；不可内服",
+      "functions": "燥湿杀虫，收敛防腐",
+      "indications": [
+        "湿疹湿疮",
+        "疥癣",
+        "狐臭"
+      ],
+      "contraindications": [
+        "孕妇、儿童、体虚者忌服",
+        "不可内服"
+      ],
+      "incompatibility": "不可与狼毒同用",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "干漆",
+      "pinyin": "ganqi",
+      "nature": "温",
+      "taste": "辛；有小毒",
+      "meridian": "肝经",
+      "category": "活血化瘀药",
+      "dose_range": "2-5g，入丸散",
+      "functions": "破瘀通经，消积杀虫",
+      "indications": [
+        "瘀血经闭",
+        "癥瘕积聚",
+        "虫积腹痛"
+      ],
+      "contraindications": [
+        "孕妇禁用",
+        "畏蟹",
+        "血瘀无滞者忌用"
+      ],
+      "incompatibility": "畏蟹",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "寒水石",
+      "pinyin": "hanshuishi",
+      "nature": "寒",
+      "taste": "甘、咸",
+      "meridian": "心、胃、肾经",
+      "category": "清热泻火药",
+      "dose_range": "9-15g",
+      "functions": "清热泻火，除烦止渴",
+      "indications": [
+        "温热病壮热烦渴",
+        "口舌生疮",
+        "丹毒烫伤"
+      ],
+      "contraindications": [
+        "脾胃虚寒者慎服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "龙齿",
+      "pinyin": "longchi",
+      "nature": "凉",
+      "taste": "涩",
+      "meridian": "心、肝经",
+      "category": "安神药",
+      "dose_range": "10-15g，先煎",
+      "functions": "镇惊安神，平肝潜阳",
+      "indications": [
+        "惊痫癫狂",
+        "心悸失眠",
+        "多梦易惊"
+      ],
+      "contraindications": [
+        "湿热实邪者忌服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.2
+    },
+    {
+      "name": "紫石英",
+      "pinyin": "zishiying",
+      "nature": "温",
+      "taste": "甘",
+      "meridian": "心、肺、肾经",
+      "category": "温阳/安神药",
+      "dose_range": "9-15g，先煎",
+      "functions": "温肾暖宫，镇心安神，温肺平喘",
+      "indications": [
+        "肾阳不足",
+        "宫冷不孕",
+        "心悸怔忡",
+        "肺虚咳喘"
+      ],
+      "contraindications": [
+        "阴虚火旺者忌服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "鱼腥草",
+      "pinyin": "yuxingcao",
+      "nature": "微寒",
+      "taste": "辛",
+      "meridian": "肺经",
+      "category": "清热解毒药",
+      "dose_range": "15-25g，不宜久煎（后下）",
+      "functions": "清热解毒，消痈排脓，利尿通淋",
+      "indications": [
+        "肺痈吐脓",
+        "肺热咳嗽",
+        "热毒疮疡",
+        "热淋涩痛"
+      ],
+      "contraindications": [
+        "虚寒证及阴性外疡忌服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "黛蛤散",
+      "pinyin": "daigesan",
+      "nature": "寒",
+      "taste": "苦、咸",
+      "meridian": "肝、肺经",
+      "category": "清热化痰复方（青黛+海蛤壳）",
+      "dose_range": "6-12g，布包煎",
+      "functions": "清肝泻肺，化痰止血",
+      "indications": [
+        "肝火犯肺",
+        "咳嗽痰黏",
+        "痰中带血",
+        "胁痛易怒"
+      ],
+      "contraindications": [
+        "脾胃虚寒者慎服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "鹿角胶",
+      "pinyin": "lujiaojiao",
+      "nature": "温",
+      "taste": "甘、咸",
+      "meridian": "肝、肾经",
+      "category": "补阳药（胶类）",
+      "dose_range": "3-6g，烊化兑服",
+      "functions": "温补肝肾，益精养血，止血",
+      "indications": [
+        "肝肾不足",
+        "虚劳羸瘦",
+        "腰膝酸软",
+        "便血崩漏"
+      ],
+      "contraindications": [
+        "阴虚火旺、外感发热者忌服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.5
+    },
+    {
+      "name": "龟板胶",
+      "pinyin": "guibanjiao",
+      "nature": "寒",
+      "taste": "甘、咸",
+      "meridian": "肝、肾经",
+      "category": "补阴药（胶类）",
+      "dose_range": "3-9g，烊化兑服",
+      "functions": "滋阴养血，止血",
+      "indications": [
+        "阴虚血亏",
+        "骨蒸潮热",
+        "吐血衄血",
+        "崩漏带下"
+      ],
+      "contraindications": [
+        "脾胃虚寒、食少便溏者忌服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.5
+    },
+    {
+      "name": "饴糖",
+      "pinyin": "yitang",
+      "nature": "温",
+      "taste": "甘",
+      "meridian": "脾、胃、肺经",
+      "category": "补虚药（润养）",
+      "dose_range": "15-20g，烊化冲服",
+      "functions": "补中益气，缓急止痛，润肺止咳",
+      "indications": [
+        "脾胃气虚",
+        "里急腹痛",
+        "肺燥咳嗽"
+      ],
+      "contraindications": [
+        "湿热内蕴、中满痰湿者忌服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "犀角",
+      "pinyin": "xijiao",
+      "nature": "寒",
+      "taste": "苦、咸",
+      "meridian": "心、肝经",
+      "category": "清热凉血药（保护动物，已禁用）",
+      "dose_range": "现以水牛角代用，不拟内服剂量",
+      "functions": "清热凉血，解毒定惊",
+      "indications": [
+        "温热病热入血分",
+        "神昏谵语",
+        "血热妄行"
+      ],
+      "contraindications": [
+        "孕妇慎用",
+        "非实热证不宜用",
+        "属国家保护动物，临床禁用犀角，以水牛角代用"
+      ],
+      "incompatibility": "畏川乌、草乌",
+      "price_yuan": 0
+    },
+    {
+      "name": "燕窝",
+      "pinyin": "yanwo",
+      "nature": "平",
+      "taste": "甘",
+      "meridian": "肺、胃、肾经",
+      "category": "补虚药（养阴）",
+      "dose_range": "3-5g，炖服",
+      "functions": "养阴润燥，益气补中",
+      "indications": [
+        "肺虚久咳",
+        "干咳痰喘",
+        "胃虚反胃",
+        "病后体虚"
+      ],
+      "contraindications": [
+        "痰湿停滞、胃有痰饮湿滞者慎服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 2
+    },
+    {
+      "name": "红粉",
+      "pinyin": "hongfen",
+      "nature": "热",
+      "taste": "辛；有大毒",
+      "meridian": "肺、脾经",
+      "category": "拔毒化腐药（含氧化汞）",
+      "dose_range": "外用适量；严禁内服",
+      "functions": "拔毒提脓，祛腐生肌",
+      "indications": [
+        "痈疽疔疮",
+        "梅毒下疳",
+        "腐肉不去"
+      ],
+      "contraindications": [
+        "禁内服",
+        "孕妇禁用",
+        "不可大面积、长期涂用",
+        "含氧化汞，肝肾功能不全者忌用"
+      ],
+      "incompatibility": "不可与含汞制剂同用",
+      "price_yuan": 0
+    },
+    {
+      "name": "巴豆霜",
+      "pinyin": "badoushuang",
+      "nature": "热",
+      "taste": "辛；有大毒",
+      "meridian": "胃、大肠经",
+      "category": "峻下逐水药",
+      "dose_range": "0.1-0.3g，入丸散",
+      "functions": "峻下冷积，逐水退肿，豁痰利咽",
+      "indications": [
+        "寒积便秘",
+        "腹水臌胀",
+        "喉痹痰阻"
+      ],
+      "contraindications": [
+        "孕妇禁用",
+        "不宜与牵牛子同用",
+        "体虚者忌用"
+      ],
+      "incompatibility": "畏牵牛子（十九畏）",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "鳖甲胶",
+      "pinyin": "biejiajiao",
+      "nature": "微寒",
+      "taste": "咸",
+      "meridian": "肝、肾经",
+      "category": "补阴药（胶类）",
+      "dose_range": "3-9g，烊化兑服",
+      "functions": "滋阴退热，软坚散结",
+      "indications": [
+        "阴虚潮热",
+        "虚劳咳嗽",
+        "癥瘕积聚"
+      ],
+      "contraindications": [
+        "脾胃虚寒、食少便溏者忌服"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.5
+    },
+    {
+      "name": "大戟",
+      "pinyin": "daji",
+      "nature": "寒",
+      "taste": "苦；有毒",
+      "meridian": "肺、脾、肾经",
+      "category": "峻下逐水药（京大戟）",
+      "dose_range": "1.5-3g，入丸散或煎服",
+      "functions": "泻水逐饮，消肿散结",
+      "indications": [
+        "水肿胀满",
+        "痰饮积聚",
+        "痈肿疮毒",
+        "瘰疬痰核"
+      ],
+      "contraindications": [
+        "孕妇禁用",
+        "反甘草",
+        "体虚者忌用"
+      ],
+      "incompatibility": "反甘草（十八反）",
+      "price_yuan": 0.1
+    },
+    {
+      "name": "玄明粉",
+      "pinyin": "xuanmingfen",
+      "nature": "寒",
+      "taste": "咸、苦",
+      "meridian": "胃、大肠经",
+      "category": "泻下药（芒硝风化产物）",
+      "dose_range": "3-9g，冲服",
+      "functions": "泻热通便，润燥软坚，清热消肿",
+      "indications": [
+        "实热便秘",
+        "大便燥结",
+        "咽喉肿痛",
+        "口舌生疮"
+      ],
+      "contraindications": [
+        "孕妇禁用",
+        "脾胃虚寒者慎服"
+      ],
+      "incompatibility": "畏三棱、莪术、肉桂、硫黄",
+      "price_yuan": 0.05
+    },
+    {
+      "name": "赭石",
+      "pinyin": "zheshi",
+      "nature": "寒",
+      "taste": "苦",
+      "meridian": "肝、心经",
+      "category": "平肝息风药",
+      "dose_range": "9-30g，先煎",
+      "functions": "平肝潜阳，重镇降逆，凉血止血",
+      "indications": [
+        "肝阳上亢",
+        "眩晕耳鸣",
+        "呕吐噫气",
+        "气逆喘息",
+        "血热吐衄"
+      ],
+      "contraindications": [
+        "孕妇慎用",
+        "虚寒证不宜单用"
+      ],
+      "incompatibility": "",
+      "price_yuan": 0.1
     }
   ]
 }

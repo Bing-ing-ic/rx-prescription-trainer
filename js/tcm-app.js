@@ -408,7 +408,7 @@
     const _refFm = S.formulas.find(f => (f.code || '').toUpperCase() === _refCode);
     const _refFmName = _refFm ? _refFm.name : (S.case.reference_formula_code || '-');
     $('tcm-diff-box').innerHTML = `
-      <div style="font-size:13px;line-height:1.9;">
+      <div style="font-size:var(--text-13);line-height:1.9;">
         <p><b>参考证型：</b>${S.case.syndrome_differentiation || '-'}　<b>你辨证：</b>${ctx.zhengInput || '-'}</p>
         <p><b>参考治法：</b>${S.case.treatment_principle || '-'}　<b>你立法：</b>${ctx.faZhengInput || '-'}</p>
         <p><b>参考用方：</b>${_refFmName}　<b>你选方：</b>${S.selectedFormula ? S.selectedFormula.name : '未选'}</p>
@@ -534,7 +534,7 @@
       <div class="hd-row"><b>主治：</b>${arr(h.indications)}</div>
       <div class="hd-row"><b>使用注意：</b>${arr(h.contraindications)}</div>
       ${h.incompatibility && h.incompatibility !== '无' ? `<div class="hd-warn">⚠️ 配伍禁忌：${h.incompatibility}</div>` : ''}
-      ${h.note ? `<div class="hd-row" style="margin-top:8px;color:var(--gray-500);font-size:12px;">📝 ${h.note}</div>` : ''}
+      ${h.note ? `<div class="hd-row" style="margin-top:8px;color:var(--gray-500);font-size:var(--text-12);">📝 ${h.note}</div>` : ''}
     `;
     box.classList.remove('hidden');
   }

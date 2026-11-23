@@ -24,21 +24,21 @@
     color:#fff; padding:14px 28px; display:flex; align-items:center; justify-content:space-between;
     box-shadow:0 4px 16px rgba(15,76,129,.25); position:sticky; top:0; z-index:50;
   }
-  .topbar .brand{display:flex; align-items:center; gap:10px; font-size:16px; font-weight:700; letter-spacing:1px;}
+  .topbar .brand{display:flex; align-items:center; gap:10px; font-size:var(--text-lg); font-weight:700; letter-spacing:1px;}
   .topbar .brand .logo{
     width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);
-    border:1px solid rgba(255,255,255,.4); display:flex;align-items:center;justify-content:center;font-size:18px;
+    border:1px solid rgba(255,255,255,.4); display:flex;align-items:center;justify-content:center;font-size:var(--text-xl);
   }
   .topbar .ops{display:flex; gap:10px;}
   .topbar button{
     background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35); color:#fff;
-    padding:7px 16px; border-radius:9px; cursor:pointer; font-size:13px; transition:background .2s;
+    padding:7px 16px; border-radius:9px; cursor:pointer; font-size:var(--text-13); transition:background .2s;
   }
   .topbar button:hover{background:rgba(255,255,255,.28);}
   .wrap{max-width:1080px; margin:24px auto; padding:0 20px;}
   /* ===== 区块标题 ===== */
   .section-title{
-    font-size:16px; font-weight:800; color:var(--blue-deep); margin:26px 0 14px;
+    font-size:var(--text-lg); font-weight:800; color:var(--blue-deep); margin:26px 0 14px;
     display:flex; align-items:center; gap:8px;
   }
   .section-title::before{content:""; width:4px; height:18px; border-radius:2px;
@@ -50,43 +50,43 @@
     border:1px solid #fff; border-radius:16px; padding:20px;
     box-shadow:0 6px 20px rgba(15,76,129,.08);
   }
-  .card .label{font-size:13px; color:var(--muted); display:flex; align-items:center; gap:6px;}
+  .card .label{font-size:var(--text-13); color:var(--muted); display:flex; align-items:center; gap:6px;}
   .card .num{font-size:34px; font-weight:800; color:var(--blue-deep); margin:8px 0 2px; line-height:1.1;}
   .card .num.green{color:var(--green);}
   .card .num.amber{color:var(--amber);}
-  .card .sub{font-size:11px; color:#64748b;}
+  .card .sub{font-size:var(--text-caption); color:#64748b;}
   /* ===== 面板 ===== */
   .panel{
     background:rgba(255,255,255,.85); border:1px solid #fff; border-radius:16px;
     box-shadow:0 6px 20px rgba(15,76,129,.08); padding:20px 22px; margin-bottom:16px;
   }
-  table{width:100%; border-collapse:collapse; font-size:13px;}
-  th{text-align:left; color:var(--muted); font-weight:600; font-size:12px; padding:8px 10px;
+  table{width:100%; border-collapse:collapse; font-size:var(--text-13);}
+  th{text-align:left; color:var(--muted); font-weight:600; font-size:var(--text-12); padding:8px 10px;
     border-bottom:2px solid var(--line);}
   td{padding:9px 10px; border-bottom:1px solid #f1f5f9;}
   tr:hover td{background:#f8fafc;}
-  .tag{display:inline-block; padding:2px 9px; border-radius:20px; font-size:11px; font-weight:600;}
+  .tag{display:inline-block; padding:2px 9px; border-radius:20px; font-size:var(--text-caption); font-weight:600;}
   .tag.good{background:#dcfce7; color:#15803d;}
   .tag.mid{background:#fef3c7; color:#b45309;}
   .tag.bad{background:#fee2e2; color:#b91c1c;}
   /* 八维条形 */
   .radar-bars{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px 24px;}
-  .radar-bars .rb{display:flex; align-items:center; gap:10px; font-size:13px;}
+  .radar-bars .rb{display:flex; align-items:center; gap:10px; font-size:var(--text-13);}
   .radar-bars .rb .nm{width:70px; color:var(--muted); flex-shrink:0;}
   .radar-bars .rb .track{flex:1; height:8px; background:#e2e8f0; border-radius:4px; overflow:hidden;}
   .radar-bars .rb .fill{height:100%; background:linear-gradient(90deg,#38bdf8,var(--blue-deep)); border-radius:4px;}
   .radar-bars .rb .v{width:36px; text-align:right; font-weight:700; color:var(--blue-deep);}
-  .empty{color:#64748b; text-align:center; padding:24px 0; font-size:13px;}
+  .empty{color:#64748b; text-align:center; padding:24px 0; font-size:var(--text-13);}
   /* 设置区 */
   .setting-row{display:flex; align-items:center; justify-content:space-between; gap:16px;
     padding:14px 0; border-bottom:1px solid #f1f5f9; flex-wrap:wrap;}
   .setting-row:last-child{border-bottom:none;}
-  .setting-row .desc{font-size:13px;}
+  .setting-row .desc{font-size:var(--text-13);}
   .setting-row .desc b{display:block; color:var(--ink); margin-bottom:2px;}
-  .setting-row .desc span{color:var(--muted); font-size:12px;}
+  .setting-row .desc span{color:var(--muted); font-size:var(--text-12);}
   .btn{
     padding:8px 18px; border-radius:9px; border:1.5px solid var(--blue-mid);
-    background:#fff; color:var(--blue-mid); font-size:13px; font-weight:600; cursor:pointer; transition:all .15s;
+    background:#fff; color:var(--blue-mid); font-size:var(--text-13); font-weight:600; cursor:pointer; transition:all .15s;
   }
   .btn:hover{background:var(--blue-mid); color:#fff;}
   .btn.danger{border-color:var(--red); color:var(--red);}
@@ -94,19 +94,19 @@
   .btn.primary{background:linear-gradient(135deg,var(--blue-deep),var(--blue-light)); color:#fff; border:none;}
   .pwd-row{display:flex; gap:8px;}
   .pwd-row input{
-    padding:8px 12px; border:1.5px solid var(--line); border-radius:9px; font-size:13px; width:130px; outline:none;
+    padding:8px 12px; border:1.5px solid var(--line); border-radius:9px; font-size:var(--text-13); width:130px; outline:none;
   }
   .pwd-row input:focus{border-color:var(--blue-mid);}
   .toast{
     position:fixed; top:70px; left:50%; transform:translateX(-50%);
-    background:#0f4c81; color:#fff; padding:10px 22px; border-radius:10px; font-size:13px;
+    background:#0f4c81; color:#fff; padding:10px 22px; border-radius:10px; font-size:var(--text-13);
     box-shadow:0 8px 24px rgba(0,0,0,.2); opacity:0; pointer-events:none; transition:opacity .25s; z-index:99;
   }
   .toast.show{opacity:1;}
-  details.mistake-detail summary{cursor:pointer; font-size:12px; color:var(--blue-mid); outline:none;}
+  details.mistake-detail summary{cursor:pointer; font-size:var(--text-12); color:var(--blue-mid); outline:none;}
   .rule-top{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
   .rule-chip{background:#eff6ff; border:1px solid #bfdbfe; color:#1e40af; border-radius:20px;
-    padding:4px 12px; font-size:12px; font-weight:600;}
+    padding:4px 12px; font-size:var(--text-12); font-weight:600;}
   .rule-chip b{color:var(--red);}
 </style>
 </head>
@@ -122,7 +122,7 @@
 
 <div class="wrap">
 
-  <div style="background:#fffbeb;border:1px solid #fcd34d;color:#92400e;padding:10px 16px;border-radius:10px;font-size:12px;margin-bottom:18px;line-height:1.6;">
+  <div style="background:#fffbeb;border:1px solid #fcd34d;color:#92400e;padding:10px 16px;border-radius:10px;font-size:var(--text-12);margin-bottom:18px;line-height:1.6;">
     ℹ️ <b>演示说明：</b>本控制台为纯前端演示，所有学习记录、错题本与登录态仅保存在当前浏览器 localStorage / sessionStorage 中，<b>不写入任何服务端</b>；更换设备、清理浏览器数据后数据不可恢复。
   </div>
 
@@ -348,7 +348,7 @@
           <td style="color:var(--red);font-weight:700">${(m.errors||[]).length}</td>
           <td style="color:var(--amber);font-weight:700">${(m.warns||[]).length}</td>
           <td><details class="mistake-detail"><summary>展开</summary>
-            <div style="margin-top:8px;font-size:12px;color:var(--muted);">
+            <div style="margin-top:8px;font-size:var(--text-12);color:var(--muted);">
               ${(m.errors||[]).map(e=>`❌ [${e.rule_id}] ${e.title}：${e.message||''}<br>`).join('')}
               ${(m.warns||[]).map(w=>`⚠️ [${w.rule_id}] ${w.title}：${w.message||''}<br>`).join('')}
             </div></details>

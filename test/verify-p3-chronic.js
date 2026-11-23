@@ -64,6 +64,7 @@ console.log('\n=== P3-1.2 慢性病长处方（高血压 30 天氨氯地平）==
 {
   const ctx = baseCtx({
     disease: dx('HTN-I10'),
+    patient: Object.assign({}, baseCtx().patient, { long_term_stable: true }),
     normal_rx: {
       rx_id: 'N-1',
       items: [it('苯磺酸氨氯地平片', { single_dose: '5mg', frequency: 'qd', duration_days: 30 })],
@@ -116,6 +117,7 @@ console.log('\n=== P3-1.5 慢性病临界（糖尿病 28 天）===');
 {
   const ctx = baseCtx({
     disease: dx('DM-E11'),
+    patient: Object.assign({}, baseCtx().patient, { long_term_stable: true }),
     normal_rx: {
       rx_id: 'N-4',
       items: [it('盐酸二甲双胍缓释片', { single_dose: '0.5g', frequency: 'qd', duration_days: 28 })],

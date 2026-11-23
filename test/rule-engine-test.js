@@ -352,11 +352,11 @@ T('IV-07', 'neg', '中药注射剂+其他药同瓶触发error', () =>
 T('IV-08', 'pos', '皮试阴性通过', () =>
   ctx({ disease: diseaseByCode('CAP-J18'),
         iv_rx: { rx_id:'IV-1', solvent_name:'0.9%氯化钠注射液 100ml', drip_speed_mlh:40, iv_reason:'needs_iv',
-          items:[it(D('0.9%氯化钠注射液'),{}), it('注射用头孢呋辛钠',{single_dose:'1.5g',frequency:'bid',duration_days:1, skin_test_result:'阴性'})] } }), 'pass');
+          items:[it(D('0.9%氯化钠注射液'),{}), it('注射用阿莫西林钠克拉维酸钾',{single_dose:'1.2g',frequency:'bid',duration_days:1, skin_test_result:'阴性'})] } }), 'pass');
 T('IV-08', 'neg', '需皮试未填结果触发error', () =>
   ctx({ disease: diseaseByCode('CAP-J18'),
         iv_rx: { rx_id:'IV-1', solvent_name:'0.9%氯化钠注射液 100ml', drip_speed_mlh:40, iv_reason:'needs_iv',
-          items:[it(D('0.9%氯化钠注射液'),{}), it('注射用头孢呋辛钠',{single_dose:'1.5g',frequency:'bid',duration_days:1, skin_test_result: undefined})] } }), 'error');
+          items:[it(D('0.9%氯化钠注射液'),{}), it('注射用阿莫西林钠克拉维酸钾',{single_dose:'1.2g',frequency:'bid',duration_days:1, skin_test_result: undefined})] } }), 'error');
 
 // ============ IV-09 门诊输液量 ============
 T('IV-09', 'pos', '1日量不触发', () =>

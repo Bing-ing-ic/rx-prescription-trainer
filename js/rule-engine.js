@@ -321,7 +321,7 @@
           return;
         }
         const inFirst = (disease.first_line_oral || []).includes(g);
-        const inSecond = (disease.second_line_iv || []).includes(g);
+        const inSecond = (disease.second_line_iv || []).includes(g) || (disease.second_line_oral || []).includes(g);
         if (inFirst || inSecond) {
           hits.push(pass(R['IND-01'], `「${g}」与诊断「${disease.name}」适应症匹配。`));
           // IND-03：乙类药品即使适应症匹配，也提示核对医保限定支付范围

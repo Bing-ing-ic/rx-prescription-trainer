@@ -626,6 +626,16 @@
       "drug": "注射用黄芪多糖",
       "solvent_required": "10%葡萄糖注射液 500ml",
       "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "灯盏细辛注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "灯盏细辛注射液",
+      "solvent_required": "0.9%氯化钠注射液 250-500ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
     }
   ],
   "tcm_exclusion": [
@@ -757,6 +767,13 @@
     },
     {
       "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -1002,6 +1019,13 @@
     },
     {
       "drug_a": "丹参注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -1240,6 +1264,13 @@
     },
     {
       "drug_a": "丹红注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹红注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -1471,6 +1502,13 @@
     },
     {
       "drug_a": "刺五加注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -1695,6 +1733,13 @@
     },
     {
       "drug_a": "参附注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -1912,6 +1957,13 @@
     },
     {
       "drug_a": "参麦注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -2122,6 +2174,13 @@
     },
     {
       "drug_a": "双黄连注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -2325,6 +2384,13 @@
     },
     {
       "drug_a": "喜炎平注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -2521,6 +2587,13 @@
     },
     {
       "drug_a": "复方当归注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -2710,6 +2783,13 @@
     },
     {
       "drug_a": "天麻素注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -2892,6 +2972,13 @@
     },
     {
       "drug_a": "板蓝根注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -3067,6 +3154,13 @@
     },
     {
       "drug_a": "柴胡注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -3235,6 +3329,13 @@
     },
     {
       "drug_a": "注射用炎琥宁",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -3396,6 +3497,13 @@
     },
     {
       "drug_a": "注射用穿琥宁",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -3550,6 +3658,13 @@
     },
     {
       "drug_a": "注射用苦参素",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -3697,6 +3812,13 @@
     },
     {
       "drug_a": "注射用血塞通（冻干）",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用血塞通（冻干）",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -3837,6 +3959,13 @@
     },
     {
       "drug_a": "注射用黄芪多糖",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用黄芪多糖",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -3970,6 +4099,13 @@
     },
     {
       "drug_a": "清开灵注射液",
+      "drug_b": "灯盏细辛注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
       "drug_b": "灯盏花素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -4096,6 +4232,139 @@
     },
     {
       "drug_a": "清开灵注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "灯盏花素注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "疏血通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "红花注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "舒血宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "香丹注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
       "drug_b": "黄芪注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -5479,6 +5748,20 @@
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "说明书配伍禁忌：香丹注射液与盐酸左氧氟沙星注射液存在配伍禁忌。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "盐酸左氧氟沙星注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍禁忌：灯盏细辛注射液禁止与喹诺酮类（左氧氟沙星）混合配伍。"
+    },
+    {
+      "drug_a": "灯盏细辛注射液",
+      "drug_b": "维生素C注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍禁忌：灯盏细辛注射液禁止与维生素C混合（可致浑浊、沉淀或异常变色）。"
     }
   ]
 }

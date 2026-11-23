@@ -715,6 +715,16 @@
                 { affected_items: [drugName] }));
             }
           }
+          // 2b) 中药注射剂：compat.tcm_injection_rules 指定溶媒兜底核对
+          if (it.drug.is_tcm_injection) {
+            const tcmRules = (compat.tcm_injection_rules || []).filter(r => r.drug === drugName && r.solvent_required);
+            if (tcmRules.length && !tcmRules.some(r => solventMatch(r.solvent_required, solventName))) {
+              hits.push(hit(R['IV-06'], 'warn',
+                `中药注射剂「${drugName}」首选溶媒为：${tcmRules.map(r => r.solvent_required).join('、')}；所选「${solventName}」非首选。`,
+                `建议更换为说明书首选溶媒，并单独输注。`,
+                { affected_items: [drugName] }));
+            }
+          }
         });
       });
 

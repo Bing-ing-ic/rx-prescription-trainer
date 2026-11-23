@@ -1,6 +1,6 @@
 {
   "version": "2026.11",
-  "note": "两层配伍：solvent_drug 为溶媒-药物；drug_drug 为同一输液瓶内两药。compatibility: incompatible / caution / compatible。",
+  "note": "三层配伍：solvent_drug 为溶媒-化药；drug_drug 为同一输液瓶内两化药；tcm_injection_rules 为中药注射剂单独输注规则与指定溶媒。compatibility: incompatible / caution / compatible / incompatible_with_any_other。",
   "solvent_drug": [
     {
       "solvent": "0.9%氯化钠注射液 100ml",
@@ -140,7 +140,187 @@
     {
       "drug": "清开灵注射液",
       "solvent_required": "10%葡萄糖注射液 250ml",
-      "note": "说明书指定溶媒为10%GS，NS/5%GS均非首选"
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "丹参注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "丹参注射液",
+      "solvent_required": "5%葡萄糖注射液 250ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "参麦注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "参麦注射液",
+      "solvent_required": "5%葡萄糖注射液 250ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "血必净注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "血必净注射液",
+      "solvent_required": "0.9%氯化钠注射液 100ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "痰热清注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "痰热清注射液",
+      "solvent_required": "5%葡萄糖注射液 250ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "痰热清注射液",
+      "solvent_required": "0.9%氯化钠注射液 250ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "生脉注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "生脉注射液",
+      "solvent_required": "5%葡萄糖注射液 250ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "血塞通注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "血塞通注射液",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "血塞通注射液",
+      "solvent_required": "0.9%氯化钠注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "醒脑静注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "醒脑静注射液",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "醒脑静注射液",
+      "solvent_required": "0.9%氯化钠注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "脉络宁注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "脉络宁注射液",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "血栓通注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "血栓通注射液",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "血栓通注射液",
+      "solvent_required": "0.9%氯化钠注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "天麻素注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "天麻素注射液",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "天麻素注射液",
+      "solvent_required": "0.9%氯化钠注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "注射用苦参素",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "注射用苦参素",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "丹参多酚酸盐注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "丹参多酚酸盐注射液",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "红花黄色素氯化钠注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "成品含氯化钠溶媒，不得再加入其他药物；孕妇禁用。"
+    },
+    {
+      "drug": "红花黄色素氯化钠注射液",
+      "solvent_required": "0.9%氯化钠注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "红花黄色素氯化钠注射液",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "苦黄注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "苦黄注射液",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "喜炎平注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组、单独输注；首次使用缓慢滴注并密切观察过敏反应。"
+    },
+    {
+      "drug": "喜炎平注射液",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
     }
   ]
 }

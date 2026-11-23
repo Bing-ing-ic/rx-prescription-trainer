@@ -32,7 +32,7 @@
   .topbar .ops{display:flex; gap:10px;}
   .topbar button{
     background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35); color:#fff;
-    padding:7px 16px; border-radius:9px; cursor:pointer; font-size:var(--text-13); transition:background .2s;
+    padding:7px 16px; border-radius:var(--radius-9); cursor:pointer; font-size:var(--text-13); transition:background .2s;
   }
   .topbar button:hover{background:rgba(255,255,255,.28);}
   .wrap{max-width:1080px; margin:24px auto; padding:0 20px;}
@@ -51,7 +51,7 @@
     box-shadow:0 6px 20px rgba(15,76,129,.08);
   }
   .card .label{font-size:var(--text-13); color:var(--muted); display:flex; align-items:center; gap:6px;}
-  .card .num{font-size:34px; font-weight:800; color:var(--blue-deep); margin:8px 0 2px; line-height:1.1;}
+  .card .num{font-size:var(--text-34); font-weight:800; color:var(--blue-deep); margin:8px 0 2px; line-height:1.1;}
   .card .num.green{color:var(--green);}
   .card .num.amber{color:var(--amber);}
   .card .sub{font-size:var(--text-caption); color:#64748b;}
@@ -85,7 +85,7 @@
   .setting-row .desc b{display:block; color:var(--ink); margin-bottom:2px;}
   .setting-row .desc span{color:var(--muted); font-size:var(--text-12);}
   .btn{
-    padding:8px 18px; border-radius:9px; border:1.5px solid var(--blue-mid);
+    padding:8px 18px; border-radius:var(--radius-9); border:1.5px solid var(--blue-mid);
     background:#fff; color:var(--blue-mid); font-size:var(--text-13); font-weight:600; cursor:pointer; transition:all .15s;
   }
   .btn:hover{background:var(--blue-mid); color:#fff;}
@@ -94,7 +94,7 @@
   .btn.primary{background:linear-gradient(135deg,var(--blue-deep),var(--blue-light)); color:#fff; border:none;}
   .pwd-row{display:flex; gap:8px;}
   .pwd-row input{
-    padding:8px 12px; border:1.5px solid var(--line); border-radius:9px; font-size:var(--text-13); width:130px; outline:none;
+    padding:8px 12px; border:1.5px solid var(--line); border-radius:var(--radius-9); font-size:var(--text-13); width:130px; outline:none;
   }
   .pwd-row input:focus{border-color:var(--blue-mid);}
   .toast{

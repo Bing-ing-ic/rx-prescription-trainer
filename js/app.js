@@ -3426,6 +3426,8 @@
         <p><b>处方类别：</b>${d.otc_class || '-'}</p>
         <p><b>抗菌分级：</b>${d.abx_level === 'none' ? '非抗菌药' : d.abx_level}</p>
         <p><b>用法用量：</b>每日${d.dose_range_json?.default_freq || '-'}，疗程${d.dose_range_json?.default_duration_days || '-'}天</p>
+        ${(d.allowed_solvents_json || []).length ? `<p><b>指定溶媒：</b>${d.allowed_solvents_json.join('、')}</p>` : ''}
+        ${d.is_tcm_injection ? '<p><b>配伍提示：</b>中药注射剂必须单独成组、单独输注，严禁与其他药物混合配伍。</p>' : ''}
         <p><b>价格：</b>¥${d.price_yuan || '-'} / ${d.unit || ''}</p>
         <p><b>生产厂家：</b>${d.manufacturer || '-'}</p>
         <p><b>注意事项：</b>${(d.special_warnings_json || []).join('、') || '-'}</p>

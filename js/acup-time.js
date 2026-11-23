@@ -214,7 +214,7 @@
     if (!mask) return;
     const wrap = $('tp-img-wrap');
     if (!p) {
-      $('tp-name').innerHTML = `${name} <small style="font-weight:400;color:#64748b;font-size:13px;">教材标准穴名</small>`;
+      $('tp-name').innerHTML = `${name} <small style="font-weight:400;color:#64748b;font-size:var(--text-13);">教材标准穴名</small>`;
       if (wrap) wrap.style.display = 'none';
       $('tp-body').innerHTML = `<div class="ap-row muted">该穴为纳子法/八脉交会标准穴名，未收录进本平台穴位库；定位、主治以人卫《针灸学》教材为准。</div>`;
       mask.classList.remove('hidden');
@@ -222,7 +222,7 @@
     }
     const chips = (Array.isArray(p.indications) ? p.indications : (p.indications ? [p.indications] : []))
       .map(i => `<span class="ap-chip">${i}</span>`).join('');
-    $('tp-name').innerHTML = `${p.name} <small style="font-weight:400;color:#64748b;font-size:13px;">${p.code || ''} · ${p.meridian || ''}</small>`;
+    $('tp-name').innerHTML = `${p.name} <small style="font-weight:400;color:#64748b;font-size:var(--text-13);">${p.code || ''} · ${p.meridian || ''}</small>`;
     if (wrap) wrap.style.display = '';
     loadPointImage(p);
     $('tp-body').innerHTML = `

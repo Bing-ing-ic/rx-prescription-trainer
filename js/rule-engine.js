@@ -733,6 +733,12 @@
         const gItems = ivGroupsMap[gk].filter(it => it.drug && it.drug.dosage_form !== 'solvent');
         const tcm = gItems.filter(it => it.drug.is_tcm_injection);
         const others = gItems.filter(it => it.drug.dosage_form === 'iv_drip' && !it.drug.is_tcm_injection);
+        if (tcm.length >= 2) {
+          hits.push(hit(R['IV-07'], 'error',
+            `第${gk}组：中药注射剂「${tcm.map(d=>d.drug.generic_name).join('、')}」两种及以上同瓶混合。`,
+            `中药注射剂必须分别单独成组、单独输注，严禁互相混合配伍。`,
+            { affected_items: tcm.map(d=>d.drug.generic_name) }));
+        }
         if (tcm.length && others.length) {
           hits.push(hit(R['IV-07'], 'error',
             `第${gk}组：中药注射剂「${tcm.map(d=>d.drug.generic_name).join('、')}」与其他药物「${others.map(d=>d.drug.generic_name).join('、')}」同瓶混合。`,
@@ -740,6 +746,34 @@
             { affected_items: tcm.map(d=>d.drug.generic_name).concat(others.map(d=>d.drug.generic_name)) }));
         }
       });
+
+      // TCM-EXCLUSION 品种间互斥（compat.tcm_exclusion 成对行；类规则行由 IV-07 类规则承载）
+      const TCM_EX = (compat.tcm_exclusion || []).filter(r => r.scope !== 'class');
+      if (TCM_EX.length) {
+        Object.keys(ivGroupsMap).forEach(gk => {
+          const gDrugs = ivGroupsMap[gk]
+            .filter(it => it.drug && it.drug.dosage_form !== 'solvent')
+            .map(it => it.drug.generic_name);
+          for (let i = 0; i < gDrugs.length; i++) {
+            for (let j = i + 1; j < gDrugs.length; j++) {
+              const a = gDrugs[i], b = gDrugs[j];
+              const rec = TCM_EX.find(r => (r.drug_a === a && r.drug_b === b) || (r.drug_a === b && r.drug_b === a));
+              if (!rec) continue;
+              if (rec.compatibility === 'incompatible') {
+                hits.push(hit(R['IV-07'], 'error',
+                  `中药注射剂互斥（第${gk}组）：${a} + ${b}。${rec.note}`,
+                  `严禁同瓶混合，须分瓶分开输注；同一通路先后使用须冲管间隔。`,
+                  { affected_items: [a, b] }));
+              } else if (rec.compatibility === 'caution') {
+                hits.push(hit(R['IV-07'], 'warn',
+                  `中药注射剂联用需谨慎（第${gk}组）：${a} + ${b}。${rec.note}`,
+                  `建议分开输注并加强监护。`,
+                  { affected_items: [a, b] }));
+              }
+            }
+          }
+        });
+      }
 
       // DD-01 同瓶药物-药物配伍（compat.json drug_drug，按输液组判定同瓶组合）
       const DD = compat.drug_drug || [];

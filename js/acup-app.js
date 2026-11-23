@@ -150,7 +150,7 @@
       (!k || p.name.toLowerCase().indexOf(k) >= 0 || (p.pinyin || '').indexOf(k) >= 0) &&
       (!m || p.meridian === m)
     );
-    if (items.length === 0) { list.innerHTML = '<div style="padding:10px;color:#64748b;">无匹配穴位</div>'; return; }
+    if (items.length === 0) { list.innerHTML = '<div style="padding: var(--space-10px);color:#64748b;">无匹配穴位</div>'; return; }
     list.innerHTML = items.slice(0, 80).map(p => {
       const picked = S.items.some(it => it.name === p.name);
       return `
@@ -175,7 +175,7 @@
   function renderItems() {
     const tb = $('acup-items');
     $('acup-point-count').textContent = '已选 ' + S.items.length + ' 穴';
-    if (S.items.length === 0) { tb.innerHTML = '<tr><td colspan="6" style="color:#64748b;padding:14px;">请在上方搜索并选择穴位</td></tr>'; return; }
+    if (S.items.length === 0) { tb.innerHTML = '<tr><td colspan="6" style="color:#64748b;padding: var(--space-14px);">请在上方搜索并选择穴位</td></tr>'; return; }
     tb.innerHTML = S.items.map((it, i) => `
       <tr>
         <td>${i+1}</td>
@@ -212,7 +212,7 @@
     if (!host) {
       host = document.createElement('div');
       host.id = 'acup-tuina-section';
-      host.style.cssText = 'margin:14px 0;padding:10px 12px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:var(--radius-md);';
+      host.style.cssText = 'margin: var(--space-14px) 0;padding: var(--space-10px) var(--space-3);background:#f8fafc;border:1px dashed #cbd5e1;border-radius:var(--radius-md);';
       tbl.parentNode.insertBefore(host, tbl.nextSibling);
     }
     if (S.tuinaTechniques.length === 0) {
@@ -231,18 +231,18 @@
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
     });
     host.innerHTML = `
-      <div style="font-size:var(--text-13);font-weight:600;color:#334155;margin-bottom:6px;">
+      <div style="font-size:var(--text-13);font-weight:600;color:#334155;margin-bottom: var(--space-6px);">
         ▎配合推拿手法（可选；用于触发推拿禁忌规则，如踩跷法/扳法）
       </div>
-      <div id="acup-tuina-count" style="font-size:var(--text-12);color:#64748b;margin-bottom:8px;">已选 0 项</div>
+      <div id="acup-tuina-count" style="font-size:var(--text-12);color:#64748b;margin-bottom: var(--space-2);">已选 0 项</div>
       ${cats.map(cat => `
-        <div style="margin-bottom:6px;">
-          <div style="font-size:var(--text-caption);color:#64748b;margin-bottom:3px;">${cat}</div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;">
+        <div style="margin-bottom: var(--space-6px);">
+          <div style="font-size:var(--text-caption);color:#64748b;margin-bottom: var(--space-3px);">${cat}</div>
+          <div style="display:flex;flex-wrap:wrap;gap: var(--space-5px);">
             ${groups[cat].map(t => {
               const on = S.selectedTechniques.indexOf(t.name) >= 0;
               return `<button type="button" class="tn-chip" data-tn="${t.name}" style="
-                padding:3px 10px;font-size:var(--text-12);border-radius:var(--radius-14);cursor:pointer;
+                padding: var(--space-3px) var(--space-10px);font-size:var(--text-12);border-radius:var(--radius-14);cursor:pointer;
                 border:1px solid ${on ? '#1a6fb5' : '#cbd5e1'};
                 background:${on ? '#dbeafe' : '#fff'};
                 color:${on ? '#1e40af' : '#475569'};">${t.name}</button>`;

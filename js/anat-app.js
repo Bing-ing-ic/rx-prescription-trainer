@@ -37,6 +37,7 @@
     window.scrollTo(0, 0);
   }
   window.__showView = showView;
+  window.__anatQuiz = { start: startQuiz, finish: finishQuiz, state: () => ({ score: S.quiz.score, idx: S.quiz.idx, total: S.quiz.pool.length }) };
 
   // 图谱当前选中状态
   const atlas = { sys: null, struct: null };
@@ -75,7 +76,7 @@
     const grid = $('anat-system-grid');
     if (!grid) return;
     if (S.systems.length === 0) {
-      grid.innerHTML = '<div class="muted" style="text-align:center;padding:20px;">解剖学系统数据加载中…</div>';
+      grid.innerHTML = '<div class="muted" style="text-align:center;padding: var(--space-20px);">解剖学系统数据加载中…</div>';
       return;
     }
     grid.innerHTML = S.systems.map(s => {
@@ -126,7 +127,7 @@
               (s.latin || '').toLowerCase().indexOf(kw) >= 0)
     );
     if (items.length === 0) {
-      list.innerHTML = '<div class="muted" style="padding:16px;text-align:center;">无匹配结构</div>';
+      list.innerHTML = '<div class="muted" style="padding: var(--space-4);text-align:center;">无匹配结构</div>';
       return;
     }
     list.innerHTML = items.map(s => `
@@ -166,9 +167,9 @@
       <div class="anat-detail-section">
         <div class="ads-label">🌿 中医经络</div>
         <div class="ads-body">
-          ${meridians ? `<div style="margin-bottom:8px;">${meridians}</div>` : ''}
-          ${points ? `<ul style="margin:6px 0 0 18px;padding:0;">${points}</ul>` : ''}
-          ${m.tcm_note ? `<p style="margin:8px 0 0 0;font-style:italic;color:var(--gray-600);">${m.tcm_note}</p>` : ''}
+          ${meridians ? `<div style="margin-bottom: var(--space-2);">${meridians}</div>` : ''}
+          ${points ? `<ul style="margin: var(--space-6px) 0 0 var(--space-18px);padding: 0;">${points}</ul>` : ''}
+          ${m.tcm_note ? `<p style="margin: var(--space-2) 0 0 0;font-style:italic;color:var(--gray-600);">${m.tcm_note}</p>` : ''}
         </div>
       </div>`;
   }
@@ -304,7 +305,7 @@
     if (!box || !atlas.sys) return;
     const structs = atlas.sys.structures || [];
     if (structs.length === 0) {
-      box.innerHTML = '<div class="muted" style="padding:16px;text-align:center;">该系统暂无结构数据</div>';
+      box.innerHTML = '<div class="muted" style="padding: var(--space-4);text-align:center;">该系统暂无结构数据</div>';
       return;
     }
     // 按子分类分组
@@ -372,11 +373,12 @@
   }
 
   // ---------- 测验引擎 ----------
-  function startQuiz() {
+  function startQuiz(forceType) {
     if (S.questions.length === 0) { alert('解剖学测验数据尚未就绪。'); return; }
     const diff = $('anat-quiz-diff').value;
     let pool = S.questions.slice();
     if (diff !== 'all') pool = pool.filter(q => q.difficulty === diff);
+    if (forceType) pool = pool.filter(q => q.type === forceType);
     if (pool.length < 10) pool = S.questions.slice();
     // 随机抽10题
     for (let i = pool.length - 1; i > 0; i--) {
@@ -389,6 +391,7 @@
     S.quiz.answers = [];
     $('anat-quiz-result').classList.add('hidden');
     $('anat-quiz-card').classList.remove('hidden');
+    $('anat-quiz-progress').classList.remove('hidden');
     renderQuizQuestion();
     showView('view-anat-quiz');
   }
@@ -449,7 +452,8 @@
           <button class="btn btn-type" data-self="10">✅ 完全答对（+10）</button>
           <button class="btn btn-type" data-self="5">🟡 部分正确（+5）</button>
           <button class="btn btn-type" data-self="0">❌ 未答对（+0）</button>
-        </div>`;
+        </div>
+        <button class="btn btn-primary hidden" id="anat-btn-quiz-next">下一题 →</button>`;
     }
     box.innerHTML = body;
 
@@ -569,6 +573,7 @@
   function finishQuiz() {
     const total = S.quiz.score;
     $('anat-quiz-card').classList.add('hidden');
+    $('anat-quiz-progress').classList.add('hidden');
     $('anat-quiz-result').classList.remove('hidden');
     const arc = $('anat-quiz-score-arc');
     const C = 326.7;
@@ -629,7 +634,7 @@
     const box = $('anat-case-list');
     if (!box) return;
     if (S.cases.length === 0) {
-      box.innerHTML = '<div class="muted" style="padding:16px;text-align:center;">临床案例数据加载中…</div>';
+      box.innerHTML = '<div class="muted" style="padding: var(--space-4);text-align:center;">临床案例数据加载中…</div>';
       return;
     }
     box.innerHTML = S.cases.map(c => `
@@ -670,7 +675,7 @@
           <p><b>【问题】</b>${c.question || ''}</p>
         </div>
         <button class="btn btn-primary" id="anat-btn-show-case-answer">🔓 显示解析</button>
-        <div id="anat-case-answer" class="hidden" style="margin-top:14px;">
+        <div id="anat-case-answer" class="hidden" style="margin-top: var(--space-14px);">
           <div class="anat-detail-section">
             <div class="ads-label">🔑 关键结构</div>
             <div class="ads-body">${(c.key_structures || []).join('、')}</div>
@@ -719,7 +724,7 @@
     $('anat-btn-back-list').onclick = () => showView('view-anat-system');
     $('anat-btn-quiz-home').onclick = () => showView('view-anat-home');
     $('anat-btn-quiz-start').onclick = startQuiz;
-    $('anat-btn-quiz-again').onclick = startQuiz;
+    $('anat-btn-quiz-again').onclick = () => startQuiz();
     $('anat-btn-cases-home').onclick = () => showView('view-anat-home');
     $('anat-btn-back-cases').onclick = backCaseList;
   }

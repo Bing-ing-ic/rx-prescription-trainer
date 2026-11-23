@@ -242,7 +242,7 @@
     if (!list) return;
     const k = (kw || '').toLowerCase();
     const items = S.formulas.filter(f => !k || f.name.toLowerCase().indexOf(k) >= 0 || (f.category || '').indexOf(k) >= 0);
-    if (items.length === 0) { list.innerHTML = '<div style="padding:10px;color:var(--gray-500);">无匹配方剂</div>'; return; }
+    if (items.length === 0) { list.innerHTML = '<div style="padding: var(--space-10px);color:var(--gray-500);">无匹配方剂</div>'; return; }
     list.innerHTML = items.slice(0, 50).map(f => `
       <div class="tcm-formula-item ${S.selectedFormula && S.selectedFormula.name === f.name ? 'selected' : ''}" data-fm="${f.name}">
         <span><b>${f.name}</b> <small class="muted">${f.category || ''}</small></span>
@@ -291,7 +291,7 @@
     if (!list) return;
     const k = (kw || '').toLowerCase();
     const items = S.herbs.filter(h => !k || h.name.toLowerCase().indexOf(k) >= 0 || (h.pinyin || '').indexOf(k) >= 0);
-    if (items.length === 0) { list.innerHTML = '<div style="padding:10px;color:var(--gray-500);">无匹配中药</div>'; return; }
+    if (items.length === 0) { list.innerHTML = '<div style="padding: var(--space-10px);color:var(--gray-500);">无匹配中药</div>'; return; }
     list.innerHTML = items.slice(0, 60).map(h => `
       <div class="tcm-herb-item" data-herb="${h.name}">
         <span><b>${h.name}</b> <small class="muted">${h.nature || ''} ${h.meridian || ''}</small></span>
@@ -315,7 +315,7 @@
   function renderItems() {
     const tb = $('tcm-items');
     $('tcm-herb-count').textContent = '已选 ' + S.items.length + ' 味';
-    if (S.items.length === 0) { tb.innerHTML = '<tr><td colspan="5" style="color:var(--gray-500);padding:14px;">请在上方搜索并选择方剂或中药</td></tr>'; return; }
+    if (S.items.length === 0) { tb.innerHTML = '<tr><td colspan="5" style="color:var(--gray-500);padding: var(--space-14px);">请在上方搜索并选择方剂或中药</td></tr>'; return; }
     tb.innerHTML = S.items.map((it, i) => `
       <tr>
         <td>${i+1}</td>
@@ -534,7 +534,7 @@
       <div class="hd-row"><b>主治：</b>${arr(h.indications)}</div>
       <div class="hd-row"><b>使用注意：</b>${arr(h.contraindications)}</div>
       ${h.incompatibility && h.incompatibility !== '无' ? `<div class="hd-warn">⚠️ 配伍禁忌：${h.incompatibility}</div>` : ''}
-      ${h.note ? `<div class="hd-row" style="margin-top:8px;color:var(--gray-500);font-size:var(--text-12);">📝 ${h.note}</div>` : ''}
+      ${h.note ? `<div class="hd-row" style="margin-top: var(--space-2);color:var(--gray-500);font-size:var(--text-12);">📝 ${h.note}</div>` : ''}
     `;
     box.classList.remove('hidden');
   }

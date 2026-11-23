@@ -51,7 +51,7 @@
     if (QR.data || QR.loading) return QR.data;
     QR.loading = true;
     var wrap = $('quickref-results');
-    if (wrap) wrap.innerHTML = '<p class="muted center" style="padding:30px;">⏳ 正在加载知识库…</p>';
+    if (wrap) wrap.innerHTML = '<p class="muted center" style="padding: var(--space-30px);">⏳ 正在加载知识库…</p>';
     function get(url, fallback) {
       return fetch(url).then(function (r) { return r.ok ? r.json() : fallback; }).catch(function () { return fallback; });
     }
@@ -102,7 +102,7 @@
     if (!box) return;
     var countEl = $('quickref-count');
     if (!kw) {
-      box.innerHTML = '<p class="muted center" style="padding:40px 12px;">输入关键词开始检索，数据来自本地知识库。</p>';
+      box.innerHTML = '<p class="muted center" style="padding: var(--space-40px) var(--space-3);">输入关键词开始检索，数据来自本地知识库。</p>';
       if (countEl) countEl.textContent = '';
       return;
     }
@@ -240,7 +240,7 @@
 
     if (countEl) countEl.textContent = '共 ' + total + ' 条结果';
     if (total === 0) {
-      box.innerHTML = '<p class="muted center" style="padding:40px 12px;">未找到与 “' + escapeHtml(kw) + '” 相关的内容，换个关键词试试。</p>';
+      box.innerHTML = '<p class="muted center" style="padding: var(--space-40px) var(--space-3);">未找到与 “' + escapeHtml(kw) + '” 相关的内容，换个关键词试试。</p>';
       return;
     }
     box.innerHTML = sections.map(function (sec) {
@@ -315,7 +315,7 @@
       h = '<table class="qr-detail-table">' +
         row('方名', o.name) + row('出处', o.source || '-') + row('类别', o.category || '-') +
         '</table>' +
-        '<h4 style="margin:12px 0 6px;">组成（君臣佐使）</h4>' +
+        '<h4 style="margin: var(--space-3) 0 var(--space-6px);">组成（君臣佐使）</h4>' +
         '<table class="qr-detail-table"><thead><tr><th>药味</th><th>角色</th><th>剂量</th></tr></thead><tbody>' + comp + '</tbody></table>' +
         rowInline('功效', o.functions) + rowInline('主治', o.indications) +
         rowInline('禁忌', (o.contraindications || []).join('；')) +
@@ -329,8 +329,8 @@
         row('归经', o.meridian || '-') + row('类属', o.category || '-') +
         row('定位', o.location || '-') + row('功用', o.functions || '-') +
         row('刺法', o.needling_method || '-') +
-        '</table>' + '<h4 style="margin:10px 0 6px;">主治</h4><div>' + chips + '</div>' +
-        (o.special_note ? '<div class="ap-note" style="margin-top:10px;">⚠ ' + escapeHtml(o.special_note) + '</div>' : '');
+        '</table>' + '<h4 style="margin: var(--space-10px) 0 var(--space-6px);">主治</h4><div>' + chips + '</div>' +
+        (o.special_note ? '<div class="ap-note" style="margin-top: var(--space-10px);">⚠ ' + escapeHtml(o.special_note) + '</div>' : '');
       nameEl.textContent = '📍 ' + o.name;
     } else if (payload.type === 'anat') {
       h = '<table class="qr-detail-table">' +
@@ -339,7 +339,7 @@
         row('位置', o.location || '-') + row('功能', o.function || '-') +
         row('毗邻', o.relations || '-') + row('临床要点', o.clinical || '-') +
         '</table>' +
-        ((o.exam_points && o.exam_points.length) ? '<h4 style="margin:10px 0 6px;">考点</h4><ul class="qr-exam-list">' +
+        ((o.exam_points && o.exam_points.length) ? '<h4 style="margin: var(--space-10px) 0 var(--space-6px);">考点</h4><ul class="qr-exam-list">' +
           o.exam_points.map(function (e) { return '<li>' + escapeHtml(e) + '</li>'; }).join('') + '</ul>' : '');
       nameEl.textContent = '🫀 ' + o.name;
     } else if (payload.type === 'disease') {
@@ -352,7 +352,7 @@
         row('鉴别诊断', (o.differential || []).join('；') || '-') +
         row('禁忌/注意', (o.contraindications || []).join('；') || o.special_population_note || '-') +
         '</table>' +
-        '<h4 style="margin:10px 0 6px;">典型主诉</h4><div class="muted">' +
+        '<h4 style="margin: var(--space-10px) 0 var(--space-6px);">典型主诉</h4><div class="muted">' +
         ((sp.chief_complaint || []).slice(0, 2).map(escapeHtml).join('<br>')) + '</div>';
       nameEl.textContent = '🏥 ' + o.name;
     }
@@ -360,7 +360,7 @@
     $('modal-quickref').classList.remove('hidden');
   }
   function row(k, v) { return '<tr><td class="qr-k">' + escapeHtml(k) + '</td><td>' + escapeHtml(v || '-') + '</td></tr>'; }
-  function rowInline(k, v) { return '<h4 style="margin:10px 0 4px;">' + escapeHtml(k) + '</h4><div class="muted">' + escapeHtml(v || '-') + '</div>'; }
+  function rowInline(k, v) { return '<h4 style="margin: var(--space-10px) 0 var(--space-1);">' + escapeHtml(k) + '</h4><div class="muted">' + escapeHtml(v || '-') + '</div>'; }
 
   function qrInit() {
     var input = $('quickref-input');
@@ -794,7 +794,7 @@
       st.id = 'ap-closeup-style';
       st.textContent =
         '.ap-closeup{display:block;max-width:100%;max-height:340px;width:auto;height:auto;' +
-        'margin:0 auto 12px;border-radius:var(--radius-md);border:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,.08);}';
+        'margin: 0 auto var(--space-3);border-radius:var(--radius-md);border:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,.08);}';
       document.head.appendChild(st);
     }
     document.addEventListener('click', function (e) {

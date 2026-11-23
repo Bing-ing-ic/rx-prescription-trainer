@@ -61,6 +61,9 @@
       }
       renderSystemGrid();
       renderCaseList();
+      // 深链：#view-anat-xxx 直达解剖模块视图
+      const hk = (location.hash || '').replace(/^#/, '');
+      if (hk && ALL_VIEWS.indexOf(hk) >= 0 && hk.indexOf('view-anat') === 0) showView(hk);
     } catch (e) {
       console.warn('Anatomy data load failed:', e);
       const tip = $('anat-data-tip'); if (tip) tip.classList.remove('hidden');

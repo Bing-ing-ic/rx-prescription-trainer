@@ -342,7 +342,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "胃及十二指肠溃疡患者慎用",
+        "偶见胃部不适、口干、皮疹"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
@@ -378,7 +381,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "尿液变黄为正常现象",
+        "按推荐剂量服用，不宜超量"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 5,
@@ -2142,7 +2148,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "肛注外用，禁止口服",
+        "长期使用可致排便依赖",
+        "肛裂、痔疮出血者慎用"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1,
@@ -2175,7 +2185,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "避免与中枢性镇咳药（右美沙芬等）同用",
+        "过敏体质慎用"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 3,
@@ -2480,7 +2493,10 @@
       "skin_test_required": false,
       "special_warnings_json": [
         "中药注射剂，严禁与其他药物混合配伍",
-        "首次使用缓慢滴注"
+        "首次使用缓慢滴注",
+        "严禁与其他药物混合配伍",
+        "缓慢滴注观察过敏反应",
+        "孕妇慎用"
       ],
       "is_solvent": false,
       "is_tcm_injection": true,
@@ -2518,7 +2534,9 @@
       "skin_test_required": false,
       "special_warnings_json": [
         "中药注射剂，严禁与其他药物混合配伍",
-        "新生儿禁用"
+        "新生儿禁用",
+        "单独输注，严禁与其他药物混合",
+        "缓慢滴注并密切观察过敏反应"
       ],
       "is_solvent": false,
       "is_tcm_injection": true,
@@ -2752,7 +2770,11 @@
       "aliases": [
         "铝碳酸镁"
       ],
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "餐后1-2小时嚼服",
+        "与其他口服药间隔1-2小时",
+        "肾功能不全长期服用需监测血镁血铝"
+      ],
       "dose_range_json": {
         "single_min_mg": 500,
         "single_max_mg": 1000,
@@ -2784,7 +2806,10 @@
       "aliases": [
         "莫沙必利"
       ],
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "胃肠道出血、肠梗阻、穿孔者禁用",
+        "偶见腹泻、头晕、心悸"
+      ],
       "dose_range_json": {
         "single_min_mg": 5,
         "single_max_mg": 5,
@@ -2854,7 +2879,12 @@
         "daily_max_ml": 60,
         "default_freq": "tid",
         "default_duration_days": 7
-      }
+      },
+      "special_warnings_json": [
+        "孕妇慎用",
+        "糖尿病患者注意含糖",
+        "风寒咳嗽不适用"
+      ]
     },
     {
       "generic_name": "头孢克肟胶囊",
@@ -3009,6 +3039,10 @@
       "allowed_solvents_json": [
         "5%葡萄糖注射液 250ml",
         "0.9%氯化钠注射液 250ml"
+      ],
+      "special_warnings_json": [
+        "静脉滴注速度宜慢",
+        "过敏体质慎用"
       ]
     },
     {
@@ -3040,6 +3074,11 @@
       },
       "allowed_solvents_json": [
         "0.9%氯化钠注射液 100ml"
+      ],
+      "special_warnings_json": [
+        "可出现锥体外系反应（儿童、老人更易发生）",
+        "胃肠道梗阻、穿孔、出血者禁用",
+        "与抗胆碱药作用拮抗"
       ]
     },
     {
@@ -3433,7 +3472,10 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [
-        "单独输注"
+        "单独输注",
+        "严禁与其他药物混合配伍",
+        "缓慢滴注并密切观察过敏反应",
+        "出血倾向、孕妇慎用"
       ],
       "pinyin": "xstzsy",
       "is_tcm_injection": true,
@@ -3597,7 +3639,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "餐后1-2小时服用",
+        "与其他口服药间隔1-2小时",
+        "肾功能不全长期服用需监测"
+      ],
       "pinyin": "ltsmp",
       "pinyin_code": "LTSMP",
       "reference_status": "backup"
@@ -3628,7 +3674,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "按说明书比例冲调，不可随意加量",
+        "严重脱水需先静脉补液"
+      ],
       "pinyin": "kfbyy",
       "pinyin_code": "KFBYY",
       "reference_status": "backup"
@@ -3773,7 +3822,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "孕妇、哺乳期慎用",
+        "糖尿病患者注意含糖",
+        "风寒咳嗽不适用"
+      ],
       "pinyin": "cbppg",
       "pinyin_code": "CBPPG",
       "reference_status": "backup"
@@ -3837,7 +3890,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "脾胃虚寒者慎用",
+        "无实热者不宜久服"
+      ],
       "pinyin": "blgkl",
       "pinyin_code": "BLGKL",
       "reference_status": "backup"
@@ -3868,7 +3924,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "风寒感冒不适用",
+        "脾胃虚寒腹泻者慎用",
+        "服药期间忌烟酒及辛辣生冷油腻"
+      ],
       "pinyin": "lhqwjn",
       "pinyin_code": "LHQWJN",
       "reference_status": "backup"
@@ -4017,7 +4077,12 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "可致低血压、头晕",
+        "妊娠禁用",
+        "监测血钾",
+        "不可突然停药"
+      ],
       "pinyin": "xstaldpp",
       "pinyin_code": "XSTALDPP",
       "reference_status": "backup"
@@ -5056,7 +5121,9 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [
-        "单独输注"
+        "单独输注",
+        "严禁与其他药物混合配伍",
+        "缓慢滴注并观察过敏反应"
       ],
       "pinyin": "xnjzsy",
       "is_tcm_injection": true,
@@ -5092,7 +5159,10 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [
-        "单独输注"
+        "单独输注",
+        "严禁与其他药物混合配伍",
+        "缓慢滴注观察过敏反应",
+        "孕妇慎用"
       ],
       "pinyin": "mlnzsy",
       "is_tcm_injection": true,
@@ -5129,7 +5199,10 @@
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [
-        "单独输注"
+        "单独输注",
+        "严禁与其他药物混合配伍",
+        "缓慢滴注观察过敏反应",
+        "出血倾向慎用"
       ],
       "pinyin": "xstzsy",
       "is_tcm_injection": true,
@@ -5199,7 +5272,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "避免接触眼、口、鼻黏膜",
+        "长期大面积使用可致耐药或二重感染"
+      ],
       "pinyin": "hmsrg",
       "pinyin_code": "HMSRG",
       "reference_status": "backup"
@@ -5230,7 +5306,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "避免接触眼睛",
+        "用药部位如有烧灼感、红肿应停药",
+        "避免长期大面积使用"
+      ],
       "pinyin": "tkzrg",
       "pinyin_code": "TKZRG",
       "reference_status": "backup"
@@ -5294,7 +5374,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "避免接触眼睛和黏膜",
+        "皮损有渗液、糜烂处不宜使用",
+        "用前摇匀"
+      ],
       "pinyin": "lgsxj",
       "pinyin_code": "LGSXJ",
       "reference_status": "backup"
@@ -5325,7 +5409,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "避免接触眼和黏膜",
+        "破损皮肤、湿疹部位禁用",
+        "勿与口服 NSAIDs 叠加使用"
+      ],
       "pinyin": "slfseyarjj",
       "pinyin_code": "SLFSEYARJJ",
       "reference_status": "backup"
@@ -5549,7 +5637,11 @@
       "pinyin_code": "AXS",
       "medical_insurance_class": "甲",
       "reference_status": "backup",
-      "unit": "片"
+      "unit": "片",
+      "special_warnings_json": [
+        "避免与中枢性镇咳药同用",
+        "过敏体质慎用"
+      ]
     },
     {
       "generic_name": "右美沙芬",
@@ -5759,7 +5851,11 @@
       "pinyin": "ffxhm",
       "pinyin_code": "FFXHM",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "餐中服用",
+        "急性胰腺炎早期、对成分过敏者禁用"
+      ]
     },
     {
       "generic_name": "厄贝沙坦",
@@ -5894,7 +5990,11 @@
       "pinyin": "wssc",
       "pinyin_code": "WSSC",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "大剂量可致腹泻、尿酸/草酸结石",
+        "痛风或肾结石史者慎用"
+      ]
     },
     {
       "generic_name": "维生素B6",
@@ -5913,7 +6013,10 @@
       "pinyin": "wssb6",
       "pinyin_code": "WSSB6",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "长期大量使用可致周围神经炎"
+      ]
     },
     {
       "generic_name": "葡萄糖酸钙",
@@ -5930,7 +6033,11 @@
       "pinyin": "pttsg",
       "pinyin_code": "PTTSG",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "心肾功能不全慎用",
+        "与强心苷类合用需谨慎"
+      ]
     },
     {
       "generic_name": "氯化钾缓释片",
@@ -5970,7 +6077,12 @@
       "pinyin": "gmlkl",
       "pinyin_code": "GMLKL",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "含对乙酰氨基酚，不可与其他含解热镇痛药同服",
+        "服药期间禁酒",
+        "不宜驾车或操作机械"
+      ]
     },
     {
       "generic_name": "小柴胡颗粒",
@@ -5987,7 +6099,11 @@
       "pinyin": "xchkl",
       "pinyin_code": "XCHKL",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "阴虚血少者慎用",
+        "服药期间忌食辛辣生冷"
+      ]
     },
     {
       "generic_name": "急支糖浆",
@@ -6004,7 +6120,11 @@
       "pinyin": "jztj",
       "pinyin_code": "JZTJ",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "孕妇慎用",
+        "忌辛辣生冷油腻食物"
+      ]
     },
     {
       "generic_name": "复方丹参滴丸",
@@ -6062,7 +6182,11 @@
       "pinyin": "jwxsp",
       "pinyin_code": "JWXSP",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "脾胃虚弱、无食积者不宜",
+        "糖尿病患者注意含糖"
+      ]
     },
     {
       "generic_name": "布地奈德鼻喷雾剂",
@@ -6099,7 +6223,12 @@
       "pinyin": "zyfsxdyy",
       "pinyin_code": "ZYFSXDYY",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "滴药后压迫内眦片刻",
+        "出现皮疹或刺痛加重应停药",
+        "不宜长期使用"
+      ]
     },
     {
       "generic_name": "头孢丙烯",
@@ -6289,7 +6418,11 @@
       "pinyin": "sjst",
       "pinyin_code": "SJST",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "消化道溃疡活动期慎用",
+        "孕妇、哺乳期慎用"
+      ]
     },
     {
       "generic_name": "雷贝拉唑",
@@ -6557,7 +6690,11 @@
       "pinyin": "lwdhw",
       "pinyin_code": "LWDHW",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "感冒发热期间暂停服用",
+        "脾虚便溏、痰湿内盛者慎用"
+      ]
     },
     {
       "generic_name": "逍遥丸",
@@ -6574,7 +6711,11 @@
       "pinyin": "xyw",
       "pinyin_code": "XYW",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "孕妇慎用",
+        "服药期间忌气恼劳碌"
+      ]
     },
     {
       "generic_name": "牛黄解毒片",
@@ -6654,7 +6795,11 @@
       "pinyin": "wskl",
       "pinyin_code": "WSKL",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "孕妇慎用",
+        "忌生冷油腻食物"
+      ]
     },
     {
       "generic_name": "血脂康胶囊",
@@ -6691,7 +6836,12 @@
       "pinyin": "xsmkzrg",
       "pinyin_code": "XSMKZRG",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "避免接触眼睛",
+        "用药部位烧灼感应停药",
+        "避免长期使用"
+      ]
     },
     {
       "generic_name": "西咪替丁",
@@ -8130,7 +8280,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "饭后服用",
+        "偶见头痛、食欲差"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 0.02,
@@ -8639,7 +8792,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "避免与中枢性镇咳药同用",
+        "过敏体质慎用"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 1,
@@ -9676,7 +9832,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "餐后服用",
+        "不宜与牛奶同服",
+        "心肾功能不全慎用"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 20,
@@ -10010,7 +10170,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "焦虑、激动或抑郁者慎用",
+        "孕妇、哺乳期慎用"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 25,
@@ -11395,7 +11558,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "长期大剂量可致恶心、血栓性静脉炎风险",
+        "缺铁性贫血患者慎用"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 18,
@@ -11579,7 +11745,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "孕妇、女性、儿童禁用",
+        "处理碎胶囊需戴手套（抗雄激素）",
+        "用药期间监测 PSA"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 88,
@@ -24646,7 +24816,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "出血倾向慎用",
+        "与抗凝/抗血小板药合用需监测出血",
+        "低血压慎用"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 65,
@@ -24682,7 +24856,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "活动性出血或出血性疾病（血友病等）禁用",
+        "消化道溃疡慎用",
+        "与抗凝药合用监测出血"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 42,
@@ -24847,7 +25025,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "过敏体质慎用",
+        "偶见轻度胃肠道不适"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 58,
@@ -24884,7 +25065,10 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "出血倾向慎用",
+        "与抗凝药合用监测出血"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 180,
@@ -24961,7 +25145,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "偶见皮疹、胆红素升高",
+        "孕妇、哺乳期慎用",
+        "尿液可能变黄褐色"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 65,
@@ -24998,7 +25186,11 @@
       "allowed_solvents_json": [],
       "drip_speed_max_mlh": null,
       "skin_test_required": false,
-      "special_warnings_json": [],
+      "special_warnings_json": [
+        "过敏体质慎用",
+        "孕哺期慎用",
+        "偶见胃肠不适"
+      ],
       "is_solvent": false,
       "is_tcm_injection": false,
       "price_yuan": 78,

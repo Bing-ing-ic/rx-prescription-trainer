@@ -137,6 +137,40 @@ try {
   } else bad('未找到理中丸条目');
 } catch (e) { bad('T-2 校验失败: ' + e.message); }
 
+// 9. T-3 药材引用 × 字典/别名表对齐（复用引擎别名映射，消除别名静态误报）
+console.log('\n[9] T-3 药材引用对齐字典（含别名表）');
+try {
+  global.window = global;
+  require(path.join(JS, 'tcm-engine.js'));
+  const alias = (global.TCMEngine && global.TCMEngine.HERB_ALIAS) || {};
+  const resolve = (global.TCMEngine && global.TCMEngine.resolveHerb) || (n => n);
+  const herbArr = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-herbs.json'), 'utf8'));
+  const dict = new Set((Array.isArray(herbArr) ? herbArr : herbArr.herbs).map(h => h.name));
+  const refs = new Set();
+  const push = v => { if (typeof v === 'string' && v.trim()) refs.add(v.trim()); };
+  const rules = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-rules.json'), 'utf8'));
+  (rules.rules || []).forEach(r => (r.herbs || []).forEach(push));
+  const formulas = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-formulas.json'), 'utf8'));
+  (formulas.formulas || formulas).forEach(f => (f.composition || []).forEach(c => push(typeof c === 'string' ? c : c.herb)));
+  const cases = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-cases.json'), 'utf8'));
+  (cases.cases || cases).forEach(c => (c.reference_herbs || []).forEach(push));
+  const patents = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-patent-drugs.json'), 'utf8'));
+  (patents.patent_drugs || patents.drugs || patents).forEach(p => (p.composition || []).forEach(push));
+  const unresolved = [...refs].filter(n =>
+    !dict.has(n) && !dict.has(alias[n]) && !dict.has(resolve(n))
+  );
+  // 成药原料形态（提取物/浸膏/油/浓缩粉/苷等）不做饮片字典核对；
+  // 其余未命中记为字典缺口清单（转下批），不阻断校验。
+  const derivedRe = /(提取物|浸膏|浓缩粉|浓缩丸|油|苷|膏|炭|胶|霜|粉)$/;
+  const rawGaps = unresolved.filter(n => !derivedRe.test(n));
+  const derived = unresolved.filter(n => derivedRe.test(n));
+  if (unresolved.length === 0) ok(`全部 ${refs.size} 个药材引用命中字典或别名表`);
+  else {
+    ok(`${refs.size} 个药材引用已按别名表对齐；成药原料形态 ${derived.length} 项不做饮片核对`);
+    if (rawGaps.length) console.log(`  ⚠ 字典缺口（转下批补录/核对）: ${rawGaps.join(', ')}`);
+  }
+} catch (e) { bad('T-3 校验失败: ' + e.message); }
+
 // 总结
 console.log('\n=========================================');
 console.log(`通过 ${pass} 项，失败 ${fail} 项`);

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261123r5">
+<link rel="stylesheet" href="css/rx.min.css?v=20261123r6">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -155,7 +155,7 @@
       <div class="case-volume" id="case-volume"></div>
 
       <!-- 患者信息（可编辑）：P1-3 既往史/过敏史/合并症 -->
-      <div id="patient-info-box" style="margin-top:12px;padding:12px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;">
+      <div id="patient-info-box" style="margin-top:12px;padding:12px 14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:var(--radius-md);">
         <div style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;" id="patient-info-toggle">
           <b style="font-size:var(--text-base);color:#334155;">🩺 患者信息（可修改，影响审方规则）</b>
           <span style="font-size:var(--text-12);color:#3b82f6;" id="patient-info-arrow">点击展开 ▼</span>
@@ -163,13 +163,13 @@
         <div id="patient-info-body" style="display:none;margin-top:10px;">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;">
             <label style="font-size:var(--text-12);color:#64748b;">年龄（岁）
-              <input id="pi-age" type="number" min="0" max="120" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:5px;font-size:var(--text-13);">
+              <input id="pi-age" type="number" min="0" max="120" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:var(--radius-5);font-size:var(--text-13);">
             </label>
             <label style="font-size:var(--text-12);color:#64748b;">体重（kg）
-              <input id="pi-weight" type="number" step="0.1" min="0" max="200" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:5px;font-size:var(--text-13);">
+              <input id="pi-weight" type="number" step="0.1" min="0" max="200" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:var(--radius-5);font-size:var(--text-13);">
             </label>
             <label style="font-size:var(--text-12);color:#64748b;">性别
-              <select id="pi-gender" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:5px;font-size:var(--text-13);">
+              <select id="pi-gender" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:var(--radius-5);font-size:var(--text-13);">
                 <option value="男">男</option>
                 <option value="女">女</option>
               </select>
@@ -183,23 +183,23 @@
           </div>
           <div style="margin-top:10px;">
             <label style="font-size:var(--text-12);color:#64748b;">药物过敏史（多个用逗号分隔，如：青霉素,磺胺）
-              <textarea id="pi-allergies" rows="2" placeholder="例：青霉素过敏,头孢类过敏" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:5px;font-size:var(--text-13);resize:vertical;"></textarea>
+              <textarea id="pi-allergies" rows="2" placeholder="例：青霉素过敏,头孢类过敏" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:var(--radius-5);font-size:var(--text-13);resize:vertical;"></textarea>
             </label>
           </div>
           <div style="margin-top:8px;">
             <label style="font-size:var(--text-12);color:#64748b;display:block;margin-bottom:4px;">合并症（多选，影响禁忌/慎用规则）：</label>
             <div id="pi-comorbidities" style="display:flex;flex-wrap:wrap;gap:6px;">
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="高血压"> 高血压</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="糖尿病"> 糖尿病</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="冠心病"> 冠心病</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="肝功能不全"> 肝功能不全</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="肾功能不全"> 肾功能不全</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="G6PD缺乏"> G6PD缺乏（蚕豆病）</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="哮喘"> 哮喘</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="癫痫"> 癫痫</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="青光眼"> 青光眼</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="前列腺增生"> 前列腺增生</label>
-              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="出血性疾病"> 出血性疾病</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="高血压"> 高血压</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="糖尿病"> 糖尿病</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="冠心病"> 冠心病</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="肝功能不全"> 肝功能不全</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="肾功能不全"> 肾功能不全</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="G6PD缺乏"> G6PD缺乏（蚕豆病）</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="哮喘"> 哮喘</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="癫痫"> 癫痫</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="青光眼"> 青光眼</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="前列腺增生"> 前列腺增生</label>
+              <label style="font-size:var(--text-12);color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:var(--radius-14);padding:3px 10px;cursor:pointer;"><input type="checkbox" value="出血性疾病"> 出血性疾病</label>
             </div>
           </div>
           <div style="margin-top:8px;font-size:var(--text-caption);color:var(--gray-500);">
@@ -261,7 +261,7 @@
     </div>
 
     <!-- P4-1 双通道合并点评提示条（根据当前数据动态显示） -->
-    <div id="dual-channel-banner" class="no-print" style="display:none;margin:8px 12px;padding:8px 12px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:6px;font-size:var(--text-13);color:#065f46;"></div>
+    <div id="dual-channel-banner" class="no-print" style="display:none;margin:8px 12px;padding:8px 12px;background:#ecfdf5;border:1px solid #6ee7b7;border-radius:var(--radius-6);font-size:var(--text-13);color:#065f46;"></div>
 
     <div class="rx-paper" id="rx-paper">
       <div class="rx-corner" id="rx-corner">门诊处方</div>
@@ -308,9 +308,9 @@
 
       <!-- 输液通道：多组输液（必须选择输液指征） -->
       <div class="rx-body hidden" id="rx-body-iv">
-        <div class="iv-reason-bar no-print" style="display:flex;align-items:center;gap:10px;margin:8px 0;padding:8px 10px;background:#fef3c7;border:1px solid #fcd34d;border-radius:6px;font-size:var(--text-13);">
+        <div class="iv-reason-bar no-print" style="display:flex;align-items:center;gap:10px;margin:8px 0;padding:8px 10px;background:#fef3c7;border:1px solid #fcd34d;border-radius:var(--radius-6);font-size:var(--text-13);">
           <b style="color:#92400e;">输液指征：</b>
-          <select id="iv-reason-select" style="padding:4px 6px;border:1px solid #d1d5db;border-radius:4px;">
+          <select id="iv-reason-select" style="padding:4px 6px;border:1px solid #d1d5db;border-radius:var(--radius-sm);">
             <option value="">— 请选择本次输液指征 —</option>
             <option value="fever">发热为主（体温≥38.5℃）</option>
             <option value="severe_dehydration">脱水/电解质紊乱（客观补液指征）</option>
@@ -318,7 +318,7 @@
             <option value="sequential_therapy">序贯治疗（病情由重转轻，静脉转口服）</option>
             <option value="other">其他（需在备注注明）</option>
           </select>
-          <input id="iv-reason-note" type="text" placeholder="其他指征说明（选填）" style="flex:1;padding:4px 6px;border:1px solid #d1d5db;border-radius:4px;">
+          <input id="iv-reason-note" type="text" placeholder="其他指征说明（选填）" style="flex:1;padding:4px 6px;border:1px solid #d1d5db;border-radius:var(--radius-sm);">
         </div>
         <div id="iv-groups"></div>
         <div id="pre-reminder" class="pre-reminder no-print"></div>
@@ -636,8 +636,8 @@
     </div>
     <!-- 搜索栏 -->
     <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;align-items:center;">
-      <input type="text" id="drug-lib-search" placeholder="搜索药名/首拼（如：氨氯地平 / alldp）" style="flex:1;min-width:250px;padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:var(--text-base);">
-      <select id="drug-lib-cat" style="padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:var(--text-base);">
+      <input type="text" id="drug-lib-search" placeholder="搜索药名/首拼（如：氨氯地平 / alldp）" style="flex:1;min-width:250px;padding:10px 14px;border:1px solid #e2e8f0;border-radius:var(--radius-md);font-size:var(--text-base);">
+      <select id="drug-lib-cat" style="padding:10px 14px;border:1px solid #e2e8f0;border-radius:var(--radius-md);font-size:var(--text-base);">
         <option value="">全部分类</option>
       </select>
     </div>
@@ -774,7 +774,7 @@
         <div class="tcm-section-label">▎选方（经方/时方）</div>
         <div class="tcm-picker-row no-print">
           <input id="tcm-formula-search" type="text" placeholder="🔍 搜索方剂名（如 麻黄汤 / 桂枝汤 / 小柴胡汤）">
-          <select id="tcm-formula-select" style="padding:8px 10px;border:1px solid #d1d5db;border-radius:6px;">
+          <select id="tcm-formula-select" style="padding:8px 10px;border:1px solid #d1d5db;border-radius:var(--radius-6);">
             <option value="">— 或直接选择方剂 —</option>
           </select>
         </div>
@@ -809,7 +809,7 @@
           <option value="饭后温服">饭后温服</option>
           <option value="忌生冷油腻">忌生冷油腻</option>
         </select>
-        <input id="tcm-prep-note" type="text" placeholder="其他备注（选填）" style="flex:1;padding:8px;border:1px solid #d1d5db;border-radius:6px;">
+        <input id="tcm-prep-note" type="text" placeholder="其他备注（选填）" style="flex:1;padding:8px;border:1px solid #d1d5db;border-radius:var(--radius-6);">
       </div>
 
       <div class="rx-foot">
@@ -1040,7 +1040,7 @@
         <div class="tcm-section-label">▎选穴（按经络浏览 / 搜索）</div>
         <div class="tcm-picker-row no-print">
           <input id="acup-point-search" type="text" placeholder="🔍 搜索穴名（如 合谷 / 足三里 / 三阴交）">
-          <select id="acup-meridian-filter" style="padding:8px 10px;border:1px solid #d1d5db;border-radius:6px;">
+          <select id="acup-meridian-filter" style="padding:8px 10px;border:1px solid #d1d5db;border-radius:var(--radius-6);">
             <option value="">全部经络</option>
           </select>
           <span id="acup-point-count" class="drug-count">已选 0 穴</span>
@@ -1313,12 +1313,12 @@
           <span class="case-title" id="pitfall-title">-</span>
         </div>
 
-        <div style="margin:14px 0;padding:12px;background:#fef2f2;border-left:4px solid #dc2626;border-radius:6px;">
+        <div style="margin:14px 0;padding:12px;background:#fef2f2;border-left:4px solid #dc2626;border-radius:var(--radius-6);">
           <b style="color:#991b1b;">🩺 主诉：</b>
           <div id="pitfall-chief" style="margin-top:6px;color:var(--gray-700);line-height:1.6;"></div>
         </div>
 
-        <div style="margin:10px 0;padding:12px;background:#f0f9ff;border-left:4px solid #0284c7;border-radius:6px;">
+        <div style="margin:10px 0;padding:12px;background:#f0f9ff;border-left:4px solid #0284c7;border-radius:var(--radius-6);">
           <b style="color:#075985;">🔍 患者线索（查体/辅检）：</b>
           <div id="pitfall-hint" style="margin-top:6px;color:var(--gray-700);line-height:1.6;"></div>
         </div>
@@ -1440,7 +1440,7 @@
   }, true);
 })();
 </script>
-<script src="js/rule-engine.min.js?v=20261123r5"></script>
+<script src="js/rule-engine.min.js?v=20261123r6"></script>
 <script>
 // 网站访问统计（百度统计已在页面底部加载）
 (function() {
@@ -1464,16 +1464,16 @@
 </script>
 <script src="js/review.min.js?v=20261106surg1"></script>
 <script src="js/standard-plan.min.js?v=20261109sp1"></script>
-<script src="js/app.min.js?v=20261123r5"></script>
-<script src="js/tcm-engine.min.js?v=20261123r5"></script>
-<script src="js/acup-engine.min.js?v=20261123r5"></script>
-<script src="js/tcm-app.min.js?v=20261123r5"></script>
-<script src="js/tuina-engine.min.js?v=20261123r5"></script>
-<script src="js/acup-app.min.js?v=20261123r5"></script>
+<script src="js/app.min.js?v=20261123r6"></script>
+<script src="js/tcm-engine.min.js?v=20261123r6"></script>
+<script src="js/acup-engine.min.js?v=20261123r6"></script>
+<script src="js/tcm-app.min.js?v=20261123r6"></script>
+<script src="js/tuina-engine.min.js?v=20261123r6"></script>
+<script src="js/acup-app.min.js?v=20261123r6"></script>
 <script src="js/acup-time.min.js?v=20261111time1"></script>
-<script src="js/module-views.min.js?v=20261123r5"></script>
-<script src="js/anat-app.min.js?v=20261123r5"></script>
-<script src="js/platform-enhance.js?v=20261123r5"></script>
+<script src="js/module-views.min.js?v=20261123r6"></script>
+<script src="js/anat-app.min.js?v=20261123r6"></script>
+<script src="js/platform-enhance.js?v=20261123r6"></script>
 
 <!-- 百度统计 -->
 <script>

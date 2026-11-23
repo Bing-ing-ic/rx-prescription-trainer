@@ -213,6 +213,21 @@
 
     // 无论部分成功或全部失败，导航/入口按钮都必须可点；缺数据的模块由各自空态兜底
     bindNav();
+    // 深链：#view-xxx / #radar|mistakes|stats 直达对应视图（便于外部直达与本地多宽度走查）
+    const hashKey = (location.hash || '').replace(/^#/, '');
+    if (hashKey) {
+      const navHash = {
+        radar: () => { renderRadar(); show('view-radar'); },
+        mistakes: () => { renderMistakes(); show('view-mistakes'); },
+        stats: () => { renderStats(); show('view-stats'); },
+        pitfalls: () => { openPitfalls(); }
+      };
+      if (navHash[hashKey]) navHash[hashKey]();
+      else if ($(hashKey)) {
+        show(hashKey);
+        if (hashKey === 'view-rx') { const nb = $('btn-new-case'); if (nb) nb.click(); }
+      }
+    }
     // 雷达图仅在主数据有内容时渲染，避免空数组渲染异常
     if (S.diseases.length || S.drugs.length || S.rules.length || S.compat) {
       renderRadar();
@@ -879,7 +894,7 @@
       fb.innerHTML = `<span class="diag-warn">⚠️ 「${diff}」是重要鉴别诊断，需进一步检查排除，但不是本病例主诊断。（已错 ${S.diagWrongCount} 次）</span>`;
       // 鉴别诊断也计入错误次数，三次后自动填入
       if (S.diagWrongCount >= 3) {
-        fb.innerHTML += `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:6px;color:#b91c1c;font-size:var(--text-13)">🔑 已自动填入正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
+        fb.innerHTML += `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:var(--radius-6);color:#b91c1c;font-size:var(--text-13)">🔑 已自动填入正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
         $('diag-input').value = dx.name;
         setTimeout(() => checkDiagnosis(), 800);
       }
@@ -917,7 +932,7 @@
       Object.entries(DISEASE_PINYIN).find(([k]) => dx.name.indexOf(k) >= 0)?.[1] || '';
     let reveal = '';
     if (S.diagWrongCount >= 3) {
-      reveal = `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:6px;color:#b91c1c;font-size:var(--text-13)">🔑 已自动填入正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
+      reveal = `<div style="margin-top:8px;padding:8px;background:#fef2f2;border-radius:var(--radius-6);color:#b91c1c;font-size:var(--text-13)">🔑 已自动填入正确诊断：<b>${dx.name}</b>（ICD-10: ${dx.icd10}）</div>`;
       // 自动填入正确诊断
       $('diag-input').value = dx.name;
       // 自动触发确认
@@ -1104,12 +1119,12 @@
     const indi = sc.indications || [];
     const contra = sc.contraindications || [];
     box.innerHTML =
-      '<div style="border:1px solid #bbf7d0;background:#f0fdf4;border-radius:6px;padding:10px;">' +
+      '<div style="border:1px solid #bbf7d0;background:#f0fdf4;border-radius:var(--radius-6);padding:10px;">' +
         '<div style="font-weight:600;color:#15803d;margin-bottom:6px;">✅ 手术适应症</div>' +
         '<ul style="margin:0;padding-left:18px;color:#166534;font-size:var(--text-13);">' +
         (indi.length ? indi.map(t=>'<li>'+t+'</li>').join('') : '<li>—</li>') +
         '</ul></div>' +
-      '<div style="border:1px solid #fecaca;background:#fef2f2;border-radius:6px;padding:10px;">' +
+      '<div style="border:1px solid #fecaca;background:#fef2f2;border-radius:var(--radius-6);padding:10px;">' +
         '<div style="font-weight:600;color:#b91c1c;margin-bottom:6px;">⛔ 手术禁忌症</div>' +
         '<ul style="margin:0;padding-left:18px;color:#991b1b;font-size:var(--text-13);">' +
         (contra.length ? contra.map(t=>'<li>'+t+'</li>').join('') : '<li>无明确禁忌</li>') +
@@ -1349,7 +1364,7 @@
          ${o.abbr ? `<span style="color:#0f4c81;margin-left:6px;font-size:var(--text-13);">(${o.abbr})</span>` : ''}
          <span style="float:right;color:${stColor};font-weight:600;">${stLabel}</span>
        </div>
-       <div style="background:#f8fafc;padding:10px 12px;border-radius:6px;margin:8px 0;">
+       <div style="background:#f8fafc;padding:10px 12px;border-radius:var(--radius-6);margin:8px 0;">
          <div style="font-size:var(--text-12);color:#64748b;">检验结果</div>
          <div style="font-size:var(--text-xl);font-weight:700;color:${stColor};">${o.result}</div>
        </div>
@@ -2391,7 +2406,7 @@
     // P4-1 多处方合并点评：双通道都有药时显示合并点评徽标
     const hasNormal = !!(ctx.normal_rx && ctx.normal_rx.items && ctx.normal_rx.items.length);
     const hasIv = !!(ctx.iv_rx && ctx.iv_rx.items && ctx.iv_rx.items.length);
-    const dualTag = (hasNormal && hasIv) ? ' <span style="display:inline-block;padding:2px 8px;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:10px;font-size:var(--text-12);margin-left:6px;">🔀 合并点评（口服+静脉双通道）</span>' : '';
+    const dualTag = (hasNormal && hasIv) ? ' <span style="display:inline-block;padding:2px 8px;background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:var(--radius-10);font-size:var(--text-12);margin-left:6px;">🔀 合并点评（口服+静脉双通道）</span>' : '';
     $('r-meta').innerHTML =
       `诊断：${ctx.disease.name}（${ctx.disease.icd10}）${S.secondaryDiagnosis ? ' · 次要诊断：' + S.secondaryDiagnosis : ''} · 患者：${ctx.patient.name} ${ctx.patient.gender} ${ctx.patient.age}岁${dualTag}`;
 
@@ -2508,7 +2523,7 @@
       }
       feeEl.style.cssText = 'display:flex;flex-wrap:wrap;gap:12px;align-items:center;' +
         'margin:10px 0 4px;padding:10px 16px;background:#f8fafc;border:1px solid #e2e8f0;' +
-        'border-radius:10px;font-size:var(--text-base);color:var(--gray-900);';
+        'border-radius:var(--radius-10);font-size:var(--text-base);color:var(--gray-900);';
       feeEl.innerHTML =
         `<span style="font-weight:600;">💰 本次药品总价</span>` +
         `<span style="font-size:var(--text-xl);font-weight:700;color:#0f4c81;">¥${total.toFixed(2)}</span>` +
@@ -2547,7 +2562,7 @@
         else grid.insertAdjacentElement('afterend', vEl);
       }
       vEl.style.cssText = `margin:8px 0 4px;padding:10px 16px;background:${bg};` +
-        `border:1px solid ${border};border-radius:10px;display:flex;flex-wrap:wrap;` +
+        `border:1px solid ${border};border-radius:var(--radius-10);display:flex;flex-wrap:wrap;` +
         `gap:10px;align-items:center;font-size:var(--text-base);`;
       vEl.innerHTML =
         `<span style="font-weight:600;">本处方判定：</span>` +
@@ -2961,11 +2976,11 @@
     S.pitfalls.forEach((p, i) => {
       const answered = S.pitfallAnswers[p.trap_id];
       const card = document.createElement('div');
-      card.style.cssText = 'background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:16px;cursor:pointer;transition:all .15s;';
+      card.style.cssText = 'background:#fff;border:1px solid #e2e8f0;border-radius:var(--radius-10);padding:16px;cursor:pointer;transition:all .15s;';
       const stateTag = answered
-        ? (answered.correct ? '<span style="display:inline-block;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:10px;font-size:var(--text-caption);margin-left:6px;">✓ 已答对</span>'
-                           : '<span style="display:inline-block;padding:2px 8px;background:#fee2e2;color:#991b1b;border-radius:10px;font-size:var(--text-caption);margin-left:6px;">✗ 已答错</span>')
-        : '<span style="display:inline-block;padding:2px 8px;background:#f1f5f9;color:#475569;border-radius:10px;font-size:var(--text-caption);margin-left:6px;">未答</span>';
+        ? (answered.correct ? '<span style="display:inline-block;padding:2px 8px;background:#dcfce7;color:#166534;border-radius:var(--radius-10);font-size:var(--text-caption);margin-left:6px;">✓ 已答对</span>'
+                           : '<span style="display:inline-block;padding:2px 8px;background:#fee2e2;color:#991b1b;border-radius:var(--radius-10);font-size:var(--text-caption);margin-left:6px;">✗ 已答错</span>')
+        : '<span style="display:inline-block;padding:2px 8px;background:#f1f5f9;color:#475569;border-radius:var(--radius-10);font-size:var(--text-caption);margin-left:6px;">未答</span>';
       card.innerHTML = `
         <div style="font-weight:600;color:#0f4c81;margin-bottom:8px;">#${i+1} ${p.title}${stateTag}</div>
         <div style="font-size:var(--text-12);color:#64748b;line-height:1.5;">${p.chief_complaint.length > 60 ? p.chief_complaint.slice(0,60)+'…' : p.chief_complaint}</div>
@@ -3000,7 +3015,7 @@
     input.type = 'text';
     input.id = 'pitfall-input';
     input.placeholder = '输入你的初步诊断，如：消化性溃疡穿孔 / 主动脉夹层 / AECOPD…';
-    input.style.cssText = 'padding:10px 12px;border:1px solid #cbd5e1;border-radius:6px;font-size:var(--text-base);width:100%;box-sizing:border-box;';
+    input.style.cssText = 'padding:10px 12px;border:1px solid #cbd5e1;border-radius:var(--radius-6);font-size:var(--text-base);width:100%;box-sizing:border-box;';
     const submitBtn = document.createElement('button');
     submitBtn.className = 'btn btn-primary';
     submitBtn.textContent = '✅ 提交诊断';
@@ -3090,7 +3105,7 @@
     // 渲染反馈
     let html = '';
     if (chosenCorrect) {
-      html += `<div style="padding:12px;background:#dcfce7;border-left:4px solid #16a34a;border-radius:6px;margin-bottom:12px;">
+      html += `<div style="padding:12px;background:#dcfce7;border-left:4px solid #16a34a;border-radius:var(--radius-6);margin-bottom:12px;">
         <b style="color:#166534;">✅ 判断正确！</b>你输入的「${chosenText}」与正确诊断一致：<b>${p.correct_diagnosis}</b>。
       </div>`;
     } else {
@@ -3101,7 +3116,7 @@
       const trapNote = fellForTrap
         ? `<div style="margin-top:6px;font-size:var(--text-13);color:#7f1d1d;">⚠️ 你正好落入了本病例的经典陷阱——把它误判成了「<b>${p.wrong_diagnosis}</b>」。这正是临床最容易混淆的诊断，请仔细阅读下面的鉴别要点。</div>`
         : `<div style="margin-top:6px;font-size:var(--text-13);color:#7f1d1d;">你输入的「${chosenText}」不是本例正确诊断。临床最容易误判为「${p.wrong_diagnosis}」，而真正的正确诊断是：<b>${p.correct_diagnosis}</b>。</div>`;
-      html += `<div style="padding:12px;background:#fee2e2;border-left:4px solid #dc2626;border-radius:6px;margin-bottom:12px;">
+      html += `<div style="padding:12px;background:#fee2e2;border-left:4px solid #dc2626;border-radius:var(--radius-6);margin-bottom:12px;">
         <b style="color:#991b1b;">❌ 判断错误！</b>${trapNote}
       </div>`;
     }
@@ -3117,7 +3132,7 @@
         ${p.key_workup.map(w => `<li>${w}</li>`).join('')}
       </ul>
     </div>`;
-    html += `<div style="margin:10px 0;padding:12px;background:#fef9c3;border-left:4px solid #ca8a04;border-radius:6px;">
+    html += `<div style="margin:10px 0;padding:12px;background:#fef9c3;border-left:4px solid #ca8a04;border-radius:var(--radius-6);">
       <b style="color:#854d0e;">💡 教学提示：</b>
       <div style="margin-top:6px;color:#713f12;line-height:1.7;">${p.teaching_tip}</div>
     </div>`;
@@ -3386,13 +3401,13 @@
     }
 
     list.innerHTML = items.map((d, i) => `
-      <div class="drug-card" style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:14px;cursor:pointer;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'" onclick="showDrugDetail(${DRUG_LIB_DATA.indexOf(d)})">
+      <div class="drug-card" style="background:#fff;border:1px solid #e2e8f0;border-radius:var(--radius-10);padding:14px;cursor:pointer;transition:box-shadow .2s;" onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'" onclick="showDrugDetail(${DRUG_LIB_DATA.indexOf(d)})">
         <div style="font-weight:600;font-size:var(--text-md);color:#1e293b;margin-bottom:4px;">${d.generic_name}</div>
         <div style="font-size:var(--text-12);color:#64748b;margin-bottom:8px;">${d.spec || ''} · ${d.pharmacology_class || ''}</div>
         <div style="display:flex;gap:6px;flex-wrap:wrap;">
-          ${d.medical_insurance_class ? `<span style="font-size:var(--text-caption);padding:2px 8px;border-radius:10px;background:#eff6ff;color:#1d4ed8;">医保${d.medical_insurance_class}</span>` : ''}
-          ${d.essential_medicine ? `<span style="font-size:var(--text-caption);padding:2px 8px;border-radius:10px;background:#f0fdf4;color:#15803d;">基药</span>` : ''}
-          ${d.otc_class === '非处方药' ? `<span style="font-size:var(--text-caption);padding:2px 8px;border-radius:10px;background:#fef3c7;color:#92400e;">OTC</span>` : ''}
+          ${d.medical_insurance_class ? `<span style="font-size:var(--text-caption);padding:2px 8px;border-radius:var(--radius-10);background:#eff6ff;color:#1d4ed8;">医保${d.medical_insurance_class}</span>` : ''}
+          ${d.essential_medicine ? `<span style="font-size:var(--text-caption);padding:2px 8px;border-radius:var(--radius-10);background:#f0fdf4;color:#15803d;">基药</span>` : ''}
+          ${d.otc_class === '非处方药' ? `<span style="font-size:var(--text-caption);padding:2px 8px;border-radius:var(--radius-10);background:#fef3c7;color:#92400e;">OTC</span>` : ''}
         </div>
       </div>
     `).join('');

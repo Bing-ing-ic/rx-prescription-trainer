@@ -212,7 +212,7 @@
     if (!host) {
       host = document.createElement('div');
       host.id = 'acup-tuina-section';
-      host.style.cssText = 'margin:14px 0;padding:10px 12px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:8px;';
+      host.style.cssText = 'margin:14px 0;padding:10px 12px;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:var(--radius-md);';
       tbl.parentNode.insertBefore(host, tbl.nextSibling);
     }
     if (S.tuinaTechniques.length === 0) {
@@ -242,7 +242,7 @@
             ${groups[cat].map(t => {
               const on = S.selectedTechniques.indexOf(t.name) >= 0;
               return `<button type="button" class="tn-chip" data-tn="${t.name}" style="
-                padding:3px 10px;font-size:var(--text-12);border-radius:14px;cursor:pointer;
+                padding:3px 10px;font-size:var(--text-12);border-radius:var(--radius-14);cursor:pointer;
                 border:1px solid ${on ? '#1a6fb5' : '#cbd5e1'};
                 background:${on ? '#dbeafe' : '#fff'};
                 color:${on ? '#1e40af' : '#475569'};">${t.name}</button>`;

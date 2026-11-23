@@ -1,12 +1,14 @@
 # 推送重试备忘
 
-- 记录时间：2026-11-23（本地时区 UTC+8）
+- 最近更新：2026-11-23（本地时区 UTC+8）
 - 分支：`main`
-- 待推送提交：HEAD（`main` 相对 `origin/main` ahead 1；提交哈希以 `git log --oneline origin/main..main` 为准；amend 过程中曾用哈希 58603fb / 6c1f511）
-- 相对 `origin/main`：ahead 1
 - 远端：https://github.com/Bing-ing-ic/rx-prescription-trainer.git
-- 失败现象：`git push origin main` 返回 `fatal: unable to access ... Recv failure: Connection was reset`（网络/443 受阻，非提交问题）
-- 重试命令（网络恢复后在项目根目录执行）：
+- 当前状态：**已推送成功**。`9d4c687`（round3-followup2）已同步 `origin/main`，`git log origin/main..main` 为空，工作区干净。
+
+## 历史受阻记录（2026-11-23 早些时候）
+
+- 失败现象：`git push origin main` 返回 `fatal: unable to access ... Recv failure: Connection was reset`（网络/443 受阻，非提交问题）。
+- 本轮（followup2）push 一次成功，未再出现 reset；如后续再次受阻，重试命令：
   ```
   "C:\Program Files\Git\bin\git.exe" push origin main
   ```

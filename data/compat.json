@@ -1,6 +1,6 @@
 {
   "version": "2026.11",
-  "note": "四层配伍：solvent_drug 为溶媒-化药；drug_drug 为同一输液瓶内两化药；tcm_injection_rules 为中药注射剂单独输注规则与指定溶媒；tcm_exclusion 为中药注射剂之间及中药注射剂与化药之间的品种间互斥（scope: class 类规则 / same_bottle 不可同瓶 / same_line 通路先后须冲管）。compatibility: incompatible / caution / compatible / incompatible_with_any_other。",
+  "note": "四层配伍：solvent_drug 为溶媒-化药；drug_drug 为同一输液瓶内两化药；tcm_injection_rules 为中药注射剂单独输注规则与指定溶媒；tcm_exclusion 为品种间互斥/谨慎配对（scope: class 类规则 / same_bottle 不可同瓶 / same_line 通路先后须冲管），含中药注射剂两两成对行与有说明书/通报依据的中药注射剂×化药专属行。compatibility: incompatible / caution / compatible / incompatible_with_any_other。",
   "solvent_drug": [
     {
       "solvent": "0.9%氯化钠注射液 100ml",
@@ -326,6 +326,156 @@
       "drug": "柴胡注射液",
       "compatibility": "incompatible_with_any_other",
       "note": "中药注射剂严禁与其他药物混合配伍，必须单独注射；儿童禁用；过敏体质/老人/孕妇/肝肾功能异常者慎用，用药后密切观察30分钟。"
+    },
+    {
+      "drug": "参附注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "参附注射液",
+      "solvent_required": "5%葡萄糖注射液 250-500ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "参附注射液",
+      "solvent_required": "10%葡萄糖注射液 250-500ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "参附注射液",
+      "solvent_required": "0.9%氯化钠注射液 250-500ml（糖尿病患者）",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "黄芪注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "黄芪注射液",
+      "solvent_required": "0.9%氯化钠注射液（溶媒以具体厂家说明书为准）",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "复方当归注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "板蓝根注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "刺五加注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "刺五加注射液",
+      "solvent_required": "0.9%氯化钠注射液 100ml以上",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "刺五加注射液",
+      "solvent_required": "5%葡萄糖注射液 100ml以上",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "刺五加注射液",
+      "solvent_required": "10%葡萄糖注射液 100ml以上",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "双黄连注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "双黄连注射液",
+      "solvent_required": "0.9%氯化钠注射液 250-500ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "热毒宁注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "热毒宁注射液",
+      "solvent_required": "5%葡萄糖注射液 250ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "热毒宁注射液",
+      "solvent_required": "0.9%氯化钠注射液 250ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "注射用炎琥宁",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "注射用炎琥宁",
+      "solvent_required": "5%葡萄糖注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "注射用炎琥宁",
+      "solvent_required": "5%葡萄糖氯化钠注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "注射用穿琥宁",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "注射用穿琥宁",
+      "solvent_required": "0.9%氯化钠注射液",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "银杏达莫注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "银杏达莫注射液",
+      "solvent_required": "0.9%氯化钠注射液 500ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "银杏达莫注射液",
+      "solvent_required": "5%葡萄糖注射液 500ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "银杏达莫注射液",
+      "solvent_required": "10%葡萄糖注射液 500ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "野木瓜注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "莪术油注射液",
+      "compatibility": "incompatible_with_any_other",
+      "note": "中药注射剂严禁与其他药物混合配伍，必须单独成组/单独输注；首次使用缓慢滴注并密切观察过敏反应，用药后30分钟内重点监护。"
+    },
+    {
+      "drug": "莪术油注射液",
+      "solvent_required": "5%葡萄糖注射液 250-500ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
+    },
+    {
+      "drug": "莪术油注射液",
+      "solvent_required": "0.9%氯化钠注射液 250-500ml",
+      "note": "说明书首选溶媒；须单独输注，不得与其他药物同瓶混合。"
     }
   ],
   "tcm_exclusion": [
@@ -337,113 +487,211 @@
       "note": "中药注射剂严禁与其他药物同瓶混合；须单独成组/单独注射；同一输液通路先后使用须冲管间隔并加强监护。"
     },
     {
-      "drug_a": "清开灵注射液",
+      "drug_a": "丹参多酚酸盐注射液",
       "drug_b": "丹参注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "清开灵注射液",
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "刺五加注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "参附注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
       "drug_b": "参麦注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "清开灵注射液",
-      "drug_b": "血必净注射液",
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "双黄连注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "清开灵注射液",
-      "drug_b": "痰热清注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "生脉注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "血塞通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "醒脑静注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "脉络宁注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "血栓通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "天麻素注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "清开灵注射液",
+      "drug_a": "丹参多酚酸盐注射液",
       "drug_b": "喜炎平注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "清开灵注射液",
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "复方当归注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "天麻素注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "板蓝根注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
       "drug_b": "柴胡注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参多酚酸盐注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "刺五加注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "参附注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
@@ -457,6 +705,132 @@
     },
     {
       "drug_a": "丹参注射液",
+      "drug_b": "双黄连注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "喜炎平注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "复方当归注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "天麻素注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "板蓝根注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "柴胡注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "丹参注射液",
       "drug_b": "血必净注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
@@ -464,21 +838,7 @@
     },
     {
       "drug_a": "丹参注射液",
-      "drug_b": "痰热清注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "丹参注射液",
-      "drug_b": "生脉注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "丹参注射液",
-      "drug_b": "血塞通注射液",
+      "drug_b": "血栓通注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
@@ -492,63 +852,504 @@
     },
     {
       "drug_a": "丹参注射液",
-      "drug_b": "脉络宁注射液",
+      "drug_b": "野木瓜注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
       "drug_a": "丹参注射液",
-      "drug_b": "血栓通注射液",
+      "drug_b": "银杏达莫注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
       "drug_a": "丹参注射液",
-      "drug_b": "天麻素注射液",
+      "drug_b": "黄芪注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "丹参注射液",
-      "drug_b": "注射用苦参素",
+      "drug_a": "刺五加注射液",
+      "drug_b": "参附注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "丹参注射液",
-      "drug_b": "丹参多酚酸盐注射液",
+      "drug_a": "刺五加注射液",
+      "drug_b": "参麦注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "丹参注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
+      "drug_a": "刺五加注射液",
+      "drug_b": "双黄连注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "丹参注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "丹参注射液",
+      "drug_a": "刺五加注射液",
       "drug_b": "喜炎平注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "丹参注射液",
+      "drug_a": "刺五加注射液",
+      "drug_b": "复方当归注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "天麻素注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "板蓝根注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
       "drug_b": "柴胡注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "刺五加注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "参麦注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "双黄连注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "喜炎平注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "复方当归注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "天麻素注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "板蓝根注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "柴胡注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "双黄连注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "喜炎平注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "复方当归注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "天麻素注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "板蓝根注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "柴胡注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "血塞通注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
@@ -562,721 +1363,217 @@
     },
     {
       "drug_a": "参麦注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "参麦注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "喜炎平注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "复方当归注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "天麻素注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "板蓝根注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "柴胡注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
       "drug_b": "痰热清注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "参麦注射液",
-      "drug_b": "生脉注射液",
+      "drug_a": "双黄连注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "参麦注射液",
+      "drug_a": "双黄连注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
       "drug_b": "血塞通注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "参麦注射液",
+      "drug_a": "双黄连注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
       "drug_b": "醒脑静注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "参麦注射液",
-      "drug_b": "脉络宁注射液",
+      "drug_a": "双黄连注射液",
+      "drug_b": "野木瓜注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "参麦注射液",
-      "drug_b": "血栓通注射液",
+      "drug_a": "双黄连注射液",
+      "drug_b": "银杏达莫注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "参麦注射液",
+      "drug_a": "双黄连注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "复方当归注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
       "drug_b": "天麻素注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
     },
     {
-      "drug_a": "参麦注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "参麦注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "参麦注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "参麦注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "参麦注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "参麦注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "痰热清注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "生脉注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "血塞通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "醒脑静注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "脉络宁注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "血栓通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "天麻素注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血必净注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "生脉注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "血塞通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "醒脑静注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "脉络宁注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "血栓通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "天麻素注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "痰热清注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "血塞通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "醒脑静注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "脉络宁注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "血栓通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "天麻素注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "生脉注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "醒脑静注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "脉络宁注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "血栓通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "天麻素注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血塞通注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "醒脑静注射液",
-      "drug_b": "脉络宁注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "醒脑静注射液",
-      "drug_b": "血栓通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "醒脑静注射液",
-      "drug_b": "天麻素注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "醒脑静注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "醒脑静注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "醒脑静注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "醒脑静注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "醒脑静注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "醒脑静注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "脉络宁注射液",
-      "drug_b": "血栓通注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "脉络宁注射液",
-      "drug_b": "天麻素注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "脉络宁注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "脉络宁注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "脉络宁注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "脉络宁注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "脉络宁注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "脉络宁注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血栓通注射液",
-      "drug_b": "天麻素注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血栓通注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血栓通注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血栓通注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血栓通注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血栓通注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "血栓通注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "天麻素注射液",
-      "drug_b": "注射用苦参素",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "天麻素注射液",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "天麻素注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "天麻素注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "天麻素注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "天麻素注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "注射用苦参素",
-      "drug_b": "丹参多酚酸盐注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "注射用苦参素",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "注射用苦参素",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "注射用苦参素",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "注射用苦参素",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "丹参多酚酸盐注射液",
-      "drug_b": "红花黄色素氯化钠注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "丹参多酚酸盐注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "丹参多酚酸盐注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "丹参多酚酸盐注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "红花黄色素氯化钠注射液",
-      "drug_b": "苦黄注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "红花黄色素氯化钠注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "红花黄色素氯化钠注射液",
-      "drug_b": "柴胡注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "苦黄注射液",
-      "drug_b": "喜炎平注射液",
-      "scope": "same_bottle",
-      "compatibility": "incompatible",
-      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
-    },
-    {
-      "drug_a": "苦黄注射液",
-      "drug_b": "柴胡注射液",
+      "drug_a": "喜炎平注射液",
+      "drug_b": "板蓝根注射液",
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
@@ -1287,6 +1584,1889 @@
       "scope": "same_bottle",
       "compatibility": "incompatible",
       "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "喜炎平注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "天麻素注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "板蓝根注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "柴胡注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "复方当归注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "板蓝根注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "柴胡注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "天麻素注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "柴胡注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "板蓝根注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "注射用炎琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "柴胡注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "注射用穿琥宁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "注射用苦参素",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "清开灵注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "注射用苦参素",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "热毒宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "清开灵注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "生脉注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "痰热清注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "生脉注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "红花黄色素氯化钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "痰热清注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "脉络宁注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "红花黄色素氯化钠注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "脉络宁注射液",
+      "drug_b": "苦黄注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "脉络宁注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "脉络宁注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "脉络宁注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "脉络宁注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "脉络宁注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "脉络宁注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "脉络宁注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "脉络宁注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "苦黄注射液",
+      "drug_b": "莪术油注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "苦黄注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "苦黄注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "苦黄注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "苦黄注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "苦黄注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "苦黄注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "苦黄注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "血塞通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血塞通注射液",
+      "drug_b": "血必净注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血塞通注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血塞通注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血塞通注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血塞通注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血塞通注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血必净注射液",
+      "drug_b": "血栓通注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血必净注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血必净注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血必净注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血必净注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血栓通注射液",
+      "drug_b": "醒脑静注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血栓通注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血栓通注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "血栓通注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "醒脑静注射液",
+      "drug_b": "野木瓜注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "醒脑静注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "醒脑静注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "野木瓜注射液",
+      "drug_b": "银杏达莫注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "野木瓜注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "银杏达莫注射液",
+      "drug_b": "黄芪注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "两种中药注射剂严禁同瓶混合配伍；须分别单独成组/单独注射，同一通路先后使用须冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "盐酸左氧氟沙星注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书/2009年不良反应通报：双黄连注射剂与喹诺酮类（左氧氟沙星）同瓶可致沉淀并增加严重不良反应风险，分开输注并冲管间隔。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "维生素C注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍提示：双黄连注射液与维生素C不宜同瓶混合配伍。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "地塞米松磷酸钠注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍提示：双黄连注射液与糖皮质激素（地塞米松）不宜同瓶混合配伍。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "注射用头孢曲松钠",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍提示：双黄连注射液与头孢菌素类（头孢曲松）不宜同瓶混合配伍。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "注射用头孢哌酮钠舒巴坦钠",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍提示：双黄连注射液与头孢菌素类（头孢哌酮）不宜同瓶混合配伍。"
+    },
+    {
+      "drug_a": "双黄连注射液",
+      "drug_b": "氨茶碱注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍提示：双黄连注射液与氨茶碱不宜同瓶混合配伍。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "阿米卡星",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书注意事项：炎琥宁不宜与氨基糖苷类（阿米卡星）配伍。"
+    },
+    {
+      "drug_a": "注射用炎琥宁",
+      "drug_b": "盐酸左氧氟沙星注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书注意事项：炎琥宁不宜与喹诺酮类（左氧氟沙星）配伍。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "阿米卡星",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "通报/说明书：穿琥宁不宜与氨基糖苷类（阿米卡星）配伍。"
+    },
+    {
+      "drug_a": "注射用穿琥宁",
+      "drug_b": "盐酸左氧氟沙星注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书：穿琥宁不宜与喹诺酮类（左氧氟沙星）配伍。"
+    },
+    {
+      "drug_a": "丹参酮ⅡA磺酸钠注射液",
+      "drug_b": "盐酸氨溴索注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书：丹参酮ⅡA磺酸钠不可与盐酸氨溴索配伍（可致浑浊/沉淀）。"
+    },
+    {
+      "drug_a": "丹参酮ⅡA磺酸钠注射液",
+      "drug_b": "西咪替丁",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书：丹参酮ⅡA磺酸钠不可与西咪替丁配伍（可致浑浊/沉淀）。"
+    },
+    {
+      "drug_a": "丹参酮ⅡA磺酸钠注射液",
+      "drug_b": "注射用克林霉素磷酸酯",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书：丹参酮ⅡA磺酸钠不可与盐酸克林霉素类配伍（可致浑浊/沉淀）。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "注射用头孢曲松钠",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "2004年第7期不良反应通报：莪术油注射液禁忌与头孢曲松配伍。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "注射用头孢哌酮钠舒巴坦钠",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "2004年第7期不良反应通报：莪术油注射液禁忌与头孢哌酮配伍。"
+    },
+    {
+      "drug_a": "莪术油注射液",
+      "drug_b": "呋塞米注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "2004年第7期不良反应通报：莪术油注射液禁忌与呋塞米（速尿）配伍。"
+    },
+    {
+      "drug_a": "热毒宁注射液",
+      "drug_b": "阿米卡星",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书：热毒宁与氨基糖苷类（阿米卡星）配伍可产生混浊/沉淀，避免同瓶。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "注射用奥美拉唑钠",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍禁忌：参附注射液避免与注射用奥美拉唑钠混合配伍。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "注射用辅酶A",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍禁忌：参附注射液避免与辅酶A混合配伍。"
+    },
+    {
+      "drug_a": "参附注射液",
+      "drug_b": "氨茶碱注射液",
+      "scope": "same_bottle",
+      "compatibility": "incompatible",
+      "note": "说明书配伍禁忌：参附注射液避免与氨茶碱混合配伍。"
     }
   ]
 }

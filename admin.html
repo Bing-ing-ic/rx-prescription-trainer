@@ -6,9 +6,27 @@
 <title>管理控制台 · 处方推演训练平台</title>
 <style>
   :root{
+    /* 主色（与 rx.css 同值） */
     --blue-deep:#0f4c81; --blue-mid:#1a6fb5; --blue-light:#2c7be5;
     --ink:#1e293b; --muted:#64748b; --line:#e2e8f0; --bg:#eef4fb;
     --green:#16a34a; --red:#dc2626; --amber:#d97706;
+    /* 灰阶/语义色（对齐 rx.css 令牌值） */
+    --gray-900:#1e293b; --gray-500:#64748b; --gray-200:#e2e8f0; --gray-100:#f1f5f9; --gray-50:#f8fafc;
+    --ok-600:#16a34a; --ok-100:#dcfce7; --ok-700:#15803d;
+    --danger-600:#dc2626; --danger-100:#fee2e2; --danger-700:#b91c1c;
+    --warn-600:#d97706; --warn-100:#fef3c7; --warn-700:#b45309; --warn-50:#fffbeb;
+    --info-50:#eff6ff; --info-700:#1e40af;
+    --tcm-600:#8b5a2b; --acup-600:#2f7a4f;
+    /* 字号（对齐 rx.css） */
+    --text-xs:10px; --text-caption:11px; --text-12:12px; --text-13:13px; --text-base:14px;
+    --text-lg:16px; --text-xl:18px; --text-34:34px;
+    /* 圆角（对齐 rx.css） */
+    --radius-sm:4px; --radius-md:8px; --radius-lg:16px;
+    --radius-2:2px; --radius-9:9px; --radius-10:10px; --radius-20:20px;
+    /* 间距（对齐 rx.css；26px 为本页补充档） */
+    --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px;
+    --space-2px:2px; --space-6px:6px; --space-7px:7px; --space-9px:9px; --space-10px:10px; --space-14px:14px;
+    --space-18px:18px; --space-20px:20px; --space-22px:22px; --space-26px:26px; --space-28px:28px; --space-40px:40px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{
@@ -16,97 +34,97 @@
     background:
       radial-gradient(1200px 500px at 90% -10%, rgba(44,123,229,.15), transparent 60%),
       var(--bg);
-    color:var(--ink); min-height:100vh; padding-bottom:40px;
+    color:var(--ink); min-height:100vh; padding-bottom:var(--space-40px);
   }
   /* ===== 顶栏 ===== */
   .topbar{
     background:linear-gradient(135deg,#0a1628 0%,#0f4c81 55%,#1a6fb5 100%);
-    color:#fff; padding:14px 28px; display:flex; align-items:center; justify-content:space-between;
+    color:#fff; padding:var(--space-14px) var(--space-28px); display:flex; align-items:center; justify-content:space-between;
     box-shadow:0 4px 16px rgba(15,76,129,.25); position:sticky; top:0; z-index:50;
   }
-  .topbar .brand{display:flex; align-items:center; gap:10px; font-size:var(--text-lg); font-weight:700; letter-spacing:1px;}
+  .topbar .brand{display:flex; align-items:center; gap:var(--space-10px); font-size:var(--text-lg); font-weight:700; letter-spacing:1px;}
   .topbar .brand .logo{
     width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.15);
     border:1px solid rgba(255,255,255,.4); display:flex;align-items:center;justify-content:center;font-size:var(--text-xl);
   }
-  .topbar .ops{display:flex; gap:10px;}
+  .topbar .ops{display:flex; gap:var(--space-10px);}
   .topbar button{
     background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35); color:#fff;
-    padding:7px 16px; border-radius:var(--radius-9); cursor:pointer; font-size:var(--text-13); transition:background .2s;
+    padding:var(--space-7px) var(--space-4); border-radius:var(--radius-9); cursor:pointer; font-size:var(--text-13); transition:background .2s;
   }
   .topbar button:hover{background:rgba(255,255,255,.28);}
-  .wrap{max-width:1080px; margin:24px auto; padding:0 20px;}
+  .wrap{max-width:1080px; margin:var(--space-5) auto; padding:0 var(--space-20px);}
   /* ===== 区块标题 ===== */
   .section-title{
-    font-size:var(--text-lg); font-weight:800; color:var(--blue-deep); margin:26px 0 14px;
-    display:flex; align-items:center; gap:8px;
+    font-size:var(--text-lg); font-weight:800; color:var(--blue-deep); margin:var(--space-26px) 0 var(--space-14px);
+    display:flex; align-items:center; gap:var(--space-2);
   }
   .section-title::before{content:""; width:4px; height:18px; border-radius:var(--radius-2);
     background:linear-gradient(180deg,var(--blue-light),var(--blue-deep));}
   /* ===== 统计卡片 ===== */
-  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px;}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--space-4);}
   .card{
     background:rgba(255,255,255,.8); backdrop-filter:blur(10px);
-    border:1px solid #fff; border-radius:var(--radius-lg); padding:20px;
+    border:1px solid #fff; border-radius:var(--radius-lg); padding:var(--space-20px);
     box-shadow:0 6px 20px rgba(15,76,129,.08);
   }
-  .card .label{font-size:var(--text-13); color:var(--muted); display:flex; align-items:center; gap:6px;}
-  .card .num{font-size:var(--text-34); font-weight:800; color:var(--blue-deep); margin:8px 0 2px; line-height:1.1;}
+  .card .label{font-size:var(--text-13); color:var(--muted); display:flex; align-items:center; gap:var(--space-6px);}
+  .card .num{font-size:var(--text-34); font-weight:800; color:var(--blue-deep); margin:var(--space-2) 0 var(--space-2px); line-height:1.1;}
   .card .num.green{color:var(--green);}
   .card .num.amber{color:var(--amber);}
-  .card .sub{font-size:var(--text-caption); color:#64748b;}
+  .card .sub{font-size:var(--text-caption); color:var(--muted);}
   /* ===== 面板 ===== */
   .panel{
     background:rgba(255,255,255,.85); border:1px solid #fff; border-radius:var(--radius-lg);
-    box-shadow:0 6px 20px rgba(15,76,129,.08); padding:20px 22px; margin-bottom:16px;
+    box-shadow:0 6px 20px rgba(15,76,129,.08); padding:var(--space-20px) var(--space-22px); margin-bottom:var(--space-4);
   }
   table{width:100%; border-collapse:collapse; font-size:var(--text-13);}
-  th{text-align:left; color:var(--muted); font-weight:600; font-size:var(--text-12); padding:8px 10px;
+  th{text-align:left; color:var(--muted); font-weight:600; font-size:var(--text-12); padding:var(--space-2) var(--space-10px);
     border-bottom:2px solid var(--line);}
-  td{padding:9px 10px; border-bottom:1px solid #f1f5f9;}
-  tr:hover td{background:#f8fafc;}
-  .tag{display:inline-block; padding:2px 9px; border-radius:var(--radius-20); font-size:var(--text-caption); font-weight:600;}
-  .tag.good{background:#dcfce7; color:#15803d;}
-  .tag.mid{background:#fef3c7; color:#b45309;}
-  .tag.bad{background:#fee2e2; color:#b91c1c;}
+  td{padding:var(--space-9px) var(--space-10px); border-bottom:1px solid var(--gray-100);}
+  tr:hover td{background:var(--gray-50);}
+  .tag{display:inline-block; padding:var(--space-2px) var(--space-9px); border-radius:var(--radius-20); font-size:var(--text-caption); font-weight:600;}
+  .tag.good{background:var(--ok-100); color:var(--ok-700);}
+  .tag.mid{background:var(--warn-100); color:var(--warn-700);}
+  .tag.bad{background:var(--danger-100); color:var(--danger-700);}
   /* 八维条形 */
-  .radar-bars{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px 24px;}
-  .radar-bars .rb{display:flex; align-items:center; gap:10px; font-size:var(--text-13);}
+  .radar-bars{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--space-2) var(--space-5);}
+  .radar-bars .rb{display:flex; align-items:center; gap:var(--space-10px); font-size:var(--text-13);}
   .radar-bars .rb .nm{width:70px; color:var(--muted); flex-shrink:0;}
-  .radar-bars .rb .track{flex:1; height:8px; background:#e2e8f0; border-radius:var(--radius-sm); overflow:hidden;}
+  .radar-bars .rb .track{flex:1; height:8px; background:var(--line); border-radius:var(--radius-sm); overflow:hidden;}
   .radar-bars .rb .fill{height:100%; background:linear-gradient(90deg,#38bdf8,var(--blue-deep)); border-radius:var(--radius-sm);}
   .radar-bars .rb .v{width:36px; text-align:right; font-weight:700; color:var(--blue-deep);}
-  .empty{color:#64748b; text-align:center; padding:24px 0; font-size:var(--text-13);}
+  .empty{color:var(--muted); text-align:center; padding:var(--space-5) 0; font-size:var(--text-13);}
   /* 设置区 */
-  .setting-row{display:flex; align-items:center; justify-content:space-between; gap:16px;
-    padding:14px 0; border-bottom:1px solid #f1f5f9; flex-wrap:wrap;}
+  .setting-row{display:flex; align-items:center; justify-content:space-between; gap:var(--space-4);
+    padding:var(--space-14px) 0; border-bottom:1px solid var(--gray-100); flex-wrap:wrap;}
   .setting-row:last-child{border-bottom:none;}
   .setting-row .desc{font-size:var(--text-13);}
-  .setting-row .desc b{display:block; color:var(--ink); margin-bottom:2px;}
+  .setting-row .desc b{display:block; color:var(--ink); margin-bottom:var(--space-2px);}
   .setting-row .desc span{color:var(--muted); font-size:var(--text-12);}
   .btn{
-    padding:8px 18px; border-radius:var(--radius-9); border:1.5px solid var(--blue-mid);
+    padding:var(--space-2) var(--space-18px); border-radius:var(--radius-9); border:1.5px solid var(--blue-mid);
     background:#fff; color:var(--blue-mid); font-size:var(--text-13); font-weight:600; cursor:pointer; transition:all .15s;
   }
   .btn:hover{background:var(--blue-mid); color:#fff;}
   .btn.danger{border-color:var(--red); color:var(--red);}
   .btn.danger:hover{background:var(--red); color:#fff;}
   .btn.primary{background:linear-gradient(135deg,var(--blue-deep),var(--blue-light)); color:#fff; border:none;}
-  .pwd-row{display:flex; gap:8px;}
+  .pwd-row{display:flex; gap:var(--space-2);}
   .pwd-row input{
-    padding:8px 12px; border:1.5px solid var(--line); border-radius:var(--radius-9); font-size:var(--text-13); width:130px; outline:none;
+    padding:var(--space-2) var(--space-3); border:1.5px solid var(--line); border-radius:var(--radius-9); font-size:var(--text-13); width:130px; outline:none;
   }
   .pwd-row input:focus{border-color:var(--blue-mid);}
   .toast{
     position:fixed; top:70px; left:50%; transform:translateX(-50%);
-    background:#0f4c81; color:#fff; padding:10px 22px; border-radius:var(--radius-10); font-size:var(--text-13);
+    background:var(--blue-deep); color:#fff; padding:var(--space-10px) var(--space-22px); border-radius:var(--radius-10); font-size:var(--text-13);
     box-shadow:0 8px 24px rgba(0,0,0,.2); opacity:0; pointer-events:none; transition:opacity .25s; z-index:99;
   }
   .toast.show{opacity:1;}
   details.mistake-detail summary{cursor:pointer; font-size:var(--text-12); color:var(--blue-mid); outline:none;}
-  .rule-top{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
-  .rule-chip{background:#eff6ff; border:1px solid #bfdbfe; color:#1e40af; border-radius:var(--radius-20);
-    padding:4px 12px; font-size:var(--text-12); font-weight:600;}
+  .rule-top{display:flex; gap:var(--space-2); flex-wrap:wrap; margin-top:var(--space-2);}
+  .rule-chip{background:var(--info-50); border:1px solid #bfdbfe; color:var(--info-700); border-radius:var(--radius-20);
+    padding:var(--space-1) var(--space-3); font-size:var(--text-12); font-weight:600;}
   .rule-chip b{color:var(--red);}
 </style>
 </head>
@@ -122,7 +140,7 @@
 
 <div class="wrap">
 
-  <div style="background:#fffbeb;border:1px solid #fcd34d;color:#92400e;padding:10px 16px;border-radius:var(--radius-10);font-size:var(--text-12);margin-bottom:18px;line-height:1.6;">
+  <div style="background:var(--warn-50);border:1px solid #fcd34d;color:var(--warn-700);padding:var(--space-10px) var(--space-4);border-radius:var(--radius-10);font-size:var(--text-12);margin-bottom:var(--space-18px);line-height:1.6;">
     ℹ️ <b>演示说明：</b>本控制台为纯前端演示，所有学习记录、错题本与登录态仅保存在当前浏览器 localStorage / sessionStorage 中，<b>不写入任何服务端</b>；更换设备、清理浏览器数据后数据不可恢复。
   </div>
 
@@ -148,7 +166,7 @@
 
   <!-- ====== 2. 学习记录统计 ====== -->
   <div class="section-title">🎓 学习记录统计</div>
-  <div class="cards" style="margin-bottom:16px;">
+  <div class="cards" style="margin-bottom:var(--space-4);">
     <div class="card"><div class="label">📝 累计练习次数</div><div class="num" id="st-count">-</div><div class="sub">最近保留 20 次</div></div>
     <div class="card"><div class="label">📈 平均分</div><div class="num" id="st-avg">-</div><div class="sub">满分 100</div></div>
     <div class="card"><div class="label">🏆 最高分</div><div class="num green" id="st-best">-</div><div class="sub">历史最佳</div></div>
@@ -167,7 +185,7 @@
 
   <!-- ====== 3. 错题本统计 ====== -->
   <div class="section-title">📕 错题本统计</div>
-  <div class="cards" style="margin-bottom:16px;">
+  <div class="cards" style="margin-bottom:var(--space-4);">
     <div class="card"><div class="label">📒 错题条目</div><div class="num" id="mk-count">-</div><div class="sub">最多保留 100 条</div></div>
     <div class="card"><div class="label">❌ 错误命中</div><div class="num" style="color:var(--red)" id="mk-errors">-</div><div class="sub">规则 error 级</div></div>
     <div class="card"><div class="label">⚠️ 警告命中</div><div class="num amber" id="mk-warns">-</div><div class="sub">规则 warn 级</div></div>
@@ -185,10 +203,10 @@
 
   <!-- ====== 4. 分模块训练统计 ====== -->
   <div class="section-title">🧩 分模块训练统计</div>
-  <div class="cards" style="margin-bottom:16px;">
+  <div class="cards" style="margin-bottom:var(--space-4);">
     <div class="card"><div class="label">⚕ 西医处方</div><div class="num" id="mod-western">-</div><div class="sub">训练次数</div></div>
-    <div class="card"><div class="label">☯ 中医汉方</div><div class="num" style="color:#8b5a2b" id="mod-tcm">-</div><div class="sub">训练次数</div></div>
-    <div class="card"><div class="label">针 针灸推拿</div><div class="num" style="color:#2f7a4f" id="mod-acup">-</div><div class="sub">训练次数</div></div>
+    <div class="card"><div class="label">☯ 中医汉方</div><div class="num" style="color:var(--tcm-600)" id="mod-tcm">-</div><div class="sub">训练次数</div></div>
+    <div class="card"><div class="label">针 针灸推拿</div><div class="num" style="color:var(--acup-600)" id="mod-acup">-</div><div class="sub">训练次数</div></div>
   </div>
 
   <!-- ====== 5. 系统设置 ====== -->
@@ -348,7 +366,7 @@
           <td style="color:var(--red);font-weight:700">${(m.errors||[]).length}</td>
           <td style="color:var(--amber);font-weight:700">${(m.warns||[]).length}</td>
           <td><details class="mistake-detail"><summary>展开</summary>
-            <div style="margin-top:8px;font-size:var(--text-12);color:var(--muted);">
+            <div style="margin-top:var(--space-2);font-size:var(--text-12);color:var(--muted);">
               ${(m.errors||[]).map(e=>`❌ [${e.rule_id}] ${e.title}：${e.message||''}<br>`).join('')}
               ${(m.warns||[]).map(w=>`⚠️ [${w.rule_id}] ${w.title}：${w.message||''}<br>`).join('')}
             </div></details>

@@ -394,6 +394,7 @@
 
   function readHistorySafe() { return store.getJSON('rx-profile-history', []); }
   function readMistakesSafe() { return store.getJSON('rx-mistakes', []); }
+  function readPitfallSafe() { return store.getJSON('rx-pitfall-mistakes', []); }
 
   function moduleOf(h) { return h.module || '西医'; }
   var ALL_MODULES = ['', '西医', '中医汉方', '针灸推拿', '解剖学'];
@@ -615,8 +616,27 @@
     if (!box) return;
     var filtered = arr.map(function (m, i) { return { m: m, idx: i }; }).filter(function (x) { return mistakePassFilter(x.m); });
 
+    // P4-2 诊断陷阱错题（单独段落，不与处方错题混排），与 app.js 错题本同源
+    var wrongPit = readPitfallSafe().filter(function (p) { return !p.is_correct; });
+    var pitHtml = '';
+    if (wrongPit.length > 0) {
+      pitHtml = '<div style="margin-top: var(--space-20px);padding-top: var(--space-4);border-top:2px dashed #cbd5e1;">' +
+        '<h3 style="color:#0f4c81;margin-bottom: var(--space-10px);">🎯 诊断陷阱错题（' + wrongPit.length + '）</h3>' +
+        wrongPit.map(function (p) {
+          return '<div class="mistake-card" style="border-left:4px solid #dc2626;">' +
+            '<div class="mistake-head"><span class="tag tag-diff">诊断陷阱</span>' +
+            '<span class="muted">' + new Date(p.t || Date.now()).toLocaleString() + '</span></div>' +
+            '<div style="margin: var(--space-2) 0;font-size:var(--text-13);color:var(--gray-700);line-height:1.6;">' +
+            '<b>主诉：</b>' + escapeHtml(p.chief_complaint || '') + '<br>' +
+            '<b>你误判为：</b><span style="color:#dc2626;">' + escapeHtml(p.chosen || '') + '</span><br>' +
+            '<b>正确诊断：</b><span style="color:#166534;">' + escapeHtml(p.correct_diagnosis || '') + '</span></div>' +
+            '<div class="sug" style="font-size:var(--text-12);color:#64748b;">💡 ' + escapeHtml(p.teaching_tip || '') + '</div>' +
+            '</div>';
+        }).join('') + '</div>';
+    }
+
     if (filtered.length === 0) {
-      box.innerHTML = '<p class="muted center">' + (arr.length === 0 ? '暂无错题，继续保持！🎉' : '当前筛选条件下暂无错题。') + '</p>';
+      box.innerHTML = pitHtml || '<p class="muted center">' + (arr.length === 0 ? '暂无错题，继续保持！🎉' : '当前筛选条件下暂无错题。') + '</p>';
       return;
     }
     box.innerHTML = filtered.map(function (x) {
@@ -649,7 +669,7 @@
           '<button class="btn btn-sm btn-danger qr-remove-btn" data-midx="' + i + '">🗑 移除此条</button>' +
         '</div>' +
       '</div>';
-    }).join('');
+    }).join('') + pitHtml;
 
     // 绑定移除
     box.querySelectorAll('.qr-remove-btn').forEach(function (b) {

@@ -538,30 +538,30 @@
     },
     {
       "code": "TCM-013",
-      "name": "不寐-心火偏亢证",
+      "name": "不寐-肝血不足虚热内扰证",
       "difficulty": "中级",
       "syndrome_type": "脏腑辨证",
       "patient": {
         "gender": "女",
         "age_range": [25, 34],
         "pregnant": true,
-        "note": "妊娠6个月女性，心烦失眠；处方禁用朱砂等妊娠禁用药，须改用养血安神之品"
+        "note": "妊娠6个月女性，虚烦失眠；须选用妊娠安全的养血安神之品，避免使用妊娠禁忌药"
       },
       "symptom_pool": {
         "chief_complaint": [
-          "心烦不寐，口干舌燥，小便短赤反复1周"
+          "虚烦不寐，心悸不安，头目眩晕反复1周"
         ],
         "history": [
-          "口舌生疮，伴心悸不安，舌尖红"
+          "咽干口燥，多梦易醒，体倦乏力"
         ],
         "tongue": [
-          "舌尖红，少苔"
+          "舌红，少苔"
         ],
         "pulse": [
-          "细数"
+          "弦细"
         ],
         "exam": [
-          "口腔黏膜溃疡，舌尖红赤，焦虑面容"
+          "焦虑面容，唇色偏淡"
         ]
       },
       "differential": [
@@ -569,22 +569,21 @@
         "阴虚火旺",
         "痰热内扰"
       ],
-      "syndrome_differentiation": "心火偏亢，阴血不足证",
-      "treatment_principle": "镇心安神，清热养血",
-      "reference_formula_code": "ZSAST",
+      "syndrome_differentiation": "肝血不足，虚热内扰证",
+      "treatment_principle": "养血安神，清热除烦",
+      "reference_formula_code": "SZRT",
       "reference_herbs": [
-        "朱砂 0.1-0.5g（研末冲服，不入煎剂）",
-        "黄连",
-        "当归",
-        "生地黄",
-        "炙甘草"
+        "酸枣仁 15g",
+        "茯苓 6g",
+        "知母 6g",
+        "川芎 6g",
+        "甘草 3g"
       ],
       "contraindications": [
-        "朱砂含汞不可久服",
-        "肝肾功能不全者禁用",
-        "孕妇禁用"
+        "痰热内扰失眠者不宜",
+        "实热郁火者慎用"
       ],
-      "special_note": "朱砂只入丸散，不入煎剂；不可与碘溴化物同用"
+      "special_note": "妊娠期间用药宜谨慎，本方所选药味均属妊娠安全之品；川芎量小活血力弱，须在医师指导下随证加减"
     },
     {
       "code": "TCM-014",

@@ -249,7 +249,7 @@
         ' <small class="muted">(' + sec.items.length + ')</small></div>' +
         '<div class="qr-card-grid">' +
         sec.items.map(function (it) {
-          return '<div class="qr-card" data-qr="' + escapeHtml(it.key) + '">' +
+          return '<div class="qr-card" role="button" tabindex="0" data-qr="' + escapeHtml(it.key) + '">' +
             '<div class="qr-card-name">' + it.name + '</div>' +
             '<div class="qr-card-sub">' + escapeHtml(it.sub || '') + '</div>' +
             (it.meta ? '<div class="qr-card-meta">' + escapeHtml(it.meta) + '</div>' : '') +
@@ -260,12 +260,16 @@
 
     // 绑定卡片点击
     box.querySelectorAll('.qr-card').forEach(function (card) {
-      card.onclick = function () {
+      var activate = function () {
         var key = card.getAttribute('data-qr');
         for (var i = 0; i < sections.length; i++) {
           var it = sections[i].items.find(function (x) { return x.key === key; });
           if (it) { qrShowDetail(it.payload); break; }
         }
+      };
+      card.onclick = activate;
+      card.onkeydown = function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
       };
     });
   }

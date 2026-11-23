@@ -3068,15 +3068,6 @@
           "duration": "早餐前30分钟，疗程8周",
           "note": "规范足疗程，症状缓解后逐步减量或按需维持",
           "rationale": "PPI，抑制胃酸分泌，促进反流性食管炎黏膜愈合"
-        },
-        {
-          "generic_name": "艾司奥美拉唑镁肠溶片",
-          "dose": "20mg",
-          "frequency": "qd",
-          "route": "口服",
-          "duration": "早餐前，8周",
-          "note": "首剂生物利用度高，夜间反流明显者晚餐前加服",
-          "rationale": "PPI抑酸更持久，用于症状较重或奥美拉唑效果不佳者"
         }
       ],
       "second_line": [
@@ -3360,15 +3351,6 @@
           "duration": "活动期4-8周，缓解后改维持量长期",
           "note": "足量诱导缓解，不可自行停药防复发",
           "rationale": "5-ASA制剂，局部作用于结肠黏膜，轻中度UC诱导及维持缓解首选"
-        },
-        {
-          "generic_name": "美沙拉嗪缓释颗粒",
-          "dose": "1.0g",
-          "frequency": "qid",
-          "route": "口服",
-          "duration": "4-8周",
-          "note": "可与局部栓剂配合用于直肠乙状结肠病变",
-          "rationale": "5-ASA，覆盖远端结肠"
         }
       ],
       "second_line": [
@@ -3824,15 +3806,6 @@
           "duration": "5-7天",
           "note": "餐后服；肾功能不全者禁用",
           "rationale": "人工合成抗菌药，在尿中浓度高，覆盖大肠埃希菌等，为非复杂膀胱炎一线"
-        },
-        {
-          "generic_name": "左氧氟沙星片",
-          "dose": "0.2g",
-          "frequency": "bid",
-          "route": "口服",
-          "duration": "3天",
-          "note": "成人；18岁以下、孕妇禁用；餐后服",
-          "rationale": "喹诺酮类，尿浓度高，成人短程3日疗法"
         }
       ],
       "second_line": [
@@ -3927,15 +3900,6 @@
           "duration": "症状控制后再用数天，一般≤2周",
           "note": "二代抗组胺，嗜睡作用轻",
           "rationale": "第二代H1抗组胺药，为急性荨麻疹首选"
-        },
-        {
-          "generic_name": "西替利嗪片",
-          "dose": "10mg",
-          "frequency": "qn",
-          "route": "口服",
-          "duration": "≤2周",
-          "note": "夜间瘙痒明显者睡前服",
-          "rationale": "二代H1抗组胺，止痒消风团"
         }
       ],
       "second_line": [

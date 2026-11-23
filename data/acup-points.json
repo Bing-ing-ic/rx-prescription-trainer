@@ -3238,6 +3238,58 @@
       ],
       "needling_method": "直刺0.5-1寸；可灸",
       "special_note": "胆经经穴（火）；纳子法实证泻子穴"
+    },
+    {
+      "code": "ST-12",
+      "name": "缺盆",
+      "pinyin": "quepen",
+      "meridian": "足阳明胃经",
+      "location": "锁骨上窝中央，前正中线旁开4寸",
+      "category": "气街部腧穴",
+      "functions": "宽胸利膈，止咳平喘",
+      "indications": [
+        "咳嗽",
+        "气喘",
+        "咽喉肿痛",
+        "缺盆中痛"
+      ],
+      "needling_method": "斜刺0.3-0.5寸，不宜深刺",
+      "special_note": "孕妇禁针"
+    },
+    {
+      "code": "RN-5",
+      "name": "石门",
+      "pinyin": "shimen",
+      "meridian": "任脉",
+      "location": "前正中线上，脐下2寸",
+      "category": "三焦募穴",
+      "functions": "温阳益气，通调三焦",
+      "indications": [
+        "腹痛",
+        "泄泻",
+        "水肿",
+        "遗尿",
+        "闭经带下"
+      ],
+      "needling_method": "直刺0.5-1寸",
+      "special_note": "孕妇禁针"
+    },
+    {
+      "code": "LR-11",
+      "name": "急脉",
+      "pinyin": "jimai",
+      "meridian": "足厥阴肝经",
+      "location": "耻骨联合下旁开2.5寸，大腿内侧沟中",
+      "category": "肝经腧穴",
+      "functions": "疏肝理气，通络止痛",
+      "indications": [
+        "疝气",
+        "阴挺",
+        "少腹痛",
+        "外阴肿痛"
+      ],
+      "needling_method": "避开动脉，平刺或斜刺0.5-0.8寸",
+      "special_note": "针刺避开阴部血管；孕妇慎针"
     }
   ]
 }

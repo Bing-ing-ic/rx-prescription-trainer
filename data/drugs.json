@@ -865,7 +865,7 @@
         "0.9%氯化钠注射液 250ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [
         "青霉素过敏慎用",
         "用药期间及停药1周内禁酒",
@@ -1492,7 +1492,7 @@
         "0.9%氯化钠注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [
         "不能与含钙溶液配伍"
       ],
@@ -1566,7 +1566,7 @@
         "0.9%氯化钠注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [
         "双硫仑样反应",
         "可引起凝血功能障碍",
@@ -3621,7 +3621,7 @@
         "0.9%氯化钠注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [],
       "pinyin": "zsytbtd",
       "is_tcm_injection": false,
@@ -4510,7 +4510,7 @@
         "0.9%氯化钠注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [],
       "pinyin": "zsytbzln",
       "pinyin_code": "ZSYTBZLN",
@@ -4543,7 +4543,7 @@
         "0.9%氯化钠注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [],
       "pinyin": "zsytblm",
       "pinyin_code": "ZSYTBLM",
@@ -5030,7 +5030,7 @@
       "pharmacology_class": "第三代头孢菌素",
       "abx_level": "restricted",
       "price_yuan": 48,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "dose_range_json": {
         "single_min_mg": 1000,
         "single_max_mg": 2000,
@@ -5077,7 +5077,11 @@
       "pinyin": "nfsx",
       "pinyin_code": "NFSX",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "18岁以下青少年禁用",
+        "孕妇及哺乳期禁用"
+      ]
     },
     {
       "generic_name": "莫西沙星",
@@ -5096,7 +5100,12 @@
       "pinyin": "mxsx",
       "pinyin_code": "MXSX",
       "medical_insurance_class": "乙",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "18岁以下青少年禁用",
+        "孕妇及哺乳期禁用",
+        "警惕QT间期延长"
+      ]
     },
     {
       "generic_name": "罗红霉素",
@@ -5396,7 +5405,11 @@
       "pinyin": "ynpl",
       "pinyin_code": "YNPL",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "孕妇禁用",
+        "用药期间警惕血管神经性水肿"
+      ]
     },
     {
       "generic_name": "阿托伐他汀",
@@ -5743,7 +5756,11 @@
       "pinyin": "qdms",
       "pinyin_code": "QDMS",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "具耳毒性、肾毒性",
+        "儿童、老年人及肾功能不全者慎用"
+      ]
     },
     {
       "generic_name": "磷霉素钠",
@@ -5872,7 +5889,11 @@
       "pinyin": "lstj",
       "pinyin_code": "LSTJ",
       "medical_insurance_class": "甲",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "special_warnings_json": [
+        "孕妇禁用",
+        "监测血钾，警惕高钾血症"
+      ]
     },
     {
       "generic_name": "福辛普利",
@@ -7317,7 +7338,7 @@
       "dose_range_json": {
         "single_min_mg": 0.5,
         "single_max_mg": 1,
-        "daily_max_mg": 6,
+        "daily_max_mg": 1.8,
         "default_freq": "prn",
         "default_duration_days": 3
       },
@@ -7328,7 +7349,10 @@
       "skin_test_required": false,
       "special_warnings_json": [
         "出现腹泻即停药",
-        "治疗窗窄"
+        "治疗窗窄",
+        "24小时内总量不超过1.5-1.8mg",
+        "疗程一般不超过3天",
+        "出现腹泻、呕吐即停药"
       ],
       "is_solvent": false,
       "is_tcm_injection": false,
@@ -8201,7 +8225,7 @@
         "0.9%氯化钠注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [
         "可影响凝血功能，用药期间监测出血倾向",
         "含甲硫四氮唑侧链，用药期间及停药7天内禁酒"
@@ -10067,7 +10091,7 @@
       "jtc_batch": "第2批",
       "otc_class": "处方药",
       "abx_level": "restricted",
-      "pharmacology_class": "第四代喹诺酮类",
+      "pharmacology_class": "喹诺酮类",
       "dose_range_json": {
         "single_min_mg": 0.4,
         "single_max_mg": 0.4,
@@ -12391,7 +12415,7 @@
         "5%葡萄糖注射液"
       ],
       "drip_speed_max_mlh": 80,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [
         "青霉素过敏慎用",
         "与氨基糖苷类不可混合"
@@ -12431,7 +12455,7 @@
         "5%葡萄糖注射液"
       ],
       "drip_speed_max_mlh": 80,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [
         "饮食饮酒可出现双硫仑样反应"
       ],
@@ -12470,7 +12494,7 @@
         "5%葡萄糖注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": true,
+      "skin_test_required": false,
       "special_warnings_json": [
         "出血倾向监测",
         "双硫仑样反应"
@@ -17823,7 +17847,7 @@
       "jtc_batch": null,
       "otc_class": "处方药",
       "abx_level": "non_restricted",
-      "pharmacology_class": "喹诺酮类抗菌药",
+      "pharmacology_class": "喹诺酮类",
       "dose_range_json": {
         "single_min_mg": 500,
         "single_max_mg": 750,

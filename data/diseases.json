@@ -44,9 +44,7 @@
         "高血压亚急症"
       ],
       "first_line_oral": [
-        "苯磺酸氨氯地平片",
-        "硝苯地平控释片",
-        "卡托普利片"
+        "苯磺酸氨氯地平片"
       ],
       "second_line_iv": [],
       "contraindications": [
@@ -367,7 +365,6 @@
         "肺栓塞"
       ],
       "first_line_oral": [
-        "头孢呋辛酯片",
         "阿莫西林克拉维酸钾片"
       ],
       "second_line_iv": [
@@ -957,8 +954,7 @@
       ],
       "second_line_iv": [
         "注射用甲泼尼龙琥珀酸钠",
-        "氨茶碱注射液",
-        "地塞米松磷酸钠注射液"
+        "氨茶碱注射液"
       ],
       "contraindications": [
         "急性发作首选吸入速效β2激动剂（SABA）沙丁胺醇雾化/MDI，每20min×1h",
@@ -1114,8 +1110,7 @@
         "阴道炎"
       ],
       "first_line_oral": [
-        "呋喃妥因肠溶片",
-        "左氧氟沙星片"
+        "呋喃妥因肠溶片"
       ],
       "second_line_iv": [],
       "contraindications": [
@@ -1220,8 +1215,7 @@
         "接触性皮炎"
       ],
       "first_line_oral": [
-        "氯雷他定片",
-        "西替利嗪片"
+        "氯雷他定片"
       ],
       "second_line_iv": [],
       "contraindications": [
@@ -1432,8 +1426,7 @@
         "功能性烧心"
       ],
       "first_line_oral": [
-        "奥美拉唑肠溶胶囊",
-        "艾司奥美拉唑镁肠溶片"
+        "奥美拉唑肠溶胶囊"
       ],
       "second_line_iv": [],
       "contraindications": [
@@ -1484,8 +1477,7 @@
         "肠易激综合征"
       ],
       "first_line_oral": [
-        "美沙拉嗪肠溶片",
-        "美沙拉嗪缓释颗粒"
+        "美沙拉嗪肠溶片"
       ],
       "second_line_iv": [
         "注射用甲泼尼龙琥珀酸钠"
@@ -1537,8 +1529,7 @@
         "继发性高脂血症（甲减/肾病综合征）"
       ],
       "first_line_oral": [
-        "阿托伐他汀钙片",
-        "瑞舒伐他汀钙片"
+        "阿托伐他汀钙片"
       ],
       "second_line_iv": [],
       "contraindications": [
@@ -1913,8 +1904,7 @@
       "first_line_oral": [
         "盐酸伐昔洛韦片",
         "加巴喷丁胶囊",
-        "布洛芬缓释胶囊",
-        "阿昔洛韦片"
+        "布洛芬缓释胶囊"
       ],
       "second_line_iv": [
         "阿昔洛韦注射液"
@@ -2123,6 +2113,7 @@
       ],
       "first_line_oral": [
         "头孢克肟胶囊",
+        "多西环素片",
         "甲硝唑片"
       ],
       "second_line_iv": [
@@ -2551,10 +2542,7 @@
         "熊去氧胆酸胶囊",
         "匹维溴铵片"
       ],
-      "second_line_iv": [
-        "注射用头孢呋辛钠",
-        "甲硝唑注射液"
-      ],
+      "second_line_iv": [],
       "contraindications": [
         "无症状静止性结石不需预防性手术"
       ],

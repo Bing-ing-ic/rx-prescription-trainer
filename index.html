@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261116ui2">
+<link rel="stylesheet" href="css/rx.min.css?v=20261123r3">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -202,7 +202,7 @@
               <label style="font-size:12px;color:#475569;background:#fff;border:1px solid #cbd5e1;border-radius:14px;padding:3px 10px;cursor:pointer;"><input type="checkbox" value="出血性疾病"> 出血性疾病</label>
             </div>
           </div>
-          <div style="margin-top:8px;font-size:11px;color:#94a3b8;">
+          <div style="margin-top:8px;font-size:11px;color:var(--gray-500);">
             修改后将自动同步到处方前记与规则引擎（过敏史/合并症/妊娠会触发对应审方规则）。
           </div>
         </div>
@@ -344,7 +344,7 @@
           <span>医保支付: ¥<b id="f-ins">0.00</b></span>
           <span>个人自费: ¥<b id="f-self">0.00</b></span>
         </div>
-        <div style="font-size:11px;color:#94a3b8;margin-top:4px;text-align:right;">
+        <div style="font-size:11px;color:var(--gray-500);margin-top:4px;text-align:right;">
           玉溪市城乡居民医保门诊：政策范围内费用报销50%（基层医疗机构），年度限额300元
         </div>
       </div>
@@ -376,6 +376,7 @@
         <span>临床诊断: <b id="lo-dx">-</b></span>
         <span>申请日期: <b id="lo-date">-</b></span>
       </div>
+      <div class="table-scroll">
       <table class="rx-table lab-order-table">
         <thead>
           <tr>
@@ -390,11 +391,12 @@
         </thead>
         <tbody id="lab-order-items"></tbody>
       </table>
+      </div>
       <div id="lab-order-empty" class="lab-order-empty">未开具检验检查项目</div>
       <div class="lab-order-sign">
         <span>申请医师: ____________</span>
         <span>申请日期: ____________</span>
-        <span class="no-print" style="color:#94a3b8;">（结果由系统按本病种模拟生成，供诊疗推演使用；点击结果可看解读）</span>
+        <span class="no-print" style="color:var(--gray-500);">（结果由系统按本病种模拟生成，供诊疗推演使用；点击结果可看解读）</span>
       </div>
     </div>
 
@@ -475,7 +477,7 @@
       <div class="lab-order-sign">
         <span>评估医师: ____________</span>
         <span>评估日期: ____________</span>
-        <span class="no-print" style="color:#94a3b8;">（本表为教学推演文书；标准决策由系统对照本病种手术指征库点评。）</span>
+        <span class="no-print" style="color:var(--gray-500);">（本表为教学推演文书；标准决策由系统对照本病种手术指征库点评。）</span>
       </div>
     </div>
   </section>
@@ -1438,7 +1440,7 @@
   }, true);
 })();
 </script>
-<script src="js/rule-engine.min.js?v=20261106surg1"></script>
+<script src="js/rule-engine.min.js?v=20261123r3"></script>
 <script>
 // 网站访问统计（百度统计已在页面底部加载）
 (function() {
@@ -1462,15 +1464,16 @@
 </script>
 <script src="js/review.min.js?v=20261106surg1"></script>
 <script src="js/standard-plan.min.js?v=20261109sp1"></script>
-<script src="js/app.min.js?v=20261116ui2"></script>
+<script src="js/app.min.js?v=20261123r3"></script>
 <script src="js/tcm-engine.min.js?v=20261104fix1"></script>
 <script src="js/acup-engine.min.js?v=20261104fix1"></script>
-<script src="js/tcm-app.min.js?v=20261116ui2"></script>
+<script src="js/tcm-app.min.js?v=20261123r3"></script>
+<script src="js/tuina-engine.min.js?v=20261123r3"></script>
 <script src="js/acup-app.min.js?v=20261116ui2"></script>
 <script src="js/acup-time.min.js?v=20261111time1"></script>
 <script src="js/module-views.min.js?v=20261104fix1"></script>
 <script src="js/anat-app.min.js?v=20261116ui2"></script>
-<script src="js/platform-enhance.js?v=20261116ui2"></script>
+<script src="js/platform-enhance.js?v=20261123r3"></script>
 
 <!-- 百度统计 -->
 <script>

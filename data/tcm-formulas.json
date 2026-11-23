@@ -119,9 +119,9 @@
       "category": "泻下剂-寒下",
       "composition": [
         {"herb": "大黄", "role": "君", "dose": "12g"},
-        {"herb": "厚朴", "role": "臣", "dose": "15g"},
-        {"herb": "枳实", "role": "臣", "dose": "12g"},
-        {"herb": "芒硝", "role": "佐", "dose": "9g"}
+        {"herb": "厚朴", "role": "佐", "dose": "15g"},
+        {"herb": "枳实", "role": "佐", "dose": "12g"},
+        {"herb": "芒硝", "role": "臣", "dose": "9g"}
       ],
       "functions": "峻下热结",
       "indications": "阳明腑实证。大便不通，频转矢气，脘腹痞满，腹痛拒按，按之则硬，潮热谵语，手足濈然汗出，舌苔黄燥起刺，脉沉实。",

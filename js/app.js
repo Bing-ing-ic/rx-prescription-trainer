@@ -385,7 +385,7 @@
       // 仅绑定首页类型选择按钮（必须带 data-type）；手术指征按钮走独立 openSurgery 入口；
       // view-surgery 内的决策卡片虽复用 btn-type 样式但不带 data-type，不绑定 openRx
       const t = b.getAttribute('data-type');
-      if (!t || t === 'surgery') return;
+      if (!t || t === 'surgery' || t === 'lab') return;
       b.addEventListener('click', () => openRx(t));
     });
     $('btn-back-home').onclick = () => show('view-home');
@@ -1173,13 +1173,19 @@
       div.innerHTML = `
         <div>
           <b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
-          <div class="mfr" style="font-size:11px;color:#94a3b8">🏭 ${d.manufacturer||'国产'}</div>
+          <div class="mfr" style="font-size:11px;color:var(--gray-500)">🏭 ${d.manufacturer||'国产'}</div>
           ${abxChip(d.abx_level)}
           ${controlledChip(d)}
           ${miChip(d)}
         </div>
         <button class="btn btn-sm">+ 添加</button>`;
-      div.querySelector('button').onclick = () => addNormalItem(d);
+      const activate = () => addNormalItem(d);
+      div.querySelector('button').onclick = activate;
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('role', 'button');
+      div.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+      };
       list.appendChild(div);
     });
     updateCount();
@@ -1386,7 +1392,7 @@
 
     list.innerHTML = '';
     if (!pool.length) {
-      list.innerHTML = '<div style="padding:16px;text-align:center;color:#94a3b8;font-size:13px;">未找到匹配的检验检查项目</div>';
+      list.innerHTML = '<div style="padding:16px;text-align:center;color:var(--gray-500);font-size:13px;">未找到匹配的检验检查项目</div>';
       return;
     }
     Object.keys(groups).forEach(catName => {
@@ -1422,8 +1428,10 @@
 
   function abxChip(lv) {
     if (!lv || lv==='none') return '';
+    // 类名/标签归一：数据中 non-restricted 连字符写法对齐 CSS 的 non_restricted；topical 透传由 CSS 中性灰样式兜底
+    const clsLv = lv === 'non-restricted' ? 'non_restricted' : lv;
     const map = {non_restricted:'non-restr', restricted:'restricted', special:'special'};
-    return `<span class="chip chip-abx-${lv}">${map[lv]||lv}</span>`;
+    return `<span class="chip chip-abx-${clsLv}">${map[clsLv]||clsLv}</span>`;
   }
   // 医保/基药/集采标记
   function miChip(d) {
@@ -2083,7 +2091,7 @@
       div.className = 'drug-item' + (isOrig ? ' originator' : '') + (disabled?' disabled':'') + (i === S.kbIvSel ? ' kb-highlight' : '');
       div.dataset.kbIndex = i;
       div.innerHTML = `<div><b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
-        <div class="mfr" style="font-size:11px;color:#94a3b8">🏭 ${d.manufacturer||'国产'}</div>
+        <div class="mfr" style="font-size:11px;color:var(--gray-500)">🏭 ${d.manufacturer||'国产'}</div>
         ${isSolvent ? '<span class="chip" style="background:#64748b;color:#fff">溶媒</span>' : ''}
         ${abxChip(d.abx_level)}
         ${controlledChip(d)}
@@ -2091,9 +2099,15 @@
         ${miChip(d)}
         </div>
         <button class="btn" ${disabled?'disabled':''}>+ 添加</button>`;
-      div.querySelector('button').onclick = () => {
+      const activate = () => {
         if (disabled) return alert('请先在药品列表里选一个溶媒（NS/GS等）！');
         addIvDrug(d);
+      };
+      div.querySelector('button').onclick = activate;
+      div.setAttribute('tabindex', '0');
+      div.setAttribute('role', 'button');
+      div.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
       };
       list.appendChild(div);
     });
@@ -2972,7 +2986,7 @@
     submitBtn.textContent = '✅ 提交诊断';
     submitBtn.style.cssText = 'align-self:flex-start;';
     const hint = document.createElement('div');
-    hint.style.cssText = 'font-size:12px;color:#94a3b8;line-height:1.6;';
+    hint.style.cssText = 'font-size:12px;color:var(--gray-500);line-height:1.6;';
     hint.textContent = '提示：支持关键词模糊匹配。例如正确诊断为"消化性溃疡穿孔（十二指肠溃疡穿孔）"，输入"溃疡穿孔"或"穿孔"均可判对。';
     box.appendChild(input);
     box.appendChild(submitBtn);

@@ -84,13 +84,13 @@
     'NEW-02':   { lesson_point:'β-内酰胺繁殖期杀菌药与四环素/大环内酯速效抑菌药联用可拮抗疗效', correct_practice:'一般情况二选一；明确混合感染需序贯并在病历说明', reference_guide:'《抗菌药物临床应用指导原则（2015版）》药效学相互作用节', related_topic:'ABX_ANTAGONISM' },
     'NEW-03':   { lesson_point:'复方感冒药多已含对乙酰氨基酚，再叠加单方退热药易致肝损伤', correct_practice:'只选一种退热感冒药，查看成分表避免同类成分重复', reference_guide:'对乙酰氨基酚片说明书；《中国感冒用药专家共识》', related_topic:'DUPLICATE_INGREDIENT' },
     'NEW-04':   { lesson_point:'肾功能不全用氨基糖苷/万古霉素必须按eGFR减量并监测血药浓度', correct_practice:'按 eGFR 减量或延长间隔；必须使用时监测肾功能与血药浓度', reference_guide:'《抗菌药物临床应用指导原则（2015版）》肾功能减退用药表', related_topic:'RENAL_DOSE' },
-    'NEW-05':   { lesson_point:'肝功能不全避免使用红霉素酯化物/利福平/异烟肼/大剂量对乙酰氨基酚', correct_practice:'选用肝毒性小的替代药；必须使用时监测肝功能', reference_guide:'《抗菌药物临床应用指导原则（2015版）》肝功能减退用药表', related_topic:'HEPATIC_DOSE' },
+    'NEW-05':   { lesson_point:'肝功能不全避免使用红霉素酯化物/利福平/异烟肼等肝毒性药；对乙酰氨基酚亦须减量、避免超量并监测肝功能', correct_practice:'选用肝毒性小的替代药；必须使用时监测肝功能', reference_guide:'《抗菌药物临床应用指导原则（2015版）》肝功能减退用药表', related_topic:'HEPATIC_DOSE' },
     'NEW-06':   { lesson_point:'临床诊断应明确具体，不得以"待查/自感不适"作为治疗性用药依据', correct_practice:'完善病史查体后明确诊断；诊断不明先检查对症', reference_guide:'《处方管理办法》第十九条；《医院处方点评管理规范》', related_topic:'DIAGNOSIS_CLARITY' },
     'NEW-07':   { lesson_point:'每味药必须写清频次与给药途径', correct_practice:'补全 qd/bid/tid 等频次与 po/iv/im 等给药途径', reference_guide:'《处方管理办法》第六条', related_topic:'PRESCRIPTION_FORMAT' },
     'NEW-08':   { lesson_point:'脑蛋白水解物/参麦/丹参/血栓通等重点监控辅助用药须严格按适应症使用', correct_practice:'核对说明书适应症与诊断一致性；不符者删除', reference_guide:'国卫办医函〔2019〕558号 第一批国家重点监控合理用药药品目录', related_topic:'MONITORED_DRUGS' },
     'NEW-09':   { lesson_point:'12岁以下儿童禁用可待因；婴幼儿禁用异丙嗪；慎用氨基糖苷类', correct_practice:'儿童镇咳改用右美沙芬/蜂蜜；抗过敏改用西替利嗪；抗感染避免氨基糖苷', reference_guide:'国家药监局药品说明书修订公告（2018/19、2021/8）', related_topic:'PEDIATRIC_ABX' },
     'NEW-10':   { lesson_point:'同通用名药不得同时口服+静滴；序贯治疗须有时点转换', correct_practice:'保留一种给药途径；确需序贯在 iv_reason 标注并写明转换时点', reference_guide:'《医院处方点评管理规范》；《抗菌药物临床应用指导原则》序贯疗法', related_topic:'DUPLICATE_ROUTE' },
-    'NEW-11':   { lesson_point:'孕妇禁用破血/峻下/芳香走窜类中药（麝香、红花、三棱、莪术、水蛭等）', correct_practice:'妊娠期用药须中医妇科评估，选用安全替代', reference_guide:'《中国药典》一部妊娠禁忌药；《中药学》妊娠用药禁忌节', related_topic:'PREGNANCY_TCM' },
+    'NEW-11':   { lesson_point:'妊娠禁用：麝香、水蛭、虻虫、三棱、莪术、干漆等（可兴奋子宫、致流产）；妊娠慎用：桃仁、红花、益母草、川牛膝等，须经中医师评估后使用', correct_practice:'妊娠期用药须中医妇科评估，选用安全替代', reference_guide:'《中国药典》一部妊娠禁忌药；《中药学》妊娠用药禁忌节', related_topic:'PREGNANCY_TCM' },
     'NEW-12':   { lesson_point:'病毒性感冒/流感不常规使用抗菌药', correct_practice:'对症支持；明确细菌并发症（黄脓涕>10天、肺炎）才用抗菌药', reference_guide:'《抗菌药物临床应用指导原则（2015版）》治疗性应用基本原则', related_topic:'ABX_VIRAL' }
   };
 
@@ -152,7 +152,7 @@
   function isQuinolone(drug) {
     if (!drug) return false;
     const c = drug.pharmacology_class || '';
-    return c === '喹诺酮类' || /quinol/i.test(c);
+    return /喹诺酮|quinol/i.test(c);
   }
   // 从剂量字符串解析出 mg 数值（兼容 mg/g/ug/μg）
   function parseDoseMg(str) {
@@ -1327,7 +1327,8 @@
       const RENAL_TOXIC_RE = /庆大霉素|阿米卡星|妥布霉素|奈替米星|链霉素|万古霉素|去甲万古霉素|替考拉宁|头孢克肟/;
       const HEPATO_TOXIC_RE = /依托红霉素|无味红霉素|红霉素酯|利福平|异烟肼|吡嗪酰胺/;
       const PED_HARD_RE = /可待因|复方磷酸可待因|异丙嗪|庆大霉素|阿米卡星|妥布霉素|奈替米星|链霉素/;
-      const PREG_TCM_RE = /麝香|红花|桃仁|水蛭|虻虫|三棱|莪术|苏木|干漆|王不留行|益母草|川牛膝/;
+      const PREG_TCM_BAN_RE = /麝香|水蛭|虻虫|三棱|莪术|干漆/;
+      const PREG_TCM_CAUTION_RE = /桃仁|红花|益母草|川牛膝|苏木|王不留行/;
       const AUX_MONITOR_RE = /脑蛋白水解物|参麦|丹参|香丹|血栓通|血塞通|醒脑静|神经节苷脂|胞磷胆碱|胞二磷胆碱|小牛血|骨肽|黄芪注射液|丹参酮|红花黄色素|舒血宁|银杏达莫|曲克芦丁/;
       const FUZZY_DX_RE = /待查|待诊|自感|不舒服|查体|体检/;
       const VIRAL_DX_RE = /普通感冒|病毒性感冒|流行性感冒|流感/;
@@ -1409,7 +1410,7 @@
       // ---- NEW-05 肝功能不全用肝毒性药 ----
       if (hasHepaticDisease) {
         const hepTox = allNew.filter(it => HEPATO_TOXIC_RE.test(it.drug.generic_name || ''));
-        // 大剂量对乙酰氨基酚（>500mg/次）在肝功不全时也警示
+        // 超量对乙酰氨基酚（>500mg/次）在肝功不全时也警示
         const apapHigh = allNew.filter(it => {
           const n = it.drug.generic_name || '';
           if (!/对乙酰氨基酚/.test(n)) return false;
@@ -1419,7 +1420,7 @@
         const allHep = hepTox.concat(apapHigh);
         if (allHep.length) {
           hits.push(hit(R['NEW-05'], 'error',
-            `患者存在肝功能不全/肝炎/肝硬化，使用肝毒性药物「${allHep.map(it=>it.drug.generic_name).join('、')}」，可诱发药物性肝损伤。`,
+            `患者存在肝功能不全/肝炎/肝硬化，使用「${allHep.map(it=>it.drug.generic_name).join('、')}」须警惕肝损伤风险，宜减量或选用替代药并监测 ALT/AST/胆红素。`,
             `选用肝毒性小的替代药；必须使用时监测 ALT/AST/胆红素。`,
             { affected_items: allHep.map(it => it.drug.generic_name) }));
         }
@@ -1486,14 +1487,21 @@
         }
       }
 
-      // ---- NEW-11 孕妇用妊娠禁忌中成药 ----
+      // ---- NEW-11 孕妇用妊娠禁忌中成药（禁用 error / 慎用 warn 两组） ----
       if (isPregnantNow) {
-        const pregTcm = allNew.filter(it => PREG_TCM_RE.test(it.drug.generic_name || ''));
-        if (pregTcm.length) {
+        const pregBan = allNew.filter(it => PREG_TCM_BAN_RE.test(it.drug.generic_name || ''));
+        const pregCaution = allNew.filter(it => PREG_TCM_CAUTION_RE.test(it.drug.generic_name || ''));
+        if (pregBan.length) {
           hits.push(hit(R['NEW-11'], 'error',
-            `患者妊娠状态，使用妊娠禁忌中成药成分「${pregTcm.map(it=>it.drug.generic_name).join('、')}」（麝香/红花/三棱/莪术/水蛭等可兴奋子宫、致流产）。`,
+            `患者妊娠状态，使用妊娠禁用中药成分「${pregBan.map(it=>it.drug.generic_name).join('、')}」（可兴奋子宫、致流产），须立即停用。`,
             `立即停用；妊娠期用药须中医妇科评估，选用妊娠安全替代药。`,
-            { affected_items: pregTcm.map(it => it.drug.generic_name) }));
+            { affected_items: pregBan.map(it => it.drug.generic_name) }));
+        }
+        if (pregCaution.length) {
+          hits.push(hit(R['NEW-11'], 'warn',
+            `患者妊娠状态，妊娠慎用药「${pregCaution.map(it=>it.drug.generic_name).join('、')}」须经中医师评估后使用，避免自行处方。`,
+            `妊娠期用药须中医妇科评估；慎用药物不得自行处方，必要时选用妊娠安全替代药。`,
+            { affected_items: pregCaution.map(it => it.drug.generic_name), severity_level: 'minor' }));
         }
       }
     } catch (e) {

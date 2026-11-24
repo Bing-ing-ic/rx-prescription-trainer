@@ -3,7 +3,7 @@
 - 最近更新：2026-11-24（本地时区 UTC+8）
 - 分支：`main`
 - 远端：https://github.com/Bing-ing-ic/rx-prescription-trainer.git
-- 当前状态：**已全部推送成功**。主交付提交 `045bf84`（round3-followup14，三静脉途径专项 QA 回归修复）已推送 `origin/main`（push 输出 `8485e00..045bf84 main -> main`）；`ls-remote origin main` 核对远端 = `045bf84`，工作区干净。本轮 push 一次成功，未遇 reset；后续 `git fetch`/`ls-remote` 偶发 reset，重试即可，不影响远端已接收。历史主交付提交：`edfab2c`（followup13）、`6f38ce1`（followup10）、`2a3b4d1`（followup11）、`0b7c01d`（followup12）。
+- 当前状态：**已全部推送成功**。主交付提交 `a3b43f7`（round3-followup16，名方品鉴只读栏目，中方典籍 40 首 + 日本汉方 28 首）已推送 `origin/main`（push 输出 `57a7aaf..a3b43f7 main -> main`）；`ls-remote origin main` 核对远端 = `a3b43f7`，工作区干净。本轮 push 一次成功，未遇 reset；后续 `git fetch`/`ls-remote` 偶发 reset，重试即可，不影响远端已接收。历史主交付提交：`57a7aaf`（followup15，药品库分类口径与药典信息补全）、`045bf84`（followup14，三静脉途径专项 QA 回归修复）、`edfab2c`（followup13）、`6f38ce1`（followup10）、`2a3b4d1`（followup11）、`0b7c01d`（followup12）。
 
 ## 历史受阻记录（2026-11-23 早些时候）
 

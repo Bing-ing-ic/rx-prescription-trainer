@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.06-r1",
+  "version": "2026.11.24-r18",
   "note": "检验检查项目字典，供西医处方推演平台使用",
   "exams": [
     {
@@ -991,6 +991,186 @@
       "unit": "",
       "ref_range": "pH 7.35-7.45；PaCO2 35-45；PaO2 80-100；HCO3 22-27",
       "clinical_significance": "评估酸碱失衡、缺氧及通气功能；DKA、呼衰、休克抢救必查"
+    },
+    {
+      "code": "INF-ESR",
+      "name": "红细胞沉降率（血沉）",
+      "abbr": "ESR",
+      "category": "检验科",
+      "subcategory": "炎症指标",
+      "unit": "mm/h",
+      "ref_range": "男性 0-15；女性 0-20（各实验室参考区间略有差异）",
+      "clinical_significance": "升高见于细菌感染、风湿/结缔组织病活动期、结核、肿瘤、贫血及妊娠；属非特异性指标，需结合 CRP、PCT 与临床表现综合判断。"
+    },
+    {
+      "code": "BIO-SI",
+      "name": "血清铁",
+      "abbr": "SI",
+      "category": "检验科",
+      "subcategory": "贫血相关",
+      "unit": "μmol/L",
+      "ref_range": "男性 11.6-31.3；女性 9.0-30.4（以各实验室参考区间为准）",
+      "clinical_significance": "降低见于缺铁性贫血、慢性失血、吸收不良；升高见于铁过载、溶血性贫血、反复输血。需结合铁蛋白、总铁结合力判断。"
+    },
+    {
+      "code": "BIO-FER",
+      "name": "血清铁蛋白",
+      "abbr": "SF",
+      "category": "检验科",
+      "subcategory": "贫血相关",
+      "unit": "μg/L",
+      "ref_range": "男性 30-400；女性 13-150（以各实验室参考区间为准）",
+      "clinical_significance": "是体内储存铁的指标，缺铁早期即降低；同时为急性时相反应蛋白，炎症、肝病、恶性肿瘤时可升高，需结合 CRP 解读。"
+    },
+    {
+      "code": "BIO-FOL",
+      "name": "血清叶酸",
+      "abbr": "Folate",
+      "category": "检验科",
+      "subcategory": "贫血相关",
+      "unit": "nmol/L",
+      "ref_range": "＞6.8 为充足（各实验室参考区间略有差异）",
+      "clinical_significance": "缺乏致巨幼细胞性贫血；妊娠期、哺乳期需求增加；长期饮酒、吸收不良可降低。"
+    },
+    {
+      "code": "BIO-B12",
+      "name": "血清维生素B12",
+      "abbr": "VitB12",
+      "category": "检验科",
+      "subcategory": "贫血相关",
+      "unit": "pmol/L",
+      "ref_range": "133-675（以各实验室参考区间为准）",
+      "clinical_significance": "缺乏致巨幼细胞性贫血及周围神经/脊髓后索病变；胃切除、内因子缺乏（恶性贫血）、长期素食可致降低。"
+    },
+    {
+      "code": "BIO-PREALB",
+      "name": "前白蛋白",
+      "abbr": "PA",
+      "category": "检验科",
+      "subcategory": "营养代谢",
+      "unit": "mg/L",
+      "ref_range": "200-400（各实验室参考区间略有差异）",
+      "clinical_significance": "半衰期短，为灵敏的营养状况与肝合成功能指标；降低见于营养不良、急性炎症、肝合成功能下降。"
+    },
+    {
+      "code": "BIO-HCY",
+      "name": "同型半胱氨酸",
+      "abbr": "Hcy",
+      "category": "检验科",
+      "subcategory": "营养代谢",
+      "unit": "μmol/L",
+      "ref_range": "5-15",
+      "clinical_significance": "升高与缺血性卒中、心血管事件风险相关；常见于叶酸、维生素B12缺乏及肾功能不全。"
+    },
+    {
+      "code": "BIO-CPEP",
+      "name": "血清C肽",
+      "abbr": "C-Peptide",
+      "category": "检验科",
+      "subcategory": "糖尿病评估",
+      "unit": "ng/mL",
+      "ref_range": "空腹 0.9-3.7（各实验室参考区间略有差异）",
+      "clinical_significance": "反映胰岛β细胞分泌功能，用于糖尿病分型、评估内源性胰岛素水平及胰岛素瘤；不受外源胰岛素干扰。"
+    },
+    {
+      "code": "BIO-PPBG",
+      "name": "餐后2小时血糖",
+      "abbr": "2hPG",
+      "category": "检验科",
+      "subcategory": "血糖",
+      "unit": "mmol/L",
+      "ref_range": "＜7.8 正常；7.8-11.0 糖耐量减低；≥11.1 达糖尿病诊断阈值（需复查确认）",
+      "clinical_significance": "用于筛查糖代谢异常与糖尿病随访；餐后血糖升高常早于空腹血糖异常。"
+    },
+    {
+      "code": "UA-MALB",
+      "name": "尿微量白蛋白",
+      "abbr": "mALB",
+      "category": "检验科",
+      "subcategory": "尿蛋白",
+      "unit": "mg/24h",
+      "ref_range": "＜30 正常；30-300 为微量白蛋白尿",
+      "clinical_significance": "糖尿病肾病、高血压肾损害的早期敏感信号；运动、发热、尿路感染可一过性升高，需重复检测。"
+    },
+    {
+      "code": "MIC-SPUTUM",
+      "name": "痰培养及药敏",
+      "abbr": "Sputum C+S",
+      "category": "检验科",
+      "subcategory": "微生物培养",
+      "unit": "菌落计数/药敏结果",
+      "ref_range": "合格痰标本（鳞状上皮细胞＜10/低倍视野、白细胞＞25/低倍视野）",
+      "clinical_significance": "明确下呼吸道感染致病菌并指导抗菌药选择；口腔常规定植菌需结合痰涂片质量与临床判断，避免误判污染。"
+    },
+    {
+      "code": "MIC-URINE",
+      "name": "尿培养及药敏",
+      "abbr": "Urine C+S",
+      "category": "检验科",
+      "subcategory": "微生物培养",
+      "unit": "CFU/mL",
+      "ref_range": "清洁中段尿 ≥10⁵ CFU/mL 提示尿路感染；结合症状与尿白细胞综合判断",
+      "clinical_significance": "明确泌尿系感染病原菌及敏感药物；留置尿管、无症状菌尿需结合临床区分定植与感染。"
+    },
+    {
+      "code": "IMM-RESP",
+      "name": "呼吸道病原检测（咽拭子/抗原抗体）",
+      "abbr": "Resp-Pathogen",
+      "category": "检验科",
+      "subcategory": "感染免疫",
+      "unit": "阳性/阴性及分型",
+      "ref_range": "各病原特异性抗体/抗原阴性为基线",
+      "clinical_significance": "鉴别流感病毒、呼吸道合胞病毒、腺病毒、肺炎支原体等呼吸道病原；急性期与恢复期双份血清滴度变化更具诊断意义。"
+    },
+    {
+      "code": "FUNC-HOLTER",
+      "name": "24小时动态心电图",
+      "abbr": "Holter",
+      "category": "功能检查",
+      "subcategory": "心电图",
+      "unit": "心律/ST-T 记录",
+      "ref_range": "窦性心律，无频发早搏及明显ST-T缺血改变为基线",
+      "clinical_significance": "捕捉阵发性心律失常、短暂心肌缺血，评估心悸、黑矇、晕厥及不明原因胸闷的原因。"
+    },
+    {
+      "code": "FUNC-ABPM",
+      "name": "24小时动态血压监测",
+      "abbr": "ABPM",
+      "category": "功能检查",
+      "subcategory": "血压监测",
+      "unit": "mmHg",
+      "ref_range": "24h 平均血压＜130/80；白昼＜135/85；夜间＜120/70",
+      "clinical_significance": "诊断白大衣高血压、隐蔽性高血压，评估血压昼夜节律（杓型/非杓型）及降压方案达标情况。"
+    },
+    {
+      "code": "FUNC-EMG",
+      "name": "肌电图及神经传导速度",
+      "abbr": "EMG/NCV",
+      "category": "功能检查",
+      "subcategory": "神经肌肉",
+      "unit": "肌电/传导速度波形",
+      "ref_range": "神经传导速度与肌肉自发电位在正常范围为基线",
+      "clinical_significance": "鉴别周围神经病、神经根压迫、臂丛/腰骶丛病变及肌源性损害，判断病变部位与程度。"
+    },
+    {
+      "code": "IMG-KNEE-XR",
+      "name": "膝关节正侧位X线",
+      "abbr": "Knee X-ray",
+      "category": "影像学",
+      "subcategory": "X线",
+      "unit": "影像平片",
+      "ref_range": "关节间隙对称、骨质结构完整为基线",
+      "clinical_significance": "评估膝关节骨关节炎（关节间隙狭窄、骨质增生、骨赘）、骨折、关节积液及退行性改变。"
+    },
+    {
+      "code": "IMG-SINUS-CT",
+      "name": "鼻窦CT平扫",
+      "abbr": "Sinus CT",
+      "category": "影像学",
+      "subcategory": "CT",
+      "unit": "断层影像",
+      "ref_range": "各鼻窦气房通畅、黏膜无增厚为基线",
+      "clinical_significance": "评估急慢性鼻窦炎、鼻息肉、鼻窦囊肿及占位，明确病变范围与解剖结构。"
     }
   ]
 }

@@ -1,0 +1,757 @@
+{
+  "version": "2026.11.24-r18",
+  "_basis": "《医院处方点评管理规范（试行）》《处方管理办法》《抗菌药物临床应用指导原则（2015年版）》及药品说明书；案例为教学推演样例，不构成真实患者诊疗方案。",
+  "_note": "issues.rule_id 与 rules.json 关联；prescription 为问题处方，correct_plan 为规范处理方向。前端可按 case_id 展开点评解析（只读教学视图）。",
+  "cases": [
+    {
+      "case_id": "RC-01",
+      "title": "儿童上呼吸道感染误用喹诺酮类抗菌药",
+      "category": "抗菌药禁忌 / 特殊人群",
+      "difficulty": "中级",
+      "patient": {
+        "age": 9,
+        "gender": "男",
+        "flags": [
+          "儿童"
+        ],
+        "diagnosis": "急性上呼吸道感染",
+        "background": "鼻塞流涕2天，低热37.8℃，咽部轻充血，无脓苔，无咳嗽咳痰，可进食，血常规提示病毒感染倾向。"
+      },
+      "prescription": [
+        {
+          "generic_name": "左氧氟沙星片",
+          "dose": "0.2g",
+          "frequency": "bid",
+          "route": "口服",
+          "note": "×3天"
+        },
+        {
+          "generic_name": "小儿氨酚黄那敏颗粒",
+          "dose": "1袋",
+          "frequency": "tid",
+          "route": "口服",
+          "note": "对症退热"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "ABX-06",
+          "severity_level": "critical",
+          "dimension": "抗菌药分级管理",
+          "problem": "18岁以下儿童使用喹诺酮类，可影响软骨发育，属年龄禁忌。",
+          "basis": "药品说明书儿童用药项；《抗菌药物临床应用指导原则（2015年版）》"
+        },
+        {
+          "rule_id": "SP-03",
+          "severity_level": "critical",
+          "dimension": "特殊人群",
+          "problem": "儿童按成人剂量开具，未按体重核算，且使用儿童禁忌品种。",
+          "basis": "儿科用药指南；药品说明书"
+        },
+        {
+          "rule_id": "NEW-12",
+          "severity_level": "major",
+          "dimension": "抗菌药指征",
+          "problem": "病毒性上呼吸道感染无细菌感染证据，无指征使用抗菌药物。",
+          "basis": "《普通感冒规范诊治专家共识》"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（含禁忌证用药）",
+        "summary": "儿童上感属病毒性疾病，既无抗菌指征，又选用未成年人禁忌的喹诺酮类，须立即停用。"
+      },
+      "correct_plan": {
+        "approach": "以休息、补水、对症退热为主；如后续证实细菌感染，按年龄选β-内酰胺类或大环内酯类。",
+        "drugs": [
+          "盐酸氨溴索口服溶液"
+        ],
+        "note": "退热优先单一成分儿童剂型，按体重给药；不与含相同成分复方感冒药叠加。"
+      },
+      "teaching_tip": "喹诺酮类可损伤幼年动物软骨，未成年人原则上禁用；抗菌药必须先有细菌感染证据，再按年龄、肝肾功能选药。"
+    },
+    {
+      "case_id": "RC-02",
+      "title": "妊娠早期误用致畸风险抗菌药",
+      "category": "妊娠期用药禁忌",
+      "difficulty": "高级",
+      "patient": {
+        "age": 28,
+        "gender": "女",
+        "flags": [
+          "妊娠12周"
+        ],
+        "diagnosis": "急性上呼吸道感染",
+        "background": "孕12周，咽痛流涕3天，低热，无剧烈呕吐，既往体健，无药物过敏史。"
+      },
+      "prescription": [
+        {
+          "generic_name": "左氧氟沙星片",
+          "dose": "0.2g",
+          "frequency": "bid",
+          "route": "口服",
+          "note": "×5天"
+        },
+        {
+          "generic_name": "多西环素片",
+          "dose": "0.1g",
+          "frequency": "bid",
+          "route": "口服",
+          "note": "×5天"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "SP-01",
+          "severity_level": "critical",
+          "dimension": "特殊人群",
+          "problem": "妊娠期使用喹诺酮类、四环素类等妊娠禁忌/致畸风险药物。",
+          "basis": "《妊娠期用药指南》；药品说明书妊娠禁忌项"
+        },
+        {
+          "rule_id": "COMORBID-04",
+          "severity_level": "critical",
+          "dimension": "特殊人群",
+          "problem": "妊娠患者用药禁忌识别未触发，致畸药物未拦截。",
+          "basis": "妊娠用药分级与说明书禁忌项"
+        },
+        {
+          "rule_id": "ABX-06",
+          "severity_level": "major",
+          "dimension": "抗菌药分级管理",
+          "problem": "喹诺酮/四环素类在妊娠人群属禁忌范畴，未做替代评估。",
+          "basis": "药品说明书；抗菌药物临床应用指导原则"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（禁忌证用药）",
+        "summary": "孕早期用药须严格规避致畸药物，现有方案两类抗菌药均不适合妊娠期，应停用并重新评估。"
+      },
+      "correct_plan": {
+        "approach": "优先非药物对症；确需抗菌治疗时，由产科与药师会诊选择孕期相对安全的青霉素/头孢类（排除过敏后）。",
+        "drugs": [],
+        "note": "核实孕周、用药史与暴露时间，必要时产科随访评估。"
+      },
+      "teaching_tip": "妊娠早期是器官形成关键期，用药前必须核实孕周与妊娠分级；禁忌药停用后应记录暴露情况并随访，不可自行续方。"
+    },
+    {
+      "case_id": "RC-03",
+      "title": "普通感冒无指征联用两种抗菌药",
+      "category": "抗菌药指征 / 重复用药",
+      "difficulty": "初级",
+      "patient": {
+        "age": 35,
+        "gender": "男",
+        "flags": [],
+        "diagnosis": "急性上呼吸道感染（病毒性）",
+        "background": "流涕、咽痛3天，无发热或低热，无脓痰、无扁桃体脓苔，血常规白细胞及中性粒不高。"
+      },
+      "prescription": [
+        {
+          "generic_name": "阿莫西林胶囊",
+          "dose": "0.5g",
+          "frequency": "tid",
+          "route": "口服",
+          "note": "×5天"
+        },
+        {
+          "generic_name": "左氧氟沙星片",
+          "dose": "0.2g",
+          "frequency": "bid",
+          "route": "口服",
+          "note": "×5天"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "NEW-12",
+          "severity_level": "major",
+          "dimension": "抗菌药指征",
+          "problem": "病毒性感冒无细菌感染证据，无指征使用抗菌药物。",
+          "basis": "《普通感冒规范诊治专家共识》"
+        },
+        {
+          "rule_id": "NEW-01",
+          "severity_level": "major",
+          "dimension": "重复用药",
+          "problem": "无严重混合感染依据，同时联用两种不同通用名抗菌药。",
+          "basis": "《抗菌药物临床应用指导原则（2015年版）》"
+        },
+        {
+          "rule_id": "ABX-04",
+          "severity_level": "minor",
+          "dimension": "抗菌药遴选",
+          "problem": "未结合感染部位与常见病原选药，经验性用药缺乏依据。",
+          "basis": "抗菌药物临床应用指导原则"
+        }
+      ],
+      "verdict": {
+        "result": "超常/不适宜处方",
+        "summary": "病毒性上感不需抗菌治疗，更不应两种抗菌药联用；现有方案属于无指征用药。"
+      },
+      "correct_plan": {
+        "approach": "对症支持、休息补水；若后续出现脓痰、扁桃体化脓或血象升高，再按病原选单一抗菌药。",
+        "drugs": [],
+        "note": "留取必要的血常规、CRP，必要时咽拭子/培养指导用药。"
+      },
+      "teaching_tip": "抗菌药不杀病毒；无指征联用既增加耐药、菌群失调与不良反应，也不缩短感冒病程。"
+    },
+    {
+      "case_id": "RC-04",
+      "title": "两种口服非甾体抗炎药联用",
+      "category": "重复用药 / 剂量安全",
+      "difficulty": "初级",
+      "patient": {
+        "age": 52,
+        "gender": "女",
+        "flags": [],
+        "diagnosis": "膝关节骨关节炎（急性疼痛）",
+        "background": "右膝疼痛3天，上下楼加重，无关节红肿热，既往无消化道溃疡史，肾功能正常。"
+      },
+      "prescription": [
+        {
+          "generic_name": "布洛芬缓释胶囊",
+          "dose": "0.3g",
+          "frequency": "bid",
+          "route": "口服",
+          "note": "×7天"
+        },
+        {
+          "generic_name": "双氯芬酸钠缓释片",
+          "dose": "75mg",
+          "frequency": "qd",
+          "route": "口服",
+          "note": "×7天"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "DUP-03",
+          "severity_level": "major",
+          "dimension": "重复用药",
+          "problem": "两种口服NSAIDs联用，镇痛不叠加而消化道溃疡出血、肾损伤及心血管风险显著增加。",
+          "basis": "《非甾体抗炎药临床应用专家共识》"
+        },
+        {
+          "rule_id": "DOSE-03",
+          "severity_level": "minor",
+          "dimension": "剂量用法",
+          "problem": "52岁患者联用NSAIDs，未评估胃肠与肾脏风险，未优选外用制剂。",
+          "basis": "NSAIDs临床应用专家共识；药品说明书"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（重复用药）",
+        "summary": "口服NSAIDs不应两种常规联用，应选择一种足量短程，必要时联合外用制剂。"
+      },
+      "correct_plan": {
+        "approach": "保留一种口服NSAIDs短程使用，可联合外用双氯芬酸二乙胺乳胶剂；高危人群评估胃黏膜保护。",
+        "drugs": [
+          "双氯芬酸二乙胺乳胶剂"
+        ],
+        "note": "避免长期连续使用，监测消化道症状与肾功能。"
+      },
+      "teaching_tip": "同类NSAIDs作用机制相同，联用属于重复用药；镇痛方案应“一种口服为主 + 必要时外用”，而非叠加口服。"
+    },
+    {
+      "case_id": "RC-05",
+      "title": "复方感冒药与单方对乙酰氨基酚成分叠加",
+      "category": "重复成分 / 儿童剂量",
+      "difficulty": "中级",
+      "patient": {
+        "age": 6,
+        "gender": "男",
+        "flags": [
+          "儿童"
+        ],
+        "diagnosis": "急性上呼吸道感染伴发热",
+        "background": "发热38.5℃，鼻塞流涕，体重22kg，无药物过敏史。"
+      },
+      "prescription": [
+        {
+          "generic_name": "小儿氨酚黄那敏颗粒",
+          "dose": "1袋",
+          "frequency": "tid",
+          "route": "口服",
+          "note": "含对乙酰氨基酚"
+        },
+        {
+          "generic_name": "对乙酰氨基酚片",
+          "dose": "0.3g",
+          "frequency": "必要时",
+          "route": "口服",
+          "note": "退热"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "NEW-03",
+          "severity_level": "major",
+          "dimension": "重复用药",
+          "problem": "复方感冒药已含对乙酰氨基酚，再叠加单方对乙酰氨基酚，可致退热成分超量、肝损伤风险。",
+          "basis": "药品说明书成分项；普通感冒诊治专家共识"
+        },
+        {
+          "rule_id": "SP-03",
+          "severity_level": "minor",
+          "dimension": "特殊人群",
+          "problem": "儿童退热未按体重核算对乙酰氨基酚剂量。",
+          "basis": "儿科用药指南；药品说明书"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（重复成分超量）",
+        "summary": "两种制剂含相同退热成分，叠加存在对乙酰氨基酚过量风险，须停用其一。"
+      },
+      "correct_plan": {
+        "approach": "退热选用单一成分对乙酰氨基酚，按体重计算剂量；不再同时服用含对乙酰氨基酚的复方感冒药。",
+        "drugs": [
+          "对乙酰氨基酚片"
+        ],
+        "note": "用药前阅读复方制剂成分表，记录24小时对乙酰氨基酚总量。"
+      },
+      "teaching_tip": "复方感冒药多为“对症组合”，与单方退热药同用最易重复成分；给儿童用药前必须核对通用名与成分表。"
+    },
+    {
+      "case_id": "RC-06",
+      "title": "普通感冒无指征门诊静脉输液",
+      "category": "输液合理性 / 抗菌药指征",
+      "difficulty": "中级",
+      "patient": {
+        "age": 29,
+        "gender": "女",
+        "flags": [],
+        "diagnosis": "急性上呼吸道感染",
+        "background": "低热、鼻塞流涕，可正常进食饮水，无呕吐脱水，无细菌感染证据，既往体健。"
+      },
+      "prescription": [
+        {
+          "generic_name": "注射用头孢曲松钠",
+          "dose": "2.0g",
+          "frequency": "qd",
+          "route": "静脉滴注",
+          "note": "×3天"
+        },
+        {
+          "generic_name": "0.9%氯化钠注射液",
+          "dose": "100ml",
+          "frequency": "qd",
+          "route": "静脉滴注",
+          "note": "溶媒"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "IV-05",
+          "severity_level": "critical",
+          "dimension": "给药途径决策",
+          "problem": "可口服、无脱水及重症表现的普通感冒命中门诊输液负面清单，无静脉输液指征。",
+          "basis": "门诊静脉输液规范；平台疾病 iv_suitability 标签"
+        },
+        {
+          "rule_id": "IV-01",
+          "severity_level": "critical",
+          "dimension": "给药途径决策",
+          "problem": "疾病标签为 usually_no_iv，输液指征仅为发热/患者要求，途径决策与疾病不符。",
+          "basis": "输液指征与疾病一致性规则"
+        },
+        {
+          "rule_id": "NEW-12",
+          "severity_level": "major",
+          "dimension": "抗菌药指征",
+          "problem": "病毒性上感无指征使用抗菌药，且直接选择静脉三代头孢。",
+          "basis": "普通感冒规范诊治专家共识"
+        },
+        {
+          "rule_id": "IV-09",
+          "severity_level": "minor",
+          "dimension": "疗程",
+          "problem": "门诊输液处方疗程偏长，无医务科审批标识。",
+          "basis": "处方管理办法；门诊输液管理规定"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（无指征输液 + 无指征抗菌）",
+        "summary": "患者可口服、无重症脱水，既不需静脉输液，也不需静脉抗菌药，应改为口服对症处理。"
+      },
+      "correct_plan": {
+        "approach": "口服对症、休息补水；无静脉给药指征，不常规静脉使用抗菌药。",
+        "drugs": [],
+        "note": "出现高热不退、气促、脱水或明确细菌感染时再重新评估途径与用药。"
+      },
+      "teaching_tip": "能口服不肌注、能肌注不静滴；输液不是“好得快”，无指征输液增加过敏、静脉炎与耐药风险。"
+    },
+    {
+      "case_id": "RC-07",
+      "title": "青霉素过敏史使用头孢类未评估交叉过敏",
+      "category": "过敏史 / 抗菌药遴选",
+      "difficulty": "高级",
+      "patient": {
+        "age": 41,
+        "gender": "男",
+        "flags": [],
+        "diagnosis": "急性细菌性扁桃体炎",
+        "background": "咽痛发热2天，扁桃体Ⅱ度肿大伴脓点；既往青霉素过敏（皮疹史），否认头孢过敏。"
+      },
+      "prescription": [
+        {
+          "generic_name": "注射用头孢呋辛钠",
+          "dose": "1.5g",
+          "frequency": "bid",
+          "route": "静脉滴注",
+          "note": "×5天"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "ABX-05",
+          "severity_level": "major",
+          "dimension": "抗菌药遴选",
+          "problem": "有青霉素过敏史，使用头孢类未评估交叉过敏风险与替代方案。",
+          "basis": "《β-内酰胺类抗菌药物皮肤试验指导原则》"
+        },
+        {
+          "rule_id": "ALLERGY-01",
+          "severity_level": "major",
+          "dimension": "特殊人群",
+          "problem": "处方含患者既往过敏药物的同类β-内酰胺，过敏史未在选药中规避。",
+          "basis": "药品说明书过敏项；处方安全规范"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（过敏风险未评估）",
+        "summary": "青霉素过敏史者使用头孢需先核实过敏反应类型，严重速发型过敏史应优先非β-内酰胺替代。"
+      },
+      "correct_plan": {
+        "approach": "核实过敏类型；青霉素皮疹史且非速发型者可在监护下谨慎选用低交叉反应头孢，严重过敏史优先大环内酯替代。",
+        "drugs": [
+          "阿奇霉素分散片"
+        ],
+        "note": "用药前备好过敏处置，首次给药后观察；必要时按规范皮试。"
+      },
+      "teaching_tip": "青霉素与头孢存在部分交叉过敏，选药前必须问清过敏表现（皮疹/休克/喉头水肿），不能因“只是皮疹”就忽略风险。"
+    },
+    {
+      "case_id": "RC-08",
+      "title": "老年患者SSRI联用NSAID出血风险",
+      "category": "相互作用 / 老年多重用药",
+      "difficulty": "高级",
+      "patient": {
+        "age": 70,
+        "gender": "女",
+        "flags": [
+          "老年"
+        ],
+        "diagnosis": "抑郁状态合并膝关节痛",
+        "background": "规律服用抗抑郁药，近期关节痛自行加用止痛药；既往无消化道溃疡，肾功能尚可。"
+      },
+      "prescription": [
+        {
+          "generic_name": "草酸艾司西酞普兰片",
+          "dose": "10mg",
+          "frequency": "qd",
+          "route": "口服",
+          "note": "长期"
+        },
+        {
+          "generic_name": "布洛芬缓释胶囊",
+          "dose": "0.3g",
+          "frequency": "bid",
+          "route": "口服",
+          "note": "×7天"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "INT-04",
+          "severity_level": "major",
+          "dimension": "药物相互作用",
+          "problem": "SSRI影响血小板5-羟色胺摄取，与NSAIDs联用增加消化道及全身出血风险。",
+          "basis": "药品说明书相互作用项；抗抑郁药安全共识"
+        },
+        {
+          "rule_id": "SP-04",
+          "severity_level": "minor",
+          "dimension": "特殊人群",
+          "problem": "老年患者多重用药，未评估跌倒、出血及认知风险。",
+          "basis": "老年人潜在不适当用药目录"
+        },
+        {
+          "rule_id": "DOSE-03",
+          "severity_level": "minor",
+          "dimension": "剂量用法",
+          "problem": "老年使用NSAIDs未减量，未优选外用制剂。",
+          "basis": "NSAIDs临床应用专家共识"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（相互作用风险）",
+        "summary": "联用出血风险升高，应优选外用NSAIDs或短程口服，必要时加用胃黏膜保护并监测出血征象。"
+      },
+      "correct_plan": {
+        "approach": "关节痛优先外用双氯芬酸二乙胺乳胶剂；确需口服NSAIDs时短程、最低有效剂量，评估护胃。",
+        "drugs": [
+          "双氯芬酸二乙胺乳胶剂"
+        ],
+        "note": "观察黑便、瘀斑、牙龈出血；定期复核老年用药清单。"
+      },
+      "teaching_tip": "抗抑郁药与止痛药看似无关，却可通过血小板机制叠加出血；老年处方要主动梳理联用风险并做减法。"
+    },
+    {
+      "case_id": "RC-09",
+      "title": "华法林与阿司匹林、甲硝唑叠加出血风险",
+      "category": "抗栓叠加 / 相互作用",
+      "difficulty": "高级",
+      "patient": {
+        "age": 63,
+        "gender": "男",
+        "flags": [
+          "老年"
+        ],
+        "diagnosis": "心房颤动（抗凝中）合并牙痛",
+        "background": "房颤口服华法林抗凝，近期牙痛拟用甲硝唑；无近期支架/急性冠脉综合征史。"
+      },
+      "prescription": [
+        {
+          "generic_name": "华法林钠片",
+          "dose": "2.5mg",
+          "frequency": "qd",
+          "route": "口服",
+          "note": "长期抗凝"
+        },
+        {
+          "generic_name": "阿司匹林肠溶片",
+          "dose": "100mg",
+          "frequency": "qd",
+          "route": "口服",
+          "note": "与华法林联用"
+        },
+        {
+          "generic_name": "甲硝唑片",
+          "dose": "0.4g",
+          "frequency": "tid",
+          "route": "口服",
+          "note": "×5天"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "INT-03",
+          "severity_level": "major",
+          "dimension": "药物相互作用",
+          "problem": "抗凝药与抗血小板药叠加，无支架/ACS等明确双药联用指征，出血风险显著升高。",
+          "basis": "《抗血小板治疗中国专家共识》"
+        },
+        {
+          "rule_id": "INTER-01",
+          "severity_level": "major",
+          "dimension": "药物相互作用",
+          "problem": "甲硝唑抑制华法林代谢，增强抗凝效应，可致INR升高与出血。",
+          "basis": "药品说明书相互作用项"
+        },
+        {
+          "rule_id": "DOSE-06",
+          "severity_level": "minor",
+          "dimension": "剂量用法",
+          "problem": "抗凝/抗血小板联用未标注出血风险评估与INR、血常规监测。",
+          "basis": "抗凝治疗指南；药品说明书"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（抗栓叠加 + 代谢相互作用）",
+        "summary": "房颤单用华法林通常不需阿司匹林；甲硝唑增强抗凝，须核实指征、监测INR并精简方案。"
+      },
+      "correct_plan": {
+        "approach": "核实阿司匹林适应证，非必要停用；如必须联用，短期使用并护胃；甲硝唑疗程中加密监测INR。",
+        "drugs": [],
+        "note": "记录大便潜血、血红蛋白及出血征象，牙痛病因转口腔科处理。"
+      },
+      "teaching_tip": "抗栓药叠加是老年消化道出血的常见诱因；联用前先问“为什么要双联”，并把相互作用与监测指标写进处方依据。"
+    },
+    {
+      "case_id": "RC-10",
+      "title": "全身用糖皮质激素长疗程未安排渐减与监测",
+      "category": "疗程适宜 / 激素管理",
+      "difficulty": "中级",
+      "patient": {
+        "age": 45,
+        "gender": "男",
+        "flags": [],
+        "diagnosis": "支气管哮喘（急性发作后）",
+        "background": "哮喘急性发作控制后口服激素，既往无糖尿病、消化道溃疡，血压正常。"
+      },
+      "prescription": [
+        {
+          "generic_name": "泼尼松片",
+          "dose": "30mg",
+          "frequency": "qd",
+          "route": "口服",
+          "note": "未注明减量方案与复查项目"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "DUR-03",
+          "severity_level": "major",
+          "dimension": "疗程适宜",
+          "problem": "长疗程全身激素未制定渐减（taper）方案，未监测血糖血压、骨密度、感染及消化道不良反应。",
+          "basis": "《糖皮质激素类药物临床应用指导原则》"
+        },
+        {
+          "rule_id": "SP-05",
+          "severity_level": "minor",
+          "dimension": "特殊人群",
+          "problem": "激素主要经肝代谢，未提示肝功能监测。",
+          "basis": "肝功能不全用药专家共识；药品说明书"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（疗程/监测缺失）",
+        "summary": "激素使用须明确起始剂量、疗程与减量计划，骤停可致肾上腺功能不全，长期使用需系统监测。"
+      },
+      "correct_plan": {
+        "approach": "按哮喘指南确定短程激素疗程并逐步减量，同步吸入制剂维持；监测血糖、血压、电解质、感染征象，必要时护胃补钙。",
+        "drugs": [],
+        "note": "不可突然停药；长疗程者评估骨密度与胃肠道风险。"
+      },
+      "teaching_tip": "全身激素“能短不长、渐减停、勤监测”；方案里必须写清减停节奏，而不是只开一个起始剂量。"
+    },
+    {
+      "case_id": "RC-11",
+      "title": "诊断模糊缺失且一张处方超过5种药品",
+      "category": "处方格式 / 诊断用药匹配",
+      "difficulty": "初级",
+      "patient": {
+        "age": 38,
+        "gender": "女",
+        "flags": [],
+        "diagnosis": "待查（主诉“不舒服”）",
+        "background": "患者诉全身不适，未提供具体部位与伴随症状，未做查体与检查即开具多种药物。"
+      },
+      "prescription": [
+        {
+          "generic_name": "盐酸氨溴索口服溶液",
+          "dose": "10ml",
+          "frequency": "tid",
+          "route": "口服",
+          "note": "对症"
+        },
+        {
+          "generic_name": "布洛芬缓释胶囊",
+          "dose": "0.3g",
+          "frequency": "bid",
+          "route": "口服",
+          "note": "止痛退热"
+        },
+        {
+          "generic_name": "氯雷他定片",
+          "dose": "10mg",
+          "frequency": "qd",
+          "route": "口服",
+          "note": "抗过敏"
+        },
+        {
+          "generic_name": "多烯磷脂酰胆碱胶囊",
+          "dose": "456mg",
+          "frequency": "tid",
+          "route": "口服",
+          "note": "保肝"
+        },
+        {
+          "generic_name": "参麦注射液",
+          "dose": "1支",
+          "frequency": "qd",
+          "route": "静脉滴注",
+          "note": "辅助"
+        },
+        {
+          "generic_name": "双歧杆菌三联活菌胶囊",
+          "dose": "2粒",
+          "frequency": "tid",
+          "route": "口服",
+          "note": "调节肠道"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "IND-04",
+          "severity_level": "minor",
+          "dimension": "诊断-用药匹配",
+          "problem": "诊断/主诉缺失或仅写“待查/不适”，无法判断用药适应证。",
+          "basis": "《处方管理办法》处方书写规范"
+        },
+        {
+          "rule_id": "NEW-06",
+          "severity_level": "major",
+          "dimension": "诊断-用药匹配",
+          "problem": "模糊诊断下开具多种治疗性药物，诊断与用药无对应关系。",
+          "basis": "处方管理办法；适应证匹配规则"
+        },
+        {
+          "rule_id": "FMT-01",
+          "severity_level": "major",
+          "dimension": "处方格式",
+          "problem": "一张处方药品（含溶媒/辅助药）超过5种。",
+          "basis": "《处方管理办法》第十九条"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜/超常处方",
+        "summary": "未明确诊断即多药联用，既违反诊断-用药匹配，也超过单张处方药品种类上限，应先问诊查体明确诊断再精简用药。"
+      },
+      "correct_plan": {
+        "approach": "补充病史、查体与必要检查，形成规范诊断；按诊断保留必需药物，非必需辅助药删除，必要时分方开具。",
+        "drugs": [],
+        "note": "诊断书写使用规范疾病名称，与药品适应证一一对应。"
+      },
+      "teaching_tip": "处方先有诊断、后有用药；诊断不清时“先评估、后开药”，避免凭“不舒服”堆砌对症药和辅助药。"
+    },
+    {
+      "case_id": "RC-12",
+      "title": "恢复期无指征使用重点监控辅助用药",
+      "category": "辅助用药指征 / 经济性",
+      "difficulty": "中级",
+      "patient": {
+        "age": 58,
+        "gender": "男",
+        "flags": [],
+        "diagnosis": "脑梗死恢复期",
+        "background": "脑梗死恢复期2个月，进食正常、精神可，无休克、无心衰及明确气阴两虚/脱证表现，二级预防口服药规律。"
+      },
+      "prescription": [
+        {
+          "generic_name": "参麦注射液",
+          "dose": "1支",
+          "frequency": "qd",
+          "route": "静脉滴注",
+          "note": "×10天"
+        }
+      ],
+      "issues": [
+        {
+          "rule_id": "NEW-08",
+          "severity_level": "major",
+          "dimension": "诊断-用药匹配",
+          "problem": "重点监控辅助用药（参麦注射液）无明确适应证或辨证依据即长期静脉使用。",
+          "basis": "国家重点监控合理用药药品目录；中成药临床应用指导原则"
+        },
+        {
+          "rule_id": "IND-05",
+          "severity_level": "minor",
+          "dimension": "诊断-用药匹配",
+          "problem": "无明确指征使用辅助/营养类针剂，未记录用药依据。",
+          "basis": "辅助用药临床应用管理规范"
+        }
+      ],
+      "verdict": {
+        "result": "不适宜处方（无指征辅助用药）",
+        "summary": "恢复期患者一般情况可、无相应指征，参麦注射液缺乏使用依据，应以二级预防、康复训练与规范口服药为主。"
+      },
+      "correct_plan": {
+        "approach": "停用无指征辅助针剂；按卒中二级预防规范管理抗血小板、调脂、降压及康复，中成药须有辨证依据。",
+        "drugs": [],
+        "note": "如确需使用中药注射剂，应明确适应证、辨证与疗程，并单独输注、监测过敏反应。"
+      },
+      "teaching_tip": "辅助用药不是“恢复期保养针”；重点监控品种须有明确指征、辨证依据和疗程，避免无指征长期静脉使用。"
+    }
+  ]
+}

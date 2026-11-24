@@ -1,5 +1,5 @@
 {
-  "version": "2026.11",
+  "version": "2026.11.24-r18",
   "note": "四层配伍：solvent_drug 为溶媒-化药；drug_drug 为同一输液瓶内两化药；tcm_injection_rules 为中药注射剂单独输注规则与指定溶媒；tcm_exclusion 为品种间互斥/谨慎配对（scope: class 类规则 / same_bottle 不可同瓶 / same_line 通路先后须冲管），含中药注射剂两两成对行与有说明书/通报依据的中药注射剂×化药专属行。compatibility: incompatible / caution / compatible / incompatible_with_any_other。",
   "solvent_drug": [
     {
@@ -129,6 +129,126 @@
       "drug_b": "氯化钾注射液",
       "compatibility": "compatible",
       "note": "补液常用组合"
+    },
+    {
+      "drug_a": "注射用头孢曲松钠",
+      "drug_b": "10%葡萄糖酸钙注射液",
+      "compatibility": "incompatible",
+      "note": "【同瓶配伍】头孢曲松与钙离子可生成不溶性钙盐沉淀，严禁同瓶混合，亦避免经同一管路序贯输注未冲管"
+    },
+    {
+      "drug_a": "注射用头孢哌酮钠舒巴坦钠",
+      "drug_b": "维生素C注射液",
+      "compatibility": "incompatible",
+      "note": "【同瓶配伍】VC具还原性，可加速头孢类降解，效价降低，分开输注"
+    },
+    {
+      "drug_a": "注射用头孢他啶",
+      "drug_b": "维生素C注射液",
+      "compatibility": "incompatible",
+      "note": "【同瓶配伍】酸性VC影响头孢稳定性，不建议同瓶混合"
+    },
+    {
+      "drug_a": "注射用奥美拉唑钠",
+      "drug_b": "维生素C注射液",
+      "compatibility": "incompatible",
+      "note": "【同瓶配伍】PPI对pH敏感，与酸性VC混合易变色降效，分开输注"
+    },
+    {
+      "drug_a": "地塞米松磷酸钠注射液",
+      "drug_b": "维生素B6注射液",
+      "compatibility": "caution",
+      "note": "【同瓶配伍】两者混合可出现浑浊或微粒增加，建议分开输注并冲管"
+    },
+    {
+      "drug_a": "呋塞米注射液",
+      "drug_b": "多巴胺注射液",
+      "compatibility": "caution",
+      "note": "【同瓶配伍】多巴胺在碱性条件下易氧化变色降解，需现配现用，不与碱性呋塞米同瓶"
+    },
+    {
+      "drug_a": "注射用辅酶A",
+      "drug_b": "维生素C注射液",
+      "compatibility": "caution",
+      "note": "【同瓶配伍】成分稳定性受pH影响，不建议同瓶混合，分开输注"
+    },
+    {
+      "drug_a": "氯化钾注射液",
+      "drug_b": "呋塞米注射液",
+      "compatibility": "caution",
+      "note": "【同瓶配伍/电解质】排钾利尿剂与补钾药联用需监测血钾与肾功能，非同瓶禁忌但须个体化调整"
+    },
+    {
+      "drug_a": "华法林钠片",
+      "drug_b": "阿司匹林肠溶片",
+      "compatibility": "caution",
+      "note": "【全身联用】抗凝+抗血小板叠加显著增加消化道及全身出血风险，仅在明确指征下短期联用，监测出血与血红蛋白"
+    },
+    {
+      "drug_a": "华法林钠片",
+      "drug_b": "甲硝唑片",
+      "compatibility": "caution",
+      "note": "【全身联用】甲硝唑抑制华法林代谢、增强抗凝作用，可致INR升高与出血，需监测INR并调整剂量"
+    },
+    {
+      "drug_a": "华法林钠片",
+      "drug_b": "盐酸左氧氟沙星注射液",
+      "compatibility": "caution",
+      "note": "【全身联用】喹诺酮类可增强华法林抗凝效应，用药期间监测INR及出血征象"
+    },
+    {
+      "drug_a": "盐酸贝那普利片",
+      "drug_b": "螺内酯片",
+      "compatibility": "caution",
+      "note": "【全身联用】ACEI与保钾利尿剂联用升高血钾，肾功能不全者尤甚，监测血钾与肌酐"
+    },
+    {
+      "drug_a": "缬沙坦胶囊",
+      "drug_b": "螺内酯片",
+      "compatibility": "caution",
+      "note": "【全身联用】ARB+螺内酯可致高钾血症，需监测血钾，避免与钾制剂盲目叠加"
+    },
+    {
+      "drug_a": "阿托伐他汀钙片",
+      "drug_b": "克拉霉素片",
+      "compatibility": "caution",
+      "note": "【全身联用】克拉霉素抑制CYP3A4，升高他汀血药浓度，增加肌病/横纹肌溶解风险，必要时减量或换药"
+    },
+    {
+      "drug_a": "辛伐他汀片",
+      "drug_b": "克拉霉素片",
+      "compatibility": "caution",
+      "note": "【全身联用】辛伐他汀主要经CYP3A4代谢，与大环内酯类抑制药联用肌病风险明显升高，建议暂停或更换他汀"
+    },
+    {
+      "drug_a": "草酸艾司西酞普兰片",
+      "drug_b": "布洛芬缓释胶囊",
+      "compatibility": "caution",
+      "note": "【全身联用】SSRI抑制血小板5-羟色胺摄取，与NSAIDs联用增加消化道出血风险，必要时护胃并观察出血征象"
+    },
+    {
+      "drug_a": "甲氨蝶呤片",
+      "drug_b": "复方磺胺甲噁唑片",
+      "compatibility": "caution",
+      "note": "【全身联用】联用增强叶酸拮抗与骨髓抑制，可致严重血细胞减少，避免常规联用，监测血象"
+    },
+    {
+      "drug_a": "碳酸锂片",
+      "drug_b": "呋塞米片",
+      "compatibility": "caution",
+      "note": "【全身联用】利尿剂减少锂盐排泄、升高血锂浓度，可致锂中毒，需监测血锂并调整剂量"
+    },
+    {
+      "drug_a": "左氧氟沙星片",
+      "drug_b": "硫酸亚铁片",
+      "compatibility": "caution",
+      "note": "【全身联用】喹诺酮与铁离子螯合降低吸收，两药间隔至少2小时服用"
+    },
+    {
+      "drug_a": "盐酸莫西沙星片",
+      "drug_b": "多糖铁复合物",
+      "compatibility": "caution",
+      "note": "【全身联用】金属铁剂与喹诺酮螯合影响吸收，应间隔服用并监测抗感染疗效"
     }
   ],
   "tcm_injection_rules": [

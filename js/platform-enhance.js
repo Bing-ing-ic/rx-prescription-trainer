@@ -893,7 +893,7 @@
   // 通用视图切换（只切换显示，不触发业务渲染）
   function showViewOnly(id) {
     var ids = [
-      'view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls',
+      'view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls','view-review-cases',
       'view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
       'view-acup-home','view-acup-map','view-acup-case','view-acup-rx','view-acup-report','view-acup-time',
       'view-anat-home','view-anat-atlas','view-anat-system','view-anat-detail','view-anat-quiz','view-anat-cases',
@@ -905,7 +905,7 @@
     // W2-7：全局视图隐藏模块 Tab；模块视图恢复
     var tabs = $('module-tabs');
     if (tabs) {
-      var globalViews = ['view-radar','view-mistakes','view-stats','view-drugs','view-quickref','view-pitfalls'];
+      var globalViews = ['view-radar','view-mistakes','view-stats','view-drugs','view-quickref','view-pitfalls','view-review-cases'];
       tabs.classList.toggle('hidden', globalViews.indexOf(id) >= 0);
     }
     window.scrollTo(0, 0);

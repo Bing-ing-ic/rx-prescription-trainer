@@ -132,6 +132,7 @@
       <p class="hero-sub">随机病例 · 双通道处方 · 规则引擎实时点评 · 云南医保事前提醒</p>
       <button id="btn-new-case" class="hero-btn">🎲 随机开始新病例</button>
       <button id="btn-open-pitfalls" class="hero-btn hero-btn-ghost" style="margin-left:10px;">🎯 诊断陷阱训练</button>
+      <button id="btn-open-review-cases" class="hero-btn hero-btn-ghost" style="margin-left:10px;">🎓 处方点评案例</button>
       <div class="difficulty-row no-print">
         <span class="diff-label">难度筛选：</span>
         <label><input type="radio" name="diff-filter" value="all" checked> 全部</label>
@@ -1367,6 +1368,26 @@
     </div>
   </section>
 
+  <!-- 处方点评典型案例（只读教学） -->
+  <section class="view hidden" id="view-review-cases">
+    <div class="report-head">
+      <button class="btn" data-goto="home">← 返回首页</button>
+      <h2>🎓 处方点评典型案例</h2>
+      <p class="muted">选取临床常见的问题处方样例，逐条拆解不合理之处、点评依据与规范处理方向，配合规则引擎知识点复盘。本栏目为只读教学，不参与推演判分。</p>
+    </div>
+
+    <!-- 案例列表 -->
+    <div id="rc-list-wrap">
+      <div id="rc-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;padding:8px 4px;"></div>
+    </div>
+
+    <!-- 案例详情 -->
+    <div id="rc-detail-wrap" class="hidden" style="max-width:920px;margin:0 auto;">
+      <button class="btn no-print" id="rc-back-list" style="margin-bottom:12px;">← 返回案例列表</button>
+      <div id="rc-detail-body"></div>
+    </div>
+  </section>
+
 </main>
 
 <!-- 全局 Loading 指示（医疗专业感，简洁圆环） -->
@@ -1491,16 +1512,16 @@
 </script>
 <script src="js/review.min.js?v=20261106surg1"></script>
 <script src="js/standard-plan.min.js?v=20261109sp1"></script>
-<script src="js/app.min.js?v=20261124r18"></script>
+<script src="js/app.min.js?v=20261124r19"></script>
 <script src="js/tcm-engine.min.js?v=20261124r18"></script>
 <script src="js/acup-engine.min.js?v=20261124r18"></script>
-<script src="js/tcm-app.min.js?v=20261124r18"></script>
+<script src="js/tcm-app.min.js?v=20261124r19"></script>
 <script src="js/tuina-engine.min.js?v=20261124r18"></script>
-<script src="js/acup-app.min.js?v=20261124r18"></script>
+<script src="js/acup-app.min.js?v=20261124r19"></script>
 <script src="js/acup-time.min.js?v=20261111time1"></script>
 <script src="js/module-views.min.js?v=20261124r18"></script>
-<script src="js/anat-app.min.js?v=20261124r18"></script>
-<script src="js/platform-enhance.js?v=20261124r18"></script>
+<script src="js/anat-app.min.js?v=20261124r19"></script>
+<script src="js/platform-enhance.js?v=20261124r19"></script>
 
 <!-- 百度统计 -->
 <script>

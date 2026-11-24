@@ -39,19 +39,21 @@
     pitfalls: [],          // 来自 data/diagnosis-pitfalls.json
     pitfallIdx: 0,         // 当前正在答的陷阱序号
     pitfallAnswers: {},    // trap_id -> { chosen, correct } 记录学生选择
+    // 处方点评典型案例（只读教学）
+    reviewCases: [],       // 来自 data/review-cases.json
   };
 
   // ---------- DOM ----------
   const $ = id => document.getElementById(id);
   function show(view) {
-    ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls','view-quickref'].forEach(v => {
+    ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls','view-review-cases','view-quickref'].forEach(v => {
       const el = $(v); if (el) el.classList.add('hidden');
     });
     $(view).classList.remove('hidden');
     // W2-7：进入全局视图时弱化模块 Tab，回到模块视图恢复
     const tabs = $('module-tabs');
     if (tabs) {
-      const globalViews = ['view-radar','view-mistakes','view-stats','view-drugs','view-quickref','view-pitfalls'];
+      const globalViews = ['view-radar','view-mistakes','view-stats','view-drugs','view-quickref','view-pitfalls','view-review-cases'];
       tabs.classList.toggle('hidden', globalViews.indexOf(view) >= 0);
     }
     window.scrollTo(0,0);
@@ -220,7 +222,8 @@
         radar: () => { renderRadar(); show('view-radar'); },
         mistakes: () => { renderMistakes(); show('view-mistakes'); },
         stats: () => { renderStats(); show('view-stats'); },
-        pitfalls: () => { openPitfalls(); }
+        pitfalls: () => { openPitfalls(); },
+        reviewcases: () => { openReviewCases(); }
       };
       if (navHash[hashKey]) navHash[hashKey]();
       else if ($(hashKey)) {
@@ -257,6 +260,10 @@
     fetch('data/diagnosis-pitfalls.json').then(r => r.ok ? r.json() : null).then(a => {
       if (a && Array.isArray(a.pitfalls)) S.pitfalls = a.pitfalls;
     }).catch(() => { /* 陷阱库加载失败时静默降级 */ });
+    // 处方点评典型案例库（失败时静默降级）
+    fetch('data/review-cases.json').then(r => r.ok ? r.json() : null).then(a => {
+      if (a && Array.isArray(a.cases)) S.reviewCases = a.cases;
+    }).catch(() => { /* 案例库加载失败时静默降级 */ });
   }
 
   // 加载检验检查报告相关 JSON（lab-exams.json / disease-lab-map.json）
@@ -411,6 +418,8 @@
     // P4-2 诊断陷阱训练入口
     const btnOpenPit = $('btn-open-pitfalls'); if (btnOpenPit) btnOpenPit.onclick = openPitfalls;
     const btnPitBack = $('pitfall-back-list'); if (btnPitBack) btnPitBack.onclick = renderPitfallList;
+    const btnOpenRc = $('btn-open-review-cases'); if (btnOpenRc) btnOpenRc.onclick = openReviewCases;
+    const btnRcBack = $('rc-back-list'); if (btnRcBack) btnRcBack.onclick = renderRcList;
     $('btn-diag-check').onclick = checkDiagnosis;
     $('diag-input').oninput = onDiagInput;
     $('diag-input').onkeydown = onDiagKey;
@@ -3046,6 +3055,150 @@
       drawData(eased);
       if (p < 1) requestAnimationFrame(tick);
     })(t0);
+  }
+
+  // ====================== 处方点评典型案例（只读教学） ======================
+  function openReviewCases() {
+    if (!S.reviewCases || S.reviewCases.length === 0) {
+      return fetch('data/review-cases.json').then(r => r.ok ? r.json() : null).then(a => {
+        if (a && Array.isArray(a.cases)) S.reviewCases = a.cases;
+        renderRcList();
+        show('view-review-cases');
+      }).catch(() => alert('点评案例库加载失败，请检查 data/review-cases.json 是否存在。'));
+    }
+    renderRcList();
+    show('view-review-cases');
+  }
+
+  function rcSeverityTag(level) {
+    if (level === 'critical') return '<span style="display:inline-block;padding:2px 8px;background:#fee2e2;color:#991b1b;border-radius:10px;font-size:12px;">🔴 禁忌/严重</span>';
+    if (level === 'major') return '<span style="display:inline-block;padding:2px 8px;background:#ffedd5;color:#9a3412;border-radius:10px;font-size:12px;">🟠 较重</span>';
+    return '<span style="display:inline-block;padding:2px 8px;background:#e0f2fe;color:#075985;border-radius:10px;font-size:12px;">🔵 一般</span>';
+  }
+
+  function renderRcList() {
+    const wrap = $('rc-list-wrap');
+    const detail = $('rc-detail-wrap');
+    if (wrap) wrap.classList.remove('hidden');
+    if (detail) detail.classList.add('hidden');
+    const list = $('rc-list');
+    if (!list) return;
+    if (!S.reviewCases || S.reviewCases.length === 0) {
+      list.innerHTML = '<div class="muted" style="grid-column:1/-1;padding:var(--space-30px);text-align:center;">点评案例库尚未加载，请稍后再试。</div>';
+      return;
+    }
+    list.innerHTML = '';
+    S.reviewCases.forEach((c, i) => {
+      const issueCount = (c.issues || []).length;
+      const card = document.createElement('div');
+      card.style.cssText = 'background:#fff;border:1px solid #e2e8f0;border-radius:var(--radius-10);padding:var(--space-4);cursor:pointer;transition:all .15s;';
+      card.innerHTML = `
+        <div style="font-weight:600;color:#0f4c81;margin-bottom:var(--space-2);">#${i+1} ${c.title}</div>
+        <div style="font-size:12px;color:#64748b;line-height:1.5;">${c.patient.diagnosis || ''}</div>
+        <div style="margin-top:var(--space-10px);display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+          <span style="display:inline-block;padding:2px 8px;background:#f1f5f9;color:#475569;border-radius:10px;font-size:12px;">${c.category || ''}</span>
+          <span style="display:inline-block;padding:2px 8px;background:#f1f5f9;color:#475569;border-radius:10px;font-size:12px;">${c.difficulty || ''}</span>
+          <span style="display:inline-block;padding:2px 8px;background:#fef2f2;color:#991b1b;border-radius:10px;font-size:12px;">${issueCount} 项问题</span>
+        </div>
+        <div style="margin-top:var(--space-10px);font-size:12px;color:#3b82f6;">查看点评解析 →</div>
+      `;
+      card.onmouseenter = () => card.style.borderColor = '#3b82f6';
+      card.onmouseleave = () => card.style.borderColor = '#e2e8f0';
+      card.onclick = () => renderRcDetail(i);
+      list.appendChild(card);
+    });
+  }
+
+  function renderRcDetail(idx) {
+    const c = S.reviewCases[idx];
+    if (!c) return;
+    const wrap = $('rc-list-wrap');
+    const detail = $('rc-detail-wrap');
+    if (wrap) wrap.classList.add('hidden');
+    if (detail) detail.classList.remove('hidden');
+    const body = $('rc-detail-body');
+    if (!body) return;
+
+    const rxRows = (c.prescription || []).map(d => `
+      <tr>
+        <td style="padding:8px 10px;font-weight:600;color:#1e293b;">${d.generic_name}</td>
+        <td style="padding:8px 10px;">${d.dose || ''}</td>
+        <td style="padding:8px 10px;">${d.frequency || ''}</td>
+        <td style="padding:8px 10px;">${d.route || ''}</td>
+        <td style="padding:8px 10px;color:#64748b;">${d.note || ''}</td>
+      </tr>`).join('');
+
+    const issueBlocks = (c.issues || []).map(iss => `
+      <div style="margin:10px 0;padding:12px;background:#fff;border:1px solid #e2e8f0;border-left:4px solid #dc2626;border-radius:var(--radius-6);">
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px;">
+          ${rcSeverityTag(iss.severity_level)}
+          <span style="font-weight:600;color:#1e293b;">${iss.dimension || ''}</span>
+          <span style="font-size:12px;color:#94a3b8;">规则 ${iss.rule_id || ''}</span>
+        </div>
+        <div style="color:var(--gray-700);line-height:1.6;">${iss.problem || ''}</div>
+        <div style="margin-top:6px;font-size:12px;color:#64748b;">依据：${iss.basis || ''}</div>
+      </div>`).join('');
+
+    const correctDrugs = (c.correct_plan && c.correct_plan.drugs && c.correct_plan.drugs.length)
+      ? `<div style="margin-top:6px;">规范方案可选用：${c.correct_plan.drugs.join('、')}</div>` : '';
+
+    body.innerHTML = `
+      <div class="case-card" style="padding:20px;">
+        <div class="case-card-head" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <span class="tag">${c.category || ''}</span>
+          <span class="tag">${c.difficulty || ''}</span>
+          <span class="case-title" style="margin-left:6px;">${c.title}</span>
+        </div>
+
+        <div style="margin:14px 0;padding:12px;background:#f0f9ff;border-left:4px solid #0284c7;border-radius:var(--radius-6);">
+          <b style="color:#075985;">🩺 患者背景：</b>
+          <div style="margin-top:6px;color:var(--gray-700);line-height:1.6;">
+            ${c.patient.age || ''}岁 ${c.patient.gender || ''}${(c.patient.flags && c.patient.flags.length) ? '（' + c.patient.flags.join('、') + '）' : ''}；诊断：${c.patient.diagnosis || ''}
+          </div>
+          <div style="margin-top:6px;color:var(--gray-700);line-height:1.6;">${c.patient.background || ''}</div>
+        </div>
+
+        <div style="margin:14px 0;">
+          <b style="color:#1e293b;">💊 问题处方：</b>
+          <table style="width:100%;border-collapse:collapse;margin-top:8px;font-size:13px;">
+            <thead>
+              <tr style="background:#f8fafc;">
+                <th style="padding:8px 10px;text-align:left;">药品通用名</th>
+                <th style="padding:8px 10px;text-align:left;">剂量</th>
+                <th style="padding:8px 10px;text-align:left;">频次</th>
+                <th style="padding:8px 10px;text-align:left;">途径</th>
+                <th style="padding:8px 10px;text-align:left;">备注</th>
+              </tr>
+            </thead>
+            <tbody>${rxRows}</tbody>
+          </table>
+        </div>
+
+        <div style="margin:14px 0;">
+          <b style="color:#991b1b;">⚠️ 问题点评：</b>
+          ${issueBlocks}
+        </div>
+
+        <div style="margin:14px 0;padding:12px;background:#fef2f2;border-left:4px solid #dc2626;border-radius:var(--radius-6);">
+          <b style="color:#991b1b;">📋 点评结论：</b>
+          <div style="margin-top:6px;font-weight:600;color:#1e293b;">${c.verdict.result || ''}</div>
+          <div style="margin-top:6px;color:var(--gray-700);line-height:1.6;">${c.verdict.summary || ''}</div>
+        </div>
+
+        <div style="margin:14px 0;padding:12px;background:#f0fdf4;border-left:4px solid #16a34a;border-radius:var(--radius-6);">
+          <b style="color:#166534;">✅ 规范处理方向：</b>
+          <div style="margin-top:6px;color:var(--gray-700);line-height:1.6;">${c.correct_plan.approach || ''}</div>
+          ${correctDrugs}
+          <div style="margin-top:6px;font-size:12px;color:#64748b;">${c.correct_plan.note || ''}</div>
+        </div>
+
+        <div style="margin:14px 0;padding:12px;background:#f8fafc;border-left:4px solid #64748b;border-radius:var(--radius-6);">
+          <b style="color:#334155;">💡 教学要点：</b>
+          <div style="margin-top:6px;color:var(--gray-700);line-height:1.6;">${c.teaching_tip || ''}</div>
+        </div>
+      </div>
+    `;
+    window.scrollTo(0, 0);
   }
 
   // ====================== P4-2 诊断陷阱训练 ======================

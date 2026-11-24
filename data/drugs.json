@@ -3192,8 +3192,8 @@
         "iv_drip",
         "iv_push"
       ],
-      "push_min": "按心率/反应滴定",
-      "route_note": "抗休克可稀释静滴；监测心率、心律、血压；青光眼、前列腺增生、心动过速禁用"
+      "push_min": "",
+      "route_note": "按心率/反应滴定；抗休克可稀释静滴；监测心率、心律、血压；青光眼、前列腺增生、心动过速禁用"
     },
     {
       "generic_name": "多巴胺注射液",
@@ -3219,7 +3219,7 @@
         "single_min_mg": 20,
         "single_max_mg": 200,
         "daily_max_mg": 200,
-        "default_freq": "泵入",
+        "default_freq": "qd",
         "default_duration_days": 3
       },
       "allowed_solvents_json": [
@@ -4582,7 +4582,7 @@
         "single_min_u": 4,
         "single_max_u": 12,
         "daily_max_u": 48,
-        "default_freq": "持续静滴",
+        "default_freq": "qd",
         "default_duration_days": 1
       },
       "liver_renal_note": "肾功能不全者胰岛素清除减慢，需减量并监测血糖",
@@ -13529,7 +13529,7 @@
         "single_min_mg": 5,
         "single_max_mg": 10,
         "daily_max_mg": 10,
-        "default_freq": "ivgtt",
+        "default_freq": "qd",
         "default_duration_days": 1
       },
       "liver_renal_note": "青光眼禁用",
@@ -13657,7 +13657,7 @@
         "single_min_mg": 0.2,
         "single_max_mg": 0.4,
         "daily_max_mg": 0.8,
-        "default_freq": "iv",
+        "default_freq": "st",
         "default_duration_days": 1
       },
       "liver_renal_note": "心肌梗死急性期慎用",
@@ -14231,7 +14231,7 @@
         "single_min_mg": 0.4,
         "single_max_mg": 2,
         "daily_max_mg": 4,
-        "default_freq": "iv",
+        "default_freq": "st",
         "default_duration_days": 1
       },
       "liver_renal_note": "--",
@@ -14271,7 +14271,7 @@
         "single_min_mg": 0.1,
         "single_max_mg": 0.5,
         "daily_max_mg": 1.5,
-        "default_freq": "iv",
+        "default_freq": "st",
         "default_duration_days": 1
       },
       "liver_renal_note": "--",
@@ -21227,7 +21227,7 @@
         "single_min_mg": 12.5,
         "single_max_mg": 50,
         "daily_max_mg": 200,
-        "default_freq": "iv",
+        "default_freq": "qd",
         "default_duration_days": 3
       },
       "liver_renal_note": "肝功能不全慎用",
@@ -21270,7 +21270,7 @@
         "single_min_mg": 6,
         "single_max_mg": 12,
         "daily_max_mg": 12,
-        "default_freq": "iv",
+        "default_freq": "qd",
         "default_duration_days": 1
       },
       "liver_renal_note": "严重肝肾功能不全不推荐",
@@ -21985,7 +21985,7 @@
         "single_min_mg": 10,
         "single_max_mg": 40,
         "daily_max_mg": 40,
-        "default_freq": "iv",
+        "default_freq": "qd",
         "default_duration_days": 7
       },
       "liver_renal_note": "严重肾功能衰竭禁用",

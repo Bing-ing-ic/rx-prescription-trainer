@@ -3272,12 +3272,29 @@
     } catch (e) { /* 忽略存储异常 */ }
   }
 
+  // 切离西医模块时清空西医处方草稿（口服/输液），避免跨模块残留；检验单按既有设计保留
+  function resetWesternDraft() {
+    S.normalItems = [];
+    S.ivGroups = [];
+    S.ivFields = { iv_reason:'', iv_reason_note:'' };
+    S.restrictedConfirmed = false;
+    S.overLimitWarned = false;
+    S.ivOverLimitWarned = false;
+    const rs = $('iv-reason-select'); if (rs) rs.value = '';
+    const rn = $('iv-reason-note'); if (rn) rn.value = '';
+    if (typeof renderDrugList === 'function') renderDrugList();
+    if (typeof renderIvDrugList === 'function') renderIvDrugList();
+    if (typeof renderNormalItems === 'function') renderNormalItems();
+    if (typeof renderIvGroups === 'function') renderIvGroups();
+  }
+
   // 暴露到全局供 inline onclick 调用
   window.__openRx = openRx;
   window.__openLab = openLab;
   window.__openSurgery = openSurgery;
   window.__newCase = newCase;
   window.__checkDiag = checkDiagnosis;
+  window.__resetWesternDraft = resetWesternDraft;
 
   // ====================== 新增功能：错题本 ======================
   function saveMistakes(review, hits, ctx) {

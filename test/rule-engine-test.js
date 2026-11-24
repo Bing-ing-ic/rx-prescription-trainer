@@ -433,6 +433,62 @@ T('IV-12', 'pos', '氨茶碱10分钟慢推 → 不触发 IV-12', () =>
       items:[it(D2('氨茶碱注射液',{allowed_routes:['iv_drip','iv_push'], push_min:'≥10分钟（稀释至20–40ml）'}),{route:'iv_push', push_min:'10分钟', single_dose:'0.25g', frequency:'st', duration_days:1})] } }),
   'pass');
 
+// ---- IV-11 补充边界：单位缺失 / 非数字泵速 / 0 值合法 ----
+T('IV-11', 'neg', '多巴胺泵入缺泵速单位 → error/major', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('多巴胺注射液',{allowed_routes:['iv_drip','iv_pump']}),{route:'iv_pump', pump_rate:'3', pump_rate_unit:'', pump_conc:'20mg+5%GS200ml', single_dose:'20mg', frequency:'st', duration_days:1})] } }),
+  'error', { expectLevel:'major' });
+
+T('IV-11', 'neg', '泵速填非数字 → error/major', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('多巴胺注射液',{allowed_routes:['iv_drip','iv_pump']}),{route:'iv_pump', pump_rate:'abc', pump_rate_unit:'μg/kg/min', pump_conc:'20mg+5%GS200ml', single_dose:'20mg', frequency:'st', duration_days:1})] } }),
+  'error', { expectLevel:'major' });
+
+T('IV-11', 'pos', '泵速 0 为合法下限值 → 不触发 IV-11', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('多巴胺注射液',{allowed_routes:['iv_drip','iv_pump']}),{route:'iv_pump', pump_rate:'0', pump_rate_unit:'ml/h', pump_conc:'20mg+5%GS200ml', single_dose:'20mg', frequency:'st', duration_days:1})] } }),
+  'pass');
+
+T('IV-11', 'pos', '泵速为数值区间 0.05–0.1 → 不触发 IV-11', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('普通胰岛素注射液',{allowed_routes:['iv_drip','iv_pump']}),{route:'iv_pump', pump_rate:'0.05–0.1', pump_rate_unit:'U/kg/h', pump_conc:'50U+0.9%NS 500ml', single_dose:'5U/h', frequency:'st', duration_days:1})] } }),
+  'pass');
+
+// ---- IV-12 补充边界：无口径跳过 / mg/min 上限 / 纯数字时长 / 等于上限 ----
+T('IV-12', 'none', '阿托品无时长口径，静推不触发 IV-12', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D('阿托品注射液'),{route:'iv_push', push_min:'', single_dose:'0.5mg', frequency:'st', duration_days:1})] } }),
+  'none');
+
+T('IV-12', 'neg', '呋塞米 5mg/min 超 4mg/min 上限 → error/major', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('呋塞米注射液',{allowed_routes:['iv_drip','iv_push','iv_pump'], push_min:'>1–2分钟', push_speed_limit:'大剂量≤4mg/min'}),{route:'iv_push', push_min:'5mg/min', single_dose:'20mg', frequency:'st', duration_days:1})] } }),
+  'error', { expectLevel:'major' });
+
+T('IV-12', 'neg', '氨茶碱纯数字 9 按分钟判定低于 10 分钟下限 → error/major', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('氨茶碱注射液',{allowed_routes:['iv_drip','iv_push'], push_min:'≥10分钟（稀释至20–40ml）'}),{route:'iv_push', push_min:'9', single_dose:'0.25g', frequency:'st', duration_days:1})] } }),
+  'error', { expectLevel:'major' });
+
+T('IV-12', 'pos', '呋塞米 1mg/min 合规 → 不触发 IV-12', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('呋塞米注射液',{allowed_routes:['iv_drip','iv_push','iv_pump'], push_min:'>1–2分钟', push_speed_limit:'大剂量≤4mg/min'}),{route:'iv_push', push_min:'1mg/min', single_dose:'20mg', frequency:'st', duration_days:1})] } }),
+  'pass');
+
+T('IV-12', 'pos', '葡萄糖酸钙 5ml/min 等于上限 → 不触发 IV-12', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('10%葡萄糖酸钙注射液',{allowed_routes:['iv_drip','iv_push'], push_min:'稀释后慢推', push_speed_limit:'≤5ml/min'}),{route:'iv_push', push_min:'5ml/min', single_dose:'10ml', frequency:'st', duration_days:1})] } }),
+  'pass');
+
 // ============ 回归：既有滴注病例不新增 IV-10/11/12 命中 ============
 const dripRegressCtx = () => ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
   iv_rx: { rx_id:'IV-1', solvent_name:'0.9%氯化钠注射液 100ml', drip_speed_mlh:40, iv_reason:'needs_iv',

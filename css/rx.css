@@ -484,10 +484,14 @@ input, select, textarea { font-family: inherit; }
 }
 .iv-param .muted { font-size: var(--text-12); color: var(--gray-500); }
 
+.iv-reason-bar { flex-wrap: wrap; }
+#iv-reason-note { min-width: 0; flex: 1 1 200px; }
+
 @media (max-width: 480px) {
   .route-seg { gap: var(--space-2px); }
   .route-btn { font-size: var(--text-12); padding: var(--space-2px) var(--space-6px); }
   .iv-param { gap: var(--space-2); }
+  #iv-reason-note { flex-basis: 100%; }
 }
 
 .rx-foot {

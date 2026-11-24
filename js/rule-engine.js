@@ -165,11 +165,17 @@
     const plain = s.match(/([\d.]+)\s*分钟/);
     return plain ? parseFloat(plain[1]) : null;
   }
-  // 从 push_speed_limit 口径字符串解析速度上限（ml/min），如 "≤5ml/min"
+  // 从推注速度口径字符串解析速度上限（数值，ml/min 或 mg/min），如 "≤5ml/min"、"大剂量≤4mg/min"
   function pushSpeedMax(str) {
     if (!str) return null;
-    const m = String(str).match(/≤\s*([\d.]+)\s*ml\/min/i);
+    const m = String(str).match(/≤\s*([\d.]+)\s*(?:ml|mg)\/min/i);
     return m ? parseFloat(m[1]) : null;
+  }
+  // 泵速/推注速度数值合法性：允许单值或数值区间（如 0.05–0.1）；空串由调用方按缺参处理
+  function isNumericRate(v) {
+    const s = String(v == null ? '' : v).trim();
+    if (s === '') return false;
+    return /^[\d.]+(\s*[-–~～]\s*[\d.]+)?$/.test(s);
   }
 
   // 收集 visit 内所有口服药 & 所有静脉药
@@ -941,17 +947,28 @@
         if (!it || !it.drug || it.drug.dosage_form === 'solvent') return;
         if (routeOf(it) !== 'iv_pump') return;
         const name = it.drug.generic_name;
+        const rate = it.pump_rate == null ? '' : String(it.pump_rate).trim();
+        const unit = it.pump_rate_unit == null ? '' : String(it.pump_rate_unit).trim();
+        const conc = it.pump_conc == null ? '' : String(it.pump_conc).trim();
         const missingParams = [];
-        if (it.pump_rate == null || String(it.pump_rate).trim() === '') missingParams.push('泵速');
-        if (it.pump_conc == null || String(it.pump_conc).trim() === '') missingParams.push('配制浓度');
+        if (rate === '') missingParams.push('泵速');
+        if (unit === '') missingParams.push('泵速单位');
+        if (conc === '') missingParams.push('配制浓度');
         if (missingParams.length) {
           hits.push(hit(R11, 'error',
             `泵入给药须标注配制浓度与泵速（ml/h 或 μg/kg/min、U/kg/h 等），并在标签注明药名、剂量、配制时间、泵速。`,
             `补齐泵速（含单位）与配制浓度；按血压/心率/血糖/血钾滴定。`,
             { affected_items: [name], severity_level: 'major' }));
-        } else {
-          hits.push(pass(R11, `「${name}」泵入途径与浓度、泵速参数完整。`));
+          return;
         }
+        if (!isNumericRate(rate)) {
+          hits.push(hit(R11, 'error',
+            `「${name}」泵速「${it.pump_rate}」不是有效数值；泵速应为纯数字（配合单位下拉选择口径）。`,
+            `按药品泵速口径填写数值泵速，并选择对应单位（ml/h、μg/kg/min、μg/min、U/kg/h）。`,
+            { affected_items: [name], severity_level: 'major' }));
+          return;
+        }
+        hits.push(pass(R11, `「${name}」泵入途径与浓度、泵速参数完整。`));
       });
 
       // ---- IV-12 推注时长/速度不当（IV_REASON） ----
@@ -960,13 +977,15 @@
         if (routeOf(it) !== 'iv_push') return;
         const drug = it.drug;
         const name = drug.generic_name;
-        // 无说明书时长/速度口径则不判定
-        if (!drug.push_min && !drug.push_speed_limit) return;
+        // 无说明书时长/速度口径（解析不出数字下限与速度上限）则不判定
+        const minMin = pushMinLowerBound(drug.push_min);
+        const maxSpeed = pushSpeedMax(drug.push_speed_limit);
+        if (minMin == null && maxSpeed == null) return;
         const entered = (it.push_min == null ? '' : String(it.push_min)).trim();
         const limitTxt = [drug.push_min, drug.push_speed_limit].filter(Boolean).join('；');
         const riskTxt = drug.route_note || '严重不良反应（心律失常、惊厥、耳毒性、晕厥）';
 
-        // 缺时长 → warn minor
+        // 缺时长/速度 → warn minor
         if (!entered) {
           hits.push(hit(R12, 'warn',
             `「${name}」须${limitTxt}；推注过快可致${riskTxt}。`,
@@ -974,19 +993,21 @@
             { affected_items: [name], severity_level: 'minor' }));
           return;
         }
-        // 时长低于口径下限 → error major
-        const minMin = pushMinLowerBound(drug.push_min);
+        // 解析时长（分钟）与速度（ml/min 或 mg/min）；纯数字无单位按分钟口径处理
         const enterMinMatch = entered.match(/([\d.]+)\s*分钟/);
-        if (minMin != null && enterMinMatch && parseFloat(enterMinMatch[1]) < minMin) {
+        const enterSpeedMatch = entered.match(/([\d.]+)\s*(?:ml|mg)\/min/i);
+        const bareNum = entered.match(/^([\d.]+)$/);
+        const enteredMin = enterMinMatch ? parseFloat(enterMinMatch[1])
+          : (enterSpeedMatch ? null : (bareNum ? parseFloat(bareNum[1]) : null));
+        // 时长低于口径下限 → error major
+        if (minMin != null && enteredMin != null && enteredMin < minMin) {
           hits.push(hit(R12, 'error',
             `「${name}」须${limitTxt}；当前推注时长 ${entered} 低于说明书下限，推注过快可致${riskTxt}。`,
             `按说明书下限以上时长缓慢推注，必要时稀释并加强监护。`,
             { affected_items: [name], severity_level: 'major' }));
           return;
         }
-        // 速度超过口径上限（ml/min）→ error major
-        const maxSpeed = pushSpeedMax(drug.push_speed_limit);
-        const enterSpeedMatch = entered.match(/([\d.]+)\s*ml\/min/i);
+        // 速度超过口径上限（ml/min 或 mg/min）→ error major
         if (maxSpeed != null && enterSpeedMatch && parseFloat(enterSpeedMatch[1]) > maxSpeed) {
           hits.push(hit(R12, 'error',
             `「${name}」推注速度须${drug.push_speed_limit}；当前 ${entered} 超过说明书上限。`,

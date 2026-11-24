@@ -94,6 +94,10 @@
     if (drugsBtn) drugsBtn.style.display = (m === 'western') ? '' : 'none';
     // 重置状态
     resetState();
+    // 切离西医模块时清空西医处方草稿，避免输液/口服草稿跨模块残留
+    if (m !== 'western' && typeof window.__resetWesternDraft === 'function') {
+      window.__resetWesternDraft();
+    }
     if (m === 'western') showView('view-home');
     else if (m === 'tcm') showView('view-tcm-home');
     else if (m === 'acup') showView('view-acup-home');

@@ -10,7 +10,7 @@
   // ---------- 全局状态 ----------
   const S = {
     module: 'western',   // western | tcm | acup
-    cases: [], formulas: [], herbs: [],
+    cases: [], formulas: [], herbs: [], famous: [],
     case: null, patient: null,
     zhengOk: false,
     selectedFormula: null,
@@ -49,15 +49,17 @@
   }
   async function boot() {
     try {
-      const [cj, fj, hj, rj] = await Promise.all([
+      const [cj, fj, hj, rj, fmq] = await Promise.all([
         loadJSON('data/tcm-cases.json').catch(() => null),
         loadJSON('data/tcm-formulas.json').catch(() => null),
         loadJSON('data/tcm-herbs.json').catch(() => null),
-        loadJSON('data/tcm-rules.json').catch(() => null)
+        loadJSON('data/tcm-rules.json').catch(() => null),
+        loadJSON('data/tcm-famous-prescriptions.json').catch(() => null)
       ]);
       S.cases = (cj && cj.cases) || (Array.isArray(cj) ? cj : []);
       S.formulas = (fj && fj.formulas) || (Array.isArray(fj) ? fj : []);
       S.herbs = (hj && hj.herbs) || (Array.isArray(hj) ? hj : []);
+      S.famous = (fmq && fmq.prescriptions) || (Array.isArray(fmq) ? fmq : []);
       if (rj && rj.rules) window.TCMEngine.extraRules = rj.rules;
       if (S.cases.length === 0) {
         const tip = $('tcm-data-tip'); if (tip) tip.classList.remove('hidden');
@@ -113,6 +115,9 @@
     const fe = $('tcm-fazheng-input'); if (fe) fe.value = '';
     const fd = $('tcm-formula-detail'); if (fd) fd.classList.add('hidden');
     S.items = [];
+    // 切模块时关闭浏览类弹窗，避免遮罩残留
+    const hm = $('modal-herb-lib'); if (hm) hm.classList.add('hidden');
+    const fm = $('modal-famous-lib'); if (fm) fm.classList.add('hidden');
   }
 
   // ---------- 模块 Tab 事件 ----------
@@ -543,7 +548,116 @@
     box.classList.remove('hidden');
   }
 
-  // ---------- 绑定事件 ----------
+  // ---------- 名方品鉴（只读学习，不接规则引擎 / 不参与推演） ----------
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+  function famousRegionLabel(r) { return r === 'japan' ? '日本汉方' : '中国典籍'; }
+
+  function openFamousLib() {
+    const modal = $('modal-famous-lib');
+    if (!modal) return;
+    const sel = $('famous-classic');
+    if (sel && sel.options.length <= 1) {
+      const classics = Array.from(new Set(S.famous.map(x => x.author_classic || x.dynasty_or_period || '未分类'))).sort();
+      sel.innerHTML = '<option value="">全部典籍 / 时期</option>' +
+        classics.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+    }
+    $('famous-count').textContent = `（共 ${S.famous.length} 首）`;
+    $('famous-search').value = '';
+    $('famous-region').value = '';
+    $('famous-classic').value = '';
+    renderFamousGrid();
+    $('famous-detail').classList.add('hidden');
+    modal.classList.remove('hidden');
+    setTimeout(() => { const s = $('famous-search'); if (s) s.focus(); }, 50);
+  }
+
+  function closeFamousLib() {
+    const modal = $('modal-famous-lib');
+    if (modal) modal.classList.add('hidden');
+  }
+
+  function famousList() {
+    const kw = ($('famous-search').value || '').trim().toLowerCase();
+    const region = $('famous-region').value;
+    const classic = $('famous-classic').value;
+    return S.famous.filter(x => {
+      if (region && x.region !== region) return false;
+      if (classic && (x.author_classic || '') !== classic) return false;
+      if (!kw) return true;
+      if (x.name.toLowerCase().indexOf(kw) >= 0) return true;
+      if ((x.aliases || []).some(a => a.toLowerCase().indexOf(kw) >= 0)) return true;
+      if (pinyinMatch(kw, x.pinyin)) return true;
+      if ((x.functions || '').toLowerCase().indexOf(kw) >= 0) return true;
+      return false;
+    });
+  }
+
+  function renderFamousGrid() {
+    const grid = $('famous-grid');
+    const list = famousList();
+    $('famous-count').textContent = `（${list.length} / ${S.famous.length} 首）`;
+    if (list.length === 0) {
+      grid.innerHTML = '<div class="herb-lib-empty">未找到匹配名方，换个关键词试试</div>';
+      return;
+    }
+    grid.innerHTML = list.map(x => `
+      <div class="herb-lib-chip famous-chip" role="button" tabindex="0" data-id="${esc(x.id)}">
+        ${esc(x.name)}
+        <small>${famousRegionLabel(x.region)} · ${esc(x.dynasty_or_period || '')}</small>
+      </div>`).join('');
+    grid.querySelectorAll('.famous-chip').forEach(el => {
+      const activate = () => {
+        grid.querySelectorAll('.famous-chip').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        showFamousDetail(el.getAttribute('data-id'));
+      };
+      el.onclick = activate;
+      el.onkeydown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+      };
+    });
+  }
+
+  function showFamousDetail(id) {
+    const f = S.famous.find(x => x.id === id);
+    if (!f) return;
+    const box = $('famous-detail');
+    const arr = a => Array.isArray(a) ? (a.length ? a.join('、') : '—') : (a || '—');
+    const compRows = (f.composition || []).map(c => `
+      <tr>
+        <td class="fm-role">${esc(c.role || '')}</td>
+        <td>${esc(c.herb)}</td>
+        <td>${esc(c.dose || '')}</td>
+        <td>${esc(c.dose_note || '')}</td>
+      </tr>`).join('');
+    box.innerHTML = `
+      <h4 class="hd-title">${esc(f.name)}</h4>
+      <div class="hd-meta">
+        <span class="fm-badge fm-badge-${f.region}">${famousRegionLabel(f.region)}</span>
+        <span class="fm-badge fm-lineage">${esc(f.origin_lineage || '')}</span>
+        ${esc(f.dynasty_or_period || '')} · ${esc(f.author_classic || '')}
+      </div>
+      ${(f.aliases || []).length ? `<div class="hd-row"><b>别名：</b>${esc(f.aliases.join('、'))}</div>` : ''}
+      <div class="hd-row"><b>出处文献：</b>${esc(f.source_ref || '—')}</div>
+      <div class="hd-row fm-comp"><b>组成（君臣佐使）：</b>
+        <table class="fm-table">
+          <thead><tr><th>角色</th><th>药味</th><th>剂量 / 口径</th><th>备注</th></tr></thead>
+          <tbody>${compRows}</tbody>
+        </table>
+      </div>
+      <div class="hd-row"><b>功用：</b>${esc(f.functions || '—')}</div>
+      <div class="hd-row"><b>主治：</b>${esc(f.indications || '—')}</div>
+      <div class="hd-row"><b>辨证要点：</b>${esc(f.syndrome_key || '—')}</div>
+      <div class="hd-row"><b>类方鉴别：</b>${esc(arr(f.similar_formulas))}</div>
+      <div class="hd-row"><b>现代临床应用：</b>${esc(f.modern_use || '—')}</div>
+      ${(f.cautions || []).length ? `<div class="hd-warn">⚠️ 禁忌与注意：${esc(f.cautions.join('；'))}</div>` : ''}
+      ${f.region === 'japan' && f.cn_jp_diff ? `<div class="fm-diff"><b>中日口径差异：</b>${esc(f.cn_jp_diff)}</div>` : ''}
+      ${(f.references || []).length ? `<div class="hd-row fm-refs"><b>参考文献：</b><ul>${f.references.map(r => `<li>${esc(r)}</li>`).join('')}</ul></div>` : ''}
+    `;
+    box.classList.remove('hidden');
+  }
   function bindEvents() {
     bindTabs();
     $('tcm-btn-new').onclick = newCase;
@@ -569,6 +683,15 @@
     });
     $('herb-lib-search').oninput = renderHerbLibGrid;
     $('herb-lib-category').onchange = renderHerbLibGrid;
+    // 名方品鉴（只读学习，不接规则引擎）
+    $('tcm-btn-famous').onclick = openFamousLib;
+    $('famous-close').onclick = closeFamousLib;
+    $('modal-famous-lib').addEventListener('click', e => {
+      if (e.target === $('modal-famous-lib')) closeFamousLib();
+    });
+    $('famous-search').oninput = renderFamousGrid;
+    $('famous-region').onchange = renderFamousGrid;
+    $('famous-classic').onchange = renderFamousGrid;
     // 煎服法备注：编辑控件屏幕可见，打印时由 CSS 隐藏；选中值实时同步到打印版文本（屏幕隐藏，打印显示）
     (function bindPrepPrint() {
       const paper = $('tcm-rx-paper');
@@ -596,7 +719,10 @@
       window.__tcmSyncPrep = syncPrep;
     })();
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && !$('modal-herb-lib').classList.contains('hidden')) closeHerbLib();
+      if (e.key === 'Escape') {
+        if (!$('modal-herb-lib').classList.contains('hidden')) closeHerbLib();
+        else if (!$('modal-famous-lib').classList.contains('hidden')) closeFamousLib();
+      }
     });
   }
 

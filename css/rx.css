@@ -1333,6 +1333,29 @@ input, select, textarea { font-family: inherit; }
   .hero-btn-ghost { margin-left: 0; margin-top: var(--space-2); }
 }
 
+/* ============ 名方品鉴 Modal（只读学习） ============ */
+.famous-lib-box .famous-disclaimer {
+  margin-top: var(--space-10px); padding: var(--space-6px) var(--space-10px);
+  border-top: 1px dashed #e8d5b0; color: var(--gray-500); font-size: var(--text-12); line-height: 1.6;
+}
+.fm-badge {
+  display: inline-block; padding: 1px var(--space-6px); border-radius: var(--radius-12);
+  font-size: var(--text-xs); font-weight: 600; margin-right: var(--space-6px);
+}
+.fm-badge-china { background: #fdf1e3; color: #8b5a2b; }
+.fm-badge-japan { background: #e8f1f2; color: #2f6b6b; }
+.fm-lineage { background: var(--warn-100); color: #9a7b4f; }
+.fm-table { width: 100%; border-collapse: collapse; margin-top: var(--space-6px); font-size: var(--text-12); }
+.fm-table th, .fm-table td { border: 1px solid #ead9b8; padding: var(--space-3px) var(--space-6px); text-align: left; vertical-align: top; }
+.fm-table th { background: #fdf6e3; color: #6b4423; }
+.fm-role { white-space: nowrap; color: #8b5a2b; font-weight: 600; }
+.fm-diff {
+  background: #f0f6f6; border-left: 3px solid #2f6b6b; padding: var(--space-6px) var(--space-10px);
+  border-radius: var(--radius-sm); margin-top: var(--space-6px); color: #234; line-height: 1.7;
+}
+.fm-refs ul { margin: var(--space-2px) 0 0 var(--space-14px); padding: 0; }
+.famous-chip small { color: #9a7b4f; }
+
 /* ============================================================
  * 中医汉方模块 UI 一致性补丁（对照西医基线 2026-11 评审）
  * ============================================================ */

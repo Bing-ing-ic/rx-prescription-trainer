@@ -156,6 +156,8 @@ try {
   (cases.cases || cases).forEach(c => (c.reference_herbs || []).forEach(push));
   const patents = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-patent-drugs.json'), 'utf8'));
   (patents.patent_drugs || patents.drugs || patents).forEach(p => (p.composition || []).forEach(push));
+  const famous = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-famous-prescriptions.json'), 'utf8'));
+  (famous.prescriptions || []).forEach(f => (f.composition || []).forEach(c => push(typeof c === 'string' ? c : c.herb)));
   const unresolved = [...refs].filter(n =>
     !dict.has(n) && !dict.has(alias[n]) && !dict.has(resolve(n))
   );
@@ -170,6 +172,28 @@ try {
     if (rawGaps.length) console.log(`  ⚠ 字典缺口（转下批补录/核对）: ${rawGaps.join(', ')}`);
   }
 } catch (e) { bad('T-3 校验失败: ' + e.message); }
+
+// 10. 名方品鉴库完整性（只读学习栏目）
+console.log('\n[10] 名方品鉴库 schema / 源流 / 中日差异');
+try {
+  const famous = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-famous-prescriptions.json'), 'utf8'));
+  const list = famous.prescriptions || [];
+  const bad = [];
+  const existing = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-formulas.json'), 'utf8'));
+  const existingNames = new Set((existing.formulas || []).map(f => f.name));
+  list.forEach(f => {
+    if (!['china', 'japan'].includes(f.region)) bad.push(`${f.id} region 非法: ${f.region}`);
+    ['name','source_ref','origin_lineage','functions','indications','syndrome_key','pinyin'].forEach(k => {
+      if (!f[k] || String(f[k]).trim() === '') bad.push(`${f.id} 空字段 ${k}`);
+    });
+    if (f.region === 'japan' && !String(f.cn_jp_diff || '').trim()) bad.push(`${f.id} 日本条目缺 cn_jp_diff`);
+    if (existingNames.has(f.name)) bad.push(`${f.id} 与平台用方库重名: ${f.name}`);
+  });
+  const cnCount = list.filter(f => f.region === 'china').length;
+  const jpCount = list.filter(f => f.region === 'japan').length;
+  if (bad.length) bad.forEach(b => bad(b));
+  else ok(`名方库 ${list.length} 首（中方 ${cnCount}、日方 ${jpCount}），源流/差异/去重校验通过`);
+} catch (e) { bad('名方品鉴库校验失败: ' + e.message); }
 
 // 总结
 console.log('\n=========================================');

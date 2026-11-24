@@ -22,7 +22,10 @@
         "高血压慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "桂枝",
@@ -47,7 +50,10 @@
         "孕妇月经过多者慎用"
       ],
       "incompatibility": "畏赤石脂、白石脂（官桂畏石脂）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "紫苏叶",
@@ -68,7 +74,10 @@
         "阴虚及温病者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "荆芥",
@@ -89,7 +98,10 @@
         "表虚自汗者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "防风",
@@ -111,7 +123,10 @@
         "血虚发痉者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.09
+      "price_yuan": 0.09,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "羌活",
@@ -134,7 +149,10 @@
         "用量过多易致呕吐"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白芷",
@@ -157,7 +175,10 @@
         "阴虚血热者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "薄荷",
@@ -180,7 +201,10 @@
         "孕妇不宜多用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "牛蒡子",
@@ -203,7 +227,10 @@
         "气虚便溏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蝉蜕",
@@ -225,7 +252,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "桑叶",
@@ -246,7 +276,10 @@
         "无特殊禁忌"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "菊花",
@@ -269,7 +302,10 @@
         "食少泄泻者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "柴胡",
@@ -293,7 +329,10 @@
         "阴虚火旺者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "葛根",
@@ -315,7 +354,10 @@
         "胃寒呕吐者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "升麻",
@@ -338,7 +380,10 @@
         "喘满气逆者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.09
+      "price_yuan": 0.09,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "石膏",
@@ -361,7 +406,10 @@
         "阴虚内热者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品（煅石膏供外用）",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "知母",
@@ -384,7 +432,10 @@
         "脾虚便溏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "栀子",
@@ -406,7 +457,10 @@
         "脾虚便溏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "黄芩",
@@ -429,7 +483,10 @@
         "脾胃虚寒者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "黄连",
@@ -453,7 +510,10 @@
         "阴虚津伤者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "黄柏",
@@ -476,7 +536,10 @@
         "脾胃虚寒者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "金银花",
@@ -498,7 +561,10 @@
         "脾胃虚寒者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "连翘",
@@ -521,7 +587,10 @@
         "气虚脓清者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "板蓝根",
@@ -544,7 +613,10 @@
         "脾胃虚寒者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蒲公英",
@@ -568,7 +640,10 @@
         "脾胃虚弱者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "生地黄",
@@ -595,7 +670,10 @@
         "腹满便溏者不宜"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "牡丹皮",
@@ -621,7 +699,10 @@
         "孕妇及月经过多者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "大黄",
@@ -650,7 +731,10 @@
         "脾胃虚寒者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品（另有酒炙、熟大黄）",
+      "usage_detail": "泻下宜后下，久煎则泻下力缓。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "芒硝",
@@ -673,7 +757,10 @@
         "脾胃虚寒及血虚者忌服"
       ],
       "incompatibility": "畏三棱（牙硝畏三棱）",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "火麻仁",
@@ -692,7 +779,10 @@
         "脾肾不足之便溏者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "独活",
@@ -713,7 +803,10 @@
         "阴虚血燥者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "威灵仙",
@@ -736,7 +829,10 @@
         "无风寒湿邪者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "秦艽",
@@ -759,7 +855,10 @@
         "脾虚便溏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "防己",
@@ -781,7 +880,10 @@
         "食欲不振者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.09
+      "price_yuan": 0.09,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苍术",
@@ -806,7 +908,10 @@
         "表虚自汗者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "厚朴",
@@ -829,7 +934,10 @@
         "气虚津亏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "藿香",
@@ -854,7 +962,10 @@
         "阴虚火旺者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "佩兰",
@@ -877,7 +988,10 @@
         "阴虚气虚者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "砂仁",
@@ -900,7 +1014,10 @@
         "阴虚血燥者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "茯苓",
@@ -923,7 +1040,10 @@
         "虚寒精滑者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "泽泻",
@@ -946,7 +1066,10 @@
         "肾虚精滑者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "薏苡仁",
@@ -969,7 +1092,10 @@
         "津亏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "车前子",
@@ -992,7 +1118,10 @@
         "肾虚精滑者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "包煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "附子",
@@ -1022,7 +1151,10 @@
         "须先煎30-60分钟减毒"
       ],
       "incompatibility": "反半夏、瓜蒌、贝母、白蔹、白及（十八反）；畏犀角",
-      "price_yuan": 0.25
+      "price_yuan": 0.25,
+      "processing": "炮制（附片）",
+      "usage_detail": "先煎久煎30-60分钟以上，至口尝无麻辣感。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "干姜",
@@ -1045,7 +1177,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "干品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "肉桂",
@@ -1074,7 +1209,10 @@
         "血热妄行者忌服"
       ],
       "incompatibility": "畏赤石脂（官桂畏石脂）",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "吴茱萸",
@@ -1099,7 +1237,10 @@
         "不宜多服久服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "小茴香",
@@ -1122,7 +1263,10 @@
         "阴虚火旺者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "陈皮",
@@ -1143,7 +1287,10 @@
         "阴虚燥咳者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "青皮",
@@ -1168,7 +1315,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "枳实",
@@ -1193,7 +1343,10 @@
         "脾胃虚弱者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "木香",
@@ -1214,7 +1367,10 @@
         "阴虚津液不足者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "香附",
@@ -1240,7 +1396,10 @@
         "阴虚血热者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "川楝子",
@@ -1262,7 +1421,10 @@
         "有小毒不宜过量"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "薤白",
@@ -1283,7 +1445,10 @@
         "阴虚发热者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "山楂",
@@ -1310,7 +1475,10 @@
         "胃酸过多者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "神曲",
@@ -1331,7 +1499,10 @@
         "脾阴不足者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "麦芽",
@@ -1356,7 +1527,10 @@
         "脾胃虚弱者宜炒用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "莱菔子",
@@ -1379,7 +1553,10 @@
         "不宜与人参同用"
       ],
       "incompatibility": "临床不宜与人参同用（降气破气）",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "三七",
@@ -1402,7 +1579,10 @@
         "血热妄行者不宜单独使用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.8
+      "price_yuan": 0.8,
+      "processing": "生品",
+      "usage_detail": "研末冲服；或入丸散。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白及",
@@ -1425,7 +1605,10 @@
         "肺痈初起肺胃实热者慎用"
       ],
       "incompatibility": "反川乌、草乌、附子（十八反：白及攻乌）",
-      "price_yuan": 0.25
+      "price_yuan": 0.25,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "艾叶",
@@ -1449,7 +1632,10 @@
         "阴虚血热者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "川芎",
@@ -1476,7 +1662,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "丹参",
@@ -1502,7 +1691,10 @@
         "无瘀血者慎用"
       ],
       "incompatibility": "反藜芦（诸参叛藜芦）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "桃仁",
@@ -1527,7 +1719,10 @@
         "有小毒不可过量"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "红花",
@@ -1554,7 +1749,10 @@
         "有出血倾向者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "牛膝",
@@ -1580,7 +1778,10 @@
         "脾虚泄泻者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "益母草",
@@ -1603,7 +1804,10 @@
         "阴虚血少者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "半夏",
@@ -1633,7 +1837,10 @@
         "生品内服宜慎"
       ],
       "incompatibility": "反川乌、草乌、附子（十八反：半蒌贝蔹芨攻乌）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "天南星",
@@ -1660,7 +1867,10 @@
         "阴虚燥痰者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.09
+      "price_yuan": 0.09,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "桔梗",
@@ -1682,7 +1892,10 @@
         "气逆及咯血者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "瓜蒌",
@@ -1706,7 +1919,10 @@
         "寒痰湿痰者不宜"
       ],
       "incompatibility": "反川乌、草乌、附子（十八反：半蒌贝蔹芨攻乌）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "贝母",
@@ -1730,7 +1946,10 @@
         "乌头类禁用"
       ],
       "incompatibility": "反川乌、草乌、附子（十八反：半蒌贝蔹芨攻乌）",
-      "price_yuan": 0.35
+      "price_yuan": 0.35,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苦杏仁",
@@ -1752,7 +1971,10 @@
         "有小毒不宜过量"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苏子",
@@ -1773,7 +1995,10 @@
         "脾虚便溏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "人参",
@@ -1801,7 +2026,10 @@
         "不宜与藜芦、五灵脂同用"
       ],
       "incompatibility": "反藜芦；畏五灵脂（十九畏）",
-      "price_yuan": 1.5
+      "price_yuan": 1.5,
+      "processing": "生品",
+      "usage_detail": "另煎兑服；或研末吞服。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "党参",
@@ -1827,7 +2055,10 @@
         "不宜与藜芦同用"
       ],
       "incompatibility": "反藜芦",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "黄芪",
@@ -1859,7 +2090,10 @@
         "阴虚阳亢者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白术",
@@ -1882,7 +2116,10 @@
         "气滞胀闷者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "山药",
@@ -1905,7 +2142,10 @@
         "湿盛中满或有实邪积滞者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "甘草",
@@ -1930,7 +2170,10 @@
         "不宜大剂量久服"
       ],
       "incompatibility": "反甘遂、京大戟、海藻、芫花（十八反）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "当归",
@@ -1957,7 +2200,10 @@
         "大便溏泄者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "熟地黄",
@@ -1987,7 +2233,10 @@
         "腹满便溏者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白芍",
@@ -2011,7 +2260,10 @@
         "不宜与藜芦同用"
       ],
       "incompatibility": "反藜芦（诸参辛芍叛藜芦）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "何首乌",
@@ -2040,7 +2292,10 @@
         "肝功能异常者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品（另有制何首乌）",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "阿胶",
@@ -2069,7 +2324,10 @@
         "烊化兑服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.8
+      "price_yuan": 0.8,
+      "processing": "胶类（烊化）",
+      "usage_detail": "烊化兑服（冲服）。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "枸杞子",
@@ -2093,7 +2351,10 @@
         "脾虚便溏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "女贞子",
@@ -2116,7 +2377,10 @@
         "脾胃虚寒泄泻及阳虚者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "菟丝子",
@@ -2142,7 +2406,10 @@
         "大便燥结者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "杜仲",
@@ -2165,7 +2432,10 @@
         "阴虚火旺者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "续断",
@@ -2191,7 +2461,10 @@
         "气郁者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "五味子",
@@ -2219,7 +2492,10 @@
         "麻疹初发者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "山茱萸",
@@ -2246,7 +2522,10 @@
         "小便淋涩者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "酸枣仁",
@@ -2268,7 +2547,10 @@
         "滑泄者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "远志",
@@ -2293,7 +2575,10 @@
         "阴虚火旺者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "龙骨",
@@ -2317,7 +2602,10 @@
         "须先煎"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": ""
     },
     {
       "name": "天麻",
@@ -2341,7 +2629,10 @@
         "气血虚甚者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.5
+      "price_yuan": 0.5,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "钩藤",
@@ -2365,7 +2656,10 @@
         "不宜久煎（后下）"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "石决明",
@@ -2387,7 +2681,10 @@
         "消化不良者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "牡蛎",
@@ -2412,7 +2709,10 @@
         "须先煎"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "细辛",
@@ -2437,7 +2737,10 @@
         "不宜与藜芦同用"
       ],
       "incompatibility": "反藜芦（诸参辛芍叛藜芦）；用量不过钱",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "玄参",
@@ -2465,7 +2768,10 @@
         "不宜与藜芦同用"
       ],
       "incompatibility": "反藜芦（诸参辛芍叛藜芦）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "北沙参",
@@ -2489,7 +2795,10 @@
         "不宜与藜芦同用"
       ],
       "incompatibility": "反藜芦（诸参辛芍叛藜芦）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苦参",
@@ -2515,7 +2824,10 @@
         "不宜与藜芦同用"
       ],
       "incompatibility": "反藜芦（诸参辛芍叛藜芦）",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白蔹",
@@ -2537,7 +2849,10 @@
         "无实火者慎用"
       ],
       "incompatibility": "反川乌、草乌、附子（十八反：半蒌贝蔹芨攻乌）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "甘遂",
@@ -2563,7 +2878,10 @@
         "不宜与甘草同用"
       ],
       "incompatibility": "反甘草（十八反：藻戟遂芫俱战草）",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "炮制后入丸散，不宜入煎剂。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "京大戟",
@@ -2587,7 +2905,10 @@
         "不宜与甘草同用"
       ],
       "incompatibility": "反甘草（十八反：藻戟遂芫俱战草）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服；或入丸散。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "海藻",
@@ -2608,7 +2929,10 @@
         "不宜与甘草同用"
       ],
       "incompatibility": "反甘草（十八反：藻戟遂芫俱战草）",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "芫花",
@@ -2634,7 +2958,10 @@
         "不宜与甘草同用"
       ],
       "incompatibility": "反甘草（十八反：藻戟遂芫俱战草）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服；或入丸散。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "生川乌",
@@ -2662,7 +2989,10 @@
       "incompatibility": "反半夏、瓜蒌、贝母、白蔹、白及（十八反）；畏犀角",
       "usage": "只供外用，研末调敷或酒浸涂擦；内服剧毒，可致心律失常、呼吸麻痹致死，不得内服",
       "price_yuan": 0.2,
-      "note": "生川乌为毛茛科植物乌头的干燥母根生品，含乌头碱极毒，一般只供外用；内服必须经炮制为制川乌，并先煎久煎30-60分钟至口尝无麻辣感。"
+      "note": "生川乌为毛茛科植物乌头的干燥母根生品，含乌头碱极毒，一般只供外用；内服必须经炮制为制川乌，并先煎久煎30-60分钟至口尝无麻辣感。",
+      "processing": "生品（外用）",
+      "usage_detail": "只供外用，研末调敷或酒浸涂擦；内服剧毒，可致心律失常、呼吸麻痹致死，不得内服",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "生草乌",
@@ -2689,7 +3019,10 @@
       "incompatibility": "反半夏、瓜蒌、贝母、白蔹、白及（十八反）；畏犀角",
       "usage": "只供外用，研末调敷或酒浸涂擦；内服剧毒，毒性较川乌更剧，可致心律失常、呼吸麻痹致死，不得内服",
       "price_yuan": 0.18,
-      "note": "生草乌为毛茛科植物北乌头的干燥块根生品，含乌头碱、次乌头碱等，毒性较生川乌更剧；内服必须经炮制为制草乌，并先煎久煎。"
+      "note": "生草乌为毛茛科植物北乌头的干燥块根生品，含乌头碱、次乌头碱等，毒性较生川乌更剧；内服必须经炮制为制草乌，并先煎久煎。",
+      "processing": "生品（外用）",
+      "usage_detail": "只供外用，研末调敷或酒浸涂擦；内服剧毒，毒性较川乌更剧，可致心律失常、呼吸麻痹致死，不得内服",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "藜芦",
@@ -2713,7 +3046,10 @@
         "不宜与诸参、细辛、芍药同用"
       ],
       "incompatibility": "反人参、沙参、丹参、玄参、苦参、细辛、芍药（十八反）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "丁香",
@@ -2736,7 +3072,10 @@
         "不宜与郁金同用"
       ],
       "incompatibility": "畏郁金（十九畏）",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "郁金",
@@ -2763,7 +3102,10 @@
         "不宜与丁香同用"
       ],
       "incompatibility": "畏丁香（十九畏）",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "三棱",
@@ -2787,7 +3129,10 @@
         "不宜与芒硝同用"
       ],
       "incompatibility": "畏芒硝/牙硝（十九畏）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "五灵脂",
@@ -2809,7 +3154,10 @@
         "不宜与人参同用"
       ],
       "incompatibility": "畏人参（十九畏）",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "包煎。",
+      "pharmacopoeia": ""
     },
     {
       "name": "巴豆",
@@ -2836,7 +3184,10 @@
         "服巴豆后不宜饮热粥"
       ],
       "incompatibility": "畏牵牛子（十九畏）",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "牵牛子",
@@ -2860,7 +3211,10 @@
         "不宜与巴豆同用"
       ],
       "incompatibility": "畏巴豆（十九畏）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "高良姜",
@@ -2880,7 +3234,10 @@
         "阴虚有热者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "干品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "天花粉",
@@ -2902,7 +3259,10 @@
         "不宜与乌头类同用"
       ],
       "incompatibility": "反川乌、草乌、附子（十八反，天花粉即瓜蒌根）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "赤芍",
@@ -2929,7 +3289,10 @@
         "不宜与藜芦同用"
       ],
       "incompatibility": "反藜芦（诸参辛芍叛藜芦）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "枳壳",
@@ -2951,7 +3314,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "朱砂",
@@ -2982,7 +3348,10 @@
         "不宜与碘化物、溴化物同用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.5
+      "price_yuan": 0.5,
+      "processing": "生品",
+      "usage_detail": "只入丸散，不入煎剂；研末冲服 0.1-0.5g；忌火煅（析出水银，致汞中毒）",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "麦冬",
@@ -3007,7 +3376,10 @@
         "湿浊中阻者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "木通",
@@ -3031,7 +3403,10 @@
         "不可过量"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "龙胆草",
@@ -3056,7 +3431,10 @@
         "阴虚津伤者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "桑寄生",
@@ -3080,7 +3458,10 @@
         "无特殊禁忌"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "地龙",
@@ -3106,7 +3487,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "紫菀",
@@ -3126,7 +3510,10 @@
         "有实热者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "百部",
@@ -3149,7 +3536,10 @@
         "脾虚便溏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白前",
@@ -3169,7 +3559,10 @@
         "阴虚咳嗽者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "淡竹叶",
@@ -3190,7 +3583,10 @@
         "体虚有寒者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "芦根",
@@ -3212,7 +3608,10 @@
         "脾胃虚寒者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "夜交藤",
@@ -3233,7 +3632,10 @@
         "无特殊禁忌"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "大腹皮",
@@ -3256,7 +3658,10 @@
         "气虚体弱者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白扁豆",
@@ -3279,7 +3684,10 @@
         "无特殊禁忌"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "莲子肉",
@@ -3299,7 +3707,10 @@
         "中满痞胀及大便燥结者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "龙眼肉",
@@ -3320,7 +3731,10 @@
         "内有痰火及湿滞停饮者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "乌梅",
@@ -3341,7 +3755,10 @@
         "外有表邪或内有实热积滞者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "猪苓",
@@ -3363,7 +3780,10 @@
         "无水湿者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "茯神",
@@ -3383,7 +3803,10 @@
         "肾虚小便不利或频数者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "淡豆豉",
@@ -3404,7 +3827,10 @@
         "无特殊禁忌"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "炙甘草",
@@ -3427,7 +3853,10 @@
       ],
       "incompatibility": "反甘遂、京大戟、海藻、芫花（十八反）",
       "price_yuan": 0.1,
-      "note": "为甘草的蜜炙炮制品，长于补中益气复脉"
+      "note": "为甘草的蜜炙炮制品，长于补中益气复脉",
+      "processing": "蜜炙",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "杏仁",
@@ -3450,7 +3879,10 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.06,
-      "note": "即苦杏仁，方剂中常简写作杏仁"
+      "note": "即苦杏仁，方剂中常简写作杏仁",
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "芍药",
@@ -3475,7 +3907,10 @@
       ],
       "incompatibility": "反藜芦（诸参辛芍叛藜芦）",
       "price_yuan": 0.1,
-      "note": "即白芍，经方中芍药多为白芍"
+      "note": "即白芍，经方中芍药多为白芍",
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "干地黄",
@@ -3501,7 +3936,10 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.08,
-      "note": "即生地黄，经方中干地黄即今之生地黄"
+      "note": "即生地黄，经方中干地黄即今之生地黄",
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "川牛膝",
@@ -3526,7 +3964,10 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.09,
-      "note": "为牛膝之川产品，长于活血通经利关节，与怀牛膝补肝肾有别"
+      "note": "为牛膝之川产品，长于活血通经利关节，与怀牛膝补肝肾有别",
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "生姜",
@@ -3547,7 +3988,10 @@
         "阴虚内热及热盛者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "鲜品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "大枣",
@@ -3572,7 +4016,10 @@
         "痰热咳嗽者均忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "粳米",
@@ -3593,7 +4040,10 @@
         "糖尿病人不宜多食"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.02
+      "price_yuan": 0.02,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "白蜜",
@@ -3617,7 +4067,10 @@
         "1岁以下婴儿禁用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "烊化兑服（冲服）。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蜂蜜",
@@ -3642,7 +4095,10 @@
         "1岁以下婴儿禁用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "烊化兑服（冲服）。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苏叶",
@@ -3664,7 +4120,10 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.06,
-      "note": "即紫苏叶，方剂中常简写为苏叶"
+      "note": "即紫苏叶，方剂中常简写为苏叶",
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "煨生姜",
@@ -3684,7 +4143,10 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.04,
-      "note": "为生姜的煨制炮制品，辛散之性减，长于温中和胃止呕"
+      "note": "为生姜的煨制炮制品，辛散之性减，长于温中和胃止呕",
+      "processing": "煨",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "制川乌",
@@ -3710,7 +4172,10 @@
       ],
       "incompatibility": "反半夏、瓜蒌、贝母、白蔹、白及（十八反）；畏犀角",
       "price_yuan": 0.2,
-      "note": "为川乌的炮制加工品，毒性已减，仍须先煎30-60分钟"
+      "note": "为川乌的炮制加工品，毒性已减，仍须先煎30-60分钟",
+      "processing": "制",
+      "usage_detail": "先煎久煎30-60分钟以上，至口尝无麻辣感。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "制草乌",
@@ -3739,7 +4204,10 @@
       "incompatibility": "反半夏、瓜蒌、贝母、白蔹、白及（十八反）；畏犀角",
       "usage": "内服须先煎久煎30-60分钟，至口尝无麻辣感",
       "price_yuan": 0.18,
-      "note": "为草乌的炮制加工品，毒性已减，仍须先煎30-60分钟；内服1.5-3g，现代临床多从1.5g小剂量起始。"
+      "note": "为草乌的炮制加工品，毒性已减，仍须先煎30-60分钟；内服1.5-3g，现代临床多从1.5g小剂量起始。",
+      "processing": "制",
+      "usage_detail": "内服须先煎久煎30-60分钟，至口尝无麻辣感",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "半夏曲",
@@ -3762,7 +4230,10 @@
       ],
       "incompatibility": "反川乌、草乌、附子（十八反）",
       "price_yuan": 0.1,
-      "note": "为半夏、面粉、姜汁等发酵制成的炮制品，长于化痰消食"
+      "note": "为半夏、面粉、姜汁等发酵制成的炮制品，长于化痰消食",
+      "processing": "发酵曲剂",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "当归尾",
@@ -3785,7 +4256,10 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.15,
-      "note": "为当归的支根（尾根），传统认为归尾活血破瘀力强，归身补血，全归和血"
+      "note": "为当归的支根（尾根），传统认为归尾活血破瘀力强，归身补血，全归和血",
+      "processing": "当归分档（尾根）",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "藕汁",
@@ -3806,7 +4280,10 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.1,
-      "note": "为鲜藕捣汁，须现捣现服，不宜久放"
+      "note": "为鲜藕捣汁，须现捣现服，不宜久放",
+      "processing": "鲜品（捣汁）",
+      "usage_detail": "鲜品捣汁兑服，现捣现服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "乳汁",
@@ -3828,7 +4305,10 @@
       ],
       "incompatibility": "无",
       "price_yuan": 0.3,
-      "note": "为健康妇人乳汁，古方用于滋阴润燥、上消消渴方中兑服"
+      "note": "为健康妇人乳汁，古方用于滋阴润燥、上消消渴方中兑服",
+      "processing": "鲜品（人乳汁）",
+      "usage_detail": "鲜品捣汁兑服，现捣现服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "浮萍",
@@ -3848,7 +4328,10 @@
         "自汗者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "木贼",
@@ -3868,7 +4351,10 @@
         "气血虚者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白鲜皮",
@@ -3889,7 +4375,10 @@
         "虚寒证者忌服"
       ],
       "incompatibility": "禁与藜芦同用（十八反）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "漏芦",
@@ -3911,7 +4400,10 @@
         "气虚者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "山豆根",
@@ -3932,7 +4424,10 @@
         "用量不宜过大"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "马勃",
@@ -3954,7 +4449,10 @@
         "风寒劳咳失音者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "马齿苋",
@@ -3976,7 +4474,10 @@
         "孕妇忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "鸦胆子",
@@ -3999,7 +4500,10 @@
         "不宜多服久服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "去壳取仁，龙眼肉包裹或装胶囊吞服；外用适量，不入煎剂。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "地锦草",
@@ -4020,7 +4524,10 @@
         "血虚无瘀者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白花蛇舌草",
@@ -4043,7 +4550,10 @@
         "阴疽及脾胃虚寒者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "熊胆",
@@ -4064,7 +4574,10 @@
         "宜入丸散"
       ],
       "incompatibility": "恶地黄一世（传统记载）",
-      "price_yuan": 3.5
+      "price_yuan": 3.5,
+      "processing": "生品",
+      "usage_detail": "入丸散或研末冲服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "郁李仁",
@@ -4087,7 +4600,10 @@
         "阴虚液亏者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "商陆",
@@ -4109,7 +4625,10 @@
         "不宜久服"
       ],
       "incompatibility": "忌犬肉",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蕲蛇",
@@ -4133,7 +4652,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 1.2
+      "price_yuan": 1.2,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "乌梢蛇",
@@ -4156,7 +4678,10 @@
         "血虚生风者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.5
+      "price_yuan": 0.5,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "木瓜",
@@ -4178,7 +4703,10 @@
         "胃酸过多者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "络石藤",
@@ -4201,7 +4729,10 @@
         "阳虚畏寒便溏者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "五加皮",
@@ -4221,7 +4752,10 @@
       ],
       "contraindications": "阴虚火旺者慎服",
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "狗脊",
@@ -4243,7 +4777,10 @@
         "阴虚有热、小便不利者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白豆蔻",
@@ -4267,7 +4804,10 @@
         "入煎宜后下"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "草豆蔻",
@@ -4288,7 +4828,10 @@
         "阴虚血燥者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "草果",
@@ -4310,7 +4853,10 @@
         "阴虚血燥者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "茯苓皮",
@@ -4328,7 +4874,10 @@
         "阴虚无湿热者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "冬瓜皮",
@@ -4349,7 +4898,10 @@
         "营养不良性水肿慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "玉米须",
@@ -4368,7 +4920,10 @@
       ],
       "contraindications": "无",
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "香加皮",
@@ -4390,7 +4945,10 @@
         "阴虚火旺者慎用"
       ],
       "incompatibility": "禁与地龙同用（传统）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "海金沙",
@@ -4413,7 +4971,10 @@
         "入煎宜包煎"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "包煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "石韦",
@@ -4435,7 +4996,10 @@
         "阴虚及无湿热者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "萆薢",
@@ -4457,7 +5021,10 @@
         "肾阴亏虚遗精滑精者慎用"
       ],
       "incompatibility": "忌茗、醋",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "胡椒",
@@ -4479,7 +5046,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "花椒",
@@ -4502,7 +5072,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "畏款冬、雄黄、附子（传统）",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "荜茇",
@@ -4523,7 +5096,10 @@
         "阴虚火旺者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "沉香",
@@ -4544,7 +5120,10 @@
         "宜后下或研末冲服"
       ],
       "incompatibility": "无",
-      "price_yuan": 3
+      "price_yuan": 3,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "檀香",
@@ -4566,7 +5145,10 @@
         "阴虚火旺者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 1.5
+      "price_yuan": 1.5,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "乌药",
@@ -4589,7 +5171,10 @@
         "气虚及阴虚内热者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "佛手",
@@ -4611,7 +5196,10 @@
         "阴虚有火、无气滞者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "谷芽",
@@ -4630,7 +5218,10 @@
       ],
       "contraindications": "无",
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "鸡内金",
@@ -4653,7 +5244,10 @@
         "脾虚无积者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "研末服优于煎剂。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "使君子",
@@ -4675,7 +5269,10 @@
         "不宜过量"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苦楝皮",
@@ -4697,7 +5294,10 @@
         "孕妇及肝肾功能不全者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "槟榔",
@@ -4723,7 +5323,10 @@
         "脾虚便溏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "雷丸",
@@ -4746,7 +5349,10 @@
         "脾胃虚寒者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "入丸散吞服，不宜入煎（有效成分受热破坏）。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "榧子",
@@ -4770,7 +5376,10 @@
         "大便溏薄者不宜"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "大蓟",
@@ -4791,7 +5400,10 @@
         "虚寒出血、脾胃虚寒者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "小蓟",
@@ -4813,7 +5425,10 @@
         "虚寒出血及脾胃虚寒者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "地榆",
@@ -4835,7 +5450,10 @@
         "大面积烧伤不宜外涂"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "槐花",
@@ -4857,7 +5475,10 @@
         "脾胃虚寒及阴虚发热而无实火者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "侧柏叶",
@@ -4881,7 +5502,10 @@
         "不宜多服久服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白茅根",
@@ -4905,7 +5529,10 @@
         "脾胃虚寒、溲多不渴者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "茜草",
@@ -4928,7 +5555,10 @@
         "脾胃虚寒及无瘀者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蒲黄",
@@ -4953,7 +5583,10 @@
         "入煎宜包煎"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "包煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "炮姜",
@@ -4974,7 +5607,10 @@
         "阴虚有热者及孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "炮制品（炮姜炭）",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "延胡索",
@@ -4997,7 +5633,10 @@
         "虚凝血气虚者不宜单用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "姜黄",
@@ -5020,7 +5659,10 @@
         "血虚无气滞血瘀者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "乳香",
@@ -5048,7 +5690,10 @@
         "无瘀者勿用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "没药",
@@ -5074,7 +5719,10 @@
         "无瘀滞者勿用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "鸡血藤",
@@ -5096,7 +5744,11 @@
         "阴虚火旺者慎用"
       ],
       "contraindications": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部",
+      "incompatibility": "无"
     },
     {
       "name": "土鳖虫",
@@ -5118,7 +5770,10 @@
         "孕妇禁用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.5
+      "price_yuan": 0.5,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "水蛭",
@@ -5140,7 +5795,10 @@
         "有出血倾向者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.6
+      "price_yuan": 0.6,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白附子",
@@ -5167,7 +5825,10 @@
         "阴虚动血及热盛动风者忌服"
       ],
       "incompatibility": "忌与乌头类同用（十八反）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白芥子",
@@ -5191,7 +5852,10 @@
         "外用发泡，皮肤过敏者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "旋覆花",
@@ -5215,7 +5879,10 @@
         "入煎宜包煎"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "包煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "竹茹",
@@ -5241,7 +5908,10 @@
         "胃寒呕吐及感寒挟呕者忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "天竺黄",
@@ -5263,7 +5933,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.8
+      "price_yuan": 0.8,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "昆布",
@@ -5285,7 +5958,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "反甘草（十八反）",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "款冬花",
@@ -5305,7 +5981,10 @@
         "阴虚咳嗽者慎用"
       ],
       "incompatibility": "恶皂荚、消石、玄参，畏贝母、辛夷、麻黄、黄芪、黄芩、黄连、青葙（传统）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "桑白皮",
@@ -5325,7 +6004,10 @@
         "肺虚无火、小便多及风寒咳嗽者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "葶苈子",
@@ -5349,7 +6031,10 @@
         "不宜过量"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "包煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "磁石",
@@ -5373,7 +6058,10 @@
         "脾胃虚弱者慎用"
       ],
       "incompatibility": "恶牡丹、莽草，畏黄石脂",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "柏子仁",
@@ -5395,7 +6083,10 @@
         "便溏及痰多者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "合欢皮",
@@ -5417,7 +6108,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "代赭石",
@@ -5442,7 +6136,10 @@
         "不宜久服"
       ],
       "incompatibility": "畏天雄、附子",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "刺蒺藜",
@@ -5465,7 +6162,10 @@
         "血虚气弱及孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "全蝎",
@@ -5493,7 +6193,10 @@
         "血虚生风者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 1
+      "price_yuan": 1,
+      "processing": "生品",
+      "usage_detail": "煎服；或研末吞服。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蜈蚣",
@@ -5522,7 +6225,10 @@
         "血虚生风者慎用"
       ],
       "incompatibility": "恶蜘蛛、鸡屎（传统）",
-      "price_yuan": 0.8
+      "price_yuan": 0.8,
+      "processing": "生品",
+      "usage_detail": "煎服；或研末吞服。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "僵蚕",
@@ -5549,7 +6255,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "恶桑螵蛸、桔梗、茯苓、茯神、萆薢",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "西洋参",
@@ -5572,7 +6281,10 @@
         "不宜与藜芦同用"
       ],
       "incompatibility": "反藜芦（十八反）",
-      "price_yuan": 2.5
+      "price_yuan": 2.5,
+      "processing": "生品",
+      "usage_detail": "另煎兑服；或研末吞服。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "太子参",
@@ -5592,7 +6304,10 @@
       ],
       "contraindications": "无",
       "incompatibility": "无",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "玉竹",
@@ -5614,7 +6329,10 @@
         "脾虚便溏者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "黄精",
@@ -5641,7 +6359,10 @@
         "痰湿壅滞、气滞腹满、便溏者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "百合",
@@ -5663,7 +6384,10 @@
         "风寒咳嗽及中寒便溏者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "天冬",
@@ -5687,7 +6411,10 @@
         "虚寒泄泻及风寒咳嗽者忌服"
       ],
       "incompatibility": "畏曾青",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "石斛",
@@ -5714,7 +6441,10 @@
         "湿温尚未化燥者忌服"
       ],
       "incompatibility": "凝水石、巴豆，畏僵蚕、雷丸",
-      "price_yuan": 1.5
+      "price_yuan": 1.5,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "墨旱莲",
@@ -5739,7 +6469,10 @@
         "脾肾虚寒者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "龟甲",
@@ -5765,7 +6498,10 @@
         "入煎宜先煎"
       ],
       "incompatibility": "恶沙参、蜚蠊",
-      "price_yuan": 1.5
+      "price_yuan": 1.5,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "鳖甲",
@@ -5790,7 +6526,10 @@
         "入煎宜先煎"
       ],
       "incompatibility": "恶理石，畏矾石",
-      "price_yuan": 1
+      "price_yuan": 1,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "鹿茸",
@@ -5821,7 +6560,10 @@
         "宜研末冲服"
       ],
       "incompatibility": "无",
-      "price_yuan": 8
+      "price_yuan": 8,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "巴戟天",
@@ -5844,7 +6586,10 @@
         "阴虚火旺及有湿热者忌服"
       ],
       "incompatibility": "畏朝生草、雷丸、丹参",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "淫羊藿",
@@ -5866,7 +6611,10 @@
         "阴虚火旺者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "补骨脂",
@@ -5892,7 +6640,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "恶甘草",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "益智仁",
@@ -5915,7 +6666,10 @@
         "阴虚火旺及湿热下注者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "肉苁蓉",
@@ -5939,7 +6693,10 @@
         "胃肠实热便秘者不宜"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.4
+      "price_yuan": 0.4,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "锁阳",
@@ -5961,7 +6718,10 @@
         "阴虚火旺、脾虚泄泻及实热便秘者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.25
+      "price_yuan": 0.25,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蛤蚧",
@@ -5983,7 +6743,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "畏蟾蜍",
-      "price_yuan": 1.5
+      "price_yuan": 1.5,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "五倍子",
@@ -6009,7 +6772,10 @@
         "外感风寒或肺有实热咳嗽及积滞未清之泻痢者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "诃子",
@@ -6031,7 +6797,10 @@
         "外邪未解、内有湿热积滞者不宜"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "肉豆蔻",
@@ -6052,7 +6821,10 @@
         "湿热泻痢者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "赤石脂",
@@ -6075,7 +6847,10 @@
         "不宜与官桂同用（十九畏）"
       ],
       "incompatibility": "畏官桂（肉桂）（十九畏）",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "覆盆子",
@@ -6096,7 +6871,10 @@
         "肾虚火炽、小便短涩者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "桑螵蛸",
@@ -6117,7 +6895,10 @@
         "阴虚火旺、膀胱湿热小便频数者忌服"
       ],
       "incompatibility": "畏旋覆花",
-      "price_yuan": 0.5
+      "price_yuan": 0.5,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "金樱子",
@@ -6138,7 +6919,10 @@
         "有实火、邪热者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "芡实",
@@ -6160,7 +6944,10 @@
         "食滞不化者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "椿皮",
@@ -6181,7 +6968,10 @@
         "脾胃虚寒者忌服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "香薷",
@@ -6201,7 +6991,10 @@
         "阴虚盗汗"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "藁本",
@@ -6221,7 +7014,10 @@
         "血虚头痛"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苍耳子",
@@ -6243,7 +7039,10 @@
         "不宜过量服用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "辛夷",
@@ -6263,7 +7062,10 @@
         "阴虚火旺"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "葱白",
@@ -6283,7 +7085,10 @@
         "表虚多汗"
       ],
       "incompatibility": "畏五灵脂（传统说法）",
-      "price_yuan": 0.02
+      "price_yuan": 0.02,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "蔓荆子",
@@ -6303,7 +7108,10 @@
         "血虚头痛"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "夏枯草",
@@ -6324,7 +7132,10 @@
         "脾胃虚弱"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "决明子",
@@ -6345,7 +7156,10 @@
         "气虚便溏"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "谷精草",
@@ -6364,7 +7178,10 @@
         "血虚目疾"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "密蒙花",
@@ -6384,7 +7201,10 @@
         "阳虚目疾"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "青葙子",
@@ -6405,7 +7225,10 @@
         "青光眼"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "秦皮",
@@ -6425,7 +7248,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "恶吴茱萸（传统说法）",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "紫花地丁",
@@ -6446,7 +7272,10 @@
         "虚寒证"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "大青叶",
@@ -6472,7 +7301,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "青黛",
@@ -6496,7 +7328,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "包煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "贯众",
@@ -6519,7 +7354,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "野菊花",
@@ -6539,7 +7377,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "败酱草",
@@ -6561,7 +7402,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "红藤",
@@ -6583,7 +7427,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "土茯苓",
@@ -6606,7 +7453,10 @@
         "肝肾阴虚"
       ],
       "incompatibility": "忌茶",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "水牛角",
@@ -6629,7 +7479,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "紫草",
@@ -6652,7 +7505,10 @@
         "脾虚便溏"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "青蒿",
@@ -6676,7 +7532,10 @@
         "肠滑泄泻"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白薇",
@@ -6700,7 +7559,10 @@
         "大便泄泻"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "地骨皮",
@@ -6722,7 +7584,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "忌铁（传统说法）",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "银柴胡",
@@ -6743,7 +7608,10 @@
         "血虚无热"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "胡黄连",
@@ -6764,7 +7632,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "番泻叶",
@@ -6787,7 +7658,10 @@
         "体虚"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "开水泡服，或后下。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "芦荟",
@@ -6811,7 +7685,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "入丸散或研末冲服，不入煎剂。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蚕沙",
@@ -6832,7 +7709,10 @@
         "血虚失养"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "伸筋草",
@@ -6853,7 +7733,10 @@
         "出血过多"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "寻骨风",
@@ -6874,7 +7757,10 @@
         "阴虚血热"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "桑枝",
@@ -6893,7 +7779,10 @@
         "风寒湿痹"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "豨莶草",
@@ -6916,7 +7805,10 @@
         "无风湿热邪"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "臭梧桐",
@@ -6937,7 +7829,10 @@
         "低血压"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "雷公藤",
@@ -6962,7 +7857,10 @@
         "心肝肾功能不全"
       ],
       "incompatibility": "有大毒，严格控制剂量",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "老鹳草",
@@ -6983,7 +7881,10 @@
         "无"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "千年健",
@@ -7004,7 +7905,10 @@
         "阴虚内热"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "雪莲花",
@@ -7027,7 +7931,10 @@
         "阴虚火旺"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.5
+      "price_yuan": 0.5,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "葫芦",
@@ -7046,7 +7953,10 @@
         "虚寒滑精"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "枳椇子",
@@ -7066,7 +7976,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "滑石",
@@ -7089,7 +8002,10 @@
         "精滑及热病津伤"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.02
+      "price_yuan": 0.02,
+      "processing": "生品",
+      "usage_detail": "包煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "通草",
@@ -7110,7 +8026,10 @@
         "气阴两虚"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "瞿麦",
@@ -7131,7 +8050,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "萹蓄",
@@ -7153,7 +8075,10 @@
         "脾虚泄泻"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "地肤子",
@@ -7175,7 +8100,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "茵陈",
@@ -7196,7 +8124,10 @@
         "血虚萎黄"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "金钱草",
@@ -7219,7 +8150,10 @@
         "脾虚泄泻"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "虎杖",
@@ -7244,7 +8178,10 @@
         "脾虚便溏"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "地耳草",
@@ -7267,7 +8204,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "垂盆草",
@@ -7288,7 +8228,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "荜澄茄",
@@ -7310,7 +8253,10 @@
         "实热证"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "荔枝核",
@@ -7332,7 +8278,10 @@
         "无寒湿气滞"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "香橼",
@@ -7355,7 +8304,10 @@
         "孕妇气虚"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "玫瑰花",
@@ -7378,7 +8330,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "绿萼梅",
@@ -7399,7 +8354,10 @@
         "无"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "南瓜子",
@@ -7419,7 +8377,10 @@
         "无"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.02
+      "price_yuan": 0.02,
+      "processing": "生品",
+      "usage_detail": "去壳研末冲服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "鹤草芽",
@@ -7438,7 +8399,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "研末吞服，不入煎剂。",
+      "pharmacopoeia": ""
     },
     {
       "name": "芜荑",
@@ -7459,7 +8423,10 @@
         "脾胃虚弱"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "苎麻根",
@@ -7482,7 +8449,10 @@
         "无实热"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "花蕊石",
@@ -7504,7 +8474,10 @@
         "无瘀出血"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "降香",
@@ -7528,7 +8501,10 @@
         "血热妄行"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "仙鹤草",
@@ -7551,7 +8527,10 @@
         "无"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "紫珠叶",
@@ -7576,7 +8555,10 @@
         "虚寒出血"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "棕榈炭",
@@ -7596,7 +8578,10 @@
         "出血兼瘀滞"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "炒炭",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "血余炭",
@@ -7619,7 +8604,10 @@
         "胃弱者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "炒炭",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "藕节",
@@ -7641,7 +8629,10 @@
         "无"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "灶心土",
@@ -7662,7 +8653,10 @@
         "热证呕吐"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.02
+      "price_yuan": 0.02,
+      "processing": "伏龙肝（灶心黄土）",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "夏天无",
@@ -7684,7 +8678,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "泽兰",
@@ -7707,7 +8704,10 @@
         "血虚"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "王不留行",
@@ -7728,7 +8728,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "月季花",
@@ -7751,7 +8754,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "自然铜",
@@ -7772,7 +8778,10 @@
         "血虚无瘀"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苏木",
@@ -7796,7 +8805,10 @@
         "月经过多"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.07
+      "price_yuan": 0.07,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "骨碎补",
@@ -7818,7 +8830,10 @@
         "阴虚火旺"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "血竭",
@@ -7840,7 +8855,10 @@
         "无瘀血"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.8
+      "price_yuan": 0.8,
+      "processing": "生品",
+      "usage_detail": "研末冲服；或入丸散，不入煎剂。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "刘寄奴",
@@ -7864,7 +8882,10 @@
         "气血虚弱"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "莪术",
@@ -7885,7 +8906,10 @@
         "月经过多"
       ],
       "incompatibility": "含挥发油，不宜久煎",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "虻虫",
@@ -7906,7 +8930,10 @@
         "体虚无瘀"
       ],
       "incompatibility": "恶麻黄（传统说法）",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "斑蝥",
@@ -7932,7 +8959,10 @@
         "肝肾功不全"
       ],
       "incompatibility": "有大毒，严格控制剂量",
-      "price_yuan": 0.5
+      "price_yuan": 0.5,
+      "processing": "生品",
+      "usage_detail": "外用适量；内服须遵医嘱并严控剂量。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "穿山甲",
@@ -7957,7 +8987,10 @@
         "气血不足"
       ],
       "incompatibility": "无",
-      "price_yuan": 1.5
+      "price_yuan": 1.5,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "浙贝母",
@@ -7982,7 +9015,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "反乌头（十八反）",
-      "price_yuan": 0.12
+      "price_yuan": 0.12,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "竹沥",
@@ -8003,7 +9039,10 @@
         "脾虚便溏"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "鲜品捣汁兑服，现捣现服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "黄药子",
@@ -8026,7 +9065,10 @@
         "肝功能不全"
       ],
       "incompatibility": "多服久服损肝",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "海蛤壳",
@@ -8047,7 +9089,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "海浮石",
@@ -8068,7 +9113,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": ""
     },
     {
       "name": "瓦楞子",
@@ -8090,7 +9138,10 @@
         "无痰积"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "礞石",
@@ -8114,7 +9165,10 @@
         "无痰热实邪"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "马兜铃",
@@ -8138,7 +9192,10 @@
         "肾功能不全"
       ],
       "incompatibility": "含马兜铃酸，肾毒性",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "枇杷叶",
@@ -8160,7 +9217,10 @@
         "胃寒呕逆"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白果",
@@ -8181,7 +9241,10 @@
         "有实邪"
       ],
       "incompatibility": "有毒，不宜多用",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "矮地茶",
@@ -8204,7 +9267,10 @@
         "无"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "洋金花",
@@ -8230,7 +9296,10 @@
         "心脏病"
       ],
       "incompatibility": "有大毒，严格控制剂量",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "琥珀",
@@ -8254,7 +9323,10 @@
         "无瘀滞"
       ],
       "incompatibility": "不入煎剂",
-      "price_yuan": 0.5
+      "price_yuan": 0.5,
+      "processing": "生品",
+      "usage_detail": "研末冲服，不入煎剂。",
+      "pharmacopoeia": ""
     },
     {
       "name": "珍珠母",
@@ -8276,7 +9348,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "罗布麻",
@@ -8297,7 +9372,10 @@
         "脾虚慢惊"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "羚羊角",
@@ -8323,7 +9401,10 @@
         "脾虚慢惊"
       ],
       "incompatibility": "无",
-      "price_yuan": 2
+      "price_yuan": 2,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "牛黄",
@@ -8348,7 +9429,10 @@
         "非实热证"
       ],
       "incompatibility": "无",
-      "price_yuan": 5
+      "price_yuan": 5,
+      "processing": "生品",
+      "usage_detail": "入丸散或研末冲服，不入煎剂。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "珍珠",
@@ -8370,7 +9454,10 @@
         "无实热"
       ],
       "incompatibility": "无",
-      "price_yuan": 1.5
+      "price_yuan": 1.5,
+      "processing": "生品",
+      "usage_detail": "研末吞服；或入丸散。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "麝香",
@@ -8398,7 +9485,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 5
+      "price_yuan": 5,
+      "processing": "生品",
+      "usage_detail": "入丸散或研末冲服，不入煎剂。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "冰片",
@@ -8424,7 +9514,10 @@
         "气血虚"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.8
+      "price_yuan": 0.8,
+      "processing": "生品",
+      "usage_detail": "入丸散或研末冲服，不入煎剂。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苏合香",
@@ -8446,7 +9539,10 @@
         "气虚"
       ],
       "incompatibility": "无",
-      "price_yuan": 1.2
+      "price_yuan": 1.2,
+      "processing": "生品",
+      "usage_detail": "入丸散或研末冲服。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "石菖蒲",
@@ -8470,7 +9566,10 @@
         "汗多"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蟾酥",
@@ -8491,7 +9590,10 @@
         "孕妇"
       ],
       "incompatibility": "有毒，不宜多服久服",
-      "price_yuan": 1.5
+      "price_yuan": 1.5,
+      "processing": "生品",
+      "usage_detail": "入丸散或外用，严控剂量。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "刺五加",
@@ -8513,7 +9615,10 @@
         "阴虚火旺"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "绞股蓝",
@@ -8535,7 +9640,10 @@
         "虚寒证"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "红景天",
@@ -8556,7 +9664,10 @@
         "无"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "沙棘",
@@ -8579,7 +9690,10 @@
         "无"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "南沙参",
@@ -8605,7 +9719,10 @@
         "脾胃虚寒"
       ],
       "incompatibility": "反藜芦（十八反）",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "桑椹",
@@ -8630,7 +9747,10 @@
         "大便溏泄"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "黑芝麻",
@@ -8653,7 +9773,10 @@
         "便溏"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "紫河车",
@@ -8678,7 +9801,10 @@
         "外感实邪"
       ],
       "incompatibility": "无",
-      "price_yuan": 1
+      "price_yuan": 1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "仙茅",
@@ -8699,7 +9825,10 @@
         "阴虚火旺"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "沙苑子",
@@ -8722,7 +9851,10 @@
         "小便不利"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "核桃仁",
@@ -8746,7 +9878,10 @@
         "便溏"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "冬虫夏草",
@@ -8769,7 +9904,10 @@
         "有表邪"
       ],
       "incompatibility": "无",
-      "price_yuan": 5
+      "price_yuan": 5,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "麻黄根",
@@ -8788,7 +9926,10 @@
         "表邪未解"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "浮小麦",
@@ -8808,7 +9949,10 @@
         "无汗而烦躁"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.02
+      "price_yuan": 0.02,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "糯稻根须",
@@ -8829,7 +9973,10 @@
         "无"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.02
+      "price_yuan": 0.02,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "罂粟壳",
@@ -8853,7 +10000,10 @@
         "痢疾初起"
       ],
       "incompatibility": "有成瘾性，不宜久服",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "石榴皮",
@@ -8878,7 +10028,10 @@
         "邪气盛"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "禹余粮",
@@ -8900,7 +10053,10 @@
         "湿热泻痢"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "海螵蛸",
@@ -8926,7 +10082,10 @@
         "便秘"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "常山",
@@ -8947,7 +10106,10 @@
         "体虚"
       ],
       "incompatibility": "忌葱（传统说法）",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "瓜蒂",
@@ -8970,7 +10132,10 @@
         "孕妇"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "胆矾",
@@ -8993,7 +10158,10 @@
         "体虚"
       ],
       "incompatibility": "有毒，不宜多服久服",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "入丸散或研末服；外用适量，严控剂量。",
+      "pharmacopoeia": ""
     },
     {
       "name": "雄黄",
@@ -9016,7 +10184,10 @@
         "阴亏血虚"
       ],
       "incompatibility": "煅烧后有剧毒，忌火煅",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "入丸散或外用，忌火煅，不入煎剂。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "硫黄",
@@ -9039,7 +10210,10 @@
         "阴虚火旺"
       ],
       "incompatibility": "畏朴硝（十九畏）",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "入丸散或外用。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "白矾",
@@ -9063,7 +10237,10 @@
         "无湿热"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.03
+      "price_yuan": 0.03,
+      "processing": "生品（煅为枯矾）",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蛇床子",
@@ -9087,7 +10264,10 @@
         "精关不固"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "土荆皮",
@@ -9108,7 +10288,10 @@
         "体虚"
       ],
       "incompatibility": "有毒，只供外用",
-      "price_yuan": 0.04
+      "price_yuan": 0.04,
+      "processing": "生品",
+      "usage_detail": "只供外用，严禁内服。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "蜂房",
@@ -9131,7 +10314,10 @@
         "痈疽已溃"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "樟脑",
@@ -9155,7 +10341,10 @@
         "气虚"
       ],
       "incompatibility": "有毒，控制剂量",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "外用适量；内服须遵医嘱并严控剂量。",
+      "pharmacopoeia": ""
     },
     {
       "name": "升药",
@@ -9179,7 +10368,10 @@
         "脓水已尽"
       ],
       "incompatibility": "有大毒，只供外用",
-      "price_yuan": 0.2
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "只供外用，严禁内服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "轻粉",
@@ -9202,7 +10394,10 @@
         "体虚"
       ],
       "incompatibility": "有毒，控制剂量，忌火煅",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "入丸散或外用，严控剂量，忌火煅。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "砒石",
@@ -9226,7 +10421,10 @@
         "肝肾功能不全"
       ],
       "incompatibility": "有大毒，严格控制剂量",
-      "price_yuan": 0.5
+      "price_yuan": 0.5,
+      "processing": "生品",
+      "usage_detail": "只供外用，严禁内服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "铅丹",
@@ -9248,7 +10446,10 @@
         "体虚"
       ],
       "incompatibility": "有毒，不宜久服",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "多外用；内服入丸散，严控剂量。",
+      "pharmacopoeia": ""
     },
     {
       "name": "炉甘石",
@@ -9272,7 +10473,10 @@
         "只供外用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "外用适量；内服须遵医嘱并严控剂量。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "硼砂",
@@ -9294,7 +10498,10 @@
         "无痰热"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "马钱子",
@@ -9319,7 +10526,10 @@
         "中毒可致强直性惊厥"
       ],
       "incompatibility": "不可与炮制不当的生品同用",
-      "price_yuan": 0.15
+      "price_yuan": 0.15,
+      "processing": "生品",
+      "usage_detail": "炮制后入丸散，严控剂量。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "砒霜",
@@ -9339,7 +10549,10 @@
         "严禁内服"
       ],
       "incompatibility": "畏绿豆、绿茶等解毒物",
-      "price_yuan": 0
+      "price_yuan": 0,
+      "processing": "生品",
+      "usage_detail": "只供外用，严禁内服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "密陀僧",
@@ -9360,7 +10573,10 @@
         "不可内服"
       ],
       "incompatibility": "不可与狼毒同用",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "只供外用，严禁内服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "干漆",
@@ -9382,7 +10598,10 @@
         "血瘀无滞者忌用"
       ],
       "incompatibility": "畏蟹",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "入丸散，不宜入煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "寒水石",
@@ -9401,8 +10620,11 @@
       "contraindications": [
         "脾胃虚寒者慎服"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.05
+      "incompatibility": "无",
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": ""
     },
     {
       "name": "龙齿",
@@ -9421,8 +10643,11 @@
       "contraindications": [
         "湿热实邪者忌服"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.2
+      "incompatibility": "无",
+      "price_yuan": 0.2,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": ""
     },
     {
       "name": "紫石英",
@@ -9442,8 +10667,11 @@
       "contraindications": [
         "阴虚火旺者忌服"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.1
+      "incompatibility": "无",
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "鱼腥草",
@@ -9463,8 +10691,11 @@
       "contraindications": [
         "虚寒证及阴性外疡忌服"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.05
+      "incompatibility": "无",
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "后下，不宜久煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "黛蛤散",
@@ -9484,8 +10715,11 @@
       "contraindications": [
         "脾胃虚寒者慎服"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.1
+      "incompatibility": "无",
+      "price_yuan": 0.1,
+      "processing": "复方（青黛+海蛤壳）",
+      "usage_detail": "包煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "鹿角胶",
@@ -9505,8 +10739,11 @@
       "contraindications": [
         "阴虚火旺、外感发热者忌服"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.5
+      "incompatibility": "无",
+      "price_yuan": 0.5,
+      "processing": "胶类（烊化）",
+      "usage_detail": "烊化兑服（冲服）。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "龟板胶",
@@ -9526,8 +10763,11 @@
       "contraindications": [
         "脾胃虚寒、食少便溏者忌服"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.5
+      "incompatibility": "无",
+      "price_yuan": 0.5,
+      "processing": "胶类（烊化）",
+      "usage_detail": "烊化兑服（冲服）。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "饴糖",
@@ -9546,8 +10786,11 @@
       "contraindications": [
         "湿热内蕴、中满痰湿者忌服"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.05
+      "incompatibility": "无",
+      "price_yuan": 0.05,
+      "processing": "糖膏（烊化）",
+      "usage_detail": "烊化兑服（冲服）。",
+      "pharmacopoeia": ""
     },
     {
       "name": "犀角",
@@ -9569,7 +10812,10 @@
         "属国家保护动物，临床禁用犀角，以水牛角代用"
       ],
       "incompatibility": "畏川乌、草乌",
-      "price_yuan": 0
+      "price_yuan": 0,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "燕窝",
@@ -9589,8 +10835,11 @@
       "contraindications": [
         "痰湿停滞、胃有痰饮湿滞者慎服"
       ],
-      "incompatibility": "",
-      "price_yuan": 2
+      "incompatibility": "无",
+      "price_yuan": 2,
+      "processing": "生品",
+      "usage_detail": "炖服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "红粉",
@@ -9613,7 +10862,10 @@
         "含氧化汞，肝肾功能不全者忌用"
       ],
       "incompatibility": "不可与含汞制剂同用",
-      "price_yuan": 0
+      "price_yuan": 0,
+      "processing": "生品",
+      "usage_detail": "只供外用，严禁内服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "巴豆霜",
@@ -9635,7 +10887,10 @@
         "体虚者忌用"
       ],
       "incompatibility": "畏牵牛子（十九畏）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "制霜",
+      "usage_detail": "入丸散，严控剂量。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "鳖甲胶",
@@ -9654,8 +10909,11 @@
       "contraindications": [
         "脾胃虚寒、食少便溏者忌服"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.5
+      "incompatibility": "无",
+      "price_yuan": 0.5,
+      "processing": "胶类（烊化）",
+      "usage_detail": "烊化兑服（冲服）。",
+      "pharmacopoeia": ""
     },
     {
       "name": "大戟",
@@ -9678,7 +10936,10 @@
         "体虚者忌用"
       ],
       "incompatibility": "反甘草（十八反）",
-      "price_yuan": 0.1
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "煎服；或入丸散。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "玄明粉",
@@ -9700,7 +10961,10 @@
         "脾胃虚寒者慎服"
       ],
       "incompatibility": "畏三棱、莪术、肉桂、硫黄",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "风化（芒硝风化）",
+      "usage_detail": "冲服。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "赭石",
@@ -9722,8 +10986,11 @@
         "孕妇慎用",
         "虚寒证不宜单用"
       ],
-      "incompatibility": "",
-      "price_yuan": 0.1
+      "incompatibility": "畏天雄、附子（传统记载，同代赭石）",
+      "price_yuan": 0.1,
+      "processing": "生品",
+      "usage_detail": "打碎先煎。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "苦地丁",
@@ -9744,7 +11011,10 @@
         "体虚便溏者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "生半夏",
@@ -9765,7 +11035,10 @@
         "生品内服可致口舌咽喉麻木灼痛、呕吐，须急诊处理"
       ],
       "incompatibility": "反川乌、草乌、附子（十八反：半蒌贝蔹芨攻乌）",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品（有毒）",
+      "usage_detail": "外用；内服必须经炮制为法半夏/姜半夏/清半夏，严禁生品内服。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "三叉苦",
@@ -9786,7 +11059,10 @@
         "脾胃虚寒者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": ""
     },
     {
       "name": "九里香",
@@ -9807,7 +11083,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "两面针",
@@ -9829,7 +11108,10 @@
         "有小毒，不宜过量久服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "莲子",
@@ -9849,7 +11131,10 @@
         "大便燥结者不宜"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "莲须",
@@ -9869,7 +11154,10 @@
         "小便不利者勿服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.08
+      "price_yuan": 0.08,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "前胡",
@@ -9888,7 +11176,10 @@
         "阴虚燥咳、寒饮咳喘者慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "金荞麦",
@@ -9908,7 +11199,10 @@
         "孕妇慎用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.06
+      "price_yuan": 0.06,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "四季青",
@@ -9929,7 +11223,10 @@
         "脾胃虚寒者慎服"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.05
+      "price_yuan": 0.05,
+      "processing": "生品",
+      "usage_detail": "外用适量；内服须遵医嘱并严控剂量。",
+      "pharmacopoeia": "一部"
     },
     {
       "name": "乌鸡",
@@ -9949,7 +11246,10 @@
         "感冒发热、食积腹胀者暂不宜"
       ],
       "incompatibility": "无",
-      "price_yuan": 8
+      "price_yuan": 8,
+      "processing": "生品",
+      "usage_detail": "炖服。",
+      "pharmacopoeia": ""
     },
     {
       "name": "鹿角",
@@ -9972,7 +11272,10 @@
         "孕妇忌用"
       ],
       "incompatibility": "无",
-      "price_yuan": 0.3
+      "price_yuan": 0.3,
+      "processing": "生品",
+      "usage_detail": "煎服，用量见剂量范围。",
+      "pharmacopoeia": "一部"
     }
   ]
 }

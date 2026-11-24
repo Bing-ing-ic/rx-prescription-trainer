@@ -42,7 +42,8 @@
       "pinyin": "ganmao qingre keli",
       "aliases": [
         "感冒冲剂"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "正柴胡饮颗粒",
@@ -77,7 +78,8 @@
       "price_yuan": 15,
       "manufacturer": "精华制药",
       "pinyin": "zheng chaihu yin keli",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "银翘解毒片",
@@ -116,7 +118,8 @@
       "pinyin": "yinqiao jiedu pian",
       "aliases": [
         "银翘片"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "桑菊感冒片",
@@ -149,7 +152,8 @@
       "price_yuan": 9,
       "manufacturer": "北京同仁堂",
       "pinyin": "sangju ganmao pian",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "藿香正气水",
@@ -192,7 +196,8 @@
       "pinyin": "huoxiang zhengqi shui",
       "aliases": [
         "藿香正气口服液"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "板蓝根颗粒",
@@ -222,7 +227,8 @@
       "pinyin": "banlangen keli",
       "aliases": [
         "板蓝根冲剂"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "牛黄解毒片",
@@ -265,7 +271,8 @@
       "pinyin": "niuhuang jiedu pian",
       "aliases": [
         "牛黄解毒丸"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "黄连上清丸",
@@ -312,7 +319,8 @@
       "price_yuan": 12,
       "manufacturer": "北京同仁堂",
       "pinyin": "huanglian shangqing wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "连花清瘟胶囊",
@@ -359,7 +367,8 @@
       "pinyin": "lianhua qingwen jiaonang",
       "aliases": [
         "连花清瘟"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "蒲地蓝消炎口服液",
@@ -391,7 +400,8 @@
       "price_yuan": 28,
       "manufacturer": "济川药业",
       "pinyin": "puhuilan xiaoyan koufuye",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "龙胆泻肝丸",
@@ -433,7 +443,8 @@
       "price_yuan": 9.5,
       "manufacturer": "北京同仁堂",
       "pinyin": "longdan xiegang wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "茵栀黄口服液",
@@ -462,7 +473,8 @@
       "price_yuan": 35,
       "manufacturer": "华润双鹤",
       "pinyin": "yinzhihuang koufuye",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "麻仁润肠丸",
@@ -497,7 +509,8 @@
       "pinyin": "maren rouchang wan",
       "aliases": [
         "麻仁丸"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "独活寄生合剂",
@@ -541,7 +554,8 @@
       "pinyin": "duhuo jisheng heji",
       "aliases": [
         "独活寄生丸"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "小活络丸",
@@ -580,7 +594,8 @@
       "price_yuan": 16,
       "manufacturer": "北京同仁堂",
       "pinyin": "xiao huoluo wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "附子理中丸",
@@ -616,7 +631,8 @@
       "pinyin": "fuzi lizhong wan",
       "aliases": [
         "理中丸"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "香砂养胃丸",
@@ -660,7 +676,8 @@
       "price_yuan": 11.5,
       "manufacturer": "北京同仁堂",
       "pinyin": "xiangsha yangwei wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "逍遥丸",
@@ -700,7 +717,8 @@
       "aliases": [
         "加味逍遥丸",
         "丹栀逍遥丸"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "柴胡舒肝丸",
@@ -752,7 +770,8 @@
       "price_yuan": 18,
       "manufacturer": "北京同仁堂",
       "pinyin": "chaihu shugan wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "气滞胃痛颗粒",
@@ -785,7 +804,8 @@
       "price_yuan": 22,
       "manufacturer": "丹东药业",
       "pinyin": "qizhi weitong keli",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "三九胃泰颗粒",
@@ -825,7 +845,8 @@
       "pinyin": "sanjiu weitai keli",
       "aliases": [
         "三九胃泰"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "保和丸",
@@ -863,7 +884,8 @@
       "pinyin": "baohe wan",
       "aliases": [
         "保和颗粒"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "健胃消食片",
@@ -894,7 +916,8 @@
       "price_yuan": 7.5,
       "manufacturer": "江中药业",
       "pinyin": "jianwei xiaoshi pian",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "四君子丸",
@@ -927,7 +950,8 @@
       "pinyin": "sijunzi wan",
       "aliases": [
         "四君子合剂"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "补中益气丸",
@@ -968,7 +992,8 @@
       "pinyin": "buzhong yiqi wan",
       "aliases": [
         "补中益气汤"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "参苓白术散",
@@ -1009,7 +1034,8 @@
       "aliases": [
         "参苓白术丸",
         "参苓白术颗粒"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "玉屏风颗粒",
@@ -1043,7 +1069,8 @@
       "aliases": [
         "玉屏风散",
         "玉屏风口服液"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "归脾丸",
@@ -1087,7 +1114,8 @@
       "pinyin": "guipi wan",
       "aliases": [
         "归脾汤"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "八珍丸",
@@ -1128,7 +1156,8 @@
       "aliases": [
         "八珍颗粒",
         "八珍益母丸"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "六味地黄丸",
@@ -1166,7 +1195,8 @@
       "pinyin": "liuwei dihuang wan",
       "aliases": [
         "六味地黄胶囊"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "知柏地黄丸",
@@ -1203,7 +1233,8 @@
       "price_yuan": 12.5,
       "manufacturer": "北京同仁堂",
       "pinyin": "zhibai dihuang wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "杞菊地黄丸",
@@ -1240,7 +1271,8 @@
       "price_yuan": 13,
       "manufacturer": "北京同仁堂",
       "pinyin": "qiju dihuang wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "金匮肾气丸",
@@ -1281,7 +1313,8 @@
       "pinyin": "jinkui shenqi wan",
       "aliases": [
         "肾气丸"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "五子衍宗丸",
@@ -1315,7 +1348,8 @@
       "price_yuan": 16,
       "manufacturer": "北京同仁堂",
       "pinyin": "wuzi yanzong wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "天王补心丹",
@@ -1363,7 +1397,8 @@
       "pinyin": "tianwang buxin dan",
       "aliases": [
         "天王补心丸"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "酸枣仁合剂",
@@ -1395,7 +1430,8 @@
       "pinyin": "suanzaoren heji",
       "aliases": [
         "酸枣仁汤"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "安宫牛黄丸",
@@ -1442,7 +1478,8 @@
       "pinyin": "angong niuhuang wan",
       "aliases": [
         "安宫丸"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "金锁固精丸",
@@ -1477,7 +1514,8 @@
       "price_yuan": 17,
       "manufacturer": "北京同仁堂",
       "pinyin": "jinsuo gujing wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "四神丸",
@@ -1512,7 +1550,8 @@
       "price_yuan": 19,
       "manufacturer": "北京同仁堂",
       "pinyin": "sishen wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "复方丹参滴丸",
@@ -1545,7 +1584,8 @@
       "pinyin": "fufang danshen diwan",
       "aliases": [
         "复方丹参片"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "血府逐瘀丸",
@@ -1588,7 +1628,8 @@
       "pinyin": "xuefu zhuyu wan",
       "aliases": [
         "血府逐瘀汤"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "速效救心丸",
@@ -1617,7 +1658,8 @@
       "price_yuan": 25,
       "manufacturer": "天津中新药业",
       "pinyin": "suxiao jiuxin wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "麝香保心丸",
@@ -1654,7 +1696,8 @@
       "price_yuan": 32,
       "manufacturer": "上海和黄药业",
       "pinyin": "shexiang baoxin wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "通宣理肺丸",
@@ -1698,7 +1741,8 @@
       "pinyin": "tongxuan lifei wan",
       "aliases": [
         "通宣理肺片"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "川贝枇杷膏",
@@ -1742,7 +1786,8 @@
       "pinyin": "chuanbei pipa gao",
       "aliases": [
         "蜜炼川贝枇杷膏"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "急支糖浆",
@@ -1780,7 +1825,8 @@
       "price_yuan": 18,
       "manufacturer": "太极集团",
       "pinyin": "jizhi tangjiang",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "乌鸡白凤丸",
@@ -1830,7 +1876,8 @@
       "price_yuan": 28,
       "manufacturer": "北京同仁堂",
       "pinyin": "wuji baifeng wan",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     },
     {
       "name": "益母草膏",
@@ -1864,7 +1911,8 @@
       "aliases": [
         "益母草颗粒",
         "益母草膏"
-      ]
+      ],
+      "pharmacopoeia": ""
     },
     {
       "name": "小儿感冒颗粒",
@@ -1906,7 +1954,8 @@
       "price_yuan": 16,
       "manufacturer": "北京同仁堂",
       "pinyin": "xiao'er ganmao keli",
-      "aliases": []
+      "aliases": [],
+      "pharmacopoeia": ""
     }
   ]
 }

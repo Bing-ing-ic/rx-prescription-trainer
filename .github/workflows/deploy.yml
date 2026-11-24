@@ -69,4 +69,4 @@ jobs:
           include-hidden-files: true
           retention-days: 7
       - id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v5.0.1

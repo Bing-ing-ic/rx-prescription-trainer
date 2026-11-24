@@ -863,7 +863,7 @@
           "generic_name": "盐酸胺碘酮注射液",
           "dose": "150mg",
           "frequency": "iv负荷（10min），继以1mg/min静滴6h后0.5mg/min",
-          "route": "静脉",
+          "route": "静脉泵入（负荷静推后维持泵入）",
           "duration": "急性复律/控制心室率，≤24h后改口服维持",
           "note": "甲亢、碘过敏、QT间期延长禁用；监测QT、肝功、甲功",
           "rationale": "III类抗心律失常药，药物复律与维持窦律，器质性心脏病适用"
@@ -996,7 +996,7 @@
           "generic_name": "呋塞米注射液",
           "dose": "20mg",
           "frequency": "iv（缓慢）",
-          "route": "静脉",
+          "route": "静脉推注（缓慢）",
           "duration": "急性加重期短期使用，症状缓解改口服",
           "note": "首次静脉利尿后监测尿量、血压、血钾肾功",
           "rationale": "急性失代偿期快速利尿缓解肺淤血"
@@ -1740,7 +1740,7 @@
           "generic_name": "氯化钾注射液",
           "dose": "按血钾水平补充（尿量>40ml/h后，液体内浓度≤0.3%）",
           "frequency": "静脉滴注（加入补液中）",
-          "route": "静脉",
+          "route": "静脉滴注/泵入（稀释）",
           "duration": "维持血钾4.0-5.5mmol/L",
           "note": "无尿、血钾>5.5时暂缓补钾；胰岛素治疗后血钾迅速向细胞内转移易致低钾",
           "rationale": "DKA总体钾丢失严重，补钾防低钾致心律失常/呼吸肌麻痹"
@@ -2327,7 +2327,7 @@
           "generic_name": "氯化钾注射液",
           "dose": "按血钾/补液量加入补液中（浓度≤0.3%）",
           "frequency": "静脉滴注",
-          "route": "静脉",
+          "route": "静脉滴注（稀释，严禁推注）",
           "duration": "见尿补钾，维持血钾正常",
           "note": "无尿、高钾禁用；严禁静脉推注",
           "rationale": "补充呕吐腹泻丢失的钾，防低钾血症"
@@ -2336,7 +2336,7 @@
           "generic_name": "维生素C注射液",
           "dose": "2g",
           "frequency": "加入补液中静滴",
-          "route": "静脉",
+          "route": "静脉滴注",
           "duration": "短期",
           "note": "辅助支持治疗",
           "rationale": "支持治疗，改善代谢"
@@ -2619,7 +2619,7 @@
           "generic_name": "氨茶碱注射液",
           "dose": "0.25g",
           "frequency": "q12h",
-          "route": "加入5%葡萄糖注射液静脉滴注（缓慢≥30分钟）",
+          "route": "静脉滴注（亦可稀释后缓慢静推≥10分钟）",
           "duration": "2-3天",
           "note": "治疗窗窄，监测心率、血药浓度；心律失常者禁用",
           "rationale": "茶碱类，作为SABA效果不佳时的二线舒张支气管药"
@@ -3264,7 +3264,7 @@
           "generic_name": "维生素C注射液",
           "dose": "2.0g",
           "frequency": "qd",
-          "route": "加入补液静脉滴注",
+          "route": "静脉滴注",
           "duration": "3-5天",
           "note": "营养支持辅助",
           "rationale": "禁食期间维生素补充"
@@ -3467,7 +3467,7 @@
           "generic_name": "维生素C注射液",
           "dose": "2.0g",
           "frequency": "qd",
-          "route": "加入补液静脉滴注",
+          "route": "静脉滴注",
           "duration": "3天",
           "note": "辅助用药",
           "rationale": "辅助支持"

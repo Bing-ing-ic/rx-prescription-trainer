@@ -925,6 +925,51 @@
       "correct_practice": "对症支持（退热、补液、休息）；明确细菌并发症（黄脓涕>10天、肺炎）才用抗菌药",
       "reference_guide": "《抗菌药物临床应用指导原则（2015版）》抗菌药治疗性应用基本原则",
       "severity_level_hint": "major"
+    },
+    {
+      "rule_id": "IV-10",
+      "group": "COMPAT",
+      "title": "给药途径与药品允许途径不符",
+      "trigger": "处方给药途径（iv_drip 滴注 / iv_push 静推 / iv_pump 泵入）与药品 allowed_routes 不符：禁推药被开成静推；仅推药被开成滴注/泵入；仅滴注药被开成泵入；高危血管活性药以普通重力滴注开具且未填泵速",
+      "logic": "对照 drug.allowed_routes 校验实际 route：禁推途径（如氯化钾/多巴胺/辅酶A/胰岛素/奥美拉唑钠/硝酸甘油静推）→ error，critical；仅推药（甲氧氯普胺）开成滴注/泵入、仅滴注药（奥美拉唑钠/辅酶A）开成泵入 → error，major；宜泵高危药重力滴注且无泵速 → warn，minor",
+      "severity": "error",
+      "basis": "药品现行说明书【用法用量】给药途径项；《静脉治疗护理技术操作规范 WS/T 433—2023》6.4 静脉注射/静脉输液；T/CNAS 22—2021《血管活性药物静脉输注护理》。",
+      "weight_hint": "compat",
+      "lesson_point": "给药途径必须与说明书一致：禁推药静推可致严重心律失常甚至心跳骤停；血管活性药宜泵入控速。",
+      "correct_practice": "按说明书途径选择滴注/静推/泵入；禁推药改为稀释滴注或泵入；高危药单独通路、注射泵给药。",
+      "reference_guide": "药品说明书【用法用量】；WS/T 433—2023；T/CNAS 22—2021",
+      "related_topic": "IV_ROUTE",
+      "severity_level_hint": "critical（禁推）/ major（仅推、仅滴途径不符）/ minor（宜泵提示）"
+    },
+    {
+      "rule_id": "IV-11",
+      "group": "IV_REASON",
+      "title": "泵入参数缺失/不完整",
+      "trigger": "route=iv_pump 但泵速 pump_rate 为空，或配制浓度/溶媒 pump_conc 为空",
+      "logic": "泵入项缺泵速或缺配制浓度 → error，major；浓度与泵速参数完整 → pass（通过提示：泵入途径与浓度、泵速参数完整。）",
+      "severity": "error",
+      "basis": "WS/T 657—2019《输液泵/注射泵安全管理》；T/CNAS 22—2021：泵入须标注浓度、泵速与配制时间。",
+      "weight_hint": "iv_reason",
+      "lesson_point": "泵入给药必须写明配制浓度与泵速口径（ml/h 或 μg/kg/min、U/kg/h），便于核对与滴定。",
+      "correct_practice": "按浓度配方配制，标签注明药名、剂量、配制时间、泵速；按血压/心率/血糖/血钾滴定。",
+      "reference_guide": "WS/T 657—2019；T/CNAS 22—2021",
+      "related_topic": "IV_PUMP",
+      "severity_level_hint": "major"
+    },
+    {
+      "rule_id": "IV-12",
+      "group": "IV_REASON",
+      "title": "推注时长/速度不当",
+      "trigger": "route=iv_push：药品带 push_min 时长口径但未填推注时长；或填写时长/速度低于说明书下限（如氨茶碱<10分钟、钙剂速度>5ml/min）",
+      "logic": "有 push_min 口径而未填推注时长 → warn，minor；时长不足或速度超限 → error，major",
+      "severity": "error",
+      "basis": "药品现行说明书【用法用量】推注时长/速度项；WS/T 433—2023 静脉注射节。",
+      "weight_hint": "iv_reason",
+      "lesson_point": "需慢推药物必须标注推注时长/速度；快推可诱发严重不良反应（心律失常、惊厥、耳毒性、晕厥）。",
+      "correct_practice": "按说明书时长缓慢推注，必要时稀释；推注中观察回血、心率、血压与用药反应。",
+      "reference_guide": "药品说明书【用法用量】；WS/T 433—2023",
+      "related_topic": "IV_PUSH",
+      "severity_level_hint": "minor（缺时长）/ major（时长不足）"
     }
   ]
 }

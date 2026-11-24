@@ -1685,6 +1685,9 @@
 
     g.fields.totalvol = String(V);
     if (!lastDrug) return;
+    // 静推/泵入药不走重力滴速口径，不回填滴速与输注时长
+    const lastRoute = lastDrug.route || 'iv_drip';
+    if (lastRoute === 'iv_push' || lastRoute === 'iv_pump') return;
 
     const r = lastDrug.dose_range_json || {};
     let doseMg = 0;
@@ -1733,10 +1736,29 @@
     const tbody = document.createElement('tbody');
     tbl.appendChild(tbody);
 
+    // 途径分段按钮：按药品 allowed_routes 禁用不可选途径；title 带 route_note 与适用提示
+    function routeButtons(it) {
+      const routes = allowedRoutesUi(it.drug);
+      const cur = it.route || 'iv_drip';
+      const note = (it.drug.route_note || '').trim();
+      const def = {
+        iv_drip: { icon: '💧', label: '滴注', hint: '静脉滴注（常规重力输液）', cls: 'route-drip' },
+        iv_push: { icon: '💉', label: '推注', hint: '静脉缓慢推注', cls: 'route-push' },
+        iv_pump: { icon: '⚡', label: '泵入', hint: '注射泵精确控速', cls: 'route-pump' },
+      };
+      return Object.keys(def).map(rk => {
+        const d = def[rk];
+        const disabled = routes.includes(rk) ? '' : 'disabled';
+        const active = cur === rk ? ' active' : '';
+        const tip = note ? `${note}｜${d.hint}` : d.hint;
+        return `<button type="button" class="route-btn ${d.cls}${active}" data-route="${rk}" ${disabled} title="${tip}">${d.icon}${d.label}</button>`;
+      }).join('');
+    }
+
     let seq = 0;  // 全局连续序号
-    let groupNo = 0;  // 实际有溶霉的组号（跳过空组）
+    let groupNo = 0;  // 实际成组序号（含无溶媒静推组）
     S.ivGroups.forEach((g, gi) => {
-      if (!g.solvent) return;  // 跳过空组
+      if (!g.solvent && g.drugs.length === 0) return;  // 跳过空组
       groupNo++;
       const groupFreq = (g.drugs[0] && g.drugs[0].frequency) || 'qd';
       if (g.solvent) {
@@ -1778,6 +1800,7 @@
         seq++;
         const tr = document.createElement('tr');
         const qty = calcQty(it.drug, it.single_dose);
+        const curRoute = it.route || 'iv_drip';
         // 皮试列：仅需皮试药品显示选择（阴性/阳性/未做），否则显示 —
         let skinCell;
         if (it.drug.skin_test_required) {
@@ -1788,11 +1811,12 @@
         } else {
           skinCell = `<td style="color:#64748b">—</td>`;
         }
-        tr.innerHTML = `<td>${seq}</td><td>💉药物·第${groupNo}组</td>
+        const typeLabel = g.solvent ? `💉药物·第${groupNo}组` : `💉静推·第${groupNo}组`;
+        tr.innerHTML = `<td>${seq}</td><td>${typeLabel}</td>
           <td>${it.drug.generic_name}${it.drug.is_tcm_injection?' <span class="chip chip-abx-special">中药注射剂</span>':''}</td>
           <td>${it.drug.spec}</td>
           <td><input class="g-dose" type="text" value="${it.single_dose}" style="width:90px"></td>
-          <td>静滴</td>
+          <td><div class="route-seg">${routeButtons(it)}</div></td>
           <td style="color:#64748b">↧</td>
           <td class="g-qty">${qty}</td>
           ${skinCell}
@@ -1808,6 +1832,14 @@
           it.single_dose = v;
           tr.querySelector('.g-qty').textContent = calcQty(it.drug, v);
         };
+        // 途径切换
+        tr.querySelectorAll('.route-btn').forEach(btn => {
+          btn.onclick = () => {
+            it.route = btn.dataset.route;
+            autoFillGroup(g);
+            renderIvGroups(); renderIvDrugList();
+          };
+        });
         const skinSel = tr.querySelector('.g-skin');
         if (skinSel) skinSel.onchange = e => { it.skin_test_result = e.target.value; };
         tr.querySelector('[data-act="del-drug"]').onclick = () => {
@@ -1816,6 +1848,34 @@
           renderIvGroups(); renderIvDrugList();
         };
         tbody.appendChild(tr);
+
+        // 途径参数展开行：推注→时长；泵入→泵速+单位+浓度；滴注→沿用溶媒/滴速列
+        if (curRoute === 'iv_push' || curRoute === 'iv_pump') {
+          const pr = document.createElement('tr');
+          pr.className = 'iv-param-row';
+          if (curRoute === 'iv_push') {
+            const ph = it.drug.push_min || it.drug.push_speed_limit || '如：10分钟';
+            const limitTxt = [it.drug.push_min, it.drug.push_speed_limit].filter(Boolean).join('；');
+            pr.innerHTML = `<td colspan="11"><div class="iv-param">
+              <label>推注时长 <input class="g-push-min" type="text" value="${it.push_min||''}" placeholder="${ph}" style="width:110px"></label>
+              ${limitTxt ? `<span class="muted">口径：${limitTxt}</span>` : ''}
+            </div></td>`;
+            pr.querySelector('.g-push-min').onchange = e => { it.push_min = e.target.value.trim(); };
+          } else {
+            const pumpLabel = it.drug.pump_rate_label || '';
+            const unitOpts = PUMP_UNITS.map(u => `<option value="${u}"${it.pump_rate_unit===u?' selected':''}>${u}</option>`).join('');
+            pr.innerHTML = `<td colspan="11"><div class="iv-param">
+              <label>泵速 <input class="g-pump-rate" type="text" value="${it.pump_rate||''}" placeholder="${pumpLabel||'如：5'}" style="width:110px"></label>
+              <select class="g-pump-unit" style="width:120px;font-size:var(--text-12)">${unitOpts}</select>
+              <label>配制浓度 <input class="g-pump-conc" type="text" value="${it.pump_conc||''}" placeholder="如 20mg+5%GS 200ml" style="width:180px"></label>
+              ${pumpLabel ? `<span class="muted">口径：${pumpLabel}</span>` : ''}
+            </div></td>`;
+            pr.querySelector('.g-pump-rate').onchange = e => { it.pump_rate = e.target.value.trim(); };
+            pr.querySelector('.g-pump-unit').onchange = e => { it.pump_rate_unit = e.target.value; };
+            pr.querySelector('.g-pump-conc').onchange = e => { it.pump_conc = e.target.value.trim(); };
+          }
+          tbody.appendChild(pr);
+        }
       });
     });
 
@@ -1955,7 +2015,14 @@
     updatePreReminder();
     refreshDualChannelBanner();
   }
-  function routeZh(r) { return {oral:'口服',topical:'外用',im:'肌注',sc:'皮下',iv_drip:'静滴'}[r]||r; }
+  function routeZh(r) { return {oral:'口服',topical:'外用',im:'肌注',sc:'皮下',iv_drip:'静滴',iv_push:'静推',iv_pump:'泵入'}[r]||r; }
+  // 药品允许途径（与引擎兜底口径一致）：缺省 iv_drip → ['iv_drip']，其余 → [剂型]
+  function allowedRoutesUi(drug) {
+    if (!drug) return ['iv_drip'];
+    if (Array.isArray(drug.allowed_routes) && drug.allowed_routes.length) return drug.allowed_routes.slice();
+    return drug.dosage_form === 'iv_drip' ? ['iv_drip'] : [drug.dosage_form];
+  }
+  const PUMP_UNITS = ['ml/h', 'μg/kg/min', 'μg/min', 'U/kg/h'];
 
   function updateCount() {
     const n = S.normalItems.length;
@@ -2114,8 +2181,9 @@
     S.kbIvItems = items;
     S.kbIvDisabled = items.map(d => {
       const isSolvent = d.dosage_form === 'solvent';
-      // 溶媒永远可点（点了自动开新组）；静脉药必须先有溶媒
-      return (!isSolvent && !hasSolvent);
+      // 溶媒永远可点（点了自动开新组）；静脉药须先有溶媒，除非该药允许静推可自成静推组
+      if (isSolvent || hasSolvent) return false;
+      return !allowedRoutesUi(d).includes('iv_push');
     });
     S.kbIvSel = items.length ? (S.kbIvDisabled[0] ? -1 : 0) : -1;
     items.forEach((d, i) => {
@@ -2167,7 +2235,10 @@
     // 静脉药
     let g = activeGroup();
     if (!g || !g.solvent) {
-      return alert('请先在药品列表里选一个溶媒（NS/GS等）！');
+      // 无溶媒时仅允许说明书可静推的药品自成静推组
+      if (!allowedRoutesUi(drug).includes('iv_push')) {
+        return alert('请先在药品列表里选一个溶媒（NS/GS等）！');
+      }
     }
     const totalItems = S.ivGroups.reduce((n, gr) => n + (gr.solvent?1:0) + gr.drugs.length, 0);
     if (totalItems >= 5 && !S.ivOverLimitWarned) {
@@ -2195,12 +2266,24 @@
     pushIvDrug(drug);
   }
   function pushIvDrug(drug) {
-    const g = activeGroup();
+    let g = activeGroup();
+    if (!g) {
+      g = { solvent: null, drugs: [], fields: emptyGroupFields() };
+      S.ivGroups.push(g);
+    }
+    const routes = allowedRoutesUi(drug);
+    const defRoute = routes[0] || 'iv_drip';
     g.drugs.push({
       drug,
       single_dose: defaultSingleDose(drug),
       frequency: (drug.dose_range_json||{}).default_freq || 'qd',
       duration_days: (drug.dose_range_json||{}).default_duration_days || 1,
+      // F13 三途径：默认取药品 allowed_routes[0]，旧药兜底 iv_drip
+      route: defRoute,
+      push_min: '',
+      pump_rate: '',
+      pump_rate_unit: PUMP_UNITS[0],
+      pump_conc: '',
       // 需皮试药品默认"未做(pending)"，由学生在表格皮试列选择阴性/阳性；非需皮试药为 not_required
       skin_test_result: drug.skin_test_required ? 'pending' : 'not_required'
     });
@@ -2230,8 +2313,12 @@
     // 硬阻断：每组必须有溶媒+药（P4-1：只要本次就诊开过输液组就校验，不论当前停留在哪个通道）
     const hasIvData = S.ivGroups && S.ivGroups.some(g => g.solvent || g.drugs.length > 0);
     if (hasIvData) {
-      const groupsOk = S.ivGroups.every(g => g.solvent && g.drugs.length > 0);
-      if (!groupsOk) return alert('每组都必须选择溶媒并至少加入一个药！');
+      const groupsOk = S.ivGroups.every(g => {
+        if (g.solvent) return g.drugs.length > 0;
+        // 无溶媒组：仅当整组均为静推药时合法（自成静推组）
+        return g.drugs.length > 0 && g.drugs.every(it => (it.route || 'iv_drip') === 'iv_push');
+      });
+      if (!groupsOk) return alert('每组都必须选择溶媒并至少加入一个药；仅静推组可无溶媒！');
       // 硬阻断：必须选择真实输液指征（不得再用 student_selected_iv 绕开 IV-01）
       const reasonSel = $('iv-reason-select');
       const ivReason = reasonSel ? reasonSel.value : '';
@@ -2260,21 +2347,35 @@
     if (hasIvData) {
       const flatItems = [];
       const groupDetails = S.ivGroups.map((g, gi) => {
-        flatItems.push({ drug: g.solvent, quantity: 1, single_dose: g.solvent.volume_ml+'ml', frequency: 'st', duration_days: 1, route: 'iv_drip', group: gi+1 });
+        if (g.solvent) {
+          flatItems.push({ drug: g.solvent, quantity: 1, single_dose: g.solvent.volume_ml+'ml', frequency: 'st', duration_days: 1, route: 'iv_drip', group: gi+1 });
+        }
         g.drugs.forEach(it => flatItems.push({
           drug: it.drug,
           single_dose: it.single_dose,
           frequency: it.frequency,
           duration_days: it.duration_days,
-          route: 'iv_drip',
+          route: it.route || 'iv_drip',
+          push_min: it.push_min || '',
+          pump_rate: it.pump_rate || '',
+          pump_rate_unit: it.pump_rate_unit || '',
+          pump_conc: it.pump_conc || '',
           group: gi+1,
           skin_test_result: it.skin_test_result || (it.drug.skin_test_required ? 'pending' : 'not_required')
         }));
         return {
           group_no: gi+1,
-          solvent_name: g.solvent.generic_name + ' ' + g.solvent.spec,
-          solvent_volume_ml: g.solvent.volume_ml,
+          solvent_name: g.solvent ? (g.solvent.generic_name + ' ' + g.solvent.spec) : '',
+          solvent_volume_ml: g.solvent ? g.solvent.volume_ml : '',
           drugs: g.drugs.map(it => it.drug.generic_name),
+          drug_details: g.drugs.map(it => ({
+            generic_name: it.drug.generic_name,
+            route: it.route || 'iv_drip',
+            push_min: it.push_min || '',
+            pump_rate: it.pump_rate || '',
+            pump_rate_unit: it.pump_rate_unit || '',
+            pump_conc: it.pump_conc || ''
+          })),
           final_concentration: g.fields.conc,
           drip_speed_mlh: g.fields.speed,
           total_volume_ml: g.fields.totalvol,

@@ -70,7 +70,10 @@ cases.push({
         total_volume_ml: 500,
         items: [
           it(Solvent('0.9%氯化钠注射液', '250ml/袋'), { group: 1 }),
-          it('普通胰岛素注射液', { group: 1, single_dose: '5U/h', frequency: 'st', duration_days: 1 }),
+          it(Object.assign({}, D('普通胰岛素注射液'), { allowed_routes: ['iv_drip', 'iv_pump'] }), {
+            group: 1, route: 'iv_pump', pump_rate: '0.05–0.1', pump_rate_unit: 'U/kg/h', pump_conc: '50U+0.9%NS 500ml',
+            single_dose: '5U/h', frequency: 'st', duration_days: 1
+          }),
           it(Solvent('0.9%氯化钠注射液', '250ml/袋'), { group: 2 }),
           it('氯化钾注射液', { group: 2, single_dose: '10ml', frequency: 'st', duration_days: 1 }),
         ],
@@ -262,9 +265,59 @@ cases.push({
   expect: '无 error（保守治疗 NSAIDs+营养神经，未触发 SUR-02 过度手术）',
 });
 
+// 11. 休克/低血压：多巴胺注射泵泵入（升压药标准方案）
+cases.push({
+  id: 'PUMP-SHOCK',
+  title: '休克（低血压）多巴胺泵入',
+  build() {
+    return baseCtx({
+      disease: { code: 'SHOCK-R57', name: '休克（低血压）', icd10: 'R57', iv_suitability: 'needs_iv', first_line_oral: [], second_line_iv: ['多巴胺注射液'] },
+      patient: { name: '患者K', gender: '男', age: 55, weight: 70, note: '血压 85/55mmHg' },
+      iv_rx: {
+        rx_id: 'IV-20261106-011',
+        iv_reason: 'needs_iv',
+        solvent_name: '5%葡萄糖注射液 250ml/袋',
+        drip_speed_mlh: 20,
+        total_volume_ml: 250,
+        items: [
+          it(Solvent('5%葡萄糖注射液', '250ml/袋'), { group: 1 }),
+          it(Object.assign({}, D('多巴胺注射液'), { allowed_routes: ['iv_drip', 'iv_pump'] }), {
+            group: 1, route: 'iv_pump', pump_rate: '5', pump_rate_unit: 'μg/kg/min', pump_conc: '20mg+5%GS 250ml',
+            single_dose: '20mg', frequency: 'st', duration_days: 1
+          }),
+        ],
+      },
+    });
+  },
+  expect: '无 error（升压药泵入，泵速/浓度参数完整）',
+});
+
+// 12. 急救止吐：甲氧氯普胺缓慢静脉推注
+cases.push({
+  id: 'PUSH-EMERG',
+  title: '恶心呕吐（甲氧氯普胺缓慢静推）',
+  build() {
+    return baseCtx({
+      disease: { code: 'EMERG-R11', name: '恶心呕吐（急救对症）', icd10: 'R11', iv_suitability: 'needs_iv', first_line_oral: [], second_line_iv: ['甲氧氯普胺注射液'] },
+      patient: { name: '患者L', gender: '女', age: 40, weight: 55 },
+      iv_rx: {
+        rx_id: 'IV-20261106-012',
+        iv_reason: 'no_oral_alternative',
+        items: [
+          it(Object.assign({}, D('甲氧氯普胺注射液'), { allowed_routes: ['iv_push'], push_min: '1–2分钟注完' }), {
+            group: 1, route: 'iv_push', push_min: '2分钟',
+            single_dose: '10mg', frequency: 'st', duration_days: 1
+          }),
+        ],
+      },
+    });
+  },
+  expect: '无 error（甲氧氯普胺缓慢静推，时长符合口径）',
+});
+
 // ---------- 跑批 ----------
 console.log('='.repeat(100));
-console.log('P2-2 端到端 QA 跑批（10 个典型病例）');
+console.log('P2-2 端到端 QA 跑批（12 个典型病例）');
 console.log('='.repeat(100));
 
 const rows = [];
@@ -330,7 +383,7 @@ rows.forEach(r => {
 // 总结
 console.log('');
 console.log('='.repeat(100));
-console.log(`跑批结果：${pass}/10 病例无 error；${fail} 个病例有 error 需分析`);
+console.log(`跑批结果：${pass}/12 病例无 error；${fail} 个病例有 error 需分析`);
 console.log(`验收标准：≥8 个无 error  →  ${pass >= 8 ? '✅ 达标' : '❌ 未达标'}`);
 console.log('='.repeat(100));
 

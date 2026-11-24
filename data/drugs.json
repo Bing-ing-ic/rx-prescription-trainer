@@ -1003,7 +1003,12 @@
       "manufacturer": "郑州卓峰制药",
       "pinyin": "dsmslsnzsy",
       "pinyin_code": "DSMSLSNZSY",
-      "reference_status": "core"
+      "reference_status": "core",
+      "allowed_routes": [
+        "iv_drip",
+        "iv_push"
+      ],
+      "route_note": "静注/静滴均可；监测血压、血糖、电解质、感染征象"
     },
     {
       "generic_name": "维生素C注射液",
@@ -1042,7 +1047,13 @@
       "manufacturer": "天津药业集团",
       "pinyin": "wssczsy",
       "pinyin_code": "WSSCZSY",
-      "reference_status": "core"
+      "reference_status": "core",
+      "allowed_routes": [
+        "iv_drip",
+        "iv_push"
+      ],
+      "push_min": "宜稀释慢推",
+      "route_note": "厂家分叉：部分规格说明书不宜直接静推；快速推注可致头晕、晕厥；具体以厂家说明书为准"
     },
     {
       "generic_name": "氯化钾注射液",
@@ -1082,7 +1093,13 @@
       "manufacturer": "天津药业集团",
       "pinyin": "lhjzsy",
       "pinyin_code": "LHJZSY",
-      "reference_status": "core"
+      "reference_status": "core",
+      "allowed_routes": [
+        "iv_drip",
+        "iv_pump"
+      ],
+      "pump_rate_label": "高浓度/快速补钾泵入；常规≤10mmol/h（0.75g/h）",
+      "route_note": "严禁静脉推注！未稀释/快速推注可致室颤、心脏骤停；外周浓度≤0.3%，见尿补钾，监测血钾、尿量、心电图"
     },
     {
       "generic_name": "清开灵注射液",
@@ -2584,7 +2601,16 @@
       "manufacturer": "天津药业集团",
       "pinyin": "fsmzsy",
       "pinyin_code": "FSMZSY",
-      "reference_status": "core"
+      "reference_status": "core",
+      "allowed_routes": [
+        "iv_drip",
+        "iv_push",
+        "iv_pump"
+      ],
+      "push_min": ">1–2分钟",
+      "push_speed_limit": "大剂量≤4mg/min",
+      "pump_rate_label": "大剂量持续泵入",
+      "route_note": "快速大量静注可致耳毒性；宜用 0.9%NS 稀释，监测电解质、血压、尿量、听力"
     },
     {
       "generic_name": "10%葡萄糖注射液",
@@ -3046,7 +3072,12 @@
       "special_warnings_json": [
         "静脉滴注速度宜慢",
         "过敏体质慎用"
-      ]
+      ],
+      "allowed_routes": [
+        "iv_drip",
+        "iv_push"
+      ],
+      "route_note": "不能与氯霉素、双嘧达莫、硫喷妥钠配伍；偶见恶心、颜面潮红；过敏禁用"
     },
     {
       "generic_name": "甲氧氯普胺注射液",
@@ -3082,7 +3113,12 @@
         "可出现锥体外系反应（儿童、老人更易发生）",
         "胃肠道梗阻、穿孔、出血者禁用",
         "与抗胆碱药作用拮抗"
-      ]
+      ],
+      "allowed_routes": [
+        "iv_push"
+      ],
+      "push_min": "1–2分钟注完",
+      "route_note": "缓慢静注；快速给药可躁动不安随即昏睡、诱发锥体外系反应；12 岁以下及 65 岁以上谨慎；疗程≤14 天"
     },
     {
       "generic_name": "山莨菪碱注射液",
@@ -3151,7 +3187,13 @@
       "special_warnings_json": [
         "青光眼、前列腺增生、心动过速禁用",
         "口干、面红、视物模糊为常见反应"
-      ]
+      ],
+      "allowed_routes": [
+        "iv_drip",
+        "iv_push"
+      ],
+      "push_min": "按心率/反应滴定",
+      "route_note": "抗休克可稀释静滴；监测心率、心律、血压；青光眼、前列腺增生、心动过速禁用"
     },
     {
       "generic_name": "多巴胺注射液",
@@ -3188,7 +3230,13 @@
         "需心电监护下按体重泵入",
         "严防药液外渗致组织坏死",
         "不可与碱性药物配伍"
-      ]
+      ],
+      "allowed_routes": [
+        "iv_drip",
+        "iv_pump"
+      ],
+      "pump_rate_label": "1–5 μg/kg/min 起始，10min 内按 1–4 μg/kg/min 递增",
+      "route_note": "严禁原液静推；必须稀释；血管活性药宜泵入、单独通路、防药液外渗坏死；监测血压、心率、尿量"
     },
     {
       "generic_name": "甘露醇注射液",
@@ -3446,7 +3494,14 @@
       "pinyin": "pttsgzsy",
       "is_tcm_injection": false,
       "pinyin_code": "PTTSGZSY",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "allowed_routes": [
+        "iv_drip",
+        "iv_push"
+      ],
+      "push_min": "稀释后慢推",
+      "push_speed_limit": "≤5ml/min",
+      "route_note": "必须稀释；静推过快可致心律失常甚至心跳停止；禁与强心苷同用；严防外渗致组织坏死"
     },
     {
       "generic_name": "血塞通注射液",
@@ -4056,7 +4111,11 @@
       "pinyin": "zsyamlzn",
       "is_tcm_injection": false,
       "pinyin_code": "ZSYAMLZN",
-      "reference_status": "backup"
+      "reference_status": "backup",
+      "allowed_routes": [
+        "iv_drip"
+      ],
+      "route_note": "仅静脉滴注：40mg 溶于 100ml 0.9%NS 或 5%GS，滴注 20–30 分钟以上；说明书未载静推途径"
     },
     {
       "generic_name": "缬沙坦氨氯地平片",
@@ -4553,7 +4612,13 @@
         "unit_per_kg_max": 0.1,
         "interval": "持续静滴",
         "note": "糖尿病酮症酸中毒：普通胰岛素 0.05-0.1 U/kg/h 静脉泵入；血糖降至 13.9 mmol/L 后改含糖液+胰岛素。"
-      }
+      },
+      "allowed_routes": [
+        "iv_drip",
+        "iv_pump"
+      ],
+      "pump_rate_label": "0.05–0.1 U/kg/h（监护下，说明书无固定泵速）",
+      "route_note": "严禁原液/未稀释静推；静脉仅限短效（普通/人正规）胰岛素，NS 稀释 0.1–1u/ml；监测血糖、血钾"
     },
     {
       "generic_name": "达格列净片",
@@ -7928,7 +7993,15 @@
       "manufacturer": "",
       "pinyin": "ysatzzsy",
       "pinyin_code": "YSATZZSY",
-      "reference_status": "core"
+      "reference_status": "core",
+      "allowed_routes": [
+        "iv_drip",
+        "iv_push",
+        "iv_pump"
+      ],
+      "push_min": "除心肺复苏外静推≥3分钟；首推后15分钟内不可重复静推",
+      "pump_rate_label": "维持：1mg/min×6h → 0.5mg/min",
+      "route_note": "仅用 5%GS，禁与 NS 配伍；浓度>2mg/ml 须经中心静脉；持续心电、血压监护，监测 QT"
     },
     {
       "generic_name": "沙库巴曲缬沙坦钠片",
@@ -8893,7 +8966,13 @@
       "manufacturer": "天津药业",
       "pinyin": "acjzsy",
       "pinyin_code": "ACJZSY",
-      "reference_status": "core"
+      "reference_status": "core",
+      "allowed_routes": [
+        "iv_drip",
+        "iv_push"
+      ],
+      "push_min": "≥10分钟（稀释至20–40ml）",
+      "route_note": "必须用 GS 稀释；治疗窗窄，监测心率/心律与血药浓度；快推可致惊厥、呼吸心跳停止"
     },
     {
       "generic_name": "注射用头孢哌酮舒巴坦钠",
@@ -13472,7 +13551,13 @@
       "pinyin": "sngyzs",
       "pinyin_code": "SNGY",
       "reference_status": "已核对",
-      "aliases": []
+      "aliases": [],
+      "allowed_routes": [
+        "iv_drip",
+        "iv_pump"
+      ],
+      "pump_rate_label": "5μg/min 起始，每3–5min递增5μg/min",
+      "route_note": "无静推途径依据；按血压/心率滴定；避光输注；收缩压<90mmHg 停用"
     },
     {
       "generic_name": "单硝酸异山梨酯注射液",
@@ -13881,7 +13966,11 @@
       "pinyin": "zyfma",
       "pinyin_code": "ZYFMA",
       "reference_status": "已核对",
-      "aliases": []
+      "aliases": [],
+      "allowed_routes": [
+        "iv_drip"
+      ],
+      "route_note": "说明书明确禁用于静脉推注；静滴 5%GS 500ml；过敏禁用，急性心梗禁用"
     },
     {
       "generic_name": "注射用三磷酸腺苷二钠",

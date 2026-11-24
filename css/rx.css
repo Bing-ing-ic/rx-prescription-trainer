@@ -458,6 +458,38 @@ input, select, textarea { font-family: inherit; }
 }
 .iv-warn.danger { background: var(--danger-50); border-left-color: var(--danger-600); color: #991b1b; }
 
+/* ---- F13 三静脉途径：分段按钮 + 推注/泵入参数行 ---- */
+.route-seg { display: inline-flex; flex-wrap: wrap; gap: var(--space-3px); }
+.route-btn {
+  border: 1px solid var(--gray-300); background: #fff; color: var(--gray-600);
+  font-size: var(--text-12); line-height: 1.5; padding: var(--space-2px) var(--space-10px);
+  border-radius: var(--radius-sm); cursor: pointer; white-space: nowrap;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+.route-btn:hover:not(:disabled) { border-color: var(--gray-400); background: var(--gray-50); }
+.route-btn:disabled { opacity: .45; cursor: not-allowed; }
+/* 滴注：蓝 */
+.route-btn.route-drip.active { background: var(--info-100); color: var(--info-700); border-color: var(--info-600); font-weight: 600; }
+/* 推注：橙（警告令牌） */
+.route-btn.route-push.active { background: var(--warn-100); color: var(--warn-700); border-color: var(--warn-600); font-weight: 600; }
+/* 泵入：紫（既有 indigo 徽章令牌） */
+.route-btn.route-pump.active { background: #e0e7ff; color: #3730a3; border-color: #6366f1; font-weight: 600; }
+
+.iv-param-row td { background: var(--gray-50); }
+.iv-param { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-3); padding: var(--space-5px) var(--space-2); font-size: var(--text-13); color: var(--gray-700); }
+.iv-param label { display: inline-flex; align-items: center; gap: var(--space-3px); font-size: var(--text-13); }
+.iv-param input, .iv-param select {
+  border: 1px solid var(--gray-300); border-radius: var(--radius-sm);
+  padding: var(--space-2px) var(--space-6px); font-size: var(--text-12); color: var(--gray-900);
+}
+.iv-param .muted { font-size: var(--text-12); color: var(--gray-500); }
+
+@media (max-width: 480px) {
+  .route-seg { gap: var(--space-2px); }
+  .route-btn { font-size: var(--text-12); padding: var(--space-2px) var(--space-6px); }
+  .iv-param { gap: var(--space-2); }
+}
+
 .rx-foot {
   border-top: 2px double var(--gray-600); padding-top: var(--space-10px); margin-top: var(--space-14px);
 }

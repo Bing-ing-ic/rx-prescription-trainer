@@ -36,7 +36,8 @@
     'POP-01':1, 'SPEC-02':1, 'COMORBID-04':1, 'ALLERGY-01':1,
     'COMORBID-01':1, 'COMORBID-02':1, 'IV-08':1,
     'ABX-01':1, 'IV-05':1, 'IV-07':1, 'IV-01':1,
-    'DOSE-01':1, 'DOSAGE-WT':1, 'SUR-05':1
+    'DOSE-01':1, 'DOSAGE-WT':1, 'SUR-05':1,
+    'IV-10':1
   };
   const MAJOR_ON_WARN_RULE_IDS = { 'DUP-01':1, 'DUP-02':1 };
 
@@ -69,6 +70,9 @@
     'IV-06':    { lesson_point:'溶媒必须在药品说明书允许范围内', correct_practice:'按说明书选择 0.9%NaCl/5%GS 及规定体积，不随意替换', reference_guide:'药品说明书【用法用量】溶媒项；《静脉用药集中调配操作规程》', related_topic:'SOLVENT_COMPAT' },
     'IV-07':    { lesson_point:'中药注射剂严禁与其他药物同瓶混合输注', correct_practice:'中药注射剂单独配制、单独输注，前后冲管', reference_guide:'国家药监局中药注射剂安全性通报', related_topic:'TCM_INJECTION' },
     'IV-04':    { lesson_point:'老年/儿童/心肺肾功能不全者须减速滴注', correct_practice:'按药品 drip_speed_max 下调滴速，必要时心电监护', reference_guide:'《静脉治疗护理技术操作规范 WS/T 433》', related_topic:'ELDERLY_IV' },
+    'IV-10':    { lesson_point:'给药途径必须与说明书一致：禁推药静推可致严重心律失常甚至心跳骤停；血管活性药宜泵入控速。', correct_practice:'按说明书途径选择滴注/静推/泵入；禁推药改为稀释滴注或泵入；高危药单独通路、注射泵给药。', reference_guide:'药品说明书【用法用量】；WS/T 433—2023；T/CNAS 22—2021', related_topic:'IV_ROUTE' },
+    'IV-11':    { lesson_point:'泵入给药必须写明配制浓度与泵速口径（ml/h 或 μg/kg/min、U/kg/h），便于核对与滴定。', correct_practice:'按浓度配方配制，标签注明药名、剂量、配制时间、泵速；按血压/心率/血糖/血钾滴定。', reference_guide:'WS/T 657—2019；T/CNAS 22—2021', related_topic:'IV_PUMP' },
+    'IV-12':    { lesson_point:'需慢推药物必须标注推注时长/速度；快推可诱发严重不良反应（心律失常、惊厥、耳毒性、晕厥）。', correct_practice:'按说明书时长缓慢推注，必要时稀释；推注中观察回血、心率、血压与用药反应。', reference_guide:'药品说明书【用法用量】；WS/T 433—2023', related_topic:'IV_PUSH' },
     'INT-01':   { lesson_point:'喹诺酮与含钙/铝/铁/铋剂螯合显著降低吸收', correct_practice:'抗酸/铁剂与喹诺酮间隔≥2小时服用，或换用其他抗菌药', reference_guide:'左氧氟沙星说明书【药物相互作用】', related_topic:'DRUG_INTERACTION' },
     'DUP-01':   { lesson_point:'同一张处方不得重复开具同类药理作用药物', correct_practice:'同类药物只保留一种，避免叠加剂量与不良反应', reference_guide:'《医院处方点评管理规范》（不适宜处方）', related_topic:'DUPLICATE_THERAPY' },
     'IND-01':   { lesson_point:'所选药品必须与临床诊断相匹配', correct_practice:'对照本病种一线/二线推荐方案选药，诊断与用药一致', reference_guide:'《处方管理办法》第十四条', related_topic:'INDICATION_MATCH' },
@@ -132,6 +136,42 @@
     if (!rx || !rx.items) return [];
     return rx.items.filter(it => it.drug.pharmacology_class === cls);
   }
+  // ---- F13 三静脉途径辅助（内部使用，不挂 API） ----
+  // 药项途径：缺省按 iv_drip 兜底（兼容旧拍平载荷与既有测试）
+  function routeOf(item) { return (item && item.route) || 'iv_drip'; }
+  // 药品允许途径：缺省按剂型兜底（iv_drip → ['iv_drip']，其余 → [剂型]）
+  function allowedRoutes(drug) {
+    if (!drug) return ['iv_drip'];
+    if (Array.isArray(drug.allowed_routes) && drug.allowed_routes.length) return drug.allowed_routes.slice();
+    return drug.dosage_form === 'iv_drip' ? ['iv_drip'] : [drug.dosage_form];
+  }
+  const ROUTE_ZH = { iv_drip: '静滴', iv_push: '静推', iv_pump: '泵入' };
+  function routeZh(route) { return ROUTE_ZH[route] || route; }
+  // 是否静脉治疗药（三途径之一；溶媒除外）
+  function isIvItem(it) {
+    if (!it || !it.drug) return false;
+    if (it.drug.dosage_form === 'solvent') return false;
+    if (it.drug.dosage_form === 'iv_drip') return true;
+    return ['iv_drip', 'iv_push', 'iv_pump'].includes(routeOf(it));
+  }
+  // 从 push_min 口径字符串解析最低推注时长（分钟），如 "≥10分钟" / "1–2分钟注完"
+  function pushMinLowerBound(str) {
+    if (!str) return null;
+    const s = String(str);
+    const ge = s.match(/≥\s*([\d.]+)\s*分钟/);
+    if (ge) return parseFloat(ge[1]);
+    const range = s.match(/([\d.]+)\s*[-–~～]\s*([\d.]+)\s*分钟/);
+    if (range) return parseFloat(range[1]);
+    const plain = s.match(/([\d.]+)\s*分钟/);
+    return plain ? parseFloat(plain[1]) : null;
+  }
+  // 从 push_speed_limit 口径字符串解析速度上限（ml/min），如 "≤5ml/min"
+  function pushSpeedMax(str) {
+    if (!str) return null;
+    const m = String(str).match(/≤\s*([\d.]+)\s*ml\/min/i);
+    return m ? parseFloat(m[1]) : null;
+  }
+
   // 收集 visit 内所有口服药 & 所有静脉药
   function collectRoutes(ctx) {
     const oral = [], iv = [];
@@ -141,7 +181,7 @@
         if (!it || !it.drug) return;
         if (it.drug.dosage_form === 'solvent') return;
         if (['oral','sublingual','topical','im','sc'].includes(it.drug.dosage_form)) oral.push(it);
-        if (it.drug.dosage_form === 'iv_drip') iv.push(it);
+        if (it.drug.dosage_form === 'iv_drip' || ['iv_drip','iv_push','iv_pump'].includes(routeOf(it))) iv.push(it);
       });
     });
     return { oral, iv };
@@ -603,33 +643,36 @@
           hits.push(hit(R['IV-01'], 'error',
             `疾病「${disease.name}」通常无需输液（usually_no_iv），且输液指征不充分（${iv.iv_reason || '未填写'}）。`,
             `请复核：确有脱水/不能进食/重症感染等客观指征？否则建议改口服方案。`,
-            { affected_items: (iv.items||[]).filter(it => it.drug && it.drug.dosage_form === 'iv_drip').map(it => it.drug.generic_name) }));
+            { affected_items: (iv.items||[]).filter(isIvItem).map(it => it.drug.generic_name) }));
         } else {
           hits.push(hit(R['IV-01'], 'warn',
             `疾病「${disease.name}」通常无需输液，学生选择了静脉通道（指征：${iv.iv_reason}）。`,
             `请补充客观指征证据；否则建议改口服方案。`,
-            { affected_items: (iv.items||[]).filter(it => it.drug && it.drug.dosage_form === 'iv_drip').map(it => it.drug.generic_name) }));
+            { affected_items: (iv.items||[]).filter(isIvItem).map(it => it.drug.generic_name) }));
         }
       }
 
       // IV-02 口服/肌注替代可行性：有一线口服方案却无充分理由选静脉 → warn
       if (Array.isArray(disease.first_line_oral) && disease.first_line_oral.length > 0 &&
-          iv.items.some(it => it.drug && it.drug.dosage_form === 'iv_drip')) {
+          iv.items.some(isIvItem)) {
         if (isWeakIvReason(iv.iv_reason)) {
           hits.push(hit(R['IV-02'], 'warn',
             `「${disease.name}」有一线口服方案（${disease.first_line_oral.slice(0,3).join('、')}），却无充分理由选择静脉给药。`,
             `遵循“能口服不肌注，能肌注不输液”原则；如确需静脉，请补充指征。`,
-            { affected_items: iv.items.filter(it => it.drug && it.drug.dosage_form === 'iv_drip').map(it => it.drug.generic_name) }));
+            { affected_items: iv.items.filter(isIvItem).map(it => it.drug.generic_name) }));
         } else {
           hits.push(pass(R['IV-02'], `有客观输液指征（${iv.iv_reason}），口服替代不适用。`));
         }
       }
 
-      // IV-03 专项字段完整性
+      // IV-03 专项字段完整性（整组均为静推时不要求溶媒与滴速）
+      const nonPushItems = iv.items.filter(it => it.drug && it.drug.dosage_form !== 'solvent' && routeOf(it) !== 'iv_push');
       const missing = [];
       if (!iv.iv_reason) missing.push('iv_reason');
-      if (!iv.solvent_name) missing.push('solvent_name');
-      if (!iv.drip_speed_mlh) missing.push('drip_speed_mlh');
+      if (nonPushItems.length) {
+        if (!iv.solvent_name) missing.push('solvent_name');
+        if (!iv.drip_speed_mlh) missing.push('drip_speed_mlh');
+      }
       if (missing.length) {
         hits.push(hit(R['IV-03'], 'error',
           `输液专项字段缺失：${missing.join('、')}`,
@@ -644,6 +687,8 @@
       const special = patient.age >= 65 || patient.age <= 3 || patient.heart_renal_insufficiency;
       iv.items.forEach(it => {
         if (it.drug.dosage_form === 'solvent') return;
+        // 静推项不参与滴速比较；泵入项由 IV-11 校验泵速口径，不按 drip_speed_max_mlh 比较
+        if (routeOf(it) === 'iv_push' || routeOf(it) === 'iv_pump') return;
         const max = it.drug.drip_speed_max_mlh;
         if (!isNaN(speed) && max && speed > max) {
           const sev = special ? 'error' : 'warn';
@@ -664,12 +709,12 @@
 
       // IV-05 门诊负面清单
       if (disease.negative_list_hit) {
-        const hasIVDrug = iv.items.some(it => it.drug.dosage_form === 'iv_drip');
+        const hasIVDrug = iv.items.some(isIvItem);
         if (hasIVDrug) {
           hits.push(hit(R['IV-05'], 'error',
             `诊断「${disease.name}」命中《门诊输液负面清单》（普通感冒/轻症高血压复诊/功能性消化不良/术后复诊等），却开具静脉给药。`,
             `门诊限输：改为口服/外用/随访。`,
-            { affected_items: iv.items.filter(it => it.drug && it.drug.dosage_form === 'iv_drip').map(it => it.drug.generic_name) }));
+            { affected_items: iv.items.filter(isIvItem).map(it => it.drug.generic_name) }));
         }
       }
 
@@ -689,6 +734,8 @@
         const solventName = (solventItem.drug.generic_name || '') + ' ' + (solventItem.drug.spec || '');
         gItems.forEach(it => {
           if (it.drug.dosage_form === 'solvent') return;
+          // 静推原液或少量稀释，不走组溶媒配伍判定
+          if (routeOf(it) === 'iv_push') return;
           const drugName = it.drug.generic_name;
           // 1) 先看药品自带 allowed_solvents_json（按通用名匹配）
           const allowed = it.drug.allowed_solvents_json || [];
@@ -732,7 +779,7 @@
       Object.keys(ivGroupsMap).forEach(gk => {
         const gItems = ivGroupsMap[gk].filter(it => it.drug && it.drug.dosage_form !== 'solvent');
         const tcm = gItems.filter(it => it.drug.is_tcm_injection);
-        const others = gItems.filter(it => it.drug.dosage_form === 'iv_drip' && !it.drug.is_tcm_injection);
+        const others = gItems.filter(it => it.drug && it.drug.dosage_form !== 'solvent' && !it.drug.is_tcm_injection && isIvItem(it));
         if (tcm.length >= 2) {
           hits.push(hit(R['IV-07'], 'error',
             `第${gk}组：中药注射剂「${tcm.map(d=>d.drug.generic_name).join('、')}」两种及以上同瓶混合。`,
@@ -830,6 +877,124 @@
             `门诊输液一般≤1日量；超量须医务科审批。`,
             { affected_items: [it.drug.generic_name] }));
         }
+      });
+
+      // ---- IV-10 给药途径与药品允许途径不符（COMPAT） ----
+      // rules.json 元数据由数据层补齐；本地兜底描述保证 rule_id/分组在元数据缺失时仍正确
+      const R10 = R['IV-10'] || { rule_id: 'IV-10', group: 'COMPAT', title: '给药途径与药品允许途径不符', basis: '' };
+      const R11 = R['IV-11'] || { rule_id: 'IV-11', group: 'IV_REASON', title: '泵入参数缺失/不完整', basis: '' };
+      const R12 = R['IV-12'] || { rule_id: 'IV-12', group: 'IV_REASON', title: '推注时长/速度不当', basis: '' };
+
+      iv.items.forEach(it => {
+        if (!it || !it.drug || it.drug.dosage_form === 'solvent') return;
+        const route = routeOf(it);
+        const allowed = allowedRoutes(it.drug);
+        const name = it.drug.generic_name;
+        const note = (it.drug.route_note || '').trim();
+
+        // 情形 C（先判）：宜泵入高危药（允许泵入、不含推注途径）以普通重力滴注开具且未填泵入 → warn minor
+        // 滴注虽在允许途径内，仍提示宜注射泵控速
+        if (route === 'iv_drip' && allowed.includes('iv_pump') && !allowed.includes('iv_push') &&
+            (it.pump_rate == null || String(it.pump_rate).trim() === '')) {
+          hits.push(hit(R10, 'warn',
+            `「${name}」为血管活性/高危药，宜注射泵精确控速；普通重力滴注速度易随体位/管路波动。`,
+            `建议改用注射泵泵入，单独通路并监测血压、心率、尿量等指标。`,
+            { affected_items: [name], severity_level: 'minor' }));
+          return;
+        }
+        if (allowed.includes(route)) return;
+
+        // 情形 A：禁推/无推注途径药被开成静推 → error 升 critical（生命危险级途径错误）
+        if (route === 'iv_push' && !allowed.includes('iv_push')) {
+          const allowedZh = allowed.map(routeZh).join('、');
+          const msg = `「${name}」说明书途径为${allowedZh}，严禁静脉推注` + (note ? `；${note}` : '');
+          hits.push(hit(R10, 'error', msg,
+            `改为说明书允许的滴注或泵入途径，稀释后按规定速度给药并加强监护。`,
+            { affected_items: [name], severity_level: 'critical' }));
+          return;
+        }
+        // 情形 B1：仅允许静推的药开成滴注/泵入 → error major
+        if (allowed.length === 1 && allowed[0] === 'iv_push' && (route === 'iv_drip' || route === 'iv_pump')) {
+          hits.push(hit(R10, 'error',
+            `「${name}」说明书仅载静脉推注，开成${routeZh(route)}属途径不符。`,
+            `改为静脉推注途径，按说明书缓慢推注。`,
+            { affected_items: [name], severity_level: 'major' }));
+          return;
+        }
+        // 情形 B2：仅允许滴注的药开成泵入 → error major
+        if (allowed.length === 1 && allowed[0] === 'iv_drip' && route === 'iv_pump') {
+          hits.push(hit(R10, 'error',
+            `「${name}」说明书途径为静滴，开成泵入属途径不符。`,
+            `改为静脉滴注途径。`,
+            { affected_items: [name], severity_level: 'major' }));
+          return;
+        }
+        // 兜底：其余途径不符 → error major
+        hits.push(hit(R10, 'error',
+          `「${name}」说明书途径为${allowed.map(routeZh).join('、')}，开成${routeZh(route)}属途径不符。`,
+          `按说明书允许途径重新开具。`,
+          { affected_items: [name], severity_level: 'major' }));
+      });
+
+      // ---- IV-11 泵入参数缺失/不完整（IV_REASON） ----
+      iv.items.forEach(it => {
+        if (!it || !it.drug || it.drug.dosage_form === 'solvent') return;
+        if (routeOf(it) !== 'iv_pump') return;
+        const name = it.drug.generic_name;
+        const missingParams = [];
+        if (it.pump_rate == null || String(it.pump_rate).trim() === '') missingParams.push('泵速');
+        if (it.pump_conc == null || String(it.pump_conc).trim() === '') missingParams.push('配制浓度');
+        if (missingParams.length) {
+          hits.push(hit(R11, 'error',
+            `泵入给药须标注配制浓度与泵速（ml/h 或 μg/kg/min、U/kg/h 等），并在标签注明药名、剂量、配制时间、泵速。`,
+            `补齐泵速（含单位）与配制浓度；按血压/心率/血糖/血钾滴定。`,
+            { affected_items: [name], severity_level: 'major' }));
+        } else {
+          hits.push(pass(R11, `「${name}」泵入途径与浓度、泵速参数完整。`));
+        }
+      });
+
+      // ---- IV-12 推注时长/速度不当（IV_REASON） ----
+      iv.items.forEach(it => {
+        if (!it || !it.drug || it.drug.dosage_form === 'solvent') return;
+        if (routeOf(it) !== 'iv_push') return;
+        const drug = it.drug;
+        const name = drug.generic_name;
+        // 无说明书时长/速度口径则不判定
+        if (!drug.push_min && !drug.push_speed_limit) return;
+        const entered = (it.push_min == null ? '' : String(it.push_min)).trim();
+        const limitTxt = [drug.push_min, drug.push_speed_limit].filter(Boolean).join('；');
+        const riskTxt = drug.route_note || '严重不良反应（心律失常、惊厥、耳毒性、晕厥）';
+
+        // 缺时长 → warn minor
+        if (!entered) {
+          hits.push(hit(R12, 'warn',
+            `「${name}」须${limitTxt}；推注过快可致${riskTxt}。`,
+            `按说明书时长缓慢推注，必要时稀释；推注中观察回血、心率、血压与用药反应。`,
+            { affected_items: [name], severity_level: 'minor' }));
+          return;
+        }
+        // 时长低于口径下限 → error major
+        const minMin = pushMinLowerBound(drug.push_min);
+        const enterMinMatch = entered.match(/([\d.]+)\s*分钟/);
+        if (minMin != null && enterMinMatch && parseFloat(enterMinMatch[1]) < minMin) {
+          hits.push(hit(R12, 'error',
+            `「${name}」须${limitTxt}；当前推注时长 ${entered} 低于说明书下限，推注过快可致${riskTxt}。`,
+            `按说明书下限以上时长缓慢推注，必要时稀释并加强监护。`,
+            { affected_items: [name], severity_level: 'major' }));
+          return;
+        }
+        // 速度超过口径上限（ml/min）→ error major
+        const maxSpeed = pushSpeedMax(drug.push_speed_limit);
+        const enterSpeedMatch = entered.match(/([\d.]+)\s*ml\/min/i);
+        if (maxSpeed != null && enterSpeedMatch && parseFloat(enterSpeedMatch[1]) > maxSpeed) {
+          hits.push(hit(R12, 'error',
+            `「${name}」推注速度须${drug.push_speed_limit}；当前 ${entered} 超过说明书上限。`,
+            `减慢推注速度，稀释后缓慢推注并加强监护。`,
+            { affected_items: [name], severity_level: 'major' }));
+          return;
+        }
+        hits.push(pass(R12, `「${name}」推注时长/速度符合说明书口径。`));
       });
 
       // 儿童体重必填

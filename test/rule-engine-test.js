@@ -38,6 +38,10 @@ function it(drugName, overrides = {}) {
     duration_days: null,
   }, overrides);
 }
+// 在库药品对象上追加 F13 途径类字段（数据层落库前用例自洽；落库后以药品库字段为准）
+function D2(name, drugOverrides = {}) {
+  return Object.assign({}, D(name), drugOverrides);
+}
 // 构造 mock 疾病，便于隔离规则
 function mockDisease(overrides = {}) {
   return Object.assign({
@@ -79,8 +83,8 @@ function allHitsOf(hits, ruleId) {
 //   error → 该规则应至少产生一条 error
 //   none  → 该规则完全不应出现任何命中（含 pass）
 const cases = [];
-function T(rule_id, c, name, build, expect) {
-  cases.push({ rule_id, case: c, name, build, expect });
+function T(rule_id, c, name, build, expect, opts) {
+  cases.push(Object.assign({ rule_id, case: c, name, build, expect }, opts || {}));
 }
 
 // ============ FMT-01 每张处方≤5种 ============
@@ -366,6 +370,77 @@ T('IV-09', 'neg', '3日输液触发warn', () =>
   ctx({ iv_rx: { rx_id:'IV-1', solvent_name:'0.9%氯化钠注射液 100ml', drip_speed_mlh:40, iv_reason:'needs_iv',
           items:[it(D('0.9%氯化钠注射液'),{}), it('注射用头孢呋辛钠',{single_dose:'1.5g',frequency:'bid',duration_days:3, skin_test_result:'阴性'})] } }), 'warn');
 
+// ============ IV-10 给药途径与药品允许途径不符 ============
+T('IV-10', 'neg', '氯化钾禁推药开静推 → error/critical', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('氯化钾注射液',{allowed_routes:['iv_drip','iv_pump'], route_note:'严禁静脉推注！快速推注可致室颤、心脏骤停'}),{route:'iv_push', single_dose:'10ml', frequency:'st', duration_days:1})] } }),
+  'error', { expectLevel:'critical' });
+
+T('IV-10', 'neg', '辅酶A禁推药开静推 → error', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('注射用辅酶A',{allowed_routes:['iv_drip']}),{route:'iv_push', single_dose:'100U', frequency:'st', duration_days:1})] } }),
+  'error');
+
+T('IV-10', 'neg', '多巴胺禁推药开静推 → error/critical', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('多巴胺注射液',{allowed_routes:['iv_drip','iv_pump'], route_note:'严禁原液静推；血管活性药宜泵入'}),{route:'iv_push', single_dose:'20mg', frequency:'st', duration_days:1})] } }),
+  'error', { expectLevel:'critical' });
+
+T('IV-10', 'neg', '甲氧氯普胺仅推药开滴注 → error/major', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('甲氧氯普胺注射液',{allowed_routes:['iv_push'], push_min:'1–2分钟注完'}),{route:'iv_drip', single_dose:'10mg', frequency:'st', duration_days:1})] } }),
+  'error', { expectLevel:'major' });
+
+T('IV-10', 'pos', '呋塞米允许静推且带时长 → 不触发 IV-10', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('呋塞米注射液',{allowed_routes:['iv_drip','iv_push','iv_pump'], push_min:'>1–2分钟'}),{route:'iv_push', push_min:'2分钟', single_dose:'20mg', frequency:'st', duration_days:1})] } }),
+  'pass');
+
+// ============ IV-11 泵入参数缺失/不完整 ============
+T('IV-11', 'neg', '多巴胺泵入缺泵速/浓度 → error/major', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('多巴胺注射液',{allowed_routes:['iv_drip','iv_pump']}),{route:'iv_pump', single_dose:'20mg', frequency:'st', duration_days:1})] } }),
+  'error', { expectLevel:'major' });
+
+T('IV-11', 'pos', '多巴胺泵入泵速+单位+浓度完整 → 不触发 IV-11', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('多巴胺注射液',{allowed_routes:['iv_drip','iv_pump']}),{route:'iv_pump', pump_rate:'3', pump_rate_unit:'μg/kg/min', pump_conc:'20mg+5%GS200ml', single_dose:'20mg', frequency:'st', duration_days:1})] } }),
+  'pass');
+
+// ============ IV-12 推注时长/速度不当 ============
+T('IV-12', 'neg', '氨茶碱慢推未填时长 → warn/minor', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('氨茶碱注射液',{allowed_routes:['iv_drip','iv_push'], push_min:'≥10分钟（稀释至20–40ml）', route_note:'快推可致惊厥、呼吸心跳停止'}),{route:'iv_push', push_min:'', single_dose:'0.25g', frequency:'st', duration_days:1})] } }),
+  'warn', { expectLevel:'minor' });
+
+T('IV-12', 'neg', '氨茶碱3分钟快推 → error/major', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('氨茶碱注射液',{allowed_routes:['iv_drip','iv_push'], push_min:'≥10分钟（稀释至20–40ml）', route_note:'快推可致惊厥、呼吸心跳停止'}),{route:'iv_push', push_min:'3分钟', single_dose:'0.25g', frequency:'st', duration_days:1})] } }),
+  'error', { expectLevel:'major' });
+
+T('IV-12', 'pos', '氨茶碱10分钟慢推 → 不触发 IV-12', () =>
+  ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+    iv_rx: { rx_id:'IV-1', iv_reason:'needs_iv',
+      items:[it(D2('氨茶碱注射液',{allowed_routes:['iv_drip','iv_push'], push_min:'≥10分钟（稀释至20–40ml）'}),{route:'iv_push', push_min:'10分钟', single_dose:'0.25g', frequency:'st', duration_days:1})] } }),
+  'pass');
+
+// ============ 回归：既有滴注病例不新增 IV-10/11/12 命中 ============
+const dripRegressCtx = () => ctx({ disease: mockDisease({iv_suitability:'needs_iv'}),
+  iv_rx: { rx_id:'IV-1', solvent_name:'0.9%氯化钠注射液 100ml', drip_speed_mlh:40, iv_reason:'needs_iv',
+    items:[it(D('0.9%氯化钠注射液'),{}), it('注射用头孢呋辛钠',{single_dose:'1.5g',frequency:'bid',duration_days:1, skin_test_result:'阴性'})] } });
+T('IV-10', 'pos', '既有滴注病例不触发途径不符规则', dripRegressCtx, 'pass');
+T('IV-11', 'pos', '既有滴注病例不触发泵入参数规则', dripRegressCtx, 'pass');
+T('IV-12', 'pos', '既有滴注病例不触发推注时长规则', dripRegressCtx, 'pass');
+
 // ============ YN-01 性别与诊断 ============
 T('YN-01', 'pos', '男患者普通诊断不触发', () =>
   ctx({ patient: patient({gender:'男'}), disease: mockDisease({name:'急性上呼吸道感染'}) }), 'pass');
@@ -465,6 +540,14 @@ for (const c of cases) {
   } else if (c.expect === 'none') {
     ok = all.length === 0;
     actual = all.length ? `出现 ${all.length} 条` : '未出现';
+  }
+  // 可选级别断言（critical/major/minor）
+  if (ok && c.expectLevel && bad.length) {
+    const lvlOk = bad.some(h => h.severity_level === c.expectLevel);
+    if (!lvlOk) {
+      ok = false;
+      actual += `（级别预期 ${c.expectLevel}，实际 ${bad.map(h => h.severity_level).join('/')}）`;
+    }
   }
   if (ok) passCount++; else failCount++;
   results.push({ rule_id: c.rule_id, case: c.case, name: c.name, expect: c.expect, actual, ok, err });

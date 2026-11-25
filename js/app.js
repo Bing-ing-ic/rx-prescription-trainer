@@ -2119,6 +2119,9 @@
     const ivVisible = !$('rx-body-iv').classList.contains('hidden');
     const box = ivVisible ? $('pre-reminder') : $('pre-reminder-normal');
     if (!box) return;
+    // 未开启病例（切模块重置草稿、新会话）时 patient 为空，清空提醒并直接返回，
+    // 避免解引用 S.patient.age 抛错阻断模块切换。
+    if (!S.patient) { box.innerHTML = ''; return; }
     const msgs = [];
     const age = S.patient.age || 30;
     const isPeds = age < 14;

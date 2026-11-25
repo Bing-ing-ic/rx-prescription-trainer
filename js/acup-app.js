@@ -344,7 +344,7 @@
   function saveHistory(review, hits) {
     const arr = JSON.parse(localStorage.getItem('rx-profile-history') || '[]');
     arr.unshift({
-      t: Date.now(), total: review.total, module: '针灸推拿',
+      t: Date.now(), total: review.total, module: '针灸学',
       disease: S.case.name || '', disease_code: S.case.code || '',
       radar: {
         format: review.dims.zheng.score / review.dims.zheng.weight * 100,
@@ -361,7 +361,7 @@
     if (errors.length || warns.length) {
       const m = JSON.parse(localStorage.getItem('rx-mistakes') || '[]');
       m.unshift({
-        t: Date.now(), module: '针灸推拿', disease: S.case.name || '', score: review.total,
+        t: Date.now(), module: '针灸学', disease: S.case.name || '', score: review.total,
         errors: errors.map(e => ({ rule_id: e.rule_id, title: e.title, message: e.message, suggestion: e.suggestion })),
         warns: warns.map(w => ({ rule_id: w.rule_id, title: w.title, message: w.message }))
       });

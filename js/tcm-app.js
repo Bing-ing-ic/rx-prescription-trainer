@@ -431,7 +431,7 @@
     arr.unshift({
       t: Date.now(),
       total: review.total,
-      module: '汉方',
+      module: '汉方学',
       disease: S.case.name || '',
       disease_code: S.case.code || '',
       radar: {
@@ -451,7 +451,7 @@
     if (errors.length || warns.length) {
       const m = JSON.parse(localStorage.getItem('rx-mistakes') || '[]');
       m.unshift({
-        t: Date.now(), module: '汉方',
+        t: Date.now(), module: '汉方学',
         disease: S.case.name || '', score: review.total,
         errors: errors.map(e => ({ rule_id: e.rule_id, title: e.title, message: e.message, suggestion: e.suggestion })),
         warns: warns.map(w => ({ rule_id: w.rule_id, title: w.title, message: w.message }))

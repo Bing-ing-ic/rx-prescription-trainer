@@ -210,9 +210,9 @@
   <!-- ====== 4. 分模块训练统计 ====== -->
   <div class="section-title">🧩 分模块训练统计</div>
   <div class="cards" style="margin-bottom:var(--space-4);">
-    <div class="card"><div class="label">⚕ 西医处方</div><div class="num" id="mod-western">-</div><div class="sub">训练次数</div></div>
-    <div class="card"><div class="label">☯ 汉方</div><div class="num" style="color:var(--tcm-600)" id="mod-tcm">-</div><div class="sub">训练次数</div></div>
-    <div class="card"><div class="label">针 针灸推拿</div><div class="num" style="color:var(--acup-600)" id="mod-acup">-</div><div class="sub">训练次数</div></div>
+    <div class="card"><div class="label">⚕ 现代医学</div><div class="num" id="mod-western">-</div><div class="sub">训练次数</div></div>
+    <div class="card"><div class="label">☯ 汉方学</div><div class="num" style="color:var(--tcm-600)" id="mod-tcm">-</div><div class="sub">训练次数</div></div>
+    <div class="card"><div class="label">💉 针灸学</div><div class="num" style="color:var(--acup-600)" id="mod-acup">-</div><div class="sub">训练次数</div></div>
   </div>
 
   <!-- ====== 5. 系统设置 ====== -->
@@ -326,15 +326,17 @@
 
   // ===== 分模块统计 =====
   (function(){
-    const counts = { '西医':0, '汉方':0, '针灸推拿':0 };
+    const counts = { '现代医学':0, '汉方学':0, '针灸学':0 };
     history.forEach(h => {
       let m = h.module || '西医';
-      if (m === '中医汉方') m = '汉方';
-      if (counts[m] !== undefined) counts[m]++; else counts['西医']++;
+      if (m === '西医' || m === '西医处方') m = '现代医学';
+      else if (m === '中医汉方' || m === '汉方') m = '汉方学';
+      else if (m === '针灸推拿') m = '针灸学';
+      if (counts[m] !== undefined) counts[m]++; else counts['现代医学']++;
     });
-    document.getElementById('mod-western').textContent = counts['西医'];
-    document.getElementById('mod-tcm').textContent = counts['汉方'];
-    document.getElementById('mod-acup').textContent = counts['针灸推拿'];
+    document.getElementById('mod-western').textContent = counts['现代医学'];
+    document.getElementById('mod-tcm').textContent = counts['汉方学'];
+    document.getElementById('mod-acup').textContent = counts['针灸学'];
   })();
 
   // ===== 3. 错题本 =====

@@ -8,11 +8,17 @@
 (function () {
   'use strict';
   const $ = id => document.getElementById(id);
-  const MODULES = ['西医', '汉方', '针灸推拿', '解剖学'];
+  const MODULES = ['现代医学', '汉方学', '针灸学', '解剖学'];
 
   function readHistory() { try { return JSON.parse(localStorage.getItem('rx-profile-history') || '[]'); } catch (e) { return []; } }
   function readMistakes() { try { return JSON.parse(localStorage.getItem('rx-mistakes') || '[]'); } catch (e) { return []; } }
-  function modOf(h) { var m = h.module || '西医'; return m === '中医汉方' ? '汉方' : m; }
+  function modOf(h) {
+    var m = h.module || '西医';
+    if (m === '西医' || m === '西医处方') return '现代医学';
+    if (m === '中医汉方' || m === '汉方') return '汉方学';
+    if (m === '针灸推拿') return '针灸学';
+    return m;
+  }
 
   // ---------- 能力画像：追加模块均分 ----------
   function enhanceRadar() {
@@ -33,7 +39,7 @@
     el.innerHTML = MODULES.map(m => {
       const arr = groups[m] || [];
       const avg = arr.length ? Math.round(arr.reduce((a,b)=>a+b,0)/arr.length) : '--';
-      const cls = m === '汉方' ? 'msc-tcm' : m === '针灸推拿' ? 'msc-acup' : m === '解剖学' ? 'msc-anat' : '';
+      const cls = m === '汉方学' ? 'msc-tcm' : m === '针灸学' ? 'msc-acup' : m === '解剖学' ? 'msc-anat' : '';
       return `<div class="module-stat-card ${cls}">
         <div class="msc-num">${avg}</div>
         <div class="msc-label">${m}（${arr.length}次）</div>
@@ -66,7 +72,7 @@
     // 给 app.js 渲染出的 mistake-card 加 module badge 与隐藏
     const cards = document.querySelectorAll('#mistakes-list .mistake-card');
     cards.forEach(card => {
-      const mod = card.getAttribute('data-mod') || '西医';
+      const mod = card.getAttribute('data-mod') || '现代医学';
       card.style.display = (!m || mod === m) ? '' : 'none';
     });
   }
@@ -90,7 +96,7 @@
       const arr = groups[m] || [];
       const avg = arr.length ? (arr.reduce((a,b)=>a+b,0)/arr.length).toFixed(1) : '--';
       const best = arr.length ? Math.max(...arr) : '--';
-      const cls = m === '汉方' ? 'msc-tcm' : m === '针灸推拿' ? 'msc-acup' : m === '解剖学' ? 'msc-anat' : '';
+      const cls = m === '汉方学' ? 'msc-tcm' : m === '针灸学' ? 'msc-acup' : m === '解剖学' ? 'msc-anat' : '';
       return `<div class="module-stat-card ${cls}">
         <div class="msc-num">${arr.length}</div>
         <div class="msc-label">${m} 次<br>平均 ${avg} · 最高 ${best}</div>
@@ -109,7 +115,7 @@
       card.setAttribute('data-mod', mod);
       if (!card.querySelector('.module-badge')) {
         const badge = document.createElement('span');
-        badge.className = 'module-badge ' + (mod === '汉方' ? 'mb-tcm' : mod === '针灸推拿' ? 'mb-acup' : mod === '解剖学' ? 'mb-anat' : 'mb-western');
+        badge.className = 'module-badge ' + (mod === '汉方学' ? 'mb-tcm' : mod === '针灸学' ? 'mb-acup' : mod === '解剖学' ? 'mb-anat' : 'mb-western');
         badge.textContent = mod;
         const head = card.querySelector('.mistake-head');
         if (head) head.insertBefore(badge, head.children[1] || null);

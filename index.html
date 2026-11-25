@@ -28,16 +28,16 @@
   </nav>
 </header>
 
-<!-- ============ 模块切换 Tab（西医 / 汉方 / 针灸推拿） ============ -->
+<!-- ============ 模块切换 Tab（现代医学 / 汉方学 / 针灸学） ============ -->
 <div class="module-tabs" id="module-tabs" role="tablist">
   <button class="module-tab active" data-module="western" role="tab" aria-selected="true">
-    <span class="mt-icon">⚕</span><span class="mt-text">西医处方</span>
+    <span class="mt-icon">⚕</span><span class="mt-text">现代医学</span>
   </button>
   <button class="module-tab" data-module="tcm" role="tab" aria-selected="false">
-    <span class="mt-icon">☯</span><span class="mt-text">汉方</span>
+    <span class="mt-icon">☯</span><span class="mt-text">汉方学</span>
   </button>
   <button class="module-tab" data-module="acup" role="tab" aria-selected="false">
-    <span class="mt-icon">💉</span><span class="mt-text">针灸推拿</span>
+    <span class="mt-icon">💉</span><span class="mt-text">针灸学</span>
   </button>
   <button class="module-tab" data-module="anat" role="tab" aria-selected="false">
     <span class="mt-icon">🦴</span><span class="mt-text">解剖学</span>
@@ -688,13 +688,13 @@
     </div>
   </section>
 
-  <!-- ============ 汉方：首页 ============ -->
+  <!-- ============ 汉方学：首页 ============ -->
   <section class="view hidden" id="view-tcm-home">
     <div class="hero-modern tcm-hero">
       <div class="hero-icon tcm-hero-icon">
         <span style="font-size:var(--text-48);line-height:1;">☯</span>
       </div>
-      <h1>汉方推演训练</h1>
+      <h1>汉方学推演训练</h1>
       <p class="hero-sub">辨证论治 · 君臣佐使 · 十八反十九畏</p>
       <button id="tcm-btn-new" class="hero-btn">🎲 随机开始新病例</button>
       <button id="tcm-btn-herb-lib" class="hero-btn hero-btn-ghost">🌿 中药库浏览</button>
@@ -713,7 +713,7 @@
     <div id="tcm-data-tip" class="tcm-tip hidden">⏳ 中医数据加载中，请稍候…</div>
   </section>
 
-  <!-- ============ 汉方：中药库浏览 Modal ============ -->
+  <!-- ============ 汉方学：中药库浏览 Modal ============ -->
   <div class="modal-mask hidden" id="modal-herb-lib">
     <div class="modal tcm-herb-lib-box">
       <div class="modal-head">
@@ -733,7 +733,7 @@
     </div>
   </div>
 
-  <!-- ============ 汉方：名方鉴赏 Modal（只读学习，不接规则引擎） ============ -->
+  <!-- ============ 汉方学：名方鉴赏 Modal（只读学习，不接规则引擎） ============ -->
   <div class="modal-mask hidden" id="modal-famous-lib">
     <div class="modal tcm-herb-lib-box famous-lib-box">
       <div class="modal-head">
@@ -760,7 +760,7 @@
     </div>
   </div>
 
-  <!-- ============ 汉方：病例 + 辨证 ============ -->
+  <!-- ============ 汉方学：病例 + 辨证 ============ -->
   <section class="view hidden" id="view-tcm-case">
     <div class="rx-toolbar no-print">
       <button class="btn" id="tcm-btn-back-home">← 返回首页</button>
@@ -794,7 +794,7 @@
     </div>
   </section>
 
-  <!-- ============ 汉方：处方笺 ============ -->
+  <!-- ============ 汉方学：处方笺 ============ -->
   <section class="view hidden" id="view-tcm-rx">
     <div class="rx-toolbar no-print">
       <button class="btn" id="tcm-btn-back-case">← 返回病例</button>
@@ -883,7 +883,7 @@
     </div>
   </section>
 
-  <!-- ============ 汉方：点评报告（复用 report 样式） ============ -->
+  <!-- ============ 汉方学：点评报告（复用 report 样式） ============ -->
   <section class="view hidden" id="view-tcm-report">
     <div class="report-hero tcm-report-hero">
       <button class="btn no-print" id="tcm-report-home">← 返回首页</button>
@@ -927,13 +927,13 @@
     </div>
   </section>
 
-  <!-- ============ 针灸推拿：首页 ============ -->
+  <!-- ============ 针灸学：首页 ============ -->
   <section class="view hidden" id="view-acup-home">
     <div class="hero-modern acup-hero">
       <div class="hero-icon acup-hero-icon">
         <span style="font-size:var(--text-48);line-height:1;">针</span>
       </div>
-      <h1>针灸推拿推演训练</h1>
+      <h1>针灸学推演训练</h1>
       <p class="hero-sub">经络腧穴 · 辨证选穴 · 补泻手法</p>
       <div class="acup-home-btns no-print">
         <button id="acup-btn-new" class="hero-btn">🎲 随机开始新病例</button>
@@ -955,7 +955,7 @@
     <div id="acup-data-tip" class="tcm-tip hidden">⏳ 针灸数据加载中，请稍候…</div>
   </section>
 
-  <!-- ============ 针灸推拿：经络穴位图浏览 ============ -->
+  <!-- ============ 针灸学：经络穴位图浏览 ============ -->
   <section class="view hidden" id="view-acup-map">
     <div class="rx-toolbar no-print">
       <button class="btn" id="acup-map-back">← 返回首页</button>
@@ -990,7 +990,7 @@
     </div>
   </section>
 
-  <!-- ============ 针灸推拿：子午流注 · 按时取穴（时间医学教学） ============ -->
+  <!-- ============ 针灸学：子午流注 · 按时取穴（时间医学教学） ============ -->
   <section class="view hidden" id="view-acup-time">
     <div class="rx-toolbar no-print">
       <button class="btn" id="acup-time-back">← 返回首页</button>
@@ -1036,7 +1036,7 @@
     </div>
   </section>
 
-  <!-- ============ 针灸推拿：病例 + 辨证 ============ -->
+  <!-- ============ 针灸学：病例 + 辨证 ============ -->
   <section class="view hidden" id="view-acup-case">
     <div class="rx-toolbar no-print">
       <button class="btn" id="acup-btn-back-home">← 返回首页</button>
@@ -1066,7 +1066,7 @@
     </div>
   </section>
 
-  <!-- ============ 针灸推拿：处方单 ============ -->
+  <!-- ============ 针灸学：处方单 ============ -->
   <section class="view hidden" id="view-acup-rx">
     <div class="rx-toolbar no-print">
       <button class="btn" id="acup-btn-back-case">← 返回病例</button>
@@ -1140,7 +1140,7 @@
     </div>
   </section>
 
-  <!-- ============ 针灸推拿：点评报告 ============ -->
+  <!-- ============ 针灸学：点评报告 ============ -->
   <section class="view hidden" id="view-acup-report">
     <div class="report-hero acup-report-hero">
       <button class="btn no-print" id="acup-report-home">← 返回首页</button>
@@ -1549,13 +1549,13 @@
 <script src="js/app.min.js?v=20261125r25"></script>
 <script src="js/tcm-engine.min.js?v=20261125r21"></script>
 <script src="js/acup-engine.min.js?v=20261124r18"></script>
-<script src="js/tcm-app.min.js?v=20261125r26"></script>
+<script src="js/tcm-app.min.js?v=20261125r27"></script>
 <script src="js/tuina-engine.min.js?v=20261124r18"></script>
-<script src="js/acup-app.min.js?v=20261124r19"></script>
+<script src="js/acup-app.min.js?v=20261125r27"></script>
 <script src="js/acup-time.min.js?v=20261111time1"></script>
-<script src="js/module-views.min.js?v=20261125r26"></script>
+<script src="js/module-views.min.js?v=20261125r27"></script>
 <script src="js/anat-app.min.js?v=20261124r19"></script>
-<script src="js/platform-enhance.js?v=20261125r26"></script>
+<script src="js/platform-enhance.js?v=20261125r27"></script>
 
 <!-- 百度统计 -->
 <script>

@@ -1162,7 +1162,7 @@ input, select, textarea { font-family: inherit; }
 }
 
 /* ============================================================
- * 模块切换 Tab（西医 / 中医汉方 / 针灸推拿）
+ * 模块切换 Tab（西医 / 汉方 / 针灸推拿）
  * ============================================================ */
 .module-tabs {
   display: flex; gap: var(--space-2); justify-content: center;
@@ -1194,7 +1194,7 @@ input, select, textarea { font-family: inherit; }
 }
 
 /* ============================================================
- * 中医汉方模块样式（赭石/淡金点缀，主色仍为医疗蓝）
+ * 汉方模块样式（赭石/淡金点缀，主色仍为医疗蓝）
  * ============================================================ */
 .tcm-hero { background: linear-gradient(135deg, #6b4423 0%, #8b5a2b 50%, #b8860b 100%) !important;
   box-shadow: 0 8px 28px rgba(139,90,43,.25) !important; }
@@ -1358,7 +1358,7 @@ input, select, textarea { font-family: inherit; }
 .famous-chip small { color: #9a7b4f; }
 
 /* ============================================================
- * 中医汉方模块 UI 一致性补丁（对照西医基线 2026-11 评审）
+ * 汉方模块 UI 一致性补丁（对照西医基线 2026-11 评审）
  * ============================================================ */
 /* P0: 处方角标 棕底白字（原 .rx-corner 是红框红字，.tcm-corner 只改了 background，导致棕底+红字冲突） */
 .tcm-corner { color: #fff8e7 !important; border-color: #6b4423 !important; background: #8b5a2b !important; }

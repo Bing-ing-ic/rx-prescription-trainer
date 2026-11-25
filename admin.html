@@ -211,7 +211,7 @@
   <div class="section-title">🧩 分模块训练统计</div>
   <div class="cards" style="margin-bottom:var(--space-4);">
     <div class="card"><div class="label">⚕ 西医处方</div><div class="num" id="mod-western">-</div><div class="sub">训练次数</div></div>
-    <div class="card"><div class="label">☯ 中医汉方</div><div class="num" style="color:var(--tcm-600)" id="mod-tcm">-</div><div class="sub">训练次数</div></div>
+    <div class="card"><div class="label">☯ 汉方</div><div class="num" style="color:var(--tcm-600)" id="mod-tcm">-</div><div class="sub">训练次数</div></div>
     <div class="card"><div class="label">针 针灸推拿</div><div class="num" style="color:var(--acup-600)" id="mod-acup">-</div><div class="sub">训练次数</div></div>
   </div>
 
@@ -326,13 +326,14 @@
 
   // ===== 分模块统计 =====
   (function(){
-    const counts = { '西医':0, '中医汉方':0, '针灸推拿':0 };
+    const counts = { '西医':0, '汉方':0, '针灸推拿':0 };
     history.forEach(h => {
-      const m = h.module || '西医';
+      let m = h.module || '西医';
+      if (m === '中医汉方') m = '汉方';
       if (counts[m] !== undefined) counts[m]++; else counts['西医']++;
     });
     document.getElementById('mod-western').textContent = counts['西医'];
-    document.getElementById('mod-tcm').textContent = counts['中医汉方'];
+    document.getElementById('mod-tcm').textContent = counts['汉方'];
     document.getElementById('mod-acup').textContent = counts['针灸推拿'];
   })();
 

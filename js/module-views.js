@@ -8,11 +8,11 @@
 (function () {
   'use strict';
   const $ = id => document.getElementById(id);
-  const MODULES = ['西医', '中医汉方', '针灸推拿', '解剖学'];
+  const MODULES = ['西医', '汉方', '针灸推拿', '解剖学'];
 
   function readHistory() { try { return JSON.parse(localStorage.getItem('rx-profile-history') || '[]'); } catch (e) { return []; } }
   function readMistakes() { try { return JSON.parse(localStorage.getItem('rx-mistakes') || '[]'); } catch (e) { return []; } }
-  function modOf(h) { return h.module || '西医'; }
+  function modOf(h) { var m = h.module || '西医'; return m === '中医汉方' ? '汉方' : m; }
 
   // ---------- 能力画像：追加模块均分 ----------
   function enhanceRadar() {
@@ -33,7 +33,7 @@
     el.innerHTML = MODULES.map(m => {
       const arr = groups[m] || [];
       const avg = arr.length ? Math.round(arr.reduce((a,b)=>a+b,0)/arr.length) : '--';
-      const cls = m === '中医汉方' ? 'msc-tcm' : m === '针灸推拿' ? 'msc-acup' : m === '解剖学' ? 'msc-anat' : '';
+      const cls = m === '汉方' ? 'msc-tcm' : m === '针灸推拿' ? 'msc-acup' : m === '解剖学' ? 'msc-anat' : '';
       return `<div class="module-stat-card ${cls}">
         <div class="msc-num">${avg}</div>
         <div class="msc-label">${m}（${arr.length}次）</div>
@@ -90,7 +90,7 @@
       const arr = groups[m] || [];
       const avg = arr.length ? (arr.reduce((a,b)=>a+b,0)/arr.length).toFixed(1) : '--';
       const best = arr.length ? Math.max(...arr) : '--';
-      const cls = m === '中医汉方' ? 'msc-tcm' : m === '针灸推拿' ? 'msc-acup' : m === '解剖学' ? 'msc-anat' : '';
+      const cls = m === '汉方' ? 'msc-tcm' : m === '针灸推拿' ? 'msc-acup' : m === '解剖学' ? 'msc-anat' : '';
       return `<div class="module-stat-card ${cls}">
         <div class="msc-num">${arr.length}</div>
         <div class="msc-label">${m} 次<br>平均 ${avg} · 最高 ${best}</div>
@@ -105,11 +105,11 @@
     cards.forEach((card, i) => {
       const rec = arr[i];
       if (!rec) return;
-      const mod = rec.module || '西医';
+      const mod = modOf(rec);
       card.setAttribute('data-mod', mod);
       if (!card.querySelector('.module-badge')) {
         const badge = document.createElement('span');
-        badge.className = 'module-badge ' + (mod === '中医汉方' ? 'mb-tcm' : mod === '针灸推拿' ? 'mb-acup' : mod === '解剖学' ? 'mb-anat' : 'mb-western');
+        badge.className = 'module-badge ' + (mod === '汉方' ? 'mb-tcm' : mod === '针灸推拿' ? 'mb-acup' : mod === '解剖学' ? 'mb-anat' : 'mb-western');
         badge.textContent = mod;
         const head = card.querySelector('.mistake-head');
         if (head) head.insertBefore(badge, head.children[1] || null);

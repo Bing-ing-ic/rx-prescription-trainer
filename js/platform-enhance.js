@@ -396,9 +396,9 @@
   function readMistakesSafe() { return store.getJSON('rx-mistakes', []); }
   function readPitfallSafe() { return store.getJSON('rx-pitfall-mistakes', []); }
 
-  function moduleOf(h) { return h.module || '西医'; }
-  var ALL_MODULES = ['', '西医', '中医汉方', '针灸推拿', '解剖学'];
-  var MODULE_LABEL = { '': '全部', '西医': '西医处方', '中医汉方': '中医汉方', '针灸推拿': '针灸推拿', '解剖学': '解剖学' };
+  function moduleOf(h) { var m = h.module || '西医'; return m === '中医汉方' ? '汉方' : m; }
+  var ALL_MODULES = ['', '西医', '汉方', '针灸推拿', '解剖学'];
+  var MODULE_LABEL = { '': '全部', '西医': '西医处方', '汉方': '汉方', '针灸推拿': '针灸推拿', '解剖学': '解剖学' };
 
   function injectStatsTabs() {
     if ($('stats-module-tabs')) return;
@@ -518,7 +518,7 @@
     var body = $('knowledge-mastery-body');
     if (!body) return;
     var mistakes = readMistakesSafe();
-    var filtered = ms ? mistakes.filter(function (m) { return (m.module || '西医') === ms; }) : mistakes;
+    var filtered = ms ? mistakes.filter(function (m) { return moduleOf(m) === ms; }) : mistakes;
 
     // 统计每类规则的错误命中次数
     var agg = {};
@@ -573,7 +573,7 @@
     bar.id = 'mistakes-filter-bar';
     bar.innerHTML =
       '<select id="mf-mod"><option value="">全部模块</option>' +
-        '<option>西医</option><option>中医汉方</option><option>针灸推拿</option><option>解剖学</option></select>' +
+        '<option>西医</option><option>汉方</option><option>针灸推拿</option><option>解剖学</option></select>' +
       '<select id="mf-sev"><option value="">全部错误类型</option>' +
         '<option value="error">错误 error</option><option value="warn">警告 warn</option></select>' +
       '<select id="mf-rtype"><option value="">全部规则类型</option>' +
@@ -595,7 +595,7 @@
   }
 
   function mistakePassFilter(m) {
-    if (MF.mod && (m.module || '西医') !== MF.mod) return false;
+    if (MF.mod && moduleOf(m) !== MF.mod) return false;
     if (MF.time) {
       var days = parseInt(MF.time, 10);
       if (Date.now() - (m.t || 0) > days * 86400000) return false;
@@ -641,8 +641,8 @@
     }
     box.innerHTML = filtered.map(function (x) {
       var m = x.m, i = x.idx;
-      var mod = m.module || '西医';
-      var modCls = mod === '中医汉方' ? 'mb-tcm' : mod === '针灸推拿' ? 'mb-acup' : mod === '解剖学' ? 'mb-anat' : 'mb-western';
+      var mod = moduleOf(m);
+      var modCls = mod === '汉方' ? 'mb-tcm' : mod === '针灸推拿' ? 'mb-acup' : mod === '解剖学' ? 'mb-anat' : 'mb-western';
       var timeStr = new Date(m.t || Date.now()).toLocaleString();
       var score = m.score != null ? m.score : '--';
       var scoreCls = score >= 80 ? 'good' : score >= 60 ? 'mid' : 'bad';
@@ -695,12 +695,12 @@
     // 切换到对应模块首页并触发新病例
     // 先切模块 tab
     var tab = document.querySelector('.module-tab[data-module="' +
-      (mod === '西医' ? 'western' : mod === '中医汉方' ? 'tcm' : mod === '针灸推拿' ? 'acup' : 'anat') + '"]');
+      (mod === '西医' ? 'western' : mod === '汉方' ? 'tcm' : mod === '针灸推拿' ? 'acup' : 'anat') + '"]');
     if (tab) tab.click();
     setTimeout(function () {
       try {
         if (mod === '西医' && window.__newCase) window.__newCase();
-        else if (mod === '中医汉方' && document.getElementById('tcm-btn-new')) document.getElementById('tcm-btn-new').click();
+        else if (mod === '汉方' && document.getElementById('tcm-btn-new')) document.getElementById('tcm-btn-new').click();
         else if (mod === '针灸推拿' && document.getElementById('acup-btn-new')) document.getElementById('acup-btn-new').click();
         else if (mod === '解剖学') {
           // 解剖学跳到首页/测验

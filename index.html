@@ -175,6 +175,27 @@
                 <option value="女">女</option>
               </select>
             </label>
+            <label style="font-size:var(--text-12);color:#64748b;">参保类型（玉溪门诊统筹）
+              <select id="pi-insurance" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:var(--radius-5);font-size:var(--text-13);">
+                <option value="职工">城镇职工医保</option>
+                <option value="居民">城乡居民医保</option>
+                <option value="自费">自费</option>
+              </select>
+            </label>
+            <label style="font-size:var(--text-12);color:#64748b;" title="仅职工医保区分在职/退休；居民医保、自费不区分">人员身份
+              <select id="pi-identity" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:var(--radius-5);font-size:var(--text-13);">
+                <option value="在职">在职职工</option>
+                <option value="退休">退休人员</option>
+              </select>
+            </label>
+            <label style="font-size:var(--text-12);color:#64748b;grid-column:span 2;" title="已完成门诊慢特病备案的患者，按门诊慢性病待遇结算（与普通门诊额度分开计算）；未备案按普通门诊统筹结算">门诊慢性病备案
+              <select id="pi-chronic" style="width:100%;margin-top:3px;padding:5px 7px;border:1px solid #cbd5e1;border-radius:var(--radius-5);font-size:var(--text-13);">
+                <option value="none">未备案（按普通门诊统筹结算）</option>
+                <option value="single">已备案 · 1 个慢性病病种</option>
+                <option value="multi2">已备案 · 2 个慢性病病种</option>
+                <option value="multi3">已备案 · 3 个及以上病种</option>
+              </select>
+            </label>
             <label style="font-size:var(--text-12);color:#64748b;display:flex;align-items:center;gap:6px;padding-top:20px;">
               <input id="pi-pregnant" type="checkbox" style="margin:0;"> 妊娠中
             </label>
@@ -286,6 +307,16 @@
           <span>费别: <b id="f-fee">城镇职工医保</b></span>
         </div>
         <div class="pre-row">
+          <span>就诊医疗机构级别:
+            <select id="pi-level" title="按玉溪市门诊统筹政策，不同级别定点医疗机构起付线与报销比例不同" style="padding:3px 6px;border:1px solid #cbd5e1;border-radius:var(--radius-5);font-size:var(--text-13);background:#fff;">
+              <option value="level1">一级及以下（基层/社区卫生服务中心/村卫生室）</option>
+              <option value="level2">二级定点医疗机构</option>
+              <option value="level3">三级定点医疗机构</option>
+            </select>
+          </span>
+          <span>慢特病待遇: <b id="p-chronic">未备案</b></span>
+        </div>
+        <div class="pre-row">
           <span>临床诊断: <b id="p-dx">-</b></span>
           <span>开具日期: <b id="p-date">-</b></span>
         </div>
@@ -345,8 +376,9 @@
           <span>医保支付: ¥<b id="f-ins">0.00</b></span>
           <span>个人自费: ¥<b id="f-self">0.00</b></span>
         </div>
-        <div style="font-size:var(--text-caption);color:var(--gray-500);margin-top:4px;text-align:right;">
-          玉溪市城乡居民医保门诊：政策范围内费用报销50%（基层医疗机构），年度限额300元
+        <div id="f-chronic-note" style="display:none;margin-top:4px;padding:5px 9px;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:var(--radius-6);font-size:var(--text-caption);color:#065f46;text-align:right;"></div>
+        <div id="f-policy-note" style="font-size:var(--text-caption);color:var(--gray-500);margin-top:4px;text-align:right;">
+          玉溪市门诊统筹政策演算（职工/居民按参保类型、人员身份与机构级别执行；已备案慢特病按门诊慢性病待遇结算）
         </div>
       </div>
     </div>
@@ -1513,7 +1545,7 @@
 </script>
 <script src="js/review.min.js?v=20261106surg1"></script>
 <script src="js/standard-plan.min.js?v=20261109sp1"></script>
-<script src="js/app.min.js?v=20261125r22"></script>
+<script src="js/app.min.js?v=20261125r23"></script>
 <script src="js/tcm-engine.min.js?v=20261125r21"></script>
 <script src="js/acup-engine.min.js?v=20261124r18"></script>
 <script src="js/tcm-app.min.js?v=20261125r20"></script>

@@ -43,6 +43,98 @@
     reviewCases: [],       // 来自 data/review-cases.json
   };
 
+  // =====================================================================
+  // 玉溪市基本医疗保险门诊统筹政策参数（教学演算口径）
+  // 依据（公开可考）：
+  //  1)《玉溪市职工基本医疗保险门诊共济保障实施细则(暂行)》玉政规〔2022〕1号
+  //     第八/九/十/十一条（普通门诊、门诊慢性病、门诊特殊病待遇）
+  //  2)《玉溪市医疗保障局 玉溪市财政局 玉溪市卫生健康委员会关于调整玉溪市
+  //     分级诊疗医保支付政策的通知》（自 2025-01-01 起执行；玉溪市医保局
+  //     2025-03 官方答复援引口径：职工普通门诊起付线 20/40/60 元）
+  //  3)《玉溪市城乡居民医疗保险管理实施办法》第十七条普通门诊待遇；
+  //     通海县人民医院 2025-05《城乡居民基本医疗保险待遇保障政策宣传》
+  //     及玉溪市 2022 居民医保待遇通告（居民门诊慢性病比例 50%、限额规则）
+  // 说明：本平台为单次处方教学演算，年度封顶线/病种限额仅作提示，不做跨次累计；
+  //       政策范围内费用 = 甲类 100% + 乙类先行自付 20% 后计入，丙类/目录外全自费。
+  // =====================================================================
+  const YUXI_OUTPATIENT_POLICY = {
+    employee: {
+      cap_year: 6000,  // 职工普通门诊统筹基金年度最高支付限额（元）
+      levels: {
+        level1: { label: '一级及以下定点医疗机构', deductible: 20, on_job: 0.60, retired: 0.70 },
+        level2: { label: '二级定点医疗机构',       deductible: 40, on_job: 0.55, retired: 0.65 },
+        level3: { label: '三级定点医疗机构',       deductible: 60, on_job: 0.50, retired: 0.60 }
+      }
+    },
+    resident: {
+      cap_year: 300,      // 居民普通门诊年度最高支付限额（元，含一般诊疗费）
+      per_visit_cap: 30,  // 居民普通门诊单次就诊最高支付额（元，不含一般诊疗费）
+      levels: {
+        level1: { label: '一级及以下（零差率基层）定点医疗机构', ratio: 0.50 },
+        level2: { label: '二级定点医疗机构',                   ratio: 0.25 },
+        level3: { label: '三级定点医疗机构',                   ratio: 0.00 }  // 居民三级普通门诊不予报销
+      }
+    },
+    // 门诊慢性病（已完成慢特病备案）待遇：与普通门诊额度分开计算、分别结算
+    chronic: {
+      employee: {
+        deductible: 300,          // 职工门诊慢病年度起付标准（元，与住院起付分别计算）
+        ratio: 0.80,              // 统筹基金支付比例
+        per_disease_cap: 3000,    // 单病种年度支付限额（元）
+        add_per_disease: 1000,    // 每增加一个病种增加限额（元）
+        cap_year: 5000            // 门诊慢病统筹基金年度最高支付限额（元）
+      },
+      resident: {
+        deductible: 0,            // 居民门诊慢病不设起付线
+        ratio: 0.50,              // 政策范围内费用支付比例
+        add_per_disease: 200,     // 每增加一个病种增加限额（元）
+        cap_year: 3000,           // 年度最高增加限额口径（元）
+        default_cap: 2000,        // 未列明病种参考限额（元，省级口径约 2000）
+        // 居民门诊慢性病单病种年度支付限额（元，玉溪历年病种限额表；教学参考）
+        disease_caps: {
+          'HTN-I10': 1440,   // 高血压 2 级及以上
+          'DM-E11': 1000,    // 2 型糖尿病
+          'KETOSIS-E11': 1000,
+          'CHD-I25': 1800,   // 冠心病
+          'HF-I50': 1200,    // 慢性心衰
+          'ISCHEMIC-I63': 1200, // 脑血管意外后遗症
+          'TIA-G45': 1200,
+          'COPD-J44': 2400,  // 慢性阻塞性肺病
+          'HYPERTHY-E05': 720, // 甲状腺功能亢进
+          'HYPOTHY-E03': 720,  // 甲状腺功能减退
+          'CIRRH-K74': 4500    // 肝硬化（失代偿期参考）
+        }
+      }
+    }
+  };
+
+  // 门诊慢性病备案档位 → 备案病种数量
+  function chronicCountOf(tier) {
+    if (tier === 'single') return 1;
+    if (tier === 'multi2') return 2;
+    if (tier === 'multi3') return 3;
+    return 0;
+  }
+  const CHRONIC_LABEL = {
+    none: '未备案',
+    single: '已备案·1 病种',
+    multi2: '已备案·2 病种',
+    multi3: '已备案·3 种及以上'
+  };
+
+  // 旧费别文案 → 险种标识
+  function normalizeInsurance(feeType) {
+    if (feeType === '城镇职工医保') return '职工';
+    if (feeType === '城乡居民医保') return '居民';
+    return '自费';
+  }
+  // 险种标识 → 处方笺费别文案
+  function insuranceLabel(insurance) {
+    if (insurance === '职工') return '城镇职工医保';
+    if (insurance === '居民') return '城乡居民医保';
+    return '自费';
+  }
+
   // ---------- DOM ----------
   const $ = id => document.getElementById(id);
   function show(view) {
@@ -61,36 +153,62 @@
 
   // ---------- P1-3 患者信息表单同步 ----------
   // 把 S.patient 的字段同步到表单；表单改动回写到 S.patient，最终进入 ctx.patient
+  // 身份下拉仅职工医保可用；居民/自费不区分在职退休
+  function applyInsuranceUI() {
+    if (!S.patient) return;
+    const idEl = $('pi-identity');
+    const isEmp = S.patient.insurance === '职工';
+    if (idEl) {
+      idEl.disabled = !isEmp;
+      idEl.style.opacity = isEmp ? '1' : '0.5';
+    }
+    if ($('f-fee')) $('f-fee').textContent = insuranceLabel(S.patient.insurance);
+  }
   function syncPatientForm() {
     if (!S.patient) return;
     const ageEl = $('pi-age'), wtEl = $('pi-weight'), genderEl = $('pi-gender'),
-          pregEl = $('pi-pregnant'), algEl = $('pi-allergies'), ltsEl = $('pi-long-term-stable');
+          pregEl = $('pi-pregnant'), algEl = $('pi-allergies'), ltsEl = $('pi-long-term-stable'),
+          insEl = $('pi-insurance'), idEl = $('pi-identity'), levelEl = $('pi-level'), chronicEl = $('pi-chronic');
     if (ageEl) ageEl.value = S.patient.age != null ? S.patient.age : '';
     if (wtEl) wtEl.value = S.patient.weight != null ? S.patient.weight : '';
     if (genderEl) genderEl.value = S.patient.gender || '男';
     if (pregEl) pregEl.checked = !!S.patient.pregnant;
     if (algEl) algEl.value = S.patient.allergies || '';
     if (ltsEl) ltsEl.checked = !!S.patient.long_term_stable;
+    if (insEl) insEl.value = S.patient.insurance || normalizeInsurance(S.patient.feeType);
+    if (idEl) idEl.value = S.patient.identity || '在职';
+    if (levelEl) levelEl.value = S.patient.hospitalLevel || 'level1';
+    if (chronicEl) chronicEl.value = S.patient.chronic || 'none';
+    if ($('p-chronic')) $('p-chronic').textContent = CHRONIC_LABEL[S.patient.chronic || 'none'];
     // 合并症 checkbox
     document.querySelectorAll('#pi-comorbidities input[type=checkbox]').forEach(cb => {
       cb.checked = (S.patient.comorbidities || []).includes(cb.value);
     });
+    applyInsuranceUI();
   }
   function readPatientForm() {
     if (!S.patient) return;
     const ageEl = $('pi-age'), wtEl = $('pi-weight'), genderEl = $('pi-gender'),
-          pregEl = $('pi-pregnant'), algEl = $('pi-allergies'), ltsEl = $('pi-long-term-stable');
+          pregEl = $('pi-pregnant'), algEl = $('pi-allergies'), ltsEl = $('pi-long-term-stable'),
+          insEl = $('pi-insurance'), idEl = $('pi-identity'), levelEl = $('pi-level'), chronicEl = $('pi-chronic');
     if (ageEl && ageEl.value !== '') S.patient.age = parseFloat(ageEl.value);
     if (wtEl && wtEl.value !== '') S.patient.weight = parseFloat(wtEl.value);
     if (genderEl) S.patient.gender = genderEl.value;
     if (pregEl) S.patient.pregnant = pregEl.checked;
     if (algEl) S.patient.allergies = algEl.value.trim();
     if (ltsEl) S.patient.long_term_stable = ltsEl.checked;
+    if (insEl) S.patient.insurance = insEl.value;
+    if (idEl && !idEl.disabled) S.patient.identity = idEl.value;
+    if (levelEl) S.patient.hospitalLevel = levelEl.value;
+    if (chronicEl) S.patient.chronic = chronicEl.value;
+    S.patient.feeType = insuranceLabel(S.patient.insurance);
     S.patient.comorbidities = Array.from(document.querySelectorAll('#pi-comorbidities input[type=checkbox]:checked')).map(cb => cb.value);
+    applyInsuranceUI();
     // 同步到处方前记显示
     if ($('p-age')) $('p-age').textContent = S.patient.age;
     if ($('p-weight')) $('p-weight').textContent = S.patient.weight;
     if ($('p-gender')) $('p-gender').textContent = S.patient.gender;
+    if ($('p-chronic')) $('p-chronic').textContent = CHRONIC_LABEL[S.patient.chronic || 'none'];
     if ($('case-meta')) {
       $('case-meta').textContent = `${S.patient.name}，${S.patient.gender}，实足 ${S.patient.age} 岁，体重 ${S.patient.weight} kg，门诊号 ${S.patient.mz}`;
     }
@@ -115,6 +233,11 @@
     });
     const cbBox = $('pi-comorbidities');
     if (cbBox) cbBox.addEventListener('change', readPatientForm);
+    // 参保类型 / 人员身份 / 机构级别 / 慢病备案：回写后即时重算门诊统筹费用
+    ['pi-insurance','pi-identity','pi-level','pi-chronic'].forEach(id => {
+      const el = $(id);
+      if (el) el.addEventListener('change', () => { readPatientForm(); updateAmount(); });
+    });
   });
 
   // 药品通用名 → 拼音首字母（用于首拼模糊搜索）
@@ -621,10 +744,17 @@
     if (age < 14) feeType = Math.random()<0.8 ? '城乡居民医保' : '自费';
     else if (elderlyDiseases.includes(code)) feeType = Math.random()<0.7 ? '城镇职工医保' : '城乡居民医保';
     else feeType = ['城镇职工医保','城乡居民医保','自费'][Math.floor(Math.random()*3)];
+    const insurance = normalizeInsurance(feeType);
+    // 人员身份：职工医保区分在职/退休（教学默认 60 岁及以上为退休，可在表单手改）；居民/自费不区分
+    const identity = (insurance === '职工' && age >= 60) ? '退休' : '在职';
+    const hospitalLevel = 'level1';  // 默认基层医疗机构，可在处方笺前记选择
+    // 门诊慢性病备案：老年慢病病例按概率已完成慢病备案（默认 1 病种），可在处方前记手改
+    let chronic = 'none';
+    if (elderlyDiseases.includes(code) && Math.random() < 0.6) chronic = 'single';
     const name = SURNAMES[Math.floor(Math.random()*SURNAMES.length)] + GIVEN[Math.floor(Math.random()*GIVEN.length)];
     const vitals = vitalsFromRange(S.disease.symptom_pool.vitals);
     S.patient = {
-      name, gender, age, weight, feeType, vitals,
+      name, gender, age, weight, feeType, insurance, identity, hospitalLevel, chronic, vitals,
       id: '5301**********0011',
       mz: 'MZ' + new Date().toISOString().slice(0,10).replace(/-/g,'') + String(Math.floor(Math.random()*9000+1000)),
       renal_insufficiency: age > 65 && Math.random() < 0.2,
@@ -2071,14 +2201,13 @@
       });
     });
     total = Math.round(total * 100) / 100;
-    // 玉溪市城乡居民医保门诊报销标准：
-    // 政策范围内费用 = 甲类100% + 乙类80%
-    // 基层医疗机构报销比例：50%
-    // 年度最高支付限额：300元
-    // 自费患者不享受医保统筹
-    const isSelfPay = S.patient && S.patient.feeType === '自费';
+    // ---- 玉溪市门诊统筹演算口径 ----
+    // 政策范围内费用 = 甲类 100% + 乙类先行自付 20% 后计入；丙类/目录外全自费
+    const ins = S.patient ? (S.patient.insurance || normalizeInsurance(S.patient.feeType)) : '自费';
+    const identity = (S.patient && S.patient.identity === '退休') ? '退休' : '在职';
+    const level = (S.patient && S.patient.hospitalLevel) || 'level1';
     let policyRange = 0;  // 政策范围内费用
-    if (!isSelfPay) {
+    if (ins !== '自费') {
     S.normalItems.forEach(it => {
       const price = Number(it.drug.price_yuan) || 0;
       const qty = Number(it.quantity) || 1;
@@ -2104,13 +2233,66 @@
     });
     }
     policyRange = Math.round(policyRange * 100) / 100;
-    // 玉溪市城乡居民医保门诊报销：基层医疗机构报销50%
-    const REIMBURSE_RATE = 0.5;  // 基层医疗机构报销比例50%
-    const miPay = Math.round(policyRange * REIMBURSE_RATE * 100) / 100;
+
+    // 按险种 × 人员身份 × 机构级别（普通门诊）/ 慢病备案（门诊慢性病）演算统筹支付
+    const P = YUXI_OUTPATIENT_POLICY;
+    const chronicTier = (S.patient && S.patient.chronic) || 'none';
+    const chronicCount = chronicCountOf(chronicTier);
+    const isChronic = chronicCount > 0;
+    let miPay = 0, note = '', chronicNote = '';
+    if (ins === '职工') {
+      if (isChronic) {
+        // 职工门诊慢性病待遇（细则第十条）：年度起付 300 元，报销 80%，
+        // 单病种限额 3000 元，每增一病种 +1000 元，年度封顶 5000 元；与普通门诊额度分开计算
+        const c = P.chronic.employee;
+        const base = Math.max(0, Math.round((policyRange - c.deductible) * 100) / 100);
+        const cap = Math.min(c.per_disease_cap + c.add_per_disease * (chronicCount - 1), c.cap_year);
+        miPay = Math.min(Math.round(base * c.ratio * 100) / 100, cap);
+        note = `职工医保·门诊慢性病（已备案 ${chronicCount} 病种）：年度起付线 ${c.deductible} 元，政策范围内费用报销 ${(c.ratio * 100).toFixed(0)}%，单病种年限额 ${c.per_disease_cap} 元、每增一病种 +${c.add_per_disease} 元，年度封顶 ${c.cap_year} 元（与普通门诊额度分开计算，单次处方演算不跨次累计）`;
+        chronicNote = `门诊慢性病待遇：起付 ${c.deductible} 元 / 报销 ${(c.ratio * 100).toFixed(0)}% / 本次病种限额 ${cap} 元`;
+      } else {
+        const lv = P.employee.levels[level] || P.employee.levels.level1;
+        const rate = identity === '退休' ? lv.retired : lv.on_job;
+        const base = Math.max(0, Math.round((policyRange - lv.deductible) * 100) / 100);
+        miPay = Math.round(base * rate * 100) / 100;
+        note = `职工医保·${identity === '退休' ? '退休人员' : '在职职工'}·${lv.label}：起付线${lv.deductible}元，政策范围内费用报销${(rate * 100).toFixed(0)}%，年度统筹封顶${P.employee.cap_year}元（普通门诊，单次处方演算不跨次累计）`;
+      }
+    } else if (ins === '居民') {
+      if (isChronic) {
+        // 居民门诊慢性病待遇：不设起付线，报销 50%，按病种限额支付，
+        // 单病种限额按病种标准确定，每增一病种 +200 元；年度限额单独计算
+        const c = P.chronic.resident;
+        const diagCode = (S.disease && S.disease.code) || '';
+        const baseCap = c.disease_caps[diagCode] || c.default_cap;
+        const cap = Math.min(baseCap + c.add_per_disease * (chronicCount - 1), c.cap_year);
+        miPay = Math.min(Math.round(policyRange * c.ratio * 100) / 100, cap);
+        note = `城乡居民医保·门诊慢性病（已备案 ${chronicCount} 病种）：不设起付线，政策范围内费用报销 ${(c.ratio * 100).toFixed(0)}%，按病种限额支付（基准限额 ${baseCap} 元、每增一病种 +${c.add_per_disease} 元），年度限额单独计算（单次处方演算不跨次累计）`;
+        chronicNote = `门诊慢性病待遇：无起付线 / 报销 ${(c.ratio * 100).toFixed(0)}% / 本次病种限额 ${cap} 元`;
+      } else {
+        const lv = P.resident.levels[level] || P.resident.levels.level1;
+        if (lv.ratio <= 0) {
+          miPay = 0;
+          note = `城乡居民医保·${lv.label}：普通门诊不予统筹支付`;
+        } else {
+          const raw = Math.round(policyRange * lv.ratio * 100) / 100;
+          miPay = Math.min(raw, P.resident.per_visit_cap);
+          note = `城乡居民医保·${lv.label}：政策范围内费用报销${(lv.ratio * 100).toFixed(0)}%，单次最高支付${P.resident.per_visit_cap}元，年度封顶${P.resident.cap_year}元（普通门诊，单次处方演算不跨次累计）`;
+        }
+      }
+    } else {
+      note = '自费患者：不享受医保门诊统筹支付，费用全部由个人承担';
+    }
     const selfPay = Math.max(0, Math.round((total - miPay) * 100) / 100);
     $('f-amount').textContent = total.toFixed(2);
     $('f-ins').textContent = miPay.toFixed(2);
     $('f-self').textContent = selfPay.toFixed(2);
+    const noteEl = $('f-policy-note');
+    if (noteEl) noteEl.textContent = note;
+    const chronicEl = $('f-chronic-note');
+    if (chronicEl) {
+      chronicEl.textContent = chronicNote;
+      chronicEl.style.display = chronicNote ? '' : 'none';
+    }
   }
 
   // 云南医保事前提醒

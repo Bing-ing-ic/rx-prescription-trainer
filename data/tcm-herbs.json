@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.04-tcm",
+  "version": "2026.11.25-herbs-r2",
   "note": "常用中药库。nature: 寒/热/温/凉/平。taste 可多味。meridian 归经。incompatibility 标注十八反十九畏及妊娠禁忌。price_yuan 为每10g参考价（元）。",
   "herbs": [
     {
@@ -11276,6 +11276,154 @@
       "processing": "生品",
       "usage_detail": "煎服，用量见剂量范围。",
       "pharmacopoeia": "一部"
+    },
+    {
+      "name": "冬瓜子",
+      "pinyin": "dongguazi",
+      "nature": "寒",
+      "taste": "甘",
+      "meridian": "肺、胃、大肠、小肠经",
+      "category": "化痰止咳平喘药-清化热痰药",
+      "dose_range": "10-15g",
+      "functions": "清肺化痰，消痈排脓，利水润肠",
+      "indications": [
+        "痰热咳嗽",
+        "肺痈",
+        "肠痈",
+        "淋病水肿",
+        "痔疮"
+      ],
+      "contraindications": [
+        "脾胃虚寒、便溏者慎服"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05,
+      "processing": "生品或炒用",
+      "usage_detail": "煎服，用量见剂量范围；古方“瓜瓣/冬瓜仁”即本品。",
+      "pharmacopoeia": "广东省中药材标准"
+    },
+    {
+      "name": "鸡蛋花",
+      "pinyin": "jidanhua",
+      "nature": "凉",
+      "taste": "甘、淡",
+      "meridian": "胃、大肠经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "5-15g",
+      "functions": "清热利湿，消暑解毒，润肺止咳",
+      "indications": [
+        "湿热下痢",
+        "小儿疳积",
+        "湿热黄疸",
+        "预防中暑",
+        "肺热咳嗽"
+      ],
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06,
+      "processing": "生品（干燥花）",
+      "usage_detail": "煎服，用量见剂量范围；岭南地方凉茶药材。",
+      "pharmacopoeia": "广东省中药材标准"
+    },
+    {
+      "name": "木棉花",
+      "pinyin": "mumianhua",
+      "nature": "凉",
+      "taste": "甘、淡",
+      "meridian": "大肠经",
+      "category": "清热药-清热解毒药",
+      "dose_range": "10-15g",
+      "functions": "清热利湿，解毒凉血",
+      "indications": [
+        "大肠湿热泄泻",
+        "痢疾",
+        "痔疮出血"
+      ],
+      "contraindications": [
+        "脾胃虚寒者慎用"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.05,
+      "processing": "生品（干燥花）",
+      "usage_detail": "煎服，用量见剂量范围；南方地方药材，五花茶原料之一。",
+      "pharmacopoeia": "地方药材（《生草药性备要》《本草求原》）"
+    },
+    {
+      "name": "鸡骨草",
+      "pinyin": "jigucao",
+      "nature": "凉",
+      "taste": "甘、微苦",
+      "meridian": "肝、胃经",
+      "category": "利湿退黄药",
+      "dose_range": "15-30g",
+      "functions": "利湿退黄，清热解毒，疏肝止痛",
+      "indications": [
+        "湿热黄疸",
+        "胁肋不舒",
+        "胃脘胀痛",
+        "乳痈肿痛"
+      ],
+      "contraindications": [
+        "种子有毒，须摘除豆荚，不可混入种子",
+        "虚寒体弱者慎用"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.07,
+      "processing": "除去杂质和荚果，切段",
+      "usage_detail": "煎服，用量见剂量范围；豆科广州相思子干燥全株。",
+      "pharmacopoeia": "一部"
+    },
+    {
+      "name": "溪黄草",
+      "pinyin": "xihuangcao",
+      "nature": "寒",
+      "taste": "苦",
+      "meridian": "肝、胆、大肠经",
+      "category": "清热药-清热利湿药",
+      "dose_range": "15-30g",
+      "functions": "清热利湿，凉血散瘀",
+      "indications": [
+        "湿热黄疸",
+        "腹胀胁痛",
+        "湿热泄泻",
+        "热毒泻痢",
+        "跌打损伤"
+      ],
+      "contraindications": [
+        "脾胃虚寒者慎服",
+        "孕妇、哺乳期慎用，不宜长期服用"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06,
+      "processing": "生品（干燥地上部分）",
+      "usage_detail": "煎服，用量见剂量范围；线纹香茶菜等干燥地上部分。",
+      "pharmacopoeia": "广东省中药材标准"
+    },
+    {
+      "name": "板栗",
+      "pinyin": "banli",
+      "nature": "平",
+      "taste": "甘、微咸",
+      "meridian": "脾、肾经",
+      "category": "补虚药-补气药",
+      "dose_range": "30-60g",
+      "functions": "益气健脾，补肾强筋，活血消肿",
+      "indications": [
+        "脾虚泄泻",
+        "脚膝酸软",
+        "筋骨折伤肿痛",
+        "瘰疬"
+      ],
+      "contraindications": [
+        "食积停滞、脘腹胀满者不宜多食"
+      ],
+      "incompatibility": "无",
+      "price_yuan": 0.06,
+      "processing": "生食或煮熟用",
+      "usage_detail": "适量生食或煮食，亦可炒存性研末服；古方“干栗/栗子”即本品。",
+      "pharmacopoeia": "药食同源"
     }
   ]
 }

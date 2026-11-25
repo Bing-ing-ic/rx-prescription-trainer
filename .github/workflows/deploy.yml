@@ -14,7 +14,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry1.outputs.page_url || steps.deployment_retry2.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -73,7 +73,12 @@ jobs:
         uses: actions/deploy-pages@v5.0.1
 
       # 应对 Pages 后端瞬时 "Deployment failed, try again later"：
-      # 首次部署失败时，同一 artifact 内自动重试一次，避免单步竞态导致整轮 false-negative。
-      - id: deployment_retry
+      # 首次部署失败时，同一 artifact 内自动重试两次，避免单步竞态导致整轮 false-negative。
+      - id: deployment_retry1
         if: steps.deployment.outcome == 'failure'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5.0.1
+
+      - id: deployment_retry2
+        if: steps.deployment_retry1.outcome == 'failure'
         uses: actions/deploy-pages@v5.0.1

@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "2026.11.25-patents-r1",
   "note": "常用中成药数据库（片剂/胶囊/颗粒剂/丸剂/口服液等）",
   "patent_drugs": [
     {
@@ -1954,6 +1954,940 @@
       "price_yuan": 16,
       "manufacturer": "北京同仁堂",
       "pinyin": "xiao'er ganmao keli",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "追风透骨丸",
+      "brand_name": "敬修堂",
+      "dosage_form": "丸剂",
+      "spec": "每10丸重1g",
+      "unit": "袋",
+      "category": "祛风湿剂",
+      "composition": [
+        "制川乌",
+        "白芷",
+        "制草乌",
+        "香附",
+        "甘草",
+        "白术",
+        "没药",
+        "麻黄",
+        "川芎",
+        "乳香",
+        "秦艽",
+        "地龙",
+        "当归",
+        "茯苓",
+        "赤小豆",
+        "羌活",
+        "天麻",
+        "赤芍",
+        "细辛",
+        "防风",
+        "天南星",
+        "桂枝",
+        "甘松"
+      ],
+      "functions": "祛风除湿，通经活络，散寒止痛",
+      "indications": [
+        "风寒湿痹",
+        "肢节疼痛",
+        "肢体麻木"
+      ],
+      "usage_dosage": "口服，一次6g，一日2次",
+      "contraindications": [
+        "风热痹者忌服",
+        "孕妇忌服",
+        "对本品及所含成份过敏者禁用",
+        "含制川乌、制草乌、制天南星，不宜长期服用"
+      ],
+      "medical_insurance_class": "甲",
+      "essential_medicine": true,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "广州白云山敬修堂药业股份有限公司",
+      "pinyin": "zhuifeng tougu wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "强力枇杷露",
+      "brand_name": "999",
+      "dosage_form": "糖浆剂",
+      "spec": "每瓶装100ml",
+      "unit": "瓶",
+      "category": "止咳平喘剂",
+      "composition": [
+        "枇杷叶",
+        "罂粟壳",
+        "百部",
+        "白前",
+        "桑白皮",
+        "桔梗",
+        "薄荷脑"
+      ],
+      "functions": "养阴敛肺，止咳祛痰",
+      "indications": [
+        "支气管炎咳嗽"
+      ],
+      "usage_dosage": "口服，一次15ml，一日3次",
+      "contraindications": [
+        "儿童禁用",
+        "孕妇禁用",
+        "哺乳期妇女禁用",
+        "糖尿病患者禁服",
+        "含罂粟壳不宜长期服用"
+      ],
+      "medical_insurance_class": "甲",
+      "essential_medicine": false,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "qiangli pipa lu",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "朱砂安神丸",
+      "brand_name": "药都制药",
+      "dosage_form": "丸剂",
+      "spec": "每袋装6g",
+      "unit": "袋",
+      "category": "安神剂",
+      "composition": [
+        "朱砂",
+        "黄连",
+        "生地黄",
+        "当归",
+        "甘草"
+      ],
+      "functions": "清心养血，镇惊安神",
+      "indications": [
+        "胸中烦热",
+        "心悸不宁",
+        "失眠多梦"
+      ],
+      "usage_dosage": "口服，一次6g，一日1～2次",
+      "contraindications": [
+        "含朱砂，不宜多服、久服，以防汞中毒"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "药都制药集团股份有限公司",
+      "pinyin": "zhusha anshen wan",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "柏子养心丸",
+      "brand_name": "同仁堂",
+      "dosage_form": "丸剂",
+      "spec": "每100粒重10g",
+      "unit": "瓶",
+      "category": "安神剂",
+      "composition": [
+        "柏子仁",
+        "党参",
+        "黄芪",
+        "川芎",
+        "当归",
+        "茯苓",
+        "远志",
+        "酸枣仁",
+        "肉桂",
+        "五味子",
+        "半夏曲",
+        "炙甘草",
+        "朱砂"
+      ],
+      "functions": "补气，养血，安神",
+      "indications": [
+        "心气虚寒",
+        "心悸易惊",
+        "失眠多梦",
+        "健忘"
+      ],
+      "usage_dosage": "口服，一次6g，一日2次",
+      "contraindications": [
+        "阴虚火旺或肝阳上亢者禁用",
+        "含朱砂，不可与溴化物、碘化物同服",
+        "不宜久服"
+      ],
+      "medical_insurance_class": "甲",
+      "essential_medicine": true,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "北京同仁堂股份有限公司同仁堂制药厂",
+      "pinyin": "baizi yangxin wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "通心络胶囊",
+      "brand_name": "以岭",
+      "dosage_form": "胶囊剂",
+      "spec": "每粒装0.26g",
+      "unit": "盒",
+      "category": "活血化瘀剂",
+      "composition": [
+        "人参",
+        "水蛭",
+        "全蝎",
+        "赤芍",
+        "蝉蜕",
+        "土鳖虫",
+        "蜈蚣",
+        "檀香",
+        "降香",
+        "乳香",
+        "酸枣仁",
+        "冰片"
+      ],
+      "functions": "益气活血，通络止痛",
+      "indications": [
+        "冠心病心绞痛属心气虚乏、血瘀络阻证",
+        "胸部憋闷刺痛绞痛、固定不移",
+        "心悸自汗、气短乏力",
+        "气虚血瘀络阻型中风病",
+        "半身不遂或偏身麻木",
+        "口舌歪斜、言语不利"
+      ],
+      "usage_dosage": "口服，一次2～4粒，一日3次",
+      "contraindications": [
+        "出血性疾患禁用",
+        "孕妇禁用",
+        "妇女经期禁用",
+        "阴虚火旺型中风禁用"
+      ],
+      "medical_insurance_class": "甲",
+      "essential_medicine": true,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "石家庄以岭药业股份有限公司",
+      "pinyin": "tongxinluo jiaonang",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "稳心颗粒",
+      "brand_name": "步长",
+      "dosage_form": "颗粒剂",
+      "spec": "每袋装5g",
+      "unit": "盒",
+      "category": "活血化瘀剂",
+      "composition": [
+        "党参",
+        "黄精",
+        "三七",
+        "琥珀",
+        "甘松"
+      ],
+      "functions": "益气养阴，活血化瘀",
+      "indications": [
+        "气阴两虚、心脉瘀阻",
+        "心悸不宁、气短乏力、胸闷胸痛",
+        "室性早搏",
+        "房性早搏"
+      ],
+      "usage_dosage": "开水冲服，一次1袋，一日3次",
+      "contraindications": [
+        "缓慢性心律失常禁用",
+        "孕妇慎用",
+        "含党参，不宜与藜芦同用",
+        "忌烟酒、浓茶"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": true,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "山东步长制药股份有限公司",
+      "pinyin": "wenxin keli",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "脑心通胶囊",
+      "brand_name": "步长",
+      "dosage_form": "胶囊剂",
+      "spec": "每粒装0.4g",
+      "unit": "盒",
+      "category": "活血化瘀剂",
+      "composition": [
+        "黄芪",
+        "赤芍",
+        "丹参",
+        "当归",
+        "川芎",
+        "桃仁",
+        "红花",
+        "乳香",
+        "没药",
+        "鸡血藤",
+        "牛膝",
+        "桂枝",
+        "桑枝",
+        "地龙",
+        "全蝎",
+        "水蛭"
+      ],
+      "functions": "益气活血，化瘀通络",
+      "indications": [
+        "气虚血滞、脉络瘀阻之中风中经络",
+        "半身不遂、肢体麻木、口眼歪斜、舌强语謇",
+        "胸痹心痛、胸闷、心悸、气短",
+        "脑梗塞",
+        "冠心病心绞痛"
+      ],
+      "usage_dosage": "口服，一次2～4粒，一日3次",
+      "contraindications": [
+        "孕妇禁用",
+        "有出血倾向、行经期妇女慎用",
+        "使用抗凝、抗血小板治疗的患者慎用",
+        "不宜与藜芦同用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": true,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "山东步长制药股份有限公司",
+      "pinyin": "naoxintong jiaonang",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "左归丸",
+      "brand_name": "",
+      "dosage_form": "丸剂",
+      "spec": "每袋装9g",
+      "unit": "盒",
+      "category": "补益剂-补阴",
+      "composition": [
+        "熟地黄",
+        "枸杞子",
+        "山药",
+        "山茱萸",
+        "菟丝子",
+        "鹿角胶",
+        "龟板胶",
+        "川牛膝"
+      ],
+      "functions": "滋肾补阴",
+      "indications": [
+        "真阴不足",
+        "腰酸膝软",
+        "盗汗遗精",
+        "神疲口燥"
+      ],
+      "usage_dosage": "口服，一次9g，一日2次",
+      "contraindications": [
+        "脾虚便溏者慎用",
+        "孕妇忌服"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "zuogui wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "右归丸",
+      "brand_name": "",
+      "dosage_form": "丸剂",
+      "spec": "每袋装9g",
+      "unit": "盒",
+      "category": "补益剂-补阳",
+      "composition": [
+        "熟地黄",
+        "附子",
+        "肉桂",
+        "山药",
+        "山茱萸",
+        "菟丝子",
+        "鹿角胶",
+        "枸杞子",
+        "当归",
+        "杜仲"
+      ],
+      "functions": "温补肾阳，填精止遗",
+      "indications": [
+        "肾阳不足、命门火衰",
+        "腰膝酸冷",
+        "精神不振、怯寒畏冷",
+        "阳痿遗精",
+        "大便溏薄、尿频而清"
+      ],
+      "usage_dosage": "口服，一次9g，一日2次",
+      "contraindications": [
+        "阴虚火旺者忌服",
+        "孕妇慎用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "yougui wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "十全大补丸",
+      "brand_name": "",
+      "dosage_form": "丸剂",
+      "spec": "每袋装9g",
+      "unit": "盒",
+      "category": "补益剂-气血双补",
+      "composition": [
+        "党参",
+        "白术",
+        "茯苓",
+        "甘草",
+        "当归",
+        "熟地黄",
+        "白芍",
+        "川芎",
+        "黄芪",
+        "肉桂"
+      ],
+      "functions": "温补气血",
+      "indications": [
+        "气血两虚",
+        "面色苍白",
+        "气短心悸",
+        "头晕自汗",
+        "体倦乏力",
+        "四肢不温"
+      ],
+      "usage_dosage": "口服，一次9g，一日2次",
+      "contraindications": [
+        "感冒发热病人不宜服用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "shiquan dabu wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "生脉饮",
+      "brand_name": "",
+      "dosage_form": "口服液",
+      "spec": "每支装10ml",
+      "unit": "支",
+      "category": "补益剂-补气",
+      "composition": [
+        "党参",
+        "麦冬",
+        "五味子"
+      ],
+      "functions": "益气复脉，养阴生津",
+      "indications": [
+        "气阴两亏",
+        "心悸气短",
+        "脉微自汗"
+      ],
+      "usage_dosage": "口服，一次10ml，一日3次",
+      "contraindications": [
+        "感冒发热病人不宜服用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "shengmai yin",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "银杏叶片",
+      "brand_name": "",
+      "dosage_form": "片剂",
+      "spec": "每片含银杏叶提取物40mg",
+      "unit": "盒",
+      "category": "活血化瘀剂",
+      "composition": [
+        "银杏叶"
+      ],
+      "functions": "活血化瘀通络",
+      "indications": [
+        "瘀血阻络所致胸痹心痛",
+        "中风半身不遂、舌强语謇",
+        "冠心病稳定型心绞痛",
+        "脑梗死"
+      ],
+      "usage_dosage": "口服，一次1片，一日3次",
+      "contraindications": [
+        "孕妇慎用",
+        "心力衰竭者慎用",
+        "对本品过敏者禁用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "yinxingye pian",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "养阴清肺丸",
+      "brand_name": "",
+      "dosage_form": "丸剂",
+      "spec": "每袋装9g",
+      "unit": "盒",
+      "category": "止咳平喘剂",
+      "composition": [
+        "生地黄",
+        "麦冬",
+        "玄参",
+        "川贝母",
+        "白芍",
+        "牡丹皮",
+        "薄荷",
+        "甘草"
+      ],
+      "functions": "养阴润燥，清肺利咽",
+      "indications": [
+        "阴虚肺燥",
+        "咽喉干痛",
+        "干咳少痰",
+        "痰中带血"
+      ],
+      "usage_dosage": "口服，一次9g，一日2次",
+      "contraindications": [
+        "痰湿壅盛者慎用",
+        "孕妇慎用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "yangyin qingfei wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "橘红丸",
+      "brand_name": "",
+      "dosage_form": "丸剂",
+      "spec": "每丸重6g",
+      "unit": "盒",
+      "category": "止咳平喘剂",
+      "composition": [
+        "化橘红",
+        "陈皮",
+        "半夏",
+        "茯苓",
+        "甘草",
+        "桔梗",
+        "苦杏仁",
+        "苏子",
+        "浙贝母",
+        "瓜蒌",
+        "款冬花"
+      ],
+      "functions": "清肺润燥，止嗽化痰",
+      "indications": [
+        "痰热咳嗽",
+        "痰多色黄黏稠",
+        "胸闷口干"
+      ],
+      "usage_dosage": "口服，一次2丸，一日2次",
+      "contraindications": [
+        "风寒咳嗽者慎用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "juhong wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "木香顺气丸",
+      "brand_name": "",
+      "dosage_form": "丸剂",
+      "spec": "每袋装6g",
+      "unit": "盒",
+      "category": "理气剂",
+      "composition": [
+        "木香",
+        "香附",
+        "青皮",
+        "陈皮",
+        "厚朴",
+        "枳壳",
+        "砂仁",
+        "苍术",
+        "槟榔",
+        "甘草",
+        "生姜"
+      ],
+      "functions": "行气化湿，健脾和胃",
+      "indications": [
+        "湿浊中阻",
+        "脘腹胀痛",
+        "嗳气纳呆",
+        "恶心呕吐"
+      ],
+      "usage_dosage": "口服，一次6～9g，一日2～3次",
+      "contraindications": [
+        "阴液亏损者慎用",
+        "孕妇慎用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "muxiang shunqi wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "胃苏颗粒",
+      "brand_name": "",
+      "dosage_form": "颗粒剂",
+      "spec": "每袋装5g",
+      "unit": "盒",
+      "category": "理气剂",
+      "composition": [
+        "紫苏梗",
+        "香附",
+        "陈皮",
+        "佛手",
+        "枳壳",
+        "槟榔",
+        "鸡内金"
+      ],
+      "functions": "理气消胀，和胃止痛",
+      "indications": [
+        "气滞型胃脘痛",
+        "胃脘胀痛、窜及两胁",
+        "嗳气或矢气则舒、情绪郁怒则加重",
+        "胸闷食少、排便不畅",
+        "慢性胃炎及消化性溃疡"
+      ],
+      "usage_dosage": "开水冲服，一次1袋，一日3次",
+      "contraindications": [
+        "孕妇忌服"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "weisu keli",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "元胡止痛片",
+      "brand_name": "",
+      "dosage_form": "片剂",
+      "spec": "片心重0.25g",
+      "unit": "盒",
+      "category": "理气剂",
+      "composition": [
+        "延胡索",
+        "白芷"
+      ],
+      "functions": "理气，活血，止痛",
+      "indications": [
+        "气滞血瘀所致胃痛",
+        "胁痛",
+        "头痛",
+        "痛经"
+      ],
+      "usage_dosage": "口服，一次4～6片，一日3次",
+      "contraindications": [
+        "孕妇慎用",
+        "对本品过敏者禁用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "甲类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "yuanhu zhitong pian",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "艾附暖宫丸",
+      "brand_name": "",
+      "dosage_form": "丸剂",
+      "spec": "每袋装9g",
+      "unit": "盒",
+      "category": "妇科用药",
+      "composition": [
+        "艾叶",
+        "香附",
+        "当归",
+        "白芍",
+        "熟地黄",
+        "川芎",
+        "肉桂",
+        "续断",
+        "吴茱萸",
+        "黄芪"
+      ],
+      "functions": "理气养血，暖宫调经",
+      "indications": [
+        "血虚气滞、下焦虚寒",
+        "月经不调",
+        "经行腹痛",
+        "带下清稀"
+      ],
+      "usage_dosage": "口服，一次9g，一日2次",
+      "contraindications": [
+        "孕妇禁用",
+        "感冒时不宜服用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "aifu nuangong wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "鼻炎康片",
+      "brand_name": "",
+      "dosage_form": "片剂",
+      "spec": "每片重0.37g",
+      "unit": "盒",
+      "category": "耳鼻喉用药",
+      "composition": [
+        "藿香",
+        "苍耳子",
+        "鹅不食草",
+        "野菊花",
+        "黄芩",
+        "薄荷",
+        "猪胆粉",
+        "当归"
+      ],
+      "functions": "清热解毒，宣肺通窍，消肿止痛",
+      "indications": [
+        "风邪蕴肺所致急慢性鼻炎",
+        "过敏性鼻炎"
+      ],
+      "usage_dosage": "口服，一次4片，一日3次",
+      "contraindications": [
+        "孕妇慎用",
+        "对本品过敏者禁用",
+        "服药期间不宜驾驶车辆及高空作业"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "biyankang pian",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "黄氏响声丸",
+      "brand_name": "",
+      "dosage_form": "丸剂",
+      "spec": "每瓶装36丸",
+      "unit": "瓶",
+      "category": "耳鼻喉用药",
+      "composition": [
+        "薄荷",
+        "浙贝母",
+        "桔梗",
+        "胖大海",
+        "蝉蜕",
+        "诃子",
+        "连翘",
+        "甘草",
+        "川芎",
+        "儿茶",
+        "大黄"
+      ],
+      "functions": "疏风清热，化痰散结，利咽开音",
+      "indications": [
+        "风热外束、痰热内盛",
+        "声音嘶哑、咽喉肿痛、咽干灼热",
+        "咽中有痰",
+        "急慢性喉炎",
+        "声带小结、息肉"
+      ],
+      "usage_dosage": "口服，一次6丸，一日3次",
+      "contraindications": [
+        "孕妇慎用",
+        "阴虚火旺者慎用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "huangshi xiangsheng wan",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "解郁安神颗粒",
+      "brand_name": "",
+      "dosage_form": "颗粒剂",
+      "spec": "每袋装5g",
+      "unit": "盒",
+      "category": "安神剂",
+      "composition": [
+        "柴胡",
+        "大枣",
+        "石菖蒲",
+        "半夏",
+        "白术",
+        "浮小麦",
+        "远志",
+        "甘草",
+        "栀子",
+        "郁金",
+        "胆南星",
+        "茯苓",
+        "酸枣仁",
+        "百合"
+      ],
+      "functions": "疏肝解郁，安神定志",
+      "indications": [
+        "情志不畅、肝郁气滞所致失眠",
+        "心烦、焦虑健忘",
+        "更年期综合征"
+      ],
+      "usage_dosage": "开水冲服，一次1袋，一日2次",
+      "contraindications": [
+        "孕妇禁用",
+        "哺乳期妇女禁用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "乙类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "jieyu anshen keli",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "双黄连口服液",
+      "brand_name": "",
+      "dosage_form": "口服液",
+      "spec": "每支装20ml",
+      "unit": "支",
+      "category": "清热剂-清热解毒",
+      "composition": [
+        "金银花",
+        "黄芩",
+        "连翘"
+      ],
+      "functions": "疏风解表，清热解毒",
+      "indications": [
+        "外感风热所致感冒",
+        "发热咳嗽咽痛"
+      ],
+      "usage_dosage": "口服，一次20ml，一日3次",
+      "contraindications": [
+        "风寒感冒者不适用",
+        "对本品过敏者禁用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "甲类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "shuanghuanglian koufuye",
+      "aliases": [],
+      "pharmacopoeia": "中国药典"
+    },
+    {
+      "name": "清开灵胶囊",
+      "brand_name": "",
+      "dosage_form": "胶囊剂",
+      "spec": "每粒装0.25g",
+      "unit": "盒",
+      "category": "清热剂-清热解毒",
+      "composition": [
+        "珍珠母",
+        "栀子",
+        "水牛角",
+        "板蓝根",
+        "金银花",
+        "黄芩"
+      ],
+      "functions": "清热解毒，镇静安神",
+      "indications": [
+        "外感风热时毒、火毒内盛",
+        "高热不退、烦躁不安、咽喉肿痛",
+        "上呼吸道感染",
+        "病毒性感冒",
+        "急性咽炎、急性气管炎"
+      ],
+      "usage_dosage": "口服，一次2～4粒，一日3次",
+      "contraindications": [
+        "孕妇禁用",
+        "久病体虚出现腹泻时慎用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "处方药",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "qingkailing jiaonang",
+      "aliases": [],
+      "pharmacopoeia": ""
+    },
+    {
+      "name": "小儿咳喘灵口服液",
+      "brand_name": "",
+      "dosage_form": "口服液",
+      "spec": "每支装10ml",
+      "unit": "支",
+      "category": "儿科用药",
+      "composition": [
+        "麻黄",
+        "石膏",
+        "苦杏仁",
+        "瓜蒌",
+        "板蓝根",
+        "金银花",
+        "甘草"
+      ],
+      "functions": "宣肺清热，止咳祛痰平喘",
+      "indications": [
+        "上呼吸道感染引起的咳嗽"
+      ],
+      "usage_dosage": "口服，一次5～10ml，一日3～4次，小儿酌减",
+      "contraindications": [
+        "高血压、心脏病患儿慎用",
+        "不宜长期服用"
+      ],
+      "medical_insurance_class": "乙",
+      "essential_medicine": false,
+      "otc_class": "甲类OTC",
+      "price_yuan": 0,
+      "manufacturer": "",
+      "pinyin": "xiaoer kechuanling koufuye",
       "aliases": [],
       "pharmacopoeia": ""
     }

@@ -289,12 +289,28 @@
   };
 
   // 药品模糊匹配：支持中文通用名 + 拼音首字母（不区分大小写）
+  // 药品别名归一：兼容数组与历史字符串形态，统一小写
+  function drugAliases(d) {
+    const a = d && d.aliases;
+    if (Array.isArray(a)) return a.map(x => String(x).toLowerCase()).filter(Boolean);
+    if (typeof a === 'string' && a.trim()) return [a.toLowerCase()];
+    return [];
+  }
+  // 价格数值（费用统计兜底，缺失按 0 计，避免 NaN）
+  function priceNum(d) { const n = Number(d && d.price_yuan); return isNaN(n) ? 0 : n; }
+  // 价格展示文案：缺失价格显示"暂无报价"，避免误导为 ¥0.0
+  function priceLabel(d) {
+    if (d && d.price_yuan != null && !isNaN(Number(d.price_yuan))) return `¥${Number(d.price_yuan).toFixed(1)}`;
+    return '暂无报价';
+  }
   function matchDrug(d, kw) {
     kw = (kw || '').toLowerCase().trim();
     if (!kw) return true;
     if (d.generic_name.toLowerCase().indexOf(kw) >= 0) return true;
-    const py = DRUG_PINYIN[d.generic_name] || d.pinyin || '';
+    const py = (DRUG_PINYIN[d.generic_name] || d.pinyin || '').toLowerCase();
     if (py.indexOf(kw) >= 0) return true;
+    if (d.brand_name && String(d.brand_name).toLowerCase().indexOf(kw) >= 0) return true;
+    if (drugAliases(d).some(x => x.indexOf(kw) >= 0)) return true;
     return false;
   }
 
@@ -745,7 +761,13 @@
       // 普通成人：18-65 岁
       age = Math.floor(Math.random()*48+18);
     }
-    const gender = Math.random()<0.5 ? '男' : '女';
+    // 性别专病锁定：避免出现男性乳腺炎/乳腺癌、女性前列腺增生/睾丸扭转等矛盾病例
+    const FEMALE_ONLY = ['BREAST-C50', 'MASTITIS-O91'];
+    const MALE_ONLY = ['BPH-N40', 'TESTIS-N44'];
+    let gender;
+    if (FEMALE_ONLY.includes(code)) gender = '女';
+    else if (MALE_ONLY.includes(code)) gender = '男';
+    else gender = Math.random() < 0.5 ? '男' : '女';
     let weight;
     if (age < 14) weight = Math.round((5 + age*2.5) * 10)/10;
     else weight = Math.round((50 + Math.random()*25) * 10)/10;
@@ -1356,7 +1378,7 @@
       div.dataset.kbIndex = i;
       div.innerHTML = `
         <div>
-          <b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
+          <b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ${priceLabel(d)}/${d.unit||'支'}</span>
           <div class="mfr" style="font-size:var(--text-caption);color:var(--gray-500)">🏭 ${d.manufacturer||'国产'}</div>
           ${abxChip(d.abx_level)}
           ${controlledChip(d)}
@@ -2432,7 +2454,7 @@
       const div = document.createElement('div');
       div.className = 'drug-item' + (isOrig ? ' originator' : '') + (disabled?' disabled':'') + (i === S.kbIvSel ? ' kb-highlight' : '');
       div.dataset.kbIndex = i;
-      div.innerHTML = `<div><b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
+      div.innerHTML = `<div><b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ${priceLabel(d)}/${d.unit||'支'}</span>
         <div class="mfr" style="font-size:var(--text-caption);color:var(--gray-500)">🏭 ${d.manufacturer||'国产'}</div>
         ${isSolvent ? '<span class="chip" style="background:#64748b;color:#fff">溶媒</span>' : ''}
         ${!isSolvent && isReadyInfusion(d) ? '<span class="chip" style="background:#059669;color:#fff">成品输液</span>' : ''}
@@ -3873,7 +3895,8 @@
     const k = kw.toLowerCase().trim();
     return item.generic_name.toLowerCase().includes(k) ||
            (item.pinyin || '').toLowerCase().includes(k) ||
-           (item.brand_name || '').toLowerCase().includes(k);
+           (item.brand_name || '').toLowerCase().includes(k) ||
+           drugAliases(item).some(x => x.includes(k));
   }
 
   async function renderDrugLib() {
@@ -3944,7 +3967,7 @@
         <p><b>用法用量：</b>每日${d.dose_range_json?.default_freq || '-'}，疗程${d.dose_range_json?.default_duration_days || '-'}天</p>
         ${(d.allowed_solvents_json || []).length ? `<p><b>指定溶媒：</b>${d.allowed_solvents_json.join('、')}</p>` : ''}
         ${d.is_tcm_injection ? `<p><b>配伍提示：</b>${tcmExclNote}</p>` : ''}
-        <p><b>价格：</b>¥${d.price_yuan || '-'} / ${d.unit || ''}</p>
+        <p><b>价格：</b>${priceLabel(d)} / ${d.unit || ''}</p>
         <p><b>生产厂家：</b>${d.manufacturer || '-'}</p>
         <p><b>注意事项：</b>${(d.special_warnings_json || []).join('、') || '-'}</p>
       </div>

@@ -197,6 +197,36 @@ try {
   else ok(`名方库 ${list.length} 首（中方 ${cnCount}、日方 ${jpCount}、韩方 ${krCount}），源流/差异/去重校验通过`);
 } catch (e) { bad('名方鉴赏库校验失败: ' + e.message); }
 
+// 11. R4 西药库 schema 一致性：aliases 必须为数组、price 为数字或 null、溶媒标记一致
+console.log('\n[11] R4 西药库 schema 一致性');
+try {
+  const drugs = JSON.parse(fs.readFileSync(path.join(DATA, 'drugs.json'), 'utf8')).drugs || [];
+  const errs = [];
+  drugs.forEach(d => {
+    if (d.aliases != null && !Array.isArray(d.aliases)) errs.push(`${d.generic_name} aliases 非数组`);
+    if (d.price_yuan != null && typeof d.price_yuan !== 'number') errs.push(`${d.generic_name} price_yuan 类型异常`);
+    if (d.dosage_form === 'solvent' && d.is_solvent !== true) errs.push(`${d.generic_name} 溶媒未标 is_solvent`);
+  });
+  if (errs.length) errs.forEach(bad);
+  else ok(`西药 ${drugs.length} 条 aliases/价格/溶媒标记一致`);
+} catch (e) { bad('R4 西药库校验失败: ' + e.message); }
+
+// 12. R4 病例身份-年龄/性别一致性
+console.log('\n[12] R4 病例身份一致性');
+try {
+  const dis = JSON.parse(fs.readFileSync(path.join(DATA, 'diseases.json'), 'utf8'));
+  const arr = dis.diseases || dis;
+  const mp = arr.find(x => x.code === 'MP-J15');
+  if (mp && /高中生|学校聚集/.test(JSON.stringify(mp))) bad('MP-J15 仍含学龄身份文案');
+  else ok('MP-J15 病例文案无年龄/身份冲突');
+  const femaleOnly = ['BREAST-C50', 'MASTITIS-O91'];
+  const maleOnly = ['BPH-N40', 'TESTIS-N44'];
+  const codes = new Set(arr.map(x => x.code));
+  const missing = [...femaleOnly, ...maleOnly].filter(c => !codes.has(c));
+  if (missing.length) missing.forEach(c => bad(`性别专病 code 缺失: ${c}`));
+  else ok('性别专病 code 表齐全（女: ' + femaleOnly.join('/') + '；男: ' + maleOnly.join('/') + '）');
+} catch (e) { bad('R4 病例校验失败: ' + e.message); }
+
 // 总结
 console.log('\n=========================================');
 console.log(`通过 ${pass} 项，失败 ${fail} 项`);

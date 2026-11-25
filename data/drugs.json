@@ -1021,7 +1021,7 @@
       "liver_renal_note": "肾功能不全调整",
       "is_iv_capable": true,
       "allowed_solvents_json": [
-        "0.9%氯化钠注射液 100ml"
+        "直接滴注（已含溶媒）"
       ],
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
@@ -1774,7 +1774,9 @@
       },
       "liver_renal_note": "",
       "is_iv_capable": true,
-      "allowed_solvents_json": [],
+      "allowed_solvents_json": [
+        "直接滴注（已含溶媒）"
+      ],
       "drip_speed_max_mlh": 60,
       "skin_test_required": false,
       "special_warnings_json": [
@@ -3513,7 +3515,9 @@
       "is_solvent": false,
       "is_iv_capable": true,
       "skin_test_required": false,
-      "allowed_solvents_json": [],
+      "allowed_solvents_json": [
+        "直接滴注（已含溶媒）"
+      ],
       "drip_speed_max_mlh": null,
       "otc_class": "处方药",
       "unit": "瓶",
@@ -3919,7 +3923,9 @@
       },
       "liver_renal_note": "",
       "is_iv_capable": true,
-      "allowed_solvents_json": [],
+      "allowed_solvents_json": [
+        "直接滴注（已含溶媒）"
+      ],
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [
@@ -5567,7 +5573,9 @@
       },
       "liver_renal_note": "",
       "is_iv_capable": true,
-      "allowed_solvents_json": [],
+      "allowed_solvents_json": [
+        "直接滴注（已含溶媒）"
+      ],
       "drip_speed_max_mlh": 40,
       "skin_test_required": false,
       "special_warnings_json": [
@@ -15010,8 +15018,7 @@
       "liver_renal_note": "脂肪代谢异常禁用",
       "is_iv_capable": true,
       "allowed_solvents_json": [
-        "0.9%氯化钠注射液",
-        "5%葡萄糖注射液"
+        "直接滴注（已含溶媒）"
       ],
       "drip_speed_max_mlh": 125,
       "skin_test_required": false,
@@ -15661,8 +15668,7 @@
       "liver_renal_note": "出血倾向禁用",
       "is_iv_capable": true,
       "allowed_solvents_json": [
-        "0.9%氯化钠注射液",
-        "5%葡萄糖注射液"
+        "直接滴注（已含溶媒）"
       ],
       "drip_speed_max_mlh": 60,
       "skin_test_required": false,
@@ -24003,8 +24009,7 @@
       "liver_renal_note": "肌酐清除率<35ml/min禁用",
       "is_iv_capable": true,
       "allowed_solvents_json": [
-        "0.9%氯化钠注射液",
-        "5%葡萄糖注射液"
+        "直接滴注（已含溶媒）"
       ],
       "drip_speed_max_mlh": 100,
       "skin_test_required": false,

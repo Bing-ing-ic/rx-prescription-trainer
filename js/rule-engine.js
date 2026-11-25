@@ -200,6 +200,12 @@
     const c = drug.pharmacology_class || '';
     return /喹诺酮|quinol/i.test(c);
   }
+  // 成品大容量输液（即用型、已含溶媒）：无需另配溶媒，独立成组直接滴注
+  function isReadyInfusion(drug) {
+    if (!drug) return false;
+    const sol = drug.allowed_solvents_json || [];
+    return sol.some(x => /直接滴注|已含溶媒|成品/.test(String(x)));
+  }
   // 从剂量字符串解析出 mg 数值（兼容 mg/g/ug/μg）
   function parseDoseMg(str) {
     if (str == null) return null;
@@ -671,8 +677,8 @@
         }
       }
 
-      // IV-03 专项字段完整性（整组均为静推时不要求溶媒与滴速）
-      const nonPushItems = iv.items.filter(it => it.drug && it.drug.dosage_form !== 'solvent' && routeOf(it) !== 'iv_push');
+      // IV-03 专项字段完整性（整组均为静推、或均为成品输液时不要求另配溶媒与滴速）
+      const nonPushItems = iv.items.filter(it => it.drug && it.drug.dosage_form !== 'solvent' && routeOf(it) !== 'iv_push' && !isReadyInfusion(it.drug));
       const missing = [];
       if (!iv.iv_reason) missing.push('iv_reason');
       if (nonPushItems.length) {

@@ -1950,7 +1950,8 @@
         } else {
           skinCell = `<td style="color:#64748b">—</td>`;
         }
-        const typeLabel = g.solvent ? `💉药物·第${groupNo}组` : `💉静推·第${groupNo}组`;
+        const readyOnly = !g.solvent && g.drugs.length > 0 && g.drugs.every(it => isReadyInfusion(it.drug));
+        const typeLabel = g.solvent ? `💉药物·第${groupNo}组` : (readyOnly ? `💧成品输液·第${groupNo}组` : `💉静推·第${groupNo}组`);
         tr.innerHTML = `<td>${seq}</td><td>${typeLabel}</td>
           <td>${it.drug.generic_name}${it.drug.is_tcm_injection?' <span class="chip chip-abx-special">中药注射剂</span>':''}</td>
           <td>${it.drug.spec}</td>
@@ -2160,6 +2161,12 @@
     if (!drug) return ['iv_drip'];
     if (Array.isArray(drug.allowed_routes) && drug.allowed_routes.length) return drug.allowed_routes.slice();
     return drug.dosage_form === 'iv_drip' ? ['iv_drip'] : [drug.dosage_form];
+  }
+  // 成品大容量输液（即用型，已含溶媒/无需稀释，不可与其他药物混配）：独立成组、直接静滴
+  function isReadyInfusion(drug) {
+    if (!drug) return false;
+    const sol = drug.allowed_solvents_json || [];
+    return sol.some(x => /直接滴注|已含溶媒|成品/.test(String(x)));
   }
   const PUMP_UNITS = ['ml/h', 'μg/kg/min', 'μg/min', 'U/kg/h'];
 
@@ -2375,8 +2382,8 @@
     S.kbIvItems = items;
     S.kbIvDisabled = items.map(d => {
       const isSolvent = d.dosage_form === 'solvent';
-      // 溶媒永远可点（点了自动开新组）；静脉药须先有溶媒，除非该药允许静推可自成静推组
-      if (isSolvent || hasSolvent) return false;
+      // 溶媒永远可点（点了自动开新组）；成品输液可独立成组；其余静脉药须先有溶媒，除非允许静推自成静推组
+      if (isSolvent || hasSolvent || isReadyInfusion(d)) return false;
       return !allowedRoutesUi(d).includes('iv_push');
     });
     S.kbIvSel = items.length ? (S.kbIvDisabled[0] ? -1 : 0) : -1;
@@ -2390,6 +2397,7 @@
       div.innerHTML = `<div><b>${d.generic_name}</b> ${originatorChip(d)} <span class="meta">${d.spec} · ¥${Number(d.price_yuan||0).toFixed(1)}/${d.unit||'支'}</span>
         <div class="mfr" style="font-size:var(--text-caption);color:var(--gray-500)">🏭 ${d.manufacturer||'国产'}</div>
         ${isSolvent ? '<span class="chip" style="background:#64748b;color:#fff">溶媒</span>' : ''}
+        ${!isSolvent && isReadyInfusion(d) ? '<span class="chip" style="background:#059669;color:#fff">成品输液</span>' : ''}
         ${abxChip(d.abx_level)}
         ${controlledChip(d)}
         ${d.is_tcm_injection?'<span class="chip chip-abx-special">中药注射剂</span>':''}
@@ -2424,6 +2432,13 @@
       autoFillGroup(g);
       renderIvGroups(); renderIvDrugList();
       const s = $('iv-drug-search'); if (s) { s.value=''; s.focus(); }
+      return;
+    }
+    // 成品大容量输液（即用型、已含溶媒）：独立成一组直接静滴，不挂溶媒、不与其他药混配
+    if (isReadyInfusion(drug)) {
+      // 直接建组并加药：空组若先渲染会被 renderIvGroups 的空组过滤移除，导致并入上一组
+      S.ivGroups.push({ solvent: null, drugs: [], fields: emptyGroupFields() });
+      pushIvDrug(drug);
       return;
     }
     // 静脉药
@@ -2509,10 +2524,13 @@
     if (hasIvData) {
       const groupsOk = S.ivGroups.every(g => {
         if (g.solvent) return g.drugs.length > 0;
-        // 无溶媒组：仅当整组均为静推药时合法（自成静推组）
-        return g.drugs.length > 0 && g.drugs.every(it => (it.route || 'iv_drip') === 'iv_push');
+        if (g.drugs.length === 0) return false;
+        // 无溶媒组：整组均为静推药，或整组均为成品大容量输液（直接滴注、不混配）
+        const allPush = g.drugs.every(it => (it.route || 'iv_drip') === 'iv_push');
+        const allReady = g.drugs.every(it => isReadyInfusion(it.drug) && (it.route || 'iv_drip') === 'iv_drip');
+        return allPush || allReady;
       });
-      if (!groupsOk) return alert('每组都必须选择溶媒并至少加入一个药；仅静推组可无溶媒！');
+      if (!groupsOk) return alert('每组都必须选择溶媒并至少加入一个药；仅静推组、成品输液组可无溶媒！');
       // 硬阻断：必须选择真实输液指征（不得再用 student_selected_iv 绕开 IV-01）
       const reasonSel = $('iv-reason-select');
       const ivReason = reasonSel ? reasonSel.value : '';

@@ -173,8 +173,8 @@ try {
   }
 } catch (e) { bad('T-3 校验失败: ' + e.message); }
 
-// 10. 名方品鉴库完整性（只读学习栏目）
-console.log('\n[10] 名方品鉴库 schema / 源流 / 中日差异');
+// 10. 名方鉴赏库完整性（只读学习栏目）
+console.log('\n[10] 名方鉴赏库 schema / 源流 / 中外差异');
 try {
   const famous = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-famous-prescriptions.json'), 'utf8'));
   const list = famous.prescriptions || [];
@@ -182,18 +182,19 @@ try {
   const existing = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-formulas.json'), 'utf8'));
   const existingNames = new Set((existing.formulas || []).map(f => f.name));
   list.forEach(f => {
-    if (!['china', 'japan'].includes(f.region)) bad.push(`${f.id} region 非法: ${f.region}`);
+    if (!['china', 'japan', 'korea'].includes(f.region)) bad.push(`${f.id} region 非法: ${f.region}`);
     ['name','source_ref','origin_lineage','functions','indications','syndrome_key','pinyin'].forEach(k => {
       if (!f[k] || String(f[k]).trim() === '') bad.push(`${f.id} 空字段 ${k}`);
     });
-    if (f.region === 'japan' && !String(f.cn_jp_diff || '').trim()) bad.push(`${f.id} 日本条目缺 cn_jp_diff`);
+    if ((f.region === 'japan' || f.region === 'korea') && !String(f.cn_jp_diff || '').trim()) bad.push(`${f.id} 海外条目缺 cn_jp_diff`);
     if (existingNames.has(f.name)) bad.push(`${f.id} 与平台用方库重名: ${f.name}`);
   });
   const cnCount = list.filter(f => f.region === 'china').length;
   const jpCount = list.filter(f => f.region === 'japan').length;
+  const krCount = list.filter(f => f.region === 'korea').length;
   if (bad.length) bad.forEach(b => bad(b));
-  else ok(`名方库 ${list.length} 首（中方 ${cnCount}、日方 ${jpCount}），源流/差异/去重校验通过`);
-} catch (e) { bad('名方品鉴库校验失败: ' + e.message); }
+  else ok(`名方库 ${list.length} 首（中方 ${cnCount}、日方 ${jpCount}、韩方 ${krCount}），源流/差异/去重校验通过`);
+} catch (e) { bad('名方鉴赏库校验失败: ' + e.message); }
 
 // 总结
 console.log('\n=========================================');

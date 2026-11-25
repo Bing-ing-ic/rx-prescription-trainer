@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261124r18">
+<link rel="stylesheet" href="css/rx.min.css?v=20261125r20">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -665,7 +665,7 @@
       <p class="hero-sub">辨证论治 · 君臣佐使 · 十八反十九畏</p>
       <button id="tcm-btn-new" class="hero-btn">🎲 随机开始新病例</button>
       <button id="tcm-btn-herb-lib" class="hero-btn hero-btn-ghost">🌿 中药库浏览</button>
-      <button id="tcm-btn-famous" class="hero-btn hero-btn-ghost">📖 名方品鉴</button>
+      <button id="tcm-btn-famous" class="hero-btn hero-btn-ghost">📖 名方鉴赏</button>
       <div class="difficulty-row no-print">
         <span class="diff-label">难度筛选：</span>
         <label><input type="radio" name="tcm-diff" value="all" checked> 全部</label>
@@ -700,11 +700,11 @@
     </div>
   </div>
 
-  <!-- ============ 中医汉方：名方品鉴 Modal（只读学习，不接规则引擎） ============ -->
+  <!-- ============ 中医汉方：名方鉴赏 Modal（只读学习，不接规则引擎） ============ -->
   <div class="modal-mask hidden" id="modal-famous-lib">
     <div class="modal tcm-herb-lib-box famous-lib-box">
       <div class="modal-head">
-        <h3>📖 名方品鉴 <small id="famous-count" class="muted"></small></h3>
+        <h3>📖 名方鉴赏 <small id="famous-count" class="muted"></small></h3>
         <button class="modal-close" id="famous-close" aria-label="关闭">×</button>
       </div>
       <div class="herb-lib-toolbar">
@@ -713,6 +713,7 @@
           <option value="">全部组别</option>
           <option value="china">中国典籍名方</option>
           <option value="japan">日本汉方经典</option>
+          <option value="korea">韩国韩方经典</option>
         </select>
         <select id="famous-classic">
           <option value="">全部典籍 / 时期</option>
@@ -1515,7 +1516,7 @@
 <script src="js/app.min.js?v=20261124r19"></script>
 <script src="js/tcm-engine.min.js?v=20261124r18"></script>
 <script src="js/acup-engine.min.js?v=20261124r18"></script>
-<script src="js/tcm-app.min.js?v=20261124r19"></script>
+<script src="js/tcm-app.min.js?v=20261125r20"></script>
 <script src="js/tuina-engine.min.js?v=20261124r18"></script>
 <script src="js/acup-app.min.js?v=20261124r19"></script>
 <script src="js/acup-time.min.js?v=20261111time1"></script>

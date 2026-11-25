@@ -1333,7 +1333,7 @@ input, select, textarea { font-family: inherit; }
   .hero-btn-ghost { margin-left: 0; margin-top: var(--space-2); }
 }
 
-/* ============ 名方品鉴 Modal（只读学习） ============ */
+/* ============ 名方鉴赏 Modal（只读学习） ============ */
 .famous-lib-box .famous-disclaimer {
   margin-top: var(--space-10px); padding: var(--space-6px) var(--space-10px);
   border-top: 1px dashed #e8d5b0; color: var(--gray-500); font-size: var(--text-12); line-height: 1.6;
@@ -1344,6 +1344,7 @@ input, select, textarea { font-family: inherit; }
 }
 .fm-badge-china { background: #fdf1e3; color: #8b5a2b; }
 .fm-badge-japan { background: #e8f1f2; color: #2f6b6b; }
+.fm-badge-korea { background: #f3ecf7; color: #6b4a8b; }
 .fm-lineage { background: var(--warn-100); color: #9a7b4f; }
 .fm-table { width: 100%; border-collapse: collapse; margin-top: var(--space-6px); font-size: var(--text-12); }
 .fm-table th, .fm-table td { border: 1px solid #ead9b8; padding: var(--space-3px) var(--space-6px); text-align: left; vertical-align: top; }

@@ -548,11 +548,11 @@
     box.classList.remove('hidden');
   }
 
-  // ---------- 名方品鉴（只读学习，不接规则引擎 / 不参与推演） ----------
+  // ---------- 名方鉴赏（只读学习，不接规则引擎 / 不参与推演） ----------
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
-  function famousRegionLabel(r) { return r === 'japan' ? '日本汉方' : '中国典籍'; }
+  function famousRegionLabel(r) { return r === 'japan' ? '日本汉方' : r === 'korea' ? '韩国韩方' : '中国典籍'; }
 
   function openFamousLib() {
     const modal = $('modal-famous-lib');
@@ -653,7 +653,7 @@
       <div class="hd-row"><b>类方鉴别：</b>${esc(arr(f.similar_formulas))}</div>
       <div class="hd-row"><b>现代临床应用：</b>${esc(f.modern_use || '—')}</div>
       ${(f.cautions || []).length ? `<div class="hd-warn">⚠️ 禁忌与注意：${esc(f.cautions.join('；'))}</div>` : ''}
-      ${f.region === 'japan' && f.cn_jp_diff ? `<div class="fm-diff"><b>中日口径差异：</b>${esc(f.cn_jp_diff)}</div>` : ''}
+      ${(f.region === 'japan' || f.region === 'korea') && f.cn_jp_diff ? `<div class="fm-diff"><b>中外口径/源流差异：</b>${esc(f.cn_jp_diff)}</div>` : ''}
       ${(f.references || []).length ? `<div class="hd-row fm-refs"><b>参考文献：</b><ul>${f.references.map(r => `<li>${esc(r)}</li>`).join('')}</ul></div>` : ''}
     `;
     box.classList.remove('hidden');
@@ -683,7 +683,7 @@
     });
     $('herb-lib-search').oninput = renderHerbLibGrid;
     $('herb-lib-category').onchange = renderHerbLibGrid;
-    // 名方品鉴（只读学习，不接规则引擎）
+    // 名方鉴赏（只读学习，不接规则引擎）
     $('tcm-btn-famous').onclick = openFamousLib;
     $('famous-close').onclick = closeFamousLib;
     $('modal-famous-lib').addEventListener('click', e => {

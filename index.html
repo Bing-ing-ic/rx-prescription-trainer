@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f4c81">
 <title>医学生处方推演训练平台 · MVP</title>
-<link rel="stylesheet" href="css/rx.min.css?v=20261125r20">
+<link rel="stylesheet" href="css/rx.min.css?v=20261125r30">
 <link rel="preload" as="image" href="img/nurse-hero.png" fetchpriority="high">
 </head>
 <body>
@@ -740,23 +740,71 @@
         <h3>📖 名方鉴赏 <small id="famous-count" class="muted"></small></h3>
         <button class="modal-close" id="famous-close" aria-label="关闭">×</button>
       </div>
-      <div class="herb-lib-toolbar">
-        <input type="text" id="famous-search" placeholder="输入方名、别名或拼音首字母，如：ggt → 葛根汤" autocomplete="off">
-        <select id="famous-region">
-          <option value="">全部组别</option>
-          <option value="china">中国典籍名方</option>
-          <option value="japan">日本汉方经典</option>
-          <option value="korea">韩国韩方经典</option>
-        </select>
-        <select id="famous-classic">
-          <option value="">全部典籍 / 时期</option>
-        </select>
+      <div class="famous-tabs" role="tablist">
+        <button class="famous-tab active" role="tab" data-tab="browse">🔍 浏览检索</button>
+        <button class="famous-tab" role="tab" data-tab="seek">🩺 按症寻方</button>
       </div>
-      <div class="herb-lib-body">
-        <div class="herb-lib-grid famous-grid" id="famous-grid"></div>
-        <div class="herb-lib-detail famous-detail hidden" id="famous-detail"></div>
+
+      <!-- Tab A：浏览检索（原有检索/详情，完整保留） -->
+      <div class="famous-tab-pane" id="pane-browse">
+        <div class="herb-lib-toolbar">
+          <input type="text" id="famous-search" placeholder="输入方名、别名或拼音首字母，如：ggt → 葛根汤" autocomplete="off">
+          <select id="famous-region">
+            <option value="">全部组别</option>
+            <option value="china">中国典籍名方</option>
+            <option value="japan">日本汉方经典</option>
+            <option value="korea">韩国韩方经典</option>
+          </select>
+          <select id="famous-classic">
+            <option value="">全部典籍 / 时期</option>
+          </select>
+        </div>
+        <div class="herb-lib-body">
+          <div class="herb-lib-grid famous-grid" id="famous-grid"></div>
+          <div class="herb-lib-detail famous-detail hidden" id="famous-detail"></div>
+        </div>
       </div>
-      <div class="famous-disclaimer">⚠️ 教学参考，须执业医师辨证使用；本栏目为只读学习，不接入处方点评与规则引擎判分，不参与推演流程。</div>
+
+      <!-- Tab B：按症寻方（规则推荐，教学演示） -->
+      <div class="famous-tab-pane hidden" id="pane-seek">
+        <div class="seek-steps">
+          <div class="seek-step"><span class="seek-step-no">1</span> 勾选主要症状，或在下方手工描述；系统归纳候选证型供你确认。</div>
+          <div class="seek-step"><span class="seek-step-no">2</span> 确认辨证后推荐名方；也可跳过辨证直接浏览（结果会标注仅供参考）。</div>
+        </div>
+
+        <div class="seek-block">
+          <div class="seek-block-label">常见症状（可多选）</div>
+          <div class="seek-chip-cloud" id="seek-sym-cloud"></div>
+        </div>
+
+        <div class="seek-block">
+          <div class="seek-block-label">辨证证型（可下拉补充，或由系统归纳后勾选）</div>
+          <select id="seek-syndrome"><option value="">— 选择证型 —</option></select>
+          <div class="seek-picked" id="seek-syndrome-picked"></div>
+        </div>
+
+        <div class="seek-block">
+          <div class="seek-block-label">手工描述症状 / 主诉</div>
+          <input type="text" id="seek-free" placeholder="如：恶寒无汗、项背僵硬疼痛；或小腿抽筋拘急" autocomplete="off">
+        </div>
+
+        <div class="seek-block">
+          <div class="seek-block-label">系统归纳的候选证型</div>
+          <div class="seek-candidates" id="seek-candidates"><span class="muted small">勾选症状后，此处按症状关联度列出候选证型；点选即纳入辨证。</span></div>
+        </div>
+
+        <div class="seek-actions">
+          <button class="btn btn-primary" id="seek-btn-recommend">推荐名方</button>
+          <button class="btn" id="seek-btn-deduce">归纳证型</button>
+          <button class="btn" id="seek-btn-skip">跳过辨证</button>
+          <button class="btn btn-ghost" id="seek-btn-clear">清空</button>
+          <span class="seek-status" id="seek-status"></span>
+        </div>
+
+        <div class="seek-result" id="seek-result"></div>
+      </div>
+
+      <div class="famous-disclaimer">⚠️ 教学参考，须执业医师辨证使用；本栏目为只读学习，不接入处方点评与规则引擎判分，不参与推演流程。推荐结果为规则检索演示，不构成处方建议。</div>
     </div>
   </div>
 
@@ -1548,8 +1596,9 @@
 <script src="js/standard-plan.min.js?v=20261109sp1"></script>
 <script src="js/app.min.js?v=20261125r26"></script>
 <script src="js/tcm-engine.min.js?v=20261125r29"></script>
+<script src="js/famous-recommend.min.js?v=20261125r30"></script>
 <script src="js/acup-engine.min.js?v=20261124r18"></script>
-<script src="js/tcm-app.min.js?v=20261125r28"></script>
+<script src="js/tcm-app.min.js?v=20261125r30"></script>
 <script src="js/tuina-engine.min.js?v=20261124r18"></script>
 <script src="js/acup-app.min.js?v=20261125r28"></script>
 <script src="js/acup-time.min.js?v=20261111time1"></script>

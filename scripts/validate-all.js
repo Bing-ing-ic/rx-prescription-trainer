@@ -197,6 +197,38 @@ try {
   else ok(`名方库 ${list.length} 首（中方 ${cnCount}、日方 ${jpCount}、韩方 ${krCount}），源流/差异/去重校验通过`);
 } catch (e) { bad('名方鉴赏库校验失败: ' + e.message); }
 
+// 10b. 按症寻方：名方标签与受控词表对齐
+console.log('\n[10b] 名方标签 / 受控词表对齐');
+try {
+  const famous = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-famous-prescriptions.json'), 'utf8'));
+  const tagDef = JSON.parse(fs.readFileSync(path.join(DATA, 'tcm-famous-tags.json'), 'utf8'));
+  const aliasIndex = (def) => {
+    const m = new Map();
+    (def || []).forEach(x => { m.set(x.label, x.label); (x.aliases || []).forEach(a => m.set(a, x.label)); });
+    return m;
+  };
+  const idx = {
+    syndromes: aliasIndex(tagDef.syndromes), organs: aliasIndex(tagDef.organs),
+    symptoms: aliasIndex(tagDef.symptoms), ki_ketsu_sui: aliasIndex(tagDef.ki_ketsu_sui),
+    kyo_jitsu: aliasIndex(tagDef.kyo_jitsu), six_channel: aliasIndex(tagDef.six_channel),
+    fukushin: aliasIndex(tagDef.fukushin)
+  };
+  const errs = [];
+  (famous.prescriptions || []).forEach(f => {
+    const t = f.tags || {};
+    if (!t.syndromes || !t.syndromes.length) errs.push(`${f.id} 缺证型标签`);
+    (t.syndromes || []).forEach(v => { if (!idx.syndromes.has(v)) errs.push(`${f.id} 证型未对齐:${v}`); });
+    (t.organs || []).forEach(v => { if (!idx.organs.has(v)) errs.push(`${f.id} 脏腑未对齐:${v}`); });
+    (t.target_symptoms || []).forEach(v => { if (!idx.symptoms.has(v)) errs.push(`${f.id} 症状未对齐:${v}`); });
+    (t.ki_ketsu_sui || []).forEach(v => { if (!idx.ki_ketsu_sui.has(v)) errs.push(`${f.id} 気血水未对齐:${v}`); });
+    if (t.kyo_jitsu && !idx.kyo_jitsu.has(t.kyo_jitsu)) errs.push(`${f.id} 虚实未对齐:${t.kyo_jitsu}`);
+    if (t.six_channel && !idx.six_channel.has(t.six_channel)) errs.push(`${f.id} 六病位未对齐:${t.six_channel}`);
+    if (t.fukushin && !idx.fukushin.has(t.fukushin)) errs.push(`${f.id} 腹证未对齐:${t.fukushin}`);
+  });
+  if (errs.length) errs.forEach(e => bad(e));
+  else ok('名方标签与受控词表对齐，证型/症状/気血水/腹证无越界');
+} catch (e) { bad('标签对齐校验失败: ' + e.message); }
+
 // 11. R4 西药库 schema 一致性：aliases 必须为数组、price 为数字或 null、溶媒标记一致
 console.log('\n[11] R4 西药库 schema 一致性');
 try {

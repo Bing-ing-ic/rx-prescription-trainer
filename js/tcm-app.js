@@ -10,7 +10,7 @@
   // ---------- 全局状态 ----------
   const S = {
     module: 'western',   // western | tcm | acup
-    cases: [], formulas: [], herbs: [], famous: [],
+    cases: [], formulas: [], herbs: [], famous: [], famousTags: {},
     case: null, patient: null,
     zhengOk: false,
     selectedFormula: null,
@@ -49,17 +49,19 @@
   }
   async function boot() {
     try {
-      const [cj, fj, hj, rj, fmq] = await Promise.all([
+      const [cj, fj, hj, rj, fmq, ftag] = await Promise.all([
         loadJSON('data/tcm-cases.json').catch(() => null),
         loadJSON('data/tcm-formulas.json').catch(() => null),
         loadJSON('data/tcm-herbs.json').catch(() => null),
         loadJSON('data/tcm-rules.json').catch(() => null),
-        loadJSON('data/tcm-famous-prescriptions.json').catch(() => null)
+        loadJSON('data/tcm-famous-prescriptions.json').catch(() => null),
+        loadJSON('data/tcm-famous-tags.json').catch(() => null)
       ]);
       S.cases = (cj && cj.cases) || (Array.isArray(cj) ? cj : []);
       S.formulas = (fj && fj.formulas) || (Array.isArray(fj) ? fj : []);
       S.herbs = (hj && hj.herbs) || (Array.isArray(hj) ? hj : []);
       S.famous = (fmq && fmq.prescriptions) || (Array.isArray(fmq) ? fmq : []);
+      S.famousTags = ftag || {};
       if (rj && rj.rules) window.TCMEngine.extraRules = rj.rules;
       if (S.cases.length === 0) {
         const tip = $('tcm-data-tip'); if (tip) tip.classList.remove('hidden');
@@ -569,6 +571,12 @@
     $('famous-classic').value = '';
     renderFamousGrid();
     $('famous-detail').classList.add('hidden');
+    switchFamousTab('browse');
+    renderSeekSyndromeOptions();
+    renderSeekSymCloud();
+    renderPickedSyndromes();
+    refreshCandidates();
+    updateSeekStatus();
     modal.classList.remove('hidden');
     setTimeout(() => { const s = $('famous-search'); if (s) s.focus(); }, 50);
   }
@@ -658,6 +666,135 @@
     `;
     box.classList.remove('hidden');
   }
+  // ---------- 按症寻方（规则推荐，教学演示） ----------
+  const seek = { symptoms: new Set(), syndromes: new Set(), freeText: '', skipped: false, confirmed: false };
+
+  function switchFamousTab(tab) {
+    document.querySelectorAll('.famous-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    const pb = $('pane-browse'), ps = $('pane-seek');
+    if (pb) pb.classList.toggle('hidden', tab !== 'browse');
+    if (ps) ps.classList.toggle('hidden', tab !== 'seek');
+  }
+
+  function seekSymptomFreq() {
+    const freq = {};
+    S.famous.forEach(f => (f.tags && f.tags.target_symptoms || []).forEach(s => { freq[s] = (freq[s] || 0) + 1; }));
+    return freq;
+  }
+
+  function renderSeekSymCloud() {
+    const cloud = $('seek-sym-cloud'); if (!cloud) return;
+    const freq = seekSymptomFreq();
+    const def = (S.famousTags.symptoms || []).slice().sort((a, b) => (freq[b.label] || 0) - (freq[a.label] || 0));
+    cloud.innerHTML = def.map(s => {
+      const on = seek.symptoms.has(s.label);
+      return `<button type="button" class="seek-chip${on ? ' on' : ''}" data-sym="${esc(s.label)}">${esc(s.label)}</button>`;
+    }).join('');
+    cloud.querySelectorAll('.seek-chip[data-sym]').forEach(el => {
+      el.onclick = () => {
+        const v = el.dataset.sym;
+        if (seek.symptoms.has(v)) seek.symptoms.delete(v); else seek.symptoms.add(v);
+        el.classList.toggle('on');
+        refreshCandidates();
+      };
+    });
+  }
+
+  function renderSeekSyndromeOptions() {
+    const sel = $('seek-syndrome'); if (!sel) return;
+    const cur = sel.value;
+    sel.innerHTML = '<option value="">— 选择证型 —</option>' +
+      (S.famousTags.syndromes || []).map(s => `<option value="${esc(s.label)}">${esc(s.label)}</option>`).join('');
+    sel.value = cur;
+  }
+
+  function renderPickedSyndromes() {
+    const box = $('seek-syndrome-picked'); if (!box) return;
+    if (!seek.syndromes.size) { box.innerHTML = ''; return; }
+    box.innerHTML = [...seek.syndromes].map(s =>
+      `<span class="seek-pill">${esc(s)}<button type="button" data-del="${esc(s)}" aria-label="移除">×</button></span>`).join('');
+    box.querySelectorAll('[data-del]').forEach(b => b.onclick = () => {
+      seek.syndromes.delete(b.dataset.del); renderPickedSyndromes();
+    });
+  }
+
+  // 归纳候选证型：已选症状在名方中关联到的证型，按关联次数排序取前 3
+  function deduceCandidates() {
+    const sym = [...seek.symptoms];
+    if (!sym.length) return [];
+    const score = {};
+    S.famous.forEach(f => {
+      const t = f.tags || {};
+      const hit = (t.target_symptoms || []).filter(s => sym.includes(s)).length;
+      if (hit > 0) (t.syndromes || []).forEach(s => { score[s] = (score[s] || 0) + hit; });
+    });
+    return Object.entries(score).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([label]) => label);
+  }
+
+  function refreshCandidates() {
+    const box = $('seek-candidates'); if (!box) return;
+    const cands = deduceCandidates();
+    if (!cands.length) {
+      box.innerHTML = '<span class="muted small">勾选症状后，此处按症状关联度列出候选证型；点选即纳入辨证。</span>';
+      return;
+    }
+    box.innerHTML = cands.map(c => {
+      const on = seek.syndromes.has(c);
+      return `<button type="button" class="seek-chip${on ? ' on' : ''}" data-cand="${esc(c)}">${esc(c)}</button>`;
+    }).join('');
+    box.querySelectorAll('[data-cand]').forEach(el => el.onclick = () => {
+      const v = el.dataset.cand;
+      if (seek.syndromes.has(v)) seek.syndromes.delete(v);
+      else { seek.syndromes.add(v); seek.confirmed = true; }
+      renderPickedSyndromes(); refreshCandidates(); updateSeekStatus();
+    });
+  }
+
+  function updateSeekStatus() {
+    const st = $('seek-status'); if (!st) return;
+    if (seek.skipped) { st.textContent = '未完成辨证，结果仅供浏览参考'; st.className = 'seek-status warn'; }
+    else if (seek.confirmed || seek.syndromes.size) { st.textContent = '已纳入辨证证型'; st.className = 'seek-status ok'; }
+    else { st.textContent = '尚未确认辨证，可先归纳或跳过'; st.className = 'seek-status muted'; }
+  }
+
+  function runSeek() {
+    const result = $('seek-result');
+    const input = { symptoms: [...seek.symptoms], syndromes: [...seek.syndromes], freeText: seek.freeText };
+    const opts = { skipped: seek.skipped };
+    const engine = window.FamousRecommendEngine;
+    const res = engine && engine.recommend
+      ? engine.recommend(S.famous, S.famousTags, input, opts)
+      : { results: [], empty: true };
+    if (res.empty) {
+      result.innerHTML = '<div class="herb-lib-empty">未找到匹配名方，请调整症状或补充描述。</div>';
+      return;
+    }
+    result.innerHTML = res.results.map(r => {
+      const bandLabel = r.band === 'recommend' ? '推荐' : '可参考';
+      return `<div class="seek-card">
+        <div class="seek-card-head">
+          <span class="seek-card-name">${esc(r.name)}</span>
+          <span class="fm-badge fm-badge-${r.region}">${famousRegionLabel(r.region)}</span>
+          <span class="seek-band seek-band-${r.band}">${bandLabel}</span>
+          <span class="seek-score">${r.score} 分</span>
+        </div>
+        <div class="seek-card-reasons">${r.reasons.map(rs => `<span class="seek-reason">${esc(rs)}</span>`).join('')}</div>
+        <div class="seek-card-actions"><button type="button" class="btn btn-sm" data-detail="${esc(r.id)}">查看详情</button></div>
+      </div>`;
+    }).join('');
+    result.querySelectorAll('[data-detail]').forEach(b => b.onclick = () => {
+      showFamousDetail(b.dataset.detail); switchFamousTab('browse');
+    });
+  }
+
+  function resetSeek() {
+    seek.symptoms.clear(); seek.syndromes.clear();
+    seek.freeText = ''; seek.skipped = false; seek.confirmed = false;
+    const f = $('seek-free'); if (f) f.value = '';
+    renderSeekSymCloud(); renderPickedSyndromes(); refreshCandidates(); updateSeekStatus();
+    const res = $('seek-result'); if (res) res.innerHTML = '';
+  }
+
   function bindEvents() {
     bindTabs();
     $('tcm-btn-new').onclick = newCase;
@@ -692,6 +829,26 @@
     $('famous-search').oninput = renderFamousGrid;
     $('famous-region').onchange = renderFamousGrid;
     $('famous-classic').onchange = renderFamousGrid;
+    // 名方双 Tab 切换
+    document.querySelectorAll('.famous-tab').forEach(b => {
+      b.onclick = () => switchFamousTab(b.dataset.tab);
+    });
+    // 按症寻方控件
+    const selSyn = $('seek-syndrome');
+    if (selSyn) selSyn.onchange = () => {
+      if (selSyn.value) { seek.syndromes.add(selSyn.value); seek.confirmed = true; renderPickedSyndromes(); updateSeekStatus(); }
+      selSyn.value = '';
+    };
+    const free = $('seek-free');
+    if (free) free.oninput = () => { seek.freeText = free.value.trim(); };
+    const btnRec = $('seek-btn-recommend');
+    if (btnRec) btnRec.onclick = runSeek;
+    const btnDed = $('seek-btn-deduce');
+    if (btnDed) btnDed.onclick = refreshCandidates;
+    const btnSkip = $('seek-btn-skip');
+    if (btnSkip) btnSkip.onclick = () => { seek.skipped = true; updateSeekStatus(); };
+    const btnClear = $('seek-btn-clear');
+    if (btnClear) btnClear.onclick = resetSeek;
     // 煎服法备注：编辑控件屏幕可见，打印时由 CSS 隐藏；选中值实时同步到打印版文本（屏幕隐藏，打印显示）
     (function bindPrepPrint() {
       const paper = $('tcm-rx-paper');

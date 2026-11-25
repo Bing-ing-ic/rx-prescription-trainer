@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.25-famous-r5",
+  "version": "2026.11.25-famous-r6",
   "note": "名方鉴赏（只读学习栏目）。仅收录有明确典籍/文献出处的成方；教学参考，须执业医师辨证使用。本库不接入处方点评与规则引擎判分，不参与推演流程。海外（日本、韩国）条目源流归属与剂量、适应证、剂型差异见 origin_lineage 与 cn_jp_diff 字段。",
   "prescriptions": [
     {
@@ -73,7 +73,35 @@
         "《伤寒论·辨太阳病脉证并治》第31条",
         "《方剂学》人民卫生出版社教材·解表剂辛温解表"
       ],
-      "pinyin": "gegentang"
+      "pinyin": "gegentang",
+      "tags": {
+        "syndromes": [
+          "风寒表实证"
+        ],
+        "organs": [
+          "筋骨经络"
+        ],
+        "treatments": [
+          "发汗解表",
+          "解肌舒筋"
+        ],
+        "target_symptoms": [
+          "恶寒",
+          "无汗",
+          "项背强痛"
+        ],
+        "symptoms": [
+          "恶寒",
+          "无汗",
+          "项背强痛"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [],
+        "six_channel": "太阳",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-002",
@@ -147,7 +175,40 @@
         "《伤寒论·辨太阳病脉证并治》第38条",
         "《方剂学》人民卫生出版社教材·解表剂辛温解表"
       ],
-      "pinyin": "daqinglongtang"
+      "pinyin": "daqinglongtang",
+      "tags": {
+        "syndromes": [
+          "风寒表实证",
+          "肺热证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "发汗解表",
+          "清肺平喘"
+        ],
+        "target_symptoms": [
+          "无汗",
+          "烦躁",
+          "口渴",
+          "发热"
+        ],
+        "symptoms": [
+          "无汗",
+          "烦躁",
+          "口渴",
+          "发热"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "太阳",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-003",
@@ -227,7 +288,38 @@
         "《伤寒论·辨太阳病脉证并治》第40条",
         "《方剂学》人民卫生出版社教材·解表剂辛温解表"
       ],
-      "pinyin": "xiaoqinglongtang"
+      "pinyin": "xiaoqinglongtang",
+      "tags": {
+        "syndromes": [
+          "痰饮证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "温肺化饮"
+        ],
+        "target_symptoms": [
+          "咳嗽",
+          "气喘",
+          "痰清稀",
+          "恶寒"
+        ],
+        "symptoms": [
+          "咳嗽",
+          "气喘",
+          "痰清稀",
+          "恶寒"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "太阳",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-004",
@@ -285,7 +377,38 @@
         "《伤寒论·辨太阳病脉证并治》第63条",
         "《方剂学》人民卫生出版社教材·解表剂辛凉解表"
       ],
-      "pinyin": "maxingshigantang"
+      "pinyin": "maxingshigantang",
+      "tags": {
+        "syndromes": [
+          "肺热证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "清肺平喘"
+        ],
+        "target_symptoms": [
+          "发热",
+          "气喘",
+          "咳嗽",
+          "口渴"
+        ],
+        "symptoms": [
+          "发热",
+          "气喘",
+          "咳嗽",
+          "口渴"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-005",
@@ -364,7 +487,40 @@
         "《伤寒论·辨太阳病脉证并治》第103条",
         "《方剂学》人民卫生出版社教材·和解剂和解少阳"
       ],
-      "pinyin": "dachaishutang"
+      "pinyin": "dachaishutang",
+      "tags": {
+        "syndromes": [
+          "少阳证"
+        ],
+        "organs": [
+          "肝",
+          "胃"
+        ],
+        "treatments": [
+          "和解少阳",
+          "通腑泻热"
+        ],
+        "target_symptoms": [
+          "往来寒热",
+          "胸胁苦满",
+          "心下痞硬",
+          "便秘"
+        ],
+        "symptoms": [
+          "往来寒热",
+          "胸胁苦满",
+          "心下痞硬",
+          "便秘"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "少阳",
+        "fukushin": "胸胁苦满",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-006",
@@ -414,7 +570,36 @@
         "《金匮要略·黄疸病脉证并治》",
         "《方剂学》人民卫生出版社教材·祛湿剂清热祛湿"
       ],
-      "pinyin": "yinchenhaotang"
+      "pinyin": "yinchenhaotang",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "肝"
+        ],
+        "treatments": [
+          "清热利湿"
+        ],
+        "target_symptoms": [
+          "黄疸",
+          "口苦",
+          "小便不利"
+        ],
+        "symptoms": [
+          "黄疸",
+          "口苦",
+          "小便不利"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-007",
@@ -475,7 +660,38 @@
         "《伤寒论·辨阳明病脉证并治》第223条",
         "《方剂学》人民卫生出版社教材·祛湿剂利水渗湿"
       ],
-      "pinyin": "zhulingtang"
+      "pinyin": "zhulingtang",
+      "tags": {
+        "syndromes": [
+          "水湿内停证",
+          "阴虚内热证"
+        ],
+        "organs": [
+          "膀胱"
+        ],
+        "treatments": [
+          "利水养阴"
+        ],
+        "target_symptoms": [
+          "小便不利",
+          "口渴",
+          "心悸"
+        ],
+        "symptoms": [
+          "小便不利",
+          "口渴",
+          "心悸"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "水毒",
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-008",
@@ -538,7 +754,40 @@
         "《伤寒论·辨少阴病脉证并治》第316条",
         "《方剂学》人民卫生出版社教材·祛湿剂温化寒湿"
       ],
-      "pinyin": "zhenwutang"
+      "pinyin": "zhenwutang",
+      "tags": {
+        "syndromes": [
+          "阳虚水泛证"
+        ],
+        "organs": [
+          "脾",
+          "肾"
+        ],
+        "treatments": [
+          "温阳利水"
+        ],
+        "target_symptoms": [
+          "水肿",
+          "手足冷",
+          "小便不利",
+          "心悸"
+        ],
+        "symptoms": [
+          "水肿",
+          "手足冷",
+          "小便不利",
+          "心悸"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阳虚",
+          "水毒"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-009",
@@ -593,7 +842,38 @@
         "《伤寒论·辨太阳病脉证并治》第67条",
         "《方剂学》人民卫生出版社教材·祛湿剂温化寒湿"
       ],
-      "pinyin": "lingguizhugantang"
+      "pinyin": "lingguizhugantang",
+      "tags": {
+        "syndromes": [
+          "痰饮证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "温阳利水",
+          "健脾利湿"
+        ],
+        "target_symptoms": [
+          "胸胁苦满",
+          "眩晕",
+          "心悸"
+        ],
+        "symptoms": [
+          "胸胁苦满",
+          "眩晕",
+          "心悸"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "水毒"
+        ],
+        "six_channel": "",
+        "fukushin": "心下振水音",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-010",
@@ -661,7 +941,35 @@
         "《伤寒论·辨太阳病脉证并治》第100条",
         "《方剂学》人民卫生出版社教材·温里剂温中祛寒"
       ],
-      "pinyin": "xiaojianzhongtang"
+      "pinyin": "xiaojianzhongtang",
+      "tags": {
+        "syndromes": [
+          "中焦虚寒证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "温中补虚",
+          "缓急止痛"
+        ],
+        "target_symptoms": [
+          "腹痛"
+        ],
+        "symptoms": [
+          "腹痛"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-011",
@@ -750,7 +1058,33 @@
         "《伤寒论·辨太阳病脉证并治》第177条",
         "《方剂学》人民卫生出版社教材·补益剂气血双补"
       ],
-      "pinyin": "zhigancaotang"
+      "pinyin": "zhigancaotang",
+      "tags": {
+        "syndromes": [
+          "气阴两虚证"
+        ],
+        "organs": [
+          "心"
+        ],
+        "treatments": [
+          "益气滋阴"
+        ],
+        "target_symptoms": [
+          "心悸"
+        ],
+        "symptoms": [
+          "心悸"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-012",
@@ -812,7 +1146,37 @@
         "《伤寒论·辨太阳病脉证并治》第106条",
         "《方剂学》人民卫生出版社教材·理血剂活血祛瘀"
       ],
-      "pinyin": "taohechengqitang"
+      "pinyin": "taohechengqitang",
+      "tags": {
+        "syndromes": [
+          "血瘀证"
+        ],
+        "organs": [
+          "大肠",
+          "冲任"
+        ],
+        "treatments": [
+          "逐瘀泻热"
+        ],
+        "target_symptoms": [
+          "腹痛",
+          "烦躁",
+          "便秘"
+        ],
+        "symptoms": [
+          "腹痛",
+          "烦躁",
+          "便秘"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "少腹急结",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-013",
@@ -886,7 +1250,35 @@
         "《伤寒论·辨太阳病脉证并治》第161条",
         "《方剂学》人民卫生出版社教材·理气剂降气"
       ],
-      "pinyin": "xuanfudaizhetang"
+      "pinyin": "xuanfudaizhetang",
+      "tags": {
+        "syndromes": [
+          "痰湿证"
+        ],
+        "organs": [
+          "胃"
+        ],
+        "treatments": [
+          "降逆化痰",
+          "益气和胃"
+        ],
+        "target_symptoms": [
+          "心下痞硬",
+          "呕吐呃逆"
+        ],
+        "symptoms": [
+          "心下痞硬",
+          "呕吐呃逆"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "心下痞硬",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-014",
@@ -937,7 +1329,37 @@
         "《伤寒论·辨少阴病脉证并治》第301条",
         "《方剂学》人民卫生出版社教材·解表剂辛温解表"
       ],
-      "pinyin": "mahuangfuzixixintang"
+      "pinyin": "mahuangfuzixixintang",
+      "tags": {
+        "syndromes": [
+          "风寒表实证",
+          "阳虚寒凝证"
+        ],
+        "organs": [
+          "肾"
+        ],
+        "treatments": [
+          "发汗解表"
+        ],
+        "target_symptoms": [
+          "恶寒",
+          "发热",
+          "手足冷"
+        ],
+        "symptoms": [
+          "恶寒",
+          "发热",
+          "手足冷"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阳虚"
+        ],
+        "six_channel": "少阴",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-015",
@@ -1005,7 +1427,40 @@
         "《金匮要略·妇人妊娠病脉证并治》",
         "《方剂学》人民卫生出版社教材·补益剂补血"
       ],
-      "pinyin": "dangguishaoyaosan"
+      "pinyin": "dangguishaoyaosan",
+      "tags": {
+        "syndromes": [
+          "血虚证",
+          "脾虚湿盛证"
+        ],
+        "organs": [
+          "肝",
+          "脾"
+        ],
+        "treatments": [
+          "养血疏肝",
+          "健脾利湿"
+        ],
+        "target_symptoms": [
+          "腹痛",
+          "水肿",
+          "眩晕"
+        ],
+        "symptoms": [
+          "腹痛",
+          "水肿",
+          "眩晕"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "血虚",
+          "水毒"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-016",
@@ -1109,7 +1564,39 @@
         "《金匮要略·妇人杂病脉证并治》",
         "《方剂学》人民卫生出版社教材·理血剂活血祛瘀"
       ],
-      "pinyin": "wenjingtang"
+      "pinyin": "wenjingtang",
+      "tags": {
+        "syndromes": [
+          "血瘀证",
+          "阳虚寒凝证"
+        ],
+        "organs": [
+          "冲任"
+        ],
+        "treatments": [
+          "养血祛瘀"
+        ],
+        "target_symptoms": [
+          "月经不调",
+          "不孕",
+          "腹痛"
+        ],
+        "symptoms": [
+          "月经不调",
+          "不孕",
+          "腹痛"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "血虚",
+          "瘀血",
+          "阳虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-017",
@@ -1171,7 +1658,32 @@
         "《金匮要略·妇人妊娠病脉证并治》",
         "《方剂学》人民卫生出版社教材·理血剂活血祛瘀"
       ],
-      "pinyin": "guizhifulingwan"
+      "pinyin": "guizhifulingwan",
+      "tags": {
+        "syndromes": [
+          "血瘀证"
+        ],
+        "organs": [
+          "冲任"
+        ],
+        "treatments": [
+          "活血消癥"
+        ],
+        "target_symptoms": [
+          "腹痛"
+        ],
+        "symptoms": [
+          "腹痛"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "下腹部抵抗压痛",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-018",
@@ -1232,7 +1744,32 @@
         "《金匮要略·血痹虚劳病脉证并治》",
         "《方剂学》人民卫生出版社教材·补益剂补气"
       ],
-      "pinyin": "huangqiguizhiwuwutang"
+      "pinyin": "huangqiguizhiwuwutang",
+      "tags": {
+        "syndromes": [
+          "气虚证"
+        ],
+        "organs": [
+          "筋骨经络"
+        ],
+        "treatments": [
+          "益气温经"
+        ],
+        "target_symptoms": [
+          "麻木"
+        ],
+        "symptoms": [
+          "麻木"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-019",
@@ -1288,7 +1825,37 @@
         "《金匮要略·痉湿暍病脉证并治》",
         "《方剂学》人民卫生出版社教材·祛湿剂祛风胜湿"
       ],
-      "pinyin": "fangjihuangqitang"
+      "pinyin": "fangjihuangqitang",
+      "tags": {
+        "syndromes": [
+          "脾虚湿盛证"
+        ],
+        "organs": [
+          "脾"
+        ],
+        "treatments": [
+          "祛风利水"
+        ],
+        "target_symptoms": [
+          "水肿",
+          "肢体疼痛",
+          "恶风"
+        ],
+        "symptoms": [
+          "水肿",
+          "肢体疼痛",
+          "恶风"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "水毒"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-020",
@@ -1339,7 +1906,30 @@
         "《金匮要略·疮痈肠痈浸淫病脉证并治》",
         "《方剂学》人民卫生出版社教材·清热剂清脏腑热"
       ],
-      "pinyin": "yiyifuzibaijiangsan"
+      "pinyin": "yiyifuzibaijiangsan",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "大肠"
+        ],
+        "treatments": [
+          "排脓散结"
+        ],
+        "target_symptoms": [
+          "疮痈肿毒"
+        ],
+        "symptoms": [
+          "疮痈肿毒"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-021",
@@ -1382,7 +1972,35 @@
         "《金匮要略·百合狐惑阴阳毒病脉证并治》（百合地黄汤条）",
         "人卫《方剂学》（全国高等中医药院校规划教材）百合地黄汤相关篇目"
       ],
-      "pinyin": "baihedihuangtang"
+      "pinyin": "baihedihuangtang",
+      "tags": {
+        "syndromes": [
+          "阴虚内热证"
+        ],
+        "organs": [
+          "心",
+          "肺"
+        ],
+        "treatments": [
+          "养阴透热"
+        ],
+        "target_symptoms": [
+          "情志恍惚",
+          "口苦"
+        ],
+        "symptoms": [
+          "情志恍惚",
+          "口苦"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-022",
@@ -1444,7 +2062,36 @@
         "《金匮要略·痰饮咳嗽病脉证并治》",
         "《方剂学》人民卫生出版社教材·祛痰剂温化寒痰"
       ],
-      "pinyin": "lingganwuweijiangxintang"
+      "pinyin": "lingganwuweijiangxintang",
+      "tags": {
+        "syndromes": [
+          "痰饮证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "温肺化饮"
+        ],
+        "target_symptoms": [
+          "咳嗽",
+          "痰清稀",
+          "气喘"
+        ],
+        "symptoms": [
+          "咳嗽",
+          "痰清稀",
+          "气喘"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-023",
@@ -1572,7 +2219,36 @@
         "《备急千金要方》卷八",
         "《方剂学》人民卫生出版社教材·祛湿剂祛风胜湿"
       ],
-      "pinyin": "duhuojishengtang"
+      "pinyin": "duhuojishengtang",
+      "tags": {
+        "syndromes": [
+          "肝肾不足证"
+        ],
+        "organs": [
+          "肝",
+          "肾",
+          "筋骨经络"
+        ],
+        "treatments": [
+          "祛风除湿",
+          "滋补肝肾"
+        ],
+        "target_symptoms": [
+          "肢体疼痛"
+        ],
+        "symptoms": [
+          "肢体疼痛"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "血虚",
+          "気虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-024",
@@ -1646,7 +2322,38 @@
         "《外台秘要》卷一引《深师方》（石膏汤条）",
         "人卫《方剂学》（全国高等中医药院校规划教材）表里双解、清热剂相关篇目"
       ],
-      "pinyin": "shigaotang"
+      "pinyin": "shigaotang",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "胃"
+        ],
+        "treatments": [
+          "清热解毒"
+        ],
+        "target_symptoms": [
+          "发热",
+          "无汗",
+          "烦躁",
+          "口渴"
+        ],
+        "symptoms": [
+          "发热",
+          "无汗",
+          "烦躁",
+          "口渴"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-025",
@@ -1690,7 +2397,32 @@
         "《太平惠民和剂局方》卷六",
         "《方剂学》人民卫生出版社教材·理血剂活血祛瘀"
       ],
-      "pinyin": "shixiaosan"
+      "pinyin": "shixiaosan",
+      "tags": {
+        "syndromes": [
+          "血瘀证"
+        ],
+        "organs": [],
+        "treatments": [
+          "活血祛瘀"
+        ],
+        "target_symptoms": [
+          "肢体疼痛",
+          "腹痛"
+        ],
+        "symptoms": [
+          "肢体疼痛",
+          "腹痛"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-026",
@@ -1764,7 +2496,37 @@
         "《太平惠民和剂局方》卷三",
         "《方剂学》人民卫生出版社教材·理气剂降气"
       ],
-      "pinyin": "suzijiangqitang"
+      "pinyin": "suzijiangqitang",
+      "tags": {
+        "syndromes": [
+          "痰饮证"
+        ],
+        "organs": [
+          "肺",
+          "肾"
+        ],
+        "treatments": [
+          "降气平喘"
+        ],
+        "target_symptoms": [
+          "气喘",
+          "痰多",
+          "胸胁苦满"
+        ],
+        "symptoms": [
+          "气喘",
+          "痰多",
+          "胸胁苦满"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-027",
@@ -1859,7 +2621,37 @@
         "《太平惠民和剂局方》卷六",
         "《方剂学》人民卫生出版社教材·固涩剂涩肠固脱"
       ],
-      "pinyin": "zhenrenyangzangtang"
+      "pinyin": "zhenrenyangzangtang",
+      "tags": {
+        "syndromes": [
+          "中焦虚寒证"
+        ],
+        "organs": [
+          "脾",
+          "肾"
+        ],
+        "treatments": [
+          "涩肠固脱",
+          "温补脾肾"
+        ],
+        "target_symptoms": [
+          "腹泻",
+          "腹痛"
+        ],
+        "symptoms": [
+          "腹泻",
+          "腹痛"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阳虚",
+          "気虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-028",
@@ -1939,7 +2731,37 @@
         "《太平惠民和剂局方》卷六",
         "《方剂学》人民卫生出版社教材·清热剂清热解毒"
       ],
-      "pinyin": "lianggesan"
+      "pinyin": "lianggesan",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "胃"
+        ],
+        "treatments": [
+          "通腑泻热",
+          "清热解毒"
+        ],
+        "target_symptoms": [
+          "烦躁",
+          "便秘",
+          "口舌生疮"
+        ],
+        "symptoms": [
+          "烦躁",
+          "便秘",
+          "口舌生疮"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-029",
@@ -1992,7 +2814,38 @@
         "《内外伤辨惑论》卷中",
         "《方剂学》人民卫生出版社教材·补益剂补气"
       ],
-      "pinyin": "shengmaisan"
+      "pinyin": "shengmaisan",
+      "tags": {
+        "syndromes": [
+          "气阴两虚证"
+        ],
+        "organs": [
+          "心",
+          "肺"
+        ],
+        "treatments": [
+          "益气生津"
+        ],
+        "target_symptoms": [
+          "气短",
+          "出汗异常",
+          "口渴"
+        ],
+        "symptoms": [
+          "气短",
+          "出汗异常",
+          "口渴"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-030",
@@ -2036,7 +2889,33 @@
         "《内外伤辨惑论》卷中",
         "《方剂学》人民卫生出版社教材·补益剂补血"
       ],
-      "pinyin": "dangguibuxuetang"
+      "pinyin": "dangguibuxuetang",
+      "tags": {
+        "syndromes": [
+          "血虚证"
+        ],
+        "organs": [],
+        "treatments": [
+          "补气生血"
+        ],
+        "target_symptoms": [
+          "发热",
+          "倦怠乏力"
+        ],
+        "symptoms": [
+          "发热",
+          "倦怠乏力"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "血虚",
+          "気虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-031",
@@ -2082,7 +2961,35 @@
         "《内外伤辨惑论》卷下",
         "《方剂学》人民卫生出版社教材·消食剂健脾消食"
       ],
-      "pinyin": "zhishuwan"
+      "pinyin": "zhishuwan",
+      "tags": {
+        "syndromes": [
+          "脾胃气虚证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "健脾消痞"
+        ],
+        "target_symptoms": [
+          "心下痞硬",
+          "纳差"
+        ],
+        "symptoms": [
+          "心下痞硬",
+          "纳差"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-032",
@@ -2162,7 +3069,32 @@
         "《景岳全书》卷五十一新方八阵",
         "《方剂学》人民卫生出版社教材·补益剂补阴"
       ],
-      "pinyin": "zuoguiwan"
+      "pinyin": "zuoguiwan",
+      "tags": {
+        "syndromes": [
+          "肝肾阴虚证"
+        ],
+        "organs": [
+          "肾"
+        ],
+        "treatments": [
+          "滋阴补肾"
+        ],
+        "target_symptoms": [
+          "肢体疼痛"
+        ],
+        "symptoms": [
+          "肢体疼痛"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-033",
@@ -2225,7 +3157,37 @@
         "《丹溪心法》卷三",
         "《方剂学》人民卫生出版社教材·理气剂行气"
       ],
-      "pinyin": "yuejuwan"
+      "pinyin": "yuejuwan",
+      "tags": {
+        "syndromes": [
+          "肝郁气滞证"
+        ],
+        "organs": [
+          "肝",
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "行气解郁"
+        ],
+        "target_symptoms": [
+          "胸胁苦满",
+          "肢体疼痛"
+        ],
+        "symptoms": [
+          "胸胁苦满",
+          "肢体疼痛"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "郁火",
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-034",
@@ -2305,7 +3267,37 @@
         "《温病条辨》卷一上焦篇",
         "《方剂学》人民卫生出版社教材·祛湿剂清热祛湿"
       ],
-      "pinyin": "sanrentang"
+      "pinyin": "sanrentang",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "清利湿热"
+        ],
+        "target_symptoms": [
+          "肢体疼痛",
+          "胸胁苦满",
+          "发热"
+        ],
+        "symptoms": [
+          "肢体疼痛",
+          "胸胁苦满",
+          "发热"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-035",
@@ -2391,7 +3383,36 @@
         "《温病条辨》卷一上焦篇",
         "《方剂学》人民卫生出版社教材·清热剂清营凉血"
       ],
-      "pinyin": "qingyingtang"
+      "pinyin": "qingyingtang",
+      "tags": {
+        "syndromes": [
+          "热入营血证"
+        ],
+        "organs": [
+          "心"
+        ],
+        "treatments": [
+          "清热解毒"
+        ],
+        "target_symptoms": [
+          "发热",
+          "烦躁",
+          "出血"
+        ],
+        "symptoms": [
+          "发热",
+          "烦躁",
+          "出血"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-036",
@@ -2453,7 +3474,32 @@
         "《温病条辨》卷三下焦篇",
         "《方剂学》人民卫生出版社教材·清热剂清虚热"
       ],
-      "pinyin": "qinghaobiejiatang"
+      "pinyin": "qinghaobiejiatang",
+      "tags": {
+        "syndromes": [
+          "阴虚内热证"
+        ],
+        "organs": [],
+        "treatments": [
+          "养阴透热"
+        ],
+        "target_symptoms": [
+          "发热",
+          "出汗异常"
+        ],
+        "symptoms": [
+          "发热",
+          "出汗异常"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-037",
@@ -2509,7 +3555,33 @@
         "《小儿药证直诀》卷下",
         "《方剂学》人民卫生出版社教材·清热剂清脏腑热"
       ],
-      "pinyin": "daochisan"
+      "pinyin": "daochisan",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "心",
+          "小肠"
+        ],
+        "treatments": [
+          "清心利水"
+        ],
+        "target_symptoms": [
+          "烦躁",
+          "小便不利"
+        ],
+        "symptoms": [
+          "烦躁",
+          "小便不利"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-038",
@@ -2577,7 +3649,39 @@
         "《医学心悟》卷四",
         "《方剂学》人民卫生出版社教材·祛痰剂化痰熄风"
       ],
-      "pinyin": "banxiabaizhutianmatang"
+      "pinyin": "banxiabaizhutianmatang",
+      "tags": {
+        "syndromes": [
+          "痰湿证"
+        ],
+        "organs": [
+          "脾",
+          "胃",
+          "肝"
+        ],
+        "treatments": [
+          "燥湿化痰",
+          "平肝息风"
+        ],
+        "target_symptoms": [
+          "眩晕",
+          "头痛",
+          "呕吐呃逆"
+        ],
+        "symptoms": [
+          "眩晕",
+          "头痛",
+          "呕吐呃逆"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-039",
@@ -2635,7 +3739,36 @@
         "《济生方》卷二",
         "《方剂学》人民卫生出版社教材·理气剂降气"
       ],
-      "pinyin": "simotang"
+      "pinyin": "simotang",
+      "tags": {
+        "syndromes": [
+          "肝郁气滞证"
+        ],
+        "organs": [
+          "肝"
+        ],
+        "treatments": [
+          "行气降逆"
+        ],
+        "target_symptoms": [
+          "胸胁苦满",
+          "气喘",
+          "抑郁易怒"
+        ],
+        "symptoms": [
+          "胸胁苦满",
+          "气喘",
+          "抑郁易怒"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "気虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-040",
@@ -2715,7 +3848,32 @@
         "《医林改错》卷上",
         "《方剂学》人民卫生出版社教材·理血剂活血祛瘀"
       ],
-      "pinyin": "tongqiaohuoxuetang"
+      "pinyin": "tongqiaohuoxuetang",
+      "tags": {
+        "syndromes": [
+          "血瘀证"
+        ],
+        "organs": [
+          "筋骨经络"
+        ],
+        "treatments": [
+          "活血通窍"
+        ],
+        "target_symptoms": [
+          "头痛"
+        ],
+        "symptoms": [
+          "头痛"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-001",
@@ -2791,7 +3949,35 @@
         "《伤寒论·辨太阳病脉证并治》",
         "PMDA ツムラ葛根湯エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "ggt"
+      "pinyin": "ggt",
+      "tags": {
+        "syndromes": [
+          "风寒表实证"
+        ],
+        "organs": [
+          "筋骨经络"
+        ],
+        "treatments": [
+          "发汗解表",
+          "解肌舒筋"
+        ],
+        "target_symptoms": [
+          "恶寒",
+          "无汗",
+          "项背强痛"
+        ],
+        "symptoms": [
+          "恶寒",
+          "无汗",
+          "项背强痛"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [],
+        "six_channel": "太阳",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-002",
@@ -2875,7 +4061,38 @@
         "《金匮要略·腹满寒疝宿食病脉证治》",
         "PMDA ツムラ大柴胡湯エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "dct"
+      "pinyin": "dct",
+      "tags": {
+        "syndromes": [
+          "少阳证"
+        ],
+        "organs": [
+          "肝",
+          "胃"
+        ],
+        "treatments": [
+          "和解少阳",
+          "通腑泻热"
+        ],
+        "target_symptoms": [
+          "胃痛",
+          "便秘",
+          "胸胁苦满"
+        ],
+        "symptoms": [
+          "胃痛",
+          "便秘",
+          "胸胁苦满"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "少阳",
+        "fukushin": "胸胁苦满",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-003",
@@ -2962,7 +4179,36 @@
         "《伤寒论·辨太阳病脉证并治》",
         "PMDA ツムラ柴胡桂枝湯エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "chgzt"
+      "pinyin": "chgzt",
+      "tags": {
+        "syndromes": [
+          "少阳证"
+        ],
+        "organs": [
+          "肝"
+        ],
+        "treatments": [
+          "和解少阳"
+        ],
+        "target_symptoms": [
+          "发热",
+          "肢体疼痛",
+          "胸胁苦满",
+          "呕吐呃逆"
+        ],
+        "symptoms": [
+          "发热",
+          "肢体疼痛",
+          "胸胁苦满",
+          "呕吐呃逆"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [],
+        "six_channel": "少阳",
+        "fukushin": "胸胁苦满",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-004",
@@ -3031,7 +4277,42 @@
         "《金匮要略·妇人妊娠病脉证并治》",
         "PMDA ツムラ当帰芍薬散エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "dgyys"
+      "pinyin": "dgyys",
+      "tags": {
+        "syndromes": [
+          "血虚证",
+          "脾虚湿盛证"
+        ],
+        "organs": [
+          "肝",
+          "脾"
+        ],
+        "treatments": [
+          "养血疏肝",
+          "健脾利湿"
+        ],
+        "target_symptoms": [
+          "眩晕",
+          "水肿",
+          "倦怠乏力",
+          "手足冷"
+        ],
+        "symptoms": [
+          "眩晕",
+          "水肿",
+          "倦怠乏力",
+          "手足冷"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "血虚",
+          "水毒"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-005",
@@ -3089,7 +4370,38 @@
         "《金匮要略·痰饮咳嗽病脉证并治》",
         "PMDA ツムラ苓桂朮甘湯エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "lzgzg"
+      "pinyin": "lzgzg",
+      "tags": {
+        "syndromes": [
+          "痰饮证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "温阳利水",
+          "健脾利湿"
+        ],
+        "target_symptoms": [
+          "眩晕",
+          "心悸",
+          "小便不利"
+        ],
+        "symptoms": [
+          "眩晕",
+          "心悸",
+          "小便不利"
+        ],
+        "kyo_jitsu": "虚实中间",
+        "ki_ketsu_sui": [
+          "水毒"
+        ],
+        "six_channel": "",
+        "fukushin": "心下振水音",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-006",
@@ -3153,7 +4465,40 @@
         "《伤寒论·辨阳明病脉证并治》",
         "厚生労働省 一般用漢方製剤製造販売承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "zlt"
+      "pinyin": "zlt",
+      "tags": {
+        "syndromes": [
+          "水湿内停证",
+          "阴虚内热证"
+        ],
+        "organs": [
+          "膀胱"
+        ],
+        "treatments": [
+          "利水养阴"
+        ],
+        "target_symptoms": [
+          "小便不利",
+          "口渴",
+          "心悸",
+          "出血"
+        ],
+        "symptoms": [
+          "小便不利",
+          "口渴",
+          "心悸",
+          "出血"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "水毒",
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-007",
@@ -3216,7 +4561,32 @@
         "《金匮要略·妇人妊娠病脉证并治》",
         "PMDA ツムラ桂枝茯苓丸エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "gzflw"
+      "pinyin": "gzflw",
+      "tags": {
+        "syndromes": [
+          "血瘀证"
+        ],
+        "organs": [
+          "冲任"
+        ],
+        "treatments": [
+          "活血消癥"
+        ],
+        "target_symptoms": [
+          "腹痛"
+        ],
+        "symptoms": [
+          "腹痛"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "下腹部抵抗压痛",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-008",
@@ -3281,7 +4651,36 @@
         "《伤寒论·辨太阳病脉证并治》",
         "厚生労働省 一般用漢方製剤承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "thgcqt"
+      "pinyin": "thgcqt",
+      "tags": {
+        "syndromes": [
+          "血瘀证"
+        ],
+        "organs": [
+          "大肠"
+        ],
+        "treatments": [
+          "逐瘀泻热"
+        ],
+        "target_symptoms": [
+          "腹痛",
+          "烦躁",
+          "便秘"
+        ],
+        "symptoms": [
+          "腹痛",
+          "烦躁",
+          "便秘"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "少腹急结",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-009",
@@ -3325,7 +4724,32 @@
         "《伤寒论·辨太阳病脉证并治》",
         "PMDA ツムラ芍薬甘草湯エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "sygct"
+      "pinyin": "sygct",
+      "tags": {
+        "syndromes": [
+          "血虚证"
+        ],
+        "organs": [
+          "筋骨经络"
+        ],
+        "treatments": [
+          "缓急止痛"
+        ],
+        "target_symptoms": [
+          "肌肉痉挛"
+        ],
+        "symptoms": [
+          "肌肉痉挛"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "腹直筋拘急",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-010",
@@ -3378,7 +4802,34 @@
         "《伤寒论·辨少阴病脉证并治》",
         "PMDA ツムラ麻黄附子細辛湯エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "mhfzxxs"
+      "pinyin": "mhfzxxs",
+      "tags": {
+        "syndromes": [
+          "阳虚寒凝证"
+        ],
+        "organs": [
+          "肾"
+        ],
+        "treatments": [
+          "发汗解表"
+        ],
+        "target_symptoms": [
+          "手足冷",
+          "恶寒"
+        ],
+        "symptoms": [
+          "手足冷",
+          "恶寒"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阳虚"
+        ],
+        "six_channel": "少阴",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-011",
@@ -3449,7 +4900,39 @@
         "《金匮要略·血痹虚劳病脉证并治》",
         "厚生労働省 一般用漢方製剤承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "xjzt"
+      "pinyin": "xjzt",
+      "tags": {
+        "syndromes": [
+          "中焦虚寒证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "温中补虚",
+          "缓急止痛"
+        ],
+        "target_symptoms": [
+          "腹痛",
+          "心悸",
+          "倦怠乏力"
+        ],
+        "symptoms": [
+          "腹痛",
+          "心悸",
+          "倦怠乏力"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-012",
@@ -3506,7 +4989,35 @@
         "《伤寒论·辨少阴病脉证并治》",
         "PMDA ツムラ四逆散エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "sns"
+      "pinyin": "sns",
+      "tags": {
+        "syndromes": [
+          "肝郁气滞证"
+        ],
+        "organs": [
+          "肝",
+          "脾"
+        ],
+        "treatments": [
+          "疏肝理气"
+        ],
+        "target_symptoms": [
+          "胸胁苦满",
+          "腹痛",
+          "抑郁易怒"
+        ],
+        "symptoms": [
+          "胸胁苦满",
+          "腹痛",
+          "抑郁易怒"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [],
+        "six_channel": "少阳",
+        "fukushin": "胸胁苦满",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-013",
@@ -3571,7 +5082,40 @@
         "《伤寒论·辨太阳病脉证并治》",
         "厚生労働省 一般用漢方製剤承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "zwt"
+      "pinyin": "zwt",
+      "tags": {
+        "syndromes": [
+          "阳虚水泛证"
+        ],
+        "organs": [
+          "脾",
+          "肾"
+        ],
+        "treatments": [
+          "温阳利水"
+        ],
+        "target_symptoms": [
+          "水肿",
+          "心悸",
+          "眩晕",
+          "小便不利"
+        ],
+        "symptoms": [
+          "水肿",
+          "心悸",
+          "眩晕",
+          "小便不利"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阳虚",
+          "水毒"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-014",
@@ -3660,7 +5204,39 @@
         "《伤寒论·辨厥阴病脉证并治》",
         "PMDA ツムラ当帰四逆加呉茱萸生姜湯エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "dgssjwzy"
+      "pinyin": "dgssjwzy",
+      "tags": {
+        "syndromes": [
+          "阳虚寒凝证"
+        ],
+        "organs": [
+          "冲任",
+          "筋骨经络"
+        ],
+        "treatments": [
+          "养血通脉",
+          "和胃降逆"
+        ],
+        "target_symptoms": [
+          "手足冷",
+          "肢体疼痛",
+          "腹痛"
+        ],
+        "symptoms": [
+          "手足冷",
+          "肢体疼痛",
+          "腹痛"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "血虚",
+          "阳虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-015",
@@ -3720,7 +5296,36 @@
         "《伤寒论·辨太阳病脉证并治》",
         "PMDA ツムラ麻杏甘石湯エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "mxgrsgt"
+      "pinyin": "mxgrsgt",
+      "tags": {
+        "syndromes": [
+          "肺热证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "清肺平喘"
+        ],
+        "target_symptoms": [
+          "咳嗽",
+          "气喘",
+          "口渴"
+        ],
+        "symptoms": [
+          "咳嗽",
+          "气喘",
+          "口渴"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-016",
@@ -3790,7 +5395,38 @@
         "《金匮要略·中风历节病脉证并治》",
         "厚生労働省 一般用漢方製剤承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "ybjzs"
+      "pinyin": "ybjzs",
+      "tags": {
+        "syndromes": [
+          "水湿内停证"
+        ],
+        "organs": [
+          "脾"
+        ],
+        "treatments": [
+          "健脾利湿"
+        ],
+        "target_symptoms": [
+          "水肿",
+          "肢体疼痛",
+          "小便不利",
+          "恶风"
+        ],
+        "symptoms": [
+          "水肿",
+          "肢体疼痛",
+          "小便不利",
+          "恶风"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "水毒"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-017",
@@ -3873,7 +5509,38 @@
         "《伤寒论·辨太阳病脉证并治》",
         "厚生労働省 一般用漢方製剤承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "xqlt"
+      "pinyin": "xqlt",
+      "tags": {
+        "syndromes": [
+          "痰饮证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "温肺化饮"
+        ],
+        "target_symptoms": [
+          "气喘",
+          "咳嗽",
+          "痰清稀",
+          "恶寒"
+        ],
+        "symptoms": [
+          "气喘",
+          "咳嗽",
+          "痰清稀",
+          "恶寒"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "太阳",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-018",
@@ -3954,7 +5621,40 @@
         "明·虞抟《医学正传》（一说《世医得效方》卷五）",
         "ツムラ六君子湯エキス顆粒（医療用）製品情報（PMDA/ツムラ）"
       ],
-      "pinyin": "ljzt"
+      "pinyin": "ljzt",
+      "tags": {
+        "syndromes": [
+          "脾胃气虚证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "益气健脾"
+        ],
+        "target_symptoms": [
+          "纳差",
+          "心下痞硬",
+          "倦怠乏力",
+          "手足冷"
+        ],
+        "symptoms": [
+          "纳差",
+          "心下痞硬",
+          "倦怠乏力",
+          "手足冷"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-019",
@@ -4053,7 +5753,39 @@
       "references": [
         "厚生労働省 一般用漢方製剤承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "xsljzt"
+      "pinyin": "xsljzt",
+      "tags": {
+        "syndromes": [
+          "脾胃气虚证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "健脾和胃",
+          "理气止痛"
+        ],
+        "target_symptoms": [
+          "胃痛",
+          "纳差",
+          "呕吐呃逆"
+        ],
+        "symptoms": [
+          "胃痛",
+          "纳差",
+          "呕吐呃逆"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-020",
@@ -4140,7 +5872,39 @@
         "《三因极一病证方论》",
         "厚生労働省 一般用漢方製剤承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "wdt"
+      "pinyin": "wdt",
+      "tags": {
+        "syndromes": [
+          "痰热证"
+        ],
+        "organs": [
+          "胆",
+          "胃"
+        ],
+        "treatments": [
+          "宁心安神"
+        ],
+        "target_symptoms": [
+          "失眠",
+          "呕吐呃逆",
+          "口苦",
+          "眩晕"
+        ],
+        "symptoms": [
+          "失眠",
+          "呕吐呃逆",
+          "口苦",
+          "眩晕"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-021",
@@ -4278,7 +6042,33 @@
         "《黄帝素问宣明论方》",
         "PMDA ツムラ防風通聖散エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "fftss"
+      "pinyin": "fftss",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [],
+        "treatments": [
+          "通腑泻热",
+          "祛风除湿"
+        ],
+        "target_symptoms": [
+          "便秘",
+          "湿疹疹疮"
+        ],
+        "symptoms": [
+          "便秘",
+          "湿疹疹疮"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "",
+        "fukushin": "腹满实痛",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-022",
@@ -4415,7 +6205,35 @@
         "PMDA ツムラ疎経活血湯エキス顆粒（医療用）添付文書",
         "厚生労働省 一般用漢方製剤承認基準（新常用和漢薬集 収載）"
       ],
-      "pinyin": "sjhxt"
+      "pinyin": "sjhxt",
+      "tags": {
+        "syndromes": [
+          "血瘀证"
+        ],
+        "organs": [
+          "筋骨经络"
+        ],
+        "treatments": [
+          "活血祛瘀",
+          "通经活络"
+        ],
+        "target_symptoms": [
+          "肢体疼痛",
+          "麻木"
+        ],
+        "symptoms": [
+          "肢体疼痛",
+          "麻木"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-023",
@@ -4521,7 +6339,40 @@
         "金·李东垣《脾胃论》",
         "PMDA/ツムラ半夏白朮天麻湯 TJ-37 エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "bxbztmt"
+      "pinyin": "bxbztmt",
+      "tags": {
+        "syndromes": [
+          "痰湿证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "燥湿化痰",
+          "平肝息风"
+        ],
+        "target_symptoms": [
+          "眩晕",
+          "头痛",
+          "呕吐呃逆",
+          "手足冷"
+        ],
+        "symptoms": [
+          "眩晕",
+          "头痛",
+          "呕吐呃逆",
+          "手足冷"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-024",
@@ -4614,7 +6465,33 @@
         "《重订严氏济生方》",
         "厚生労働省 一般用漢方製剤承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "dgyz"
+      "pinyin": "dgyz",
+      "tags": {
+        "syndromes": [
+          "阴虚血燥证"
+        ],
+        "organs": [],
+        "treatments": [
+          "养血润燥",
+          "祛风止痒"
+        ],
+        "target_symptoms": [
+          "皮肤瘙痒",
+          "湿疹疹疮"
+        ],
+        "symptoms": [
+          "皮肤瘙痒",
+          "湿疹疹疮"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-025",
@@ -4690,7 +6567,36 @@
         "《保婴撮要》",
         "PMDA ツムラ抑肝散エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "ygs"
+      "pinyin": "ygs",
+      "tags": {
+        "syndromes": [
+          "肝郁气滞证"
+        ],
+        "organs": [
+          "肝",
+          "脾"
+        ],
+        "treatments": [
+          "柔肝清热",
+          "健脾和中"
+        ],
+        "target_symptoms": [
+          "抑郁易怒",
+          "失眠"
+        ],
+        "symptoms": [
+          "抑郁易怒",
+          "失眠"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-026",
@@ -4790,7 +6696,37 @@
         "《普济本事方》",
         "PMDA/ツムラ釣藤散エキス顆粒製品情報"
       ],
-      "pinyin": "cts"
+      "pinyin": "cts",
+      "tags": {
+        "syndromes": [
+          "肝郁气滞证"
+        ],
+        "organs": [
+          "肝"
+        ],
+        "treatments": [
+          "平肝息风",
+          "化痰息风"
+        ],
+        "target_symptoms": [
+          "头痛",
+          "眩晕",
+          "项背强痛"
+        ],
+        "symptoms": [
+          "头痛",
+          "眩晕",
+          "项背强痛"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-027",
@@ -4896,7 +6832,41 @@
         "《太平惠民和剂局方》",
         "厚生労働省 一般用漢方製剤承認基準（東京生薬協会 新常用和漢薬集 収載）"
       ],
-      "pinyin": "rsyrt"
+      "pinyin": "rsyrt",
+      "tags": {
+        "syndromes": [
+          "气血两虚证"
+        ],
+        "organs": [
+          "心",
+          "脾"
+        ],
+        "treatments": [
+          "益气补血",
+          "宁心安神"
+        ],
+        "target_symptoms": [
+          "倦怠乏力",
+          "心悸",
+          "失眠",
+          "纳差"
+        ],
+        "symptoms": [
+          "倦怠乏力",
+          "心悸",
+          "失眠",
+          "纳差"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-028",
@@ -4989,7 +6959,31 @@
       "references": [
         "PMDA ツムラ十味敗毒湯エキス顆粒（医療用）添付文書"
       ],
-      "pinyin": "jmbdt"
+      "pinyin": "jmbdt",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [],
+        "treatments": [
+          "清热解毒",
+          "排脓散结"
+        ],
+        "target_symptoms": [
+          "疮痈肿毒",
+          "湿疹疹疮"
+        ],
+        "symptoms": [
+          "疮痈肿毒",
+          "湿疹疹疮"
+        ],
+        "kyo_jitsu": "虚实中间",
+        "ki_ketsu_sui": [],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-041",
@@ -5036,7 +7030,32 @@
         "《黄帝素问宣明论方》",
         "《方剂学》人民卫生出版社教材·祛暑剂"
       ],
-      "pinyin": "lys"
+      "pinyin": "lys",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [],
+        "treatments": [
+          "清热利湿"
+        ],
+        "target_symptoms": [
+          "口渴",
+          "小便不利"
+        ],
+        "symptoms": [
+          "口渴",
+          "小便不利"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "水毒"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-042",
@@ -5087,7 +7106,34 @@
         "《金匮要略·妇人杂病脉证并治》",
         "《方剂学》人民卫生出版社教材·安神剂"
       ],
-      "pinyin": "gmdzt"
+      "pinyin": "gmdzt",
+      "tags": {
+        "syndromes": [
+          "阴虚内热证"
+        ],
+        "organs": [
+          "心"
+        ],
+        "treatments": [
+          "宁心安神"
+        ],
+        "target_symptoms": [
+          "情志恍惚",
+          "抑郁易怒"
+        ],
+        "symptoms": [
+          "情志恍惚",
+          "抑郁易怒"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-043",
@@ -5144,7 +7190,35 @@
         "《备急千金要方》卷十七·肺痈",
         "《金匮要略》附载苇茎汤"
       ],
-      "pinyin": "wst"
+      "pinyin": "wst",
+      "tags": {
+        "syndromes": [
+          "肺热证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "清肺平喘",
+          "排脓散结"
+        ],
+        "target_symptoms": [
+          "咳嗽",
+          "疮痈肿毒"
+        ],
+        "symptoms": [
+          "咳嗽",
+          "疮痈肿毒"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-044",
@@ -5208,7 +7282,35 @@
         "《金匮要略·疮痈肠痈浸淫病脉证并治》",
         "《方剂学》人民卫生出版社教材·泻下剂寒下"
       ],
-      "pinyin": "dhmdst"
+      "pinyin": "dhmdst",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "大肠"
+        ],
+        "treatments": [
+          "泻热破瘀",
+          "散结消肿"
+        ],
+        "target_symptoms": [
+          "腹痛",
+          "疮痈肿毒"
+        ],
+        "symptoms": [
+          "腹痛",
+          "疮痈肿毒"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "腹满实痛",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-045",
@@ -5259,7 +7361,38 @@
         "《金匮要略·胸痹心痛短气病脉证治》",
         "《方剂学》人民卫生出版社教材·理气剂"
       ],
-      "pinyin": "glxb"
+      "pinyin": "glxb",
+      "tags": {
+        "syndromes": [
+          "痰饮证"
+        ],
+        "organs": [
+          "心",
+          "肺"
+        ],
+        "treatments": [
+          "通阳散结",
+          "行气祛痰"
+        ],
+        "target_symptoms": [
+          "胸胁苦满",
+          "肢体疼痛",
+          "气喘"
+        ],
+        "symptoms": [
+          "胸胁苦满",
+          "肢体疼痛",
+          "气喘"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-046",
@@ -5362,7 +7495,32 @@
         "《外科正宗》卷二·瘿瘤论",
         "《方剂学》人民卫生出版社教材·补益剂·散结剂"
       ],
-      "pinyin": "hzyht"
+      "pinyin": "hzyht",
+      "tags": {
+        "syndromes": [
+          "痰凝气滞证"
+        ],
+        "organs": [
+          "肝"
+        ],
+        "treatments": [
+          "软坚散结"
+        ],
+        "target_symptoms": [
+          "疮痈肿毒"
+        ],
+        "symptoms": [
+          "疮痈肿毒"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-047",
@@ -5471,7 +7629,36 @@
         "《外科正宗》卷四",
         "《方剂学》人民卫生出版社教材·治风剂"
       ],
-      "pinyin": "xfs"
+      "pinyin": "xfs",
+      "tags": {
+        "syndromes": [
+          "阴虚血燥证",
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "祛风养血",
+          "清热除湿"
+        ],
+        "target_symptoms": [
+          "皮肤瘙痒",
+          "湿疹疹疮"
+        ],
+        "symptoms": [
+          "皮肤瘙痒",
+          "湿疹疹疮"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-048",
@@ -5544,7 +7731,34 @@
         "《外科证治全生集》",
         "《方剂学》人民卫生出版社教材·温里剂"
       ],
-      "pinyin": "yht"
+      "pinyin": "yht",
+      "tags": {
+        "syndromes": [
+          "阴疽寒凝证"
+        ],
+        "organs": [
+          "筋骨经络"
+        ],
+        "treatments": [
+          "温阳补血",
+          "散寒通滞"
+        ],
+        "target_symptoms": [
+          "疮痈肿毒"
+        ],
+        "symptoms": [
+          "疮痈肿毒"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阳虚",
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-049",
@@ -5611,7 +7825,32 @@
         "《医宗金鉴·外科心法要诀·肺风粉刺》",
         "古代经典名方目录（枇杷清肺饮）"
       ],
-      "pinyin": "ppqfy"
+      "pinyin": "ppqfy",
+      "tags": {
+        "syndromes": [
+          "肺热证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "宣肺清热"
+        ],
+        "target_symptoms": [
+          "痤疮"
+        ],
+        "symptoms": [
+          "痤疮"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-050",
@@ -5690,7 +7929,31 @@
         "《疡科心得集》",
         "《方剂学》人民卫生出版社教材·祛湿剂"
       ],
-      "pinyin": "bxsst"
+      "pinyin": "bxsst",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [],
+        "treatments": [
+          "清热利湿",
+          "凉血解毒"
+        ],
+        "target_symptoms": [
+          "湿疹疹疮",
+          "疮痈肿毒"
+        ],
+        "symptoms": [
+          "湿疹疹疮",
+          "疮痈肿毒"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-051",
@@ -5745,7 +8008,37 @@
         "《验方新编》卷二·脱疽",
         "《方剂学》人民卫生出版社教材·清热剂"
       ],
-      "pinyin": "smyat"
+      "pinyin": "smyat",
+      "tags": {
+        "syndromes": [
+          "热入营血证"
+        ],
+        "organs": [
+          "筋骨经络"
+        ],
+        "treatments": [
+          "清热解毒",
+          "活血祛瘀"
+        ],
+        "target_symptoms": [
+          "肢体疼痛",
+          "疮痈肿毒",
+          "出血"
+        ],
+        "symptoms": [
+          "肢体疼痛",
+          "疮痈肿毒",
+          "出血"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-052",
@@ -5808,7 +8101,30 @@
         "广东凉茶（第一批国家级非物质文化遗产名录，2006 年）",
         "广东省中医院五花茶科普方"
       ],
-      "pinyin": "whc"
+      "pinyin": "whc",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [],
+        "treatments": [
+          "清热利湿"
+        ],
+        "target_symptoms": [
+          "口渴",
+          "小便不利"
+        ],
+        "symptoms": [
+          "口渴",
+          "小便不利"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-053",
@@ -5866,7 +8182,34 @@
         "《中华人民共和国药典》鸡骨草",
         "广东省中医药局鸡骨草食养方"
       ],
-      "pinyin": "jgt"
+      "pinyin": "jgt",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "肝"
+        ],
+        "treatments": [
+          "疏肝健脾"
+        ],
+        "target_symptoms": [
+          "胸胁苦满",
+          "口苦",
+          "小便不利"
+        ],
+        "symptoms": [
+          "胸胁苦满",
+          "口苦",
+          "小便不利"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-054",
@@ -5935,7 +8278,35 @@
         "《广东省中药材标准》第二册·溪黄草",
         "广东省中医药局溪黄草食养方"
       ],
-      "pinyin": "xhc"
+      "pinyin": "xhc",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "健脾利湿"
+        ],
+        "target_symptoms": [
+          "口苦",
+          "小便不利"
+        ],
+        "symptoms": [
+          "口苦",
+          "小便不利"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-029",
@@ -5981,7 +8352,35 @@
         "《金匮要略·呕吐哕下利病脉证治》",
         "日本中医学会《大黄甘草汤の方意を考える》"
       ],
-      "pinyin": "dhgct"
+      "pinyin": "dhgct",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "胃",
+          "大肠"
+        ],
+        "treatments": [
+          "通腑泻热"
+        ],
+        "target_symptoms": [
+          "呕吐呃逆",
+          "便秘"
+        ],
+        "symptoms": [
+          "呕吐呃逆",
+          "便秘"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-030",
@@ -6065,7 +8464,40 @@
         "《内科摘要》",
         "日本医療用漢方ガイドライン（加味逍遥散）"
       ],
-      "pinyin": "jwxys"
+      "pinyin": "jwxys",
+      "tags": {
+        "syndromes": [
+          "肝郁气滞证",
+          "血虚证"
+        ],
+        "organs": [
+          "肝",
+          "脾"
+        ],
+        "treatments": [
+          "疏肝理气",
+          "养血健脾"
+        ],
+        "target_symptoms": [
+          "抑郁易怒",
+          "月经不调",
+          "口渴"
+        ],
+        "symptoms": [
+          "抑郁易怒",
+          "月经不调",
+          "口渴"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "血虚",
+          "郁火"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-031",
@@ -6123,7 +8555,36 @@
         "《金匮要略·腹满寒疝宿食病脉证治》",
         "日本汉方薬辞典（大建中汤）"
       ],
-      "pinyin": "djzt"
+      "pinyin": "djzt",
+      "tags": {
+        "syndromes": [
+          "中焦虚寒证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "温中补虚",
+          "缓急止痛"
+        ],
+        "target_symptoms": [
+          "腹痛",
+          "呕吐呃逆"
+        ],
+        "symptoms": [
+          "腹痛",
+          "呕吐呃逆"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阳虚"
+        ],
+        "six_channel": "",
+        "fukushin": "腹满实痛",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-032",
@@ -6175,7 +8636,34 @@
         "《伤寒论·辨阳明病脉证并治》",
         "日本汉方処方集（栀子柏皮汤）"
       ],
-      "pinyin": "zzppt"
+      "pinyin": "zzppt",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "肝"
+        ],
+        "treatments": [
+          "清热利湿"
+        ],
+        "target_symptoms": [
+          "黄疸",
+          "发热",
+          "口渴"
+        ],
+        "symptoms": [
+          "黄疸",
+          "发热",
+          "口渴"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "KR-001",
@@ -6258,7 +8746,30 @@
         "李济马《东医寿世保元》（1894）",
         "韩国学中央研究院 encykorea.aks.ac.kr 태음조위탕 条"
       ],
-      "pinyin": "tyzwt"
+      "pinyin": "tyzwt",
+      "tags": {
+        "syndromes": [
+          "四象体质证"
+        ],
+        "organs": [
+          "胃"
+        ],
+        "treatments": [
+          "健脾和中"
+        ],
+        "target_symptoms": [
+          "腹痛"
+        ],
+        "symptoms": [
+          "腹痛"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "KR-002",
@@ -6353,7 +8864,33 @@
         "《太平惠民和剂局方》",
         "PMC: Ginseng in Traditional Herbal Prescriptions (Sipjeondaebo-tang)"
       ],
-      "pinyin": "sqdbt"
+      "pinyin": "sqdbt",
+      "tags": {
+        "syndromes": [
+          "气血两虚证"
+        ],
+        "organs": [],
+        "treatments": [
+          "益气补血"
+        ],
+        "target_symptoms": [
+          "倦怠乏力",
+          "手足冷"
+        ],
+        "symptoms": [
+          "倦怠乏力",
+          "手足冷"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "KR-003",
@@ -6460,7 +8997,38 @@
         "李济马《东医寿世保元》（1894）",
         "韩国学中央研究院 encykorea.aks.ac.kr 조위승청탕 条 E0052462"
       ],
-      "pinyin": "twstq"
+      "pinyin": "twstq",
+      "tags": {
+        "syndromes": [
+          "四象体质证"
+        ],
+        "organs": [
+          "肺",
+          "胃"
+        ],
+        "treatments": [
+          "宁心安神",
+          "健脾和中"
+        ],
+        "target_symptoms": [
+          "心下痞硬",
+          "倦怠乏力",
+          "出汗异常"
+        ],
+        "symptoms": [
+          "心下痞硬",
+          "倦怠乏力",
+          "出汗异常"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "気虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "KR-004",
@@ -6550,7 +9118,33 @@
         "韩国学中央研究院 encykorea.aks.ac.kr 형방지황탕 条 E0063526",
         "KCI JSCIM ART002909492《荆防地黄汤의 基源、变迁过程 및 构成原理》"
       ],
-      "pinyin": "jfdt"
+      "pinyin": "jfdt",
+      "tags": {
+        "syndromes": [
+          "四象体质证",
+          "肝肾阴虚证"
+        ],
+        "organs": [
+          "肾"
+        ],
+        "treatments": [
+          "滋补肝肾"
+        ],
+        "target_symptoms": [
+          "肢体疼痛"
+        ],
+        "symptoms": [
+          "肢体疼痛"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-033",
@@ -6621,7 +9215,36 @@
         "《金匮要略·肺痿肺痈咳嗽上气病脉证治》",
         "PMDA ツムラ麦門冬湯エキス顆粒（医療用）添付文書 TJ-29"
       ],
-      "pinyin": "mmdt"
+      "pinyin": "mmdt",
+      "tags": {
+        "syndromes": [
+          "阴虚内热证"
+        ],
+        "organs": [
+          "肺",
+          "胃"
+        ],
+        "treatments": [
+          "养阴益气",
+          "降逆下气"
+        ],
+        "target_symptoms": [
+          "口渴",
+          "咳嗽"
+        ],
+        "symptoms": [
+          "口渴",
+          "咳嗽"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-034",
@@ -6687,7 +9310,40 @@
         "《金匮要略·消渴小便利淋病》",
         "PMDA ツムラ白虎加人参湯エキス顆粒（医療用）添付文書 TJ-34"
       ],
-      "pinyin": "bhjrst"
+      "pinyin": "bhjrst",
+      "tags": {
+        "syndromes": [
+          "肺热证"
+        ],
+        "organs": [
+          "胃"
+        ],
+        "treatments": [
+          "清热泻火",
+          "益气生津"
+        ],
+        "target_symptoms": [
+          "发热",
+          "口渴",
+          "出汗异常",
+          "气短"
+        ],
+        "symptoms": [
+          "发热",
+          "口渴",
+          "出汗异常",
+          "气短"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "阴虚"
+        ],
+        "six_channel": "阳明",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-035",
@@ -6758,7 +9414,37 @@
         "《伤寒论·辨太阳病脉证并治》",
         "KEGG Medicus 东洋桂枝加葛根汤エキス細粒添付文書"
       ],
-      "pinyin": "gzjgt"
+      "pinyin": "gzjgt",
+      "tags": {
+        "syndromes": [
+          "风寒表虚证"
+        ],
+        "organs": [
+          "筋骨经络"
+        ],
+        "treatments": [
+          "发汗解表",
+          "解肌舒筋"
+        ],
+        "target_symptoms": [
+          "恶风",
+          "项背强痛",
+          "出汗异常"
+        ],
+        "symptoms": [
+          "恶风",
+          "项背强痛",
+          "出汗异常"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "营卫不和"
+        ],
+        "six_channel": "太阳",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-055",
@@ -6851,7 +9537,33 @@
         "薛己《正体类要》",
         "《方剂学》教材·补益剂·气血双补"
       ],
-      "pinyin": "bzt"
+      "pinyin": "bzt",
+      "tags": {
+        "syndromes": [
+          "气血两虚证"
+        ],
+        "organs": [],
+        "treatments": [
+          "益气补血"
+        ],
+        "target_symptoms": [
+          "倦怠乏力",
+          "心悸"
+        ],
+        "symptoms": [
+          "倦怠乏力",
+          "心悸"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-056",
@@ -6912,7 +9624,36 @@
         "傅山《傅青主女科·产后编》",
         "《方剂学》教材·理血剂·活血祛瘀"
       ],
-      "pinyin": "sht"
+      "pinyin": "sht",
+      "tags": {
+        "syndromes": [
+          "血瘀证"
+        ],
+        "organs": [
+          "冲任"
+        ],
+        "treatments": [
+          "化瘀生新",
+          "温经止痛"
+        ],
+        "target_symptoms": [
+          "产后诸症",
+          "腹痛"
+        ],
+        "symptoms": [
+          "产后诸症",
+          "腹痛"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "瘀血",
+          "阳虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-057",
@@ -7001,7 +9742,35 @@
         "傅山《傅青主女科》",
         "《方剂学》教材·祛湿剂"
       ],
-      "pinyin": "wdt"
+      "pinyin": "wdt",
+      "tags": {
+        "syndromes": [
+          "脾虚湿盛证"
+        ],
+        "organs": [
+          "脾"
+        ],
+        "treatments": [
+          "化湿止带"
+        ],
+        "target_symptoms": [
+          "带下",
+          "腹泻"
+        ],
+        "symptoms": [
+          "带下",
+          "腹泻"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-058",
@@ -7057,7 +9826,30 @@
         "孙思邈《备急千金要方》",
         "《方剂学》教材·清热剂·清热凉血"
       ],
-      "pinyin": "xjdht"
+      "pinyin": "xjdht",
+      "tags": {
+        "syndromes": [
+          "热入营血证"
+        ],
+        "organs": [],
+        "treatments": [
+          "凉血解毒"
+        ],
+        "target_symptoms": [
+          "出血"
+        ],
+        "symptoms": [
+          "出血"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-059",
@@ -7118,7 +9910,38 @@
         "孙思邈《备急千金要方》",
         "《方剂学》教材·泻下剂·温下"
       ],
-      "pinyin": "wpt"
+      "pinyin": "wpt",
+      "tags": {
+        "syndromes": [
+          "中焦虚寒证"
+        ],
+        "organs": [
+          "脾",
+          "大肠"
+        ],
+        "treatments": [
+          "温补脾肾",
+          "通腑泻热"
+        ],
+        "target_symptoms": [
+          "便秘",
+          "腹痛",
+          "手足冷"
+        ],
+        "symptoms": [
+          "便秘",
+          "腹痛",
+          "手足冷"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阳虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-060",
@@ -7190,7 +10013,34 @@
         "《伤寒论·辨厥阴病脉证并治》",
         "《方剂学》教材·温里剂"
       ],
-      "pinyin": "dgsnt"
+      "pinyin": "dgsnt",
+      "tags": {
+        "syndromes": [
+          "阳虚寒凝证"
+        ],
+        "organs": [
+          "冲任",
+          "筋骨经络"
+        ],
+        "treatments": [
+          "养血通脉"
+        ],
+        "target_symptoms": [
+          "手足冷"
+        ],
+        "symptoms": [
+          "手足冷"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "血虚",
+          "阳虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-061",
@@ -7286,7 +10136,32 @@
         "吴瑭《温病条辨》",
         "《方剂学》教材·治风剂·平熄内风"
       ],
-      "pinyin": "ddgz"
+      "pinyin": "ddgz",
+      "tags": {
+        "syndromes": [
+          "肝肾阴虚证"
+        ],
+        "organs": [
+          "肝"
+        ],
+        "treatments": [
+          "滋阴熄风"
+        ],
+        "target_symptoms": [
+          "肌肉痉挛"
+        ],
+        "symptoms": [
+          "肌肉痉挛"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-062",
@@ -7375,7 +10250,37 @@
         "《医方集解》引赵蕺庵方",
         "《方剂学》教材·补益剂·补阴"
       ],
-      "pinyin": "bhgjt"
+      "pinyin": "bhgjt",
+      "tags": {
+        "syndromes": [
+          "肝肾阴虚证"
+        ],
+        "organs": [
+          "肺",
+          "肾"
+        ],
+        "treatments": [
+          "滋养肺肾"
+        ],
+        "target_symptoms": [
+          "咳嗽",
+          "口渴",
+          "出血"
+        ],
+        "symptoms": [
+          "咳嗽",
+          "口渴",
+          "出血"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-063",
@@ -7453,7 +10358,32 @@
         "郑梅涧《重楼玉钥》",
         "《方剂学》教材·清热剂"
       ],
-      "pinyin": "yyqft"
+      "pinyin": "yyqft",
+      "tags": {
+        "syndromes": [
+          "阴虚内热证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "养阴清肺"
+        ],
+        "target_symptoms": [
+          "口渴"
+        ],
+        "symptoms": [
+          "口渴"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-064",
@@ -7537,7 +10467,34 @@
         "张时彻《摄生众妙方》",
         "《方剂学》教材·理气剂·降气"
       ],
-      "pinyin": "dct"
+      "pinyin": "dct",
+      "tags": {
+        "syndromes": [
+          "痰热证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "清肺平喘"
+        ],
+        "target_symptoms": [
+          "气喘",
+          "痰黄稠"
+        ],
+        "symptoms": [
+          "气喘",
+          "痰黄稠"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-065",
@@ -7620,7 +10577,35 @@
         "喻昌《医门法律》",
         "《方剂学》教材·治燥剂·清燥润肺"
       ],
-      "pinyin": "qzjft"
+      "pinyin": "qzjft",
+      "tags": {
+        "syndromes": [
+          "阴虚内热证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "清燥润肺",
+          "养阴益气"
+        ],
+        "target_symptoms": [
+          "咳嗽",
+          "口渴"
+        ],
+        "symptoms": [
+          "咳嗽",
+          "口渴"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-066",
@@ -7725,7 +10710,32 @@
         "张仲景《金匮要略·血痹虚劳病》",
         "《方剂学》教材·理血剂"
       ],
-      "pinyin": "dhzcw"
+      "pinyin": "dhzcw",
+      "tags": {
+        "syndromes": [
+          "血瘀证"
+        ],
+        "organs": [],
+        "treatments": [
+          "活血破瘀",
+          "缓中补虚"
+        ],
+        "target_symptoms": [
+          "麻木"
+        ],
+        "symptoms": [
+          "麻木"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "瘀血",
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-067",
@@ -7776,7 +10786,32 @@
         "《中国药典》一部",
         "岭南民间凉茶"
       ],
-      "pinyin": "xsc"
+      "pinyin": "xsc",
+      "tags": {
+        "syndromes": [
+          "风热外感证"
+        ],
+        "organs": [
+          "肝"
+        ],
+        "treatments": [
+          "疏风散热"
+        ],
+        "target_symptoms": [
+          "头痛",
+          "口渴"
+        ],
+        "symptoms": [
+          "头痛",
+          "口渴"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-037",
@@ -7850,7 +10885,33 @@
         "《伤寒论·辨厥阴病脉证并治》",
         "日本汉方处方解"
       ],
-      "pinyin": "dgsnt"
+      "pinyin": "dgsnt",
+      "tags": {
+        "syndromes": [
+          "阳虚寒凝证"
+        ],
+        "organs": [
+          "冲任"
+        ],
+        "treatments": [
+          "养血通脉"
+        ],
+        "target_symptoms": [
+          "手足冷"
+        ],
+        "symptoms": [
+          "手足冷"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "血虚",
+          "阳虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-038",
@@ -7925,7 +10986,37 @@
         "《金匮要略·血痹虚劳病脉证并治》",
         "PMDA 日本医疗用汉方添付文書"
       ],
-      "pinyin": "gzjl"
+      "pinyin": "gzjl",
+      "tags": {
+        "syndromes": [
+          "气阴两虚证"
+        ],
+        "organs": [
+          "心",
+          "肾"
+        ],
+        "treatments": [
+          "宁心安神",
+          "潜镇固摄"
+        ],
+        "target_symptoms": [
+          "出汗异常",
+          "遗精"
+        ],
+        "symptoms": [
+          "出汗异常",
+          "遗精"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "気虚",
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "少腹急结",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-039",
@@ -7995,7 +11086,37 @@
         "《金匮要略·痰饮咳嗽病脉证并治》",
         "日本汉方处方解"
       ],
-      "pinyin": "lgjx"
+      "pinyin": "lgjx",
+      "tags": {
+        "syndromes": [
+          "痰饮证"
+        ],
+        "organs": [
+          "肺"
+        ],
+        "treatments": [
+          "温肺化饮",
+          "降逆下气"
+        ],
+        "target_symptoms": [
+          "痰清稀",
+          "呕吐呃逆",
+          "眩晕"
+        ],
+        "symptoms": [
+          "痰清稀",
+          "呕吐呃逆",
+          "眩晕"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-040",
@@ -8065,7 +11186,34 @@
         "《金匮要略》附方",
         "日本汉方处方解"
       ],
-      "pinyin": "fly"
+      "pinyin": "fly",
+      "tags": {
+        "syndromes": [
+          "痰湿证"
+        ],
+        "organs": [
+          "胃"
+        ],
+        "treatments": [
+          "理气和胃"
+        ],
+        "target_symptoms": [
+          "心下痞硬",
+          "纳差"
+        ],
+        "symptoms": [
+          "心下痞硬",
+          "纳差"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-041",
@@ -8130,7 +11278,35 @@
         "《金匮要略·疮痈肠痈浸淫病》",
         "日本汉方处方解"
       ],
-      "pinyin": "dhmdp"
+      "pinyin": "dhmdp",
+      "tags": {
+        "syndromes": [
+          "湿热蕴结证"
+        ],
+        "organs": [
+          "大肠"
+        ],
+        "treatments": [
+          "泻热破瘀",
+          "散结消肿"
+        ],
+        "target_symptoms": [
+          "腹痛",
+          "疮痈肿毒"
+        ],
+        "symptoms": [
+          "腹痛",
+          "疮痈肿毒"
+        ],
+        "kyo_jitsu": "实证",
+        "ki_ketsu_sui": [
+          "瘀血"
+        ],
+        "six_channel": "",
+        "fukushin": "腹满实痛",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "KR-005",
@@ -8219,7 +11395,32 @@
         "李济马《东医寿世保元》（1894）",
         "Yangkyuksanwha-tang 抗肥胖实验论文（2019，组成 Table 1）"
       ],
-      "pinyin": "lgsht"
+      "pinyin": "lgsht",
+      "tags": {
+        "syndromes": [
+          "四象体质证"
+        ],
+        "organs": [],
+        "treatments": [
+          "凉血解毒"
+        ],
+        "target_symptoms": [
+          "口渴",
+          "烦躁"
+        ],
+        "symptoms": [
+          "口渴",
+          "烦躁"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "郁火"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-036",
@@ -8307,7 +11508,33 @@
         "《伤寒论》《金匮要略》",
         "日本汉方处方解"
       ],
-      "pinyin": "zgct"
+      "pinyin": "zgct",
+      "tags": {
+        "syndromes": [
+          "气阴两虚证"
+        ],
+        "organs": [
+          "心"
+        ],
+        "treatments": [
+          "益气滋阴"
+        ],
+        "target_symptoms": [
+          "心悸"
+        ],
+        "symptoms": [
+          "心悸"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚",
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-068",
@@ -8383,7 +11610,37 @@
         "《医方集解·补养之剂》",
         "《方剂学》教材·补益剂"
       ],
-      "pinyin": "qibaomeirandan"
+      "pinyin": "qibaomeirandan",
+      "tags": {
+        "syndromes": [
+          "肝肾不足证"
+        ],
+        "organs": [
+          "肝",
+          "肾"
+        ],
+        "treatments": [
+          "补益肝肾",
+          "填精补血"
+        ],
+        "target_symptoms": [
+          "脱发早白",
+          "肢体疼痛"
+        ],
+        "symptoms": [
+          "脱发早白",
+          "肢体疼痛"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "血虚",
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "CN-069",
@@ -8425,7 +11682,37 @@
         "《医方集解·补养之剂》",
         "《方剂学》教材·补益剂"
       ],
-      "pinyin": "erzhiwan"
+      "pinyin": "erzhiwan",
+      "tags": {
+        "syndromes": [
+          "肝肾阴虚证"
+        ],
+        "organs": [
+          "肝",
+          "肾"
+        ],
+        "treatments": [
+          "滋阴止血"
+        ],
+        "target_symptoms": [
+          "脱发早白",
+          "口渴",
+          "肢体疼痛"
+        ],
+        "symptoms": [
+          "脱发早白",
+          "口渴",
+          "肢体疼痛"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-042",
@@ -8482,7 +11769,37 @@
         "《仙授理伤续断秘方》",
         "日本一般用漢方製剤承認基準"
       ],
-      "pinyin": "siwutang"
+      "pinyin": "siwutang",
+      "tags": {
+        "syndromes": [
+          "血虚证"
+        ],
+        "organs": [
+          "冲任"
+        ],
+        "treatments": [
+          "补血调血",
+          "养血润燥"
+        ],
+        "target_symptoms": [
+          "脱发早白",
+          "倦怠乏力",
+          "心悸"
+        ],
+        "symptoms": [
+          "脱发早白",
+          "倦怠乏力",
+          "心悸"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-043",
@@ -8562,7 +11879,39 @@
         "李东垣《脾胃论》",
         "日本一般用漢方製剤承認基準"
       ],
-      "pinyin": "buzhongyiqitang"
+      "pinyin": "buzhongyiqitang",
+      "tags": {
+        "syndromes": [
+          "气虚证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "益气升阳"
+        ],
+        "target_symptoms": [
+          "倦怠乏力",
+          "气短",
+          "纳差",
+          "腹泻"
+        ],
+        "symptoms": [
+          "倦怠乏力",
+          "气短",
+          "纳差",
+          "腹泻"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "JP-044",
@@ -8662,7 +12011,40 @@
         "《伤寒论》第107条",
         "日本一般用漢方製剤承認基準"
       ],
-      "pinyin": "chaihujialonggumulitang"
+      "pinyin": "chaihujialonggumulitang",
+      "tags": {
+        "syndromes": [
+          "少阳证"
+        ],
+        "organs": [
+          "肝",
+          "心"
+        ],
+        "treatments": [
+          "镇惊安神"
+        ],
+        "target_symptoms": [
+          "抑郁易怒",
+          "失眠",
+          "胸胁苦满",
+          "心悸"
+        ],
+        "symptoms": [
+          "抑郁易怒",
+          "失眠",
+          "胸胁苦满",
+          "心悸"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "痰湿",
+          "郁火"
+        ],
+        "six_channel": "少阳",
+        "fukushin": "胸胁苦满",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "KR-006",
@@ -8720,7 +12102,32 @@
         "《仙授理伤续断秘方》",
         "韩医方剂学教材"
       ],
-      "pinyin": "swt"
+      "pinyin": "swt",
+      "tags": {
+        "syndromes": [
+          "血虚证"
+        ],
+        "organs": [
+          "冲任"
+        ],
+        "treatments": [
+          "补血调血"
+        ],
+        "target_symptoms": [
+          "脱发早白"
+        ],
+        "symptoms": [
+          "脱发早白"
+        ],
+        "kyo_jitsu": "",
+        "ki_ketsu_sui": [
+          "血虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "KR-007",
@@ -8790,7 +12197,37 @@
         "钱乙《小儿药证直诀》",
         "韩医方剂学教材"
       ],
-      "pinyin": "lwdht"
+      "pinyin": "lwdht",
+      "tags": {
+        "syndromes": [
+          "肝肾阴虚证"
+        ],
+        "organs": [
+          "肝",
+          "肾"
+        ],
+        "treatments": [
+          "滋补肝肾"
+        ],
+        "target_symptoms": [
+          "肢体疼痛",
+          "脱发早白",
+          "口渴"
+        ],
+        "symptoms": [
+          "肢体疼痛",
+          "脱发早白",
+          "口渴"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "阴虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     },
     {
       "id": "KR-008",
@@ -8872,7 +12309,39 @@
         "李东垣《脾胃论》",
         "韩医方剂学教材"
       ],
-      "pinyin": "bzyqt"
+      "pinyin": "bzyqt",
+      "tags": {
+        "syndromes": [
+          "气虚证"
+        ],
+        "organs": [
+          "脾",
+          "胃"
+        ],
+        "treatments": [
+          "益气升阳"
+        ],
+        "target_symptoms": [
+          "倦怠乏力",
+          "气短",
+          "纳差",
+          "腹泻"
+        ],
+        "symptoms": [
+          "倦怠乏力",
+          "气短",
+          "纳差",
+          "腹泻"
+        ],
+        "kyo_jitsu": "虚证",
+        "ki_ketsu_sui": [
+          "気虚"
+        ],
+        "six_channel": "",
+        "fukushin": "",
+        "tongue": "",
+        "pulse": ""
+      }
     }
   ]
 }

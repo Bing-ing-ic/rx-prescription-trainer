@@ -29,6 +29,11 @@
       (tagDef[g] || []).forEach(x => {
         map.set(x.label, x.label);
         (x.aliases || []).forEach(a => map.set(a, x.label));
+        // 派生简称：证型去掉尾缀「证」（如「血虚证」→「血虚」），便于自然语言互认；短于 2 字不收录，不覆盖既有键
+        if (/证$/.test(x.label)) {
+          const stem = x.label.replace(/证$/, '');
+          if (stem.length >= 2 && !map.has(stem)) map.set(stem, x.label);
+        }
       });
       idx[g] = map;
     });
@@ -46,6 +51,14 @@
     return { hit, miss };
   }
 
+  /** 自由文本扫描：文本包含某标准词/别名/派生简称即补挂到对应分组；键长 <2 不参与子串匹配以防误命中 */
+  function collectFree(map, freeText, queryStds, bucket) {
+    map.forEach((std, key) => {
+      if (key.length < 2) return;
+      if (freeText.includes(key) && !queryStds.includes(std) && !bucket.includes(std)) bucket.push(std);
+    });
+  }
+
   /**
    * 归一化输入。
    * @param {object} input { symptoms:[], syndromes:[], freeText:'' }
@@ -58,16 +71,12 @@
     const syndromes = [...new Set((input.syndromes || []).map(s => idx.syndromes.get(s) || s).filter(Boolean))];
     const freeText = (input.freeText || '').trim();
 
-    // 自由文本二次扫描：若整串包含某标准词/别名，补挂到对应分组（帮助自然语言输入）
+    // 自由文本二次扫描：若整串包含某标准词/别名/简称，补挂到对应分组（帮助自然语言输入）
     const freeHitSymptoms = [];
     const freeHitSyndromes = [];
     if (freeText) {
-      idx.symptoms.forEach((std, alias) => {
-        if (freeText.includes(alias) && !symptoms.includes(std) && !freeHitSymptoms.includes(std)) freeHitSymptoms.push(std);
-      });
-      idx.syndromes.forEach((std, alias) => {
-        if (freeText.includes(alias) && !syndromes.includes(std) && !freeHitSyndromes.includes(std)) freeHitSyndromes.push(std);
-      });
+      collectFree(idx.symptoms, freeText, symptoms, freeHitSymptoms);
+      collectFree(idx.syndromes, freeText, syndromes, freeHitSyndromes);
     }
     return { symptoms, syndromes, freeText, freeHitSymptoms, freeHitSyndromes };
   }
@@ -75,20 +84,36 @@
   function ratio(hit, total) { return total > 0 ? hit / total : 1; }
   function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 
-  /** 文本兜底：自由文本与条目可见文本子串命中，附加 ≤10 分 */
+  /** 拆分自由文本为可匹配词项：滤除纯数字、年龄片段与单字噪声 */
+  function splitQueryTerms(text) {
+    return (text || '').toLowerCase()
+      .split(/[^a-z0-9一-龥]+/)
+      .map(s => s.trim())
+      .filter(s => s.length >= 2 && !/^\d+$/.test(s) && !/^\d+岁?$/.test(s));
+  }
+
+  /** 文本兜底：按词项与条目可见文本子串命中，附加 ≤10 分；返回命中词项供理由展示 */
   function textBonus(f, freeText) {
-    if (!freeText) return { score: 0, fields: [] };
+    if (!freeText) return { score: 0, fields: [], terms: [] };
+    const terms = splitQueryTerms(freeText);
+    if (!terms.length) return { score: 0, fields: [], terms: [] };
+    const name = (f.name || '').toLowerCase();
+    const aliases = (f.aliases || []).map(a => a.toLowerCase());
     const blob = [
-      f.name, (f.aliases || []).join(' '), f.pinyin,
+      name, aliases.join(' '), f.pinyin,
       f.functions || '', f.indications || '', f.syndrome_key || '', f.modern_use || ''
-    ].join(' ').toLowerCase();
-    const q = freeText.toLowerCase();
-    const fields = [];
-    if (f.name && f.name.toLowerCase().includes(q)) fields.push('方名');
-    if ((f.aliases || []).some(a => a.toLowerCase().includes(q))) fields.push('别名');
-    if (blob.includes(q)) fields.push('主治/功用');
-    if (!fields.length) return { score: 0, fields: [] };
-    return { score: clamp(4 * fields.length, 0, 10), fields };
+    ].join(' ');
+    const fields = new Set();
+    const hitTerms = [];
+    terms.forEach(t => {
+      let hit = false;
+      if (name.includes(t)) { fields.add('方名'); hit = true; }
+      if (aliases.some(a => a.includes(t))) { fields.add('别名'); hit = true; }
+      if (blob.includes(t)) { fields.add('主治/功用'); hit = true; }
+      if (hit) hitTerms.push(t);
+    });
+    if (!fields.size) return { score: 0, fields: [], terms: [] };
+    return { score: clamp(4 * fields.size, 0, 10), fields: [...fields], terms: [...new Set(hitTerms)] };
   }
 
   /** 单条打分 */
@@ -144,7 +169,7 @@
     if (organ.hit.length) reasons.push(`归入脏腑：${organ.hit.join('、')}`);
     if (kk.hit.length) reasons.push(`気血水：${kk.hit.join('、')}`);
     if (tags.fukushin) reasons.push(`腹证所见：${tags.fukushin}`);
-    if (tb.fields.length) reasons.push(`关键词“${q.freeText}”见于${tb.fields.join('/')}`);
+    if (tb.fields.length && tb.terms.length) reasons.push(`关键词“${tb.terms.join('、')}”见于${tb.fields.join('/')}`);
 
     return {
       id: f.id,

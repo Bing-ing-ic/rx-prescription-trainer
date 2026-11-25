@@ -46,6 +46,22 @@ deduceCases.forEach(c => {
   if (c.must.every(m => d.includes(m)) && c.forbid.every(b => !d.includes(b))) console.log('  ✓ 归纳证型符合预期');
 });
 
+// 自由文本归一：证型简称互认、别名命中、年龄性别噪声不跨组脏挂
+const freeCases = [
+  { name: '血虚简称', freeText: '血虚', syn: ['血虚证'], sym: [] },
+  { name: '肝肾阴虚简称', freeText: '肝肾阴虚', syn: ['肝肾阴虚证'], sym: [] },
+  { name: '主诉含年龄性别', freeText: '男，47岁，头晕心慌', syn: [], sym: ['心悸', '眩晕'] }
+];
+freeCases.forEach(c => {
+  const q = E.normalizeInput({ freeText: c.freeText }, E.indexDef(tagDef));
+  const okSyn = c.syn.every(s => q.freeHitSyndromes.includes(s));
+  const okSym = c.sym.every(s => q.freeHitSymptoms.includes(s));
+  const noCross = q.freeHitSymptoms.length === c.sym.length && q.freeHitSyndromes.length === c.syn.length;
+  console.log(`\n【主诉·${c.name}】症状=${q.freeHitSymptoms.join('、') || '无'} 证型=${q.freeHitSyndromes.join('、') || '无'}`);
+  if (okSyn && okSym && noCross) console.log('  ✓ 归一符合预期');
+  else { console.log('  ✗ 归一不符预期'); fail++; }
+});
+
 // 结构完整性：所有条目 tags 对齐词表
 const idx = E.indexDef(tagDef);
 let bad = [];

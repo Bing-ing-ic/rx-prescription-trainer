@@ -32,6 +32,20 @@ cases.forEach(c => {
   }
 });
 
+// 归纳证型：规则映射 + 名方关联；弱相关证型不得混入
+const deduceCases = [
+  { name: '脱发早白', input: { symptoms: ['脱发早白'] }, must: ['肝肾阴虚证', '肝肾不足证', '血虚证'], forbid: ['肺热证'] },
+  { name: '恶寒无汗项背强痛', input: { symptoms: ['恶寒', '无汗', '项背强痛'] }, must: ['风寒表实证'], forbid: [] },
+  { name: '小腿抽筋拘急', input: { freeText: '小腿抽筋拘急' }, must: ['血虚证'], forbid: [] }
+];
+deduceCases.forEach(c => {
+  const d = E.deduceSyndromes(famous.prescriptions, tagDef, c.input).map(x => x.label);
+  console.log(`\n【归纳·${c.name}】-> ${d.join('、') || '无候选'}`);
+  c.must.forEach(m => { if (!d.includes(m)) { console.log('  ✗ 缺少期望证型：' + m); fail++; } });
+  c.forbid.forEach(b => { if (d.includes(b)) { console.log('  ✗ 混入弱相关证型：' + b); fail++; } });
+  if (c.must.every(m => d.includes(m)) && c.forbid.every(b => !d.includes(b))) console.log('  ✓ 归纳证型符合预期');
+});
+
 // 结构完整性：所有条目 tags 对齐词表
 const idx = E.indexDef(tagDef);
 let bad = [];

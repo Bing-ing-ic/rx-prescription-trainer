@@ -137,16 +137,14 @@
     const tb = textBonus(f, q.freeText);
     const score = clamp(Math.round(base + tb.score), 0, 100);
 
-    // 命中理由（教学可见）
+    // 命中理由（教学可见）；辨证状态由前端状态行统一提示，不在每条卡片重复
     const reasons = [];
     if (syn.hit.length) reasons.push(`证型契合：${syn.hit.join('、')}`);
     if (sym.hit.length) reasons.push(`对应症状：${sym.hit.join('、')}`);
     if (organ.hit.length) reasons.push(`归入脏腑：${organ.hit.join('、')}`);
     if (kk.hit.length) reasons.push(`気血水：${kk.hit.join('、')}`);
-    if (tags.kyo_jitsu) reasons.push(`体质虚实：${tags.kyo_jitsu}`);
     if (tags.fukushin) reasons.push(`腹证所见：${tags.fukushin}`);
     if (tb.fields.length) reasons.push(`关键词“${q.freeText}”见于${tb.fields.join('/')}`);
-    if (skipped) reasons.push('未完成辨证，结果仅供浏览参考');
 
     return {
       id: f.id,
@@ -204,11 +202,51 @@
     };
   }
 
+  /**
+   * 归纳候选证型（规则映射 + 名方关联双来源）。
+   * @returns {Array<{label, score, rule, related}>} 按相关度排序，Top 4
+   */
+  function deduceSyndromes(prescriptions, tagDef, input) {
+    const idx = indexDef(tagDef || {});
+    const q = normalizeInput(input, idx);
+    const symSet = [...q.symptoms, ...q.freeHitSymptoms];
+    if (!symSet.length) return [];
+
+    const score = {};
+    const add = (label, pts, viaRule) => {
+      if (!score[label]) score[label] = { label, score: 0, rule: false, related: false };
+      score[label].score += pts;
+      if (viaRule) score[label].rule = true; else score[label].related = true;
+    };
+
+    // 来源 1：症状群 → 证型辨证规则映射
+    (tagDef.symptom_rules || []).forEach(rule => {
+      const hit = rule.symptoms.filter(s => symSet.includes(s));
+      if (hit.length === 0) return;
+      const ratio = hit.length / rule.symptoms.length;
+      const pts = 2 + ratio * 3;
+      rule.syndromes.forEach(s => add(s, pts, true));
+    });
+
+    // 来源 2：命中名方所挂证型的关联频次
+    (prescriptions || []).forEach(f => {
+      const t = f.tags || {};
+      const hit = (t.target_symptoms || []).filter(s => symSet.includes(s)).length;
+      if (hit > 0) (t.syndromes || []).forEach(s => add(s, hit * 0.8, false));
+    });
+
+    return Object.values(score)
+      .sort((a, b) => b.score - a.score || a.label.localeCompare(b.label))
+      .slice(0, 4)
+      .map(r => ({ label: r.label, score: Math.round(r.score * 10) / 10, rule: r.rule, related: r.related }));
+  }
+
   global.FamousRecommendEngine = {
     VERSION,
     indexDef,
     normalizeInput,
     recommend,
+    deduceSyndromes,
     THRESHOLD_RECOMMEND,
     THRESHOLD_REFERENCE,
     TOP_N

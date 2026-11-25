@@ -158,5 +158,30 @@
     { "id": "fk_fuzhijin", "label": "腹直筋拘急", "aliases": ["腹直肌紧张", "筋急"], "hint": "腹直肌拘挛紧张" },
     { "id": "fk_xiafu_touya", "label": "下腹部抵抗压痛", "aliases": ["小腹压痛"], "hint": "瘀血证腹候" },
     { "id": "fk_fuman_shitong", "label": "腹满实痛", "aliases": ["腹满拒按"], "hint": "实证腹满按之痛" }
+  ],
+  "symptom_rules": [
+    { "id": "sr_fghan_biaoshi", "symptoms": ["恶寒", "无汗", "项背强痛"], "syndromes": ["风寒表实证"], "note": "恶寒无汗、项背拘急，太阳伤寒表实" },
+    { "id": "sr_fghan_biaoxu", "symptoms": ["恶风", "出汗异常", "项背强痛"], "syndromes": ["风寒表虚证"], "note": "恶风汗出、营卫不和" },
+    { "id": "sr_shaoyang", "symptoms": ["往来寒热", "胸胁苦满", "呕吐呃逆"], "syndromes": ["少阳证"], "note": "往来寒热、胸胁苦满、心烦喜呕" },
+    { "id": "sr_feire", "symptoms": ["咳嗽", "气喘", "痰黄稠", "口渴"], "syndromes": ["肺热证", "痰热证"], "note": "咳喘痰黄口渴，痰热壅肺" },
+    { "id": "sr_shire", "symptoms": ["黄疸", "口苦", "小便不利", "湿疹疹疮", "疮痈肿毒"], "syndromes": ["湿热蕴结证"], "note": "苔黄腻、口苦尿黄、疮疡湿疹" },
+    { "id": "sr_shuiyin", "symptoms": ["水肿", "小便不利", "眩晕", "心悸"], "syndromes": ["水湿内停证", "痰饮证"], "note": "水饮内停、眩悸小便不利" },
+    { "id": "sr_yangxu_shui", "symptoms": ["水肿", "手足冷", "小便不利"], "syndromes": ["阳虚水泛证"], "note": "畏寒肢冷、水肿沉重" },
+    { "id": "sr_zhongjia_xuhan", "symptoms": ["腹痛", "手足冷", "腹泻", "纳差"], "syndromes": ["中焦虚寒证"], "note": "腹冷喜温、食少便溏" },
+    { "id": "sr_qiyin", "symptoms": ["心悸", "气短", "出汗异常", "口渴"], "syndromes": ["气阴两虚证"], "note": "气短汗多、口干心悸" },
+    { "id": "sr_xueyu", "symptoms": ["麻木", "肢体疼痛"], "syndromes": ["血瘀证"], "note": "刺痛固定、瘀阻经络" },
+    { "id": "sr_piwei_qixu", "symptoms": ["倦怠乏力", "气短", "纳差", "腹泻"], "syndromes": ["脾胃气虚证", "气虚证"], "note": "纳差痞满、倦怠乏力" },
+    { "id": "sr_xuexu", "symptoms": ["心悸", "眩晕", "麻木", "肌肉痉挛"], "syndromes": ["血虚证"], "note": "血不荣养、筋脉失濡" },
+    { "id": "sr_qixue_liangxu", "symptoms": ["倦怠乏力", "心悸", "气短"], "syndromes": ["气血两虚证"], "note": "气血双亏、面色无华" },
+    { "id": "sr_ganshen_yinxu", "symptoms": ["肢体疼痛", "脱发早白", "口渴", "发热"], "syndromes": ["肝肾阴虚证"], "note": "腰酸耳鸣、潮热咽干、须发早白" },
+    { "id": "sr_ganshen_buzu", "symptoms": ["肢体疼痛", "脱发早白", "倦怠乏力"], "syndromes": ["肝肾不足证"], "note": "肝肾两虚、精血不足" },
+    { "id": "sr_pixu_shisheng", "symptoms": ["纳差", "腹泻", "带下", "倦怠乏力"], "syndromes": ["脾虚湿盛证"], "note": "脾虚湿困、带下便溏" },
+    { "id": "sr_ganyu", "symptoms": ["胸胁苦满", "抑郁易怒", "呕吐呃逆"], "syndromes": ["肝郁气滞证"], "note": "胸胁胀痛、抑郁嗳气" },
+    { "id": "sr_yinxu_neire", "symptoms": ["口渴", "发热", "出汗异常", "失眠"], "syndromes": ["阴虚内热证"], "note": "虚热内扰、夜热口干" },
+    { "id": "sr_yinxue_zaozao", "symptoms": ["皮肤瘙痒", "湿疹疹疮"], "syndromes": ["阴虚血燥证"], "note": "血虚风燥、干燥脱屑" },
+    { "id": "sr_yangxu_haning", "symptoms": ["手足冷", "肢体疼痛", "腹痛"], "syndromes": ["阳虚寒凝证"], "note": "血虚寒凝、手足厥寒" },
+    { "id": "sr_tanning_qizhi", "symptoms": ["疮痈肿毒"], "syndromes": ["痰凝气滞证"], "note": "痰气郁结、瘿瘤结块" },
+    { "id": "sr_tanre", "symptoms": ["失眠", "呕吐呃逆", "口苦", "眩晕"], "syndromes": ["痰热证"], "note": "痰热扰胆、惊悸呕恶" },
+    { "id": "sr_tanshi", "symptoms": ["眩晕", "头痛", "呕吐呃逆", "麻木"], "syndromes": ["痰湿证"], "note": "风痰上扰、眩晕呕恶" }
   ]
 }

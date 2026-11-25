@@ -718,17 +718,14 @@
     });
   }
 
-  // 归纳候选证型：已选症状在名方中关联到的证型，按关联次数排序取前 3
+  // 归纳候选证型：辨证规则映射 + 名方关联双来源，交由规则引擎计算
   function deduceCandidates() {
-    const sym = [...seek.symptoms];
-    if (!sym.length) return [];
-    const score = {};
-    S.famous.forEach(f => {
-      const t = f.tags || {};
-      const hit = (t.target_symptoms || []).filter(s => sym.includes(s)).length;
-      if (hit > 0) (t.syndromes || []).forEach(s => { score[s] = (score[s] || 0) + hit; });
-    });
-    return Object.entries(score).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([label]) => label);
+    const engine = window.FamousRecommendEngine;
+    const input = { symptoms: [...seek.symptoms], syndromes: [...seek.syndromes], freeText: seek.freeText };
+    if (engine && engine.deduceSyndromes) {
+      return engine.deduceSyndromes(S.famous, S.famousTags, input).map(r => r.label);
+    }
+    return [];
   }
 
   function refreshCandidates() {
@@ -840,7 +837,7 @@
       selSyn.value = '';
     };
     const free = $('seek-free');
-    if (free) free.oninput = () => { seek.freeText = free.value.trim(); };
+    if (free) free.oninput = () => { seek.freeText = free.value.trim(); refreshCandidates(); };
     const btnRec = $('seek-btn-recommend');
     if (btnRec) btnRec.onclick = runSeek;
     const btnDed = $('seek-btn-deduce');

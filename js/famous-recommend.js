@@ -193,6 +193,8 @@
       score,
       scoreA: Math.round(A),
       scoreB: Math.round(B),
+      hitCount: syn.hit.length + sym.hit.length + organ.hit.length + kk.hit.length,
+      focus: Math.round((synFocus + symFocus) * 100) / 100,
       hit: {
         syndromes: syn.hit,
         symptoms: sym.hit,
@@ -230,7 +232,11 @@
       .map(f => scoreOne(f, q, idx, opts))
       .map(r => Object.assign(r, { band: bandOf(r.score) }))
       .filter(r => r.band !== 'hidden')
-      .sort((a, b) => b.score - a.score || a.id.localeCompare(b.id));
+      .sort((a, b) => b.score - a.score
+        || b.hitCount - a.hitCount
+        || b.hit.syndromes.length - a.hit.syndromes.length
+        || b.focus - a.focus
+        || a.id.localeCompare(b.id));
 
     const topN = opts.topN || TOP_N;
     const results = scored.slice(0, topN);

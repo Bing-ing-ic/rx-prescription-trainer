@@ -714,7 +714,9 @@
     box.innerHTML = [...seek.syndromes].map(s =>
       `<span class="seek-pill">${esc(s)}<button type="button" data-del="${esc(s)}" aria-label="移除">×</button></span>`).join('');
     box.querySelectorAll('[data-del]').forEach(b => b.onclick = () => {
-      seek.syndromes.delete(b.dataset.del); renderPickedSyndromes();
+      seek.syndromes.delete(b.dataset.del);
+      if (!seek.syndromes.size) seek.confirmed = false;
+      renderPickedSyndromes(); refreshCandidates(); updateSeekStatus();
     });
   }
 
@@ -741,8 +743,12 @@
     }).join('');
     box.querySelectorAll('[data-cand]').forEach(el => el.onclick = () => {
       const v = el.dataset.cand;
-      if (seek.syndromes.has(v)) seek.syndromes.delete(v);
-      else { seek.syndromes.add(v); seek.confirmed = true; }
+      if (seek.syndromes.has(v)) {
+        seek.syndromes.delete(v);
+        if (!seek.syndromes.size) seek.confirmed = false;
+      } else {
+        seek.syndromes.add(v); seek.confirmed = true; seek.skipped = false;
+      }
       renderPickedSyndromes(); refreshCandidates(); updateSeekStatus();
     });
   }
@@ -833,7 +839,7 @@
     // 按症寻方控件
     const selSyn = $('seek-syndrome');
     if (selSyn) selSyn.onchange = () => {
-      if (selSyn.value) { seek.syndromes.add(selSyn.value); seek.confirmed = true; renderPickedSyndromes(); updateSeekStatus(); }
+      if (selSyn.value) { seek.syndromes.add(selSyn.value); seek.confirmed = true; seek.skipped = false; renderPickedSyndromes(); refreshCandidates(); updateSeekStatus(); }
       selSyn.value = '';
     };
     const free = $('seek-free');

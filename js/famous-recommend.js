@@ -116,6 +116,14 @@
     return { score: clamp(4 * fields.size, 0, 10), fields: [...fields], terms: [...new Set(hitTerms)] };
   }
 
+  /** 按有效维度做权重归一：未查询的维度不计分，其权重在同轨有效维度间重新分配；全空返回 0 */
+  function weightedDims(dims) {
+    const active = dims.filter(d => d.active);
+    const totalW = active.reduce((s, d) => s + d.w, 0);
+    if (totalW <= 0) return 0;
+    return active.reduce((s, d) => s + d.w * d.score, 0) / totalW;
+  }
+
   /** 单条打分 */
   function scoreOne(f, q, idx, opts) {
     const tags = f.tags || {};
@@ -125,34 +133,41 @@
     const sym = matchList([...q.symptoms, ...q.freeHitSymptoms], tags.target_symptoms, idx.symptoms);
     const organ = matchList((opts && opts.organs) || [], tags.organs, idx.organs);
     const kk = matchList((opts && opts.kiKetsuSui) || [], tags.ki_ketsu_sui, idx.ki_ketsu_sui);
-    const kyo = (opts && opts.kyoJitsu) ? (tags.kyo_jitsu === idx.kyo_jitsu.get(opts.kyoJitsu)) : true;
-    const fk = (opts && opts.fukushin) ? (tags.fukushin === idx.fukushin.get(opts.fukushin)) : true;
 
-    // 覆盖率（查询项被命中比例）+ 聚焦度（命中占条目自身标签比例，症状群越聚焦越精准）
+    // 可选维度是否被用户实际查询；未查询的维度中性不计分，避免空查询白给满分
+    const organQueried = Array.isArray(opts.organs) && opts.organs.length > 0;
+    const kkQueried = Array.isArray(opts.kiKetsuSui) && opts.kiKetsuSui.length > 0;
+    const kyoQueried = !!(opts && opts.kyoJitsu);
+    const fkQueried = !!(opts && opts.fukushin);
+    const kyo = kyoQueried && tags.kyo_jitsu === idx.kyo_jitsu.get(opts.kyoJitsu);
+    const fk = fkQueried && tags.fukushin === idx.fukushin.get(opts.fukushin);
+
+    // 覆盖率（查询项被命中比例）；查询项为空时覆盖率按 0 计，不视为满分
     const qSynTotal = [...q.syndromes, ...q.freeHitSyndromes].length;
     const qSymTotal = [...q.symptoms, ...q.freeHitSymptoms].length;
-    const synCov = ratio(syn.hit.length, qSynTotal);
-    const symCov = ratio(sym.hit.length, qSymTotal);
+    const synCov = qSynTotal > 0 ? syn.hit.length / qSynTotal : 0;
+    const symCov = qSymTotal > 0 ? sym.hit.length / qSymTotal : 0;
     const synFocus = syn.hit.length / Math.max(1, (tags.syndromes || []).length);
     const symFocus = sym.hit.length / Math.max(1, (tags.target_symptoms || []).length);
     const synScore = 0.6 * synCov + 0.4 * synFocus;
     const symScore = 0.6 * symCov + 0.4 * symFocus;
+    const organCov = organQueried ? ratio(organ.hit.length, organ.miss.length + organ.hit.length) : 0;
+    const kkCov = kkQueried ? ratio(kk.hit.length, kk.miss.length + kk.hit.length) : 0;
 
-    // A 轨：中医辨证。skipped 时证型权重折半、症状权重上调。
-    let A;
-    if (skipped) {
-      A = 22.5 * synScore + 57.5 * symScore
-        + 20 * ratio(organ.hit.length, organ.miss.length + organ.hit.length);
-    } else {
-      A = 45 * synScore + 35 * symScore
-        + 20 * ratio(organ.hit.length, organ.miss.length + organ.hit.length);
-    }
+    // A 轨：中医辨证（证型 / 症状 / 脏腑）。skipped 时证型权重下调、症状权重上调。
+    const A = 100 * weightedDims([
+      { score: synScore, w: skipped ? 22.5 : 45, active: qSynTotal > 0 },
+      { score: symScore, w: skipped ? 57.5 : 35, active: qSymTotal > 0 },
+      { score: organCov, w: 20, active: organQueried }
+    ]);
 
     // B 轨：日本方证（目标症状群 / 気血水 / 虚实 / 腹证）
-    const B = 45 * symScore
-      + 20 * ratio(kk.hit.length, kk.miss.length + kk.hit.length)
-      + 15 * (kyo ? 1 : 0)
-      + 20 * (fk ? 1 : 0);
+    const B = 100 * weightedDims([
+      { score: symScore, w: 45, active: qSymTotal > 0 },
+      { score: kkCov, w: 20, active: kkQueried },
+      { score: kyo ? 1 : 0, w: 15, active: kyoQueried },
+      { score: fk ? 1 : 0, w: 20, active: fkQueried }
+    ]);
 
     // 地区权重：中方偏重辨证 A，日韩偏重方证 B
     const wA = f.region === 'china' ? 0.65 : 0.40;

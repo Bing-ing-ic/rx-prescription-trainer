@@ -62,6 +62,19 @@ freeCases.forEach(c => {
   else { console.log('  ✗ 归一不符预期'); fail++; }
 });
 
+// 空查询与无关词：零命中不得有任何条目入列（防空维度白给分导致基线虚高）
+const noiseCases = [
+  { name: '空查询', input: {} },
+  { name: '无关乱码', input: { freeText: 'xxxxxxxxzzz' } },
+  { name: '纯年龄性别', input: { freeText: '男，47岁' } }
+];
+noiseCases.forEach(c => {
+  const r = E.recommend(famous.prescriptions, tagDef, c.input, { skipped: true });
+  console.log(`\n【基线·${c.name}】入列=${r.results.length}`);
+  if (r.results.length === 0) console.log('  ✓ 零命中未入列');
+  else { console.log('  ✗ 零命中不应入列：' + r.results.map(x => x.name).join(',')); fail++; }
+});
+
 // 结构完整性：所有条目 tags 对齐词表
 const idx = E.indexDef(tagDef);
 let bad = [];

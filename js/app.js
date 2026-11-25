@@ -75,6 +75,16 @@
         level3: { label: '三级定点医疗机构',                   ratio: 0.00 }  // 居民三级普通门诊不予报销
       }
     },
+    // 一般诊疗费（仅基层医疗卫生机构 / 一级及以下收取；二级、三级不收取）
+    // 依据：《云南省医疗服务价格项目汇编(2024版)》110200008 及云医保〔2025〕52号医保定额支付口径：
+    //   - 提供注射/输液服务：每人次 12 元，统筹基金付 8.50 元、个人付 3.50 元；
+    //   - 未提供注射服务（纯门诊一般诊查/药品处方）：按 50% 每人次 6 元，统筹付 5.50 元、个人付 0.50 元。
+    //   每次就诊只收一次；已纳入基本公卫管理的慢性病免收（教学口径暂不做免收演算）。
+    consult_fee: {
+      eligible_levels: ['level1'],
+      injection: { label: '一般诊疗费（含注射/输液）', amount: 12.00, mi: 8.50, self: 3.50 },
+      ordinary:  { label: '一般诊疗费（门诊一般诊查）', amount: 6.00,  mi: 5.50, self: 0.50 }
+    },
     // 门诊慢性病（已完成慢特病备案）待遇：与普通门诊额度分开计算、分别结算
     chronic: {
       employee: {
@@ -2207,7 +2217,15 @@
         total += price * qty * freqPerDay * days;
       });
     });
-    total = Math.round(total * 100) / 100;
+    // ---- 一般诊疗费（仅一级及以下基层机构收取；含注射/输液12元，纯门诊诊查6元，定额支付）----
+    const ivActive = S.ivGroups.some(g => g.drugs.length > 0);
+    const cf = YUXI_OUTPATIENT_POLICY.consult_fee;
+    const cfLevel = (S.patient && S.patient.hospitalLevel) || 'level1';
+    const cfEligible = cf.eligible_levels.includes(cfLevel);
+    const cfTier = cfEligible ? (ivActive ? cf.injection : cf.ordinary) : null;
+    const consultFee = cfTier ? cfTier.amount : 0;
+    const consultMi = cfTier ? cfTier.mi : 0;
+    total = Math.round((total + consultFee) * 100) / 100;
     // ---- 玉溪市门诊统筹演算口径 ----
     // 政策范围内费用 = 甲类 100% + 乙类先行自付 20% 后计入；丙类/目录外全自费
     const ins = S.patient ? (S.patient.insurance || normalizeInsurance(S.patient.feeType)) : '自费';
@@ -2289,10 +2307,30 @@
     } else {
       note = '自费患者：不享受医保门诊统筹支付，费用全部由个人承担';
     }
+    // 一般诊疗费按医保定额支付（不走药品比例/起付线）；自费患者诊疗费由个人全额承担
+    let consultMiApplied = consultMi;
+    if (ins === '自费') consultMiApplied = 0;
+    miPay = Math.round((miPay + consultMiApplied) * 100) / 100;
     const selfPay = Math.max(0, Math.round((total - miPay) * 100) / 100);
     $('f-amount').textContent = total.toFixed(2);
     $('f-ins').textContent = miPay.toFixed(2);
     $('f-self').textContent = selfPay.toFixed(2);
+    // 诊疗费明细行（仅一级及以下收取；二级/三级不显示）
+    const consultEl = $('f-consult-fee');
+    if (consultEl) {
+      if (cfTier) {
+        consultEl.style.display = '';
+        consultEl.textContent = `${cfTier.label}：¥${cfTier.amount.toFixed(2)}（统筹 ${cfTier.mi.toFixed(2)} / 个人 ${cfTier.self.toFixed(2)}）`;
+      } else {
+        consultEl.style.display = 'none';
+        consultEl.textContent = '';
+      }
+    }
+    if (cfTier) {
+      note += `；一般诊疗费 ${cfTier.amount.toFixed(2)} 元（${ivActive ? '含注射/输液' : '门诊一般诊查'}），按医保定额支付统筹 ${cfTier.mi.toFixed(2)} 元`;
+    } else if (!cfEligible) {
+      note += '；二级及以上定点医疗机构不收取一般诊疗费';
+    }
     const noteEl = $('f-policy-note');
     if (noteEl) noteEl.textContent = note;
     const chronicEl = $('f-chronic-note');

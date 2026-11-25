@@ -1,5 +1,5 @@
 {
-  "version": "2026.11.25-famous-r3",
+  "version": "2026.11.25-famous-r4",
   "note": "名方鉴赏（只读学习栏目）。仅收录有明确典籍/文献出处的成方；教学参考，须执业医师辨证使用。本库不接入处方点评与规则引擎判分，不参与推演流程。海外（日本、韩国）条目源流归属与剂量、适应证、剂型差异见 origin_lineage 与 cn_jp_diff 字段。",
   "prescriptions": [
     {
@@ -6759,6 +6759,1555 @@
         "KEGG Medicus 东洋桂枝加葛根汤エキス細粒添付文書"
       ],
       "pinyin": "gzjgt"
+    },
+    {
+      "id": "CN-055",
+      "name": "八珍汤",
+      "aliases": [
+        "八珍散"
+      ],
+      "region": "china",
+      "dynasty_or_period": "明",
+      "author_classic": "明·薛己《正体类要》（亦载《丹溪心法》）",
+      "source_ref": "《正体类要》卷下；气血双补基础方，由四君子汤与四物汤合用，加姜、枣调和营卫。",
+      "origin_lineage": "后世气血双补代表方，《局方》系统气血双补范式。",
+      "composition": [
+        {
+          "herb": "人参",
+          "role": "君",
+          "dose": "9g",
+          "dose_note": "大补元气，益气健脾。"
+        },
+        {
+          "herb": "白术",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "健脾燥湿。"
+        },
+        {
+          "herb": "茯苓",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "健脾渗湿。"
+        },
+        {
+          "herb": "当归",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "补血活血。"
+        },
+        {
+          "herb": "川芎",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "活血行气。"
+        },
+        {
+          "herb": "白芍",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养血敛阴。"
+        },
+        {
+          "herb": "熟地黄",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "滋阴补血。"
+        },
+        {
+          "herb": "炙甘草",
+          "role": "使",
+          "dose": "5g",
+          "dose_note": "益气和中，调和诸药。"
+        },
+        {
+          "herb": "生姜",
+          "role": "佐",
+          "dose": "3 片",
+          "dose_note": "温胃和营。"
+        },
+        {
+          "herb": "大枣",
+          "role": "佐",
+          "dose": "2 枚",
+          "dose_note": "养胃和营。"
+        }
+      ],
+      "functions": "益气补血。",
+      "indications": "气血两虚证：面色苍白或萎黄，头晕目眩，倦怠气短，心悸怔忡，食欲不振，舌淡苔薄白，脉细弱或虚大无力。",
+      "syndrome_key": "气血两虚 + 面色无华、气短心悸、舌淡脉细弱。",
+      "similar_formulas": [
+        "十全大补汤",
+        "人参养荣汤",
+        "当归补血汤"
+      ],
+      "modern_use": "贫血、久病体弱、产后或病后恢复、慢性消耗性疾病见气血两虚者的调理参考。",
+      "cautions": [
+        "感冒发热、湿热内蕴者不宜",
+        "纯虚无邪方宜",
+        "教学参考，须执业医师辨证使用"
+      ],
+      "references": [
+        "薛己《正体类要》",
+        "《方剂学》教材·补益剂·气血双补"
+      ],
+      "pinyin": "bzt"
+    },
+    {
+      "id": "CN-056",
+      "name": "生化汤",
+      "aliases": [],
+      "region": "china",
+      "dynasty_or_period": "清",
+      "author_classic": "清·傅山《傅青主女科》",
+      "source_ref": "产后化瘀生新名方，载《傅青主女科·产后编》。",
+      "origin_lineage": "妇科产后调治方，化瘀而不伤血、生新而不留瘀。",
+      "composition": [
+        {
+          "herb": "当归",
+          "role": "君",
+          "dose": "24g",
+          "dose_note": "补血活血，化瘀生新。"
+        },
+        {
+          "herb": "川芎",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "活血行气。"
+        },
+        {
+          "herb": "桃仁",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "活血祛瘀。"
+        },
+        {
+          "herb": "炮姜",
+          "role": "佐",
+          "dose": "2g",
+          "dose_note": "温经散寒止痛。"
+        },
+        {
+          "herb": "炙甘草",
+          "role": "使",
+          "dose": "2g",
+          "dose_note": "和中缓急，调和诸药。"
+        }
+      ],
+      "functions": "化瘀生新，温经止痛。",
+      "indications": "产后瘀血腹痛：恶露不行或不畅，小腹冷痛拒按，舌淡暗或有瘀点，脉沉涩。",
+      "syndrome_key": "产后 + 寒凝血瘀、恶露不行、小腹冷痛。",
+      "similar_formulas": [
+        "温经汤",
+        "当归芍药散"
+      ],
+      "modern_use": "产后子宫复旧不良、产后腹痛、胎盘残留辅助调理（须排除重症）。",
+      "cautions": [
+        "产后血热、恶露过多者忌",
+        "孕妇禁用",
+        "不可作常规产后保健品长期服用",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "傅山《傅青主女科·产后编》",
+        "《方剂学》教材·理血剂·活血祛瘀"
+      ],
+      "pinyin": "sht"
+    },
+    {
+      "id": "CN-057",
+      "name": "完带汤",
+      "aliases": [],
+      "region": "china",
+      "dynasty_or_period": "清",
+      "author_classic": "清·傅山《傅青主女科》",
+      "source_ref": "脾虚湿盛、带下不止代表方，载《傅青主女科》。",
+      "origin_lineage": "妇科健脾化湿止带方。",
+      "composition": [
+        {
+          "herb": "白术",
+          "role": "君",
+          "dose": "30g",
+          "dose_note": "健脾燥湿。"
+        },
+        {
+          "herb": "山药",
+          "role": "臣",
+          "dose": "30g",
+          "dose_note": "补脾益肾，固涩止带。"
+        },
+        {
+          "herb": "人参",
+          "role": "臣",
+          "dose": "6g",
+          "dose_note": "益气健脾。"
+        },
+        {
+          "herb": "白芍",
+          "role": "佐",
+          "dose": "15g",
+          "dose_note": "柔肝养血。"
+        },
+        {
+          "herb": "苍术",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "燥湿健脾。"
+        },
+        {
+          "herb": "陈皮",
+          "role": "佐",
+          "dose": "3g",
+          "dose_note": "理气燥湿。"
+        },
+        {
+          "herb": "柴胡",
+          "role": "佐",
+          "dose": "2g",
+          "dose_note": "升达肝气。"
+        },
+        {
+          "herb": "荆芥穗",
+          "role": "佐",
+          "dose": "2g",
+          "dose_note": "祛风胜湿止带。"
+        },
+        {
+          "herb": "车前子",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "利湿泄浊。"
+        },
+        {
+          "herb": "甘草",
+          "role": "使",
+          "dose": "3g",
+          "dose_note": "调和诸药。"
+        }
+      ],
+      "functions": "补脾疏肝，化湿止带。",
+      "indications": "脾虚肝郁、湿浊下注带下：带下色白或淡黄，清稀无臭，面色㿠白，倦怠便溏，舌淡苔白，脉缓或濡弱。",
+      "syndrome_key": "脾虚湿盛 + 带下清稀色白、倦怠便溏、舌淡苔白。",
+      "similar_formulas": [
+        "逍遥散",
+        "参苓白术散"
+      ],
+      "modern_use": "阴道炎、宫颈炎、盆腔炎见脾虚湿盛带下者的辨证参考。",
+      "cautions": [
+        "湿热下注带下（黄稠臭秽）不宜",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "傅山《傅青主女科》",
+        "《方剂学》教材·祛湿剂"
+      ],
+      "pinyin": "wdt"
+    },
+    {
+      "id": "CN-058",
+      "name": "犀角地黄汤",
+      "aliases": [
+        "芍药地黄汤"
+      ],
+      "region": "china",
+      "dynasty_or_period": "唐",
+      "author_classic": "唐·孙思邈《备急千金要方》",
+      "source_ref": "清热凉血代表方；犀角现以水牛角代（剂量宜加重，先煎）。",
+      "origin_lineage": "凉血散瘀祖方。",
+      "composition": [
+        {
+          "herb": "水牛角",
+          "role": "君",
+          "dose": "30g（先煎，代犀角）",
+          "dose_note": "清热凉血解毒；现以水牛角代犀角。"
+        },
+        {
+          "herb": "生地黄",
+          "role": "臣",
+          "dose": "15g",
+          "dose_note": "凉血养阴清热。"
+        },
+        {
+          "herb": "芍药",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养血和营，缓急止痛。"
+        },
+        {
+          "herb": "牡丹皮",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "清热凉血，活血散瘀。"
+        }
+      ],
+      "functions": "清热解毒，凉血散瘀。",
+      "indications": "热入血分证：身热谵语，斑色紫黑，吐血、衄血、便血，或蓄血发狂，舌绛起刺，脉细数。",
+      "syndrome_key": "热入血分 + 出血/发斑 + 舌绛起刺、脉细数。",
+      "similar_formulas": [
+        "清营汤",
+        "青蒿鳖甲汤"
+      ],
+      "modern_use": "重症感染伴出血倾向、过敏性紫癜、急性白血病出血等属血热妄行者的参考（须正规救治）。",
+      "cautions": [
+        "阳虚出血、脾胃虚寒者忌",
+        "水牛角代犀角须先煎、量宜重",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "孙思邈《备急千金要方》",
+        "《方剂学》教材·清热剂·清热凉血"
+      ],
+      "pinyin": "xjdht"
+    },
+    {
+      "id": "CN-059",
+      "name": "温脾汤",
+      "aliases": [],
+      "region": "china",
+      "dynasty_or_period": "唐",
+      "author_classic": "唐·孙思邈《备急千金要方》",
+      "source_ref": "寒积攻下代表方，载《备急千金要方》。",
+      "origin_lineage": "温补脾阳、攻下冷积方。",
+      "composition": [
+        {
+          "herb": "大黄",
+          "role": "君",
+          "dose": "9g",
+          "dose_note": "泻下冷积。"
+        },
+        {
+          "herb": "附子",
+          "role": "臣",
+          "dose": "6g（先煎）",
+          "dose_note": "温补脾阳，散寒。"
+        },
+        {
+          "herb": "干姜",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "温中散寒。"
+        },
+        {
+          "herb": "人参",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "益气扶正。"
+        },
+        {
+          "herb": "甘草",
+          "role": "使",
+          "dose": "3g",
+          "dose_note": "调和诸药，缓附子之峻。"
+        }
+      ],
+      "functions": "温补脾阳，攻下冷积。",
+      "indications": "阳虚寒积证：腹痛便秘，脐下绞结，绕脐不止，手足不温，苔白不渴，脉沉弦而迟。",
+      "syndrome_key": "阳虚寒积 + 便秘腹痛 + 手足不温、脉沉迟。",
+      "similar_formulas": [
+        "大黄附子汤",
+        "四逆汤"
+      ],
+      "modern_use": "肠梗阻、慢性痢疾、便秘属寒积阳虚者的辨证参考。",
+      "cautions": [
+        "孕妇慎服",
+        "附子先煎",
+        "实热便秘不宜",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "孙思邈《备急千金要方》",
+        "《方剂学》教材·泻下剂·温下"
+      ],
+      "pinyin": "wpt"
+    },
+    {
+      "id": "CN-060",
+      "name": "当归四逆汤",
+      "aliases": [],
+      "region": "china",
+      "dynasty_or_period": "东汉",
+      "author_classic": "东汉·张仲景《伤寒论》",
+      "source_ref": "血虚寒厥代表方，载《伤寒论·辨厥阴病脉证并治》。",
+      "origin_lineage": "养血通脉、温经散寒方。",
+      "composition": [
+        {
+          "herb": "当归",
+          "role": "君",
+          "dose": "12g",
+          "dose_note": "养血和血，温通经脉。"
+        },
+        {
+          "herb": "桂枝",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "温经散寒，通脉。"
+        },
+        {
+          "herb": "芍药",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养血和营，配桂枝调和营卫。"
+        },
+        {
+          "herb": "细辛",
+          "role": "佐",
+          "dose": "3g",
+          "dose_note": "温散寒邪，通止痛。"
+        },
+        {
+          "herb": "木通",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "通利血脉。"
+        },
+        {
+          "herb": "大枣",
+          "role": "佐",
+          "dose": "9 枚",
+          "dose_note": "养血健脾。"
+        },
+        {
+          "herb": "炙甘草",
+          "role": "使",
+          "dose": "6g",
+          "dose_note": "调和诸药。"
+        }
+      ],
+      "functions": "温经散寒，养血通脉。",
+      "indications": "血虚寒厥证：手足厥寒，口不渴，肢体疼痛或冻疮，舌淡苔白，脉细欲绝或沉细。",
+      "syndrome_key": "血虚寒凝 + 手足厥寒、脉细欲绝、舌淡苔白。",
+      "similar_formulas": [
+        "当归四逆加吴茱萸生姜汤",
+        "真武汤"
+      ],
+      "modern_use": "雷诺现象、血栓闭塞性脉管炎、冻疮、风湿关节痛属血虚寒凝者参考。",
+      "cautions": [
+        "阳虚寒盛甚者宜加味",
+        "细辛用量宜慎",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "《伤寒论·辨厥阴病脉证并治》",
+        "《方剂学》教材·温里剂"
+      ],
+      "pinyin": "dgsnt"
+    },
+    {
+      "id": "CN-061",
+      "name": "大定风珠",
+      "aliases": [],
+      "region": "china",
+      "dynasty_or_period": "清",
+      "author_classic": "清·吴瑭《温病条辨》",
+      "source_ref": "滋阴熄风代表方，载《温病条辨》。",
+      "origin_lineage": "温病后期真阴大亏、虚风内动方。",
+      "composition": [
+        {
+          "herb": "白芍",
+          "role": "君",
+          "dose": "18g",
+          "dose_note": "滋阴柔肝熄风。"
+        },
+        {
+          "herb": "阿胶",
+          "role": "臣",
+          "dose": "9g（烊化）",
+          "dose_note": "滋阴养血。"
+        },
+        {
+          "herb": "龟甲",
+          "role": "臣",
+          "dose": "12g",
+          "dose_note": "滋阴潜阳。"
+        },
+        {
+          "herb": "干地黄",
+          "role": "佐",
+          "dose": "18g",
+          "dose_note": "滋阴凉血。"
+        },
+        {
+          "herb": "火麻仁",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "润燥养阴。"
+        },
+        {
+          "herb": "五味子",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "敛阴滋肾。"
+        },
+        {
+          "herb": "牡蛎",
+          "role": "佐",
+          "dose": "12g",
+          "dose_note": "潜阳熄风。"
+        },
+        {
+          "herb": "麦冬",
+          "role": "佐",
+          "dose": "18g",
+          "dose_note": "养阴润肺生津。"
+        },
+        {
+          "herb": "炙甘草",
+          "role": "使",
+          "dose": "6g",
+          "dose_note": "调和诸药。"
+        },
+        {
+          "herb": "鸡子黄",
+          "role": "佐",
+          "dose": "2 枚（兑服，食材）",
+          "dose_note": "滋阴润燥，养心熄风；食材非饮片。"
+        },
+        {
+          "herb": "鳖甲",
+          "role": "佐",
+          "dose": "12g",
+          "dose_note": "滋阴潜阳熄风。"
+        }
+      ],
+      "functions": "滋阴熄风。",
+      "indications": "阴虚风动证：手足瘛疭，形消神倦，舌绛少苔，脉气虚弱，时时欲脱。",
+      "syndrome_key": "温病后期真阴大亏 + 手足瘛疭 + 舌绛少苔、脉虚欲脱。",
+      "similar_formulas": [
+        "青蒿鳖甲汤",
+        "镇肝熄风汤"
+      ],
+      "modern_use": "重症热病后期、甲亢或神经科阴虚动风见手足蠕动者的辨证参考（须正规诊疗）。",
+      "cautions": [
+        "阴虚欲脱属急重症，须医疗机构救治",
+        "鸡子黄为食材",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "吴瑭《温病条辨》",
+        "《方剂学》教材·治风剂·平熄内风"
+      ],
+      "pinyin": "ddgz"
+    },
+    {
+      "id": "CN-062",
+      "name": "百合固金汤",
+      "aliases": [],
+      "region": "china",
+      "dynasty_or_period": "清",
+      "author_classic": "清·汪昂《医方集解》引赵蕺庵方",
+      "source_ref": "肺肾阴亏、虚火上炎代表方，载《医方集解》引赵蕺庵方。",
+      "origin_lineage": "养阴润肺、化痰止咳方。",
+      "composition": [
+        {
+          "herb": "百合",
+          "role": "君",
+          "dose": "12g",
+          "dose_note": "养阴润肺止咳。"
+        },
+        {
+          "herb": "生地黄",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "滋阴凉血。"
+        },
+        {
+          "herb": "熟地黄",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "滋阴补肾。"
+        },
+        {
+          "herb": "麦冬",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养阴润肺。"
+        },
+        {
+          "herb": "白芍",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养血柔肝。"
+        },
+        {
+          "herb": "当归",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "养血润燥。"
+        },
+        {
+          "herb": "川贝母",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "润肺化痰止咳。"
+        },
+        {
+          "herb": "甘草",
+          "role": "使",
+          "dose": "3g",
+          "dose_note": "调和诸药。"
+        },
+        {
+          "herb": "玄参",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "滋阴降火，利咽。"
+        },
+        {
+          "herb": "桔梗",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "载药上行，宣肺利咽。"
+        }
+      ],
+      "functions": "滋养肺肾，止咳化痰。",
+      "indications": "肺肾阴亏、虚火上炎证：咳嗽气喘，痰中带血，咽喉燥痛，头晕目眩，午后潮热，舌红少苔，脉细数。",
+      "syndrome_key": "肺肾阴虚 + 咳痰带血、咽喉燥痛、潮热舌红少苔。",
+      "similar_formulas": [
+        "养阴清肺汤",
+        "清燥救肺汤"
+      ],
+      "modern_use": "慢性支气管炎、肺结核、支气管扩张、咽炎属肺肾阴虚者参考。",
+      "cautions": [
+        "脾虚便溏、痰湿壅盛者不宜",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "《医方集解》引赵蕺庵方",
+        "《方剂学》教材·补益剂·补阴"
+      ],
+      "pinyin": "bhgjt"
+    },
+    {
+      "id": "CN-063",
+      "name": "养阴清肺汤",
+      "aliases": [],
+      "region": "china",
+      "dynasty_or_period": "清",
+      "author_classic": "清·郑梅涧《重楼玉钥》",
+      "source_ref": "白喉阴虚肺热代表方，载《重楼玉钥》。",
+      "origin_lineage": "养阴清肺、解毒利咽方。",
+      "composition": [
+        {
+          "herb": "生地黄",
+          "role": "君",
+          "dose": "12g",
+          "dose_note": "滋阴凉血清热。"
+        },
+        {
+          "herb": "麦冬",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "养阴润肺。"
+        },
+        {
+          "herb": "玄参",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "滋阴降火，解毒利咽。"
+        },
+        {
+          "herb": "白芍",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养血敛阴。"
+        },
+        {
+          "herb": "牡丹皮",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "凉血散热。"
+        },
+        {
+          "herb": "川贝母",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "润肺化痰。"
+        },
+        {
+          "herb": "薄荷",
+          "role": "佐",
+          "dose": "3g（后下）",
+          "dose_note": "疏散风热，利咽。"
+        },
+        {
+          "herb": "甘草",
+          "role": "使",
+          "dose": "3g",
+          "dose_note": "调和诸药。"
+        }
+      ],
+      "functions": "养阴清肺，解毒利咽。",
+      "indications": "白喉/阴虚肺热证：喉间起白膜、不易剥脱，咽喉肿痛，鼻干唇燥，或咳或不咳，呼吸有声，舌红少苔，脉细数。",
+      "syndrome_key": "阴虚肺热 + 咽喉白膜肿痛 + 鼻干唇燥、舌红少苔。",
+      "similar_formulas": [
+        "百合固金汤",
+        "普济消毒饮"
+      ],
+      "modern_use": "急性咽炎、扁桃体炎、白喉恢复期、口腔溃疡属阴虚肺热者参考。",
+      "cautions": [
+        "白喉为传染病，须规范隔离治疗",
+        "脾虚便溏慎服",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "郑梅涧《重楼玉钥》",
+        "《方剂学》教材·清热剂"
+      ],
+      "pinyin": "yyqft"
+    },
+    {
+      "id": "CN-064",
+      "name": "定喘汤",
+      "aliases": [],
+      "region": "china",
+      "dynasty_or_period": "明",
+      "author_classic": "明·张时彻《摄生众妙方》",
+      "source_ref": "痰热内蕴、风寒外束哮喘代表方，载《摄生众妙方》。",
+      "origin_lineage": "宣肺降气、清热化痰平喘方。",
+      "composition": [
+        {
+          "herb": "白果",
+          "role": "君",
+          "dose": "9g",
+          "dose_note": "敛肺定喘。"
+        },
+        {
+          "herb": "麻黄",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "宣肺平喘。"
+        },
+        {
+          "herb": "苏子",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "降气化痰平喘。"
+        },
+        {
+          "herb": "甘草",
+          "role": "使",
+          "dose": "3g",
+          "dose_note": "调和诸药。"
+        },
+        {
+          "herb": "款冬花",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "润肺止咳化痰。"
+        },
+        {
+          "herb": "杏仁",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "降气止咳平喘。"
+        },
+        {
+          "herb": "桑白皮",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "泻肺清热平喘。"
+        },
+        {
+          "herb": "黄芩",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "清热泻火。"
+        },
+        {
+          "herb": "半夏",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "燥湿化痰。"
+        }
+      ],
+      "functions": "宣肺降气，清热化痰。",
+      "indications": "风寒外束、痰热内蕴之哮喘：哮喘咳嗽，痰多气急，痰稠色黄，微恶风寒，舌苔黄腻，脉滑数。",
+      "syndrome_key": "哮喘 + 痰稠色黄、微恶风寒、苔黄腻、脉滑数。",
+      "similar_formulas": [
+        "苏子降气汤",
+        "小青龙汤"
+      ],
+      "modern_use": "支气管哮喘、慢性支气管炎急性发作见痰热兼表寒者参考。",
+      "cautions": [
+        "哮喘持续状态须急诊",
+        "新感风寒无热者不宜",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "张时彻《摄生众妙方》",
+        "《方剂学》教材·理气剂·降气"
+      ],
+      "pinyin": "dct"
+    },
+    {
+      "id": "CN-065",
+      "name": "清燥救肺汤",
+      "aliases": [],
+      "region": "china",
+      "dynasty_or_period": "清",
+      "author_classic": "清·喻昌《医门法律》",
+      "source_ref": "温燥伤肺代表方，载《医门法律》。",
+      "origin_lineage": "清燥润肺、养阴益气方。",
+      "composition": [
+        {
+          "herb": "桑叶",
+          "role": "君",
+          "dose": "9g",
+          "dose_note": "清宣肺燥。"
+        },
+        {
+          "herb": "石膏",
+          "role": "臣",
+          "dose": "15g（先煎）",
+          "dose_note": "清肺泄热。"
+        },
+        {
+          "herb": "甘草",
+          "role": "使",
+          "dose": "3g",
+          "dose_note": "调和诸药。"
+        },
+        {
+          "herb": "人参",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "益气生津。"
+        },
+        {
+          "herb": "火麻仁",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "润燥养阴。"
+        },
+        {
+          "herb": "阿胶",
+          "role": "佐",
+          "dose": "9g（烊化）",
+          "dose_note": "滋阴润肺。"
+        },
+        {
+          "herb": "麦冬",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养阴润肺。"
+        },
+        {
+          "herb": "杏仁",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "降气止咳。"
+        },
+        {
+          "herb": "枇杷叶",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "清肺降逆止咳。"
+        }
+      ],
+      "functions": "清燥润肺，养阴益气。",
+      "indications": "温燥伤肺证：头痛身热，干咳无痰，气逆而喘，咽喉干燥，鼻燥，胸满胁痛，心烦口渴，舌干少苔，脉虚大而数。",
+      "syndrome_key": "温燥伤肺 + 干咳无痰、咽干鼻燥、舌干少苔、脉虚数。",
+      "similar_formulas": [
+        "桑菊饮",
+        "百合固金汤"
+      ],
+      "modern_use": "上呼吸道感染、急性支气管炎、秋燥咳嗽属温燥伤肺者参考。",
+      "cautions": [
+        "脾胃虚寒、痰湿咳嗽不宜",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "喻昌《医门法律》",
+        "《方剂学》教材·治燥剂·清燥润肺"
+      ],
+      "pinyin": "qzjft"
+    },
+    {
+      "id": "CN-066",
+      "name": "大黄䗪虫丸",
+      "aliases": [
+        "大黄䗪虫丸方"
+      ],
+      "region": "china",
+      "dynasty_or_period": "东汉",
+      "author_classic": "东汉·张仲景《金匮要略》",
+      "source_ref": "虚劳干血代表方（虫类剔络逐瘀），载《金匮要略·血痹虚劳病》。",
+      "origin_lineage": "缓中补虚、活血消癥方。",
+      "composition": [
+        {
+          "herb": "大黄",
+          "role": "君",
+          "dose": "9g",
+          "dose_note": "逐瘀通腑。"
+        },
+        {
+          "herb": "土鳖虫",
+          "role": "臣",
+          "dose": "6g",
+          "dose_note": "即䗪虫，破血逐瘀，续筋接骨。"
+        },
+        {
+          "herb": "黄芩",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "清解郁热。"
+        },
+        {
+          "herb": "桃仁",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "活血祛瘀。"
+        },
+        {
+          "herb": "杏仁",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "降气润燥。"
+        },
+        {
+          "herb": "地黄",
+          "role": "佐",
+          "dose": "15g",
+          "dose_note": "滋阴养血。"
+        },
+        {
+          "herb": "芍药",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养血和营。"
+        },
+        {
+          "herb": "干漆",
+          "role": "佐",
+          "dose": "3g",
+          "dose_note": "破瘀消癥。"
+        },
+        {
+          "herb": "虻虫",
+          "role": "佐",
+          "dose": "3g",
+          "dose_note": "破血逐瘀；虫类药，字典缺口。"
+        },
+        {
+          "herb": "水蛭",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "破血通经逐瘀。"
+        },
+        {
+          "herb": "蛴螬",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "破瘀散结；虫类药，字典缺口。"
+        },
+        {
+          "herb": "甘草",
+          "role": "使",
+          "dose": "3g",
+          "dose_note": "调和诸药，缓和虫类峻烈。"
+        }
+      ],
+      "functions": "活血破瘀，通经消癥，缓中补虚。",
+      "indications": "五劳虚极、干血内停证：形体羸瘦，腹满不能饮食，肌肤甲错，两目黯黑，妇人经闭不行，舌暗有瘀斑，脉沉涩。",
+      "syndrome_key": "虚劳干血 + 肌肤甲错、两目黯黑、经闭舌暗。",
+      "similar_formulas": [
+        "桂枝茯苓丸",
+        "桃核承气汤"
+      ],
+      "modern_use": "肝硬化、肝脾肿大、子宫肌瘤、闭经、银屑病等属血瘀干血者参考（成药多为丸剂）。",
+      "cautions": [
+        "孕妇禁用",
+        "虫类药过敏者慎",
+        "体虚者须扶正配伍",
+        "教学参考，须辨证"
+      ],
+      "references": [
+        "张仲景《金匮要略·血痹虚劳病》",
+        "《方剂学》教材·理血剂"
+      ],
+      "pinyin": "dhzcw"
+    },
+    {
+      "id": "CN-067",
+      "name": "夏桑菊茶",
+      "aliases": [
+        "夏桑菊颗粒"
+      ],
+      "region": "china",
+      "dynasty_or_period": "岭南民间（广东凉茶；成药收载部颁标准/药典一部）",
+      "author_classic": "岭南民间凉茶验方（成药：夏桑菊颗粒）",
+      "source_ref": "岭南民间世代相传的清肝明目凉茶；现代制成夏桑菊颗粒，载部颁标准 WS3-B-2967-98，《中国药典》一部收载。组成：夏枯草、野菊花、桑叶。",
+      "origin_lineage": "民间经验茶饮，凉茶成药化代表方。",
+      "composition": [
+        {
+          "herb": "夏枯草",
+          "role": "君",
+          "dose": "10g",
+          "dose_note": "清肝泻火，散结消肿。"
+        },
+        {
+          "herb": "菊花",
+          "role": "臣",
+          "dose": "9g（野菊花）",
+          "dose_note": "疏风清热，平肝明目，解毒。"
+        },
+        {
+          "herb": "桑叶",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "疏风清热，清肝明目。"
+        }
+      ],
+      "functions": "清肝明目，疏风散热，除湿痹，解疮毒。",
+      "indications": "风热/肝热：风热感冒，目赤头痛，头晕耳鸣，咽喉肿痛，疔疮肿毒；亦可作清凉饮料。",
+      "syndrome_key": "风热或肝热 + 目赤头痛、咽喉肿痛；代茶凉饮。",
+      "similar_formulas": [
+        "五花茶",
+        "银翘散"
+      ],
+      "modern_use": "岭南暑季日常清凉饮用；风热感冒、目赤咽痛的辅助食养，不替代药物治疗。",
+      "cautions": [
+        "性偏寒凉，脾胃虚寒、便溏者及孕妇慎",
+        "风寒感冒不宜",
+        "教学参考，须辨证饮用"
+      ],
+      "references": [
+        "部颁标准 WS3-B-2967-98《夏桑菊颗粒》",
+        "《中国药典》一部",
+        "岭南民间凉茶"
+      ],
+      "pinyin": "xsc"
+    },
+    {
+      "id": "JP-037",
+      "name": "当归四逆汤",
+      "aliases": [
+        "当帰四逆湯"
+      ],
+      "region": "japan",
+      "dynasty_or_period": "东汉·张仲景（日本汉方传承）",
+      "author_classic": "《伤寒论》",
+      "source_ref": "血虚寒厥方，日本汉方常用（与 JP-014 当归四逆加吴茱萸生姜汤为加减关系）。",
+      "origin_lineage": "中方原方，日本汉方传承。",
+      "composition": [
+        {
+          "herb": "当归",
+          "role": "君",
+          "dose": "12g",
+          "dose_note": "养血和血，温通经脉。"
+        },
+        {
+          "herb": "桂枝",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "温经散寒通脉。"
+        },
+        {
+          "herb": "芍药",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养血和营。"
+        },
+        {
+          "herb": "细辛",
+          "role": "佐",
+          "dose": "3g",
+          "dose_note": "温散寒邪。"
+        },
+        {
+          "herb": "木通",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "通利血脉。"
+        },
+        {
+          "herb": "大枣",
+          "role": "佐",
+          "dose": "9 枚",
+          "dose_note": "养血健脾。"
+        },
+        {
+          "herb": "炙甘草",
+          "role": "使",
+          "dose": "6g",
+          "dose_note": "调和诸药。"
+        }
+      ],
+      "functions": "温经散寒，养血通脉。",
+      "indications": "血虚寒厥：手足厥寒，肢体疼痛或冻疮，脉细欲绝。",
+      "syndrome_key": "血虚寒凝 + 手足厥寒、脉细。",
+      "similar_formulas": [
+        "当归四逆加吴茱萸生姜汤",
+        "真武汤"
+      ],
+      "modern_use": "雷诺现象、冻疮、末梢循环障碍、关节痛属血虚寒凝者参考。",
+      "cautions": [
+        "细辛用量宜慎",
+        "教学参考，须辨证"
+      ],
+      "cn_jp_diff": "源流：《伤寒论》原方，日本汉方传承（当帰四逆湯）。日本另有加吴茱萸、生姜的加味方；剂型多为エキス颗粒。",
+      "references": [
+        "《伤寒论·辨厥阴病脉证并治》",
+        "日本汉方处方解"
+      ],
+      "pinyin": "dgsnt"
+    },
+    {
+      "id": "JP-038",
+      "name": "桂枝加龙骨牡蛎汤",
+      "aliases": [
+        "桂枝加竜骨牡蛎湯"
+      ],
+      "region": "japan",
+      "dynasty_or_period": "东汉·张仲景（日本汉方传承）",
+      "author_classic": "《金匮要略》",
+      "source_ref": "阴阳两虚、精关不固代表方；日本医疗用汉方常用。",
+      "origin_lineage": "中方原方，日本汉方传承。",
+      "composition": [
+        {
+          "herb": "桂枝",
+          "role": "君",
+          "dose": "9g",
+          "dose_note": "温通阳气，调和营卫。"
+        },
+        {
+          "herb": "芍药",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "敛阴和营。"
+        },
+        {
+          "herb": "生姜",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "温胃散邪。"
+        },
+        {
+          "herb": "炙甘草",
+          "role": "使",
+          "dose": "6g",
+          "dose_note": "调和诸药。"
+        },
+        {
+          "herb": "大枣",
+          "role": "佐",
+          "dose": "12 枚",
+          "dose_note": "养胃和营。"
+        },
+        {
+          "herb": "龙骨",
+          "role": "佐",
+          "dose": "9g（先煎）",
+          "dose_note": "潜镇固涩安神。"
+        },
+        {
+          "herb": "牡蛎",
+          "role": "佐",
+          "dose": "9g（先煎）",
+          "dose_note": "潜阳固涩。"
+        }
+      ],
+      "functions": "调和阴阳，潜镇固摄。",
+      "indications": "阴阳两虚、营卫失调：遗精梦交，少腹弦急，阴头寒，目眩发落，多汗，脉芤动微紧。",
+      "syndrome_key": "阴阳两虚 + 遗精多汗 + 少腹弦急、脉芤迟或动微紧。",
+      "similar_formulas": [
+        "炙甘草汤",
+        "酸枣仁汤"
+      ],
+      "modern_use": "神经衰弱、失眠多梦、遗精早泄、自主神经功能失调、多汗属阴阳两虚者参考。",
+      "cautions": [
+        "湿热下注遗精不宜",
+        "龙牡先煎",
+        "教学参考，须辨证"
+      ],
+      "cn_jp_diff": "源流：《金匮要略·血痹虚劳病》原方，日本汉方传承（桂枝加竜骨牡蛎湯），为日本医疗用汉方常用方。剂量按日本エキス颗粒规格；适应证偏精神神经症状（不眠、心悸、不安、多汗）；剂型：エキス顆粒。",
+      "references": [
+        "《金匮要略·血痹虚劳病脉证并治》",
+        "PMDA 日本医疗用汉方添付文書"
+      ],
+      "pinyin": "gzjl"
+    },
+    {
+      "id": "JP-039",
+      "name": "苓甘姜味辛夏汤",
+      "aliases": [
+        "苓甘姜味辛夏湯",
+        "桂苓五味甘草去桂加姜辛半夏汤"
+      ],
+      "region": "japan",
+      "dynasty_or_period": "东汉·张仲景（日本汉方传承）",
+      "author_classic": "《金匮要略》",
+      "source_ref": "寒饮咳嗽化裁方；日本汉方常用。",
+      "origin_lineage": "由《金匮》桂苓五味甘草汤去桂枝，加干姜、细辛、半夏而成，日本汉方传承。",
+      "composition": [
+        {
+          "herb": "茯苓",
+          "role": "君",
+          "dose": "12g",
+          "dose_note": "健脾渗湿化饮。"
+        },
+        {
+          "herb": "甘草",
+          "role": "使",
+          "dose": "6g",
+          "dose_note": "调和诸药。"
+        },
+        {
+          "herb": "干姜",
+          "role": "臣",
+          "dose": "6g",
+          "dose_note": "温中散寒化饮。"
+        },
+        {
+          "herb": "细辛",
+          "role": "佐",
+          "dose": "3g",
+          "dose_note": "温散寒饮。"
+        },
+        {
+          "herb": "五味子",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "敛肺止咳。"
+        },
+        {
+          "herb": "半夏",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "燥湿化痰，降逆止呕。"
+        }
+      ],
+      "functions": "温肺散寒，化饮降逆。",
+      "indications": "寒饮咳嗽：咳嗽痰多清稀，胸满呕吐，头目昏眩，口不渴，苔白滑，脉弦滑。",
+      "syndrome_key": "寒饮内停 + 痰稀量多、呕吐眩冒、苔白滑。",
+      "similar_formulas": [
+        "小青龙汤",
+        "苓甘五味姜辛汤"
+      ],
+      "modern_use": "慢性支气管炎、过敏性鼻炎、哮喘缓解期属寒饮者参考。",
+      "cautions": [
+        "阴虚干咳、肺热痰黄者不宜",
+        "细辛用量宜慎",
+        "教学参考，须辨证"
+      ],
+      "cn_jp_diff": "源流：《金匮要略》痰饮诸方化裁，日本汉方名苓甘姜味辛夏湯。组成较中方苓甘五味姜辛汤加半夏化饮降逆；日本用于呼吸系统寒饮证；剂型：エキス颗粒。",
+      "references": [
+        "《金匮要略·痰饮咳嗽病脉证并治》",
+        "日本汉方处方解"
+      ],
+      "pinyin": "lgjx"
+    },
+    {
+      "id": "JP-040",
+      "name": "茯苓饮",
+      "aliases": [
+        "茯苓飲",
+        "外台茯苓饮"
+      ],
+      "region": "japan",
+      "dynasty_or_period": "东汉·张仲景（《外台》引，日本汉方传承）",
+      "author_classic": "《金匮要略》附方引《外台秘要》茯苓饮",
+      "source_ref": "停痰宿水、消痰能食方；日本汉方常用。",
+      "origin_lineage": "中方古方，《外台秘要》收录，日本汉方传承。",
+      "composition": [
+        {
+          "herb": "茯苓",
+          "role": "君",
+          "dose": "12g",
+          "dose_note": "健脾渗湿化饮。"
+        },
+        {
+          "herb": "人参",
+          "role": "臣",
+          "dose": "6g",
+          "dose_note": "益气健脾。"
+        },
+        {
+          "herb": "白术",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "健脾燥湿。"
+        },
+        {
+          "herb": "枳实",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "行气消痞。"
+        },
+        {
+          "herb": "陈皮",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "理气燥湿化痰。"
+        },
+        {
+          "herb": "生姜",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "温胃散饮止呕。"
+        }
+      ],
+      "functions": "消痰化饮，理气和胃，令能食。",
+      "indications": "心胸停痰宿水：吐出水后心胸虚满，气满不能食，脘闷苔腻，脉滑。",
+      "syndrome_key": "痰饮停胃 + 心下痞满、不能食、苔腻脉滑。",
+      "similar_formulas": [
+        "二陈汤",
+        "六君子汤"
+      ],
+      "modern_use": "慢性胃炎、功能性消化不良、胃下垂、痰湿体质纳差者参考。",
+      "cautions": [
+        "阴虚内热者不宜",
+        "教学参考，须辨证"
+      ],
+      "cn_jp_diff": "源流：《外台秘要》茯苓饮，附载《金匮要略》，日本汉方传承（茯苓飲）。日本用于胃肠虚弱、消化不良、慢性胃炎；剂型：エキス颗粒。",
+      "references": [
+        "《外台秘要》",
+        "《金匮要略》附方",
+        "日本汉方处方解"
+      ],
+      "pinyin": "fly"
+    },
+    {
+      "id": "JP-041",
+      "name": "大黄牡丹皮汤",
+      "aliases": [
+        "大黄牡丹皮湯",
+        "大黄牡丹汤"
+      ],
+      "region": "japan",
+      "dynasty_or_period": "东汉·张仲景（日本汉方传承）",
+      "author_classic": "《金匮要略》",
+      "source_ref": "肠痈初起代表方；日本汉方常用。",
+      "origin_lineage": "中方原方，日本汉方传承。",
+      "composition": [
+        {
+          "herb": "大黄",
+          "role": "君",
+          "dose": "9g",
+          "dose_note": "泻热破瘀通腑。"
+        },
+        {
+          "herb": "牡丹皮",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "清热凉血散瘀。"
+        },
+        {
+          "herb": "桃仁",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "活血祛瘀。"
+        },
+        {
+          "herb": "冬瓜子",
+          "role": "佐",
+          "dose": "15g",
+          "dose_note": "清肠利湿排脓。"
+        },
+        {
+          "herb": "芒硝",
+          "role": "佐",
+          "dose": "6g（冲服/烊化）",
+          "dose_note": "泻热软坚。"
+        }
+      ],
+      "functions": "泻热破瘀，散结消肿。",
+      "indications": "肠痈初起（湿热瘀滞）：右下腹疼痛拒按，右足屈而不伸，发热汗出，舌苔黄腻，脉滑数。",
+      "syndrome_key": "肠痈初起 + 右下腹痛拒按 + 苔黄腻、脉滑数。",
+      "similar_formulas": [
+        "大黄牡丹汤",
+        "薏苡附子败酱散"
+      ],
+      "modern_use": "急性阑尾炎、盆腔炎、附件炎、痔疮等属湿热瘀滞者参考（重症急腹症须急诊）。",
+      "cautions": [
+        "孕妇禁用",
+        "芒硝冲服",
+        "阑尾炎穿孔或重症须急诊",
+        "教学参考，须辨证"
+      ],
+      "cn_jp_diff": "源流：《金匮要略·疮痈肠痈浸淫病》原方，日本汉方传承（大黄牡丹皮湯）。日本用于阑尾炎、痔疾、妇科瘀滞证；剂型：エキス颗粒。",
+      "references": [
+        "《金匮要略·疮痈肠痈浸淫病》",
+        "日本汉方处方解"
+      ],
+      "pinyin": "dhmdp"
+    },
+    {
+      "id": "KR-005",
+      "name": "凉膈散火汤",
+      "aliases": [
+        "양격산화탕",
+        "Yangkyuksanwha-tang"
+      ],
+      "region": "korea",
+      "dynasty_or_period": "朝鲜末期（1894）",
+      "author_classic": "李济马《东医寿世保元》",
+      "source_ref": "四象医学少阳人代表方；韩国韩医临床用于糖尿病、肥胖。组成据韩国论文 Table 1：生地黄、忍冬藤、连翘各 8g，栀子、薄荷、知母、石膏、防风、荆芥各 4g。",
+      "origin_lineage": "韩国四象医学本土创制，辨象（少阳人）施治，非中方原方。",
+      "composition": [
+        {
+          "herb": "生地黄",
+          "role": "君",
+          "dose": "8g",
+          "dose_note": "养阴凉血清热。"
+        },
+        {
+          "herb": "忍冬藤",
+          "role": "臣",
+          "dose": "8g",
+          "dose_note": "清热解毒通络；藤茎类，字典缺口。"
+        },
+        {
+          "herb": "连翘",
+          "role": "臣",
+          "dose": "8g",
+          "dose_note": "清热解毒散结。"
+        },
+        {
+          "herb": "栀子",
+          "role": "佐",
+          "dose": "4g",
+          "dose_note": "清热泻火除烦。"
+        },
+        {
+          "herb": "薄荷",
+          "role": "佐",
+          "dose": "4g",
+          "dose_note": "疏散风热。"
+        },
+        {
+          "herb": "知母",
+          "role": "佐",
+          "dose": "4g",
+          "dose_note": "清热泻火，滋阴润燥。"
+        },
+        {
+          "herb": "石膏",
+          "role": "佐",
+          "dose": "4g",
+          "dose_note": "清热泻火，除烦止渴。"
+        },
+        {
+          "herb": "防风",
+          "role": "佐",
+          "dose": "4g",
+          "dose_note": "疏风散热。"
+        },
+        {
+          "herb": "荆芥",
+          "role": "佐",
+          "dose": "4g",
+          "dose_note": "疏风透表。"
+        }
+      ],
+      "functions": "清热泻火，凉血疏风，养阴润燥（四象辨象用方）。",
+      "indications": "少阳人燥热内郁证：口渴多饮，易烦躁，皮肤疮疹，肥胖伴消渴倾向，舌红苔黄；按四象辨证属少阳人体质者。",
+      "syndrome_key": "四象医学“少阳人”体质 + 燥热消渴/肥胖烦躁；须韩医辨象使用。",
+      "similar_formulas": [
+        "荆防地黄汤",
+        "调胃升清汤"
+      ],
+      "modern_use": "韩国韩医用于少阳人肥胖、2 型糖尿病辅助调理；属体质医学范畴，非通用通治方。",
+      "cautions": [
+        "四象方须辨象，不可不经辨象通用",
+        "忍冬藤为藤茎类，字典缺口",
+        "脾胃虚寒者慎",
+        "教学参考，须韩医/中医师辨证使用"
+      ],
+      "cn_jp_diff": "韩方源流：本土四象医学创制，依《东医寿世保元》及韩国现代韩医/论文用量。与中方清热凉血方思路不同，核心按太阳/少阳/太阴/少阴四象体质选方；组成含忍冬藤、石膏等，剂量为韩国临床一日量口径。",
+      "references": [
+        "李济马《东医寿世保元》（1894）",
+        "Yangkyuksanwha-tang 抗肥胖实验论文（2019，组成 Table 1）"
+      ],
+      "pinyin": "lgsht"
+    },
+    {
+      "id": "JP-036",
+      "name": "炙甘草汤",
+      "aliases": [
+        "炙甘草湯",
+        "复脉汤"
+      ],
+      "region": "japan",
+      "dynasty_or_period": "东汉·张仲景（日本汉方传承）",
+      "author_classic": "《伤寒论》《金匮要略》",
+      "source_ref": "心动悸、脉结代代表方；日本汉方传承常用。",
+      "origin_lineage": "中方原方，日本汉方传承，多为エキス颗粒。",
+      "composition": [
+        {
+          "herb": "炙甘草",
+          "role": "君",
+          "dose": "9g",
+          "dose_note": "益气养心，缓急复脉。"
+        },
+        {
+          "herb": "生姜",
+          "role": "臣",
+          "dose": "9g",
+          "dose_note": "温胃和营。"
+        },
+        {
+          "herb": "人参",
+          "role": "佐",
+          "dose": "6g",
+          "dose_note": "益气。"
+        },
+        {
+          "herb": "生地黄",
+          "role": "臣",
+          "dose": "30g",
+          "dose_note": "滋阴养血。"
+        },
+        {
+          "herb": "桂枝",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "温通心阳。"
+        },
+        {
+          "herb": "阿胶",
+          "role": "佐",
+          "dose": "6g（烊化）",
+          "dose_note": "滋阴养血。"
+        },
+        {
+          "herb": "麦冬",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "养阴润肺生津。"
+        },
+        {
+          "herb": "火麻仁",
+          "role": "佐",
+          "dose": "9g",
+          "dose_note": "润燥养阴。"
+        },
+        {
+          "herb": "大枣",
+          "role": "佐",
+          "dose": "10 枚",
+          "dose_note": "养胃和营。"
+        }
+      ],
+      "functions": "益气滋阴，通阳复脉。",
+      "indications": "阴血阳气虚弱、心脉失养：心动悸，脉结代，虚羸少气，舌光少苔；亦治虚劳肺痿。",
+      "syndrome_key": "气阴两虚 + 心动悸、脉结代、舌光少苔。",
+      "similar_formulas": [
+        "归脾汤",
+        "生脉散"
+      ],
+      "modern_use": "心律失常（早搏、传导阻滞）、虚劳、肺痿见气阴两虚者参考（须心电图等正规评估）。",
+      "cautions": [
+        "痰湿内阻、大便溏泄者不宜",
+        "阿胶烊化",
+        "教学参考，须辨证"
+      ],
+      "cn_jp_diff": "源流：东汉张仲景原方，日本汉方传承（日本名炙甘草湯/復脈湯）。剂量：中方重用生地黄，日本医疗用汉方按エキス颗粒规格配比；适应证：日本用于虚劳心悸、体质虚弱；剂型：エキス顆粒。",
+      "references": [
+        "《伤寒论》《金匮要略》",
+        "日本汉方处方解"
+      ],
+      "pinyin": "zgct"
     }
   ]
 }

@@ -11078,7 +11078,7 @@
       "price_yuan": 0.05,
       "processing": "生品",
       "usage_detail": "煎服，用量见剂量范围。",
-      "pharmacopoeia": ""
+      "pharmacopoeia": "地方草药（岭南草药志）"
     },
     {
       "name": "九里香",
@@ -11265,7 +11265,7 @@
       "price_yuan": 8,
       "processing": "生品",
       "usage_detail": "炖服。",
-      "pharmacopoeia": ""
+      "pharmacopoeia": "药食同源"
     },
     {
       "name": "鹿角",

@@ -2577,6 +2577,7 @@ input, select, textarea { font-family: inherit; }
 .seek-status.ok { color: #15803d; }
 .seek-status.warn { color: var(--warn-700); }
 .seek-status.muted { color: var(--gray-500); }
+.seek-status.info { color: var(--info-700); }
 .seek-result { display: flex; flex-direction: column; gap: var(--space-10px); margin-top: var(--space-10px); }
 .seek-card { border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: var(--space-10px); background: #fff; }
 .seek-card-head { display: flex; align-items: center; gap: var(--space-6px); flex-wrap: wrap; }

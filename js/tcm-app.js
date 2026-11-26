@@ -791,6 +791,15 @@
     else { st.textContent = '尚未确认辨证，可先归纳或跳过'; st.className = 'seek-status muted'; }
   }
 
+  // 归纳证型后的状态反馈：有候选则提示点选纳入，无候选则提示补充症状/主诉
+  function syncDeduceStatus() {
+    const st = $('seek-status'); if (!st) return;
+    if (seek.skipped || seek.confirmed || seek.syndromes.size) { updateSeekStatus(); return; }
+    const cands = deduceCandidates();
+    if (cands.length) { st.textContent = `已归纳 ${cands.length} 个候选证型，点选纳入辨证`; st.className = 'seek-status info'; }
+    else { st.textContent = '暂未归纳出相关证型，请补充症状或主诉'; st.className = 'seek-status muted'; }
+  }
+
   function famousSummary(id) {
     const f = S.famous.find(x => x.id === id);
     return f ? (f.functions || '') : '';
@@ -907,9 +916,15 @@
     const btnRec = $('seek-btn-recommend');
     if (btnRec) btnRec.onclick = runSeek;
     const btnDed = $('seek-btn-deduce');
-    if (btnDed) btnDed.onclick = refreshCandidates;
+    if (btnDed) btnDed.onclick = () => { refreshCandidates(); syncDeduceStatus(); };
     const btnSkip = $('seek-btn-skip');
-    if (btnSkip) btnSkip.onclick = () => { seek.skipped = true; updateSeekStatus(); };
+    if (btnSkip) btnSkip.onclick = () => {
+      seek.skipped = true;
+      seek.confirmed = false;
+      refreshCandidates();
+      updateSeekStatus();
+      runSeek();
+    };
     const btnClear = $('seek-btn-clear');
     if (btnClear) btnClear.onclick = resetSeek;
     // 煎服法备注：编辑控件屏幕可见，打印时由 CSS 隐藏；选中值实时同步到打印版文本（屏幕隐藏，打印显示）

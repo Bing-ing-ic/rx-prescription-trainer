@@ -79,10 +79,14 @@
   var state = {
     endpoint: '',          // 代理地址；空=未接入
     enabled: true,         // 总开关
-    timeoutMs: 15000,
-    pingTtl: 60000,
+    timeoutMs: 25000,      // 单次解读请求超时（覆盖模型实测 10–15s + 冷启动余量）
+    pingTimeoutMs: 8000,   // 连通性探测超时
+    retryTimes: 1,         // 瞬时抖动自动重试次数（超时/限流不重试）
     pingCache: { at: 0, ok: false, reason: 'unavailable' }
   };
+
+  var PING_OK_TTL = 60000;
+  var PING_FAIL_TTL = 10000;
 
   function configure(opts) {
     opts = opts || {};
@@ -97,8 +101,10 @@
 
   async function ping() {
     var now = Date.now();
-    if (now - state.pingCache.at < state.pingTtl) {
-      return { ok: state.pingCache.ok, reason: state.pingCache.reason };
+    var cached = state.pingCache;
+    var ttl = cached.ok ? PING_OK_TTL : PING_FAIL_TTL;
+    if (now - cached.at < ttl) {
+      return { ok: cached.ok, reason: cached.reason };
     }
     if (!state.endpoint) {
       state.pingCache = { at: now, ok: false, reason: 'unavailable' };
@@ -106,7 +112,7 @@
     }
     try {
       var ctrl = new AbortController();
-      var timer = setTimeout(function () { ctrl.abort(); }, 5000);
+      var timer = setTimeout(function () { ctrl.abort(); }, state.pingTimeoutMs);
       var resp = await fetch(state.endpoint.replace(/\/+$/, '') + '/healthz', { signal: ctrl.signal });
       clearTimeout(timer);
       if (!resp.ok) throw new Error('http ' + resp.status);
@@ -126,11 +132,12 @@
     return p.ok;
   }
 
-  async function ask(payload) {
-    payload = payload || {};
-    if (!state.enabled || !state.endpoint) return { ok: false, reason: 'unavailable' };
-    if (SCENES.indexOf(payload.scene) < 0) return { ok: false, reason: 'bad_scene' };
+  function sleep(ms) {
+    return new Promise(function (r) { setTimeout(r, ms); });
+  }
 
+  // 单次请求：区分超时 / 限流围栏 / 上游错误 / 网络异常。
+  async function requestOnce(payload) {
     var ctrl = new AbortController();
     var timer = setTimeout(function () { ctrl.abort(); }, state.timeoutMs);
     try {
@@ -148,7 +155,10 @@
         signal: ctrl.signal
       });
       clearTimeout(timer);
-      if (!resp.ok) return { ok: false, reason: 'unavailable' };
+      if (!resp.ok) {
+        var reason = resp.status === 429 ? 'rejected' : 'unavailable';
+        return { ok: false, reason: reason, httpStatus: resp.status };
+      }
       var data = await resp.json();
       if (!data.ok) return { ok: false, reason: data.reason || 'unavailable' };
       return {
@@ -166,6 +176,24 @@
     }
   }
 
+  // 仅瞬时网络/上游抖动（unavailable）做有限次自动重试；超时、限流围栏、报文类错误不重试。
+  var RETRYABLE = { unavailable: true };
+
+  async function ask(payload) {
+    payload = payload || {};
+    if (!state.enabled || !state.endpoint) return { ok: false, reason: 'unavailable' };
+    if (SCENES.indexOf(payload.scene) < 0) return { ok: false, reason: 'bad_scene' };
+
+    var out = await requestOnce(payload);
+    var attempts = 0;
+    while (!out.ok && RETRYABLE[out.reason] && attempts < state.retryTimes) {
+      attempts += 1;
+      await sleep(900);
+      out = await requestOnce(payload);
+    }
+    return out;
+  }
+
   function escapeHtml(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -175,7 +203,13 @@
   function skeletonHtml() {
     return '<div class="assist-skeleton" aria-hidden="true">' +
       '<span></span><span></span><span></span></div>' +
-      '<p class="assist-status-text">正在结合病例推演…</p>';
+      '<p class="assist-status-text">模型生成较慢，请稍候…</p>';
+  }
+
+  function downText(reason) {
+    if (reason === 'timeout') return '响应超时，以下为规则结论。';
+    if (reason === 'rejected') return '辅助繁忙被限流，以下为规则结论。';
+    return '辅助暂不可用，以下为规则结论。';
   }
 
   function renderResult(out) {
@@ -252,7 +286,7 @@
         body.innerHTML =
           '<div class="assist-status is-down">' +
             '<span class="assist-status-icon">⚠️</span>' +
-            '<span class="assist-status-text">辅助暂不可用，以下为规则结论。</span>' +
+            '<span class="assist-status-text">' + escapeHtml(downText(out.reason)) + '</span>' +
             '<button type="button" class="assist-retry">🔁 重试</button>' +
           '</div>';
         bindRetry();

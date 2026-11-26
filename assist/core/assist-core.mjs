@@ -18,7 +18,7 @@
  */
 
 export const MAX_BODY_BYTES = 16 * 1024;
-export const DEFAULT_TIMEOUT_MS = 15000;
+export const DEFAULT_TIMEOUT_MS = 20000;
 
 // 场景注册表：新增模块场景只需在此追加一条 system 模板（前端 medical-assist.js 需同步）。
 export const SCENES = {
@@ -176,7 +176,8 @@ async function callLlm(env, scene, payload) {
 
     if (!resp.ok) {
       console.error('[assist] upstream status', resp.status);
-      return { reason: 'unavailable' };
+      // 429 为限流/围栏，前端不自动重试；其余上游错误归为不可用。
+      return { reason: resp.status === 429 ? 'rejected' : 'unavailable' };
     }
     const data = await resp.json();
     const content = data?.choices?.[0]?.message?.content;

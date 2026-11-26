@@ -147,6 +147,22 @@ async function callLlm(env, scene, payload) {
   const timeoutMs = Number(env.ASSIST_TIMEOUT_MS || DEFAULT_TIMEOUT_MS);
   const timer = setTimeout(() => controller.abort(), timeoutMs);
 
+  const bodyPayload = {
+    model,
+    messages: [
+      { role: 'system', content: system },
+      { role: 'user', content: JSON.stringify(userPayload, null, 2) }
+    ],
+    temperature: 0.3,
+    max_tokens: 1024,
+    stream: false
+  };
+  // 仅 GLM-4.5 及以上支持 thinking；默认强制思考会先产出推理链、首响变慢。
+  // 设 ASSIST_LLM_THINKING=disabled 时关闭深度思考，直接作答；旧模型不传该参数。
+  if (env.ASSIST_LLM_THINKING === 'disabled') {
+    bodyPayload.thinking = { type: 'disabled' };
+  }
+
   try {
     const resp = await fetch(`${base}/chat/completions`, {
       method: 'POST',
@@ -154,19 +170,14 @@ async function callLlm(env, scene, payload) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${key}`
       },
-      body: JSON.stringify({
-        model,
-        messages: [
-          { role: 'system', content: system },
-          { role: 'user', content: JSON.stringify(userPayload, null, 2) }
-        ],
-        temperature: 0.3,
-        stream: false
-      }),
+      body: JSON.stringify(bodyPayload),
       signal: controller.signal
     });
 
-    if (!resp.ok) return { reason: 'unavailable' };
+    if (!resp.ok) {
+      console.error('[assist] upstream status', resp.status);
+      return { reason: 'unavailable' };
+    }
     const data = await resp.json();
     const content = data?.choices?.[0]?.message?.content;
     if (!content) return { reason: 'rejected' };

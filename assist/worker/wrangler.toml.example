@@ -1,0 +1,18 @@
+# Cloudflare Workers 配置示例。
+# 用法：复制本文件为 wrangler.toml，按需修改；API Key 用 `wrangler secret put ASSIST_LLM_KEY` 写入，不写进本文件。
+# 免费层：Workers Free，10 万请求/天，无需绑卡。
+
+name = "rx-trainer-assist"
+main = "assist/worker/assist-worker.js"
+compatibility_date = "2026-11-26"
+
+# 非敏感配置可放 vars；敏感的 ASSIST_LLM_KEY 必须用 secret。
+[vars]
+ASSIST_ENABLED = "true"
+ASSIST_LLM_BASE = "https://api.siliconflow.cn/v1"
+ASSIST_LLM_MODEL = "Qwen/Qwen2.5-7B-Instruct"
+ASSIST_ALLOW_ORIGIN = "https://bing-ing-ic.github.io,http://localhost:8000"
+ASSIST_TIMEOUT_MS = "15000"
+
+# 密钥（不要写在这里）：
+#   wrangler secret put ASSIST_LLM_KEY

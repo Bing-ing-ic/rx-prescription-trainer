@@ -49,6 +49,9 @@
   }
   async function boot() {
     try {
+      if (window.MedicalAssist && window.__ASSIST_CONFIG__) {
+        window.MedicalAssist.configure(window.__ASSIST_CONFIG__);
+      }
       const [cj, fj, hj, rj, fmq, ftag] = await Promise.all([
         loadJSON('data/tcm-cases.json').catch(() => null),
         loadJSON('data/tcm-formulas.json').catch(() => null),
@@ -760,8 +763,55 @@
     else { st.textContent = '尚未确认辨证，可先归纳或跳过'; st.className = 'seek-status muted'; }
   }
 
+  function famousSummary(id) {
+    const f = S.famous.find(x => x.id === id);
+    return f ? (f.functions || '') : '';
+  }
+
+  function renderSeekAssist(res) {
+    const box = $('seek-assist');
+    if (!box) return;
+    const MA = window.MedicalAssist;
+    if (!MA || !MA.isConfigured()) { box.innerHTML = ''; return; }
+    const candidates = res.results.map(r => ({ id: r.id, name: r.name, summary: famousSummary(r.id) }));
+    box.innerHTML = `
+      <div class="seek-assist">
+        <button type="button" class="btn btn-sm" id="seek-assist-btn">🤖 AI 类方辨析</button>
+        <div class="seek-assist-body" id="seek-assist-body" hidden></div>
+      </div>`;
+    const btn = $('seek-assist-btn');
+    const body = $('seek-assist-body');
+    btn.onclick = async () => {
+      btn.disabled = true;
+      body.hidden = false;
+      body.innerHTML = '<span class="muted small">正在生成辨析…</span>';
+      const out = await MA.ask({
+        scene: 'tcm_formula_diff',
+        module: 'tcm',
+        context: {
+          chief_complaint: seek.freeText,
+          symptoms: [...seek.symptoms],
+          syndromes: [...seek.syndromes]
+        },
+        candidates,
+        question: ''
+      });
+      if (!out.ok) {
+        body.innerHTML = '<span class="muted small">辅助暂不可用，以下为规则推荐结果。</span>';
+        btn.disabled = false;
+        return;
+      }
+      body.innerHTML =
+        (out.summary ? `<p class="seek-assist-summary">${esc(out.summary)}</p>` : '') +
+        (out.points.length ? `<ul class="seek-assist-points">${out.points.map(p => `<li>${esc(p)}</li>`).join('')}</ul>` : '') +
+        (out.caveat ? `<div class="seek-assist-caveat muted small">⚠ ${esc(out.caveat)}</div>` : '');
+      btn.disabled = false;
+    };
+  }
+
   function runSeek() {
     const result = $('seek-result');
+    const assistBox = $('seek-assist');
     const input = { symptoms: [...seek.symptoms], syndromes: [...seek.syndromes], freeText: seek.freeText };
     const opts = { skipped: seek.skipped };
     const engine = window.FamousRecommendEngine;
@@ -769,6 +819,7 @@
       ? engine.recommend(S.famous, S.famousTags, input, opts)
       : { results: [], empty: true };
     if (res.empty) {
+      if (assistBox) assistBox.innerHTML = '';
       result.innerHTML = '<div class="herb-lib-empty">未找到匹配名方，请调整症状或补充描述。</div>';
       return;
     }
@@ -788,6 +839,7 @@
     result.querySelectorAll('[data-detail]').forEach(b => b.onclick = () => {
       showFamousDetail(b.dataset.detail); switchFamousTab('browse');
     });
+    renderSeekAssist(res);
   }
 
   function resetSeek() {
@@ -796,6 +848,7 @@
     const f = $('seek-free'); if (f) f.value = '';
     renderSeekSymCloud(); renderPickedSyndromes(); refreshCandidates(); updateSeekStatus();
     const res = $('seek-result'); if (res) res.innerHTML = '';
+    const ab = $('seek-assist'); if (ab) ab.innerHTML = '';
   }
 
   function bindEvents() {

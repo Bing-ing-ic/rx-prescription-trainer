@@ -108,7 +108,7 @@ Cloudflare Workers Free 代理（$0/月，10 万请求/天，无冷启动）
 
 - **CORS**：代理只放行 `ASSIST_ALLOW_ORIGIN`（本站 Pages 域名 + 本地调试来源）；其余来源拒绝。
 - **白名单过滤**：代理侧校验 `related` 实体名是否在 `candidates` 内；不在则剔除。
-- **超时**：默认 15s，超时返回 `ok:false`，不挂起前端。
+- **超时**：代理上游默认 20s，前端单次解读超时 25s（含冷启动余量）；超时返回 `ok:false`，不挂起前端。
 - **隐私**：不写访问日志中的上下文正文；教学演示禁止录入真实患者信息。
 - **免责**：所有响应固定带 `caveat` 教学辅助声明。
 
@@ -117,8 +117,8 @@ Cloudflare Workers Free 代理（$0/月，10 万请求/天，无冷启动）
 - 全局 `MedicalAssist`，与具体模块引擎解耦。
 - 接口：
   - `MedicalAssist.configure(opts)`：endpoint、enabled、scene 开关。
-  - `MedicalAssist.ping()`：探测代理可用性（`/healthz`），结果缓存。
-  - `MedicalAssist.ask({scene, module, context, candidates, question})`：返回结构化结果或 `{ok:false, reason}`。
+  - `MedicalAssist.ping()`：探测代理可用性（`/healthz`），结果缓存：成功缓存 60s、失败缓存 10s（一次失败不长时间锁死）。
+  - `MedicalAssist.ask({scene, module, context, candidates, question})`：返回结构化结果或 `{ok:false, reason}`；仅对瞬时抖动类 `unavailable` 自动重试 1 次（间隔 900ms），超时 `timeout`、限流 `rejected`、报文类错误（`bad_scene`/`oversize`）不重试。
   - `MedicalAssist.isEnabled()`：总开关 + 代理可达性。
 - 各模块只负责组装自己的 `context / candidates`，调用同一服务；UI 折叠区、懒加载、降级展示由服务层统一提供。
 
@@ -217,6 +217,24 @@ wrangler deploy                        # 拿到 https://<name>.<sub>.workers.dev
 - **当前线上沿用 `glm-4-flash`**：连续多次请求全部 `ok:true`，解析、白名单过滤、免责声明正常，链路稳定。核心已预留 `ASSIST_LLM_THINKING` 开关与 `max_tokens` 上限；待 4.7-Flash 配额放开或账户升级后，可仅改 `ASSIST_LLM_MODEL` 切换，代理代码无需改动。
 - 付费低价档（GLM-4.5-Air / GLM-4.7-FlashX 等）非免费，不纳入零费率方案。
 
-### 9.6 后续模块接入
+### 9.6 可达性加固（2026-11-26，r39）
+
+**诊断**：线上分层实测，`/healthz` 全 200（首响冷启动 ~1.6s，稳态 0.3–0.9s），代理链路本身可达；`POST /assist` 连续 4 次全部 `ok:true`，但单次生成 9.9–14.5s，已逼近旧前端 15s 超时，模型再慢一点或网络一抖即被 Abort 掐断；旧逻辑失败后无自动重试，一次抖动即显示"辅助暂不可用"。本轮未观测到上游 429。
+
+**前端服务层（`js/medical-assist.js`）**
+- 单次解读超时 15000 → **25000ms**，覆盖实测峰值 + 冷启动余量；探测超时 8000ms。
+- 新增自动重试 1 次：仅瞬时抖动类 `unavailable`，间隔 900ms；`timeout`/`rejected`/`bad_scene`/`oversize` 不重试，避免放大慢响应等待。
+- `ping` 缓存区分成败 TTL：成功 60s、失败 10s。
+- 错误分类细化：代理非 2xx 时 429 → `rejected`，其余 → `unavailable`；网络异常与 `AbortError` 区分；面板文案按 reason 区分超时/限流/不可达，加载骨架提示改为"模型生成较慢，请稍候…"。
+
+**代理核心（`assist/core/assist-core.mjs`）**
+- 上游默认超时 15000 → **20000ms**；上游非 2xx 时 429 返回 `reason: rejected`、其余 `unavailable`，保留 `console.error('[assist] upstream status', ...)` 日志。
+
+**复测（加固后，生产）**
+- `GET /healthz` 3 次全 200：1607ms（冷启动）/ 362ms / 322ms。
+- `POST /assist`（`anat_explain` 报文）4/4 成功：12795 / 9312 / 8445 / 9326ms，summary 43–54 字、points 5 条；峰值 12.8s 在新 25s 超时内，无 429、无降级。
+- 部署说明：Netlify 站点未连 Git，函数改动需 `npx netlify-cli deploy --prod --site <siteId> --dir artifacts/netlify-empty --functions netlify/functions --no-build` 手动上线；前端产物由 GitHub Pages 发布，`index.html` 版本戳 r39。
+
+### 9.7 后续模块接入
 - 新增场景：在 `assist/core/assist-core.mjs` 的 `SCENES` 与 `js/medical-assist.js` 的 `SCENES` 各加一条（两端保持同步）；前端模块组装 `context / candidates` 后调 `MedicalAssist.ask({scene, module, context, candidates})`。
 - 本期 8 个场景前端接入位置：西医诊断反馈区（`rx_diagnosis`）、西医报告页（`rx_review`）、汉方辨证反馈区（`tcm_zheng`）、按症寻方结果区（`tcm_formula_diff`）、针灸报告页（`acup_point`）、解剖结构详情页（`anat_explain`）、错题卡片（`mistake_review`）、速查结果区（`quickref_explain`）。

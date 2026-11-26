@@ -167,6 +167,39 @@ wrangler deploy                        # 拿到 https://<name>.<sub>.workers.dev
 - 前端本地静态服务打开站点；Worker 本地用 `wrangler dev` 起调试端口，把 `__ASSIST_CONFIG__.endpoint` 指向本地调试地址。
 - 无 Key / 未配置时，`MedicalAssist.isConfigured()` 为 false，所有辅助 UI 自动隐藏，不影响推演主链路。
 
-### 9.5 后续模块接入
+### 9.5 国内可达性实测与托管路线（2026-11-26）
+
+**已落地的 Cloudflare 侧状态**
+- Worker `rx-trainer-assist` 已部署到账号 `8fe45d5d…`；模型走智谱 `glm-4-flash`，端点 `https://open.bigmodel.cn/api/paas/v4`。
+- `ASSIST_LLM_KEY` 已写入 Worker secret（不入库）；`ASSIST_LLM_BASE/MODEL/ALLOW_ORIGIN/TIMEOUT` 在 `wrangler.toml` vars。
+- 服务端在线：经 `api.cloudflare.com` 可查到脚本与版本；问题仅在访问链路。
+
+**阻断现象（本机国内网络）**
+- `*.workers.dev` 被 DNS 污染：解析到 `104.244.x` / `199.59.x` / `157.240.x`（Meta/Twitter 段假 IP），443 无响应；`1.1.1.1`、`8.8.8.8` DoH 亦不通。
+- 这是默认子域在国内的常见问题，**不等于部署失败**；生产建议绑自有自定义域，而非用 `workers.dev`。
+
+**本机实测各免费后端可达性（TCP443 / 应用层 HTTP）**
+
+| 平台默认域 | TCP | HTTP | 结论 |
+| --- | --- | --- | --- |
+| `netlify.app` | 通 | 200 | 备选最优：免费 12.5 万次函数/月，免绑卡 |
+| `railway.app` | 通 | 200 | 仅试用额度，不宜长期零费率 |
+| `glitch.com` | 通 | 200 | 免费项目易休眠，稳定性差 |
+| `pythonanywhere.com` | 通 | 200 | 免费档无常驻 API 后端 |
+| `vercel.app` / `deno.dev` / `glitch.me` | 不通 | — | 阻断 |
+| `render.com` / `onrender.com` | 不通/超时 | — | 阻断 |
+| `workers.dev` | 不通 | — | 污染阻断 |
+
+**三条路线**
+- A. 自有域名绑 Cloudflare 自定义域：代理代码零改动，绕开 `workers.dev` 污染，最稳；前提是已有可托管到 Cloudflare 的域名。
+- B. 代理适配为 Netlify Function：核心逻辑已抽到 `assist/core/assist-core.mjs`，Netlify 入口在 `netlify/functions/assist.mjs`（Web `Request/Response` 形态，环境变量读 `process.env`）。
+  - 环境变量在 Netlify 站点配置：`ASSIST_LLM_BASE=https://open.bigmodel.cn/api/paas/v4`、`ASSIST_LLM_MODEL=glm-4-flash`、`ASSIST_ALLOW_ORIGIN=https://bing-ing-ic.github.io`、`ASSIST_TIMEOUT_MS=15000`；`ASSIST_LLM_KEY` 设为加密 secret。
+  - 部署：`npx netlify-cli login`（浏览器授权）→ `npx netlify-cli deploy --prod --functions=netlify/functions`；函数线上路径 `/assist`、`/healthz`，把站点域名回填前端 `endpoint`。
+  - 需注册并授权 Netlify 账号；免费档 12.5 万次函数调用/月。
+- C. 暂不开放线上入口：前端 `endpoint` 留空，辅助 UI 隐藏，纯规则推演照常；待定平台或拿到域名再回填。
+
+**当前线上状态**：`index.html` 的 `__ASSIST_CONFIG__.endpoint` 仍为空，辅助通道关闭；Cloudflare Worker 已就绪但默认域国内不可达，未回填前端。
+
+### 9.6 后续模块接入
 - 新增场景：在 `assist/worker/assist-worker.js` 的 `SCENES` 与 `js/medical-assist.js` 的 `SCENES` 各加一条；前端模块组装 `context / candidates` 后调 `MedicalAssist.ask({scene, module, context, candidates})`。
 - 本期 8 个场景前端接入位置：西医诊断反馈区（`rx_diagnosis`）、西医报告页（`rx_review`）、汉方辨证反馈区（`tcm_zheng`）、按症寻方结果区（`tcm_formula_diff`）、针灸报告页（`acup_point`）、解剖结构详情页（`anat_explain`）、错题卡片（`mistake_review`）、速查结果区（`quickref_explain`）。

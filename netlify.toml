@@ -1,0 +1,3 @@
+# Netlify 函数配置（备选托管）。本站静态前端由 GitHub Pages 托管，Netlify 仅承载代理函数。
+[functions]
+directory = "netlify/functions"

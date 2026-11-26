@@ -19,8 +19,11 @@ _backup_*/
 _archive/
 
 # ===== AI 辅助代理：密钥与本地配置（不入库） =====
+.wrangler/
 assist/worker/.dev.vars
 assist/worker/wrangler.toml
+wrangler.toml
+.dev.vars
 .env
 .env.*
 !.env.example

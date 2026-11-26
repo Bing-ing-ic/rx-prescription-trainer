@@ -159,6 +159,9 @@
     return { el: wrap, refresh: function () { btn.click(); } };
   }
 
+  // 自举：加载时读取全局注入配置（index.html 内 __ASSIST_CONFIG__），各模块无需重复 configure。
+  if (global.__ASSIST_CONFIG__) configure(global.__ASSIST_CONFIG__);
+
   global.MedicalAssist = {
     VERSION: '1.0.0',
     configure: configure,

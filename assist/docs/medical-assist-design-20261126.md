@@ -193,13 +193,15 @@ wrangler deploy                        # 拿到 https://<name>.<sub>.workers.dev
 **三条路线**
 - A. 自有域名绑 Cloudflare 自定义域：代理代码零改动，绕开 `workers.dev` 污染，最稳；前提是已有可托管到 Cloudflare 的域名。
 - B. 代理适配为 Netlify Function：核心逻辑已抽到 `assist/core/assist-core.mjs`，Netlify 入口在 `netlify/functions/assist.mjs`（Web `Request/Response` 形态，环境变量读 `process.env`）。
-  - 环境变量在 Netlify 站点配置：`ASSIST_LLM_BASE=https://open.bigmodel.cn/api/paas/v4`、`ASSIST_LLM_MODEL=glm-4-flash`、`ASSIST_ALLOW_ORIGIN=https://bing-ing-ic.github.io`、`ASSIST_TIMEOUT_MS=15000`；`ASSIST_LLM_KEY` 设为加密 secret。
-  - 部署：`npx netlify-cli login`（浏览器授权）→ `npx netlify-cli deploy --prod --functions=netlify/functions`；函数线上路径 `/assist`、`/healthz`，把站点域名回填前端 `endpoint`。
+  - 环境变量在 Netlify 站点配置：`ASSIST_LLM_BASE=https://open.bigmodel.cn/api/paas/v4`、`ASSIST_LLM_MODEL=glm-4-flash`、`ASSIST_ALLOW_ORIGIN=https://bing-ing-ic.github.io`、`ASSIST_TIMEOUT_MS=15000`；`ASSIST_LLM_KEY` 设为加密 secret（production 上下文，不可读回）。
+  - 部署：`npx netlify-cli login`（浏览器授权）→ `npx netlify-cli deploy --prod --functions=netlify/functions --dir <空静态目录> --no-build`；函数线上路径 `/assist`、`/healthz`，把站点域名回填前端 `endpoint`。
   - 需注册并授权 Netlify 账号；免费档 12.5 万次函数调用/月。
+  - **落地结果（2026-11-26）**：站点 `rx-trainer-assist`（team `bing-ing-ic`），生产 URL `https://rx-trainer-assist.netlify.app`；`/healthz` 返回 `{"ok":true,"enabled":true,"configured":true,...}`，`POST /assist` 真实场景报文经智谱 `glm-4-flash` 解析通过，`related` 白名单过滤与教学免责声明正常。
+  - **踩坑·站点私有门禁**：新建站点默认 Production / Deploy Preview visibility 均为 **Private**，匿名访问全站 401 并跳转 `app.netlify.com/edge-access` 要求登录（函数与部署专属域同样被拦）。该可见性设置**无公开 API / CLI**，只能在面板改：Project configuration → General → Visitor access → Edit visibility，选 **Public**（Applies to: Production and previews）后保存。`has_password=false`，与密码保护无关。
 - C. 暂不开放线上入口：前端 `endpoint` 留空，辅助 UI 隐藏，纯规则推演照常；待定平台或拿到域名再回填。
 
-**当前线上状态**：`index.html` 的 `__ASSIST_CONFIG__.endpoint` 仍为空，辅助通道关闭；Cloudflare Worker 已就绪但默认域国内不可达，未回填前端。
+**当前线上状态**：代理走 Netlify Function `https://rx-trainer-assist.netlify.app`，`index.html` 的 `__ASSIST_CONFIG__.endpoint` 已回填，辅助通道开放；Cloudflare Worker 保留为海外/未来绑自有自定义域的备选（`workers.dev` 默认域国内不可达）。服务层在加载时自举读取 `__ASSIST_CONFIG__`，各模块无需重复 `configure`。
 
 ### 9.6 后续模块接入
-- 新增场景：在 `assist/worker/assist-worker.js` 的 `SCENES` 与 `js/medical-assist.js` 的 `SCENES` 各加一条；前端模块组装 `context / candidates` 后调 `MedicalAssist.ask({scene, module, context, candidates})`。
+- 新增场景：在 `assist/core/assist-core.mjs` 的 `SCENES` 与 `js/medical-assist.js` 的 `SCENES` 各加一条（两端保持同步）；前端模块组装 `context / candidates` 后调 `MedicalAssist.ask({scene, module, context, candidates})`。
 - 本期 8 个场景前端接入位置：西医诊断反馈区（`rx_diagnosis`）、西医报告页（`rx_review`）、汉方辨证反馈区（`tcm_zheng`）、按症寻方结果区（`tcm_formula_diff`）、针灸报告页（`acup_point`）、解剖结构详情页（`anat_explain`）、错题卡片（`mistake_review`）、速查结果区（`quickref_explain`）。

@@ -801,40 +801,19 @@
     if (!box) return;
     const MA = window.MedicalAssist;
     if (!MA || !MA.isConfigured()) { box.innerHTML = ''; return; }
+    box.innerHTML = '';
     const candidates = res.results.map(r => ({ id: r.id, name: r.name, summary: famousSummary(r.id) }));
-    box.innerHTML = `
-      <div class="seek-assist">
-        <button type="button" class="btn btn-sm" id="seek-assist-btn">🤖 AI 类方辨析</button>
-        <div class="seek-assist-body" id="seek-assist-body" hidden></div>
-      </div>`;
-    const btn = $('seek-assist-btn');
-    const body = $('seek-assist-body');
-    btn.onclick = async () => {
-      btn.disabled = true;
-      body.hidden = false;
-      body.innerHTML = '<span class="muted small">正在生成辨析…</span>';
-      const out = await MA.ask({
-        scene: 'tcm_formula_diff',
-        module: 'tcm',
-        context: {
-          chief_complaint: seek.freeText,
-          symptoms: [...seek.symptoms],
-          syndromes: [...seek.syndromes]
-        },
-        candidates,
-        question: ''
-      });
-      if (!out.ok) {
-        body.innerHTML = '<span class="muted small">辅助暂不可用，以下为规则推荐结果。</span>';
-        btn.disabled = false;
-        return;
-      }
-      body.innerHTML =
-        (out.summary ? `<p class="seek-assist-summary">${esc(out.summary)}</p>` : '') +
-        (out.points.length ? `<ul class="seek-assist-points">${out.points.map(p => `<li>${esc(p)}</li>`).join('')}</ul>` : '') +
-        (out.caveat ? `<div class="seek-assist-caveat muted small">⚠ ${esc(out.caveat)}</div>` : '');
-      btn.disabled = false;
-    };
+    MA.mountPanel(box, {
+      scene: 'tcm_formula_diff',
+      module: 'tcm',
+      context: {
+        chief_complaint: seek.freeText,
+        symptoms: [...seek.symptoms],
+        syndromes: [...seek.syndromes]
+      },
+      candidates,
+      question: ''
+    });
   }
 
   function runSeek() {

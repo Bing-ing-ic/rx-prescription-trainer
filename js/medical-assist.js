@@ -1,9 +1,12 @@
 /*
- * medical-assist.js  全站 AI 辅助通用服务层（纯前端适配，无 UI 依赖）
+ * medical-assist.js  全站 AI 辅助通用服务层（纯前端适配，无 UI 框架依赖）
  *
  * 与具体模块引擎解耦：现代医学 / 汉方 / 针灸 / 解剖 / 错题复盘等场景，
  * 统一通过 MedicalAssist.ask({scene, module, context, candidates, question}) 调用。
  * 代理或模型不可用时静默降级为 { ok:false, reason }，纯规则视图不受影响。
+ *
+ * 面板按场景驱动：角色身份、主题色、副标题与紧凑度由 SCENE_META 决定；
+ * 红线不变——规则结论为准、只渲染白名单内关联实体、免责脚注固定展示、不可达静默降级。
  *
  * 全局：window.MedicalAssist
  */
@@ -22,8 +25,59 @@
     'quickref_explain'
   ];
 
+  // 场景元信息：theme 映射 CSS 主题色；compact 为错题等内嵌紧凑变体。
+  var SCENE_META = {
+    rx_diagnosis: {
+      icon: '🩺', theme: 'wx', compact: false,
+      title: '诊断思路助教', sub: '梳理支持与鉴别依据，不下最终诊断、不开药',
+      trigger: 'AI 诊断思路'
+    },
+    rx_review: {
+      icon: '💊', theme: 'wx', compact: false,
+      title: '处方点评助教', sub: '点评用药依据与错因改进，不调整剂量疗程',
+      trigger: 'AI 处方点评'
+    },
+    tcm_zheng: {
+      icon: '🌿', theme: 'tcm', compact: false,
+      title: '辨证思路助教', sub: '讲解病机与舌脉依据，不直接开方',
+      trigger: 'AI 辨证思路'
+    },
+    tcm_formula_diff: {
+      icon: '📜', theme: 'tcm', compact: false,
+      title: '类方辨析助教', sub: '在候选方范围内比较功用与主治侧重',
+      trigger: 'AI 类方辨析'
+    },
+    acup_point: {
+      icon: '📌', theme: 'acup', compact: false,
+      title: '选穴配穴助教', sub: '解释已选穴位配伍逻辑，不新增穴位',
+      trigger: 'AI 选穴说明'
+    },
+    anat_explain: {
+      icon: '🦴', theme: 'anat', compact: false,
+      title: '结构讲解助教', sub: '结合位置、毗邻与功能辅助记忆',
+      trigger: 'AI 结构讲解'
+    },
+    mistake_review: {
+      icon: '✏️', theme: 'warn', compact: true,
+      title: '错题复盘助教', sub: '讲清错因并给出复习建议',
+      trigger: 'AI 错题复盘'
+    },
+    quickref_explain: {
+      icon: '📚', theme: 'info', compact: false,
+      title: '知识库讲解助教', sub: '基于检索条目补充解释，不编造信息',
+      trigger: 'AI 补充讲解'
+    }
+  };
+
+  function metaOf(scene) {
+    return SCENE_META[scene] || {
+      icon: '🤖', theme: 'info', compact: false,
+      title: 'AI 教学助教', sub: '仅作讲解、鉴别与纠错辅助', trigger: 'AI 辅助解读'
+    };
+  }
+
   var state = {
-    endpoint: '',          // 代理地址，如 https://rx-trainer-assist.xxx.workers.dev ；空=未接入
+    endpoint: '',          // 代理地址；空=未接入
     enabled: true,         // 总开关
     timeoutMs: 15000,
     pingTtl: 60000,
@@ -118,54 +172,120 @@
     });
   }
 
-  // 通用面板构造器：各模块把锚点 DOM + 场景报文传入，统一渲染按钮 / 折叠区 / 懒请求 / 降级。
+  function skeletonHtml() {
+    return '<div class="assist-skeleton" aria-hidden="true">' +
+      '<span></span><span></span><span></span></div>' +
+      '<p class="assist-status-text">正在结合病例推演…</p>';
+  }
+
+  function renderResult(out) {
+    var html = '';
+    if (out.summary) {
+      html += '<p class="assist-summary">' + escapeHtml(out.summary) + '</p>';
+    }
+    if (out.points && out.points.length) {
+      html += '<ul class="assist-points">' + out.points.map(function (p) {
+        return '<li>' + escapeHtml(p) + '</li>';
+      }).join('') + '</ul>';
+    }
+    if (out.related && out.related.length) {
+      html += '<div class="assist-related"><span class="assist-related-label">关联候选</span>' +
+        out.related.map(function (r) {
+          return '<span class="assist-chip">' + escapeHtml(r) + '</span>';
+        }).join('') + '</div>';
+    }
+    var foot = '';
+    if (out.model) foot += '<span class="assist-model">模型：' + escapeHtml(out.model) + '</span>';
+    foot += '<button type="button" class="assist-retry">🔁 重新分析</button>';
+    html += '<div class="assist-foot">' + foot + '</div>';
+    if (out.caveat) {
+      html += '<div class="assist-caveat">⚠ ' + escapeHtml(out.caveat) + '</div>';
+    }
+    return html;
+  }
+
+  // 通用面板构造器：各模块把锚点 DOM + 场景报文传入，统一渲染头部 / 折叠区 / 懒请求 / 降级。
   // 未配置代理时直接返回 null，锚点保持原样，纯规则视图不受影响。
   function mountPanel(anchor, payload, opts) {
     if (!anchor || typeof document === 'undefined') return null;
     if (!isConfigured()) return null;
     opts = opts || {};
 
+    var meta = metaOf(payload.scene);
+    var themeCls = 'assist-panel--' + meta.theme;
+    var compactCls = meta.compact ? ' assist-panel--compact' : '';
+
     var wrap = document.createElement('div');
-    wrap.className = 'seek-assist';
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'btn btn-sm';
-    btn.textContent = opts.buttonLabel || '🤖 AI 辅助解读';
-    var body = document.createElement('div');
-    body.className = 'seek-assist-body';
-    body.hidden = true;
-    wrap.appendChild(btn);
-    wrap.appendChild(body);
+    wrap.className = 'assist-panel' + compactCls;
+    wrap.setAttribute('data-scene', payload.scene || '');
+    wrap.setAttribute('data-theme', meta.theme);
+
+    var triggerLabel = opts.buttonLabel || ('🤖 ' + meta.trigger);
+
+    wrap.innerHTML =
+      '<div class="assist-head">' +
+        '<span class="assist-badge" aria-hidden="true">' + meta.icon + '</span>' +
+        '<div class="assist-head-text">' +
+          '<div class="assist-title">' + escapeHtml(meta.title) + '</div>' +
+          '<div class="assist-sub">' + escapeHtml(meta.sub) + '</div>' +
+        '</div>' +
+        '<button type="button" class="assist-toggle">' + escapeHtml(triggerLabel) + '</button>' +
+      '</div>' +
+      '<div class="assist-body" hidden></div>';
+
     anchor.appendChild(wrap);
 
-    btn.onclick = async function () {
-      btn.disabled = true;
+    var body = wrap.querySelector('.assist-body');
+    var toggle = wrap.querySelector('.assist-toggle');
+    var loaded = false;   // 是否已成功取过结果（缓存，避免重复请求）
+    var busy = false;
+
+    async function load() {
+      busy = true;
+      toggle.disabled = true;
       body.hidden = false;
-      body.innerHTML = '<span class="muted small">正在生成解读…</span>';
+      body.innerHTML = skeletonHtml();
       var out = await ask(payload);
+      busy = false;
+      toggle.disabled = false;
       if (!out.ok) {
-        body.innerHTML = '<span class="muted small">辅助暂不可用，以下为规则结论。</span>';
-        btn.disabled = false;
+        body.innerHTML =
+          '<div class="assist-status is-down">' +
+            '<span class="assist-status-icon">⚠️</span>' +
+            '<span class="assist-status-text">辅助暂不可用，以下为规则结论。</span>' +
+            '<button type="button" class="assist-retry">🔁 重试</button>' +
+          '</div>';
+        bindRetry();
         return;
       }
-      body.innerHTML =
-        (out.summary ? '<p class="seek-assist-summary">' + escapeHtml(out.summary) + '</p>' : '') +
-        (out.points.length ? '<ul class="seek-assist-points">' + out.points.map(function (p) {
-          return '<li>' + escapeHtml(p) + '</li>';
-        }).join('') + '</ul>' : '') +
-        (out.caveat ? '<div class="seek-assist-caveat muted small">⚠ ' + escapeHtml(out.caveat) + '</div>' : '');
-      btn.disabled = false;
+      loaded = true;
+      body.innerHTML = renderResult(out);
+      bindRetry();
+    }
+
+    function bindRetry() {
+      var retry = body.querySelector('.assist-retry');
+      if (retry) retry.onclick = function (e) { e.stopPropagation(); load(); };
+    }
+
+    toggle.onclick = function () {
+      if (busy) return;
+      if (!body.hidden) { body.hidden = true; return; }
+      body.hidden = false;
+      if (!loaded) { load(); }
     };
-    return { el: wrap, refresh: function () { btn.click(); } };
+
+    return { el: wrap, refresh: function () { load(); } };
   }
 
   // 自举：加载时读取全局注入配置（index.html 内 __ASSIST_CONFIG__），各模块无需重复 configure。
   if (global.__ASSIST_CONFIG__) configure(global.__ASSIST_CONFIG__);
 
   global.MedicalAssist = {
-    VERSION: '1.0.0',
+    VERSION: '2.0.0',
     configure: configure,
     scenes: scenes,
+    metaOf: metaOf,
     isConfigured: isConfigured,
     ping: ping,
     isEnabled: isEnabled,

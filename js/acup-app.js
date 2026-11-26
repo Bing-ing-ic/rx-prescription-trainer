@@ -339,6 +339,28 @@
         <p><b>参考主穴：</b>${(S.case.reference_points || []).join('、') || '-'}</p>
         <p><b>你处方：</b>${S.items.map(i => `${i.name}（${i.method}${i.moxa?'/' + i.moxa:''}）`).join('，')}</p>
       </div>`;
+
+    // AI 选穴配穴辅助（未配置代理时不渲染）
+    const assistSlot = $('acup-assist-slot');
+    if (assistSlot && window.MedicalAssist) {
+      assistSlot.innerHTML = '';
+      const pointNames = S.items.map(i => i.name);
+      MedicalAssist.mountPanel(assistSlot, {
+        scene: 'acup_point',
+        module: 'acup',
+        context: {
+          case: S.case.name || '',
+          syndrome: S.case.syndrome_differentiation || '',
+          principle: S.case.treatment_principle || '',
+          zhengInput: zhengInput || '',
+          points: S.items.map(i => ({ name: i.name, method: i.method || '', moxa: i.moxa || '' })),
+          techniques: S.selectedTechniques || [],
+          score: review.total,
+          hits: hits.map(h => ({ rule: h.rule_id, title: h.title, message: h.message, suggestion: h.suggestion }))
+        },
+        candidates: pointNames.map(n => ({ name: n }))
+      }, { buttonLabel: '🤖 AI 选穴点评' });
+    }
   }
 
   function saveHistory(review, hits) {

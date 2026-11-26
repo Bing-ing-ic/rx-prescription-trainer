@@ -127,7 +127,7 @@ Cloudflare Workers Free 代理（$0/月，10 万请求/天，无冷启动）
 1. 代理 Worker 骨架 + 场景注册表 + 白名单/超时/CORS（本仓库 `assist/worker/`）。
 2. 前端 `MedicalAssist` 服务层 + 探测降级 + 配置开关。
 3. 首个接入点：汉方「按症寻方」类方鉴别（`tcm_formula_diff`）。
-4. 其余 scene 按模块逐步挂接：错题复盘 → 现代医学点评 → 针灸选穴 → 解剖讲解。
+4. 8 个 scene 前端已全部挂接：`rx_diagnosis`（西医诊断）、`rx_review`（西医点评）、`tcm_zheng`（汉方辨证）、`tcm_formula_diff`（类方鉴别）、`acup_point`（选穴）、`anat_explain`（解剖讲解）、`mistake_review`（错题复盘）、`quickref_explain`（速查补充）；代理未部署前入口静默隐藏，纯规则照常。
 5. 注册免费模型平台、填 Worker 环境变量、`/healthz` 连通后再开放前端入口。
 
 ## 8. 已知边界
@@ -169,4 +169,4 @@ wrangler deploy                        # 拿到 https://<name>.<sub>.workers.dev
 
 ### 9.5 后续模块接入
 - 新增场景：在 `assist/worker/assist-worker.js` 的 `SCENES` 与 `js/medical-assist.js` 的 `SCENES` 各加一条；前端模块组装 `context / candidates` 后调 `MedicalAssist.ask({scene, module, context, candidates})`。
-- 建议接入顺序：错题复盘 `mistake_review` → 现代医学点评 `rx_review` → 针灸选穴 `acup_point` → 解剖讲解 `anat_explain`。
+- 本期 8 个场景前端接入位置：西医诊断反馈区（`rx_diagnosis`）、西医报告页（`rx_review`）、汉方辨证反馈区（`tcm_zheng`）、按症寻方结果区（`tcm_formula_diff`）、针灸报告页（`acup_point`）、解剖结构详情页（`anat_explain`）、错题卡片（`mistake_review`）、速查结果区（`quickref_explain`）。

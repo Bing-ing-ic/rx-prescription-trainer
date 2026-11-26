@@ -733,6 +733,7 @@
     S.disease = randPick(pool);
     S.diagnosisInput = '';
     S.diagnosisOk = false;
+    const dgSlot = $('rx-diag-assist-slot'); if (dgSlot) dgSlot.innerHTML = '';
     S.rxType = null;
     S.normalItems = [];
     S.ivGroups = [];
@@ -1035,6 +1036,32 @@
     }
   }
 
+  // AI 诊断思路辅助：结合主诉/现病史/查体讲解鉴别思路，规则诊断结论为准
+  function mountRxDiagAssist(studentDx) {
+    const slot = $('rx-diag-assist-slot');
+    if (!slot || !window.MedicalAssist) return;
+    slot.innerHTML = '';
+    const dx = S.disease || {};
+    const sp = dx.symptom_pool || {};
+    const p = S.patient || {};
+    const cand = [dx.name].concat(dx.differential || []).filter(Boolean);
+    MedicalAssist.mountPanel(slot, {
+      scene: 'rx_diagnosis',
+      module: 'western',
+      context: {
+        chief_complaint: sp.chief_complaint || [],
+        history: sp.history || [],
+        exam: sp.exam || [],
+        vitals: sp.vitals || {},
+        patient: { gender: p.gender, age: p.age, weight: p.weight },
+        student_diagnosis: studentDx || '',
+        reference_diagnosis: dx.name || '',
+        icd10: dx.icd10 || ''
+      },
+      candidates: cand.map(n => ({ name: n }))
+    }, { buttonLabel: '🤖 AI 诊断思路' });
+  }
+
   function checkDiagnosis() {
     const v = $('diag-input').value.trim();
     S.diagnosisInput = v;
@@ -1054,6 +1081,7 @@
       $('lab-report-row').classList.remove('hidden');
       loadLabReport();
       scrollFb();
+      mountRxDiagAssist(v);
       return;
     }
     // 命中鉴别（含 P2-1 别名归一化）
@@ -1070,6 +1098,7 @@
         setTimeout(() => checkDiagnosis(), 800);
       }
       scrollFb();
+      mountRxDiagAssist(v);
       return;
     }
     // 错误：追加方向提示
@@ -1119,6 +1148,7 @@
       $('diag-input').value = '';
     }
     scrollFb();
+    mountRxDiagAssist(v);
     $('diag-input').focus();
   }
 
@@ -3208,6 +3238,33 @@
     if (window.StandardPlan) {
       const spBox = $('r-standard-plan');
       window.StandardPlan.render(spBox, ctx, review);
+    }
+
+    // AI 处方点评辅助（未配置代理时 mountPanel 不渲染，纯规则结论照常）
+    const assistSlot = $('rx-assist-slot');
+    if (assistSlot && window.MedicalAssist) {
+      assistSlot.innerHTML = '';
+      const rxItems = [].concat(
+        (ctx.normal_rx && ctx.normal_rx.items || []).map(i => (i.drug && i.drug.generic_name) || i.generic_name || ''),
+        (ctx.iv_rx && ctx.iv_rx.items || []).map(i => (i.drug && i.drug.generic_name) || i.generic_name || '')
+      ).filter(Boolean);
+      const hitSummary = hits.map(h => ({
+        rule: h.rule_id, title: h.title, severity: h.severity,
+        message: h.message || h.lesson_point || '', affected: h.affected_items || []
+      }));
+      MedicalAssist.mountPanel(assistSlot, {
+        scene: 'rx_review',
+        module: 'western',
+        context: {
+          diagnosis: ctx.disease && ctx.disease.name,
+          icd10: ctx.disease && ctx.disease.icd10,
+          patient: ctx.patient ? { gender: ctx.patient.gender, age: ctx.patient.age } : {},
+          score: review.total,
+          drugs: rxItems,
+          hits: hitSummary
+        },
+        candidates: rxItems.map(n => ({ name: n }))
+      }, { buttonLabel: '🤖 AI 处方点评' });
     }
   }
 

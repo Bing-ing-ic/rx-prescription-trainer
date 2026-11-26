@@ -104,6 +104,7 @@
     if (!kw) {
       box.innerHTML = '<p class="muted center" style="padding: var(--space-40px) var(--space-3);">输入关键词开始检索，数据来自本地知识库。</p>';
       if (countEl) countEl.textContent = '';
+      var qs0 = $('quickref-assist-slot'); if (qs0) qs0.innerHTML = '';
       return;
     }
     var d = QR.data;
@@ -241,6 +242,7 @@
     if (countEl) countEl.textContent = '共 ' + total + ' 条结果';
     if (total === 0) {
       box.innerHTML = '<p class="muted center" style="padding: var(--space-40px) var(--space-3);">未找到与 “' + escapeHtml(kw) + '” 相关的内容，换个关键词试试。</p>';
+      var qsZ = $('quickref-assist-slot'); if (qsZ) qsZ.innerHTML = '';
       return;
     }
     box.innerHTML = sections.map(function (sec) {
@@ -272,6 +274,25 @@
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
       };
     });
+
+    // AI 知识库补充讲解（未配置代理时不渲染）
+    var qrSlot = $('quickref-assist-slot');
+    if (qrSlot && window.MedicalAssist) {
+      qrSlot.innerHTML = '';
+      var qrNames = [];
+      sections.forEach(function (sec) {
+        sec.items.forEach(function (it) {
+          var plain = String(it.name || '').replace(/<[^>]+>/g, '').trim();
+          if (plain) qrNames.push(plain);
+        });
+      });
+      MedicalAssist.mountPanel(qrSlot, {
+        scene: 'quickref_explain',
+        module: 'common',
+        context: { keyword: kw, category: cat, results: qrNames.slice(0, 30) },
+        candidates: qrNames.slice(0, 30).map(function (n) { return { name: n }; })
+      }, { buttonLabel: '🤖 AI 补充讲解' });
+    }
   }
 
   function escapeHtml(s) {
@@ -402,6 +423,9 @@
     if (m === '中医汉方' || m === '汉方') return '汉方学';
     if (m === '针灸推拿') return '针灸学';
     return m;
+  }
+  function moduleKeyOf(mod) {
+    return mod === '现代医学' ? 'western' : mod === '汉方学' ? 'tcm' : mod === '针灸学' ? 'acup' : mod === '解剖学' ? 'anat' : 'common';
   }
   var ALL_MODULES = ['', '现代医学', '汉方学', '针灸学', '解剖学'];
   var MODULE_LABEL = { '': '全部', '现代医学': '现代医学', '汉方学': '汉方学', '针灸学': '针灸学', '解剖学': '解剖学' };
@@ -674,6 +698,7 @@
           '<button class="btn btn-sm qr-retry-btn" data-mod="' + escapeHtml(mod) + '">🔁 重练此题</button>' +
           '<button class="btn btn-sm btn-danger qr-remove-btn" data-midx="' + i + '">🗑 移除此条</button>' +
         '</div>' +
+        '<div class="mistake-assist-slot" data-midx="' + i + '"></div>' +
       '</div>';
     }).join('') + pitHtml;
 
@@ -694,6 +719,25 @@
         var mod = b.getAttribute('data-mod');
         retryByModule(mod);
       };
+    });
+    // 绑定 AI 错题复盘（未配置代理时 mountPanel 直接不渲染）
+    box.querySelectorAll('.mistake-assist-slot').forEach(function (slot) {
+      var idx = parseInt(slot.getAttribute('data-midx'), 10);
+      var m = arr[idx];
+      if (!m || !window.MedicalAssist) return;
+      var mod = moduleOf(m);
+      MedicalAssist.mountPanel(slot, {
+        scene: 'mistake_review',
+        module: moduleKeyOf(mod),
+        context: {
+          disease: m.disease || '',
+          module: mod,
+          score: m.score != null ? m.score : '',
+          errors: (m.errors || []).map(function (e) { return { rule: e.rule_id, title: e.title, message: e.message, suggestion: e.suggestion }; }),
+          warns: (m.warns || []).map(function (w) { return { rule: w.rule_id, title: w.title, message: w.message }; })
+        },
+        candidates: []
+      }, { buttonLabel: '🤖 AI 错题复盘' });
     });
   }
 

@@ -201,7 +201,28 @@
           <div class="ads-label">🎯 考点标记</div>
           <div class="ads-tags">${tags}</div>
         </div>` : ''}
+        <div id="anat-detail-assist-slot"></div>
       </div>`;
+
+    // AI 解剖讲解辅助（未配置代理时不渲染）
+    const assistSlot = $('anat-detail-assist-slot');
+    if (assistSlot && window.MedicalAssist) {
+      MedicalAssist.mountPanel(assistSlot, {
+        scene: 'anat_explain',
+        module: 'anat',
+        context: {
+          name: st.name || '',
+          latin: st.latin || '',
+          subsystem: st.subsystem || '',
+          location: st.location || '',
+          relations: st.relations || '',
+          function: st.function || '',
+          clinical: st.clinical || '',
+          exam_points: st.exam_points || []
+        },
+        candidates: []
+      }, { buttonLabel: '🤖 AI 结构讲解' });
+    }
     showView('view-anat-detail');
   }
 

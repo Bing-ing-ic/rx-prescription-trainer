@@ -180,6 +180,7 @@
       dl.innerHTML = Array.from(new Set(opts)).map(z => `<option value="${z}">`).join('');
     }
     $('tcm-zheng-feedback').innerHTML = '';
+    const zs = $('tcm-zheng-assist-slot'); if (zs) zs.innerHTML = '';
     $('tcm-fazheng-row').classList.add('hidden');
   }
 
@@ -198,6 +199,33 @@
       S.zhengOk = false;
       $('tcm-zheng-feedback').innerHTML = `<span class="diag-err">❌ 辨证待斟酌。再结合舌象、脉象想想。</span>`;
     }
+    mountZhengAssist(input, ref);
+  }
+
+  // AI 辨证思路辅助：结合主诉/舌脉讲解辨证依据，规则辨证结论为准
+  function mountZhengAssist(input, ref) {
+    const slot = $('tcm-zheng-assist-slot');
+    if (!slot || !window.MedicalAssist) return;
+    slot.innerHTML = '';
+    const c = S.case, p = S.patient || {};
+    const s = c.symptom_pool || c.symptoms || {};
+    const first = a => Array.isArray(a) ? (a[0] || '') : (a || '');
+    const cand = [ref].concat(c.differential || []).filter(Boolean);
+    MedicalAssist.mountPanel(slot, {
+      scene: 'tcm_zheng',
+      module: 'tcm',
+      context: {
+        chief_complaint: first(s.chief_complaint),
+        history: first(s.history),
+        tongue: first(s.tongue),
+        pulse: first(s.pulse),
+        exam: first(s.exam),
+        patient: { gender: p.gender, age: p.age },
+        student_zheng: input,
+        reference_zheng: ref
+      },
+      candidates: cand.map(n => ({ name: n }))
+    }, { buttonLabel: '🤖 AI 辨证思路' });
   }
 
   // ---------- 处方笺 ----------

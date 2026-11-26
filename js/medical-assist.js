@@ -112,6 +112,53 @@
     }
   }
 
+  function escapeHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // 通用面板构造器：各模块把锚点 DOM + 场景报文传入，统一渲染按钮 / 折叠区 / 懒请求 / 降级。
+  // 未配置代理时直接返回 null，锚点保持原样，纯规则视图不受影响。
+  function mountPanel(anchor, payload, opts) {
+    if (!anchor || typeof document === 'undefined') return null;
+    if (!isConfigured()) return null;
+    opts = opts || {};
+
+    var wrap = document.createElement('div');
+    wrap.className = 'seek-assist';
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn btn-sm';
+    btn.textContent = opts.buttonLabel || '🤖 AI 辅助解读';
+    var body = document.createElement('div');
+    body.className = 'seek-assist-body';
+    body.hidden = true;
+    wrap.appendChild(btn);
+    wrap.appendChild(body);
+    anchor.appendChild(wrap);
+
+    btn.onclick = async function () {
+      btn.disabled = true;
+      body.hidden = false;
+      body.innerHTML = '<span class="muted small">正在生成解读…</span>';
+      var out = await ask(payload);
+      if (!out.ok) {
+        body.innerHTML = '<span class="muted small">辅助暂不可用，以下为规则结论。</span>';
+        btn.disabled = false;
+        return;
+      }
+      body.innerHTML =
+        (out.summary ? '<p class="seek-assist-summary">' + escapeHtml(out.summary) + '</p>' : '') +
+        (out.points.length ? '<ul class="seek-assist-points">' + out.points.map(function (p) {
+          return '<li>' + escapeHtml(p) + '</li>';
+        }).join('') + '</ul>' : '') +
+        (out.caveat ? '<div class="seek-assist-caveat muted small">⚠ ' + escapeHtml(out.caveat) + '</div>' : '');
+      btn.disabled = false;
+    };
+    return { el: wrap, refresh: function () { btn.click(); } };
+  }
+
   global.MedicalAssist = {
     VERSION: '1.0.0',
     configure: configure,
@@ -119,6 +166,7 @@
     isConfigured: isConfigured,
     ping: ping,
     isEnabled: isEnabled,
-    ask: ask
+    ask: ask,
+    mountPanel: mountPanel
   };
 })(typeof window !== 'undefined' ? window : globalThis);

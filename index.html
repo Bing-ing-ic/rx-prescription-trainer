@@ -237,6 +237,7 @@
           <button id="btn-diag-check" class="btn">确认诊断</button>
         </div>
         <div id="diag-feedback" class="diag-feedback"></div>
+        <div id="rx-diag-assist-slot"></div>
         <div id="diag-suggest" class="diag-suggest hidden"></div>
         <!-- 次要诊断（诊断确认后显示） -->
         <div id="secondary-diag-row" class="hidden" style="margin-top:12px;padding-top:12px;border-top:1px dashed #e2e8f0;">
@@ -585,6 +586,7 @@
         </div>
         <div id="hit-list"></div>
       </div>
+      <div id="rx-assist-slot"></div>
 
       <div class="hit-section">
         <div class="hit-section-head"><h3>📚 与参考处方对比</h3></div>
@@ -831,6 +833,7 @@
           <button id="tcm-btn-zheng-check" class="btn btn-primary">确认辨证</button>
         </div>
         <div id="tcm-zheng-feedback" class="diag-feedback"></div>
+        <div id="tcm-zheng-assist-slot"></div>
       </div>
 
       <div id="tcm-fazheng-row" class="hidden" style="margin-top:14px;padding-top:14px;border-top:1px dashed #e2e8f0;">
@@ -1223,6 +1226,7 @@
         </div>
         <div id="acup-hit-list"></div>
       </div>
+      <div id="acup-assist-slot"></div>
       <div class="hit-section">
         <div class="hit-section-head"><h3>📚 与参考处方对比</h3></div>
         <div id="acup-diff-box"></div>
@@ -1389,6 +1393,7 @@
     <div id="quickref-results" class="quickref-results">
       <p class="muted center" style="padding:40px 12px;">输入关键词开始检索，数据来自本地知识库。</p>
     </div>
+    <div id="quickref-assist-slot"></div>
   </section>
 
   <!-- 速查详情弹窗 -->
@@ -1595,22 +1600,22 @@
 </script>
 <script src="js/review.min.js?v=20261106surg1"></script>
 <script src="js/standard-plan.min.js?v=20261109sp1"></script>
-<script src="js/app.min.js?v=20261125r26"></script>
+<script src="js/app.min.js?v=20261126r36"></script>
 <script src="js/tcm-engine.min.js?v=20261125r29"></script>
 <script>
 // 全站 AI 辅助配置：代理（零费率 Worker）部署后把 endpoint 填为代理地址；留空则辅助通道关闭，纯规则推演照常可用。
 window.__ASSIST_CONFIG__ = { endpoint: '', enabled: true };
 </script>
-<script src="js/medical-assist.min.js?v=20261126r35"></script>
+<script src="js/medical-assist.min.js?v=20261126r36"></script>
 <script src="js/famous-recommend.min.js?v=20261125r34"></script>
 <script src="js/acup-engine.min.js?v=20261124r18"></script>
-<script src="js/tcm-app.min.js?v=20261126r35"></script>
+<script src="js/tcm-app.min.js?v=20261126r36"></script>
 <script src="js/tuina-engine.min.js?v=20261124r18"></script>
-<script src="js/acup-app.min.js?v=20261125r28"></script>
+<script src="js/acup-app.min.js?v=20261126r36"></script>
 <script src="js/acup-time.min.js?v=20261111time1"></script>
 <script src="js/module-views.min.js?v=20261125r28"></script>
-<script src="js/anat-app.min.js?v=20261124r19"></script>
-<script src="js/platform-enhance.js?v=20261125r28"></script>
+<script src="js/anat-app.min.js?v=20261126r36"></script>
+<script src="js/platform-enhance.js?v=20261126r36"></script>
 
 <!-- 百度统计 -->
 <script>

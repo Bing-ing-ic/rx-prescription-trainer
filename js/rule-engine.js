@@ -279,7 +279,6 @@
 
     // ====================== 1. 格式类 ======================
     // FMT-01 每张处方≤5种药品（含溶媒）：>5种 直接 error（法定上限）
-    // FMT-01-EXT 教学分级叠加：6种 warn 提醒精简，>=7种 error 提示严重超标
     ['normal_rx','iv_rx'].forEach(k => {
       const rx = ctx[k];
       if (!rx) return;
@@ -291,19 +290,6 @@
           `当前处方共 ${n} 种药品（含溶媒），超过每张处方≤5种的法定上限。`,
           `删减至≤5种；确需超过须注明理由并经上级医师审核签字。`,
           { affected_items: rxNames }));
-        if (R['FMT-01-EXT']) {
-          if (n === 6) {
-            hits.push(hit(R['FMT-01-EXT'], 'warn',
-              `当前处方共 ${n} 种药品，已偏多，建议精简至≤5种。`,
-              `复核是否有同类或辅助用药可剔除；避免无指征联用。`,
-              { affected_items: rxNames }));
-          } else if (n >= 7) {
-            hits.push(hit(R['FMT-01-EXT'], 'error',
-              `当前处方共 ${n} 种药品，严重超过≤5种的法定上限。`,
-              `必须大幅精简；必要时分方开具或请上级医师会诊。`,
-              { affected_items: rxNames }));
-          }
-        }
       }
     });
 

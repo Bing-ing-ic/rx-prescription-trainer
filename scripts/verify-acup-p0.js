@@ -50,8 +50,8 @@ for (const n of expectNew) {
 
 // 5. 穴位数只增不减
 console.log('\n[5] 穴位总数');
-if (pts.points.length === 152) ok(`穴位数 = ${pts.points.length}（143+9，P1补募穴/特定穴）`);
-else bad(`穴位数 = ${pts.points.length}（期望 152）`);
+if (pts.points.length === 164) ok(`穴位数 = ${pts.points.length}（143+9 起逐轮补录，当前 164）`);
+else bad(`穴位数 = ${pts.points.length}（期望 164）`);
 
 // 6. 从 rules + cases 中提取所有中文穴位名，与 points.name 集合比对
 console.log('\n[6] rules/cases 引用穴位完整性');

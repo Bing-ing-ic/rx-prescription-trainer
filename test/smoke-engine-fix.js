@@ -59,14 +59,14 @@ function check(name, cond){ if(cond){pass++;console.log('  ✅',name);} else {fa
   check('DD-01 头孢+VC同瓶→error', hits.some(h=>h.rule_id==='DD-01'&&h.severity==='error'));
 }
 
-// 5. 溶媒通用名匹配：头孢呋辛钠 + 5%GS 250ml → incompatible error（按通用名+体积）
+// 5. 溶媒通用名匹配：泮托拉唑钠 + 5%GS 250ml → incompatible error（按通用名+体积；compat 标注 GS 中降解）
 {
   const ctx = { disease:{...disease, iv_suitability:null, negative_list_hit:false}, patient, normal_rx:null, rulesMeta:rules, compatData:compat, restricted_confirmed:false,
     iv_rx:{ rx_id:'IV-1', iv_reason:'no_oral_alternative', solvent_name:'5%葡萄糖注射液 250ml/袋', drip_speed_mlh:60,
       items:[ {drug:drug({dosage_form:'solvent',generic_name:'5%葡萄糖注射液',spec:'250ml/袋'}),group:1},
-              {drug:drug({generic_name:'注射用头孢呋辛钠'}),group:1} ] } };
+              {drug:drug({generic_name:'注射用泮托拉唑钠'}),group:1} ] } };
   const hits = RxRuleEngine.run(ctx);
-  check('IV-06 头孢+5%GS→error(通用名匹配)', hits.some(h=>h.rule_id==='IV-06'&&h.severity==='error'&&/5%葡萄糖/.test(h.message)));
+  check('IV-06 泮托拉唑钠+5%GS→error(通用名匹配)', hits.some(h=>h.rule_id==='IV-06'&&h.severity==='error'&&/5%葡萄糖/.test(h.message)));
 }
 
 // 6. IV-07 跨组不误报：清开灵单独组 + 头孢另一组

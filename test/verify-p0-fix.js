@@ -70,7 +70,7 @@ check('THYROID-E04 decision=conservative(先FNA)', sg.cases['THYROID-E04'].stand
 check('LUMB-M51 decision=conservative(先保守)', sg.cases['LUMB-M51'].standard.decision==='conservative');
 
 console.log('\n=== 10. 数据完整性 ===');
-check('疾病总数=64', dis.diseases.length===64, '实际='+dis.diseases.length);
+check('疾病总数=79', dis.diseases.length===79, '实际='+dis.diseases.length);
 
 console.log('\n=============================');
 console.log('通过 '+pass+' / 失败 '+fail);

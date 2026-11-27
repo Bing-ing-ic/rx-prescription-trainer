@@ -98,19 +98,7 @@ T('FMT-01', 'neg', '6种药品触发error', () => {
   for (let i=0;i<5;i++) items.push(it('苯磺酸氨氯地平片', {single_dose:'5mg', frequency:'qd', duration_days:7}));
   return ctx({ normal_rx: { rx_id:'N-1', items } });
 }, 'error');
-
-// ============ FMT-01-EXT 分级扣分 ============
-T('FMT-01-EXT', 'pos', '5种不触发EXT', () => {
-  const items = [it('头孢呋辛酯片', {single_dose:'250mg', frequency:'bid', duration_days:7})];
-  for (let i=0;i<4;i++) items.push(it('苯磺酸氨氯地平片', {single_dose:'5mg', frequency:'qd', duration_days:7}));
-  return ctx({ normal_rx: { rx_id:'N-1', items } });
-}, 'none');
-T('FMT-01-EXT', 'neg', '6种触发warn', () => {
-  const items = [it('头孢呋辛酯片', {single_dose:'250mg', frequency:'bid', duration_days:7})];
-  for (let i=0;i<5;i++) items.push(it('苯磺酸氨氯地平片', {single_dose:'5mg', frequency:'qd', duration_days:7}));
-  return ctx({ normal_rx: { rx_id:'N-1', items } });
-}, 'warn');
-T('FMT-01-EXT', 'neg', '7种触发error', () => {
+T('FMT-01', 'neg', '7种药品触发error', () => {
   const items = [it('头孢呋辛酯片', {single_dose:'250mg', frequency:'bid', duration_days:7})];
   for (let i=0;i<6;i++) items.push(it('苯磺酸氨氯地平片', {single_dose:'5mg', frequency:'qd', duration_days:7}));
   return ctx({ normal_rx: { rx_id:'N-1', items } });

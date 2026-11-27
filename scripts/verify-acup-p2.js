@@ -1,7 +1,7 @@
 // 验证针灸模块 P2 修复
 //  - P2-1: main_points/adjuvant_points 分组；新命中逻辑（主穴≥80% error 门槛、配穴≥30% warn）
 //  - P2-2: 扳法/踩跷法禁忌补全
-//  - P0/P1 回归：穴位数=152、间使PC-05/内关PC-06、血海warn
+//  - P0/P1 回归：穴位数=164、间使PC-05/内关PC-06、血海warn
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -149,8 +149,8 @@ else bad('ACUP-SAFE-09 缺失或内容不全');
 
 // ---------- 7. P0/P1 回归 ----------
 console.log('\n[7] P0/P1 回归');
-if (pts.points.length === 152) ok(`穴位数 = ${pts.points.length}`);
-else bad(`穴位数 = ${pts.points.length}（期望 152）`);
+if (pts.points.length === 164) ok(`穴位数 = ${pts.points.length}`);
+else bad(`穴位数 = ${pts.points.length}（期望 164）`);
 
 const jianshi = pts.points.find(p => p.name === '间使');
 const neiguan = pts.points.find(p => p.name === '内关');

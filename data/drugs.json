@@ -941,7 +941,7 @@
         "5%葡萄糖注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "青霉素过敏慎用",
         "用药期间及停药1周内禁酒",
@@ -1656,7 +1656,7 @@
         "0.9%氯化钠注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "不能与含钙溶液配伍"
       ],
@@ -1736,7 +1736,7 @@
         "0.9%氯化钠注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "双硫仑样反应",
         "可引起凝血功能障碍",
@@ -4353,7 +4353,7 @@
         "0.9%氯化钠注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "头孢菌素过敏禁用",
         "青霉素过敏慎用"
@@ -5376,7 +5376,7 @@
         "0.9%氯化钠注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "头孢菌素过敏禁用",
         "青霉素过敏慎用"
@@ -5415,7 +5415,7 @@
         "0.9%氯化钠注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "头孢菌素过敏禁用",
         "青霉素过敏慎用"
@@ -5992,7 +5992,7 @@
       "pharmacology_class": "第三代头孢菌素",
       "abx_level": "restricted",
       "price_yuan": 48,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "dose_range_json": {
         "single_min_mg": 1000,
         "single_max_mg": 2000,
@@ -9806,7 +9806,7 @@
         "0.9%氯化钠注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "可影响凝血功能，用药期间监测出血倾向",
         "含甲硫四氮唑侧链，用药期间及停药7天内禁酒"
@@ -14366,7 +14366,7 @@
         "5%葡萄糖注射液"
       ],
       "drip_speed_max_mlh": 80,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "青霉素过敏慎用",
         "与氨基糖苷类不可混合"
@@ -14409,7 +14409,7 @@
         "5%葡萄糖注射液"
       ],
       "drip_speed_max_mlh": 80,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "饮食饮酒可出现双硫仑样反应"
       ],
@@ -14451,7 +14451,7 @@
         "5%葡萄糖注射液"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "出血倾向监测",
         "双硫仑样反应"
@@ -22143,7 +22143,9 @@
       "pinyin": "ymhdbdby",
       "pinyin_code": "YMH DBDBY",
       "reference_status": "已核对",
-      "aliases": ["麻黄素滴鼻液"],
+      "aliases": [
+        "麻黄素滴鼻液"
+      ],
       "origin_type": "domestic",
       "drug_category": "western",
       "pharmacopoeia": ""
@@ -22184,7 +22186,9 @@
       "pinyin": "ksmmzbpyj",
       "pinyin_code": "KSMMZB PYJ",
       "reference_status": "已核对",
-      "aliases": ["内舒拿"],
+      "aliases": [
+        "内舒拿"
+      ],
       "origin_type": "imported_originator",
       "drug_category": "western",
       "pharmacopoeia": ""
@@ -22355,7 +22359,9 @@
       "pinyin": "kzhjp",
       "pinyin_code": "KZHJ P",
       "reference_status": "已核对",
-      "aliases": ["金嗓子"],
+      "aliases": [
+        "金嗓子"
+      ],
       "origin_type": "domestic",
       "drug_category": "patent_tcm",
       "pharmacopoeia": ""
@@ -22437,7 +22443,9 @@
       "pinyin": "bsblmszbpyj",
       "pinyin_code": "BSBLMSZ BPYJ",
       "reference_status": "已核对",
-      "aliases": ["伯克纳"],
+      "aliases": [
+        "伯克纳"
+      ],
       "origin_type": "imported_originator",
       "drug_category": "western",
       "pharmacopoeia": ""
@@ -28791,7 +28799,7 @@
         "5%葡萄糖注射液 100ml"
       ],
       "drip_speed_max_mlh": 100,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [
         "头孢类交叉过敏",
         "凝血功能影响（长期使用）",
@@ -31325,7 +31333,7 @@
         "0.9%氯化钠注射液 100ml"
       ],
       "drip_speed_max_mlh": 60,
-      "skin_test_required": false,
+      "skin_test_required": true,
       "special_warnings_json": [],
       "is_solvent": false,
       "is_tcm_injection": false,

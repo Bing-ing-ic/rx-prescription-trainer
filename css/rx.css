@@ -1198,8 +1198,8 @@ input, select, textarea { font-family: inherit; }
  * ============================================================ */
 .tcm-hero { background: linear-gradient(135deg, #6b4423 0%, #8b5a2b 50%, #b8860b 100%) !important;
   box-shadow: 0 8px 28px rgba(139,90,43,.25) !important; }
-.tcm-hero-icon { background: rgba(255,255,255,.15) !important;
-  border: 1px solid rgba(255,255,255,.3) !important; color: #fff8e7; }
+.tcm-hero-icon { background: #ffffff !important;
+  border: 1px solid rgba(0,0,0,.28) !important; color: #111111; }
 .tcm-tip {
   margin: var(--space-4) auto; padding: var(--space-14px); text-align: center;
   background: #fef9e7; border: 1px dashed #d4a017; color: #8b6914;
@@ -1473,7 +1473,7 @@ input, select, textarea { font-family: inherit; }
 .acup-map-control select, .acup-map-control input[type="text"] { min-height: 36px; }
 
 /* 针灸首页按钮行 + 持针施治形象 */
-.acup-home-btns { display: flex; gap: var(--space-10px); flex-wrap: wrap; align-items: center; position: relative; z-index: 1; }
+.acup-home-btns { display: flex; justify-content: center; gap: var(--space-10px); flex-wrap: wrap; align-items: center; position: relative; z-index: 1; }
 .acup-map-btn { background: rgba(255,255,255,.16); color: #fff; border: 1px solid rgba(255,255,255,.45); box-shadow: 0 4px 16px rgba(0,0,0,.12); }
 .acup-map-btn:hover { background: rgba(255,255,255,.28); }
 .acup-hero-nurse { right: 24px; }

@@ -1198,8 +1198,8 @@ input, select, textarea { font-family: inherit; }
  * ============================================================ */
 .tcm-hero { background: linear-gradient(135deg, #6b4423 0%, #8b5a2b 50%, #b8860b 100%) !important;
   box-shadow: 0 8px 28px rgba(139,90,43,.25) !important; }
-.tcm-hero-icon { background: linear-gradient(145deg, #4a2f1a 0%, #2e1c0f 100%) !important;
-  border: 1px solid rgba(212,175,106,.8) !important; color: #111111; }
+.tcm-hero-icon { background: linear-gradient(145deg, #f7ebd1 0%, #e7cf9f 100%) !important;
+  border: 1px solid rgba(169,126,47,.7) !important; color: #111111; }
 .tcm-tip {
   margin: var(--space-4) auto; padding: var(--space-14px); text-align: center;
   background: #fef9e7; border: 1px dashed #d4a017; color: #8b6914;
@@ -1363,7 +1363,7 @@ input, select, textarea { font-family: inherit; }
 /* P0: 处方角标 棕底白字（原 .rx-corner 是红框红字，.tcm-corner 只改了 background，导致棕底+红字冲突） */
 .tcm-corner { color: #fff8e7 !important; border-color: #6b4423 !important; background: #8b5a2b !important; }
 /* P0: 老中医 icon 红色阴影是西医心形残留，改成棕金 */
-.tcm-hero-icon { box-shadow: 0 10px 28px rgba(55,28,8,.45), inset 0 1px 0 rgba(212,175,106,.35), inset 0 -1px 2px rgba(0,0,0,.4) !important; }
+.tcm-hero-icon { box-shadow: 0 10px 26px rgba(107,68,35,.35), inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 2px rgba(169,126,47,.25) !important; }
 
 /* P1: 处方笺顶部信息区/医院名/脚注 从黑色系改成棕系 */
 .tcm-rx-paper .rx-hospital { color: #6b4423; letter-spacing: 4px; }

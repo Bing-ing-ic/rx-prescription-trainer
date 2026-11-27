@@ -76,6 +76,16 @@
     }
   }
 
+  // 按需懒加载：仅在首次进入中医模块（或深链直达）时拉取本模块数据，
+  // bootPromise 守卫保证重复进入不会重复 fetch。
+  let bootPromise = null;
+  function ensureBoot() {
+    if (bootPromise) return bootPromise;
+    bootPromise = boot().catch(e => console.warn('TCM ensureBoot failed:', e));
+    return bootPromise;
+  }
+  window.__ensureTCM = ensureBoot;
+
   // ---------- 视图切换（覆盖西医 show） ----------
   const ALL_VIEWS = ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls','view-review-cases','view-quickref','view-tcm-home','view-tcm-case','view-tcm-rx','view-tcm-report',
     'view-acup-home','view-acup-case','view-acup-rx','view-acup-report','view-acup-map','view-acup-time',
@@ -106,9 +116,9 @@
       window.__resetWesternDraft();
     }
     if (m === 'western') showView('view-home');
-    else if (m === 'tcm') showView('view-tcm-home');
-    else if (m === 'acup') showView('view-acup-home');
-    else if (m === 'anat') showView('view-anat-home');
+    else if (m === 'tcm') { showView('view-tcm-home'); ensureBoot(); }
+    else if (m === 'acup') { showView('view-acup-home'); if (window.__ensureAcup) window.__ensureAcup(); }
+    else if (m === 'anat') { showView('view-anat-home'); if (window.__ensureAnat) window.__ensureAnat(); }
   }
   window.__setModule = setModule;
 
@@ -963,6 +973,8 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     bindEvents();
-    boot();
+    // 仅当深链直达中医视图时首屏加载；其余情况由 setModule 进入时按需触发
+    const hk = (location.hash || '').replace(/^#/, '');
+    if (hk.indexOf('view-tcm') === 0) ensureBoot();
   });
 })();

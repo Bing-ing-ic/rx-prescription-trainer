@@ -81,10 +81,10 @@
     try {
       const [dj, pj] = await Promise.all([
         loadJSON('data/acup-time-medicine.json').catch(() => null),
-        loadJSON('data/acup-points.json').catch(() => null)
+        window.__ACUP_POINTS ? Promise.resolve({ points: window.__ACUP_POINTS }) : loadJSON('data/acup-points.json').catch(() => null)
       ]);
       S.data = dj;
-      S.points = (pj && pj.points) || (Array.isArray(pj) ? pj : []);
+      S.points = (pj && pj.points) || (Array.isArray(pj) ? pj : []) || window.__ACUP_POINTS || [];
       if (!dj) { const d = $('time-meta'); if (d) d.innerHTML = '<div class="acup-map-empty">时间医学数据未加载</div>'; return; }
       renderMeta();
       renderShichenGrid();
@@ -294,6 +294,8 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     bindEvents();
-    boot();
+    // 时间医学数据按需加载：进入穴位时间视图时由按钮触发；仅深链直达时首屏加载
+    const hk = (location.hash || '').replace(/^#/, '');
+    if (hk === 'view-acup-time') boot();
   });
 })();

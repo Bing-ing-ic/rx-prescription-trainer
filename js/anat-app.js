@@ -71,6 +71,15 @@
     }
   }
 
+  // 按需懒加载：首次进入解剖模块（或深链直达）时拉取数据，守卫避免重复 fetch
+  let bootPromise = null;
+  function ensureBoot() {
+    if (bootPromise) return bootPromise;
+    bootPromise = boot().catch(e => console.warn('Anat ensureBoot failed:', e));
+    return bootPromise;
+  }
+  window.__ensureAnat = ensureBoot;
+
   // ---------- 首页：8大系统卡片 ----------
   function renderSystemGrid() {
     const grid = $('anat-system-grid');
@@ -752,6 +761,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     bindEvents();
-    boot();
+    const hk = (location.hash || '').replace(/^#/, '');
+    if (hk.indexOf('view-anat') === 0) ensureBoot();
   });
 })();

@@ -30,18 +30,25 @@ jobs:
           # 根目录 HTML（排除 .bak-* 备份）
           find . -maxdepth 1 -name '*.html' ! -name '*.bak*' -exec cp {} _site/ \;
 
-          # css / js（排除 .bak-*）
-          mkdir -p _site/css _site/js
-          rsync -a --exclude='*.bak*' ./css/ _site/css/
-          rsync -a --exclude='*.bak*' ./js/   _site/js/
+          # css：仅上线 HTML 实际引用的压缩产物（未压缩源码不部署）
+          mkdir -p _site/css
+          [ -f css/rx.min.css ] && cp css/rx.min.css _site/css/ || true
 
-          # img（排除 _backup/）
+          # js：仅上线 HTML 实际引用的 min 产物（未压缩源码 .js 不部署）
+          mkdir -p _site/js
+          JS_LIST="rule-engine.min.js review.min.js standard-plan.min.js app.min.js tcm-engine.min.js medical-assist.min.js famous-recommend.min.js acup-engine.min.js tcm-app.min.js tuina-engine.min.js acup-app.min.js acup-time.min.js module-views.min.js anat-app.min.js platform-enhance.min.js"
+          for f in $JS_LIST; do [ -f "js/$f" ] && cp "js/$f" "_site/js/$f"; done
+
+          # img：排除备份/归档目录、未被引用的原 PNG、*-backup 残留图与同名旧版 JPG
           mkdir -p _site/img
-          rsync -a --exclude='_backup/' ./img/ _site/img/
+          rsync -a --exclude='_backup/' --exclude='_archive/' --exclude='*.png' \
+            --exclude='*-backup.*' \
+            --exclude='acup-doctor-hero.jpg' --exclude='nurse-hero.jpg' --exclude='tcm-doctor-hero.jpg' \
+            ./img/ _site/img/
 
-          # data（排除 _backup_before_*/）
+          # data（排除 _backup_*/、*.bak）
           mkdir -p _site/data
-          rsync -a --exclude='_backup_*/' ./data/ _site/data/
+          rsync -a --exclude='_backup_*/' --exclude='*.bak' ./data/ _site/data/
 
           # 可选：CNAME / favicon.ico / _redirects（如存在）
           [ -f CNAME ]      && cp CNAME _site/      || true

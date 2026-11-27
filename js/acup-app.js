@@ -39,6 +39,8 @@
       ]);
       S.cases = (cj && cj.cases) || (Array.isArray(cj) ? cj : []);
       S.points = (pj && pj.points) || (Array.isArray(pj) ? pj : []);
+      // 挂全局缓存，供时间医学模块复用，避免重复 fetch acup-points.json
+      window.__ACUP_POINTS = S.points;
       if (rj && rj.rules) window.ACUPENGINE.extraRules = rj.rules;
       S.tuinaTechniques = (tj && tj.techniques) || (Array.isArray(tj) ? tj : []);
       if (S.cases.length === 0) { const t = $('acup-data-tip'); if (t) t.classList.remove('hidden'); }
@@ -48,6 +50,15 @@
       initMap();
     } catch (e) { console.warn('Acup data load failed:', e); }
   }
+
+  // 按需懒加载：首次进入针灸模块（或深链直达）时拉取数据，守卫避免重复 fetch
+  let bootPromise = null;
+  function ensureBoot() {
+    if (bootPromise) return bootPromise;
+    bootPromise = boot().catch(e => console.warn('Acup ensureBoot failed:', e));
+    return bootPromise;
+  }
+  window.__ensureAcup = ensureBoot;
 
   function showView(id) {
     ['view-home','view-rx','view-lab','view-surgery','view-report','view-radar','view-mistakes','view-stats','view-drugs','view-pitfalls','view-review-cases','view-quickref',
@@ -564,6 +575,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     bindEvents();
-    boot();
+    const hk = (location.hash || '').replace(/^#/, '');
+    if (hk.indexOf('view-acup') === 0) ensureBoot();
   });
 })();
